@@ -1,0 +1,11 @@
+[History]
+1=#P0#=mb	#P1#=cmdGrabarWorldData_Click	#P2#=Project1/Form1/cmdGrabarWorldData_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201228223535	#P7#=0	#P8#=6	.
+2=#P0#=mb	#P1#=cmdExportarPlano_Click	#P2#=Project1/Form1/cmdExportarPlano_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201228222449	#P7#=0	#P8#=5	.
+3=#P0#=mb	#P1#=cmdCommand1_Click	#P2#=Project1/Form1/cmdCommand1_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201228222414	#P7#=0	#P8#=1	.
+4=#P0#=mb	#P1#=Picture1_MouseDown	#P2#=Project1/Form1/Picture1_MouseDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201228221815	#P7#=0	#P8#=26	.
+5=#P0#=mb	#P1#=picture1_MouseMove	#P2#=Project1/Form1/picture1_MouseMove	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201228221548	#P7#=0	#P8#=0	.
+6=#P0#=mb	#P1#=Form_MouseDown	#P2#=Project1/Form1/Form_MouseDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201228215721	#P7#=0	#P8#=3	.
+7=#P0#=mb	#P1#=Combo1_Click	#P2#=Project1/Form1/Combo1_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201228214555	#P7#=0	#P8#=7	.
+8=#P0#=mb	#P1#=CargarWorldData	#P2#=Project1/ModCodigo/CargarWorldData	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201228190034	#P7#=0	#P8#=36	.
+9=#P0#=mb	#P1#=Form_Load	#P2#=Project1/Form1/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201228174509	#P7#=0	#P8#=-1	.
+10=#P0#=mb	#P1#=Form_QueryUnload	#P2#=Project1/Form1/Form_QueryUnload	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201228031405	#P7#=0	#P8#=2	.

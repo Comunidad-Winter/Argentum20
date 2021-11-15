@@ -1,0 +1,13 @@
+WorldEditor v3.6.14 (18/02/2009)
+---------------------------------
+* Soporte 0.12.1 por Mikinel
+* Se agrego una nueva Opcion, que permite conseguir un numero de BMP apartir de un GRH
+* Ahora se puede estirar la pantalla de vision hasta 32 de ancho.
+* Nuevos menus en Edicion que explican como utilizar las funciones de Seleccion.
+* Ahora se quita una seleccion haciendo Doble Click.
+* El aspecto de la seleccion se ha cambiado.
+* Nueva opcion que permite mostrar la grilla de diseño.
+* Opciones de NPC Hostiles eliminadas por soporte 0.12.1
+* Nuevo Diseño Black
+* Ahora la funcion Manual se activa si es detectado '\manual\index.html'
+* Ahora la pantalla no se mueve cuando la ventana esta minimizada.

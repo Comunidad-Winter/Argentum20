@@ -1,0 +1,15 @@
+cuentas/*
+Logs/*
+Charfile/*
+Logs/*
+Foros/*
+WorldBackup/*
+Guilds/*
+Codigo/*.log
+.DS_Store
+*.vbw
+*.csi
+*.OBJ
+bkNpcs.dat
+Editor de Auras.exe
+Guilds/guildsinfo.inf

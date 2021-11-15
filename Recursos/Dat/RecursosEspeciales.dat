@@ -1,0 +1,12 @@
+[Minería]
+# Se setea desde cada yacimiento (objetos), para más control.
+
+[Tala]
+Items=2
+# 1% de tirar frutos del bosque
+Item1=22-100
+# 2% de chance de tirar manzana
+Item2=1-50
+
+[Pesca]
+Items=0

@@ -1,0 +1,9 @@
+[INIT]
+NumLines=5
+
+[Help]
+Line1=* Reglamento del juego: y manual www.Argentum20.com
+Line2=* Si estás muerto, dirígete a una ciudad y busca un Sacerdote, él te resucitará,tambien podes tipear /Hogar
+Line3=* Para realizar una consulta a un GAME MASTER, debes utilizar el comando /GM y ellos acudirán a ti.
+Line4=* Para denunciar un acto ilegal de otro usuario utiliza el comando /DENUNCIAR, indicando -luego de la palabra denunciar- el nombre del personaje denunciado y qué acto iegal está cometiendo. 
+Line5=* Recuerden que en la página oficial de Argentum encontrarán toda la información que necesiten para jugar y las noticias actualizadas sobre el juego y su comunidad. (www.argentum20.com)

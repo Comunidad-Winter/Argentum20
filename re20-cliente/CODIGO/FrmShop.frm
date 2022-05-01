@@ -1,454 +1,207 @@
 VERSION 5.00
-Begin VB.Form FrmShop 
+Begin VB.Form frmShopAO20 
    BorderStyle     =   0  'None
-   Caption         =   "Shop Donador"
-   ClientHeight    =   5580
+   Caption         =   "Tienda AO20"
+   ClientHeight    =   7125
    ClientLeft      =   0
-   ClientTop       =   -75
-   ClientWidth     =   6495
-   KeyPreview      =   -1  'True
+   ClientTop       =   0
+   ClientWidth     =   6480
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   5580
-   ScaleWidth      =   6495
+   ScaleHeight     =   475
+   ScaleMode       =   3  'Pixel
+   ScaleWidth      =   432
    ShowInTaskbar   =   0   'False
-   StartUpPosition =   2  'CenterScreen
-   Begin VB.PictureBox picture1 
+   StartUpPosition =   1  'CenterOwner
+   Begin VB.ListBox lstItemShopFilter 
       Appearance      =   0  'Flat
-      BackColor       =   &H00000000&
-      BorderStyle     =   0  'None
-      ForeColor       =   &H80000008&
-      Height          =   465
-      Left            =   4735
-      ScaleHeight     =   32
-      ScaleMode       =   0  'User
-      ScaleWidth      =   32
+      BackColor       =   &H80000001&
+      ForeColor       =   &H80000000&
+      Height          =   3345
+      Left            =   360
+      TabIndex        =   5
+      Top             =   2400
+      Width           =   3255
+   End
+   Begin VB.ListBox lstItemsShop 
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000001&
+      ForeColor       =   &H80000000&
+      Height          =   3345
+      Left            =   360
       TabIndex        =   3
-      Top             =   1760
-      Width           =   480
+      Top             =   2400
+      Visible         =   0   'False
+      Width           =   3255
    End
-   Begin VB.ListBox lstArmas 
+   Begin VB.PictureBox PictureItemShop 
       Appearance      =   0  'Flat
-      BackColor       =   &H00000000&
+      BackColor       =   &H80000001&
+      ForeColor       =   &H80000008&
+      Height          =   495
+      Left            =   4770
+      ScaleHeight     =   31
+      ScaleMode       =   3  'Pixel
+      ScaleWidth      =   31
+      TabIndex        =   2
+      Top             =   2880
+      Width           =   495
+   End
+   Begin VB.TextBox txtFindObj 
+      BackColor       =   &H80000007&
+      BorderStyle     =   0  'None
       BeginProperty Font 
-         Name            =   "Verdana"
-         Size            =   6.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00FFFFFF&
-      Height          =   2730
-      Left            =   480
-      TabIndex        =   0
-      Top             =   1350
-      Width           =   2840
-   End
-   Begin VB.Label Label5 
-      Alignment       =   2  'Center
-      BackStyle       =   0  'Transparent
-      Caption         =   "NingÃºn item de esta tienda se cae"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   6.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00004080&
-      Height          =   255
-      Left            =   3720
-      TabIndex        =   7
-      Top             =   3855
-      Width           =   2625
-   End
-   Begin VB.Image Image3 
-      Height          =   450
-      Left            =   490
-      Tag             =   "0"
-      Top             =   4790
-      Width           =   1020
-   End
-   Begin VB.Image Image2 
-      Height          =   450
-      Left            =   1530
-      Tag             =   "0"
-      Top             =   4770
-      Width           =   1785
-   End
-   Begin VB.Image Image1 
-      Height          =   570
-      Left            =   630
-      Tag             =   "0"
-      Top             =   4190
-      Width           =   2670
-   End
-   Begin VB.Label Label4 
-      Alignment       =   2  'Center
-      BackStyle       =   0  'Transparent
-      Caption         =   "0 "
-      BeginProperty Font 
-         Name            =   "Verdana"
-         Size            =   8.25
+         Name            =   "MS Sans Serif"
+         Size            =   9.75
          Charset         =   0
          Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H000040C0&
+      ForeColor       =   &H80000000&
       Height          =   255
-      Left            =   4560
-      TabIndex        =   6
-      Top             =   2460
-      Width           =   975
-   End
-   Begin VB.Label Label2 
-      Alignment       =   2  'Center
-      BackStyle       =   0  'Transparent
-      Caption         =   "Seleccione un item."
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   6.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00C0C0C0&
-      Height          =   855
-      Left            =   3800
-      TabIndex        =   5
-      Top             =   3120
-      Width           =   2500
+      Left            =   600
+      TabIndex        =   0
+      Top             =   1620
+      Width           =   2415
    End
    Begin VB.Label Label1 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
-      Caption         =   "Ninguno"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   6.75
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00C0C0C0&
-      Height          =   495
-      Left            =   3720
+      Caption         =   "Una vez realizada la transacción, reloguee su personaje por seguridad"
+      ForeColor       =   &H000000FF&
+      Height          =   735
+      Left            =   4095
       TabIndex        =   4
-      Top             =   2880
-      Width           =   2535
+      Top             =   5160
+      Width           =   1815
    End
-   Begin VB.Label Label7 
+   Begin VB.Image Image4 
+      Height          =   375
+      Left            =   6000
+      Top             =   0
+      Width           =   495
+   End
+   Begin VB.Image Image3 
+      Height          =   375
+      Left            =   3600
+      Top             =   6360
+      Width           =   1815
+   End
+   Begin VB.Image Image2 
+      Height          =   375
+      Left            =   1080
+      Top             =   6360
+      Width           =   1935
+   End
+   Begin VB.Image Image1 
+      Height          =   375
+      Left            =   3240
+      Top             =   1560
+      Width           =   375
+   End
+   Begin VB.Label lblCredits 
       Alignment       =   2  'Center
+      AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
-      Caption         =   "0 dÃ­as"
+      Caption         =   "0"
       BeginProperty Font 
-         Name            =   "Verdana"
-         Size            =   8.25
+         Name            =   "MS Sans Serif"
+         Size            =   9.75
          Charset         =   0
          Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H00C0C0C0&
-      Height          =   255
-      Left            =   4200
-      TabIndex        =   2
-      Top             =   4520
-      Width           =   1605
-   End
-   Begin VB.Label Label3 
-      Alignment       =   2  'Center
-      BackStyle       =   0  'Transparent
-      Caption         =   "0 creditos."
-      BeginProperty Font 
-         Name            =   "Verdana"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00C0C0C0&
-      Height          =   255
-      Left            =   4080
+      ForeColor       =   &H000080FF&
+      Height          =   240
+      Left            =   5460
       TabIndex        =   1
-      Top             =   5240
-      Width           =   1845
+      Top             =   1560
+      Width           =   165
    End
 End
-Attribute VB_Name = "FrmShop"
+Attribute VB_Name = "frmShopAO20"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-
-' Constantes para SendMessage
-Const WM_SYSCOMMAND As Long = &H112&
-
-Const MOUSE_MOVE    As Long = &HF012&
-
-Private Declare Function ReleaseCapture Lib "user32" () As Long
-
-Private Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Long) As Long
-
-Private Sub moverForm()
-    
-    On Error GoTo moverForm_Err
-    
-
-    Dim res As Long
-
-    ReleaseCapture
-    res = SendMessage(Me.hwnd, WM_SYSCOMMAND, MOUSE_MOVE, 0)
-
-    
-    Exit Sub
-
-moverForm_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmShop.moverForm", Erl)
-    Resume Next
-    
-End Sub
-
-Private Sub Form_KeyUp(KeyCode As Integer, Shift As Integer)
-    
-    On Error GoTo Form_KeyUp_Err
-    
-
-    If KeyCode = 27 Then
-        Unload Me
-
-    End If
-
-    
-    Exit Sub
-
-Form_KeyUp_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmShop.Form_KeyUp", Erl)
-    Resume Next
-    
-End Sub
-
 Private Sub Form_Load()
-    
-    On Error GoTo Form_Load_Err
-    
-    Call FormParser.Parse_Form(Me)
-
-    
-    Exit Sub
-
-Form_Load_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmShop.Form_Load", Erl)
-    Resume Next
-    
-End Sub
-
-Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-    
-    On Error GoTo Form_MouseMove_Err
-    
-    moverForm
-
-    Image1.Picture = Nothing
-    Image1.Tag = "0"
-    Image2.Picture = Nothing
-    Image2.Tag = "0"
-
-    Image3.Picture = Nothing
-    Image3.Tag = "0"
-
-    
-    Exit Sub
-
-Form_MouseMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmShop.Form_MouseMove", Erl)
-    Resume Next
-    
-End Sub
-
-Private Sub Image1_Click()
-    
-    On Error GoTo Image1_Click_Err
-    
-
-    If lstArmas.ListIndex >= 0 Then
-        Call WriteComprarItem(lstArmas.ListIndex + 1)
-    Else
-
-        With FontTypes(FontTypeNames.FONTTYPE_INFOIAO)
-            Call ShowConsoleMsg("No seleccionaste ningun item.", .red, .green, .blue, .bold, .italic)
-
-        End With
-
-    End If
-
-    
-    Exit Sub
-
-Image1_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmShop.Image1_Click", Erl)
-    Resume Next
-    
-End Sub
-
-Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
-
-    'Image1.Picture = LoadInterface("comprarpress.bmp")
-    'Image1.Tag = "0"
-End Sub
-
-Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
-
-    'Image2.Picture = LoadInterface("cargarcodepress.bmp")
-    'Image2.Tag = "0"
+    Me.Picture = LoadInterface("ventanatiendaao20.bmp")
 End Sub
 
 Private Sub Image2_Click()
+    Unload Me
+End Sub
+
+Private Sub Image3_Click()
+    'Antes de enviar al servidor hago una pre consulta de los créditos en cliente
+    Dim obj_to_buy As ObjDatas
     
-    On Error GoTo Image2_Click_Err
+    Dim i As Long
     
-
-    Dim Codigo As String
-
-    Codigo = InputBox("Por favor, inserte el codigo que desea canjear.", "Canje de codigos")
-
-    If Codigo <> "" Then
-        Call WriteCodigo(Codigo)
-
+    obj_to_buy = ObjShop(Me.lstItemShopFilter.ListIndex + 1)
+    
+    Dim obj_name As String
+    
+    obj_name = Split(lstItemShopFilter.Text, " (")(0)
+    
+    
+    For i = 1 To UBound(ObjShop)
+        If obj_name = ObjShop(i).Name Then
+            obj_to_buy = ObjData(ObjShop(i).objNum)
+            obj_to_buy.objNum = ObjShop(i).objNum
+            obj_to_buy.Valor = ObjShop(i).Valor
+            Exit For
+        End If
+    Next i
+    
+    
+    If credits_shopAO20 >= obj_to_buy.Valor Then
+        Call writeBuyShopItem(obj_to_buy.objNum)
+    Else
+        Call AddtoRichTextBox(frmMain.RecTxt, "No tienes suficientes créditos para comprar ese elemento. Puedes comprar más créditos a través del siguiente link: https://www.patreon.com/nolandstudios", 255, 0, 0, True)
     End If
-
-    
-    Exit Sub
-
-Image2_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmShop.Image2_Click", Erl)
-    Resume Next
-    
 End Sub
 
-Private Sub Image2_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-    
-    On Error GoTo Image2_MouseMove_Err
-    
-
-    If Image2.Tag = "0" Then
-        Image2.Picture = LoadInterface("cargarcodehover.bmp")
-        Image2.Tag = "1"
-
-    End If
-    
-    Image1.Picture = Nothing
-    Image1.Tag = "0"
-    
-    Image3.Picture = Nothing
-    Image3.Tag = "0"
-
-    
-    Exit Sub
-
-Image2_MouseMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmShop.Image2_MouseMove", Erl)
-    Resume Next
-    
+Private Sub Image4_Click()
+    Unload Me
 End Sub
 
-Private Sub Image1_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub lstItemShopFilter_Click()
+    Dim grh As Long
+    Dim i As Long
     
-    On Error GoTo Image1_MouseMove_Err
+    Dim obj_name As String
     
-
-    If Image1.Tag = "0" Then
-        Image1.Picture = LoadInterface("comprarhover.bmp")
-        Image1.Tag = "1"
-
-    End If
+    obj_name = Split(lstItemShopFilter.Text, " (")(0)
     
-    Image2.Picture = Nothing
-    Image2.Tag = "0"
+    For i = 1 To UBound(ObjShop)
+        If obj_name = ObjShop(i).Name Then
+            grh = ObjData(ObjShop(i).objNum).GrhIndex
+            Exit For
+        End If
+    Next i
     
-    Image3.Picture = Nothing
-    Image3.Tag = "0"
-    
-    
-    Exit Sub
-
-Image1_MouseMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmShop.Image1_MouseMove", Erl)
-    Resume Next
-    
+    Call Grh_Render_To_Hdc(PictureItemShop, grh, 0, 0, False)
+        
 End Sub
 
-Private Sub Image3_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub txtFindObj_Change()
+
+    lstItemShopFilter.Clear
     
-    On Error GoTo Image3_MouseMove_Err
+    Dim i As Long
     
+    For i = 1 To UBound(ObjShop)
+        If InStr(1, ObjShop(i).Name, txtFindObj.Text, 1) > 0 Then
+            Call frmShopAO20.lstItemShopFilter.AddItem(ObjShop(i).Name & " (Valor: " & ObjShop(i).Valor & ")")
+        End If
 
-    If Image3.Tag = "0" Then
-        Image3.Picture = LoadInterface("donar.bmp")
-        Image3.Tag = "1"
-
-    End If
-
-    Image1.Picture = Nothing
-    Image1.Tag = "0"
-
-    Image2.Picture = Nothing
-    Image2.Tag = "0"
-
+    Next i
     
-    Exit Sub
-
-Image3_MouseMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmShop.Image3_MouseMove", Erl)
-    Resume Next
-    
-End Sub
-
-Private Sub Image3_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
-    
-    On Error GoTo Image3_MouseUp_Err
-    
-    ShellExecute Me.hWnd, "open", "https://ao20.com.ar/creditos/", "", "", 0
-
-    
-    Exit Sub
-
-Image3_MouseUp_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmShop.Image3_MouseUp", Erl)
-    Resume Next
-    
-End Sub
-
-Private Sub lstArmas_Click()
-    
-    On Error GoTo lstArmas_Click_Err
-    
-    Label1.Caption = ObjData(ObjDonador(lstArmas.ListIndex + 1).Index).Name
-    Label2.Caption = ObjData(ObjDonador(lstArmas.ListIndex + 1).Index).Texto
-    Label4.Caption = ObjDonador(lstArmas.ListIndex + 1).precio
-
-    Call Grh_Render_To_Hdc(picture1, ObjData(ObjDonador(lstArmas.ListIndex + 1).Index).GrhIndex, 0, 0)
-    picture1.Visible = True
-
-    
-    Exit Sub
-
-lstArmas_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmShop.lstArmas_Click", Erl)
-    Resume Next
     
 End Sub

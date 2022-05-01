@@ -667,8 +667,18 @@ Private Sub Form_Load()
 
     'lstProfesion.ListIndex = 0
     'LstFamiliar.ListIndex = 0
-
     
+    
+    Call SetRGBA(COLOR_RED(0), 255, 0, 0)
+    Call SetRGBA(COLOR_RED(1), 255, 0, 0)
+    Call SetRGBA(COLOR_RED(2), 255, 0, 0)
+    Call SetRGBA(COLOR_RED(3), 255, 0, 0)
+    Call SetRGBA(COLOR_GREEN(0), 0, 255, 0)
+    Call SetRGBA(COLOR_GREEN(1), 0, 255, 0)
+    Call SetRGBA(COLOR_GREEN(2), 0, 255, 0)
+    Call SetRGBA(COLOR_GREEN(3), 0, 255, 0)
+    
+
     Exit Sub
 
 Form_Load_Err:
@@ -768,7 +778,7 @@ Private Sub lstProfesion_Click()
             CPEscudo = 0
             CPAura = ""
 
-        Case "Bandido", "LadrÃ³n", "Pirata"
+        Case "Bandido", "Ladrón", "Pirata"
             RazaRecomendada = "Enano / Humano"
             CPBody = 1
             CPBodyE = 52
@@ -940,92 +950,6 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
 
     End If
 
-    'If X > 258 And X < 272 And Y > 413 And Y < 421 Then 'Boton < FUERZA
-    '    Call Sound.Sound_Play(SND_CLICK)
-    '    If Not frmCrearPersonaje.lbFuerza.Caption = 6 Then
-    '    frmCrearPersonaje.lbLagaRulzz.Caption = frmCrearPersonaje.lbLagaRulzz.Caption + 1
-    '    frmCrearPersonaje.lbFuerza.Caption = frmCrearPersonaje.lbFuerza.Caption - 1
-    'End If
-
-    'End If
-
-    'If X > 258 And X < 272 And Y > 442 And Y < 454 Then 'Boton < Agilidad
-    'Call Sound.Sound_Play(SND_CLICK)
-    'If frmCrearPersonaje.lbAgilidad.Caption = 6 Then Exit Sub
-    'frmCrearPersonaje.lbLagaRulzz.Caption = frmCrearPersonaje.lbLagaRulzz.Caption + 1
-    'frmCrearPersonaje.lbAgilidad.Caption = frmCrearPersonaje.lbAgilidad.Caption - 1
-
-    'End If
-
-    'If X > 258 And X < 272 And Y > 474 And Y < 483 Then 'Boton < Inteligencia
-
-    'Call Sound.Sound_Play(SND_CLICK)
-    'If frmCrearPersonaje.lbInteligencia.Caption = 6 Then Exit Sub
-    'frmCrearPersonaje.lbLagaRulzz.Caption = frmCrearPersonaje.lbLagaRulzz.Caption + 1
-    'frmCrearPersonaje.lbInteligencia.Caption = frmCrearPersonaje.lbInteligencia.Caption - 1
-    'End If
-
-    'If X > 258 And X < 272 And Y > 505 And Y < 517 Then 'Boton < Carisma
-    'Call Sound.Sound_Play(SND_CLICK)
-    'If frmCrearPersonaje.lbCarisma.Caption = 6 Then Exit Sub
-    'frmCrearPersonaje.lbLagaRulzz.Caption = frmCrearPersonaje.lbLagaRulzz.Caption + 1
-    'frmCrearPersonaje.lbCarisma.Caption = frmCrearPersonaje.lbCarisma.Caption - 1
-    'End If
-
-    'If X > 258 And X < 272 And Y > 500 And Y < 517 Then 'Boton < Constitucion
-    '    Call Sound.Sound_Play(SND_CLICK)
-    '    If frmCrearPersonaje.lbConstitucion.Caption = 6 Then Exit Sub
-    '    frmCrearPersonaje.lbLagaRulzz.Caption = frmCrearPersonaje.lbLagaRulzz.Caption + 1
-    '    frmCrearPersonaje.lbConstitucion.Caption = frmCrearPersonaje.lbConstitucion.Caption - 1
-    'End If
-
-    'If X > 308 And X < 320 And Y > 411 And Y < 424 Then 'Boton > Fuerza
-    'Call Sound.Sound_Play(SND_CLICK)
-    'If Not frmCrearPersonaje.lbLagaRulzz.Caption > 0 Then Exit Sub
-    'If Not frmCrearPersonaje.lbFuerza.Caption = 18 Then
-    'frmCrearPersonaje.lbLagaRulzz.Caption = frmCrearPersonaje.lbLagaRulzz.Caption - 1
-    'frmCrearPersonaje.lbFuerza.Caption = frmCrearPersonaje.lbFuerza.Caption + 1
-    'End If
-    'End If
-
-    'If X > 308 And X < 320 And Y > 442 And Y < 454 Then 'Boton > Agilidad
-    'Call Sound.Sound_Play(SND_CLICK)
-    'If Not frmCrearPersonaje.lbLagaRulzz.Caption > 0 Then Exit Sub
-    'If Not frmCrearPersonaje.lbAgilidad.Caption = 18 Then
-    'frmCrearPersonaje.lbLagaRulzz.Caption = frmCrearPersonaje.lbLagaRulzz.Caption - 1
-    'frmCrearPersonaje.lbAgilidad.Caption = frmCrearPersonaje.lbAgilidad.Caption + 1
-    'End If
-
-    'End If
-
-    'If X > 308 And X < 320 And Y > 472 And Y < 485 Then 'Boton > Inteligencia
-    'Call Sound.Sound_Play(SND_CLICK)
-    'If Not frmCrearPersonaje.lbLagaRulzz.Caption > 0 Then Exit Sub
-    'If Not frmCrearPersonaje.lbInteligencia.Caption = 18 Then
-    'frmCrearPersonaje.lbLagaRulzz.Caption = frmCrearPersonaje.lbLagaRulzz.Caption - 1
-    'frmCrearPersonaje.lbInteligencia.Caption = frmCrearPersonaje.lbInteligencia.Caption + 1
-    'End If
-
-    'End If
-
-    'If X > 308 And X < 320 And Y > 504 And Y < 516 Then 'Boton > Carisma
-    'Call Sound.Sound_Play(SND_CLICK)
-    'If Not frmCrearPersonaje.lbLagaRulzz.Caption > 0 Then Exit Sub
-    'If Not frmCrearPersonaje.lbCarisma.Caption = 18 Then
-    'frmCrearPersonaje.lbLagaRulzz.Caption = frmCrearPersonaje.lbLagaRulzz.Caption - 1
-    'frmCrearPersonaje.lbCarisma.Caption = frmCrearPersonaje.lbCarisma.Caption + 1
-    'End If
-    'End If
-
-    'If X > 308 And X < 320 And Y > 497 And Y < 516 Then 'Boton > Constitucion
-    'Call Sound.Sound_Play(SND_CLICK)
-    'If Not frmCrearPersonaje.lbLagaRulzz.Caption > 0 Then Exit Sub
-    'If Not frmCrearPersonaje.lbConstitucion.Caption = 18 Then
-    'frmCrearPersonaje.lbLagaRulzz.Caption = frmCrearPersonaje.lbLagaRulzz.Caption - 1
-    'frmCrearPersonaje.lbConstitucion.Caption = frmCrearPersonaje.lbConstitucion.Caption + 1
-    'End If
-    'End If
-
     If x > 148 And x < 246 And y > 630 And y < 670 Then 'Boton > Volver
         Call Sound.Sound_Play(SND_CLICK)
 
@@ -1083,19 +1007,12 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
 
             StopCreandoCuenta = True
                 
-            If frmMain.Socket1.Connected Then
-                EstadoLogin = E_MODO.CrearNuevoPj
-                Call Login
+            If Connected Then
                 frmMain.ShowFPS.Enabled = True
-                Exit Sub
-            Else
-                EstadoLogin = E_MODO.CrearNuevoPj
-                frmMain.Socket1.HostName = IPdelServidor
-                frmMain.Socket1.RemotePort = PuertoDelServidor
-                frmMain.Socket1.Connect
-
             End If
-
+            
+            Call modNetwork.Connect(IPdelServidor, PuertoDelServidor)
+            Call LoginOrConnect(E_MODO.CrearNuevoPj)
         End If
 
     End If

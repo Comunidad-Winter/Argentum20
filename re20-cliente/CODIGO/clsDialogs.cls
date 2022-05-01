@@ -15,7 +15,7 @@ Attribute VB_Exposed = False
 ' clsDialogs.cls - Chats over head manager.
 ' Creates and manipulates chats over heads, rendering and updating them.
 '
-' Designed and implemented by Juan MartÃ­n Sotuyo Dodero (Maraxus)
+' Designed and implemented by Juan Martín Sotuyo Dodero (Maraxus)
 ' (juansotuyo@gmail.com)
 '**************************************************************
 
@@ -37,7 +37,7 @@ Attribute VB_Exposed = False
 ' Creates and manipulates chats over heads, rendering and updating them.
 '
 ' @file     clsDialogs.cls
-' @author   Juan MartÃ­n Sotuyo Dodero (Maraxus) juansotuyo@gmail.com
+' @author   Juan Martín Sotuyo Dodero (Maraxus) juansotuyo@gmail.com
 ' @version  1.0.0
 ' @date     20070729
 
@@ -54,7 +54,7 @@ Private Const MAX_LENGTH   As Byte = 18
 
 ''
 ' Number of milliseconds to add to the lifetime per dialog character
-Private Const MS_PER_CHAR  As Byte = 100
+Private Const MS_PER_CHAR  As Byte = 60
 
 ''
 ' Number of extra milliseconds to add to the lifetime of a new dialog
@@ -104,7 +104,7 @@ Private usedFont                 As StdFont
 
 Private Sub Class_Initialize()
     '***************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero (Maraxus)
+    'Author: Juan Martín Sotuyo Dodero (Maraxus)
     'Last Modification: 07/28/07
     'Initializes the dialog instance
     '***************************************************
@@ -129,7 +129,7 @@ Private Sub Class_Terminate()
 
     '***************************************************
     
-    'Author: Juan MartÃ­n Sotuyo Dodero (Maraxus)
+    'Author: Juan Martín Sotuyo Dodero (Maraxus)
     'Last Modification: 07/28/07
     'Clean up
     '***************************************************
@@ -141,7 +141,7 @@ Private Function BinarySearch(ByVal charindex As Integer) As Integer
     
 
     '**************************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero
+    'Author: Juan Martín Sotuyo Dodero
     'Last Modify Date: 07/28/07
     'Returns the index of the dialog in the list, or the negation
     'of the position were it should be if not found (for binary insertion)
@@ -201,7 +201,7 @@ Public Sub CreateDialog(ByRef chat As String, ByVal charindex As Integer, ByVal 
     
 
     '**************************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero
+    'Author: Juan Martín Sotuyo Dodero
     'Last Modification: 08/29/07 by Rapsodius
     'Changed life time of the dialogs to a variable amount,
     'depending on the number of chars
@@ -261,7 +261,7 @@ Private Function FormatChat(ByRef chat As String) As String()
     
 
     '**************************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero
+    'Author: Juan Martín Sotuyo Dodero
     'Last Modify Date: 07/28/07
     'Formats a dialog into different text lines.
     '**************************************************************
@@ -359,7 +359,7 @@ Public Sub UpdateDialogPos(ByVal x As Integer, ByVal y As Integer, ByVal charind
     
 
     '**************************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero
+    'Author: Juan Martín Sotuyo Dodero
     'Last Modify Date: 07/28/07
     'Updates a dialog's position.
     '**************************************************************
@@ -398,7 +398,7 @@ Public Sub render()
     
 
     '**************************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero
+    'Author: Juan Martín Sotuyo Dodero
     'Last Modification: 08/29/07 by Rapsodius
     'Changed the way it gets rid of older dialogs.
     '**************************************************************
@@ -459,7 +459,7 @@ Public Sub RemoveDialog(ByVal charindex As Integer)
     
 
     '**************************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero
+    'Author: Juan Martín Sotuyo Dodero
     'Last Modify Date: 07/28/07
     'Removes the dialog from the requested char.
     '**************************************************************
@@ -491,7 +491,7 @@ End Sub
 
 Public Sub RemoveAllDialogs()
     '**************************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero
+    'Author: Juan Martín Sotuyo Dodero
     'Last Modify Date: 07/28/07
     'Removes all dialogs from all chars.
     '**************************************************************
@@ -516,7 +516,7 @@ End Sub
 
 Public Property Get font() As StdFont
     '**************************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero
+    'Author: Juan Martín Sotuyo Dodero
     'Last Modify Date: 07/28/07
     'Retrieves the font being used to render dialogs.
     '**************************************************************
@@ -541,7 +541,7 @@ End Property
 
 Public Property Let font(ByRef nValue As StdFont)
     '**************************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero
+    'Author: Juan Martín Sotuyo Dodero
     'Last Modify Date: 07/28/07
     'Sets the font being used to render dialogs.
     '**************************************************************

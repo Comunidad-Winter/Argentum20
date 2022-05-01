@@ -1,4 +1,6 @@
 VERSION 5.00
+Object = "{48E59290-9880-11CF-9754-00AA00C00908}#1.0#0"; "MSINET.ocx"
+Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
 Begin VB.Form frmConnect 
    Appearance      =   0  'Flat
    BackColor       =   &H00000000&
@@ -29,9 +31,25 @@ Begin VB.Form frmConnect
    ScaleWidth      =   1024
    StartUpPosition =   2  'CenterScreen
    Visible         =   0   'False
+   Begin MSWinsockLib.Winsock AuthSocket 
+      Left            =   120
+      Top             =   120
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   393216
+      RemoteHost      =   "45.235.99.71"
+      RemotePort      =   4004
+   End
+   Begin InetCtlsObjects.Inet Inet1 
+      Left            =   12600
+      Top             =   5880
+      _ExtentX        =   1005
+      _ExtentY        =   1005
+      _Version        =   393216
+   End
    Begin VB.PictureBox render 
       Appearance      =   0  'Flat
-      BackColor       =   &H00FFFFFF&
+      BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       BeginProperty Font 
          Name            =   "Tahoma"
@@ -74,17 +92,6 @@ Begin VB.Form frmConnect
          Visible         =   0   'False
          Width           =   2130
       End
-      Begin VB.Timer RelampagoFin 
-         Enabled         =   0   'False
-         Left            =   13080
-         Top             =   1320
-      End
-      Begin VB.Timer relampago 
-         Enabled         =   0   'False
-         Interval        =   10000
-         Left            =   13080
-         Top             =   480
-      End
    End
    Begin VB.Timer Timer2 
       Enabled         =   0   'False
@@ -108,6 +115,50 @@ Option Explicit
 
 Private Char As Byte
 
+
+Private Sub AuthSocket_Connect()
+    If Not SessionOpened Then
+        Call OpenSessionRequest
+        Select Case LoginOperation
+            Case e_operation.Authenticate
+                Auth_state = e_state.RequestAccountLogin
+            Case e_operation.SignUp
+                Auth_state = e_state.RequestSignUp
+            Case e_operation.ValidateAccount
+                Auth_state = e_state.RequestValidateAccount
+            Case e_operation.ForgotPassword
+                Auth_state = e_state.RequestForgotPassword
+            Case e_operation.ResetPassword
+                Auth_state = e_state.RequestResetPassword
+            Case e_operation.DeleteChar
+                Auth_state = e_state.RequestDeleteChar
+            Case e_operation.ConfirmDeleteChar
+                Auth_state = e_state.ConfirmDeleteChar
+            Case e_operation.RequestVerificationCode
+                Auth_state = e_state.RequestVerificationCode
+        End Select
+    End If
+    
+End Sub
+
+Private Sub AuthSocket_DataArrival(ByVal bytesTotal As Long)
+    ModAuth.AuthSocket_DataArrival bytesTotal
+End Sub
+
+Private Sub AuthSocket_Error(ByVal Number As Integer, Description As String, ByVal Scode As Long, ByVal Source As String, ByVal HelpFile As String, ByVal HelpContext As Long, CancelDisplay As Boolean)
+    Call TextoAlAsistente("Servidor Offline, intente nuevamente.")
+    Dim i As Long
+    
+    If Split(servers_login_connections(1), ":")(0) = IPdelServidorLogin Then
+        IPdelServidorLogin = Split(servers_login_connections(2), ":")(0)
+        PuertoDelServidorLogin = Split(servers_login_connections(2), ":")(1)
+    Else
+        IPdelServidorLogin = Split(servers_login_connections(1), ":")(0)
+        PuertoDelServidorLogin = Split(servers_login_connections(1), ":")(1)
+    End If
+    
+End Sub
+
 Private Sub Form_Activate()
     
     On Error GoTo Form_Activate_Err
@@ -119,7 +170,7 @@ Private Sub Form_Activate()
     Exit Sub
 
 Form_Activate_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmConnect.Form_Activate", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmConnect.Form_Activate", Erl)
     Resume Next
     
 End Sub
@@ -139,7 +190,7 @@ Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
     Exit Sub
 
 Form_KeyDown_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmConnect.Form_KeyDown", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmConnect.Form_KeyDown", Erl)
     Resume Next
     
 End Sub
@@ -147,17 +198,17 @@ End Sub
 Private Sub Form_Load()
     
     On Error GoTo Form_Load_Err
-    
+    If (Not FormParser Is Nothing) Then
     Call FormParser.Parse_Form(Me)
+    End If
 
     QueRender = 1
-    relampago.Enabled = True
     
-    LogeoAlgunaVez = False
     EngineRun = False
         
     Timer2.Enabled = True
     Timer1.Enabled = True
+    
     ' Seteamos el caption hay que poner 20 aniversario
     Me.Caption = "Argentum20"
     
@@ -165,96 +216,17 @@ Private Sub Form_Load()
     Call Form_RemoveTitleBar(Me)
     Me.Width = 1024 * Screen.TwipsPerPixelX
     Me.Height = 768 * Screen.TwipsPerPixelY
-
     
     Exit Sub
 
 Form_Load_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmConnect.Form_Load", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmConnect.Form_Load", Erl)
     Resume Next
     
 End Sub
 
-Private Sub relampago_Timer()
-    
-    On Error GoTo relampago_Timer_Err
-    
 
-    Dim trueno         As Byte
-    
-    Dim truenocolor    As Byte
 
-    Dim duraciontrueno As Byte
-    
-    trueno = RandomNumber(1, 255)
-    
-    If trueno > 100 Then
-
-        Dim Color As Long, duracion As Long
-
-        duraciontrueno = RandomNumber(80, 200)
-
-        truenocolor = RandomNumber(1, 4)
-
-        Dim TruenoWav As Integer
-
-        TruenoWav = RandomNumber(400, 403)
-
-        Sound.Sound_Play CStr(TruenoWav), False, 0, 0
-
-        Select Case truenocolor
-
-            Case 1
-                Color = &H8080
-
-            Case 2
-                Color = &HF8F8F8
-
-            Case 3
-                Color = &HEFEECB
-
-            Case 4
-                Color = &HE2B3F7
-
-        End Select
-
-        Dim r, G, B As Byte
-
-        B = (Color And 16711680) / 65536
-        G = (Color And 65280) / 256
-        r = Color And 255
-        Color = D3DColorARGB(255, r, G, B)
-        
-        SetGlobalLight (Color)
-        RelampagoFin.Interval = duraciontrueno
-        RelampagoFin.Enabled = True
-
-    End If
-
-    
-    Exit Sub
-
-relampago_Timer_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmConnect.relampago_Timer", Erl)
-    Resume Next
-    
-End Sub
-
-Private Sub RelampagoFin_Timer()
-    
-    On Error GoTo RelampagoFin_Timer_Err
-    
-    Call SetGlobalLight(MapDat.base_light)
-    RelampagoFin.Enabled = False
-
-    
-    Exit Sub
-
-RelampagoFin_Timer_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmConnect.RelampagoFin_Timer", Erl)
-    Resume Next
-    
-End Sub
 
 Private Sub render_DblClick()
     
@@ -266,11 +238,6 @@ Private Sub render_DblClick()
         Case 2
             
             If PJSeleccionado < 1 Then Exit Sub
-            If Pjs(PJSeleccionado).nombre = "" Then
-                PJSeleccionado = 0
-                Exit Sub
-
-            End If
 
             Call Sound.Sound_Play(SND_CLICK)
 
@@ -287,10 +254,43 @@ Private Sub render_DblClick()
     Exit Sub
 
 render_DblClick_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmConnect.render_DblClick", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmConnect.render_DblClick", Erl)
     Resume Next
     
 End Sub
+
+'Comprobación versión cliente
+Public Sub AnalizarCliente()
+    
+    On Error GoTo Analizar_Err
+    
+    On Error Resume Next
+    Dim json As String
+    Dim jsonSplit() As String
+    Dim Token As String
+    
+   'obtengo el MD5 del Argentum.exe
+   json = Inet1.OpenURL("http://parches.ao20.com.ar/files/Version.json")
+    If Left(json, 5) <> "<!DOC" Then
+        If json <> "" Then
+            Token = Left(Split(json, "Argentum.exe"":""")(1), 32)
+        Else
+            Exit Sub
+        End If
+    End If
+    'Compruebo los MD5 con host
+    If Token <> CheckMD5 Then
+        Shell App.Path & "\..\..\Launcher\LauncherAO20.exe"
+        End
+    End If
+        
+    Exit Sub
+
+Analizar_Err:
+    Call RegistrarError(Err.Number, Err.Description, "frmConnect.Analizar", Erl)
+    Resume Next
+End Sub
+
 
 Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
     
@@ -461,7 +461,6 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
 
                 Dim k As Object
 
-                If StopCreandoCuenta = True Then Exit Sub
                 
                 UserName = frmConnect.txtNombre.Text
                 
@@ -482,36 +481,16 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
                     UserPassword = CuentaPassword
                     StopCreandoCuenta = True
 
-                    If frmMain.Socket1.Connected Then
-                        EstadoLogin = E_MODO.CrearNuevoPj
-                        Call Login
+                    If Connected Then
                         frmMain.ShowFPS.Enabled = True
-                        Exit Sub
-                    Else
-                        EstadoLogin = E_MODO.CrearNuevoPj
-                        frmMain.Socket1.HostName = IPdelServidor
-                        frmMain.Socket1.RemotePort = PuertoDelServidor
-                        frmMain.Socket1.Connect
-
                     End If
-
+                    
+                    'Call modNetwork.Connect(IPdelServidor, PuertoDelServidor)
+                    'TODO: Mostrar ventana de creación de personaje
+                    EstadoLogin = E_MODO.CrearNuevoPj
+                    Call modNetwork.Connect(IPdelServidor, PuertoDelServidor)
                 End If
-
-            End If
-            
-            If x >= 652 And x < 677 And y >= 346 And y < 365 Then  'DADO
-                Call Sound.Sound_Play(SND_DICE) ' Este sonido hay que ponerlo en el evento "click" o hacer q suene menos xq rompe oidos sino
                 
-                If frmMain.Socket1.Connected Then
-                    EstadoLogin = E_MODO.Dados
-                    Call Login
-                Else
-                    EstadoLogin = E_MODO.Dados
-                    frmMain.Socket1.HostName = IPdelServidor
-                    frmMain.Socket1.RemotePort = PuertoDelServidor
-                    frmMain.Socket1.Connect
-
-                End If
 
             End If
 
@@ -546,7 +525,8 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
             End If
             
             If OpcionSeleccionada = 0 Then
-                PJSeleccionado = 0
+                Dim NuevoSeleccionado As Byte
+                NuevoSeleccionado = 0
 
                 Dim DivX As Integer, DivY As Integer
 
@@ -571,15 +551,23 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
                         ' El resto tiene que ser menor que las dimensiones del "rectangulo" del pj
                         If ModX < 79 Then ' 64 = ancho del "rectangulo" del pj
                             If ModY < 93 Then ' 64 = alto del "rectangulo" del pj
-                                ' Si todo se cumple, entonces cliqueo en un pj (dado por las divisiones)
-                                PJSeleccionado = 1 + DivX + DivY * 5 ' 5 = cantidad de pjs por linea (+1 porque los pjs van de 1 a MAX)
 
+                                ' Si todo se cumple, entonces cliqueo en un pj (dado por las divisiones)
+                                NuevoSeleccionado = 1 + DivX + DivY * 5 ' 5 = cantidad de pjs por linea (+1 porque los pjs van de 1 a MAX)
+
+                                If Pjs(NuevoSeleccionado).Mapa = 0 Then NuevoSeleccionado = 0
+                                
                             End If
 
                         End If
 
                     End If
 
+                End If
+                
+                If PJSeleccionado <> NuevoSeleccionado Then
+                    LastPJSeleccionado = PJSeleccionado
+                    PJSeleccionado = NuevoSeleccionado
                 End If
 
             End If
@@ -596,30 +584,18 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
                         Exit Sub
 
                     End If
+                    UserMap = 37
+                    AlphaNiebla = 3
+                    CPHeading = 3
+                    CPEquipado = True
+                    Call SwitchMap(UserMap)
+                    QueRender = 3
                     
-                    If IntervaloPermiteConectar Then
-                        EstadoLogin = E_MODO.Dados
-
-                        If Musica Then
-
-                            '  ReproducirMp3 (2)
-                            'Else
-                            ' Call Audio.PlayMIDI("123.mid")
-                        End If
-
-                        If frmMain.Socket1.Connected Then
-                            frmMain.Socket1.Disconnect
-                            frmMain.Socket1.Cleanup
-                            DoEvents
-
-                        End If
-
-                        frmMain.Socket1.HostName = IPdelServidor
-                        frmMain.Socket1.RemotePort = PuertoDelServidor
-                        frmMain.Socket1.Connect
-
-                    End If
-
+                    Call IniciarCrearPj
+                    frmConnect.txtNombre.Visible = True
+                    frmConnect.txtNombre.SetFocus
+        
+                    Call Sound.Sound_Play(SND_DICE)
                 Case 2
 
                     If Char = 0 Then Exit Sub
@@ -627,51 +603,45 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
 
                     Dim tmp As String
 
-                    If MsgBox("Â¿Esta seguro que desea borrar el personaje " & DeleteUser & " de la cuenta?", vbYesNo + vbQuestion, "Borrar personaje") = vbYes Then
-                        Call inputbox_Password(Me, "*")
-                        tmp = InputBox("Para confirmar el borrado debe ingresar su contraseÃ±a.", App.title)
-            
-                        If tmp = CuentaPassword Then
-                            If frmMain.Socket1.Connected Then
-                                frmMain.Socket1.Disconnect
-                                frmMain.Socket1.Cleanup
-                                DoEvents
+                    If MsgBox("¿Esta seguro que desea borrar el personaje " & DeleteUser & " de la cuenta?", vbYesNo + vbQuestion, "Borrar personaje") = vbYes Then
+                        
+                        ModAuth.LoginOperation = e_operation.DeleteChar
+                        Call connectToLoginServer
+                        frmDeleteChar.Show , frmConnect
+                        
+                        'If tmp = CuentaPassword Then
+                        '    Call LoginOrConnect(E_MODO.BorrandoPJ)
+                        '
+                        '    If PJSeleccionado <> 0 Then
+                        '        LastPJSeleccionado = PJSeleccionado
+                        '        PJSeleccionado = 0
+                        '    End If
+                        'Else
+                        '    MsgBox ("Contraseña incorrecta")
 
-                            End If
-
-                            EstadoLogin = E_MODO.BorrandoPJ
-                            frmMain.Socket1.HostName = IPdelServidor
-                            frmMain.Socket1.RemotePort = PuertoDelServidor
-                            frmMain.Socket1.Connect
-                            PJSeleccionado = 0
-                        Else
-                            MsgBox ("ContraseÃ±a incorrecta")
-
-                        End If
+                        'End If
 
                     End If
 
                 Case 3
+                    Debug.Print "Vuelvo al login, debería borrar el token"
+                    Auth_state = e_state.Idle
+                    'Call ModAuth.LogOutRequest
                     Call ComprobarEstado
 
                     If Musica Then
 
                         'ReproducirMp3 (4)
                     End If
-
-                    If frmMain.Socket1.Connected Then
-                        frmMain.Socket1.Disconnect
-                        frmMain.Socket1.Cleanup
-                        DoEvents
-
-                    End If
+                
+                    UserSaliendo = True
+                    Call modNetwork.Disconnect
 
                     CantidadDePersonajesEnCuenta = 0
-                    CuentaDonador = 0
-                
+
                     Dim i As Integer
 
-                    For i = 1 To 8
+                    For i = 1 To MAX_PERSONAJES_EN_CUENTA
                         Pjs(i).Body = 0
                         Pjs(i).Head = 0
                         Pjs(i).Mapa = 0
@@ -682,18 +652,12 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
                         Pjs(i).NameMapa = ""
                     Next i
 
-                    LogeoAlgunaVez = False
                     General_Set_Connect
                     
                     'Unload Me
                 Case 4
 
                     If PJSeleccionado < 1 Then Exit Sub
-                    If Pjs(PJSeleccionado).nombre = "" Then
-                        PJSeleccionado = 0
-                        Exit Sub
-
-                    End If
 
                     If IntervaloPermiteConectar Then
                         Call Sound.Sound_Play(SND_CLICK)
@@ -710,85 +674,33 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
             If PJSeleccionado > CantidadDePersonajesEnCuenta Then Exit Sub
         
         Case 1
-
-            #If DEBUGGING = 1 Then
-
-                ' Crear cuenta a manopla
-                If x >= 40 And x < 195 And y >= 330 And y < 365 Then
-                    FrmLogear.Visible = False
-    
-                    If frmMain.Socket1.Connected Then
-                        frmMain.Socket1.Disconnect
-                        frmMain.Socket1.Cleanup
-                        DoEvents
-
-                    End If
-    
-                    frmMasOpciones.Show , frmConnect
-                    frmMasOpciones.Top = frmMasOpciones.Top + 3000
-                    Exit Sub
+            
+            While LastClickAsistente = ClickEnAsistenteRandom
+                ClickEnAsistenteRandom = RandomNumber(1, 4)
+            Wend
+            
+            LastClickAsistente = ClickEnAsistenteRandom
+            
+            
+             If (x > 490 And x < 522) And (y > 297 And y < 357) Then
+             
+                If ClickEnAsistenteRandom = 1 Then
+                    Call TextoAlAsistente("No te olvides de visitar nuestro foro https://www.elmesonhostigado.com/foro/")
 
                 End If
 
-            #End If
-
-            If (x > 479 And x < 501) And (y > 341 And y < 470) Then
- 
-                ClickEnAsistente = ClickEnAsistente + 1
-
-                If ClickEnAsistente = 1 Then
-                    Call TextoAlAsistente("Â¿En que te puedo ayudar?")
+                If ClickEnAsistenteRandom = 2 Then
+                    Call TextoAlAsistente("¡Invitá a tus amigos y disfrutá en grupo tu viaje por Argentum 20!")
 
                 End If
 
-                If ClickEnAsistente = 2 Then
-                    Call TextoAlAsistente("Â¿Ya tenes una cuenta? Logea por acÃ¡ abajo.")
-
+                If ClickEnAsistenteRandom = 3 Then
+                    Call TextoAlAsistente("Si necesitás ayuda dentro del juego podés tipear /GM y escribir tu consulta")
+                    
                 End If
 
-                If ClickEnAsistente = 4 Then
-                    Call TextoAlAsistente("Si necesita ayuda dentro del juego podes usar el comando /GM y un compaÃ±ero mio se acercara hacia tÃ­.")
-
-                End If
-
-                If ClickEnAsistente = 5 Then
-                    Call TextoAlAsistente("Â¡Espero tengas un bello dia.")
-
-                End If
-
-                If ClickEnAsistente = 20 Then
-                    Call TextoAlAsistente("Bueno... listo.")
-
-                End If
-
-                If ClickEnAsistente = 12 Then
-                    Call TextoAlAsistente("Â¡Auch! Â¡Me haces cosquillas!")
-
-                End If
-
-                If ClickEnAsistente = 20 Then
-                    Call TextoAlAsistente("En cualquier momento se larga....")
-
-                End If
-
-                If ClickEnAsistente = 25 Then
-                    Call TextoAlAsistente("A Ladder le falto ponerme un paragua...")
-
-                End If
-
-                If ClickEnAsistente = 28 Then
-                    Call TextoAlAsistente("Â¡Para! Â¡Por favor!")
-
-                End If
-
-                If ClickEnAsistente = 30 Then
-                    Call TextoAlAsistente("Â¡Me estas desconcentrando!")
-
-                End If
-
-                If ClickEnAsistente > 35 Then
-                    Call TextoAlAsistente("")
-
+                If ClickEnAsistenteRandom = 4 Then
+                    Call TextoAlAsistente("¿Sabías que podés configurar el juego a tu gusto como la respiración, modalidades del Lanzar y teclas?")
                 End If
 
             End If
@@ -801,10 +713,12 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
     Exit Sub
 
 render_MouseUp_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmConnect.render_MouseUp", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmConnect.render_MouseUp", Erl)
     Resume Next
     
 End Sub
+
+
 
 Private Sub txtNombre_Change()
     
@@ -816,7 +730,7 @@ Private Sub txtNombre_Change()
     Exit Sub
 
 txtNombre_Change_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmConnect.txtNombre_Change", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmConnect.txtNombre_Change", Erl)
     Resume Next
     
 End Sub
@@ -831,7 +745,7 @@ Private Sub txtNombre_KeyPress(KeyAscii As Integer)
     Exit Sub
 
 txtNombre_KeyPress_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmConnect.txtNombre_KeyPress", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmConnect.txtNombre_KeyPress", Erl)
     Resume Next
     
 End Sub
@@ -840,68 +754,20 @@ Private Sub LogearPersonaje(ByVal Nick As String)
     
     On Error GoTo LogearPersonaje_Err
     
+    UserName = Nick
 
-    If frmMain.Socket1.Connected Then
-        UserName = Nick
+    If Connected Then
         frmMain.ShowFPS.Enabled = True
-        EstadoLogin = Normal
-        Call Login
-        Exit Sub
-    Else
-        EstadoLogin = Normal
-        UserName = Nick
-        frmMain.Socket1.HostName = IPdelServidor
-        frmMain.Socket1.RemotePort = PuertoDelServidor
-        frmMain.Socket1.Connect
-        Exit Sub
-
     End If
-
+    
+    Call modNetwork.Connect(IPdelServidor, PuertoDelServidor)
+    ModAuth.LoginOperation = e_operation.Authenticate
+    Call LoginOrConnect(E_MODO.Normal)
     
     Exit Sub
 
 LogearPersonaje_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmConnect.LogearPersonaje", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmConnect.LogearPersonaje", Erl)
     Resume Next
     
 End Sub
-
-Function ValidarNombre(nombre As String, Error As String) As Boolean
-    
-    If Len(nombre) < 1 Then
-        Error = "Ingrese algÃºn nombre."
-        Exit Function
-    End If
-    
-    If Len(nombre) > 18 Then
-        Error = "Nombre demasiado largo."
-        Exit Function
-    End If
-    
-    Dim temp As String
-    temp = UCase$(nombre)
-    
-    Dim i As Long, Char As Integer, LastChar As Integer
-    For i = 1 To Len(temp)
-        Char = Asc(mid$(temp, i, 1))
-        
-        If (Char < 65 Or Char > 90) And Char <> 32 Then
-            Error = "SÃ³lo se permites letras y espacios."
-            Exit Function
-        
-        ElseIf Char = 32 And LastChar = 32 Then
-            Error = "No se permiten espacios consecutivos."
-            Exit Function
-        End If
-        
-        LastChar = Char
-    Next
-
-    If Asc(mid$(temp, 1, 1)) = 32 Or Asc(mid$(temp, Len(temp), 1)) = 32 Then
-        Error = "No se permiten espacios al inicio o al final."
-        Exit Function
-    End If
-    
-    ValidarNombre = True
-
-End Function

@@ -1,6 +1,6 @@
 'RevolucionAO DAT: npcs.dat
 'NPCs del juego.
-'Reorganizaci√≥n Masiva.
+'ReorganizaciÛn Masiva.
 
 '++++++++++++++> Aclaraciones <++++++++++++++
 'Tipo de NPC
@@ -46,10 +46,10 @@ NumNPCs=588
 
 '--------------> Resucitadores <--------------
 [NPC1]
-Name=M√°rquez <Sacerdote>
+Name=M·rquez <Sacerdote>
 NpcType=1
 showname=1
-Desc=Hola hijo m√≠o. Soy el sacerdote de este pueblo. Si quieres ser resucitado, s√≥lo p√≠delo.
+Desc=Hola hijo mÌo. Soy el sacerdote de este pueblo. Si quieres ser resucitado, sÛlo pÌdelo.
 Head=3
 Body=49
 Heading=3
@@ -62,7 +62,7 @@ Hostile=0
 Name=Boris <Sacerdote Malvado>
 NpcType=1
 showname=1
-Desc=¬°Bienvenido al infierno! Si quieres que levante de aqu√≠ tu apestoso cad√°ver, p√≠demelo.
+Desc=°Bienvenido al infierno! Si quieres que levante de aquÌ tu apestoso cad·ver, pÌdemelo.
 Body=720
 Heading=3
 Movement=1
@@ -75,7 +75,7 @@ Hostile=0
 [NPC3]
 Name=Banquero
 showname=1
-Desc=Bienvenido a la cadena de finanzas Goliath. Somos la m√°s grande cadena de finanzas en estas tierras. Contamos con bancos en las ciudades m√°s importantes. En nosotros puede confiar.
+Desc=Bienvenido a la cadena de finanzas Goliath. Somos la m·s grande cadena de finanzas en estas tierras. Contamos con bancos en las ciudades m·s importantes. En nosotros puede confiar.
 Head=0
 Body=37
 Heading=3
@@ -90,7 +90,7 @@ SoundClose=603
 [NPC4]
 Name=Ines <Alquimista>
 showname=1
-Desc=Todo aventurero necesita una buena dotaci√≥n de pociones para un largo viaje. Aqu√≠ podr√°s encontrar las mejores.
+Desc=Todo aventurero necesita una buena dotaciÛn de pociones para un largo viaje. AquÌ podr·s encontrar las mejores.
 Head=0
 Body=34
 Heading=3
@@ -98,15 +98,15 @@ Movement=1
 Comercia=1
 NROITEMS=7
 TipoItems=11
-'Poci√≥n Roja
+'PociÛn Roja
 Obj1=38-10000
-'Poci√≥n Azul
+'PociÛn Azul
 Obj2=37-10000
-'Poci√≥n Amarilla
+'PociÛn Amarilla
 Obj3=36-10000
-'Poci√≥n Verde
+'PociÛn Verde
 Obj4=39-10000
-'Poci√≥n Violeta
+'PociÛn Violeta
 Obj5=166-10000
 'Tijeras
 Obj6=885-10000
@@ -120,7 +120,7 @@ SoundClose=618
 [NPC5]
 Name=Tavel <Tabernero>
 showname=1
-Desc=¬°Bienvenido a mi taberna, viajero!
+Desc=°Bienvenido a mi taberna, viajero!
 Head=606
 Body=388
 Heading=3
@@ -138,7 +138,7 @@ SoundClose=628
 [NPC6]
 Name=Tavel <Tabernero Dungeon Newbie>
 showname=1
-Desc=¬ø¬°Estais sediento!?
+Desc=ø°Estais sediento!?
 Head=17
 Body=388
 Heading=3
@@ -156,7 +156,7 @@ SoundClose=628
 [NPC7]
 Name=Tavel <Tabernero>
 showname=1
-Desc=¬°Hola! Bienvenido al "Mes√≥n Hostigado". ¬øQu√© deseas beber?
+Desc=°Hola! Bienvenido al "MesÛn Hostigado". øQuÈ deseas beber?
 Head=17
 Body=388
 Heading=3
@@ -175,7 +175,7 @@ SoundClose=628
 '--------------> Comidas <--------------
 [NPC8]'Ulla, Tiama, Orac, Rinkel, N. Esp
 Name=Richard <Comidas>
-Desc=¬°Hola! S√≥lo aqu√≠ conseguir√°s las mejores provisiones de todas estas tierras.
+Desc=°Hola! SÛlo aquÌ conseguir·s las mejores provisiones de todas estas tierras.
 Head=4
 Body=3
 showname=1
@@ -200,7 +200,7 @@ SoundClose=606
 
 [NPC9]
 Name=Richard <Comidas Newbie Dungeon>
-Desc=¬°Hola aventurero! Si estais hambriento habeis venido al lugar apropiado. Tengo todo tipo de frutas.
+Desc=°Hola aventurero! Si estais hambriento habeis venido al lugar apropiado. Tengo todo tipo de frutas.
 Head=4
 showname=1
 Body=3
@@ -224,7 +224,7 @@ SoundOpen=605
 SoundClose=606
 [NPC10]
 Name=Richard <Granjero Norte>
-Desc=¬°Bienvenido a mi huerta! Tengo las mejores frutas de la zona. No podr√°s encontrarlas de mejor calidad.
+Desc=°Bienvenido a mi huerta! Tengo las mejores frutas de la zona. No podr·s encontrarlas de mejor calidad.
 Head=604
 Body=668
 Heading=3
@@ -246,11 +246,11 @@ Obj10=26-100
 ShowName=0
 SoundOpen=605
 SoundClose=606
-'--------------> Carpinter√≠a <--------------
+'--------------> CarpinterÌa <--------------
 
 [NPC11]
 Name=Feijo <Carpintero>
-Desc=Hola! Esta es mi humilde carpinter√≠a.
+Desc=Hola! Esta es mi humilde carpinterÌa.
 Head=318
 Body=293
 Arma=138
@@ -277,7 +277,7 @@ Obj7=162-100
 Obj8=168-100
 'Serrucho
 Obj9=198-100
-'Hacha de Le√±ador
+'Hacha de LeÒador
 Obj10=480-100
 Obj11=551-100
 Obj12=552-100
@@ -286,7 +286,7 @@ Obj14=127-100
 ShowName=0
 SoundOpen=633
 SoundClose=634
-'--------------> Miner√≠a <--------------
+'--------------> MinerÌa <--------------
 [NPC12]
 Name=Wade <Minero>
 Desc=Poseo los mejores metales y herramientas de todas estas tierras.
@@ -300,7 +300,7 @@ TipoItems=23
 NROITEMS=2
 'Piquete de Minero
 Obj1=187-100
-'Carro de Miner√≠a
+'Carro de MinerÌa
 Obj2=880-100
 ShowName=0
 SoundOpen=631
@@ -309,7 +309,7 @@ SoundClose=632
 '--------------> Pescados <--------------
 [NPC13]
 Name=Roque <Pescador>
-Desc=Aqu√≠ conseguir√°s lo mejor que el mar puede ofrecer!
+Desc=AquÌ conseguir·s lo mejor que el mar puede ofrecer!
 Head=426
 Body=3
 showname=1
@@ -318,7 +318,7 @@ Movement=1
 Comercia=1
 TipoItems=1
 NROITEMS=3
-'Ca√±a de Pesca
+'CaÒa de Pesca
 Obj1=881-100
 'Red de Pesca
 Obj2=138-100
@@ -329,8 +329,8 @@ ShowName=0
 '--------------> Caballos <--------------
 
 [NPC14]
-Name=Jos√© <Vendedor de Caballos>
-Desc=¬°Aqu√≠ podr√°s encontrar las mejores monturas que te ayudar√°n a explorar estas hermosas tierras!
+Name=JosÈ <Vendedor de Caballos>
+Desc=°AquÌ podr·s encontrar las mejores monturas que te ayudar·n a explorar estas hermosas tierras!
 Head=602
 Body=57
 Heading=3
@@ -343,7 +343,7 @@ NROITEMS=5
 Obj1=1342-100
 'Huargo (Orcos)
 Obj2=1344-100
-'Montura Reforzada (Altos - M√°gicos)
+'Montura Reforzada (Altos - M·gicos)
 Obj3=1345-100
 'Montura Reforzada (Altos - Guerreros)
 Obj4=1346-100
@@ -354,7 +354,7 @@ ShowName=0
 '--------------> Vendedor general <--------------
 [NPC15]
 Name=Alvaro <Vendedor General>
-Desc=Intercambio cualquier tipo de ex√≥ticas mercader√≠as, aventurero!
+Desc=Intercambio cualquier tipo de exÛticas mercaderÌas, aventurero!
 Head=9
 Body=128
 showname=1
@@ -365,7 +365,7 @@ TipoItems=1000
 NROITEMS=7
 'Martillo de Herrero
 Obj1=389-100
-'Botella Vac√≠a
+'Botella VacÌa
 Obj2=534-100
 'Mapa
 Obj3=650-100
@@ -389,7 +389,7 @@ ShowName=0
 
 [NPC20]
 Name=Pirata de Nix
-Desc=¬°Preparen naves! Salimos del puerto de Nix en cualquier momento. ¬°Compra un pase r√°pido o zarparemos sin ti!
+Desc=°Preparen naves! Salimos del puerto de Nix en cualquier momento. °Compra un pase r·pido o zarparemos sin ti!
 NpcType=10
 Head=301
 Body=133
@@ -421,7 +421,7 @@ Interface=1
 
 [NPC21]
 Name=Pirata de Banderbill
-Desc=¬°Preparen naves! Salimos del puerto de Banderbill en cualquier momento. ¬°Compra un pase r√°pido o zarparemos sin ti!
+Desc=°Preparen naves! Salimos del puerto de Banderbill en cualquier momento. °Compra un pase r·pido o zarparemos sin ti!
 NpcType=10
 Head=301
 Body=133
@@ -452,7 +452,7 @@ Interface=1
 
 [NPC22]
 Name=Pirata de Arghal
-Desc=¬°Preparen naves! Salimos del puerto de Argh√¢l en cualquier momento. ¬°Compra un pase r√°pido o zarparemos sin ti!
+Desc=°Preparen naves! Salimos del puerto de Argh‚l en cualquier momento. °Compra un pase r·pido o zarparemos sin ti!
 NpcType=10
 Head=301
 Body=133
@@ -484,7 +484,7 @@ Interface=1
 
 [NPC23] 
 Name=Pirata de Lindos
-Desc=¬°Preparen naves! Salimos del puerto de Lindos en cualquier momento. ¬°Compra un pase r√°pido o zarparemos sin ti!
+Desc=°Preparen naves! Salimos del puerto de Lindos en cualquier momento. °Compra un pase r·pido o zarparemos sin ti!
 NpcType=10
 Head=301
 Body=133
@@ -516,7 +516,7 @@ Interface=1
 
 [NPC24]
 Name=Pirata de Hillidan
-Desc=¬°Preparen naves! Salimos del puerto de Hillidan en cualquier momento. ¬°Compra un pase r√°pido o zarparemos sin ti!
+Desc=°Preparen naves! Salimos del puerto de Hillidan en cualquier momento. °Compra un pase r·pido o zarparemos sin ti!
 NpcType=10
 Head=301
 Body=133
@@ -548,7 +548,7 @@ Interface=1
 
 [NPC25]
 Name=Jinetes de Ulla
-Desc=¬øNecesitas llegar rapido a un destino? ¬°No hay problema! Puedo llevarte en uno de mis caballos. Solo encontraras mis servicios aqu√≠.
+Desc=øNecesitas llegar rapido a un destino? °No hay problema! Puedo llevarte en uno de mis caballos. Solo encontraras mis servicios aquÌ.
 NpcType=10
 Head=0
 Body=276
@@ -582,7 +582,7 @@ Interface=2
 [NPC30]
 Name=Nero <Defensa>
 ShowName=1
-Desc=Bienvenido, tengo gran variedad de cascos y escudos a tu disposici√≥n!
+Desc=Bienvenido, tengo gran variedad de cascos y escudos a tu disposiciÛn!
 Head=612
 Body=590
 Heading=3
@@ -818,7 +818,7 @@ SoundClose=608
 
 [NPC40]
 Name=Clotilda <Sastreria>
-Desc=Gran variedades de t√∫nicas para ti!
+Desc=Gran variedades de t˙nicas para ti!
 ShowName=1
 Head=350
 Body=635
@@ -866,7 +866,7 @@ SoundClose=614
 
 [NPC41]
 Name=Jessica <Sastreria Avanzada>
-Desc=Mis t√∫nicas tienen una tela bien lograda, pru√©balas!
+Desc=Mis t˙nicas tienen una tela bien lograda, pruÈbalas!
 ShowName=1
 Head=70
 Body=109
@@ -894,7 +894,7 @@ SoundClose=612
 
 [NPC42]
 Name=Lazaro <Armaduras>
-Desc=Aqu√≠ encontrar√°s las mejores armaduras en esta zona! 
+Desc=AquÌ encontrar·s las mejores armaduras en esta zona! 
 ShowName=1
 Head=703
 Body=507
@@ -960,7 +960,7 @@ SoundClose=616
 
 [NPC44]
 Name=Armas Lindos
-Desc=¬°Tengo las armas mas poderosas de todas estas tierras!
+Desc=°Tengo las armas mas poderosas de todas estas tierras!
 Head=73
 Body=96
 Heading=3
@@ -999,7 +999,7 @@ Domable=0
 
 [NPC45]
 Name=Armas Hillidan
-Desc=La violencia no resuelve! Pero empareja, las mejores armas salen de aqu√≠! 
+Desc=La violencia no resuelve! Pero empareja, las mejores armas salen de aquÌ! 
 Head=409
 Body=91
 Heading=3
@@ -1040,7 +1040,7 @@ Domable=0
 
 [NPC50]
 Name=Sastre Ullathorpe
-Desc=¬°Buenas vestimentas y tunicas a un buen precio!
+Desc=°Buenas vestimentas y tunicas a un buen precio!
 Head=79
 Body=395
 Heading=3
@@ -1067,7 +1067,7 @@ Domable=0
 
 [NPC51]
 Name=Sastre ulla bajos
-Desc=¬°Buenas vestimentas y tunicas para bajos a un buen precio!
+Desc=°Buenas vestimentas y tunicas para bajos a un buen precio!
 Head=71
 Body=123
 Heading=3
@@ -1094,7 +1094,7 @@ Domable=0
 
 [NPC52]
 Name=Sastre Nix
-Desc=¬°Buenas vestimentas y tunicas para altos a un buen precio!
+Desc=°Buenas vestimentas y tunicas para altos a un buen precio!
 Head=275
 Body=79
 Heading=3
@@ -1121,7 +1121,7 @@ Domable=0
 
 [NPC53]
 Name=Sastre Nix bajos
-Desc=¬°Buenas vestimentas y tunicas para bajos a un buen precio!
+Desc=°Buenas vestimentas y tunicas para bajos a un buen precio!
 Head=408
 Body=234
 Heading=3
@@ -1150,7 +1150,7 @@ Domable=0
 
 [NPC54]
 Name=Sastre Bander
-Desc=¬°Las mejores vestimentas y tunicas para altos de la zona!
+Desc=°Las mejores vestimentas y tunicas para altos de la zona!
 Head=113
 Body=56
 Heading=3
@@ -1179,7 +1179,7 @@ Domable=0
 
 [NPC55]
 Name=Sastre Bander bajos
-Desc=¬°Las mejores vestimentas y tunicas para bajos de la zona!
+Desc=°Las mejores vestimentas y tunicas para bajos de la zona!
 Head=313
 Body=302
 Heading=3
@@ -1208,7 +1208,7 @@ Domable=0
 
 [NPC56]
 Name=Sastre Arghal
-Desc=¬°Las mejores vestimentas y tunicas para altos de la zona!
+Desc=°Las mejores vestimentas y tunicas para altos de la zona!
 Head=188
 Body=50
 Heading=3
@@ -1237,7 +1237,7 @@ Domable=0
 
 [NPC57]
 Name=Sastre Arghal bajos
-Desc=¬°Las mejores vestimentas y tunicas para bajos de la zona!
+Desc=°Las mejores vestimentas y tunicas para bajos de la zona!
 Head=409
 Body=136
 Heading=3
@@ -1266,7 +1266,7 @@ Domable=0
 
 [NPC58]
 Name=Sastre Lindos
-Desc=¬°Tengo las mejores vestimentas y tunicas para altos de todas las tierras!
+Desc=°Tengo las mejores vestimentas y tunicas para altos de todas las tierras!
 Head=172
 Body=113
 Heading=3
@@ -1304,7 +1304,7 @@ Domable=0
 
 [NPC59]
 Name=Sastre Lindos bajos
-Desc=¬°Tengo las mejores vestimentas y tunicas para bajos de todas las tierras!
+Desc=°Tengo las mejores vestimentas y tunicas para bajos de todas las tierras!
 Head=308
 Body=331
 Heading=3
@@ -1342,7 +1342,7 @@ Domable=0
 
 [NPC60]
 Name=Sastre Hillidan
-Desc=¬°Tengo las mejores vestimentas y tunicas para altos de todas las tierras!
+Desc=°Tengo las mejores vestimentas y tunicas para altos de todas las tierras!
 Head=514
 Body=385
 Heading=3
@@ -1380,7 +1380,7 @@ Domable=0
 
 [NPC61]
 Name=Sastre Hillidan bajos
-Desc=¬°Tengo las mejores vestimentas y tunicas para bajos de todas las tierras!
+Desc=°Tengo las mejores vestimentas y tunicas para bajos de todas las tierras!
 Head=471
 Body=137
 Heading=3
@@ -1422,7 +1422,7 @@ Domable=0
 [NPC70]
 Name=Mendo <Hechicero>
 showname=1
-Desc=¬°Tengo gran variedad de hechizos!
+Desc=°Tengo gran variedad de hechizos!
 Head=401
 Body=305
 Heading=3
@@ -1457,7 +1457,7 @@ SoundClose=630
 [NPC71]
 Name=Odilia <Hechicera>
 showname=1
-Desc=¬°Tengo gran variedad de hechizos!
+Desc=°Tengo gran variedad de hechizos!
 Head=174
 Body=270
 Heading=3
@@ -1491,7 +1491,7 @@ SoundClose=630
 [NPC72]
 Name=Elena <Hechicera>
 showname=1
-Desc=¬°Tengo gran variedad de hechizos!
+Desc=°Tengo gran variedad de hechizos!
 Head=372
 Body=269
 Heading=3
@@ -1525,7 +1525,7 @@ SoundClose=630
 [NPC73]
 Name=Emma <Hechicera>
 showname=1
-Desc=¬°Tengo todos los hechizos que puedas necesitar!
+Desc=°Tengo todos los hechizos que puedas necesitar!
 Body=740
 Heading=3
 Movement=1
@@ -1558,7 +1558,7 @@ SoundClose=630
 [NPC74]
 Name=Drake <Hechicero>
 showname=1
-Desc=¬°Tengo gran variedad de hechizos!
+Desc=°Tengo gran variedad de hechizos!
 Head=27
 Body=56
 Heading=3
@@ -1592,7 +1592,7 @@ SoundClose=630
 [NPC75]
 Name= Geoffrey <Hechicero Avanzado>
 showname=1
-Desc=¬°Tengo los hechizos mas poderosos!
+Desc=°Tengo los hechizos mas poderosos!
 Head=619
 Body=630
 Heading=3
@@ -1633,7 +1633,7 @@ SoundClose=630
 Name=Merlina
 showname=1
 NpcType=5
-Desc=Bienvenido al Palacio! Si me lo preguntas, s√≠, a veces es inquietante ser la esposa del Rey. Pero admiro ver lo bien que maneja el asunto!
+Desc=Bienvenido al Palacio! Si me lo preguntas, sÌ, a veces es inquietante ser la esposa del Rey. Pero admiro ver lo bien que maneja el asunto!
 Head=608
 Body=323
 Heading=3
@@ -1643,11 +1643,11 @@ weaponanim=5
 Faccion=0
 Alineacion=0
 
-'''COMERCIANTES ARGH√ÅL X AGUS'''
+'''COMERCIANTES ARGH¡L X AGUS'''
 
 [NPC77]
 Name=Julius <Pescador>
-Desc=Acercate maldito cr√≠ado, aqu√≠ encuentras lo mejor que el mar ofrece
+Desc=Acercate maldito crÌado, aquÌ encuentras lo mejor que el mar ofrece
 Body=716
 showname=1
 Heading=3
@@ -1655,7 +1655,7 @@ Movement=1
 Comercia=1
 TipoItems=1
 NROITEMS=3
-'Ca√±a de Pesca
+'CaÒa de Pesca
 Obj1=881-100
 'Red de Pesca
 Obj2=138-100
@@ -1665,7 +1665,7 @@ ShowName=0
 
 [NPC78]
 Name=Ajax <Armas>
-Desc=Bienvenido gusano, ¬øest√°s en busca de armas?
+Desc=Bienvenido gusano, øest·s en busca de armas?
 ShowName=1
 Body=711
 Heading=3
@@ -1714,7 +1714,7 @@ SoundClose=626
 
 [NPC79]
 Name=Blenz <Armaduras>
-Desc=En mis tiempos las batallas eran sin protecci√≥n, cobardes
+Desc=En mis tiempos las batallas eran sin protecciÛn, cobardes
 ShowName=1
 Body=713
 Heading=3
@@ -1751,7 +1751,7 @@ SoundClose=622
 [NPC80]
 Name=Travon <Defensa>
 ShowName=1
-Desc=Bienvenido inepto, tengo cascos y escudos para ofrecer a alguien como t√∫.
+Desc=Bienvenido inepto, tengo cascos y escudos para ofrecer a alguien como t˙.
 Body=707
 Heading=3
 Movement=1
@@ -1875,7 +1875,7 @@ SoundClose=612
 [NPC83]
 Name=Hawke <Tabernero>
 showname=1
-Desc=Te vender√≠a cianuro, pero quedar√≠a sin clientes.
+Desc=Te venderÌa cianuro, pero quedarÌa sin clientes.
 Body=717
 Heading=3
 Movement=1
@@ -1892,7 +1892,7 @@ SoundClose=628
 
 [NPC84]
 Name=Guryon <Comidas>
-Desc=Esta comida da asco, pero m√°s asco das t√∫.
+Desc=Esta comida da asco, pero m·s asco das t˙.
 showname=1
 Body=718
 Heading=3
@@ -1927,7 +1927,7 @@ SoundClose=606
 Name=Guzman <Gobernador>
 showname=1
 NpcType=12
-Desc=Acercate viajero, no te gustar√≠a vivir aqu√≠?
+Desc=Acercate viajero, no te gustarÌa vivir aquÌ?
 Head=0
 Body=4
 Heading=3
@@ -1944,7 +1944,7 @@ ShowName=0
 Name=Nicholas <Gobernador>
 showname=1
 NpcType=12
-Desc=Hola jov√©n! quieres formar parte de Nix?
+Desc=Hola jovÈn! quieres formar parte de Nix?
 Head=16
 Body=50
 Heading=3
@@ -1996,7 +1996,7 @@ ShowName=0
 Name=Maira <Gobernadora>
 showname=1
 NpcType=12
-Desc=Una isla peque√±a con un corazon enorme, este podria ser tu lugar
+Desc=Una isla pequeÒa con un corazon enorme, este podria ser tu lugar
 Head=150
 Body=80
 Heading=3
@@ -2013,7 +2013,7 @@ showname=0
 Name=Cold <Gobernador>
 showname=1
 NpcType=12
-Desc=Vivir en la zona m√°s helada de Hildorien a veces resulta interesante! Pruebalo
+Desc=Vivir en la zona m·s helada de Hildorien a veces resulta interesante! Pruebalo
 Head=601
 Body=502
 Heading=3
@@ -2034,7 +2034,7 @@ showname=0
 [NPC260]
 Name=Guardia Imperial
 NpcType=2
-Desc=Proteger√© la ciudad de cualquier amenaza.
+Desc=ProtegerÈ la ciudad de cualquier amenaza.
 Head=0
 Body=15
 
@@ -2063,7 +2063,7 @@ Faccion=1
 [NPC261]
 Name=Guardia Imperial
 NpcType=2
-Desc=¬°Os estoy vigilando detenidamente!
+Desc=°Os estoy vigilando detenidamente!
 Head=0
 Body=15
 Heading=3
@@ -2089,7 +2089,7 @@ Domable=0
 [NPC262]
 Name=Sacerdote Imperial
 NpcType=2
-Desc=¬°Estoy aqu√≠ para mantener el orden en nombre del Consejo!
+Desc=°Estoy aquÌ para mantener el orden en nombre del Consejo!
 Head=4
 Body=101
 Heading=3
@@ -2119,7 +2119,7 @@ RangoSpell=4
 [NP263]
 Name=Sacerdote Imperial
 NpcType=2
-Desc=¬°Estoy aqu√≠ para mantener el orden en nombre del Consejo!
+Desc=°Estoy aquÌ para mantener el orden en nombre del Consejo!
 Head=5
 Body=101
 Heading=3
@@ -2156,7 +2156,7 @@ RangoSpell=4
 [NPC270]
 Name=Mago del Caos
 NpcType=8
-Desc=¬°El caos reinar√° en estas tierras!
+Desc=°El caos reinar· en estas tierras!
 Head=205
 Body=35
 Heading=3
@@ -2217,7 +2217,7 @@ NROITEMS=0
 Name=Daniel <Timbero>
 showname=1
 NpcType=12
-Desc=Si deseas apostar, escribe /APOSTAR e ingresa la cantidad con la que jugar√°s.
+Desc=Si deseas apostar, escribe /APOSTAR e ingresa la cantidad con la que jugar·s.
 Head=9
 Body=47
 Heading=3
@@ -2232,7 +2232,7 @@ NROITEMS=0
 [NPC302]
 Name=Entrenador
 NpcType=3
-Desc=¬°Hola amigo! Soy el maestro de armas de la Milicia de Banderbill. Si deseas que traiga una criatura s√≥lo debes ped√≠rmelo.
+Desc=°Hola amigo! Soy el maestro de armas de la Milicia de Banderbill. Si deseas que traiga una criatura sÛlo debes pedÌrmelo.
 Head=6
 Body=57
 Heading=3
@@ -2273,7 +2273,7 @@ showName=0
 Name=Merlina
 showname=1
 NpcType=5
-Desc=Bienvenido al Palacio! Si me lo preguntas, s√≠, a veces es inquietante ser la mujer del Rey. Pero admiro ver lo bien que maneja el asunto!
+Desc=Bienvenido al Palacio! Si me lo preguntas, sÌ, a veces es inquietante ser la mujer del Rey. Pero admiro ver lo bien que maneja el asunto!
 Head=608
 Body=323
 Heading=3
@@ -2291,7 +2291,7 @@ NpcType=5
 Body=402
 Heading=3
 Attackable=0
-Desc=¬°Maldita escoria! Mi momento ha llegado al fin. De mi mano vienen las Hordas del Caos... ¬øAcaso no comprendes, mortal? ¬°El Caos es el comienzo! Seres como t√∫, susceptibles ante mi llamada, me servir√°n para cumplir mis designios...
+Desc=°Maldita escoria! Mi momento ha llegado al fin. De mi mano vienen las Hordas del Caos... øAcaso no comprendes, mortal? °El Caos es el comienzo! Seres como t˙, susceptibles ante mi llamada, me servir·n para cumplir mis designios...
 Movement=1
 Faccion=1
 showName=0
@@ -2304,7 +2304,7 @@ showName=0
 [NPC305]
 Name=Aukan <BattleZona>
 NpcType=13
-Desc=¬øTenes ganas de batallar por tu diginidad? ¬°Haceme click izquierdo! Para volver aqu√≠ solo tipea /salir.
+Desc=øTenes ganas de batallar por tu diginidad? °Haceme click izquierdo! Para volver aquÌ solo tipea /salir.
 Head=610
 Body=232
 Heading=3
@@ -2696,7 +2696,7 @@ QuestNumber=20
 [NPC498] ' Checkeador de macros
 Name=Centinela
 NpcType=15
-Desc=Soy el Centinela, guardi√°n de los recursos. Hazme click derecho si est√°s trabajando y me ves cerca, corres riesgo de perder tu personaje. Mantente atento.
+Desc=Soy el Centinela, guardi·n de los recursos. Hazme click derecho si est·s trabajando y me ves cerca, corres riesgo de perder tu personaje. Mantente atento.
 Head=175
 Body=214
 Heading=3
@@ -2714,7 +2714,7 @@ Sp1=9
 [NPC499] ' Checkeador de macros (agua)
 Name=Centinela
 NpcType=15
-Desc=Soy el Centinela, guardi√°n de los recursos. Hazme click derecho si est√°s trabajando y me ves cerca, corres riesgo de perder tu personaje. Mantente atento.
+Desc=Soy el Centinela, guardi·n de los recursos. Hazme click derecho si est·s trabajando y me ves cerca, corres riesgo de perder tu personaje. Mantente atento.
 Head=0
 Body=86
 Heading=3
@@ -2887,7 +2887,7 @@ PoderEvasion=50
 Distancia=7
 
 [NPC505] 'Aparicion
-Name=Aparici√≥n
+Name=ApariciÛn
 Head=0
 Body=245
 Heading=3
@@ -2916,7 +2916,7 @@ QuizaDropea2=1149
 Distancia=8
 
 [NPC506] 'Murcielago
-Name=Murci√©lago
+Name=MurciÈlago
 Head=0
 Body=9
 Heading=3
@@ -2989,7 +2989,7 @@ ReSpawn=0
 Distancia=1
 
 [NPC509] 'Escorpion
-Name=Escorpi√≥n
+Name=EscorpiÛn
 Head=0
 Body=51
 Heading=3
@@ -3056,8 +3056,8 @@ PoderEvasion=10
 Domable=15
 Distancia=3
 
-[NPC512] 'Ara√±a gigante
-Name=Ara√±a Gigante
+[NPC512] 'AraÒa gigante
+Name=AraÒa Gigante
 Head=0
 Body=42
 Heading=3
@@ -3160,7 +3160,7 @@ Snd2=315
 Snd3=316
 
 [NPC516]
-Name=Leviat√°n
+Name=Leviat·n
 Body=99
 Heading=3
 Movement=3
@@ -3319,8 +3319,8 @@ Snd1=545
 Snd2=545
 Snd3=544
 
-[NPC523] 'Se√±or de las sombras
-Name=Se√±or de las sombras
+[NPC523] 'SeÒor de las sombras
+Name=SeÒor de las sombras
 Head=0
 Body=69
 Heading=3
@@ -3341,7 +3341,7 @@ Respawn=0
 Distancia=5
 
 [NPC524] 'Ciclope
-Name=C√≠clope
+Name=CÌclope
 Head=0
 Body=166
 Heading=3
@@ -3456,7 +3456,7 @@ PoderEvasion=150
 Distancia=7
 
 [NPC529]
-Name=Cham√°n √Årtico
+Name=Cham·n ¡rtico
 Head=0
 Body=418
 Heading=3
@@ -3910,7 +3910,7 @@ QuizaDropea2=651
 QuizaDropea3=1081
 
 [NPC547]
-Name=Gran Drag√≥n Negro
+Name=Gran DragÛn Negro
 NpcType=6
 Body=362
 Heading=3
@@ -3938,7 +3938,7 @@ NumQuiza=1
 QuizaDropea1=411
 
 [NPC548]
-Name=Gran Drag√≥n Verde
+Name=Gran DragÛn Verde
 NpcType=6
 Body=360
 Heading=3
@@ -3968,7 +3968,7 @@ QuizaDropea2=1081
 QuizaDropea3=1938
 
 [NPC549]
-Name=Gran Drag√≥n Azul
+Name=Gran DragÛn Azul
 NpcType=6
 Body=359
 Heading=3
@@ -3995,7 +3995,7 @@ SND3=32
 AfectaParalisis=1
 
 [NPC550]
-Name=Rey Drag√≥n
+Name=Rey DragÛn
 NpcType=6
 Body=357
 Heading=3
@@ -4439,7 +4439,7 @@ Distancia=7
 ----------------------
 
 [NPC566]
-Name=Destructor Ermita√±o
+Name=Destructor ErmitaÒo
 NpcType=6
 Body=695
 Heading=3
@@ -4487,7 +4487,7 @@ PoderEvasion=100
 Distancia=9
 
 [NPC568]
-Name=Esbirro Demon√≠aco
+Name=Esbirro DemonÌaco
 NpcType=6
 Body=696
 Heading=3
@@ -4529,7 +4529,7 @@ PoderEvasion=80
 Distancia=8
 
 [NPC570]
-Name=Cad√°ver Pose√≠do
+Name=Cad·ver PoseÌdo
 NpcType=6
 Body=699
 Heading=3
@@ -4738,7 +4738,7 @@ Snd1=31
 Distancia=5
 
 [NPC588]
-Name=Espectro Umbr√≠o
+Name=Espectro UmbrÌo
 Head=0
 Respawn=0
 Body=446

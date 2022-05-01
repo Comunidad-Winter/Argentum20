@@ -1,10 +1,10 @@
 Attribute VB_Name = "ModuloFunciones"
 'Dieser Source stammt von http://www.activevb.de
-'und kann frei verwendet werden. FÃ¼r eventuelle SchÃ¤den
+'und kann frei verwendet werden. Für eventuelle Schäden
 'wird nicht gehaftet.
 '
-'Um Fehler oder Fragen zu klÃ¤ren, nutzen Sie bitte unser Forum.
-'Ansonsten viel SpaÃŸ und Erfolg mit diesem Source!
+'Um Fehler oder Fragen zu klären, nutzen Sie bitte unser Forum.
+'Ansonsten viel Spaß und Erfolg mit diesem Source!
 
 'Code von Benjamin Wilger
 'Benjamin@ActiveVB.de
@@ -208,12 +208,12 @@ Public Function MakeFormTransparent(Frm As Form, ByVal lngTransColor As Long)
 
     Dim WinStyle As Long
     
-    'Systemfarben ggf. in RGB-Werte Ã¼bersetzen
+    'Systemfarben ggf. in RGB-Werte übersetzen
     If lngTransColor < 0 Then OleTranslateColor lngTransColor, 0&, lngTransColor
 
     'Ab Windows 2000/98 geht das relativ einfach per API
-    'Mit IsFunctionExported wird geprÃ¼ft, ob die Funktion
-    'SetLayeredWindowAttributes unter diesem Betriebsystem unterstÃ¼tzt wird.
+    'Mit IsFunctionExported wird geprüft, ob die Funktion
+    'SetLayeredWindowAttributes unter diesem Betriebsystem unterstützt wird.
     If IsFunctionExported("SetLayeredWindowAttributes", "user32") Then
         'Den Fenster-Stil auf "Layered" setzen
         WinStyle = GetWindowLong(Frm.hWnd, GWL_EXSTYLE)
@@ -221,7 +221,7 @@ Public Function MakeFormTransparent(Frm As Form, ByVal lngTransColor As Long)
         SetWindowLong Frm.hWnd, GWL_EXSTYLE, WinStyle
         SetLayeredWindowAttributes Frm.hWnd, lngTransColor, 0&, LWA_COLORKEY
         
-    Else 'Manuell die Region erstellen und Ã¼bernehmen
+    Else 'Manuell die Region erstellen und übernehmen
         hRegion = RegionFromBitmap(Frm, lngTransColor)
         SetWindowRgn Frm.hWnd, hRegion, True
         DeleteObject hRegion
@@ -289,20 +289,20 @@ Private Function RegionFromBitmap(picSource As Object, ByVal lngTransColor As Lo
 
     End With
 
-    'ByteArrays in der erforderlichen GrÃ¶ÃŸe anlegen
+    'ByteArrays in der erforderlichen Größe anlegen
     ReDim PicBits(0 To bi24BitInfo.bmiHeader.biWidth * 3 - 1, 0 To bi24BitInfo.bmiHeader.biHeight - 1)
     
     iDC = CreateCompatibleDC(hdc)
-    'GerÃ¤tekontextunabhÃ¤ngige Bitmap (DIB) erzeugen
+    'Gerätekontextunabhängige Bitmap (DIB) erzeugen
     iBitmap = CreateDIBSection(iDC, bi24BitInfo, DIB_RGB_COLORS, ByVal 0&, ByVal 0&, ByVal 0&)
-    'iBitmap in den neuen DIB-DC wÃ¤hlen
+    'iBitmap in den neuen DIB-DC wählen
     Call SelectObject(iDC, iBitmap)
     'hDC des Quell-Fensters in den hDC der DIB kopieren
     Call BitBlt(iDC, 0, 0, bi24BitInfo.bmiHeader.biWidth, bi24BitInfo.bmiHeader.biHeight, hdc, 0, 0, vbSrcCopy)
-    'GerÃ¤tekontextunabhÃ¤ngige Bitmap in ByteArrays kopieren
+    'Gerätekontextunabhängige Bitmap in ByteArrays kopieren
     Call GetDIBits(hdc, iBitmap, 0, bi24BitInfo.bmiHeader.biHeight, PicBits(0, 0), bi24BitInfo, DIB_RGB_COLORS)
     
-    'Wir brauchen nur den Array, also kÃ¶nnen wir die Bitmap direkt wieder lÃ¶schen.
+    'Wir brauchen nur den Array, also können wir die Bitmap direkt wieder löschen.
     
     'DIB-DC
     Call DeleteDC(iDC)
@@ -350,7 +350,7 @@ RegionFromBitmap_Err:
 End Function
 
 'Code von vbVision:
-'Diese Funktion Ã¼berprÃ¼ft, ob die angegebene Function von einer DLL exportiert wird.
+'Diese Funktion überprüft, ob die angegebene Function von einer DLL exportiert wird.
 Private Function IsFunctionExported(ByVal sFunction As String, ByVal sModule As String) As Boolean
     
     On Error GoTo IsFunctionExported_Err
@@ -443,7 +443,7 @@ errhandler:
     'MsgBox "Error extracting strings. Check your input" & vbNewLine & vbNewLine & "Aborting", , "Strings not found"
 End Function
 
-'FunciÃ³n que aplica la transparencia, se le pasa el hwnd del form y un valor de 0 a 255
+'Función que aplica la transparencia, se le pasa el hwnd del form y un valor de 0 a 255
 Public Function Aplicar_Transparencia(ByVal hWnd As Long, Valor As Integer) As Long
     
     On Error GoTo Aplicar_Transparencia_Err

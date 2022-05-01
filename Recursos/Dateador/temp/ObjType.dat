@@ -3,7 +3,7 @@
 '  1 Comidas
 '  2 Armas
 '  3 Armaduras
-'  4 Ãrboles
+'  4 Árboles
 '  5 Dinero
 '  6 Puertas
 '  7 Objetos Contenedores
@@ -20,7 +20,7 @@
 ' 18 Herramientas
 ' 19 Teleports
 ' 20 Muebles y Decoraciones
-' 21 Items MÃ¡gicos
+' 21 Items Mágicos
 ' 22 Yacimientos
 ' 23 Metales
 ' 24 Pergaminos de Hechizos
@@ -38,11 +38,11 @@
 ' 36 Pases
 ' 37 (Nada)
 ' 38 Mapas
-' 39 Bolsas de Oro (contienen mÃ¡s de 10k de oro)
-' 40 Pozos MÃ¡gicos
+' 39 Bolsas de Oro (contienen más de 10k de oro)
+' 40 Pozos Mágicos
 ' 41 Esposas
 ' 42 Raices
-' 43 CadÃ¡veres
+' 43 Cadáveres
 ' 44 Monturas
 ' 45 Puestos de Entrenamiento
 ' 46 Nudillos para Artes Marciales

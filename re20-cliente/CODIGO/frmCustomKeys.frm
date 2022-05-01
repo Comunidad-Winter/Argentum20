@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmCustomKeys 
    BorderStyle     =   4  'Fixed ToolWindow
-   Caption         =   "Configuraci贸n de controles"
+   Caption         =   "Configuraci髇 de controles"
    ClientHeight    =   6105
    ClientLeft      =   45
    ClientTop       =   315
@@ -74,7 +74,7 @@ Begin VB.Form frmCustomKeys
       Width           =   1215
    End
    Begin VB.OptionButton Option1 
-      Caption         =   "Cl谩sica"
+      Caption         =   "Cl醩ica"
       Height          =   255
       Left            =   4110
       TabIndex        =   52
@@ -495,7 +495,7 @@ Begin VB.Form frmCustomKeys
    Begin VB.Label lblSalirDel 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
-      Caption         =   "Configuraci贸n rapida:"
+      Caption         =   "Configuraci髇 rapida:"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -516,7 +516,7 @@ Begin VB.Form frmCustomKeys
    Begin VB.Label lblSalirDel 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
-      Caption         =   "Acci贸n Click 3"
+      Caption         =   "Acci髇 Click 3"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -536,7 +536,7 @@ Begin VB.Form frmCustomKeys
    Begin VB.Label lblSalirDel 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
-      Caption         =   "Acci贸n Click 1"
+      Caption         =   "Acci髇 Click 1"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -556,7 +556,7 @@ Begin VB.Form frmCustomKeys
    Begin VB.Label lblSalirDel 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
-      Caption         =   "Acci贸n Click 2"
+      Caption         =   "Acci髇 Click 2"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -684,7 +684,7 @@ Begin VB.Form frmCustomKeys
    Begin VB.Label lblSalirDel 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
-      Caption         =   "Actualizar Posici贸n"
+      Caption         =   "Actualizar Posici髇"
       ForeColor       =   &H00000000&
       Height          =   195
       Index           =   2
@@ -844,23 +844,16 @@ Private Sub cmdAccion_Click(Index As Integer)
                 End If
 
             Next
-
-            If bCambio Then
-                Resultado = MsgBox("Realizo cambios en la configuraci贸n 驴desea guardar antes de salir?", vbQuestion + vbYesNoCancel, "Guardar cambios")
-
-                If Resultado = vbYes Then Call GuardaConfigEnVariables
-
-            End If
-        
-            If Resultado <> vbCancel Then Unload Me
-
+            
+            Unload Me
     End Select
+    Unload Me
 
     
     Exit Sub
 
 cmdAccion_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmCustomKeys.cmdAccion_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmCustomKeys.cmdAccion_Click", Erl)
     Resume Next
     
 End Sub
@@ -877,15 +870,15 @@ Private Sub GuardaConfigEnVariables()
         BindKeys(i).KeyCode = TempVars(i - 1)
     Next
 
-    ACCION1 = AccionList1.ListIndex
-    ACCION2 = AccionList2.ListIndex
-    ACCION3 = AccionList3.ListIndex
+    ACCION1 = 0 'AccionList1.ListIndex
+    ACCION2 = 1 'AccionList2.ListIndex
+    ACCION3 = 4 'AccionList3.ListIndex
 
     
     Exit Sub
 
 GuardaConfigEnVariables_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmCustomKeys.GuardaConfigEnVariables", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmCustomKeys.GuardaConfigEnVariables", Erl)
     Resume Next
     
 End Sub
@@ -910,7 +903,7 @@ Private Sub CargaConfigEnForm()
     Exit Sub
 
 CargaConfigEnForm_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmCustomKeys.CargaConfigEnForm", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmCustomKeys.CargaConfigEnForm", Erl)
     Resume Next
     
 End Sub
@@ -926,7 +919,7 @@ Private Sub Form_Load()
     Exit Sub
 
 Form_Load_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmCustomKeys.Form_Load", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmCustomKeys.Form_Load", Erl)
     Resume Next
     
 End Sub
@@ -944,7 +937,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
     Exit Sub
 
 Form_KeyPress_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmCustomKeys.Form_KeyPress", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmCustomKeys.Form_KeyPress", Erl)
     Resume Next
     
 End Sub
@@ -971,7 +964,7 @@ Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
     Next
 
     If bCambio Then
-        Resultado = MsgBox("Realizo cambios en la configuraci贸n 驴desea guardar antes de salir?", vbQuestion + vbYesNoCancel, "Guardar cambios")
+        Resultado = MsgBox("Realizo cambios en la configuraci髇 縟esea guardar antes de salir?", vbQuestion + vbYesNoCancel, "Guardar cambios")
 
         If Resultado = vbYes Then Call GuardaConfigEnVariables
 
@@ -983,7 +976,7 @@ Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
     Exit Sub
 
 Form_QueryUnload_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmCustomKeys.Form_QueryUnload", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmCustomKeys.Form_QueryUnload", Erl)
     Resume Next
     
 End Sub
@@ -1000,7 +993,7 @@ Private Sub Option1_Click()
     Exit Sub
 
 Option1_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmCustomKeys.Option1_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmCustomKeys.Option1_Click", Erl)
     Resume Next
     
 End Sub
@@ -1008,7 +1001,9 @@ End Sub
 Private Sub Option2_Click()
     
     On Error GoTo Option2_Click_Err
-    
+
+    PermitirMoverse = 0
+
     Call LoadDefaultBinds2
     Call CargaConfigEnForm
     Call SaveRAOInit
@@ -1017,7 +1012,7 @@ Private Sub Option2_Click()
     Exit Sub
 
 Option2_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmCustomKeys.Option2_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmCustomKeys.Option2_Click", Erl)
     Resume Next
     
 End Sub
@@ -1144,7 +1139,7 @@ Private Sub txConfig_KeyUp(Index As Integer, KeyCode As Integer, Shift As Intege
     Exit Sub
 
 txConfig_KeyUp_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmCustomKeys.txConfig_KeyUp", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmCustomKeys.txConfig_KeyUp", Erl)
     Resume Next
     
 End Sub
@@ -1160,7 +1155,7 @@ Sub Change_TempKey(Index As Integer, KeyCode As Integer, Name As String)
     Exit Sub
 
 Change_TempKey_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmCustomKeys.Change_TempKey", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmCustomKeys.Change_TempKey", Erl)
     Resume Next
     
 End Sub
@@ -1192,7 +1187,7 @@ Function AlreadyBinded(KeyCode As Integer) As Boolean
     Exit Function
 
 AlreadyBinded_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmCustomKeys.AlreadyBinded", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmCustomKeys.AlreadyBinded", Erl)
     Resume Next
     
 End Function

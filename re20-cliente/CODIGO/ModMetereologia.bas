@@ -6,19 +6,20 @@ Public Const LIGHT_TRANSITION_DURATION = 5000
 Public Const STEP_LIGHT_TRANSITION = 1 / LIGHT_TRANSITION_DURATION
 
 'Status
-Private Const Normal        As Byte = 0
-Private Const NUBLADO       As Byte = 1
-Private Const LLUVIA        As Byte = 2
-Private Const NIEVE         As Byte = 3
-Private Const TORMENTA      As Byte = 4
+Public Const Normal        As Byte = 0
+Public Const NUBLADO       As Byte = 1
+Public Const LLUVIA        As Byte = 2
+Public Const NIEVE         As Byte = 3
+Public Const TORMENTA      As Byte = 4
 
-Private DayColors()         As RGBA
-Private DeathColor          As RGBA
-Private BlindColor          As RGBA
-Private TimeIndex           As Integer
+Public DayColors()         As RGBA
+Public DeathColor          As RGBA
+Public BlindColor          As RGBA
+Public DungeonColor          As RGBA
+Public TimeIndex           As Integer
 
-Private NightIndex          As Integer
-Private MorningIndex        As Integer
+Public NightIndex          As Integer
+Public MorningIndex        As Integer
 
 Public MeteoParticle        As Integer
 
@@ -26,40 +27,68 @@ Public Sub IniciarMeteorologia()
     
     On Error GoTo IniciarMeteorologia_Err
     
-    ReDim DayColors(11)
-
-    ' 00:00 - 02:00
-    Call SetRGBA(DayColors(0), 130, 130, 130)
+    ReDim DayColors(0 To 23) As RGBA
+    ' 0hs
+    Call SetRGBA(DayColors(23), 120, 120, 120)
+    ' 1hs
+    Call SetRGBA(DayColors(0), 120, 120, 120)
+    ' 2hs
+    Call SetRGBA(DayColors(1), 120, 120, 120)
     NightIndex = 0
-    ' 02:00 - 04:00
-    Call SetRGBA(DayColors(1), 130, 130, 160)
-    ' 04:00 - 06:00
-    Call SetRGBA(DayColors(2), 150, 150, 180)
-    ' 06:00 - 08:00
-    Call SetRGBA(DayColors(3), 200, 200, 200)
+    ' 3hs
+    Call SetRGBA(DayColors(2), 120, 120, 120)
+    ' 4hs
+    Call SetRGBA(DayColors(3), 120, 120, 120)
+    ' 5hs
+    Call SetRGBA(DayColors(4), 138, 138, 138)
     MorningIndex = 3
-    ' 08:00 - 10:00
-    Call SetRGBA(DayColors(4), 230, 200, 200)
-    ' 10:00 - 12:00
-    Call SetRGBA(DayColors(5), 255, 230, 220)
-    ' 12:00 - 14:00
-    Call SetRGBA(DayColors(6), 255, 240, 220)
-    ' 14:00 - 16:00
-    Call SetRGBA(DayColors(7), 255, 250, 200)
-    ' 16:00 - 18:00
-    Call SetRGBA(DayColors(8), 255, 200, 200)
-    ' 18:00 - 20:00
-    Call SetRGBA(DayColors(9), 255, 180, 160)
-    ' 20:00 - 22:00
-    Call SetRGBA(DayColors(10), 180, 150, 140)
-    ' 22:00 - 00:00
-    Call SetRGBA(DayColors(11), 150, 140, 130)
-
+    ' 6hs
+    Call SetRGBA(DayColors(5), 156, 156, 145)
+    ' 7hs
+    Call SetRGBA(DayColors(6), 170, 170, 155)
+    ' 8hs
+    Call SetRGBA(DayColors(7), 185, 185, 185)
+    ' 9hs
+    Call SetRGBA(DayColors(8), 200, 200, 200)
+    ' 10hs
+    Call SetRGBA(DayColors(9), 220, 220, 220)
+    ' 11hs
+    Call SetRGBA(DayColors(10), 235, 235, 235)
+    ' 12hs
+    Call SetRGBA(DayColors(11), 245, 245, 245)
+    ' 13hs
+    Call SetRGBA(DayColors(12), 255, 255, 255)
+    NightIndex = 0
+    ' 14hs
+    Call SetRGBA(DayColors(13), 255, 255, 255)
+    ' 15hs
+    Call SetRGBA(DayColors(14), 255, 255, 255)
+    ' 16hs
+    Call SetRGBA(DayColors(15), 245, 245, 245)
+    MorningIndex = 3
+    ' 17hs
+    Call SetRGBA(DayColors(16), 230, 230, 230)
+    ' 18hs
+    Call SetRGBA(DayColors(17), 220, 220, 220)
+    ' 19hs
+    Call SetRGBA(DayColors(18), 200, 200, 180)
+    ' 20hs
+    Call SetRGBA(DayColors(19), 180, 160, 160)
+    ' 21hs
+    Call SetRGBA(DayColors(20), 160, 160, 160)
+    ' 21hs
+    Call SetRGBA(DayColors(21), 140, 140, 140)
+    ' 23hs
+    Call SetRGBA(DayColors(22), 120, 120, 140)
+        
     ' Muerto
     Call SetRGBA(DeathColor, 120, 120, 120)
     
     ' Ciego
     Call SetRGBA(BlindColor, 4, 4, 4)
+    
+    ' Dungeon
+    Call SetRGBA(DungeonColor, 130, 130, 130)
     
     TimeIndex = -1
 
@@ -85,15 +114,13 @@ Public Sub RevisarHoraMundo(Optional ByVal Instantaneo As Boolean = False)
 
     Dim CurrentIndex As Integer
     CurrentIndex = HoraActual \ 2
-    
     If CurrentIndex <> TimeIndex Then
         TimeIndex = CurrentIndex
-
         If MapDat.base_light = 0 Then
             If Instantaneo Then
-                global_light = DayColors(TimeIndex)
+                global_light = DayColors(HoraActual)
             Else
-                Call ActualizarLuz(DayColors(TimeIndex))
+                Call ActualizarLuz(DayColors(HoraActual))
             End If
             
             If TimeIndex = NightIndex Then
@@ -107,7 +134,21 @@ Public Sub RevisarHoraMundo(Optional ByVal Instantaneo As Boolean = False)
     End If
     
     Dim Minutos As Integer
+    Dim Factor As Double
+    
     Minutos = (Elapsed - HoraActual) * 60
+    
+    Factor = CDbl(Minutos) / CDbl(60)
+    
+    Dim HoraAnterior As Integer
+    
+    HoraAnterior = HoraActual - 1
+    
+    Call LerpRGB(global_light, DayColors((24 + HoraAnterior) Mod 24), DayColors(HoraActual), Factor)
+    
+    UpdateLights = True
+    
+    
     
     frmMain.lblhora = Right$("00" & HoraActual, 2) & ":" & Right$("00" & Minutos, 2)
     
@@ -144,9 +185,18 @@ Public Sub RestaurarLuz()
         
     ElseIf UserCiego Then
         global_light = BlindColor
-    
+        
+    ElseIf MapDat.zone = "DUNGEON" Then
+        global_light = DungeonColor
+        
     ElseIf TimeIndex >= 0 Then
-        global_light = DayColors(TimeIndex)
+       ' Dim Elapsed As Single
+       '     Elapsed = (FrameTime - HoraMundo) / DuracionDia
+       '     Elapsed = (Elapsed - Fix(Elapsed)) * 24
+       '
+       '     Dim HoraActual As Integer
+       '     HoraActual = Fix(Elapsed)
+       ' global_light = DayColors(HoraActual)
         
     Else
         global_light = COLOR_WHITE(0)

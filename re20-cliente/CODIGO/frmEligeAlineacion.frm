@@ -96,7 +96,7 @@ Begin VB.Form frmEligeAlineacion
    End
    Begin VB.Label lblNombre 
       BackStyle       =   0  'Transparent
-      Caption         =   "Alineaci贸n del mal"
+      Caption         =   "Alineaci髇 del mal"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -117,7 +117,7 @@ Begin VB.Form frmEligeAlineacion
    End
    Begin VB.Label lblNombre 
       BackStyle       =   0  'Transparent
-      Caption         =   "Alineaci贸n criminal"
+      Caption         =   "Alineaci髇 criminal"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -137,7 +137,7 @@ Begin VB.Form frmEligeAlineacion
    End
    Begin VB.Label lblNombre 
       BackStyle       =   0  'Transparent
-      Caption         =   "Alineaci贸n neutral"
+      Caption         =   "Alineaci髇 neutral"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -157,7 +157,7 @@ Begin VB.Form frmEligeAlineacion
    End
    Begin VB.Label lblNombre 
       BackStyle       =   0  'Transparent
-      Caption         =   "Alineaci贸n legal"
+      Caption         =   "Alineaci髇 legal"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -177,7 +177,7 @@ Begin VB.Form frmEligeAlineacion
    End
    Begin VB.Label lblNombre 
       BackStyle       =   0  'Transparent
-      Caption         =   "Alineaci贸n Real"
+      Caption         =   "Alineaci髇 Real"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25

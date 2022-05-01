@@ -1,89 +1,36 @@
+'Tipos de donador:
+'1 #Cafecito
+'2 #Patreon -> Héroe
+'3 #Patreon -> Aventurero
+'4 #Patreon -> Leyenda
+
 [INIT]
-NumeroDonadores=0
-[DONADOR1]
-USER=ladder
-FECHAEXPIRACION=28/11/2020 3:55:12
-[DONADOR2]
-USER=perroski
-FECHAEXPIRACION=30/10/2020 05:35:30
-[DONADOR3]
-USER=martocai
-FECHAEXPIRACION=26/10/2020 05:10:19 p.m.
-[DONADOR4]
-USER=Nakrat
-FECHAEXPIRACION=26/10/2020 05:21:50 p.m.
-[DONADOR5]
-USER=kior
-FECHAEXPIRACION=26/10/2020 06:05:05 p.m.
-[DONADOR6]
-USER=AzulaAzula
-FECHAEXPIRACION=26/10/2020 06:06:56 p.m.
-[DONADOR7]
-USER=asensito
-FECHAEXPIRACION=25/12/2020 06:07:48 p.m.
-[DONADOR8]
-USER=Balium
-FECHAEXPIRACION=26/10/2020 06:31:07 p.m.
-[DONADOR9]
-USER=inju
-FECHAEXPIRACION=11/10/2020 06:43:41 p.m.
-[DONADOR10]
-USER=pericossj
-FECHAEXPIRACION=26/10/2020 07:09:41 p.m.
-[DONADOR11]
-USER=xeintt
-FECHAEXPIRACION=26/10/2020 08:08:24 p.m.
-[DONADOR12]
-USER=Brunete
-FECHAEXPIRACION=26/10/2020 08:09:35 p.m.
-[DONADOR13]
-USER=nitiah
-FECHAEXPIRACION=26/10/2020 08:14:02 p.m.
-[DONADOR14]
-USER=jojoka
-FECHAEXPIRACION=26/10/2020 08:38:39 p.m.
-[DONADOR15]
-USER=axelxc
-FECHAEXPIRACION=26/10/2020 09:37:25 p.m.
-[DONADOR16]
-USER=bois
-FECHAEXPIRACION=27/10/2020 12:02:05 a.m.
-[DONADOR17]
-USER=Tomi
-FECHAEXPIRACION=27/10/2020 12:11:34 a.m.
-[DONADOR18]
-USER=pordio
-FECHAEXPIRACION=11/10/2020 12:55:08 a.m.
-[DONADOR19]
-USER=EzeMoreyra
-FECHAEXPIRACION=27/10/2020 01:31:24 a.m.
-[DONADOR20]
-USER=lukitas
-FECHAEXPIRACION=11/10/2020 01:48:09 a.m.
-[DONADOR21]
-USER=wissar
-FECHAEXPIRACION=27/10/2020 02:47:52 a.m.
-[DONADOR22]
-USER=soyunahormiga
-FECHAEXPIRACION=11/10/2020 03:23:27 a.m.
-[DONADOR23]
-USER=SebaINHE
-FECHAEXPIRACION=11/10/2020 11:52:33 p.m.
-[DONADOR24]
-USER=Hintel
-FECHAEXPIRACION=12/10/2020 11:57:35 p.m.
-[DONADOR25]
-USER=luquitas
-FECHAEXPIRACION=28/10/2020 12:27:06 a.m.
-[DONADOR26]
-USER=nicolasxnx
-FECHAEXPIRACION=27/11/2020 10:06:56 a.m.
-[DONADOR27]
-USER=Frankiick
-FECHAEXPIRACION=01/10/2020 04:06:19 p.m.
-[DONADOR28]
-USER=Dekanon
-FECHAEXPIRACION=27/11/2020 04:37:50 p.m.
-[DONADOR29]
-USER=Dekanon
-FECHAEXPIRACION=28/10/2020 04:56:00 p.m.
+Cantidad=25
+
+[DONADOR]
+Donador1=julian.sosto@gmail.com#2
+Donador2=danteuba244@gmail.com#3
+Donador3=adrianblum@gmail.com#4
+Donador4=braganicolas1@gmail.com#4
+Donador5=kevinmarelich14@gmail.com#2
+Donador6=anormal@gmail.com#2
+Donador7=mratmartinez@anche.no#4
+Donador8=emiliano.mancuso@gmail.com#2
+Donador9=dzugalai@gmail.com#4
+Donador10=fabiansn@gmail.com#2
+Donador11=bmuscio@gmail.com#3
+Donador12=cuidadoso.bander@gmail.com#3
+Donador13=mondixgames@gmail.com#4
+Donador14=rodrigomalina.91@gmail.com#3
+Donador15=cris.afrodita20@gmail.com#3
+Donador16=sebawalker@yahoo.com#3
+Donador17=ezendt1987@gmail.com#3
+Donador18=mfranck8@gmail.com#3
+Donador19=tyuy9291@hotmail.com#3
+Donador20=arielstura@gmail.com#2
+Donador21=Juanmanuelsxh@gmail.com#1
+Donador22=agustinfmollo@gmail.com#1
+Donador23=alaincasaubon@hotmail.com#1
+Donador24=nico_rija@hotmail.com#1
+Donador25=Leandro90@gmail.com#1
+

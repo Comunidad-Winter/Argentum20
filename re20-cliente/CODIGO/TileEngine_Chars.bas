@@ -10,7 +10,6 @@ Public Sub ResetCharInfo(ByVal charindex As Integer)
     
         .active = 0
         .AlphaPJ = 0
-        .Escribiendo = False
         .appear = 0
         .status = 0
         .Invisible = False
@@ -30,6 +29,7 @@ Public Sub ResetCharInfo(ByVal charindex As Integer)
         .CreandoCant = 0
         .Moving = False
         .Muerto = False
+       ' Debug.Print "ResetCharInfo " & .nombre
         .nombre = vbNullString
         .Pie = False
         .simbolo = 0
@@ -62,13 +62,13 @@ Public Sub ResetCharInfo(ByVal charindex As Integer)
     Exit Sub
 
 ResetCharInfo_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Chars.ResetCharInfo", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Chars.ResetCharInfo", Erl)
     Resume Next
     
 End Sub
 
 
-Public Sub EraseChar(ByVal charindex As Integer)
+Public Sub EraseChar(ByVal charindex As Integer, Optional ByVal notCancelMe As Boolean = False)
     '*****************************************************************
     'Erases a character from CharList and map
     '*****************************************************************
@@ -78,12 +78,13 @@ Public Sub EraseChar(ByVal charindex As Integer)
     
     If charindex = 0 Then Exit Sub
     If charlist(charindex).active = 0 Then Exit Sub
-
+    If charindex = UserCharIndex And Not notCancelMe Then Exit Sub
+    
     charlist(charindex).active = 0
     
     'Update lastchar
     If charindex = LastChar Then
-
+    
         Do Until charlist(LastChar).active = 1
             LastChar = LastChar - 1
 
@@ -95,7 +96,9 @@ Public Sub EraseChar(ByVal charindex As Integer)
     MapData(charlist(charindex).Pos.x, charlist(charindex).Pos.y).charindex = 0
     
     'Remove char's dialog
+    If (Not Dialogos Is Nothing) Then
     Call Dialogos.RemoveDialog(charindex)
+    End If
     
     Call ResetCharInfo(charindex)
     
@@ -106,7 +109,7 @@ Public Sub EraseChar(ByVal charindex As Integer)
     Exit Sub
 
 EraseChar_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Chars.EraseChar", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Chars.EraseChar", Erl)
     Resume Next
     
 End Sub
@@ -124,30 +127,33 @@ Sub MakeChar(ByVal charindex As Integer, ByVal Body As Integer, ByVal Head As In
         'If the char wasn't allready active (we are rewritting it) don't increase char count
         If .active = 0 Then NumChars = NumChars + 1
         
-        If Arma = 0 Then Arma = 2
-        If Escudo = 0 Then Escudo = 2
-        If Casco = 0 Then Casco = 2
+        If Arma = 0 Or Arma > UBound(WeaponAnimData) Then Arma = 2
+        If Escudo = 0 Or Escudo > UBound(ShieldAnimData) Then Escudo = 2
+        If Casco = 0 Or Casco > UBound(CascoAnimData) Then Casco = 2
         
-        .iHead = Head
+        .IHead = Head
         .iBody = Body
+     '   If Not charindex = UserCharIndex Then
+            .Head = HeadData(Head)
+            .Body = BodyData(Body)
+            .Arma = WeaponAnimData(Arma)
         
-        .Head = HeadData(Head)
-        .Body = BodyData(Body)
-        .Arma = WeaponAnimData(Arma)
-        
-        .Escudo = ShieldAnimData(Escudo)
-        .Casco = CascoAnimData(Casco)
+            .Escudo = ShieldAnimData(Escudo)
+            .Casco = CascoAnimData(Casco)
+       ' End If
         
         .Heading = Heading
         
         'Reset moving stats
-        .Moving = False
-        .MoveOffsetX = 0
-        .MoveOffsetY = 0
+        If Not charindex = UserCharIndex Then
+            .Moving = False
+            .MoveOffsetX = 0
+            .MoveOffsetY = 0
+        End If
         
         'Update position
-        .Pos.x = x
-        .Pos.y = y
+        .Pos.x = x ' - .scrollDirectionX
+        .Pos.y = y ' - .scrollDirectionY
         
         'Make active
         .active = 1
@@ -185,7 +191,7 @@ Sub MakeChar(ByVal charindex As Integer, ByVal Body As Integer, ByVal Head As In
     Exit Sub
 
 MakeChar_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Chars.MakeChar", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Chars.MakeChar", Erl)
     Resume Next
     
 End Sub
@@ -245,15 +251,15 @@ Public Sub Char_Move_by_Head(ByVal charindex As Integer, ByVal nHeading As E_Hea
         .Pos.x = nX
         .Pos.y = nY
         
-        If MapData(x, x).charindex = charindex Then
+        If MapData(x, y).charindex = charindex Then
             MapData(x, y).charindex = 0
         End If
         
         .MoveOffsetX = -1 * (32 * addx)
         .MoveOffsetY = -1 * (32 * addy)
         
-        'Attached to ladder ;)
-        If MapData(nX, nY).ObjGrh.GrhIndex = 26940 Then
+        
+        If MapData(nX, nY).ObjGrh.GrhIndex = 26940 Or MapData(nX, nY).Trigger = ESCALERA Then
             .Heading = E_Heading.NORTH
         Else
             .Heading = nHeading
@@ -298,7 +304,7 @@ Public Sub Char_Move_by_Head(ByVal charindex As Integer, ByVal nHeading As E_Hea
     Exit Sub
 
 Char_Move_by_Head_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Chars.Char_Move_by_Head", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Chars.Char_Move_by_Head", Erl)
     Resume Next
     
 End Sub
@@ -400,7 +406,7 @@ Public Sub Char_Move_by_Pos(ByVal charindex As Integer, ByVal nX As Integer, ByV
     Exit Sub
 
 Char_Move_by_Pos_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Chars.Char_Move_by_Pos", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Chars.Char_Move_by_Pos", Erl)
     Resume Next
     
 End Sub
@@ -419,7 +425,7 @@ Private Function EstaPCarea(ByVal charindex As Integer) As Boolean
     Exit Function
 
 EstaPCarea_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Chars.EstaPCarea", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Chars.EstaPCarea", Erl)
     Resume Next
     
 End Function
@@ -434,7 +440,7 @@ Public Function EstaEnArea(ByVal x As Integer, ByVal y As Integer) As Boolean
     Exit Function
 
 EstaEnArea_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Chars.EstaEnArea", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Chars.EstaEnArea", Erl)
     Resume Next
     
 End Function
@@ -445,7 +451,7 @@ Public Function Char_Check(ByVal char_index As Integer) As Boolean
     
 
     '**************************************************************
-    'Author: Aaron Perkins - Modified by Juan MartÃ­n Sotuyo Dodero
+    'Author: Aaron Perkins - Modified by Juan Martín Sotuyo Dodero
     'Last Modify Date: 1/04/2003
     '
     '**************************************************************
@@ -459,7 +465,7 @@ Public Function Char_Check(ByVal char_index As Integer) As Boolean
     Exit Function
 
 Char_Check_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Chars.Char_Check", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Chars.Char_Check", Erl)
     Resume Next
     
 End Function
@@ -467,7 +473,7 @@ End Function
 Public Function Char_FX_Group_Next_Open(ByVal char_index As Integer) As Integer
 
     '*****************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     '*****************************************************************
     On Error GoTo ErrorHandler:
 
@@ -506,7 +512,7 @@ ErrorHandler:
 
 End Function
 
-Public Sub Char_Dialog_Set(ByVal char_index As Integer, ByVal char_dialog As String, ByVal char_dialog_color As Long, ByVal char_dialog_life As Byte, ByVal Sube As Byte, Optional ByVal font_index As Integer = 1)
+Public Sub Char_Dialog_Set(ByVal char_index As Integer, ByVal char_dialog As String, ByVal char_dialog_color As Long, ByVal char_dialog_life As Byte, ByVal Sube As Byte, Optional ByVal font_index As Integer = 1, Optional ByVal EsSpell As Boolean = False)
     
     On Error GoTo Char_Dialog_Set_Err
     
@@ -542,31 +548,23 @@ Public Sub Char_Dialog_Set(ByVal char_index As Integer, ByVal char_dialog As Str
 
     End If
     
-    If char_dialog_life = 250 Then
+   
+    With dialogs(Slot)
+        .startTime = FrameTime
+        If EsSpell Then
+             .lifeTime = 3500
+        Else
+            .lifeTime = 3000 + MS_PER_CHAR * Len(char_dialog)
+        End If
+        .charindex = char_index
+    End With
 
-        With dialogs(Slot)
-            .startTime = FrameTime
-            .lifeTime = MS_ADD_EXTRA + (MS_PER_CHAR * Len(char_dialog))
-            .charindex = char_index
-
-        End With
-
-    Else
-
-        With dialogs(Slot)
-            .startTime = FrameTime
-            .lifeTime = (MS_PER_CHAR * Len(char_dialog))
-            .charindex = char_index
-
-        End With
-
-    End If
     
     
     Exit Sub
 
 Char_Dialog_Set_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Chars.Char_Dialog_Set", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Chars.Char_Dialog_Set", Erl)
     Resume Next
     
 End Sub
@@ -610,7 +608,7 @@ Public Sub Char_Dialog_Remove(ByVal char_index As Integer, ByVal Index As Intege
     Exit Sub
 
 Char_Dialog_Remove_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Chars.Char_Dialog_Remove", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Chars.Char_Dialog_Remove", Erl)
     Resume Next
     
 End Sub
@@ -623,7 +621,7 @@ Public Sub SetCharacterFx(ByVal charindex As Integer, ByVal fX As Integer, ByVal
     If fX = 0 Then Exit Sub
 
     '***************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero (Maraxus)
+    'Author: Juan Martín Sotuyo Dodero (Maraxus)
     'Last Modify Date: 12/03/04
     'Sets an FX to the character.
     '***************************************************
@@ -643,7 +641,7 @@ Public Sub SetCharacterFx(ByVal charindex As Integer, ByVal fX As Integer, ByVal
     Exit Sub
 
 SetCharacterFx_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Chars.SetCharacterFx", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Chars.SetCharacterFx", Erl)
     Resume Next
     
 End Sub
@@ -703,7 +701,7 @@ Public Function Get_PixelY_Of_Char(ByVal char_index As Integer) As Integer
     Exit Function
 
 Get_PixelY_Of_Char_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Chars.Get_PixelY_Of_Char", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Chars.Get_PixelY_Of_Char", Erl)
     Resume Next
     
 End Function
@@ -727,7 +725,7 @@ Public Function Get_Pixelx_Of_Char(ByVal char_index As Integer) As Integer
     Exit Function
 
 Get_Pixelx_Of_Char_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Chars.Get_Pixelx_Of_Char", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Chars.Get_Pixelx_Of_Char", Erl)
     Resume Next
     
 End Function
@@ -747,7 +745,7 @@ Public Function Get_Pixelx_Of_XY(ByVal x As Byte) As Integer
     Exit Function
 
 Get_Pixelx_Of_XY_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Chars.Get_Pixelx_Of_XY", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Chars.Get_Pixelx_Of_XY", Erl)
     Resume Next
     
 End Function
@@ -767,7 +765,7 @@ Public Function Get_PixelY_Of_XY(ByVal y As Byte) As Integer
     Exit Function
 
 Get_PixelY_Of_XY_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Chars.Get_PixelY_Of_XY", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Chars.Get_PixelY_Of_XY", Erl)
     Resume Next
     
 End Function

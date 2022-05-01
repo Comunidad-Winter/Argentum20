@@ -53,7 +53,7 @@ Begin VB.Form MenuUser
    Begin VB.Label OpcionLbl 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
-      Caption         =   "*DUELO* (no impl.)"
+      Caption         =   "RETAR"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -188,16 +188,18 @@ Private Sub OpcionImg_Click(Index As Integer)
 
             stxtbuffer = frmMain.SendTxt.Text
             frmMain.SendTxt.SelStart = Len(frmMain.SendTxt.Text)
-
-            If frmMain.SendTxt.Visible = False Then
-                Call WriteEscribiendo
+            
+            If frmMain.SendTxtCmsg.Visible = False Then
+                frmMain.SendTxt.Visible = True
+                frmMain.SendTxt.SetFocus
+            Else
+               frmMain.SendTxtCmsg.SetFocus
             End If
-
-            frmMain.SendTxt.Visible = True
-            frmMain.SendTxt.SetFocus
             
         Case 3
-            ' TODO:
+            frmRetos.Show
+            frmRetos.Jugador(1).Text = TargetName
+            
             
         Case 4
             Call ParseUserCommand("/DENUNCIAR " & TargetName)

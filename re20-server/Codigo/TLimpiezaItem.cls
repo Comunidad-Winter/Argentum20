@@ -13,7 +13,7 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 
-' Defino la posiciÃ³n por separado porque vb no me deja usar WorldPos
+' Defino la posición por separado porque vb no me deja usar WorldPos
 Private mMap As Integer
 Private mX As Integer
 Private mY As Integer
@@ -29,7 +29,7 @@ Public Property Let Map(ByVal Value As Integer)
         Exit Property
 
 Map_Err:
-102     Call RegistrarError(Err.Number, Err.description, "TLimpiezaItem.Map", Erl)
+102     Call TraceError(Err.Number, Err.Description, "TLimpiezaItem.Map", Erl)
 
         
 End Property
@@ -44,7 +44,7 @@ Public Property Let X(ByVal Value As Integer)
         Exit Property
 
 X_Err:
-102     Call RegistrarError(Err.Number, Err.description, "TLimpiezaItem.X", Erl)
+102     Call TraceError(Err.Number, Err.Description, "TLimpiezaItem.X", Erl)
 
         
 End Property
@@ -59,7 +59,7 @@ Public Property Let Y(ByVal Value As Integer)
         Exit Property
 
 Y_Err:
-102     Call RegistrarError(Err.Number, Err.description, "TLimpiezaItem.Y", Erl)
+102     Call TraceError(Err.Number, Err.Description, "TLimpiezaItem.Y", Erl)
 
         
 End Property
@@ -74,7 +74,7 @@ Public Property Get Map() As Integer
         Exit Property
 
 Map_Err:
-102     Call RegistrarError(Err.Number, Err.description, "TLimpiezaItem.Map", Erl)
+102     Call TraceError(Err.Number, Err.Description, "TLimpiezaItem.Map", Erl)
 
         
 End Property
@@ -89,7 +89,7 @@ Public Property Get X() As Integer
         Exit Property
 
 X_Err:
-102     Call RegistrarError(Err.Number, Err.description, "TLimpiezaItem.X", Erl)
+102     Call TraceError(Err.Number, Err.Description, "TLimpiezaItem.X", Erl)
 
         
 End Property
@@ -104,7 +104,7 @@ Public Property Get Y() As Integer
         Exit Property
 
 Y_Err:
-102     Call RegistrarError(Err.Number, Err.description, "TLimpiezaItem.Y", Erl)
+102     Call TraceError(Err.Number, Err.Description, "TLimpiezaItem.Y", Erl)
 
         
 End Property
@@ -119,7 +119,7 @@ Public Property Let Time(Value As Long)
         Exit Property
 
 Time_Err:
-102     Call RegistrarError(Err.Number, Err.description, "TLimpiezaItem.Time", Erl)
+102     Call TraceError(Err.Number, Err.Description, "TLimpiezaItem.Time", Erl)
 
         
 End Property
@@ -134,7 +134,7 @@ Public Property Get Time() As Long
         Exit Property
 
 Time_Err:
-102     Call RegistrarError(Err.Number, Err.description, "TLimpiezaItem.Time", Erl)
+102     Call TraceError(Err.Number, Err.Description, "TLimpiezaItem.Time", Erl)
 
         
 End Property
@@ -149,7 +149,7 @@ Public Property Get Indice() As String
         Exit Property
 
 Indice_Err:
-102     Call RegistrarError(Err.Number, Err.description, "TLimpiezaItem.Indice", Erl)
+102     Call TraceError(Err.Number, Err.Description, "TLimpiezaItem.Indice", Erl)
 
         
 End Property

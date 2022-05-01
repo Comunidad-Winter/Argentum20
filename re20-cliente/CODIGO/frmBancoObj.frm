@@ -76,20 +76,18 @@ Begin VB.Form frmBancoObj
       Top             =   0
       Width           =   495
    End
-   Begin VB.Image cmdMasMenos 
+   Begin VB.Image cmdMenos 
       Height          =   315
-      Index           =   0
       Left            =   3195
       Tag             =   "0"
       Top             =   6525
       Width           =   315
    End
-   Begin VB.Image cmdMasMenos 
+   Begin VB.Image cmdMas 
       Height          =   315
-      Index           =   1
       Left            =   4650
       Tag             =   "0"
-      Top             =   6510
+      Top             =   6480
       Width           =   315
    End
    Begin VB.Label lblcosto 
@@ -134,7 +132,7 @@ Begin VB.Form frmBancoObj
    Begin VB.Label lbldesc 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
-      Caption         =   "descripci√≥n"
+      Caption         =   "descripciÛn"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   6
@@ -151,17 +149,15 @@ Begin VB.Form frmBancoObj
       Top             =   5910
       Width           =   3135
    End
-   Begin VB.Image Image1 
+   Begin VB.Image cmdDepositar 
       Height          =   420
-      Index           =   1
       Left            =   5505
       Tag             =   "0"
       Top             =   6465
       Width           =   1830
    End
-   Begin VB.Image Image1 
+   Begin VB.Image cmdRetirar 
       Height          =   420
-      Index           =   0
       Left            =   825
       Tag             =   "0"
       Top             =   6465
@@ -174,6 +170,12 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
+
+Private cBotonRetirar As clsGraphicalButton
+Private cBotonDepositar As clsGraphicalButton
+Private cBotonMas As clsGraphicalButton
+Private cBotonMenos As clsGraphicalButton
+Private cBotonCerrar As clsGraphicalButton
 
 Const WM_SYSCOMMAND As Long = &H112&
 
@@ -193,14 +195,15 @@ Private m_Increment          As Integer
 
 Private m_Interval           As Integer
 
-' Declaro los inventarios ac√° para manejar el evento drop
-Public WithEvents InvBankUsu As clsGrapchicalInventory ' Inventario del usuario visible en la b√≥veda
+
+' Declaro los inventarios ac· para manejar el evento drop
+Public WithEvents InvBankUsu As clsGrapchicalInventory ' Inventario del usuario visible en la bÛveda
 Attribute InvBankUsu.VB_VarHelpID = -1
 
-Public WithEvents InvBoveda  As clsGrapchicalInventory ' Inventario de la b√≥veda
+Public WithEvents InvBoveda  As clsGrapchicalInventory ' Inventario de la bÛveda
 Attribute InvBoveda.VB_VarHelpID = -1
 
-Private Sub moverForm()
+Private Sub MoverForm()
     
     On Error GoTo moverForm_Err
     
@@ -214,7 +217,7 @@ Private Sub moverForm()
     Exit Sub
 
 moverForm_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.moverForm", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmBancoObj.moverForm", Erl)
     Resume Next
     
 End Sub
@@ -241,93 +244,31 @@ Private Sub cantidad_KeyPress(KeyAscii As Integer)
     Exit Sub
 
 cantidad_KeyPress_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.cantidad_KeyPress", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmBancoObj.cantidad_KeyPress", Erl)
     Resume Next
     
 End Sub
 
-Private Sub cmdMasMenos_MouseDown(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
-    
-    On Error GoTo cmdMasMenos_MouseDown_Err
-    
-
-    Call Sound.Sound_Play(SND_CLICK)
-
-    Select Case Index
-
-        Case 0
-            cmdMasMenos(Index).Picture = LoadInterface("boton-sm-menos-off.bmp")
-            cmdMasMenos(Index).Tag = "1"
-            cantidad.Text = str((Val(cantidad.Text) - 1))
-            m_Increment = -1
-
-        Case 1
-            cmdMasMenos(Index).Picture = LoadInterface("boton-sm-mas-off.bmp")
-            cmdMasMenos(Index).Tag = "1"
-            m_Increment = 1
-
-    End Select
-
+Private Sub cmdMas_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+    m_Increment = 1
     tmrNumber.Interval = 30
     tmrNumber.Enabled = True
-
-    
     Exit Sub
-
-cmdMasMenos_MouseDown_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.cmdMasMenos_MouseDown", Erl)
-    Resume Next
-    
 End Sub
 
-Private Sub cmdMasMenos_MouseMove(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
-    
-    On Error GoTo cmdMasMenos_MouseMove_Err
-    
-
-    Select Case Index
-
-        Case 0
-
-            If cmdMasMenos(Index).Tag = "0" Then
-                cmdMasMenos(Index).Picture = LoadInterface("boton-sm-menos-over.bmp")
-                cmdMasMenos(Index).Tag = "1"
-
-            End If
-
-        Case 1
-
-            If cmdMasMenos(Index).Tag = "0" Then
-                cmdMasMenos(Index).Picture = LoadInterface("boton-sm-mas-over.bmp")
-                cmdMasMenos(Index).Tag = "1"
-
-            End If
-
-    End Select
-
-    
-    Exit Sub
-
-cmdMasMenos_MouseMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.cmdMasMenos_MouseMove", Erl)
-    Resume Next
-    
-End Sub
-
-Private Sub cmdMasMenos_MouseUp(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
-    
-    On Error GoTo cmdMasMenos_MouseUp_Err
-    
-    Call Form_MouseMove(Button, Shift, x, y)
+Private Sub cmdMas_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
     tmrNumber.Enabled = False
+End Sub
 
-    
-    Exit Sub
+Private Sub cmdMenos_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+    cantidad.Text = str((Val(cantidad.Text) - 1))
+    m_Increment = -1
+    tmrNumber.Interval = 30
+    tmrNumber.Enabled = True
+End Sub
 
-cmdMasMenos_MouseUp_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.cmdMasMenos_MouseUp", Erl)
-    Resume Next
-    
+Private Sub cmdMenos_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
+    tmrNumber.Enabled = False
 End Sub
 
 Private Sub Form_KeyPress(KeyAscii As Integer)
@@ -344,7 +285,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
     Exit Sub
 
 Form_KeyPress_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.Form_KeyPress", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmBancoObj.Form_KeyPress", Erl)
     Resume Next
     
 End Sub
@@ -352,94 +293,75 @@ End Sub
 Private Sub Form_Load()
     
     On Error GoTo Form_Load_Err
+
+    Me.Picture = LoadInterface("banco.bmp")
     
     Call FormParser.Parse_Form(Me)
     cantidad.BackColor = RGB(18, 19, 13)
 
-    
+    Call LoadButtons
+
     Exit Sub
 
 Form_Load_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.Form_Load", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmBancoObj.Form_Load", Erl)
     Resume Next
     
 End Sub
 
-Private Sub Image1_Click(Index As Integer)
-    
-    On Error GoTo Image1_Click_Err
-    
-    Call Sound.Sound_Play(SND_CLICK)
 
+Private Sub LoadButtons()
+    
+    
+    Set cBotonRetirar = New clsGraphicalButton
+    Set cBotonDepositar = New clsGraphicalButton
+    Set cBotonMas = New clsGraphicalButton
+    Set cBotonMenos = New clsGraphicalButton
+    Set cBotonCerrar = New clsGraphicalButton
+
+    Call cBotonCerrar.Initialize(salir, "boton-cerrar-default.bmp", _
+                                                "boton-cerrar-over.bmp", _
+                                                "boton-cerrar-off.bmp", Me)
+                                                                                            
+    Call cBotonMas.Initialize(cmdMas, "boton-sm-mas-default.bmp", _
+                                                "boton-sm-mas-over.bmp", _
+                                                "boton-sm-mas-off.bmp", Me)
+                                                
+    Call cBotonMenos.Initialize(cmdMenos, "boton-sm-menos-default.bmp", _
+                                                "boton-sm-menos-over.bmp", _
+                                                "boton-sm-menos-off.bmp", Me)
+                                                
+    Call cBotonRetirar.Initialize(cmdRetirar, "boton-retirar-ES-default.bmp", _
+                                                "boton-retirar-ES-over.bmp", _
+                                                "boton-retirar-ES-off.bmp", Me)
+    
+    Call cBotonDepositar.Initialize(cmdDepositar, "boton-depositar-ES-default.bmp", _
+                                                "boton-depositar-ES-over.bmp", _
+                                                "boton-depositar-ES-off.bmp", Me)
+                                                
+    
+End Sub
+Private Sub cmdDepositar_Click()
+    If Not IsNumeric(cantidad.Text) Then Exit Sub
+    If Val(cantidad.Text) <= 0 Then Exit Sub
+    
+    LasActionBuy = False
+
+    If InvBankUsu.SelectedItem <= 0 Then Exit Sub
+    Call WriteBankDeposit(InvBankUsu.SelectedItem, min(Val(cantidad.Text), InvBankUsu.Amount(InvBankUsu.SelectedItem)), 0)
+End Sub
+
+Private Sub cmdRetirar_Click()
     If Not IsNumeric(cantidad.Text) Then Exit Sub
     If Val(cantidad.Text) <= 0 Then Exit Sub
 
-    Select Case Index
+    LasActionBuy = True
 
-        Case 0
-            'frmBancoObj.List1(0).SetFocus
-            'LastIndex1 = List1(0).ListIndex
-            LasActionBuy = True
-            'Call WriteBankExtractItem(InvBoveda.SelectedItem, cantidad.Text, 1)
-        
-            If InvBoveda.SelectedItem <= 0 Then Exit Sub
-            Call WriteBankExtractItem(InvBoveda.SelectedItem, min(Val(cantidad.Text), InvBoveda.Amount(InvBoveda.SelectedItem)), 0)
-
-        Case 1
-            LasActionBuy = False
-
-            If InvBankUsu.SelectedItem <= 0 Then Exit Sub
-            Call WriteBankDeposit(InvBankUsu.SelectedItem, min(Val(cantidad.Text), InvBankUsu.Amount(InvBankUsu.SelectedItem)), 0)
-
-    End Select
-
-    
-    Exit Sub
-
-Image1_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.Image1_Click", Erl)
-    Resume Next
-    
+    If InvBoveda.SelectedItem <= 0 Then Exit Sub
+    Call WriteBankExtractItem(InvBoveda.SelectedItem, min(Val(cantidad.Text), InvBoveda.Amount(InvBoveda.SelectedItem)), 0)
 End Sub
 
-Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-    
-    On Error GoTo Form_MouseMove_Err
-    
-    moverForm
 
-    If Image1(0).Tag = "1" Then
-        Image1(0).Picture = Nothing
-        Image1(0).Tag = "0"
-
-    End If
-
-    If Image1(1).Tag = "1" Then
-        Image1(1).Picture = Nothing
-        Image1(1).Tag = "0"
-
-    End If
-
-    If cmdMasMenos(0).Tag = "1" Then
-        cmdMasMenos(0).Picture = Nothing
-        cmdMasMenos(0).Tag = "0"
-
-    End If
-
-    If cmdMasMenos(1).Tag = "1" Then
-        cmdMasMenos(1).Picture = Nothing
-        cmdMasMenos(1).Tag = "0"
-
-    End If
-
-    
-    Exit Sub
-
-Form_MouseMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.Form_MouseMove", Erl)
-    Resume Next
-    
-End Sub
 
 Private Sub cantidad_Change()
     
@@ -461,7 +383,7 @@ Private Sub cantidad_Change()
     Exit Sub
 
 cantidad_Change_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.cantidad_Change", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmBancoObj.cantidad_Change", Erl)
     Resume Next
     
 End Sub
@@ -471,67 +393,16 @@ Private Sub Form_Unload(Cancel As Integer)
     On Error GoTo Form_Unload_Err
     
     Call Sound.Sound_Play(SND_CLICK)
-    Call WriteBankEnd
+    
+    If Not Protocol_Writes.writer_is_nothing Then
+        Call WriteBankEnd
+    End If
 
     
     Exit Sub
 
 Form_Unload_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.Form_Unload", Erl)
-    Resume Next
-    
-End Sub
-
-Private Sub Image1_MouseDown(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
-    
-    On Error GoTo Image1_MouseDown_Err
-    
-
-    If Index = 0 Then
-        Image1(0).Picture = LoadInterface("boton-retirar-ES-off.bmp")
-        Image1(0).Tag = "0"
-    Else
-        Image1(1).Picture = LoadInterface("boton-depositar-ES-off.bmp")
-        Image1(1).Tag = "0"
-
-    End If
-
-    
-    Exit Sub
-
-Image1_MouseDown_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.Image1_MouseDown", Erl)
-    Resume Next
-    
-End Sub
-
-Private Sub Image1_MouseMove(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
-    
-    On Error GoTo Image1_MouseMove_Err
-    
-
-    If Index = 0 Then
-        If Image1(0).Tag = "0" Then
-            Image1(0).Picture = LoadInterface("boton-retirar-ES-over.bmp")
-            Image1(0).Tag = "1"
-
-        End If
-
-    Else
-    
-        If Image1(1).Tag = "0" Then
-            Image1(1).Picture = LoadInterface("boton-depositar-ES-default.bmp")
-            Image1(1).Tag = "1"
-
-        End If
-
-    End If
-
-    
-    Exit Sub
-
-Image1_MouseMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.Image1_MouseMove", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmBancoObj.Form_Unload", Erl)
     Resume Next
     
 End Sub
@@ -542,11 +413,11 @@ Private Sub interface_Click()
     
     
     If InvBoveda.ClickedInside Then
-        ' Clique√© en la b√≥veda, deselecciono el inventario
+        ' CliqueÈ en la bÛveda, deselecciono el inventario
         Call InvBankUsu.SeleccionarItem(0)
         
     ElseIf InvBankUsu.ClickedInside Then
-        ' Clique√© en el inventario, deselecciono la b√≥veda
+        ' CliqueÈ en el inventario, deselecciono la bÛveda
         Call InvBoveda.SeleccionarItem(0)
 
     End If
@@ -555,7 +426,7 @@ Private Sub interface_Click()
     Exit Sub
 
 interface_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.interface_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmBancoObj.interface_Click", Erl)
     Resume Next
     
 End Sub
@@ -565,12 +436,12 @@ Private Sub interface_DblClick()
     On Error GoTo interface_DblClick_Err
     
 
-    ' Nos aseguramos que lo √∫ltimo que clique√≥ fue el inventario
+    ' Nos aseguramos que lo ˙ltimo que cliqueÛ fue el inventario
     If Not InvBankUsu.ClickedInside Then Exit Sub
     
     If Not InvBankUsu.IsItemSelected Then Exit Sub
 
-    ' Hacemos acci√≥n del doble clic correspondiente
+    ' Hacemos acciÛn del doble clic correspondiente
     Dim ObjType As Byte
 
     ObjType = ObjData(InvBankUsu.OBJIndex(InvBankUsu.SelectedItem)).ObjType
@@ -610,7 +481,7 @@ Private Sub interface_DblClick()
     Exit Sub
 
 interface_DblClick_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.interface_DblClick", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmBancoObj.interface_DblClick", Erl)
     Resume Next
     
 End Sub
@@ -672,7 +543,7 @@ Private Sub interface_KeyDown(KeyCode As Integer, Shift As Integer)
     Exit Sub
 
 interface_KeyDown_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.interface_KeyDown", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmBancoObj.interface_KeyDown", Erl)
     Resume Next
     
 End Sub
@@ -682,14 +553,14 @@ Private Sub InvBoveda_ItemDropped(ByVal Drag As Integer, ByVal Drop As Integer, 
     On Error GoTo InvBoveda_ItemDropped_Err
     
 
-    ' Si lo solt√≥ dentro de la b√≥veda
+    ' Si lo soltÛ dentro de la bÛveda
     If Drop > 0 Then
-        ' Movemos el item dentro de la b√≥veda
+        ' Movemos el item dentro de la bÛveda
         Call WriteBovedaItemMove(Drag, Drop)
     Else
         Drop = InvBankUsu.GetSlot(x, y)
 
-        ' Si lo solt√≥ dentro del inventario
+        ' Si lo soltÛ dentro del inventario
         If Drop > 0 Then
             ' Retiramos el item
             Call WriteBankExtractItem(Drag, min(Val(cantidad.Text), InvBoveda.Amount(InvBoveda.SelectedItem)), Drop)
@@ -702,7 +573,7 @@ Private Sub InvBoveda_ItemDropped(ByVal Drag As Integer, ByVal Drop As Integer, 
     Exit Sub
 
 InvBoveda_ItemDropped_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.InvBoveda_ItemDropped", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmBancoObj.InvBoveda_ItemDropped", Erl)
     Resume Next
     
 End Sub
@@ -712,14 +583,16 @@ Private Sub InvBankUsu_ItemDropped(ByVal Drag As Integer, ByVal Drop As Integer,
     On Error GoTo InvBankUsu_ItemDropped_Err
     
 
-    ' Si lo solt√≥ dentro del mismo inventario
+    ' Si lo soltÛ dentro del mismo inventario
     If Drop > 0 Then
-        ' Movemos el item dentro del inventario
-        Call WriteItemMove(Drag, Drop)
+        If Drag <> Drop Then
+            ' Movemos el item dentro del inventario
+            Call WriteItemMove(Drag, Drop)
+        End If
     Else
         Drop = InvBoveda.GetSlot(x, y)
 
-        ' Si lo solt√≥ dentro de la b√≥veda
+        ' Si lo soltÛ dentro de la bÛveda
         If Drop > 0 Then
             ' Depositamos el item
             Call WriteBankDeposit(Drag, min(Val(cantidad.Text), InvBankUsu.Amount(InvBankUsu.SelectedItem)), Drop)
@@ -732,7 +605,7 @@ Private Sub InvBankUsu_ItemDropped(ByVal Drag As Integer, ByVal Drop As Integer,
     Exit Sub
 
 InvBankUsu_ItemDropped_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.InvBankUsu_ItemDropped", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmBancoObj.InvBankUsu_ItemDropped", Erl)
     Resume Next
     
 End Sub
@@ -747,7 +620,7 @@ Private Sub salir_Click()
     Exit Sub
 
 salir_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.salir_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmBancoObj.salir_Click", Erl)
     Resume Next
     
 End Sub
@@ -761,16 +634,16 @@ Private Sub tmrNumber_Timer()
 
     Const MAX_NUMBER = 10000
 
-    m_Number = m_Number + m_Increment
+    cantidad.Text = Val(cantidad.Text) + m_Increment
 
-    If m_Number < MIN_NUMBER Then
-        m_Number = MIN_NUMBER
-    ElseIf m_Number > MAX_NUMBER Then
-        m_Number = MAX_NUMBER
+    If Val(cantidad.Text) < MIN_NUMBER Then
+        cantidad.Text = MIN_NUMBER
+    ElseIf Val(cantidad.Text) > MAX_NUMBER Then
+        cantidad.Text = MAX_NUMBER
 
     End If
 
-    cantidad.Text = format$(m_Number)
+    cantidad.Text = format$(Val(cantidad.Text))
     
     If m_Interval > 1 Then
         m_Interval = m_Interval - 1
@@ -782,7 +655,7 @@ Private Sub tmrNumber_Timer()
     Exit Sub
 
 tmrNumber_Timer_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmBancoObj.tmrNumber_Timer", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmBancoObj.tmrNumber_Timer", Erl)
     Resume Next
     
 End Sub

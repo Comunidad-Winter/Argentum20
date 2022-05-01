@@ -89,9 +89,9 @@ Const HWND_TOPMOST = -1
 
 Const HWND_NOTOPMOST = -2 '
   
-' Funci贸n Api SetWindowPos
+' Funci髇 Api SetWindowPos
 Private Declare Function SetWindowPos Lib "user32" (ByVal hwnd As Long, ByVal hWndInsertAfter As Long, ByVal x As Long, ByVal y As Long, ByVal cx As Long, ByVal cy As Long, ByVal wFlags As Long) As Long
-'Declaraci贸n del Api SetLayeredWindowAttributes que establece _
+'Declaraci髇 del Api SetLayeredWindowAttributes que establece _
  la transparencia al form
   
 Private Declare Function SetLayeredWindowAttributes Lib "user32" (ByVal hwnd As Long, ByVal crKey As Long, ByVal bAlpha As Byte, ByVal dwFlags As Long) As Long
@@ -99,7 +99,7 @@ Private Declare Function SetLayeredWindowAttributes Lib "user32" (ByVal hwnd As 
 'Recupera el estilo de la ventana
 Private Declare Function GetWindowLong Lib "user32" Alias "GetWindowLongA" (ByVal hwnd As Long, ByVal nIndex As Long) As Long
   
-'Declaraci贸n del Api SetWindowLong necesaria para aplicar un estilo _
+'Declaraci髇 del Api SetWindowLong necesaria para aplicar un estilo _
  al form antes de usar el Api SetLayeredWindowAttributes
   
 Private Declare Function SetWindowLong Lib "user32" Alias "SetWindowLongA" (ByVal hwnd As Long, ByVal nIndex As Long, ByVal dwNewLong As Long) As Long
@@ -110,8 +110,8 @@ Private Const LWA_ALPHA = &H2
 
 Private Const WS_EX_LAYERED = &H80000
 
-'Funci贸n para saber si formulario ya es transparente. _
- Se le pasa el Hwnd del formulario en cuesti贸n
+'Funci髇 para saber si formulario ya es transparente. _
+ Se le pasa el Hwnd del formulario en cuesti髇
   
 Public Function Is_Transparent(ByVal hwnd As Long) As Boolean
     
@@ -145,7 +145,7 @@ Is_Transparent_Err:
     
 End Function
   
-'Funci贸n que aplica la transparencia, se le pasa el hwnd del form y un valor de 0 a 255
+'Funci髇 que aplica la transparencia, se le pasa el hwnd del form y un valor de 0 a 255
 Public Function Aplicar_Transparencia(ByVal hwnd As Long, Valor As Integer) As Long
     
     On Error GoTo Aplicar_Transparencia_Err
@@ -257,27 +257,10 @@ Private Sub Image1_Click(Index As Integer)
 
             If frmCrearCuenta.Visible = False Then
                 Unload frmCrearCuenta
-
             End If
 
             frmCrearCuenta.Show , frmConnect
             frmCrearCuenta.Top = frmCrearCuenta.Top + 3000
-            
-        Case 1
-            FrmActivarCuenta.Show , frmConnect
-            FrmActivarCuenta.Top = FrmActivarCuenta.Top + 3000
-
-        Case 2
-            FrmReenviarMail.Show , frmConnect
-            FrmReenviarMail.Top = FrmReenviarMail.Top + 3000
-
-        Case 4
-            FrmBorrarCuenta.Show , frmConnect
-            FrmBorrarCuenta.Top = FrmBorrarCuenta.Top + 3000
-
-        Case 3
-            FrmRecuperar.Show , frmConnect
-            FrmRecuperar.Top = FrmRecuperar.Top + 3000
 
         Case 5
             Unload Me
@@ -321,7 +304,7 @@ Private Sub Image1_MouseMove(Index As Integer, Button As Integer, Shift As Integ
         Case 2
 
             If Image1(Index).Tag = "0" Then
-                Image1(Index).Picture = LoadInterface("reenviarvalidaci贸nhover.bmp")
+                Image1(Index).Picture = LoadInterface("reenviarvalidaci髇hover.bmp")
                 Image1(Index).Tag = "1"
 
             End If
@@ -329,7 +312,7 @@ Private Sub Image1_MouseMove(Index As Integer, Button As Integer, Shift As Integ
         Case 3
 
             If Image1(Index).Tag = "0" Then
-                Image1(Index).Picture = LoadInterface("recuperarcontrase帽ahover.bmp")
+                Image1(Index).Picture = LoadInterface("recuperarcontrase馻hover.bmp")
                 Image1(Index).Tag = "1"
 
             End If
@@ -378,11 +361,11 @@ Private Sub Image1_MouseDown(Index As Integer, Button As Integer, Shift As Integ
             Image1(Index).Tag = "1"
 
         Case 2
-            Image1(Index).Picture = LoadInterface("reenviarvalidaci贸npress.bmp")
+            Image1(Index).Picture = LoadInterface("reenviarvalidaci髇press.bmp")
             Image1(Index).Tag = "1"
 
         Case 3
-            Image1(Index).Picture = LoadInterface("recuperarcontrase帽apress.bmp")
+            Image1(Index).Picture = LoadInterface("recuperarcontrase馻press.bmp")
             Image1(Index).Tag = "1"
 
         Case 4

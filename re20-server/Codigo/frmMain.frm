@@ -1,13 +1,12 @@
 VERSION 5.00
-Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
 Begin VB.Form frmMain 
    BackColor       =   &H00E0E0E0&
    BorderStyle     =   4  'Fixed ToolWindow
-   Caption         =   "Servidor Argentum 20 - Basado en RAO de Pablo Mercavides"
-   ClientHeight    =   6315
+   Caption         =   "Servidor Argentum 20"
+   ClientHeight    =   6255
    ClientLeft      =   1950
    ClientTop       =   1695
-   ClientWidth     =   6915
+   ClientWidth     =   8595
    FillColor       =   &H00C0C0C0&
    BeginProperty Font 
       Name            =   "Arial"
@@ -24,9 +23,95 @@ Begin VB.Form frmMain
    MaxButton       =   0   'False
    MinButton       =   0   'False
    PaletteMode     =   1  'UseZOrder
-   ScaleHeight     =   6315
-   ScaleWidth      =   6915
+   ScaleHeight     =   6255
+   ScaleWidth      =   8595
    StartUpPosition =   2  'CenterScreen
+   Begin VB.CommandButton Command5 
+      Caption         =   "Recargar baneos.dat"
+      Height          =   495
+      Left            =   6840
+      TabIndex        =   43
+      Top             =   120
+      Width           =   1695
+   End
+   Begin VB.TextBox txtAyudin 
+      Enabled         =   0   'False
+      Height          =   315
+      Left            =   3720
+      TabIndex        =   42
+      Top             =   0
+      Width           =   855
+   End
+   Begin VB.CommandButton cmdAyudinMenos 
+      Caption         =   "-"
+      Height          =   255
+      Left            =   3480
+      TabIndex        =   41
+      Top             =   0
+      Width           =   255
+   End
+   Begin VB.CommandButton cmdAyudinMas 
+      Caption         =   "+"
+      Height          =   255
+      Left            =   4560
+      TabIndex        =   40
+      Top             =   0
+      Width           =   255
+   End
+   Begin VB.Timer Timer1 
+      Interval        =   10000
+      Left            =   4440
+      Top             =   1920
+   End
+   Begin VB.CommandButton Command3 
+      Caption         =   "Recargar Donadore"
+      Height          =   495
+      Left            =   1320
+      TabIndex        =   39
+      Top             =   1440
+      Width           =   1215
+   End
+   Begin VB.CommandButton cmdDbControl 
+      Caption         =   "DbControl"
+      Height          =   495
+      Left            =   3720
+      TabIndex        =   38
+      Top             =   720
+      Width           =   1215
+   End
+   Begin VB.Timer t_Extraer 
+      Left            =   4440
+      Top             =   4200
+   End
+   Begin VB.Timer T_UsersOnline 
+      Enabled         =   0   'False
+      Interval        =   10000
+      Left            =   3600
+      Top             =   4200
+   End
+   Begin VB.CommandButton CerrarYForzarActualizar 
+      Appearance      =   0  'Flat
+      BackColor       =   &H00C0E0FF&
+      Caption         =   "Cerrar y forzar actualizacion"
+      Height          =   495
+      Left            =   5160
+      MaskColor       =   &H000040C0&
+      Style           =   1  'Graphical
+      TabIndex        =   34
+      Top             =   4920
+      Width           =   1575
+   End
+   Begin VB.Timer Invasion 
+      Enabled         =   0   'False
+      Interval        =   60000
+      Left            =   3120
+      Top             =   3120
+   End
+   Begin VB.Timer TiempoRetos 
+      Interval        =   10000
+      Left            =   3120
+      Top             =   4200
+   End
    Begin VB.Timer TimerGuardarUsuarios 
       Enabled         =   0   'False
       Interval        =   30000
@@ -34,98 +119,92 @@ Begin VB.Form frmMain
       Top             =   3120
    End
    Begin VB.CommandButton Command4 
+      BackColor       =   &H00C0FFC0&
       Caption         =   "Guardar y cerrar"
-      Height          =   975
+      Height          =   615
       Left            =   5160
-      TabIndex        =   33
-      Top             =   5040
+      Style           =   1  'Graphical
+      TabIndex        =   31
+      Top             =   5520
       Width           =   1575
    End
    Begin VB.CommandButton Command6 
-      Caption         =   "Recargar intervalos.ini"
+      Caption         =   "Recargar intervalos y rates"
       Height          =   495
       Left            =   5160
-      TabIndex        =   32
-      Top             =   4440
+      TabIndex        =   30
+      Top             =   4320
       Width           =   1575
    End
    Begin VB.CommandButton Command13 
       Caption         =   "Recargar Balance.dat"
       Height          =   495
       Left            =   5160
-      TabIndex        =   31
-      Top             =   3840
+      TabIndex        =   29
+      Top             =   3720
       Width           =   1575
    End
    Begin VB.CommandButton Command12 
       Caption         =   "Recargar configuracion.ini"
       Height          =   495
       Left            =   5160
-      TabIndex        =   30
-      Top             =   1440
+      TabIndex        =   28
+      Top             =   1320
       Width           =   1575
    End
    Begin VB.CommandButton Command11 
       Caption         =   "Recargar Server.ini"
       Height          =   495
       Left            =   5160
-      TabIndex        =   29
-      Top             =   840
+      TabIndex        =   27
+      Top             =   720
       Width           =   1575
    End
    Begin VB.CommandButton Command10 
       Caption         =   "Guardar Usuarios"
       Height          =   495
       Left            =   5160
-      TabIndex        =   28
-      Top             =   3240
+      TabIndex        =   26
+      Top             =   3120
       Width           =   1575
    End
    Begin VB.CommandButton Command9 
       Caption         =   "Recargar Npcs"
       Height          =   495
       Left            =   5160
-      TabIndex        =   27
-      Top             =   2640
+      TabIndex        =   25
+      Top             =   2520
       Width           =   1575
    End
    Begin VB.CommandButton Command8 
       Caption         =   "Recargar Objetos"
       Height          =   495
       Left            =   5160
-      TabIndex        =   26
-      Top             =   2040
+      TabIndex        =   24
+      Top             =   1920
       Width           =   1575
    End
    Begin VB.CommandButton Command7 
       Caption         =   "Recargar Administradores"
       Height          =   495
       Left            =   5160
-      TabIndex        =   25
-      Top             =   240
+      TabIndex        =   23
+      Top             =   120
       Width           =   1575
    End
    Begin VB.Frame Frame5 
       BackColor       =   &H00E0E0E0&
       Caption         =   "Eventos"
       Height          =   6015
-      Left            =   7920
-      TabIndex        =   22
+      Left            =   8880
+      TabIndex        =   21
       Top             =   120
       Width           =   1575
-      Begin VB.CommandButton Command5 
-         Caption         =   "Command5"
-         Height          =   495
-         Left            =   120
-         TabIndex        =   24
-         Top             =   5400
-         Width           =   1455
-      End
       Begin VB.Label cuentas 
          Caption         =   "0"
          Height          =   375
          Left            =   240
-         TabIndex        =   23
+         TabIndex        =   22
          Top             =   240
          Width           =   975
       End
@@ -151,13 +230,13 @@ Begin VB.Form frmMain
       Caption         =   "Logeo de eventos"
       Height          =   1455
       Left            =   120
-      TabIndex        =   20
+      TabIndex        =   19
       Top             =   4680
       Width           =   4935
       Begin VB.ListBox List1 
          Height          =   1110
          Left            =   120
-         TabIndex        =   21
+         TabIndex        =   20
          Top             =   240
          Width           =   4695
       End
@@ -186,25 +265,47 @@ Begin VB.Form frmMain
    End
    Begin VB.Frame Frame2 
       BackColor       =   &H00E0E0E0&
-      Caption         =   "InformaciÃ³n general"
+      Caption         =   "Informacion general"
       Height          =   1815
       Left            =   120
       TabIndex        =   7
       Top             =   120
       Width           =   4935
-      Begin MSWinsockLib.Winsock auxSocket 
-         Left            =   3960
-         Top             =   960
-         _ExtentX        =   741
-         _ExtentY        =   741
-         _Version        =   393216
+      Begin VB.CheckBox chkLogDbPerfomance 
+         BackColor       =   &H80000016&
+         Caption         =   "Log DB perfomance"
+         Height          =   375
+         Left            =   2640
+         TabIndex        =   37
+         Top             =   1440
+         Width           =   2055
+      End
+      Begin VB.Label Label10 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Estabilidad:"
+         Height          =   255
+         Left            =   3360
+         TabIndex        =   36
+         Top             =   240
+         Width           =   975
+      End
+      Begin VB.Label Estabilidad 
+         Alignment       =   1  'Right Justify
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "0%"
+         Height          =   210
+         Left            =   4560
+         TabIndex        =   35
+         Top             =   240
+         Width           =   225
       End
       Begin VB.Label Label7 
          BackColor       =   &H00E0E0E0&
          Caption         =   "Nublado"
          Height          =   255
          Left            =   120
-         TabIndex        =   19
+         TabIndex        =   18
          Top             =   1440
          Width           =   2535
       End
@@ -213,7 +314,7 @@ Begin VB.Form frmMain
          Caption         =   "Lloviendo"
          Height          =   255
          Left            =   120
-         TabIndex        =   18
+         TabIndex        =   17
          Top             =   1200
          Width           =   2775
       End
@@ -222,7 +323,7 @@ Begin VB.Form frmMain
          Caption         =   "Label3"
          Height          =   255
          Left            =   2040
-         TabIndex        =   13
+         TabIndex        =   12
          Top             =   960
          Width           =   855
       End
@@ -231,7 +332,7 @@ Begin VB.Form frmMain
          Caption         =   "Hora Fantasia Servidor:"
          Height          =   255
          Left            =   120
-         TabIndex        =   12
+         TabIndex        =   11
          Top             =   960
          Width           =   2175
       End
@@ -240,7 +341,7 @@ Begin VB.Form frmMain
          Caption         =   "Label3"
          Height          =   255
          Left            =   1920
-         TabIndex        =   11
+         TabIndex        =   10
          Top             =   720
          Width           =   855
       End
@@ -249,7 +350,7 @@ Begin VB.Form frmMain
          Caption         =   "Hora Actual Servidor:"
          Height          =   255
          Left            =   120
-         TabIndex        =   10
+         TabIndex        =   9
          Top             =   720
          Width           =   2175
       End
@@ -271,33 +372,10 @@ Begin VB.Form frmMain
          ForeColor       =   &H00000000&
          Height          =   195
          Left            =   120
-         TabIndex        =   9
+         TabIndex        =   8
          Top             =   240
          Width           =   1875
       End
-      Begin VB.Label lblLimpieza 
-         BackColor       =   &H00E0E0E0&
-         Caption         =   "Limpieza de objetos cada: "
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   255
-         Left            =   120
-         TabIndex        =   8
-         Top             =   480
-         Width           =   4215
-      End
-   End
-   Begin VB.Timer LimpiezaTimer 
-      Interval        =   60000
-      Left            =   1200
-      Top             =   4200
    End
    Begin VB.Timer SubastaTimer 
       Enabled         =   0   'False
@@ -305,21 +383,7 @@ Begin VB.Form frmMain
       Left            =   720
       Top             =   4200
    End
-   Begin VB.Timer packetResend 
-      Interval        =   5
-      Left            =   240
-      Top             =   3060
-   End
-   Begin VB.CommandButton CMDDUMP 
-      Caption         =   "dump"
-      Height          =   255
-      Left            =   3720
-      TabIndex        =   6
-      Top             =   6720
-      Visible         =   0   'False
-      Width           =   1215
-   End
-   Begin VB.Timer Auditoria 
+   Begin VB.Timer Segundo 
       Enabled         =   0   'False
       Interval        =   1000
       Left            =   720
@@ -342,12 +406,6 @@ Begin VB.Form frmMain
       Left            =   4080
       Top             =   3060
    End
-   Begin VB.Timer npcataca 
-      Enabled         =   0   'False
-      Interval        =   4000
-      Left            =   3120
-      Top             =   3060
-   End
    Begin VB.Timer KillLog 
       Enabled         =   0   'False
       Interval        =   60000
@@ -358,7 +416,7 @@ Begin VB.Form frmMain
       Enabled         =   0   'False
       Interval        =   100
       Left            =   4560
-      Top             =   3060
+      Top             =   3000
    End
    Begin VB.Frame Frame1 
       BackColor       =   &H00E0E0E0&
@@ -425,18 +483,13 @@ Begin VB.Form frmMain
       Caption         =   "Estadisticas de Paquetes"
       Height          =   1695
       Left            =   120
-      TabIndex        =   14
+      TabIndex        =   13
       Top             =   3000
       Width           =   4935
-      Begin VB.Timer t_ColaAPI 
-         Interval        =   50
-         Left            =   3120
-         Top             =   1200
-      End
       Begin VB.ListBox listaDePaquetes 
          Height          =   1110
          Left            =   120
-         TabIndex        =   17
+         TabIndex        =   16
          Top             =   480
          Width           =   4695
       End
@@ -445,7 +498,7 @@ Begin VB.Form frmMain
          Caption         =   "0"
          Height          =   375
          Left            =   1920
-         TabIndex        =   16
+         TabIndex        =   15
          Top             =   240
          Width           =   615
       End
@@ -454,10 +507,35 @@ Begin VB.Form frmMain
          Caption         =   "Paquetes Recibidos:"
          Height          =   375
          Left            =   120
-         TabIndex        =   15
+         TabIndex        =   14
          Top             =   240
          Width           =   1815
       End
+   End
+   Begin VB.CommandButton CMDDUMP 
+      Caption         =   "dump"
+      Height          =   255
+      Left            =   3720
+      TabIndex        =   6
+      Top             =   6720
+      Visible         =   0   'False
+      Width           =   1215
+   End
+   Begin VB.Label Label9 
+      Caption         =   "Basado en rao"
+      Height          =   495
+      Left            =   5280
+      TabIndex        =   33
+      Top             =   5640
+      Width           =   1335
+   End
+   Begin VB.Label Label8 
+      Caption         =   "Label8"
+      Height          =   495
+      Left            =   2880
+      TabIndex        =   32
+      Top             =   2880
+      Width           =   1215
    End
    Begin VB.Label txStatus 
       AutoSize        =   -1  'True
@@ -481,24 +559,9 @@ Begin VB.Form frmMain
          Caption         =   "Cerrar Servidor"
       End
    End
-   Begin VB.Menu donador 
-      Caption         =   "Donador"
-      Begin VB.Menu addtimeDonador 
-         Caption         =   "Cargar tiempo"
-      End
-      Begin VB.Menu loadcredit 
-         Caption         =   "Cargar Creditos"
-      End
-   End
-   Begin VB.Menu mnuConsolaAPI 
-      Caption         =   "Consola API"
-   End
    Begin VB.Menu mnuPopUp 
       Caption         =   "PopUpMenu"
       Visible         =   0   'False
-      Begin VB.Menu mnuConsolaAPI_Popup 
-         Caption         =   "&Consola API"
-      End
       Begin VB.Menu mnuMostrar 
          Caption         =   "&Mostrar"
       End
@@ -513,7 +576,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 'Argentum Online 0.11.6
-'Copyright (C) 2002 MÃ¡rquez Pablo Ignacio
+'Copyright (C) 2002 Márquez Pablo Ignacio
 '
 'This program is free software; you can redistribute it and/or modify
 'it under the terms of the Affero General Public License;
@@ -535,10 +598,10 @@ Attribute VB_Exposed = False
 'You can contact me at:
 'morgolock@speedy.com.ar
 'www.geocities.com/gmorgolock
-'Calle 3 nÃºmero 983 piso 7 dto A
+'Calle 3 número 983 piso 7 dto A
 'La Plata - Pcia, Buenos Aires - Republica Argentina
-'CÃ³digo Postal 1900
-'Pablo Ignacio MÃ¡rquez
+'Código Postal 1900
+'Pablo Ignacio Márquez
 
 Option Explicit
 
@@ -557,28 +620,22 @@ Private Type NOTIFYICONDATA
 End Type
    
 Const NIM_ADD = 0
-
 Const NIM_DELETE = 2
-
 Const NIF_MESSAGE = 1
-
 Const NIF_ICON = 2
-
 Const NIF_TIP = 4
-
 Const WM_MOUSEMOVE = &H200
-
 Const WM_LBUTTONDBLCLK = &H203
-
 Const WM_RBUTTONUP = &H205
 
 Private GuardarYCerrar As Boolean
 
 Private Declare Function GetWindowThreadProcessId Lib "user32" (ByVal hwnd As Long, lpdwProcessId As Long) As Long
-
 Private Declare Function Shell_NotifyIconA Lib "SHELL32" (ByVal dwMessage As Long, lpData As NOTIFYICONDATA) As Integer
 
-Private Function setNOTIFYICONDATA(hwnd As Long, Id As Long, flags As Long, CallbackMessage As Long, Icon As Long, Tip As String) As NOTIFYICONDATA
+Private SERVER_UPTIME As Long
+
+Private Function setNOTIFYICONDATA(hwnd As Long, ID As Long, flags As Long, CallbackMessage As Long, Icon As Long, Tip As String) As NOTIFYICONDATA
         
         On Error GoTo setNOTIFYICONDATA_Err
         
@@ -587,7 +644,7 @@ Private Function setNOTIFYICONDATA(hwnd As Long, Id As Long, flags As Long, Call
 
 100     nidTemp.cbSize = Len(nidTemp)
 102     nidTemp.hwnd = hwnd
-104     nidTemp.uID = Id
+104     nidTemp.uID = ID
 106     nidTemp.uFlags = flags
 108     nidTemp.uCallbackMessage = CallbackMessage
 110     nidTemp.hIcon = Icon
@@ -599,8 +656,8 @@ Private Function setNOTIFYICONDATA(hwnd As Long, Id As Long, flags As Long, Call
         Exit Function
 
 setNOTIFYICONDATA_Err:
-116     Call RegistrarError(Err.Number, Err.Description, "frmMain.setNOTIFYICONDATA", Erl)
-118     Resume Next
+116     Call TraceError(Err.Number, Err.Description, "frmMain.setNOTIFYICONDATA", Erl)
+
         
 End Function
 
@@ -614,18 +671,18 @@ Sub CheckIdleUser()
 100     For iUserIndex = 1 To MaxUsers
 
             'Conexion activa? y es un usuario loggeado?
-102         If UserList(iUserIndex).ConnID <> -1 And UserList(iUserIndex).flags.UserLogged Then
+102         If UserList(iUserIndex).ConnIDValida And UserList(iUserIndex).flags.UserLogged Then
                 'Actualiza el contador de inactividad
 104             UserList(iUserIndex).Counters.IdleCount = UserList(iUserIndex).Counters.IdleCount + 1
 
 106             If UserList(iUserIndex).Counters.IdleCount >= IdleLimit Then
-108                 Call WriteShowMessageBox(iUserIndex, "Demasiado tiempo inactivo. Has sido desconectado..")
+108                 Call WriteShowMessageBox(iUserIndex, "Demasiado tiempo inactivo. Has sido desconectado...")
 
                     'mato los comercios seguros
 110                 If UserList(iUserIndex).ComUsu.DestUsu > 0 Then
 112                     If UserList(UserList(iUserIndex).ComUsu.DestUsu).flags.UserLogged Then
 114                         If UserList(UserList(iUserIndex).ComUsu.DestUsu).ComUsu.DestUsu = iUserIndex Then
-116                             Call WriteConsoleMsg(UserList(iUserIndex).ComUsu.DestUsu, "Comercio cancelado por el otro usuario.", FontTypeNames.FONTTYPE_TALK)
+116                             Call WriteConsoleMsg(UserList(iUserIndex).ComUsu.DestUsu, "Comercio cancelado por el otro usuario.", e_FontTypeNames.FONTTYPE_TALK)
 118                             Call FinComerciarUsu(UserList(iUserIndex).ComUsu.DestUsu)
                             
 
@@ -649,167 +706,206 @@ Sub CheckIdleUser()
         Exit Sub
 
 CheckIdleUser_Err:
-126     Call RegistrarError(Err.Number, Err.Description, "frmMain.CheckIdleUser", Erl)
-128     Resume Next
+126     Call TraceError(Err.Number, Err.Description, "frmMain.CheckIdleUser", Erl)
+
         
 End Sub
 
-Private Sub addtimeDonador_Click()
-        
-        On Error GoTo addtimeDonador_Click_Err
-        
-
-        Dim Tmp  As String
-
-        Dim tmp2 As String
-
-100     Tmp = InputBox("Cuenta?", "Ingrese la cuenta")
-
-102     If FileExist(CuentasPath & Tmp & ".act", vbNormal) Then
-104         tmp2 = InputBox("Â¿Dias?", "Ingrese cantidad de dÃ­as")
-
-106         If IsNumeric(tmp2) Then
-108             Call DonadorTiempo(Tmp, tmp2)
-            Else
-110             MsgBox ("Cantidad invalida")
-
-            End If
-
-        Else
-112         MsgBox ("La cuenta no existe")
-
-        End If
-
-        
-        Exit Sub
-
-addtimeDonador_Click_Err:
-114     Call RegistrarError(Err.Number, Err.Description, "frmMain.addtimeDonador_Click", Erl)
-116     Resume Next
-        
+Private Sub cmdDbControl_Click()
+    frmDbControl.Show
 End Sub
 
-Private Sub Auditoria_Timer()
+Private Sub Command3_Click()
+    Call CargarDonadores
+End Sub
+
+
+Private Sub Command5_Click()
+    CargarListaNegraUsuarios
+End Sub
+
+Private Sub Segundo_Timer()
 
     On Error GoTo errhand
 
-    'Static centinelSecs As Byte
-
-    'centinelSecs = centinelSecs + 1
-
-    'If centinelSecs = 5 Then
-    'Every 5 seconds, we try to call the player's attention so it will report the code.
-    ' Call modCentinela.CallUserAttention
+    ' WyroX - Control de estabilidad del servidor
+    Static LastTime As Currency
+    Static Frequency As Currency
+    Dim CurTime As Currency
     
-    ' centinelSecs = 0
-    'End If
+    'Get the timer frequency
+    If Frequency = 0 Then
+        Call QueryPerformanceFrequency(Frequency)
+    End If
+
+    Call QueryPerformanceCounter(CurTime)
+
+    If LastTime <> 0 Then
+        Estabilidad.Caption = Round(Clamp(200 + (LastTime - CurTime) * 100 / Frequency, 0, 100), 1) & "%"
+    End If
+
+    LastTime = CurTime
+    ' -----------------------------------
 
     Call PasarSegundo 'sistema de desconexion de 10 segs
-    Call PurgarScroll
-
-    Call PurgarOxigeno
-
-    Call ActualizaStatsES
 
     Exit Sub
 
 errhand:
-
-    Call LogError("Error en Timer Auditoria. Err: " & Err.Description & " - " & Err.Number)
-
-    Resume Next
-
+    Call TraceError(Err.Number, Err.Description, "frmMain.Auditoria", Erl)
+        
 End Sub
 
-Private Sub auxSocket_Connect()
+Private Sub CerrarYForzarActualizar_Click()
+    On Error GoTo Command4_Click_Err
 
-    'auxSocket.SendData "{""header"":{""action"":""LoadUser""},""data"":{""accountId"":1}}"
-    
-End Sub
+100     If MsgBox("¿Está seguro que desea guardar, forzar actualización a los usuarios y cerrar?", vbYesNo, "Confirmación") = vbNo Then Exit Sub
+        
+102     Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor » Cerrando servidor y lanzando nuevo parche.", e_FontTypeNames.FONTTYPE_PROMEDIO_MENOR))
 
-Private Sub auxSocket_DataArrival(ByVal bytesTotal As Long)
-        
-        On Error GoTo auxSocket_DataArrival_Err
-    
-        
-    
-        Dim strData As String
-    
-        ' Recibimos la info.
-100     Call auxSocket.GetData(strData)
-    
-        ' Si no llegÃ³ nada, nos vamos alv.
-102     If Len(strData) = 0 Then Exit Sub
-    
-        ' Parseamos el JSON que recibimo.
-        Dim response As Object
-104     Set response = mod_JSON.parse(strData)
-    
-106     Select Case response.Item("header").Item("action")
-    
-            Case "LoadUser"
-                'Call MsgBox(response!data)
-            
-        End Select
-    
-108     End
-    
+104     Call ForzarActualizar
+106     Call GuardarUsuarios
+108     Call EcharPjsNoPrivilegiados
+
+110     GuardarYCerrar = True
+112     Unload frmMain
         
         Exit Sub
 
-auxSocket_DataArrival_Err:
-110     Call RegistrarError(Err.Number, Err.Description, "frmMain.auxSocket_DataArrival", Erl)
+Command4_Click_Err:
+114     Call TraceError(Err.Number, Err.Description, "frmMain.CerrarYForzarActualizar", Erl)
 
-        
 End Sub
 
-Private Sub mnuConsolaAPI_Click()
-    frmAPISocket.Show vbModeless
-End Sub
+Private Sub Invasion_Timer()
 
-Private Sub mnuConsolaAPI_Popup_Click()
-    Call mnuConsolaAPI_Click
-End Sub
 
-Private Sub t_ColaAPI_Timer()
+On Error GoTo Handler
+    Dim i As Integer
 
-    If API.packetResend.Count = 0 Then Exit Sub
+    ' **********************************
+    ' **********  Invasiones  **********
+    ' **********************************
+    For i = 1 To UBound(Invasiones)
+        With Invasiones(i)
+            ' Aumentamos el contador para controlar cuando
+            ' inicia la invasión o cuando debe terminar
+            .TimerInvasion = .TimerInvasion + 1
+
+            If .Activa Then
+                ' Chequeamos si el evento debe terminar
+                If .TimerInvasion >= .Duracion Then
+                    Call FinalizarInvasion(i)
+                
+                Else
+                    ' Descripción del evento
+                    .TimerRepetirDesc = .TimerRepetirDesc + 1
     
-    With frmAPISocket
-    
-        Select Case .Socket.State
-        
-            Case sckConnected
+                    If .TimerRepetirDesc >= .RepetirDesc Then
+                        Call MensajeGlobal(.Desc, e_FontTypeNames.FONTTYPE_New_Eventos)
+                        .TimerRepetirDesc = 0
+                    End If
+                End If
             
-                'Iteramos la cola y mandamos todo.
-                Do While (Not API.packetResend.IsEmpty)
-                    Call .Socket.SendData(API.packetResend.Pop)
-                Loop
-                
-                Debug.Print "API: Enviado!"
-                
-                Exit Sub
-            
-            Case sckClosed
-                Call .Connect
-                Debug.Print "API: El socket estaba cerrado! Reconectando..."
-                
-            Case sckError
-                Call .Socket.CloseSck
-                Call .Connect
-                Debug.Print "API: Error en el socket! Reconectando..."
-                
-        End Select
+            ' Si no está activa, chequeamos si debemos iniciarla
+            ElseIf .Intervalo > 0 Then
+                If .TimerInvasion >= .Intervalo Then
+                    Call IniciarInvasion(i)
     
-    End With
+                ' Si no está activa ni hay que iniciar, chequeamos si hay que avisar que se acerca el evento
+                ElseIf .TimerInvasion >= .Intervalo - .AvisarTiempo Then
+                    .TimerRepetirAviso = .TimerRepetirAviso - 1
     
+                    If .TimerRepetirAviso <= 0 Then
+                        Call MensajeGlobal(.aviso, e_FontTypeNames.FONTTYPE_New_Eventos)
+                        .TimerRepetirAviso = .RepetirAviso
+                    End If
+                End If
+            End If
+        
+        End With
+    Next
+    Exit Sub
+    
+Handler:
+    Call TraceError(Err.Number, Err.Description, "frmMain.Invasion_Timer")
+
+    
+    ' **********************************
+End Sub
+
+Private Sub t_Extraer_Timer()
+    Dim i As Long
+    
+    For i = 1 To LastUser
+        If UserList(i).Counters.Trabajando > 0 Then
+            Call Trabajar(i, UserList(i).Trabajo.TargetSkill)
+        End If
+    Next i
+End Sub
+
+Private Sub T_UsersOnline_Timer()
+
+On Error GoTo T_UsersOnline_Err
+
+    Call MostrarNumUsers
+    
+    Exit Sub
+
+T_UsersOnline_Err:
+106     Call TraceError(Err.Number, Err.Description, "General.T_UsersOnline", Erl)
+
+End Sub
+
+' WyroX: Comprobamos cada 10 segundos, porque no es necesaria tanta precisión
+Private Sub TiempoRetos_Timer()
+
+On Error GoTo Handler
+    
+    Dim IntervaloTimerRetosEnSegundos As Integer
+    IntervaloTimerRetosEnSegundos = TiempoRetos.Interval * 0.001
+    
+    Dim Sala As Integer
+    For Sala = 1 To Retos.TotalSalas
+        
+        With Retos.Salas(Sala)
+            If .EnUso Then
+                .TiempoRestante = .TiempoRestante - IntervaloTimerRetosEnSegundos
+                
+                If .TiempoRestante <= 0 Then
+                    Call FinalizarReto(Sala, True)
+                End If
+                
+                If .TiempoItems > 0 Then
+                    .TiempoItems = .TiempoItems - IntervaloTimerRetosEnSegundos
+                    If .TiempoItems <= 0 Then Call TerminarTiempoAgarrarItems(Sala)
+                End If
+            End If
+        End With
+
+    Next
+    Exit Sub
+    
+Handler:
+    Call TraceError(Err.Number, Err.Description, "frmMain.TiempoRetos_Timer")
+
+    
+End Sub
+
+Private Sub Timer1_Timer()
+    Dim key As Variant
+    For Each key In dcnUsersLastLogout.Keys
+        If CLng(dcnUsersLastLogout(key)) < GetTickCount() - 5000 Then
+            Call dcnUsersLastLogout.Remove(key)
+        End If
+    Next key
 End Sub
 
 Private Sub TimerGuardarUsuarios_Timer()
 
 On Error GoTo Handler
     
-    ' Guardar usuarios (solo si pasÃ³ el tiempo mÃ­nimo para guardar)
+    ' Guardar usuarios (solo si pasó el tiempo mínimo para guardar)
     Dim UserIndex As Integer, UserGuardados As Integer
 
     For UserIndex = 1 To LastUser
@@ -823,7 +919,7 @@ On Error GoTo Handler
                     
                     UserGuardados = UserGuardados + 1
                     
-                    If UserGuardados >= LimiteGuardarUsuarios Then Exit For
+                    If UserGuardados > NumUsers / IntervaloGuardarUsuarios * IntervaloTimerGuardarUsuarios Then Exit For
     
                 End If
     
@@ -836,8 +932,8 @@ On Error GoTo Handler
     Exit Sub
     
 Handler:
-    Call RegistrarError(Err.Number, Err.Description, "frmMain.TimreGuardarUsuarios_Timer")
-    Resume Next
+    Call TraceError(Err.Number, Err.Description, "frmMain.TimreGuardarUsuarios_Timer")
+
     
 End Sub
 
@@ -852,7 +948,7 @@ Private Sub Minuto_Timer()
 
     Dim i                   As Integer
 
-    Dim num                 As Long
+    Dim Num                 As Long
 
     MinsRunning = MinsRunning + 1
 
@@ -860,7 +956,6 @@ Private Sub Minuto_Timer()
         horas = horas + 1
 
         If horas = 24 Then
-            Call SaveDayStats
             DayStats.MaxUsuarios = 0
             DayStats.segundos = 0
             DayStats.Promedio = 0
@@ -874,10 +969,11 @@ Private Sub Minuto_Timer()
     End If
     
     minutos = minutos + 1
+    
 
-    'Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿
+    '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     Call ModAreas.AreasOptimizacion
-    'Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿
+    '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     'Actualizamos el centinela
     Call modCentinela.PasarMinutoCentinela
@@ -887,31 +983,22 @@ Private Sub Minuto_Timer()
         Call ReSpawnOrigPosNpcs 'respawn de los guardias en las pos originales
     Else
         MinutosLatsClean = MinutosLatsClean + 1
-
     End If
 
     Call PurgarPenas
 
-    If IdleLimit > 0 Then
-        Call CheckIdleUser
+   ' If IdleLimit > 0 Then
+   '     Call CheckIdleUser
+   ' End If
 
-    End If
 
-    '<<<<<-------- Log the number of users online ------>>>
-    Dim n As Integer
-
-    n = FreeFile()
-    Open App.Path & "\logs\numusers.log" For Output Shared As n
-    Print #n, NumUsers
-    Close #n
-    '<<<<<-------- Log the number of users online ------>>>
+    Call dump_stats
 
     Exit Sub
+        
 ErrHandler:
-    Call LogError("Error en Timer Minuto " & Err.Number & ": " & Err.Description)
-
-    Resume Next
-
+    Call TraceError(Err.Number, Err.Description, "General.Minuto_Timer", Erl)
+        
 End Sub
 
 Private Sub CMDDUMP_Click()
@@ -925,7 +1012,7 @@ Private Sub CMDDUMP_Click()
         Dim i As Integer
 
 100     For i = 1 To MaxUsers
-102         Call LogCriticEvent(i & ") ConnID: " & UserList(i).ConnID & ". ConnidValida: " & UserList(i).ConnIDValida & " Name: " & UserList(i).name & " UserLogged: " & UserList(i).flags.UserLogged)
+102         Call LogCriticEvent(i & ") ConnIDValida: " & UserList(i).ConnIDValida & " Name: " & UserList(i).Name & " UserLogged: " & UserList(i).flags.UserLogged)
 104     Next i
 
 106     Call LogCriticEvent("Lastuser: " & LastUser & " NextOpenUser: " & NextOpenUser)
@@ -934,7 +1021,7 @@ Private Sub CMDDUMP_Click()
         Exit Sub
 
 CMDDUMP_Click_Err:
-108     Call RegistrarError(Err.Number, Err.Description, "frmMain.CMDDUMP_Click", Erl)
+108     Call TraceError(Err.Number, Err.Description, "frmMain.CMDDUMP_Click", Erl)
 
         
 End Sub
@@ -949,8 +1036,8 @@ Private Sub Command1_Click()
         Exit Sub
 
 Command1_Click_Err:
-102     Call RegistrarError(Err.Number, Err.Description, "frmMain.Command1_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmMain.Command1_Click", Erl)
+
         
 End Sub
 
@@ -969,8 +1056,8 @@ Public Sub InitMain(ByVal f As Byte)
         Exit Sub
 
 InitMain_Err:
-106     Call RegistrarError(Err.Number, Err.Description, "frmMain.InitMain", Erl)
-108     Resume Next
+106     Call TraceError(Err.Number, Err.Description, "frmMain.InitMain", Erl)
+
         
 End Sub
 
@@ -984,8 +1071,8 @@ Private Sub Command10_Click()
         Exit Sub
 
 Command10_Click_Err:
-102     Call RegistrarError(Err.Number, Err.Description, "frmMain.Command10_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmMain.Command10_Click", Erl)
+
         
 End Sub
 
@@ -994,13 +1081,14 @@ Private Sub Command11_Click()
         On Error GoTo Command11_Click_Err
         
 100     Call LoadSini
-
+        Call LoadMD5
+133     Call LoadPrivateKey
         
         Exit Sub
 
 Command11_Click_Err:
-102     Call RegistrarError(Err.Number, Err.Description, "frmMain.Command11_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmMain.Command11_Click", Erl)
+
         
 End Sub
 
@@ -1009,13 +1097,12 @@ Private Sub Command12_Click()
         On Error GoTo Command12_Click_Err
         
 100     Call LoadConfiguraciones
-
         
         Exit Sub
 
 Command12_Click_Err:
-102     Call RegistrarError(Err.Number, Err.Description, "frmMain.Command12_Click", Erl)
-104     Resume Next
+104     Call TraceError(Err.Number, Err.Description, "frmMain.Command12_Click", Erl)
+
         
 End Sub
 
@@ -1029,8 +1116,8 @@ Private Sub Command13_Click()
         Exit Sub
 
 Command13_Click_Err:
-102     Call RegistrarError(Err.Number, Err.Description, "frmMain.Command13_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmMain.Command13_Click", Erl)
+
         
 End Sub
 
@@ -1038,67 +1125,53 @@ Private Sub Command2_Click()
         
         On Error GoTo Command2_Click_Err
         
-100     Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor> " & BroadMsg.Text, FontTypeNames.FONTTYPE_SERVER))
+100     Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor » " & BroadMsg.Text, e_FontTypeNames.FONTTYPE_SERVER))
 
         
         Exit Sub
 
 Command2_Click_Err:
-102     Call RegistrarError(Err.Number, Err.Description, "frmMain.Command2_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmMain.Command2_Click", Erl)
+
         
 End Sub
 
 Private Sub Command4_Click()
         
         On Error GoTo Command4_Click_Err
-        
-100     Call GuardarUsuarios
-102     Call EcharPjsNoPrivilegiados
 
-104     GuardarYCerrar = True
-106     Unload frmMain
+100     If MsgBox("¿Está seguro que desea guardar y cerrar?", vbYesNo, "Confirmación") = vbNo Then Exit Sub
+        
+102     Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor » Cerrando servidor.", e_FontTypeNames.FONTTYPE_PROMEDIO_MENOR))
+
+104     Call GuardarUsuarios
+106     Call EcharPjsNoPrivilegiados
+
+108     GuardarYCerrar = True
+110     Unload frmMain
 
         
         Exit Sub
 
 Command4_Click_Err:
-108     Call RegistrarError(Err.Number, Err.Description, "frmMain.Command4_Click", Erl)
-110     Resume Next
+112     Call TraceError(Err.Number, Err.Description, "frmMain.Command4_Click", Erl)
+
         
 End Sub
 
-Private Sub Command5_Click()
-        'Dim tem As String
-        'tem = InputBox("Ingreste clave")
-        'MsgBox SDesencriptar(tem)
-        
-        On Error GoTo Command5_Click_Err
-        
-
-100     Call GuardarRanking
-
-        
-        Exit Sub
-
-Command5_Click_Err:
-102     Call RegistrarError(Err.Number, Err.Description, "frmMain.Command5_Click", Erl)
-104     Resume Next
-        
-End Sub
 
 Private Sub Command6_Click()
         
         On Error GoTo Command6_Click_Err
         
 100     Call LoadIntervalos
-
+101     Call LoadPacketRatePolicy
         
         Exit Sub
 
 Command6_Click_Err:
-102     Call RegistrarError(Err.Number, Err.Description, "frmMain.Command6_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmMain.Command6_Click", Erl)
+
         
 End Sub
 
@@ -1112,8 +1185,8 @@ Private Sub Command7_Click()
         Exit Sub
 
 Command7_Click_Err:
-102     Call RegistrarError(Err.Number, Err.Description, "frmMain.Command7_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmMain.Command7_Click", Erl)
+
         
 End Sub
 
@@ -1124,13 +1197,15 @@ Private Sub Command8_Click()
 100     Call LoadOBJData
 102     Call LoadPesca
 104     Call LoadRecursosEspeciales
+106     Call LoadRangosFaccion
+108     Call LoadRecompensasFaccion
 
-        
+
         Exit Sub
 
 Command8_Click_Err:
-106     Call RegistrarError(Err.Number, Err.Description, "frmMain.Command8_Click", Erl)
-108     Resume Next
+110     Call TraceError(Err.Number, Err.Description, "frmMain.Command8_Click", Erl)
+
         
 End Sub
 
@@ -1144,8 +1219,8 @@ Private Sub Command9_Click()
         Exit Sub
 
 Command9_Click_Err:
-102     Call RegistrarError(Err.Number, Err.Description, "frmMain.Command9_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmMain.Command9_Click", Erl)
+
         
 End Sub
 
@@ -1164,23 +1239,10 @@ Private Sub EstadoTimer_Timer()
     For i = 1 To Baneos.Count
 
         If Baneos(i).FechaLiberacion <= Now Then
-            Call SendData(SendTarget.ToAdmins, 0, PrepareMessageConsoleMsg("Servidor> Se ha concluido la sentencia de ban para " & Baneos(i).name & ".", FontTypeNames.FONTTYPE_SERVER))
-            Call ChangeBan(Baneos(i).name, 0)
+            Call SendData(SendTarget.ToAdmins, 0, PrepareMessageConsoleMsg("Servidor » Se ha concluido la sentencia de ban para " & Baneos(i).name & ".", e_FontTypeNames.FONTTYPE_SERVER))
+            Call UnBan(Baneos(i).Name)
             Call Baneos.Remove(i)
             Call SaveBans
-
-        End If
-
-    Next
-
-    For i = 1 To Donadores.Count
-
-        If Donadores(i).FechaExpiracion <= Now Then
-            Call SendData(SendTarget.ToAdmins, 0, PrepareMessageConsoleMsg("Servidor> Se ha concluido el tiempo de donador para " & Donadores(i).name & ".", FontTypeNames.FONTTYPE_SERVER))
-            Call ChangeDonador(Donadores(i).name, 0)
-            Call Donadores.Remove(i)
-            Call SaveDonadores
-
         End If
 
     Next
@@ -1270,7 +1332,7 @@ Private Sub EstadoTimer_Timer()
     Exit Sub
 
 EstadoTimer_Timer_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmMain.EstadoTimer_Timer", Erl)
+    Call TraceError(Err.Number, Err.Description, "frmMain.EstadoTimer_Timer", Erl)
 
         
 End Sub
@@ -1290,18 +1352,14 @@ Private Sub Evento_Timer()
     Exit Sub
 
 Evento_Timer_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmMain.Evento_Timer", Erl)
-    Resume Next
+    Call TraceError(Err.Number, Err.Description, "frmMain.Evento_Timer", Erl)
+
         
 End Sub
 
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
         
         On Error GoTo Form_MouseMove_Err
-    
-        
-
-        
    
 100     If Not Visible Then
 
@@ -1334,7 +1392,7 @@ Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y A
         Exit Sub
 
 Form_MouseMove_Err:
-124     Call RegistrarError(Err.Number, Err.Description, "frmMain.Form_MouseMove", Erl)
+124     Call TraceError(Err.Number, Err.Description, "frmMain.Form_MouseMove", Erl)
 
         
 End Sub
@@ -1359,7 +1417,7 @@ Public Sub QuitarIconoSystray()
         Exit Sub
 
 QuitarIconoSystray_Err:
-104     Call RegistrarError(Err.Number, Err.Description, "frmMain.QuitarIconoSystray", Erl)
+104     Call TraceError(Err.Number, Err.Description, "frmMain.QuitarIconoSystray", Erl)
 
         
 End Sub
@@ -1370,7 +1428,7 @@ Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
     
         
 100     If GuardarYCerrar Then Exit Sub
-102     If MsgBox("Â¿Deseas FORZAR el CIERRE del servidor?" & vbNewLine & vbNewLine & "Ten en cuenta que ES POSIBLE PIERDAS DATOS!", vbYesNo, "Â¡FORZAR CIERRE!") = vbNo Then
+102     If MsgBox("¿Deseas FORZAR el CIERRE del servidor?" & vbNewLine & vbNewLine & "Ten en cuenta que ES POSIBLE PIERDAS DATOS!", vbYesNo, "¡FORZAR CIERRE!") = vbNo Then
 104         Cancel = True
         End If
     
@@ -1378,24 +1436,15 @@ Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
         Exit Sub
 
 Form_QueryUnload_Err:
-106     Call RegistrarError(Err.Number, Err.Description, "frmMain.Form_QueryUnload", Erl)
+106     Call TraceError(Err.Number, Err.Description, "frmMain.Form_QueryUnload", Erl)
 
         
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
         
-        On Error GoTo Form_Unload_Err
-    
-        
 
-100     Call CerrarServidor
-
-        
-        Exit Sub
-
-Form_Unload_Err:
-102     Call RegistrarError(Err.Number, Err.Description, "frmMain.Form_Unload", Erl)
+  Call CerrarServidor
 
         
 End Sub
@@ -1403,198 +1452,43 @@ End Sub
 Private Sub GameTimer_Timer()
 
     Dim iUserIndex   As Long
-    Dim bEnviarStats As Boolean
-    Dim bEnviarAyS   As Boolean
-    
+
     On Error GoTo HayError
-    
+
     '<<<<<< Procesa eventos de los usuarios >>>>>>
-    For iUserIndex = 1 To MaxUsers 'LastUser
+    For iUserIndex = 1 To LastUser
 
         With UserList(iUserIndex)
 
-            'Conexion activa?
-            If .ConnID <> -1 Then
-                'Â¿User valido?
+            If .flags.UserLogged Then
                 
-                If .ConnIDValida And .flags.UserLogged Then
-                    
-                    '[Alejo-18-5]
-                    bEnviarStats = False
-                    bEnviarAyS = False
-                    
-                    .NumeroPaquetesPorMiliSec = 0
-                    
-                    Call DoTileEvents(iUserIndex, .Pos.Map, .Pos.X, .Pos.Y)
+                Call DoTileEvents(iUserIndex, .Pos.Map, .Pos.X, .Pos.Y)
 
-                    If .flags.Muerto = 0 Then
-                        
-                        'Efectos en mapas
-                        If (.flags.Privilegios And PlayerType.user) <> 0 Then
-                            Call EfectoLava(iUserIndex)
-                            Call EfectoFrio(iUserIndex)
-                        End If
-
-                        If .flags.Meditando Then Call DoMeditar(iUserIndex)
+                If .flags.Muerto = 0 Then
+                    
+                    'Efectos en mapas
+                    If (.flags.Privilegios And e_PlayerType.user) <> 0 Then
+                        Call EfectoLava(iUserIndex)
+                        Call EfectoFrio(iUserIndex)
                         If .flags.Envenenado <> 0 Then Call EfectoVeneno(iUserIndex)
-                        If .flags.Ahogandose <> 0 Then Call EfectoAhogo(iUserIndex)
-                        If .flags.Incinerado <> 0 Then Call EfectoIncineramiento(iUserIndex, False)
-                        If .flags.Mimetizado <> 0 Then Call EfectoMimetismo(iUserIndex)
-                        If .flags.AdminInvisible <> 1 Then
-                            If .flags.Oculto = 1 Then Call DoPermanecerOculto(iUserIndex)
-                        End If
-                        
-                        If .NroMascotas > 0 Then Call TiempoInvocacion(iUserIndex)
-                        
-                        Call HambreYSed(iUserIndex, bEnviarAyS)
-                        
-                        If .flags.Hambre = 0 And .flags.Sed = 0 Then
-                            
-                            If Lloviendo Then
-                            
-                                If Not Intemperie(iUserIndex) Then
-                                    
-                                    'No esta descansando
-                                    If Not .flags.Descansar Then
-
-                                        Call Sanar(iUserIndex, bEnviarStats, SanaIntervaloSinDescansar)
-
-                                        If bEnviarStats Then
-                                            Call WriteUpdateHP(iUserIndex)
-                                            bEnviarStats = False
-                                        End If
-    
-                                        If .flags.Desnudo = 0 Then
-                                            Call RecStamina(iUserIndex, bEnviarStats, StaminaIntervaloSinDescansar)
-                                        Else
-                                            Call PierdeEnergia(iUserIndex, bEnviarStats, IntervaloPerderStamina)
-                                        End If
-
-                                        If bEnviarStats Then
-                                            Call WriteUpdateSta(iUserIndex)
-                                            bEnviarStats = False
-                                        End If
-
-                                    Else
-                                        'esta descansando
-                                        Call Sanar(iUserIndex, bEnviarStats, SanaIntervaloDescansar)
-
-                                        If bEnviarStats Then
-                                            Call WriteUpdateHP(iUserIndex)
-                                            bEnviarStats = False
-                                        End If
-
-                                        If .flags.Desnudo = 0 Then
-                                            Call RecStamina(iUserIndex, bEnviarStats, StaminaIntervaloDescansar)
-                                        Else
-                                            Call PierdeEnergia(iUserIndex, bEnviarStats, IntervaloPerderStamina * 2)
-                                        End If
-
-                                        If bEnviarStats Then
-                                            Call WriteUpdateSta(iUserIndex)
-                                            bEnviarStats = False
-                                        End If
-
-                                        'termina de descansar automaticamente
-                                        If .Stats.MaxHp = .Stats.MinHp And .Stats.MaxSta = .Stats.MinSta Then
-                                            Call WriteRestOK(iUserIndex)
-                                            Call WriteConsoleMsg(iUserIndex, "Has terminado de descansar.", FontTypeNames.FONTTYPE_INFO)
-                                            .flags.Descansar = False
-                                        End If
-                                        
-                                    End If
-
-                                Else
-                                    If .flags.Desnudo = 0 Then
-                                        Call RecStamina(iUserIndex, bEnviarStats, StaminaIntervaloSinDescansar * 4)
-                                    Else
-                                        Call PierdeEnergia(iUserIndex, bEnviarStats, IntervaloPerderStamina * 0.5)
-                                    End If
-
-                                    If bEnviarStats Then
-                                        Call WriteUpdateSta(iUserIndex)
-                                        bEnviarStats = False
-                                    End If
-
-                                End If
-                                
-                            Else
-
-                                If Not .flags.Descansar Then
-                                    'No esta descansando
-                                    
-                                    Call Sanar(iUserIndex, bEnviarStats, SanaIntervaloSinDescansar)
-
-                                    If bEnviarStats Then
-                                        Call WriteUpdateHP(iUserIndex)
-                                        bEnviarStats = False
-                                    End If
-
-                                    If .flags.Desnudo = 0 Then
-                                        Call RecStamina(iUserIndex, bEnviarStats, StaminaIntervaloSinDescansar)
-                                    Else
-                                        Call PierdeEnergia(iUserIndex, bEnviarStats, IntervaloPerderStamina)
-                                    End If
-
-                                    If bEnviarStats Then
-                                        'borrar este
-                                        Call WriteUpdateSta(iUserIndex)
-                                        bEnviarStats = False
-                                    End If
-                                    
-                                Else
-                                    'esta descansando
-                                    
-                                    Call Sanar(iUserIndex, bEnviarStats, SanaIntervaloDescansar)
-
-                                    If bEnviarStats Then
-                                        Call WriteUpdateHP(iUserIndex)
-                                        bEnviarStats = False
-                                    End If
-
-                                    If .flags.Desnudo = 0 Then
-                                        Call RecStamina(iUserIndex, bEnviarStats, StaminaIntervaloDescansar)
-                                    Else
-                                        Call PierdeEnergia(iUserIndex, bEnviarStats, IntervaloPerderStamina * 2)
-                                    End If
-
-                                    If bEnviarStats Then
-                                        '  Call WriteUpdateSta(iUserIndex)
-                                        bEnviarStats = False
-                                    End If
-
-                                    'termina de descansar automaticamente
-                                    If .Stats.MaxHp = .Stats.MinHp And .Stats.MaxSta = .Stats.MinSta Then
-                                        Call WriteRestOK(iUserIndex)
-                                        Call WriteConsoleMsg(iUserIndex, "Has terminado de descansar.", FontTypeNames.FONTTYPE_INFO)
-                                        .flags.Descansar = False
-                                    End If
-                                    
-                                End If
-
-                            End If
-
-                        End If
-                        
-                        If bEnviarAyS Then Call WriteUpdateHungerAndThirst(iUserIndex)
-                        
-                    Else
-                        If .flags.Traveling <> 0 Then Call TravelingEffect(iUserIndex)
-                                                
-                    End If 'Muerto
-
-                Else 'no esta logeado?
-                    'Inactive players will be removed!
-                    .Counters.IdleCount = .Counters.IdleCount + 1
-                    
-                    'El intervalo cambia segÃºn si enviÃ³ el primer paquete
-                    If .Counters.IdleCount > IIf(.flags.FirstPacket, TimeoutEsperandoLoggear, TimeoutPrimerPaquete) Then
-                        Call CloseSocket(iUserIndex)
+                        If .flags.Incinerado <> 0 Then Call EfectoIncineramiento(iUserIndex)
                     End If
 
-                End If 'UserLogged
+                    If .flags.Meditando Then Call DoMeditar(iUserIndex)
 
-            End If
+                    If .flags.Mimetizado <> 0 Then Call EfectoMimetismo(iUserIndex)
+
+                    If .flags.AdminInvisible <> 1 Then
+                        If .flags.Oculto = 1 Then Call DoPermanecerOculto(iUserIndex)
+                    End If
+
+                    If .NroMascotas > 0 Then Call TiempoInvocacion(iUserIndex)
+
+                    Call EfectoStamina(iUserIndex)
+
+                End If 'Muerto
+
+            End If 'UserLogged
 
         End With
 
@@ -1603,7 +1497,7 @@ Private Sub GameTimer_Timer()
     Exit Sub
 
 HayError:
-    LogError ("Error en GameTimer: " & Err.Description & " UserIndex = " & iUserIndex)
+    Call TraceError(Err.Number, Err.Description & vbNewLine & "UserIndex:" & iUserIndex, "frmMain.GameTimer", Erl)
 
 End Sub
 
@@ -1631,69 +1525,18 @@ Private Sub HoraFantasia_Timer()
     Exit Sub
 
 HoraFantasia_Timer_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmMain.HoraFantasia_Timer", Erl)
-    Resume Next
-        
-End Sub
-
-Private Sub LimpiezaTimer_Timer()
-        
-    On Error GoTo LimpiezaTimer_Timer_Err
-    
-        
-
-    Call LimpiarItemsViejos
-        
-        
-    Exit Sub
-
-LimpiezaTimer_Timer_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmMain.LimpiezaTimer_Timer", Erl)
+    Call TraceError(Err.Number, Err.Description, "frmMain.HoraFantasia_Timer", Erl)
 
         
 End Sub
 
-Private Sub loadcredit_Click()
-        
-        On Error GoTo loadcredit_Click_Err
-        
-
-        Dim Tmp  As String
-
-        Dim tmp2 As String
-
-100     Tmp = InputBox("Â¿Cuenta?", "Ingrese la cuenta")
-
-102     If FileExist(CuentasPath & Tmp & ".act", vbNormal) Then
-104         tmp2 = InputBox("Â¿Cantidad?", "Ingrese cantidad de creditos a agregar")
-
-106         If IsNumeric(tmp2) Then
-108             Call AgregarCreditosDonador(Tmp, CLng(tmp2))
-            Else
-110             MsgBox ("Cantidad invalida")
-
-            End If
-
-        Else
-112         MsgBox ("La cuenta no existe")
-
-        End If
-
-        
-        Exit Sub
-
-loadcredit_Click_Err:
-114     Call RegistrarError(Err.Number, Err.Description, "frmMain.loadcredit_Click", Erl)
-116     Resume Next
-        
-End Sub
 
 Private Sub mnuCerrar_Click()
         
         On Error GoTo mnuCerrar_Click_Err
         
 
-100     If MsgBox("Â¡Â¡Atencion!! Si cierra el servidor puede provocar la perdida de datos. Â¿Desea hacerlo de todas maneras?", vbYesNo) = vbYes Then
+100     If MsgBox("¡¡Atencion!! Si cierra el servidor puede provocar la perdida de datos. ¿Desea hacerlo de todas maneras?", vbYesNo) = vbYes Then
 
             Dim f
 102         For Each f In Forms
@@ -1706,8 +1549,8 @@ Private Sub mnuCerrar_Click()
         Exit Sub
 
 mnuCerrar_Click_Err:
-106     Call RegistrarError(Err.Number, Err.Description, "frmMain.mnuCerrar_Click", Erl)
-108     Resume Next
+106     Call TraceError(Err.Number, Err.Description, "frmMain.mnuCerrar_Click", Erl)
+
         
 End Sub
 
@@ -1721,8 +1564,8 @@ Private Sub mnusalir_Click()
         Exit Sub
 
 mnusalir_Click_Err:
-102     Call RegistrarError(Err.Number, Err.Description, "frmMain.mnusalir_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmMain.mnusalir_Click", Erl)
+
         
 End Sub
 
@@ -1741,7 +1584,7 @@ Public Sub mnuMostrar_Click()
         Exit Sub
 
 mnuMostrar_Click_Err:
-104     Call RegistrarError(Err.Number, Err.Description, "frmMain.mnuMostrar_Click", Erl)
+104     Call TraceError(Err.Number, Err.Description, "frmMain.mnuMostrar_Click", Erl)
 
         
 End Sub
@@ -1767,7 +1610,7 @@ Private Sub KillLog_Timer()
     Exit Sub
 
 KillLog_Timer_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmMain.KillLog_Timer", Erl)
+    Call TraceError(Err.Number, Err.Description, "frmMain.KillLog_Timer", Erl)
 
         
 End Sub
@@ -1782,8 +1625,8 @@ Private Sub mnuServidor_Click()
         Exit Sub
 
 mnuServidor_Click_Err:
-102     Call RegistrarError(Err.Number, Err.Description, "frmMain.mnuServidor_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmMain.mnuServidor_Click", Erl)
+
         
 End Sub
 
@@ -1793,11 +1636,11 @@ Private Sub mnuSystray_Click()
         
 
         Dim i   As Integer
-        Dim s   As String
+        Dim S   As String
         Dim nid As NOTIFYICONDATA
 
-100     s = "ARGENTUM-ONLINE"
-102     nid = setNOTIFYICONDATA(frmMain.hwnd, vbNull, NIF_MESSAGE Or NIF_ICON Or NIF_TIP, WM_MOUSEMOVE, frmMain.Icon, s)
+100     S = "ARGENTUM-ONLINE"
+102     nid = setNOTIFYICONDATA(frmMain.hwnd, vbNull, NIF_MESSAGE Or NIF_ICON Or NIF_TIP, WM_MOUSEMOVE, frmMain.Icon, S)
 104     i = Shell_NotifyIconA(NIM_ADD, nid)
     
 106     If WindowState <> vbMinimized Then WindowState = vbMinimized
@@ -1808,52 +1651,9 @@ Private Sub mnuSystray_Click()
         Exit Sub
 
 mnuSystray_Click_Err:
-110     Call RegistrarError(Err.Number, Err.Description, "frmMain.mnuSystray_Click", Erl)
-112     Resume Next
+110     Call TraceError(Err.Number, Err.Description, "frmMain.mnuSystray_Click", Erl)
+
         
-End Sub
-
-Private Sub npcataca_Timer()
-    
-    On Error GoTo npcataca_Timer_Err
-    
-    
-
-    
-
-    Dim npc As Integer
-
-    'For npc = 1 To LastNPC
-    '  NpcList(npc).CanAttack = 1
-    'Next npc
-
-    
-    Exit Sub
-
-npcataca_Timer_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmMain.npcataca_Timer", Erl)
-
-    
-End Sub
-
-Private Sub packetResend_Timer()
-
-On Error GoTo Handler
-
-    'If there is anything to be sent, we send it
-    Dim i As Long
-    For i = 1 To LastUser
-        If UserList(i).ConnIDValida Then
-            Call FlushBuffer(i)
-        End If
-    Next
-    
-    Exit Sub
-    
-Handler:
-    Call RegistrarError(Err.Number, Err.Description, "frmMain.packetResend_Timer")
-    Resume Next
-    
 End Sub
 
 Private Sub SubastaTimer_Timer()
@@ -1863,7 +1663,7 @@ Private Sub SubastaTimer_Timer()
 
     'Si ya paso un minuto y todavia no hubo oferta, avisamos que se cancela en un minuto
     If Subasta.TiempoRestanteSubasta = 240 And Subasta.HuboOferta = False Then
-        Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Â¡Quedan 4 minuto(s) para finalizar la subasta! Escribe /SUBASTA para mas informaciÃ³n. La subasta serÃ¡ cancelada si no hay ofertas en el prÃ³ximo minuto.", FontTypeNames.FONTTYPE_SUBASTA))
+        Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("¡Quedan 4 minuto(s) para finalizar la subasta! Escribe /SUBASTA para mas información. La subasta será cancelada si no hay ofertas en el próximo minuto.", e_FontTypeNames.FONTTYPE_SUBASTA))
         Subasta.MinutosDeSubasta = 4
         Subasta.PosibleCancelo = True
 
@@ -1872,7 +1672,7 @@ Private Sub SubastaTimer_Timer()
     'Si ya pasaron dos minutos y no hubo ofertas, cancelamos la subasta
     If Subasta.TiempoRestanteSubasta = 180 And Subasta.HuboOferta = False Then
         Subasta.HaySubastaActiva = False
-        Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Subasta cancelada por falta de ofertas.", FontTypeNames.FONTTYPE_SUBASTA))
+        Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Subasta cancelada por falta de ofertas.", e_FontTypeNames.FONTTYPE_SUBASTA))
         'Devolver item antes de resetear datos
         Call DevolverItem
         Exit Sub
@@ -1886,26 +1686,26 @@ Private Sub SubastaTimer_Timer()
     
     If Subasta.TiempoRestanteSubasta > 0 And Subasta.PosibleCancelo = False Then
         If Subasta.TiempoRestanteSubasta = 240 Then
-            Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Â¡Quedan 4 minuto(s) para finalizar la subasta! Escribe /SUBASTA para mas informaciÃ³n.", FontTypeNames.FONTTYPE_SUBASTA))
+            Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("¡Quedan 4 minuto(s) para finalizar la subasta! Escribe /SUBASTA para mas información.", e_FontTypeNames.FONTTYPE_SUBASTA))
             Subasta.MinutosDeSubasta = "4"
 
         End If
         
         If Subasta.TiempoRestanteSubasta = 180 Then
-            Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Â¡Quedan 3 minuto(s) para finalizar la subasta! Escribe /SUBASTA para mas informaciÃ³n.", FontTypeNames.FONTTYPE_SUBASTA))
+            Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("¡Quedan 3 minuto(s) para finalizar la subasta! Escribe /SUBASTA para mas información.", e_FontTypeNames.FONTTYPE_SUBASTA))
             Subasta.MinutosDeSubasta = "3"
 
         End If
 
         If Subasta.TiempoRestanteSubasta = 120 Then
-            Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Â¡Quedan 2 minuto(s) para finalizar la subasta! Escribe /SUBASTA para mas informaciÃ³n.", FontTypeNames.FONTTYPE_SUBASTA))
+            Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("¡Quedan 2 minuto(s) para finalizar la subasta! Escribe /SUBASTA para mas información.", e_FontTypeNames.FONTTYPE_SUBASTA))
             Subasta.MinutosDeSubasta = "2"
 
         End If
 
         If Subasta.TiempoRestanteSubasta = 60 Then
             Subasta.MinutosDeSubasta = "1"
-            Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Â¡Quedan 1 minuto(s) para finalizar la subasta! Escribe /SUBASTA para mas informaciÃ³n.", FontTypeNames.FONTTYPE_SUBASTA))
+            Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("¡Quedan 1 minuto(s) para finalizar la subasta! Escribe /SUBASTA para mas información.", e_FontTypeNames.FONTTYPE_SUBASTA))
 
         End If
 
@@ -1914,7 +1714,7 @@ Private Sub SubastaTimer_Timer()
     End If
     
     If Subasta.TiempoRestanteSubasta = 1 Then
-        Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Â¡La subasta a terminado! El ganador fue: " & Subasta.Comprador, FontTypeNames.FONTTYPE_SUBASTA))
+        Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("¡La subasta a terminado! El ganador fue: " & Subasta.Comprador, e_FontTypeNames.FONTTYPE_SUBASTA))
         Call FinalizarSubasta
 
     End If
@@ -1923,8 +1723,8 @@ Private Sub SubastaTimer_Timer()
     Exit Sub
 
 SubastaTimer_Timer_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmMain.SubastaTimer_Timer", Erl)
-    Resume Next
+    Call TraceError(Err.Number, Err.Description, "frmMain.SubastaTimer_Timer", Erl)
+
         
 End Sub
 
@@ -1940,16 +1740,16 @@ Private Sub TIMER_AI_Timer()
 
     'Barrin 29/9/03
     If Not haciendoBK And Not EnPausa Then
-
+    
         'Update NPCs
         For NpcIndex = 1 To LastNPC
             
-            With Npclist(NpcIndex)
+            With NpcList(NpcIndex)
             
                 If .flags.NPCActive Then 'Nos aseguramos que sea INTELIGENTE!
                 
                     If .NPCtype = DummyTarget Then
-                        ' Regenera vida despuÃ©s de X tiempo sin atacarlo
+                        ' Regenera vida después de X tiempo sin atacarlo
                         If .Stats.MinHp < .Stats.MaxHp Then
                             .Contadores.UltimoAtaque = .Contadores.UltimoAtaque - 1
                             
@@ -1958,30 +1758,20 @@ Private Sub TIMER_AI_Timer()
                                 .Stats.MinHp = .Stats.MaxHp
                             End If
                         End If
-                
-                    ElseIf .flags.Paralizado = 1 Or .flags.Inmovilizado = 1 Then
-                        Call EfectoParalisisNpc(NpcIndex)
 
                     Else
                         'Usamos AI si hay algun user en el mapa
                         Mapa = .Pos.Map
                         
+                        If .flags.Paralizado > 0 Then Call EfectoParalisisNpc(NpcIndex)
+                        If .flags.Inmovilizado > 0 Then Call EfectoInmovilizadoNpc(NpcIndex)
+                        
                         If Mapa > 0 Then
-                            
-                            If MapInfo(Mapa).NumUsers > 0 Then
+                            'Emancu: Vamos a probar si el server se degrada moviendo TODOS los npc, con o sin users. HarThaoS / WyroX: Si, se degrada.
+                            If MapInfo(Mapa).NumUsers > 0 Then ' Or NpcList(NpcIndex).NPCtype = e_NPCType.GuardiaNpc Then
     
                                 If IntervaloPermiteMoverse(NpcIndex) Then
-                                        
-                                    'Si NO es pretoriano...
-                                    If .NPCtype <> eNPCType.Pretoriano Then
-                                        Call NPCAI(NpcIndex)
-                                    
-                                    Else '... si es pretoriano.
-                                        Call ClanPretoriano(.ClanIndex).PerformPretorianAI(NpcIndex)
-                                        
-                                    End If
-                                        
-                                        
+                                        Call NpcAI(NpcIndex)
                                 End If
     
                             End If
@@ -2001,13 +1791,15 @@ Private Sub TIMER_AI_Timer()
     Exit Sub
 
 ErrorHandler:
-    Call LogError("Error en TIMER_AI_Timer " & Npclist(NpcIndex).name & " mapa:" & Npclist(NpcIndex).Pos.Map)
+    Call TraceError(Err.Number, Err.Description & vbNewLine & _
+                                    "NPC: " & NpcList(NpcIndex).Name & _
+                                    " en la posicion: " & NpcList(NpcIndex).Pos.Map & "-" & NpcList(NpcIndex).Pos.X & "-" & NpcList(NpcIndex).Pos.Y, "frmMain.Timer_AI", Erl)
     Call MuereNpc(NpcIndex, 0)
 
 End Sub
 
 Private Sub TimerMeteorologia_Timer()
-    'Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor > Timer de lluvia en :" & TimerMeteorologico, FontTypeNames.FONTTYPE_SERVER))
+    'Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor > Timer de lluvia en :" & TimerMeteorologico, e_FontTypeNames.FONTTYPE_SERVER))
         
     On Error GoTo TimerMeteorologia_Timer_Err
         
@@ -2028,14 +1820,14 @@ Private Sub TimerMeteorologia_Timer()
             Nieblando = True
             ServidorNublado = True
             Call SendData(SendTarget.ToAll, 0, PrepareMessageNieblandoToggle(IntensidadDeNubes))
-            ' Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor > Empezaron las nubes con intensidad: " & IntensidadDeNubes & "%.", FontTypeNames.FONTTYPE_SERVER))
-            Call AgregarAConsola("Servidor > Empezaron las nubes")
+            ' Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor > Empezaron las nubes con intensidad: " & IntensidadDeNubes & "%.", e_FontTypeNames.FONTTYPE_SERVER))
+            Call AgregarAConsola("Servidor » Empezaron las nubes")
             
             TimerMeteorologico = TimerMeteorologico - 1
         Else
             ServidorNublado = False
-            ' Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor > Tranquilo, no hay nubes ni va a llover.", FontTypeNames.FONTTYPE_SERVER))
-            Call AgregarAConsola("Servidor >Tranquilo, no hay nubes ni va a llover.")
+            ' Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor > Tranquilo, no hay nubes ni va a llover.", e_FontTypeNames.FONTTYPE_SERVER))
+            Call AgregarAConsola("Servidor » Tranquilo, no hay nubes ni va a llover.")
             Call ResetMeteo
             Exit Sub
 
@@ -2047,8 +1839,8 @@ Private Sub TimerMeteorologia_Timer()
         TimerMeteorologico = TimerMeteorologico - 1
         'Enviar Truenos y rayos
         Truenos.Enabled = True
-        'Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor > Envio un truenito para que te asustes.", FontTypeNames.FONTTYPE_SERVER))
-        Call AgregarAConsola("Servidor >Truenos y nubes activados.")
+        'Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor > Envio un truenito para que te asustes.", e_FontTypeNames.FONTTYPE_SERVER))
+        Call AgregarAConsola("Servidor » Truenos y nubes activados.")
         Exit Sub
 
     End If
@@ -2064,15 +1856,15 @@ Private Sub TimerMeteorologia_Timer()
             Nebando = True
         
             Call SendData(SendTarget.ToAll, 0, PrepareMessageNevarToggle())
-            '  Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor > LLuvia lluvia y mas lluvia!", FontTypeNames.FONTTYPE_SERVER))
-            Call AgregarAConsola("Servidor >Lloviendo.")
+            '  Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor > LLuvia lluvia y mas lluvia!", e_FontTypeNames.FONTTYPE_SERVER))
+            Call AgregarAConsola("Servidor » Lloviendo.")
             Lloviendo = True
             TimerMeteorologico = TimerMeteorologico - 1
         Else
             Nieblando = False
             Call SendData(SendTarget.ToAll, 0, PrepareMessageNieblandoToggle(IntensidadDeNubes))
-            Call AgregarAConsola("Servidor >Truenos y nubes desactivados.")
-            ' Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor > Tranquilo, las nubes se fueron.", FontTypeNames.FONTTYPE_SERVER))
+            Call AgregarAConsola("Servidor » Truenos y nubes desactivados.")
+            ' Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor > Tranquilo, las nubes se fueron.", e_FontTypeNames.FONTTYPE_SERVER))
             Lloviendo = False
             ServidorNublado = False
             Truenos.Enabled = False
@@ -2097,7 +1889,7 @@ Private Sub TimerMeteorologia_Timer()
         Call SendData(SendTarget.ToAll, 0, PrepareMessageRainToggle())
         
         Call SendData(SendTarget.ToAll, 0, PrepareMessageNevarToggle())
-        ' Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor > Se acabo la lluvia seÃ±ores.", FontTypeNames.FONTTYPE_SERVER))
+        ' Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Servidor > Se acabo la lluvia señores.", e_FontTypeNames.FONTTYPE_SERVER))
         Call AgregarAConsola("Servidor >Lluvia desactivada.")
         Lloviendo = False
         Truenos.Enabled = False
@@ -2113,8 +1905,8 @@ Private Sub TimerMeteorologia_Timer()
     Exit Sub
 
 TimerMeteorologia_Timer_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmMain.TimerMeteorologia_Timer", Erl)
-    Resume Next
+    Call TraceError(Err.Number, Err.Description, "frmMain.TimerMeteorologia_Timer", Erl)
+
         
 End Sub
 
@@ -2126,24 +1918,21 @@ Private Sub TimerRespawn_Timer()
 
     'Update NPCs
     For NpcIndex = 1 To MaxRespawn
-
+        'Debug.Print RespawnList(NpcIndex).name
         If RespawnList(NpcIndex).flags.NPCActive Then  'Nos aseguramos que este muerto
-            If RespawnList(NpcIndex).Contadores.InvervaloRespawn <> 0 Then
-                RespawnList(NpcIndex).Contadores.InvervaloRespawn = RespawnList(NpcIndex).Contadores.InvervaloRespawn - 1
+            If RespawnList(NpcIndex).Contadores.IntervaloRespawn > 0 Then
+                RespawnList(NpcIndex).Contadores.IntervaloRespawn = RespawnList(NpcIndex).Contadores.IntervaloRespawn - 1
+            Else
+                RespawnList(NpcIndex).flags.NPCActive = False
 
-                If RespawnList(NpcIndex).Contadores.InvervaloRespawn = 0 Then
-                    RespawnList(NpcIndex).flags.NPCActive = False
-
-                    If RespawnList(NpcIndex).InformarRespawn = 1 Then
-                        Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg(RespawnList(NpcIndex).name & " ha regresado y estÃ¡ listo para enfrentarte.", FontTypeNames.FONTTYPE_EXP))
-                        Call SendData(SendTarget.ToAll, 0, PrepareMessagePlayWave(257, NO_3D_SOUND, NO_3D_SOUND)) 'Para evento de respwan
+                If RespawnList(NpcIndex).InformarRespawn = 1 Then
+                    Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg(RespawnList(NpcIndex).Name & " ha vuelto a este mundo.", e_FontTypeNames.FONTTYPE_EXP))
+                    Call SendData(SendTarget.ToAll, 0, PrepareMessagePlayWave(257, NO_3D_SOUND, NO_3D_SOUND)) 'Para evento de respwan
                         
-                        'Call SendData(SendTarget.ToAll, 0, PrepareMessagePlayWave(246, NO_3D_SOUND, NO_3D_SOUND)) 'Para evento de respwan
-                    End If
-
-                    Call ReSpawnNpc(RespawnList(NpcIndex))
-
+                    'Call SendData(SendTarget.ToAll, 0, PrepareMessagePlayWave(246, NO_3D_SOUND, NO_3D_SOUND)) 'Para evento de respwan
                 End If
+
+                Call ReSpawnNpc(RespawnList(NpcIndex))
 
             End If
 
@@ -2154,7 +1943,9 @@ Private Sub TimerRespawn_Timer()
     Exit Sub
 
 ErrorHandler:
-    Call LogError("Error en TIMER_RESPAWN " & Npclist(NpcIndex).name & " mapa:" & Npclist(NpcIndex).Pos.Map)
+    Call TraceError(Err.Number, Err.Description & vbNewLine & _
+                                    "NPC: " & NpcList(NpcIndex).Name & _
+                                    " en la posicion: " & NpcList(NpcIndex).Pos.Map & "-" & NpcList(NpcIndex).Pos.X & "-" & NpcList(NpcIndex).Pos.Y, "frmMain.TimerRespawn_Timer", Erl)
     Call MuereNpc(NpcIndex, 0)
 
 End Sub
@@ -2178,20 +1969,20 @@ Private Sub tPiqueteC_Timer()
     For i = 1 To LastUser
 
         If UserList(i).flags.UserLogged Then
-            If MapData(UserList(i).Pos.Map, UserList(i).Pos.X, UserList(i).Pos.Y).trigger = eTrigger.ANTIPIQUETE Then
+            If MapData(UserList(i).Pos.Map, UserList(i).Pos.X, UserList(i).Pos.Y).trigger = e_Trigger.ANTIPIQUETE Then
                 UserList(i).Counters.PiqueteC = UserList(i).Counters.PiqueteC + 1
-                'Call WriteConsoleMsg(i, "EstÃ¡s obstruyendo la via pÃºblica, muÃ©vete o serÃ¡s encarcelado!!!", FontTypeNames.FONTTYPE_INFO)
+                'Call WriteConsoleMsg(i, "Estï¿½s obstruyendo la via pï¿½blica, muï¿½vete o serï¿½s encarcelado!!!", e_FontTypeNames.FONTTYPE_INFO)
                 
                 'WyroX: Le empiezo a avisar a partir de los 18 segundos, para no spamear
                 If UserList(i).Counters.PiqueteC > 3 Then
-                    Call WriteLocaleMsg(i, "70", FontTypeNames.FONTTYPE_INFO)
+                    Call WriteLocaleMsg(i, "70", e_FontTypeNames.FONTTYPE_INFO)
                 End If
             
                 If UserList(i).Counters.PiqueteC > 10 Then
                     UserList(i).Counters.PiqueteC = 0
                     'Call Encarcelar(i, TIEMPO_CARCEL_PIQUETE)
                     'WyroX: En vez de encarcelarlo, lo sacamos del juego.
-                    'Ojo! No sÃ© si se puede abusar de esto para evitar los 10 segundos al salir
+                    'Ojo! No sï¿½ si se puede abusar de esto para evitar los 10 segundos al salir
                     Call WriteDisconnect(i)
                     Call CloseSocket(i)
                 End If
@@ -2202,34 +1993,10 @@ Private Sub tPiqueteC_Timer()
 
             End If
 
-            'ustedes se preguntaran que hace esto aca?
-            'bueno la respuesta es simple: el codigo de AO es una mierda y encontrar
-            'todos los puntos en los cuales la alineacion puede cambiar es un dolor de
-            'huevos, asi que lo controlo aca, cada 6 segundos, lo cual es razonable
-
-            'GI = UserList(i).guildIndex
-            ' If GI > 0 Then
-            '  NuevaA = False
-            ' NuevoL = False
-            ' If Not modGuilds.m_ValidarPermanencia(i, True, NuevaA, NuevoL) Then
-            '  Call WriteConsoleMsg(i, "Has sido expulsado del clan. Â¡El clan ha sumado un punto de antifacciÃ³n!", FontTypeNames.FONTTYPE_GUILD)
-            ' End If
-            'If NuevaA Then
-            '   Call SendData(SendTarget.ToGuildMembers, GI, PrepareMessageConsoleMsg("Â¡El clan ha pasado a tener alineaciÃ³n neutral!", FontTypeNames.FONTTYPE_GUILD))
-            '   Call LogClanes("El clan cambio de alineacion!")
-            'End If
-            '  If NuevoL Then
-            '   Call SendData(SendTarget.ToGuildMembers, GI, PrepareMessageConsoleMsg("Â¡El clan tiene un nuevo lÃ­der!", FontTypeNames.FONTTYPE_GUILD))
-            '  Call LogClanes("El clan tiene nuevo lider!")
-            ' End If
-            ' End If
-
             If segundos >= 18 Then
                 If segundos >= 18 Then UserList(i).Counters.Pasos = 0
 
             End If
-
-            
 
         End If
     
@@ -2240,7 +2007,7 @@ Private Sub tPiqueteC_Timer()
     Exit Sub
 
 ErrHandler:
-    Call LogError("Error en tPiqueteC_Timer " & Err.Number & ": " & Err.Description)
+    Call TraceError(Err.Number, Err.Description, "frmMain.tPiqueteC_Timer", Erl)
 
 End Sub
 
@@ -2255,15 +2022,15 @@ Private Sub Truenos_Timer()
 
     Enviar = RandomNumber(1, 15)
 
-    Dim duracion As Long
+    Dim Duracion As Long
 
     If Enviar < 8 Then
         TruenoWav = 399 + Enviar
 
         If TruenoWav = 404 Then TruenoWav = 406
-        duracion = RandomNumber(80, 250)
+        Duracion = RandomNumber(80, 250)
         Call SendData(SendTarget.ToAll, 0, PrepareMessagePlayWave(TruenoWav, NO_3D_SOUND, NO_3D_SOUND))
-        Call SendData(SendTarget.ToAll, 0, PrepareMessageFlashScreen(&HEFEECB, duracion))
+        Call SendData(SendTarget.ToAll, 0, PrepareMessageFlashScreen(&HEFEECB, Duracion))
         
     End If
 
@@ -2271,8 +2038,8 @@ Private Sub Truenos_Timer()
     Exit Sub
 
 Truenos_Timer_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmMain.Truenos_Timer", Erl)
-    Resume Next
+    Call TraceError(Err.Number, Err.Description, "frmMain.Truenos_Timer", Erl)
+
         
 End Sub
 
@@ -2286,7 +2053,8 @@ Private Sub UptimeTimer_Timer()
     Exit Sub
 
 UptimeTimer_Timer_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmMain.UptimeTimer_Timer", Erl)
-    Resume Next
+    Call TraceError(Err.Number, Err.Description, "frmMain.UptimeTimer_Timer", Erl)
+
         
 End Sub
+

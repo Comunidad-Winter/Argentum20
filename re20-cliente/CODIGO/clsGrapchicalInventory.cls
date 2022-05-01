@@ -13,7 +13,7 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 '*****************************************************
 'Graphical inventory for ORE 0.4.1
-'Designed and implemented by Juan Mart√≠n Sotuyo Dodero (Maraxus)
+'Designed and implemented by Juan MartÌn Sotuyo Dodero (Maraxus)
 'juansotuyo@hotmail.com
 '*****************************************************
 
@@ -55,15 +55,15 @@ Dim ShowQuantities             As Boolean
 
 Private MAININVENTORY_MIDSPACE As Byte
 
-' Slot item arrastrado (0 si no est√° arrastrando)
+' Slot item arrastrado (0 si no est· arrastrando)
 Dim Dragging                   As Integer
 
-' Posici√≥n del item arrastrado
+' PosiciÛn del item arrastrado
 Dim XDrag                      As Integer
 
 Dim YDrag                      As Integer
 
-' Flag para saber si se clique√≥ dentro del inventario
+' Flag para saber si se cliqueÛ dentro del inventario
 ' al hacer clic sobre el Picture
 Dim wasClickedInside           As Boolean
 
@@ -77,7 +77,7 @@ Dim UserInventory()            As Inventory    'User's inventory
 Dim WithEvents InventoryWindow As PictureBox    'Placeholder where to render the inventory
 Attribute InventoryWindow.VB_VarHelpID = -1
 
-' Evento disparado cuando un item se solt√≥
+' Evento disparado cuando un item se soltÛ
 Public Event ItemDropped(ByVal Drag As Integer, ByVal Drop As Integer, ByVal x As Integer, ByVal y As Integer)
 
 #If ConMenuesConextuales = 1 Then
@@ -86,8 +86,8 @@ Public Event ItemDropped(ByVal Drag As Integer, ByVal Drop As Integer, ByVal x A
 
 #End If
 
-' Valores constantes que no ameritan que los reciba como par√°metro
-Const ITEM_SIZE = 32 ' El ancho de los items (nunca deber√≠a cambiar
+' Valores constantes que no ameritan que los reciba como par·metro
+Const ITEM_SIZE = 32 ' El ancho de los items (nunca deberÌa cambiar
 
 Const LETRA_GRANDE_Y = 20 ' Offset Y de cantidad de items (letra grande)
 
@@ -97,11 +97,11 @@ Const EQUIPPED_Y = -2 ' Offset Y del caracter de equipado
 
 Const EQUIPPED_CHARACTER = "+" ' Caracter de item equipado
 
-Const SELECTION_BOX_W = 34 ' Ancho de la cajita de selecci√≥n (se centra autom√°ticamente)
+Const SELECTION_BOX_W = 34 ' Ancho de la cajita de selecciÛn (se centra autom·ticamente)
 
-Const SELECTION_BOX_H = 34 ' Alto de la cajita de selecci√≥n (se centra autom√°ticamente)
+Const SELECTION_BOX_H = 34 ' Alto de la cajita de selecciÛn (se centra autom·ticamente)
 
-'Private Const MAININVENTORY_MIDSPACE As Integer = 0 '9 'Separador de inventario b√°sico y extra slots en el inventario principal del usuario
+'Private Const MAININVENTORY_MIDSPACE As Integer = 0 '9 'Separador de inventario b·sico y extra slots en el inventario principal del usuario
 
 ' Valores calculados
 Const HALF_ITEM_SIZE = ITEM_SIZE \ 2
@@ -126,7 +126,7 @@ Dim HEIGHT_MAIN_INVENTORY As Integer
 Private Sub Class_Initialize()
 
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 27/07/04
     '
     '***************************************************
@@ -135,7 +135,7 @@ End Sub
 Private Sub Class_Terminate()
 
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 27/07/04
     '
     '***************************************************
@@ -197,7 +197,7 @@ Public Sub SelectGold()
     
 
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 27/07/04
     'Sets the gold as the currently selected item
     '***************************************************
@@ -213,14 +213,14 @@ Public Sub SelectGold()
     Exit Sub
 
 SelectGold_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.SelectGold", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.SelectGold", Erl)
     Resume Next
     
 End Sub
 
 Public Property Get SelectedItem() As Long
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 27/07/04
     'Retrieves the selected item index
     '***************************************************
@@ -233,7 +233,7 @@ Public Property Get SelectedItem() As Long
     Exit Property
 
 SelectedItem_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.SelectedItem", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.SelectedItem", Erl)
     Resume Next
     
 End Property
@@ -248,14 +248,14 @@ Public Property Get IsItemSelected() As Boolean
     Exit Property
 
 IsItemSelected_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.IsItemSelected", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.IsItemSelected", Erl)
     Resume Next
     
 End Property
 
 Public Property Get MaxHit(ByVal Slot As Byte) As Integer
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 27/07/04
     'Retrieves the max hit of the selected item
     '***************************************************
@@ -268,14 +268,14 @@ Public Property Get MaxHit(ByVal Slot As Byte) As Integer
     Exit Property
 
 MaxHit_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.MaxHit", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.MaxHit", Erl)
     Resume Next
     
 End Property
 
 Public Property Get MinHit(ByVal Slot As Byte) As Integer
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 27/07/04
     'Retrieves the min hit of the selected item
     '***************************************************
@@ -288,14 +288,14 @@ Public Property Get MinHit(ByVal Slot As Byte) As Integer
     Exit Property
 
 MinHit_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.MinHit", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.MinHit", Erl)
     Resume Next
     
 End Property
 
 Public Property Get Def(ByVal Slot As Byte) As Integer
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 27/07/04
     'Retrieves the defense of the selected item
     '***************************************************
@@ -308,14 +308,14 @@ Public Property Get Def(ByVal Slot As Byte) As Integer
     Exit Property
 
 Def_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.Def", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.Def", Erl)
     Resume Next
     
 End Property
 
 Public Property Get GrhIndex(ByVal Slot As Byte) As Long
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 27/07/04
     'Retrieves the grh index of the selected item
     '***************************************************
@@ -328,14 +328,14 @@ Public Property Get GrhIndex(ByVal Slot As Byte) As Long
     Exit Property
 
 GrhIndex_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.GrhIndex", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.GrhIndex", Erl)
     Resume Next
     
 End Property
 
 Public Property Get Valor(ByVal Slot As Byte) As Single
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 27/07/04
     'Retrieves the value of the selected item
     '***************************************************
@@ -348,7 +348,7 @@ Public Property Get Valor(ByVal Slot As Byte) As Single
     Exit Property
 
 Valor_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.Valor", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.Valor", Erl)
     Resume Next
     
 End Property
@@ -359,7 +359,7 @@ Public Property Get Amount(ByVal Slot As Byte) As Long
     
 
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 27/07/04
     'Retrieves the selected item's amount
     '***************************************************
@@ -374,14 +374,14 @@ Public Property Get Amount(ByVal Slot As Byte) As Long
     Exit Property
 
 Amount_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.Amount", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.Amount", Erl)
     Resume Next
     
 End Property
 
 Public Property Get OBJIndex(ByVal Slot As Byte) As Integer
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 27/07/04
     'Retrieves the selected item's object index
     '***************************************************
@@ -394,14 +394,14 @@ Public Property Get OBJIndex(ByVal Slot As Byte) As Integer
     Exit Property
 
 OBJIndex_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.OBJIndex", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.OBJIndex", Erl)
     Resume Next
     
 End Property
 
 Public Property Get ObjType(ByVal Slot As Byte) As Integer
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 27/07/04
     'Retrieves the selected item's object type
     '***************************************************
@@ -414,14 +414,14 @@ Public Property Get ObjType(ByVal Slot As Byte) As Integer
     Exit Property
 
 ObjType_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.ObjType", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.ObjType", Erl)
     Resume Next
     
 End Property
 
 Public Property Get ItemName(ByVal Slot As Byte) As String
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 27/07/04
     'Retrieves the selected item's name
     '***************************************************
@@ -434,14 +434,14 @@ Public Property Get ItemName(ByVal Slot As Byte) As String
     Exit Property
 
 ItemName_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.ItemName", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.ItemName", Erl)
     Resume Next
     
 End Property
 
 Public Property Get Equipped(ByVal Slot As Byte) As Boolean
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 27/07/04
     'Retrieves True if the item at the given pos is eqiupped
     '***************************************************
@@ -454,14 +454,14 @@ Public Property Get Equipped(ByVal Slot As Byte) As Boolean
     Exit Property
 
 Equipped_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.Equipped", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.Equipped", Erl)
     Resume Next
     
 End Property
 
 Public Property Get PuedeUsar(ByVal Slot As Byte) As Byte
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 27/07/04
     'Retrieves True if the item at the given pos is eqiupped
     '***************************************************
@@ -474,7 +474,7 @@ Public Property Get PuedeUsar(ByVal Slot As Byte) As Byte
     Exit Property
 
 PuedeUsar_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.PuedeUsar", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.PuedeUsar", Erl)
     Resume Next
     
 End Property
@@ -489,7 +489,7 @@ Public Property Get MaxSlots() As Integer
     Exit Property
 
 MaxSlots_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.MaxSlots", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.MaxSlots", Erl)
     Resume Next
     
 End Property
@@ -504,7 +504,7 @@ Public Property Get Columns() As Integer
     Exit Property
 
 Columns_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.Columns", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.Columns", Erl)
     Resume Next
     
 End Property
@@ -519,7 +519,7 @@ Public Property Get SlotDrag() As Byte
     Exit Property
 
 SlotDrag_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.SlotDrag", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.SlotDrag", Erl)
     Resume Next
     
 End Property
@@ -534,13 +534,13 @@ Public Property Get NeedsRedraw() As Boolean
     Exit Property
 
 NeedsRedraw_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.NeedsRedraw", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.NeedsRedraw", Erl)
     Resume Next
     
 End Property
 
 Public Sub ReDraw()
-    ' Provoca que el inventario se vuelta a dibujar el pr√≥ximo frame
+    ' Provoca que el inventario se vuelta a dibujar el prÛximo frame
     
     On Error GoTo ReDraw_Err
     
@@ -550,14 +550,14 @@ Public Sub ReDraw()
     Exit Sub
 
 ReDraw_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.ReDraw", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.ReDraw", Erl)
     Resume Next
     
 End Sub
 
 Public Sub SetItem(ByVal Slot As Byte, ByVal eOBJIndex As Integer, ByVal eAmount As Integer, ByVal eEquipped As Byte, ByVal eGrhIndex As Long, ByVal eObjType As Integer, ByVal eMaxHit As Integer, ByVal eMinHit As Integer, ByVal eDef As Integer, ByVal eValor As Single, ByVal eName As String, ByVal PuedeUsar As Byte)
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 12/04/06
     'Sets all data for a given inventory slot
     '***************************************************
@@ -588,14 +588,35 @@ Public Sub SetItem(ByVal Slot As Byte, ByVal eOBJIndex As Integer, ByVal eAmount
     Exit Sub
 
 SetItem_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.SetItem", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.SetItem", Erl)
     Resume Next
     
 End Sub
 
+Public Sub ClearSlot(ByVal Slot As Byte)
+    If Slot < 1 Or Slot > InvMaxSlots Then Exit Sub
+
+    With UserInventory(Slot)
+        .Amount = 0
+        .Def = 0
+        .Equipped = 0
+        .GrhIndex = 0
+        .MaxHit = 0
+        .MinHit = 0
+        .Name = vbNullString
+        .OBJIndex = 0
+        .ObjType = 0
+        .Valor = 0
+        .PuedeUsar = 0
+
+    End With
+
+    InvNeedsRedraw = True
+End Sub
+
 Public Sub SeleccionarItem(ByVal SelectedItem As Byte)
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 27/07/04
     'Retrieves the selected item index
     '***************************************************
@@ -609,7 +630,7 @@ Public Sub SeleccionarItem(ByVal SelectedItem As Byte)
     Exit Sub
 
 SeleccionarItem_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.SeleccionarItem", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.SeleccionarItem", Erl)
     Resume Next
     
 End Sub
@@ -624,14 +645,14 @@ Public Property Get ClickedInside() As Boolean
     Exit Property
 
 ClickedInside_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.ClickedInside", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.ClickedInside", Erl)
     Resume Next
     
 End Property
 
 Public Function GetSlot(ByVal x As Integer, ByVal y As Integer) As Byte
     ' Restamos el offset del inventario
-    ' (m√°s la mitad del borde, para hacer que los clics en los bordes sean como en el slot)
+    ' (m·s la mitad del borde, para hacer que los clics en los bordes sean como en el slot)
     
     On Error GoTo GetSlot_Err
     
@@ -639,13 +660,13 @@ Public Function GetSlot(ByVal x As Integer, ByVal y As Integer) As Byte
     x = x - InvOffsetX + HALF_BORDER_X
     y = y - InvOffsetY + HALF_BORDER_Y
     
-    ' Separaci√≥n entre inventario principal y slots de mochilas
+    ' SeparaciÛn entre inventario principal y slots de mochilas
     If isInventory Then
 
-        ' Si est√° por debajo del inventari normal
+        ' Si est· por debajo del inventari normal
         If y >= HEIGHT_MAIN_INVENTORY Then
 
-            ' Si est√° en el espacio entre medio, salimos
+            ' Si est· en el espacio entre medio, salimos
             If y < HEIGHT_MAIN_INVENTORY + MAININVENTORY_MIDSPACE Then Exit Function
             ' Restamos el offset para los items de abajo
             y = y - MAININVENTORY_MIDSPACE
@@ -654,8 +675,8 @@ Public Function GetSlot(ByVal x As Integer, ByVal y As Integer) As Byte
 
     End If
     
-    ' ** Cambiado: queda mejor si tambi√©n se pueden cliquear los bordes
-    ' Nos aseguramos que no clique√≥ en el borde de un slot
+    ' ** Cambiado: queda mejor si tambiÈn se pueden cliquear los bordes
+    ' Nos aseguramos que no cliqueÛ en el borde de un slot
     'If x Mod ITEM_OFFSET_X >= ITEM_SIZE Then Exit Function
     'If y Mod ITEM_OFFSET_Y >= ITEM_SIZE Then Exit Function
     
@@ -663,25 +684,25 @@ Public Function GetSlot(ByVal x As Integer, ByVal y As Integer) As Byte
     x = x \ ITEM_OFFSET_X
     y = y \ ITEM_OFFSET_Y
     
-    ' Nos aseguramos que no clique√≥ muy a izquierda ni muy a la derecha
+    ' Nos aseguramos que no cliqueÛ muy a izquierda ni muy a la derecha
     If x < 0 Or x >= ITEMS_PER_ROW Then Exit Function
     
-    ' Nos aseguramos que no clique√≥ muy arriba (despu√©s chequeamos por abajo)
+    ' Nos aseguramos que no cliqueÛ muy arriba (despuÈs chequeamos por abajo)
     If y < 0 Then Exit Function
 
-    ' Calculamos el √≠ndice del slot
+    ' Calculamos el Ìndice del slot
     GetSlot = x + y * ITEMS_PER_ROW + 1
     
-    ' Nos aseguramos de no pasarnos del l√≠mite de slots
-    ' (por ej. si hay 24 slots y la grilla es 5x5, al cliquear en el √∫ltimo "slot" este no existe;
-    ' o bien, si el Picture es m√°s grande que el inventario)
+    ' Nos aseguramos de no pasarnos del lÌmite de slots
+    ' (por ej. si hay 24 slots y la grilla es 5x5, al cliquear en el ˙ltimo "slot" este no existe;
+    ' o bien, si el Picture es m·s grande que el inventario)
     If GetSlot > InvMaxSlots Then GetSlot = 0
 
     
     Exit Function
 
 GetSlot_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.GetSlot", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.GetSlot", Erl)
     Resume Next
     
 End Function
@@ -744,7 +765,7 @@ Public Sub DrawInventory()
                 If UserInventory(i).Amount > 1 Then
                     Call RGBAList(Color, 239, 228, 176)
         
-                    If UserInventory(i).Amount > 1000 And InvSelectedItem <> i Then
+                    If InvSelectedItem <> i And UserInventory(i).Amount > 1000 And NumerosCompletosInventario = 0 Then
                         tmpString = Round(UserInventory(i).Amount * 0.001, 1) & "K"
                     Else
                         tmpString = UserInventory(i).Amount
@@ -767,7 +788,7 @@ Public Sub DrawInventory()
     Exit Sub
 
 DrawInventory_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.DrawInventory", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.DrawInventory", Erl)
     Resume Next
     
 End Sub
@@ -788,7 +809,7 @@ Public Sub DrawDraggedItem()
     Exit Sub
 
 DrawDraggedItem_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.DrawDraggedItem", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.DrawDraggedItem", Erl)
     Resume Next
     
 End Sub
@@ -823,7 +844,7 @@ Private Sub InventoryWindow_MouseDown(Button As Integer, Shift As Integer, x As 
     Exit Sub
 
 InventoryWindow_MouseDown_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.InventoryWindow_MouseDown", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.InventoryWindow_MouseDown", Erl)
     Resume Next
     
 End Sub
@@ -834,7 +855,7 @@ Private Sub InventoryWindow_MouseMove(Button As Integer, Shift As Integer, x As 
     
 
     ' Si estamos arrastrando
-    If Dragging >= 0 Then
+    If Dragging > 0 Then
 
         ' Mantenemos el item dentro del Picture
         If x < HALF_ITEM_SIZE Then x = HALF_ITEM_SIZE
@@ -853,7 +874,7 @@ Private Sub InventoryWindow_MouseMove(Button As Integer, Shift As Integer, x As 
     Exit Sub
 
 InventoryWindow_MouseMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.InventoryWindow_MouseMove", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.InventoryWindow_MouseMove", Erl)
     Resume Next
     
 End Sub
@@ -863,7 +884,7 @@ Private Sub InventoryWindow_MouseUp(Button As Integer, Shift As Integer, x As Si
     On Error GoTo InventoryWindow_MouseUp_Err
     
     
-    ' Me mantengo dentro de los l√≠mites
+    ' Me mantengo dentro de los lÌmites
     If x < HALF_ITEM_SIZE Then x = HALF_ITEM_SIZE
     If y < HALF_ITEM_SIZE Then y = HALF_ITEM_SIZE
     If x > InventoryWindow.ScaleWidth - HALF_ITEM_SIZE Then x = InventoryWindow.ScaleWidth - HALF_ITEM_SIZE
@@ -876,7 +897,7 @@ Private Sub InventoryWindow_MouseUp(Button As Integer, Shift As Integer, x As Si
 
     ' Si estamos arrastrando y soltamos el clic derecho
     If Dragging > 0 And Button = vbRightButton Then
-        ' Disparo un evento para que la l√≥gica del drag&drop sea independiente al inventario
+        ' Disparo un evento para que la lÛgica del drag&drop sea independiente al inventario
         RaiseEvent ItemDropped(Dragging, Slot, x, y)
 
         ' Dejo de dibujar el item arrastrado
@@ -885,7 +906,7 @@ Private Sub InventoryWindow_MouseUp(Button As Integer, Shift As Integer, x As Si
 
     End If
     
-    ' Si es un slot v√°lido
+    ' Si es un slot v·lido
     If Slot > 0 Then
 
         ' Si no hay un item en el slot
@@ -912,7 +933,7 @@ Private Sub InventoryWindow_MouseUp(Button As Integer, Shift As Integer, x As Si
     Exit Sub
 
 InventoryWindow_MouseUp_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.InventoryWindow_MouseUp", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.InventoryWindow_MouseUp", Erl)
     Resume Next
     
 End Sub
@@ -945,7 +966,7 @@ Public Function GetInfo(ByVal Item As Integer) As String
     Exit Function
 
 GetInfo_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.GetInfo", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.GetInfo", Erl)
     Resume Next
     
 End Function
@@ -959,7 +980,7 @@ Property Let MostrarCantidades(ByVal Mostrar As Boolean)
     Exit Property
 
 MostrarCantidades_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsGrapchicalInventory.MostrarCantidades", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsGrapchicalInventory.MostrarCantidades", Erl)
     Resume Next
     
 End Property

@@ -12,9 +12,8 @@ Sub SwitchMap(ByVal map As Integer)
     map_light = global_light
 
     Call DibujarMiniMapa
-    
+    map_letter_a = 0
     CurMap = map
-    
     If Musica Then
         
         If MapDat.music_numberLow > 0 Then
@@ -74,10 +73,15 @@ Function HayAgua(ByVal x As Integer, ByVal y As Integer) As Boolean
     
 
     With MapData(x, y).Graphic(1)
-        HayAgua = ((.GrhIndex >= 1505 And .GrhIndex <= 1520) Or (.GrhIndex >= 124 And .GrhIndex <= 139) Or (.GrhIndex >= 24223 And .GrhIndex <= 24238) Or _
-            (.GrhIndex >= 24143 And .GrhIndex <= 24158) Or (.GrhIndex >= 468 And .GrhIndex <= 483) Or _
-            (.GrhIndex >= 12628 And .GrhIndex <= 12643) Or (.GrhIndex >= 2948 And .GrhIndex <= 2963) Or _
-            (.GrhIndex >= 44668 And .GrhIndex <= 44939) Or (.GrhIndex >= 24303 And .GrhIndex <= 24318))
+            HayAgua = (.GrhIndex >= 1505 And .GrhIndex <= 1520) Or _
+                        (.GrhIndex >= 124 And .GrhIndex <= 139) Or _
+                        (.GrhIndex >= 24223 And .GrhIndex <= 24238) Or _
+                        (.GrhIndex >= 24303 And .GrhIndex <= 24318) Or _
+                        (.GrhIndex >= 468 And .GrhIndex <= 483) Or _
+                        (.GrhIndex >= 44668 And .GrhIndex <= 44683) Or _
+                        (.GrhIndex >= 24143 And .GrhIndex <= 24158) Or _
+                        (.GrhIndex >= 12628 And .GrhIndex <= 12643) Or _
+                        (.GrhIndex >= 2948 And .GrhIndex <= 2963)
     End With
 
     
@@ -111,17 +115,18 @@ Function EsArbol(ByVal GrhIndex As Long) As Boolean
     
     On Error GoTo EsArbol_Err
     
-    EsArbol = GrhIndex = 7000 Or GrhIndex = 7001 Or GrhIndex = 7002 Or GrhIndex = 641 Or GrhIndex = 26075 Or GrhIndex = 643 Or GrhIndex = 644 Or _
-       GrhIndex = 647 Or GrhIndex = 26076 Or GrhIndex = 7222 Or GrhIndex = 7223 Or GrhIndex = 7224 Or GrhIndex = 7225 Or GrhIndex = 7226 Or _
-       GrhIndex = 26077 Or GrhIndex = 26079 Or GrhIndex = 735 Or GrhIndex = 32343 Or GrhIndex = 32344 Or GrhIndex = 26080 Or GrhIndex = 26081 Or _
-       GrhIndex = 32345 Or GrhIndex = 32346 Or GrhIndex = 32347 Or GrhIndex = 32348 Or GrhIndex = 32349 Or GrhIndex = 32350 Or GrhIndex = 32351 Or _
-       GrhIndex = 32352 Or GrhIndex = 14961 Or GrhIndex = 14950 Or GrhIndex = 14951 Or GrhIndex = 14952 Or GrhIndex = 14953 Or GrhIndex = 14954 Or _
-       GrhIndex = 14955 Or GrhIndex = 14956 Or GrhIndex = 14957 Or GrhIndex = 14958 Or GrhIndex = 14959 Or GrhIndex = 14962 Or GrhIndex = 14963 Or _
-       GrhIndex = 14964 Or GrhIndex = 14967 Or GrhIndex = 14968 Or GrhIndex = 14969 Or GrhIndex = 14970 Or GrhIndex = 14971 Or GrhIndex = 14972 Or _
-       GrhIndex = 14973 Or GrhIndex = 14974 Or GrhIndex = 14975 Or GrhIndex = 14976 Or GrhIndex = 14978 Or GrhIndex = 14980 Or GrhIndex = 14982 Or _
-       GrhIndex = 14983 Or GrhIndex = 14984 Or GrhIndex = 14985 Or GrhIndex = 14987 Or GrhIndex = 14988 Or GrhIndex = 26078 Or GrhIndex = 26192 Or _
-       GrhIndex >= 55626 And GrhIndex <= 55640 Or GrhIndex = 55642 Or (GrhIndex >= 50985 And GrhIndex <= 50991)
-
+    EsArbol = GrhIndex = 304 Or GrhIndex = 305 Or GrhIndex = 641 Or GrhIndex = 643 Or GrhIndex = 644 Or GrhIndex = 647 Or GrhIndex = 735 Or GrhIndex = 1121 Or GrhIndex = 1126 Or GrhIndex = 2931 Or _
+              GrhIndex = 12309 Or GrhIndex = 12310 Or GrhIndex = 16833 Or GrhIndex = 16834 Or GrhIndex = 7020 Or GrhIndex = 11903 Or GrhIndex = 11904 Or _
+              GrhIndex = 11905 Or GrhIndex = 11906 Or GrhIndex = 12160 Or GrhIndex = 15698 Or GrhIndex = 14504 Or GrhIndex = 15697 Or _
+              (GrhIndex >= 12581 And GrhIndex <= 12586) Or (GrhIndex >= 12164 And GrhIndex <= 12179) Or _
+              (GrhIndex >= 14950 And GrhIndex <= 14965) Or (GrhIndex >= 14967 And GrhIndex <= 14980) Or (GrhIndex >= 14982 And GrhIndex <= 14988) Or _
+              (GrhIndex >= 26075 And GrhIndex <= 26081) Or GrhIndex = 26192 Or (GrhIndex >= 32142 And GrhIndex <= 32162) Or (GrhIndex >= 32343 And GrhIndex <= 32352) Or _
+              (GrhIndex >= 55626 And GrhIndex <= 55640) Or GrhIndex = 55642 Or _
+              (GrhIndex >= 50985 And GrhIndex <= 50991) Or (GrhIndex >= 2547 And GrhIndex <= 2549) Or (GrhIndex >= 6597 And GrhIndex <= 6598) Or (GrhIndex >= 15108 And GrhIndex <= 15110) Or GrhIndex = 11904 Or GrhIndex = 11905 Or GrhIndex = 11906 Or GrhIndex = 12160 Or _
+              GrhIndex = 7220 Or GrhIndex = 50990 Or GrhIndex = 6597 Or GrhIndex = 6598 Or GrhIndex = 2548 Or GrhIndex = 2549 Or _
+              GrhIndex = 463 Or GrhIndex = 1880 Or GrhIndex = 1878 Or GrhIndex = 9513 Or GrhIndex = 9514 Or GrhIndex = 9515 Or GrhIndex = 9518 Or GrhIndex = 9519 Or GrhIndex = 9520 Or GrhIndex = 9529 Or _
+              GrhIndex = 55633 Or GrhIndex = 55627 Or GrhIndex = 15510 Or GrhIndex = 14775 Or GrhIndex = 14687
+              
     
     Exit Function
 
@@ -135,7 +140,7 @@ Function AgregarSombra(ByVal GrhIndex As Long) As Boolean
     
     On Error GoTo AgregarSombra_Err
     
-    AgregarSombra = GrhIndex = 5624 Or GrhIndex = 5625 Or GrhIndex = 5626 Or GrhIndex = 5627
+    AgregarSombra = GrhIndex = 5624 Or GrhIndex = 5625 Or GrhIndex = 5626 Or GrhIndex = 5627 Or GrhIndex = 51716
 
     
     Exit Function
@@ -169,7 +174,7 @@ End Function
 
 Public Function Letter_Set(ByVal grh_index As Long, ByVal text_string As String) As Boolean
     '*****************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     '*****************************************************************
     
     On Error GoTo Letter_Set_Err
@@ -194,7 +199,7 @@ Public Function Map_Letter_Fade_Set(ByVal grh_index As Long, Optional ByVal afte
     
 
     '*****************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     '*****************************************************************
     If grh_index <= 0 Or grh_index = map_letter_grh.GrhIndex Then Exit Function
         
@@ -226,7 +231,7 @@ End Function
 
 Public Function Map_Letter_UnSet() As Boolean
     '*****************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     '*****************************************************************
     
     On Error GoTo Map_Letter_UnSet_Err
@@ -248,7 +253,7 @@ End Function
 
 Public Function Letter_UnSet() As Boolean
     '*****************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     '*****************************************************************
     
     On Error GoTo Letter_UnSet_Err
@@ -285,7 +290,7 @@ End Sub
 Public Function Map_FX_Group_Next_Open(ByVal x As Byte, ByVal y As Byte) As Integer
 
     '*****************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     '*****************************************************************
     On Error GoTo ErrorHandler:
 
@@ -499,14 +504,47 @@ Sub MapUpdateGlobalLight()
         Next x
     Next y
     
-    Call LucesRedondas.LightRenderAll
-    Call LucesCuadradas.Light_Render_All
-    
-    
     Exit Sub
 
 MapUpdateGlobalLight_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Map.MapUpdateGlobalLight", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Map.MapUpdateGlobalLight", Erl)
+    Resume Next
+    
+End Sub
+
+Sub MapUpdateGlobalLightRender()
+    
+    On Error GoTo MapUpdateGlobalLight_Err
+    
+
+    Dim x As Integer, y As Integer
+    Dim MinX As Long, MinY As Long, MaxX As Long, MaxY As Long
+    MinX = 1
+    MinY = 1
+    MaxX = 100
+    MaxY = 100
+    
+    ' Reseteamos toda la luz del mapa
+    For y = MinY To MaxY
+        For x = MinX To MaxX
+            With MapData(x, y)
+            
+                .light_value(0) = global_light
+                .light_value(1) = global_light
+                .light_value(2) = global_light
+                .light_value(3) = global_light
+                
+            End With
+        Next x
+    Next y
+    
+    Call LucesRedondas.LightRenderAll(MinX, MinY, MaxX, MaxY) '(MinX, MinY, MaxX, MaxY)
+    Call LucesCuadradas.Light_Render_All(MinX, MinY, MaxX, MaxY)  '(MinX, MinY, MaxX, MaxY)
+        
+    Exit Sub
+
+MapUpdateGlobalLight_Err:
+   ' Call RegistrarError(Err.Number, Err.Description, "TileEngine_Map.MapUpdateGlobalLightRender", Erl)
     Resume Next
     
 End Sub

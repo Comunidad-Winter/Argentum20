@@ -15,10 +15,11 @@ End Type
 'Item type
 Private Type tItem
 
-    OBJIndex As Integer
+    ObjIndex As Integer
     Amount As Integer
 
 End Type
+
 
 Private Type tWorldPos
 
@@ -59,10 +60,14 @@ Private Declare Sub InitCommonControls Lib "comctl32" ()
 
 Public bFogata As Boolean
 
-'Very percise counter 64bit system counter
-Private Declare Function QueryPerformanceCounter Lib "kernel32" (lpPerformanceCount As Currency) As Long
+Public servers_login_connections(1 To 2) As String
 
-Private Declare Function QueryPerformanceFrequency Lib "kernel32" (lpFrequency As Currency) As Long
+Public Const MAX_LOGIN_SERVER As Long = 2
+
+'Very percise counter 64bit system counter
+Public Declare Function QueryPerformanceCounter Lib "kernel32" (lpPerformanceCount As Currency) As Long
+
+Public Declare Function QueryPerformanceFrequency Lib "kernel32" (lpFrequency As Currency) As Long
 'debemos mostrar la animacion de la lluvia
 
 Private lFrameTimer              As Long
@@ -92,7 +97,7 @@ Private Const SIF_TRACKPOS = &H10
 Private Const SIF_ALL = (SIF_RANGE Or SIF_PAGE Or SIF_POS Or SIF_TRACKPOS)
 Private tSI As SCROLLINFO
 
-Public Declare Function GetScrollInfo Lib "user32" (ByVal hwnd As Long, ByVal N As Long, ByRef lpScrollInfo As SCROLLINFO) As Long
+Public Declare Function GetScrollInfo Lib "user32" (ByVal hwnd As Long, ByVal n As Long, ByRef lpScrollInfo As SCROLLINFO) As Long
 
 Public Declare Function GetScrollPos Lib "user32" (ByVal hwnd As Long, ByVal nBar As Long) As Long
 
@@ -114,7 +119,7 @@ Public Type PARAFORMAT2
     wAlignment As Integer
     cTabCount As Integer
     lTabStops(0 To MAX_TAB_STOPS - 1) As Long
-    ' Desde aqu√≠ lo a√±adido por PARAFORMAT2
+    ' Desde aquÌ lo aÒadido por PARAFORMAT2
     dySpaceBefore As Long '/* Vertical spacing before para */
     dySpaceAfter As Long '/* Vertical spacing after para */
     dyLineSpacing As Long '/* Line spacing depending on Rule */
@@ -148,7 +153,7 @@ Public Function DirGraficos() As String
     Exit Function
 
 DirGraficos_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.DirGraficos", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.DirGraficos", Erl)
     Resume Next
     
 End Function
@@ -163,7 +168,7 @@ Public Function DirSound() As String
     Exit Function
 
 DirSound_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.DirSound", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.DirSound", Erl)
     Resume Next
     
 End Function
@@ -178,7 +183,7 @@ Public Function DirMidi() As String
     Exit Function
 
 DirMidi_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.DirMidi", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.DirMidi", Erl)
     Resume Next
     
 End Function
@@ -193,7 +198,7 @@ Public Function DirMapas() As String
     Exit Function
 
 DirMapas_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.DirMapas", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.DirMapas", Erl)
     Resume Next
     
 End Function
@@ -212,7 +217,7 @@ Public Function RandomNumber(ByVal LowerBound As Long, ByVal UpperBound As Long)
     Exit Function
 
 RandomNumber_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.RandomNumber", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.RandomNumber", Erl)
     Resume Next
     
 End Function
@@ -294,7 +299,7 @@ Sub AddtoRichTextBox2(ByRef RichTextBox As RichTextBox, ByVal Text As String, Op
     Exit Sub
 
 AddtoRichTextBox2_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.AddtoRichTextBox2", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.AddtoRichTextBox2", Erl)
     Resume Next
     
 End Sub
@@ -310,7 +315,7 @@ Sub AddtoRichTextBox(ByRef RichTextBox As RichTextBox, ByVal Text As String, Opt
     'Text box MUST be multiline and have a 3D
     'apperance!
     'Pablo (ToxicWaste) 01/26/2007 : Now the list refeshes properly.
-    'Juan Mart√≠n Sotuyo Dodero (Maraxus) 03/29/2007 : Replaced ToxicWaste's code for extra performance.
+    'Juan MartÌn Sotuyo Dodero (Maraxus) 03/29/2007 : Replaced ToxicWaste's code for extra performance.
     'Ladder 17/12/20 agrego que la barra no se nos baje si estamos haciedno scroll. Gracias barrin tkm
     '******************************************r
     Dim bUrl As Boolean
@@ -359,7 +364,7 @@ Sub AddtoRichTextBox(ByRef RichTextBox As RichTextBox, ByVal Text As String, Opt
     Exit Sub
 
 AddtoRichTextBox_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.AddtoRichTextBox", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.AddtoRichTextBox", Erl)
     Resume Next
     
 End Sub
@@ -387,7 +392,7 @@ Public Sub SelLineSpacing(rtbTarget As RichTextBox, ByVal SpacingRule As Long, O
     Dim Ret As Long
     Ret = SendMessage(rtbTarget.hwnd, EM_SETPARAFORMAT, 0&, Para)
     
-    If Ret = 0 Then Debug.Print "Error al setear el espaciado entre l√≠neas del RichTextBox."
+    If Ret = 0 Then Debug.Print "Error al setear el espaciado entre lÌneas del RichTextBox."
 End Sub
 
 'TODO : Never was sure this is really necessary....
@@ -416,7 +421,7 @@ Public Sub RefreshAllChars()
     Exit Sub
 
 RefreshAllChars_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.RefreshAllChars", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.RefreshAllChars", Erl)
     Resume Next
     
 End Sub
@@ -435,7 +440,7 @@ Function AsciiValidos(ByVal cad As String) As Boolean
     For i = 1 To Len(cad)
         car = Asc(mid$(cad, i, 1))
         
-        If ((car < 97 Or car > 122) Or car = Asc("¬∫")) And (car <> 255) And (car <> 32) Then
+        If ((car < 97 Or car > 122) Or car = Asc("∫")) And (car <> 255) And (car <> 32) Then
             Exit Function
 
         End If
@@ -448,7 +453,7 @@ Function AsciiValidos(ByVal cad As String) As Boolean
     Exit Function
 
 AsciiValidos_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.AsciiValidos", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.AsciiValidos", Erl)
     Resume Next
     
 End Function
@@ -460,7 +465,7 @@ Function CheckUserDataLoged() As Boolean
     
     
     If CuentaEmail = "" Or Not CheckMailString(CuentaEmail) Then
-        Call TextoAlAsistente("El email es inv√°lido.")
+        Call TextoAlAsistente("El email es inv·lido.")
         Exit Function
 
     End If
@@ -474,13 +479,13 @@ Function CheckUserDataLoged() As Boolean
     '  For loopc = 1 To Len(UserCuenta)
     '   CharAscii = Asc(mid$(UserCuenta, loopc, 1))
     ' If Not LegalCharacter(CharAscii) Then
-    ' Call TextoAlAsistente("Nombre inv√°lido. El caract√©r " & Chr$(CharAscii) & " no est√° permitido.")
+    ' Call TextoAlAsistente("Nombre inv·lido. El caractÈr " & Chr$(CharAscii) & " no est· permitido.")
     '    Exit Function
     '  End If
     ' Next loopc
     
     If CuentaPassword = "" Then
-        Call TextoAlAsistente("Ingrese la contrase√±a de la cuenta.")
+        Call TextoAlAsistente("Ingrese la contraseÒa de la cuenta.")
         'frmMensaje.msg.Caption = "Ingrese un password."
         ' frmMensaje.Show vbModal
         Exit Function
@@ -493,7 +498,7 @@ Function CheckUserDataLoged() As Boolean
     Exit Function
 
 CheckUserDataLoged_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.CheckUserDataLoged", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.CheckUserDataLoged", Erl)
     Resume Next
     
 End Function
@@ -509,7 +514,7 @@ Function CheckUserData(ByVal checkemail As Boolean) As Boolean
     Dim CharAscii As Integer
     
     If CuentaEmail = "" Or Not CheckMailString(CuentaEmail) Then
-        Call TextoAlAsistente("El email es inv√°lido.")
+        Call TextoAlAsistente("El email es inv·lido.")
         Exit Function
 
     End If
@@ -524,7 +529,7 @@ Function CheckUserData(ByVal checkemail As Boolean) As Boolean
         CharAscii = Asc(mid$(CuentaPassword, loopc, 1))
 
         If Not LegalCharacter(CharAscii) Then
-            MsgBox ("Password inv√°lido. El caract√©r " & Chr$(CharAscii) & " no est√° permitido.")
+            MsgBox ("Password inv·lido. El caractÈr " & Chr$(CharAscii) & " no est· permitido.")
             Exit Function
 
         End If
@@ -537,7 +542,7 @@ Function CheckUserData(ByVal checkemail As Boolean) As Boolean
     Exit Function
 
 CheckUserData_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.CheckUserData", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.CheckUserData", Erl)
     Resume Next
     
 End Function
@@ -560,7 +565,7 @@ Sub UnloadAllForms()
     Exit Sub
 
 UnloadAllForms_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.UnloadAllForms", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.UnloadAllForms", Erl)
     Resume Next
     
 End Sub
@@ -604,7 +609,7 @@ Function LegalCharacter(ByVal KeyAscii As Integer) As Boolean
     Exit Function
 
 LegalCharacter_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.LegalCharacter", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.LegalCharacter", Erl)
     Resume Next
     
 End Function
@@ -622,10 +627,8 @@ Sub SetConnected()
     'Unload the connect form
     'FrmCuenta.Visible = False
 
-    frmMain.NombrePJ.Caption = UserName
-    LogeoAlgunaVez = True
-    
-    ' bTecho = False
+    frmMain.NombrePJ.Caption = username
+
     AlphaNiebla = 0
 
     'Vaciamos la cola de movimiento
@@ -637,7 +640,7 @@ Sub SetConnected()
         frmMain.Timerping.Enabled = False
     End If
     
-    frmMain.UpdateLight.Enabled = True
+   ' frmMain.UpdateLight.Enabled = True
     frmMain.UpdateDaytime.Enabled = True
     light_transition = 1#
 
@@ -677,15 +680,36 @@ Sub SetConnected()
     frmMain.Height = 768 * Screen.TwipsPerPixelY
 
     frmMain.Visible = True
+    
+    Call ResetContadores
+    
     frmMain.cerrarcuenta.Enabled = True
 
+    engine.FadeInAlpha = 255
     
     Exit Sub
 
 SetConnected_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.SetConnected", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.SetConnected", Erl)
     Resume Next
     
+End Sub
+Sub ResetContadores()
+    packetCounters.TS_CastSpell = 0
+    packetCounters.TS_WorkLeftClick = 0
+    packetCounters.TS_LeftClick = 0
+    packetCounters.TS_UseItem = 0
+    packetCounters.TS_UseItemU = 0
+    packetCounters.TS_Walk = 0
+    packetCounters.TS_Talk = 0
+    packetCounters.TS_Attack = 0
+    packetCounters.TS_Drop = 0
+    packetCounters.TS_Work = 0
+    packetCounters.TS_EquipItem = 0
+    packetCounters.TS_GuildMessage = 0
+    packetCounters.TS_QuestionGM = 0
+    packetCounters.TS_ChangeHeading = 0
+   
 End Sub
 
 Sub MoveTo(ByVal Direccion As E_Heading)
@@ -699,7 +723,7 @@ Sub MoveTo(ByVal Direccion As E_Heading)
     'Last Modified By: Lucas Tavolaro Ortiz (Tavo)
     ' 06/03/2006: AlejoLp - Elimine las funciones Move[NSWE] y las converti a esta
     ' 12/08/2007: Tavo    - Si el usuario esta paralizado no se puede mover.
-    ' 06/28/2008: NicoNZ - Saqu√© lo que imped√≠a que si el usuario estaba paralizado se ejecute el sub.
+    ' 06/28/2008: NicoNZ - SaquÈ lo que impedÌa que si el usuario estaba paralizado se ejecute el sub.
     '***************************************************
     Dim LegalOk As Boolean
     
@@ -720,8 +744,8 @@ Sub MoveTo(ByVal Direccion As E_Heading)
             LegalOk = LegalPos(UserPos.x - 1, UserPos.y, Direccion)
 
     End Select
-    
-    If LegalOk And Not UserParalizado And Not UserInmovilizado Then
+
+    If LegalOk And Not UserParalizado And Not UserInmovilizado And Not UserStopped Then
         If Not UserDescansar Then
             If UserMacro.Activado Then
                 Call ResetearUserMacro
@@ -729,10 +753,14 @@ Sub MoveTo(ByVal Direccion As E_Heading)
 
             Moviendose = True
             Call MainTimer.Restart(TimersIndex.Walk)
+            If PescandoEspecial Then
+                Call AddtoRichTextBox(frmMain.RecTxt, "El pez ha roto tu linea de pesca.", 255, 0, 0, 1, 0)
+                Call WriteRomperCania
+                PescandoEspecial = False
+            End If
             Call WriteWalk(Direccion) 'We only walk if we are not meditating or resting
             Call Char_Move_by_Head(UserCharIndex, Direccion)
             Call MoveScreen(Direccion)
-            
         Else
 
             If Not UserAvisado Then
@@ -756,26 +784,18 @@ Sub MoveTo(ByVal Direccion As E_Heading)
 
     End If
     
-    frmMain.personaje(0).Left = UserPos.x - 5
-    frmMain.personaje(0).Top = UserPos.y - 4
+    Call frmMain.SetMinimapPosition(0, UserPos.x, UserPos.y)
     
     frmMain.Coord.Caption = UserMap & "-" & UserPos.x & "-" & UserPos.y
-
+    
+    If MapDat.Seguro = 1 Then
+        frmMain.Coord.ForeColor = RGB(0, 170, 0)
+    Else
+        frmMain.Coord.ForeColor = RGB(170, 0, 0)
+    End If
+    
     If frmMapaGrande.Visible Then
-
-        Dim x As Long
-
-        Dim y As Long
-            
-        x = (idmap - 1) Mod 16
-        y = Int((idmap - 1) / 16)
-
-        frmMapaGrande.lblAllies.Top = y * 27
-        frmMapaGrande.lblAllies.Left = x * 27
-
-        frmMapaGrande.Shape1.Top = y * 27 + (UserPos.y / 4.5)
-        frmMapaGrande.Shape1.Left = x * 27 + (UserPos.x / 4.5)
-
+        Call frmMapaGrande.ActualizarPosicionMapa
     End If
     
     ' Update 3D sounds!
@@ -786,7 +806,7 @@ Sub MoveTo(ByVal Direccion As E_Heading)
     Exit Sub
 
 MoveTo_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.MoveTo", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.MoveTo", Erl)
     Resume Next
     
 End Sub
@@ -806,17 +826,16 @@ Sub RandomMove()
     Exit Sub
 
 RandomMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.RandomMove", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.RandomMove", Erl)
     Resume Next
     
 End Sub
 
-Private Sub AddMovementToKeysMovementPressedQueue()
+Public Sub AddMovementToKeysMovementPressedQueue()
     
     On Error GoTo AddMovementToKeysMovementPressedQueue_Err
     
-
-    If GetKeyState(BindKeys(14).KeyCode) < 0 Then
+    If BindKeys(14).KeyCode <> 0 And GetKeyState(BindKeys(14).KeyCode) < 0 Then
         If keysMovementPressedQueue.itemExist(BindKeys(14).KeyCode) = False Then keysMovementPressedQueue.Add (BindKeys(14).KeyCode) ' Agrega la tecla al arraylist
     Else
 
@@ -824,7 +843,7 @@ Private Sub AddMovementToKeysMovementPressedQueue()
 
     End If
 
-    If GetKeyState(BindKeys(15).KeyCode) < 0 Then
+    If BindKeys(15).KeyCode <> 0 And GetKeyState(BindKeys(15).KeyCode) < 0 Then
         If keysMovementPressedQueue.itemExist(BindKeys(15).KeyCode) = False Then keysMovementPressedQueue.Add (BindKeys(15).KeyCode) ' Agrega la tecla al arraylist
     Else
 
@@ -832,7 +851,7 @@ Private Sub AddMovementToKeysMovementPressedQueue()
 
     End If
 
-    If GetKeyState(BindKeys(16).KeyCode) < 0 Then
+    If BindKeys(16).KeyCode <> 0 And GetKeyState(BindKeys(16).KeyCode) < 0 Then
         If keysMovementPressedQueue.itemExist(BindKeys(16).KeyCode) = False Then keysMovementPressedQueue.Add (BindKeys(16).KeyCode) ' Agrega la tecla al arraylist
     Else
 
@@ -840,7 +859,7 @@ Private Sub AddMovementToKeysMovementPressedQueue()
 
     End If
 
-    If GetKeyState(BindKeys(17).KeyCode) < 0 Then
+    If BindKeys(17).KeyCode <> 0 And GetKeyState(BindKeys(17).KeyCode) < 0 Then
         If keysMovementPressedQueue.itemExist(BindKeys(17).KeyCode) = False Then keysMovementPressedQueue.Add (BindKeys(17).KeyCode) ' Agrega la tecla al arraylist
     Else
 
@@ -852,7 +871,7 @@ Private Sub AddMovementToKeysMovementPressedQueue()
     Exit Sub
 
 AddMovementToKeysMovementPressedQueue_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.AddMovementToKeysMovementPressedQueue", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.AddMovementToKeysMovementPressedQueue", Erl)
     Resume Next
     
 End Sub
@@ -871,6 +890,7 @@ Sub Check_Keys()
     Direccion = charlist(UserCharIndex).Heading
 
     If Not Application.IsAppActive() Then Exit Sub
+    
 
     If Not pausa And _
         frmMain.Visible And _
@@ -878,33 +898,33 @@ Sub Check_Keys()
         Not frmBancoObj.Visible And _
         Not frmOpciones.Visible And _
         Not frmComerciar.Visible And _
-        Not frmCantidad.Visible And _
         Not frmGoliath.Visible And _
-        Not FrmCorreo.Visible And _
         Not frmEstadisticas.Visible And _
+        Not frmStatistics.Visible And _
         Not frmAlqui.Visible And _
         Not frmCarp.Visible And _
         Not frmHerrero.Visible And _
         Not FrmGrupo.Visible And _
-        Not FrmShop.Visible And _
         Not FrmSastre.Visible And _
-        Not FrmCorreo.Visible And _
-        Not FrmGmAyuda.Visible Then
+        Not FrmGmAyuda.Visible And _
+        Not frmCrafteo.Visible Then
  
         If frmMain.SendTxt.Visible And PermitirMoverse = 0 Then Exit Sub
  
-        If UserMoving = 0 Then
+        If Not UserMoving Then
             If Not UserEstupido Then
-                If Not MainTimer.Check(TimersIndex.Walk, False) Then Exit Sub
+                'If Not MainTimer.Check(TimersIndex.Walk, False) Then Exit Sub
 
                 Call AddMovementToKeysMovementPressedQueue
                 
                 Select Case keysMovementPressedQueue.GetLastItem()
+                
+                    ' Prevenimos teclas sin asignar... Te deja moviendo para siempre
+                    Case 0: Exit Sub
                     
                     'Move Up
                     Case BindKeys(14).KeyCode
                         Call MoveTo(E_Heading.NORTH)
-                    
                     'Move Right
                     Case BindKeys(17).KeyCode
                         Call MoveTo(E_Heading.EAST)
@@ -936,7 +956,7 @@ Sub Check_Keys()
     Exit Sub
 
 Check_Keys_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.Check_Keys", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.Check_Keys", Erl)
     Resume Next
     
 End Sub
@@ -948,7 +968,7 @@ Function ReadField(ByVal Pos As Integer, ByRef Text As String, ByVal SepASCII As
 
     '*****************************************************************
     'Gets a field from a delimited string
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 11/15/2004
     '*****************************************************************
     Dim i          As Long
@@ -977,7 +997,7 @@ Function ReadField(ByVal Pos As Integer, ByRef Text As String, ByVal SepASCII As
     Exit Function
 
 ReadField_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.ReadField", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.ReadField", Erl)
     Resume Next
     
 End Function
@@ -989,7 +1009,7 @@ Function FieldCount(ByRef Text As String, ByVal SepASCII As Byte) As Long
 
     '*****************************************************************
     'Gets the number of fields in a delimited string
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 07/29/2007
     '*****************************************************************
     Dim count     As Long
@@ -1015,7 +1035,7 @@ Function FieldCount(ByRef Text As String, ByVal SepASCII As Byte) As Long
     Exit Function
 
 FieldCount_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.FieldCount", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.FieldCount", Erl)
     Resume Next
     
 End Function
@@ -1024,13 +1044,13 @@ Function FileExist(ByVal File As String, ByVal FileType As VbFileAttribute) As B
     
     On Error GoTo FileExist_Err
     
-    FileExist = (Dir$(File, FileType) <> "")
+    FileExist = (dir$(File, FileType) <> "")
 
     
     Exit Function
 
 FileExist_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.FileExist", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.FileExist", Erl)
     Resume Next
     
 End Function
@@ -1039,59 +1059,70 @@ Sub Main()
     On Error GoTo Main_Err
 
     Call InitCommonControls
-
+    
+ 'ReyarB pidiÛ dejar entrar doble cliente (HarThaoS)
     #If DEBUGGING = 0 Then
-    
-        'If Not RunningInVB Then
-        
-           ' If FindPreviousInstance Then
-               ' Call MsgBox("¬°Argentum Online ya esta corriendo! No es posible correr otra instancia del juego. Haga clic en Aceptar para salir.", vbApplicationModal + vbInformation + vbOKOnly, "Error al ejecutar")
-               ' End
-            'End If
-    
-        'End If
-        
+ 
+        If Not RunningInVB Then
+ 
+            If FindPreviousInstance Then
+                Call MsgBox("°Argentum Online ya esta corriendo! No es posible correr otra instancia del juego. Haga clic en Aceptar para salir.", vbApplicationModal + vbInformation + vbOKOnly, "Error al ejecutar")
+                End
+            End If
+ 
+        End If
+ 
     #End If
 
     'If Not Launcher Then
-    '  Call MsgBox("¬°El Juego debe ser abierto desde el Launcher! El Cliente ahora se cerrara.", vbApplicationModal + vbInformation + vbOKOnly, "Error al ejecutar")
+    '  Call MsgBox("°El Juego debe ser abierto desde el Launcher! El Cliente ahora se cerrara.", vbApplicationModal + vbInformation + vbOKOnly, "Error al ejecutar")
     ' End
     ' End If
     
     Call CargarOpciones
+    Call initPacketControl
     
-    If FileExist(App.Path & "\..\LauncherAO20.ex_", vbNormal) Then
-        Call Sleep(2)
-        Delete_File App.Path & "\..\LauncherAO20.exe"
-        Name App.Path & "\..\LauncherAO20.ex_" As App.Path & "\..\LauncherAO20.exe"
+    ' Detecta el idioma del sistema y carga las traducciones
+    Call SetLanguageApplication
+    
+    If FileExist(App.Path & "\..\..\Launcher\LauncherAO20.ex_", vbNormal) Then
+        Call Sleep(2000)
+        Kill App.Path & "\..\..\Launcher\LauncherAO20.exe"
+        Name App.Path & "\..\..\Launcher\LauncherAO20.ex_" As App.Path & "\..\..\Launcher\LauncherAO20.exe"
+        If FileExist(App.Path & "\..\..\Launcher\LauncherAO20.dl_", vbNormal) Then
+            Kill App.Path & "\..\..\Launcher\LauncherAO20.dll"
+            Name App.Path & "\..\..\Launcher\LauncherAO20.dl_" As App.Path & "\..\..\Launcher\LauncherAO20.dll"
+        End If
+        Shell App.Path & "\..\..\Launcher\LauncherAO20.exe"
+        End
     End If
-
+    
     'Cursores******
     Set FormParser = New clsCursor
     Call FormParser.Init
     'Cursores******
-    
-    ' Tolerancia 0
-    If ComprobarTolerancia0 Then End
 
     ' Security
-    MacAdress = GetMacAddress
-    HDserial = GetDriveSerialNumber
     CheckMD5 = GetMd5
+    SessionOpened = False
+    ' Leer contraseÒa de recursos
+    Call CheckResources
 
     Call Load(frmConnect)
     Call Load(FrmLogear)
         
-    'If MsgBox("¬øDesea jugar en pantalla completa?", vbYesNo, "¬°Atenci√≥n!") = vbYes Then
+    'If MsgBox("øDesea jugar en pantalla completa?", vbYesNo, "°AtenciÛn!") = vbYes Then
     
     If PantallaCompleta Then
         Call Resolution.SetResolution
-        PantallaCompleta = 1
     End If
     
     Call Frmcarga.Show
  
-    
+    #If DEBUGGING = 0 Then
+        Call frmConnect.AnalizarCliente
+    #End If
+
     If Sonido Then
     
         If Sound.Initialize_Engine(frmConnect.hwnd, App.Path & "\..\Recursos", App.Path & "\MP3\", App.Path & "\..\Recursos", False, True, True, VolFX, VolMusic, InvertirSonido) Then
@@ -1099,15 +1130,27 @@ Sub Main()
         
         Else
 
-            Call MsgBox("¬°No se ha logrado iniciar el engine de DirectSound! Reinstale los √∫ltimos controladores de DirectX desde ao20.com.ar", vbCritical, "Saliendo")
+            Call MsgBox("°No se ha logrado iniciar el engine de DirectSound! Reinstale los ˙ltimos controladores de DirectX desde ao20.com.ar", vbCritical, "Saliendo")
             
             Call CloseClient
 
         End If
 
     End If
-
-    RawServersList = "190.245.145.3:7667:Horacio;190.210.83.156:7667:Iplan;190.195.146.166:7667:ReyarB;45.235.99.105:7500:Pablo;127.0.0.1:7667:Localhost"
+    
+    'Agrego conexiones disponibles
+    servers_login_connections(1) = "45.235.99.71:4004"
+    servers_login_connections(2) = "138.99.6.141:4007"
+    
+    '45.235.99.71:4004
+    IPServers(1) = "45.235.99.71:7667:Minehost:" & get_logging_server()
+    
+    Debug.Print IPServers(1)
+    #If DEBUGGING = 1 Then
+        IPServers(2) = "45.235.98.31:11813:MinehostStaging:45.235.98.31:11814"
+        IPServers(3) = "127.0.0.1:7667:Localhost:localhost:4000"
+        IPServers(4) = "186.152.115.146:7667:Martin:localhost:4000"
+    #End If
 
     Call ComprobarEstado
     Call CargarLst
@@ -1117,33 +1160,33 @@ Sub Main()
     'Inicializamos el motor grafico.
     Call Engine_Init
     
+    'Inicializamos el inventario
+    Call InitializeInventory
+    
     'Iniciamos el motor de tiles
     Call Init_TileEngine
     
     'Cargamos todos los init
     Call CargarRecursos
-    
+        
     'Cargar fuentes
     Call LoadFonts
+
     
-    FrameTime = timeGetTime And &H7FFFFFFF
+    FrameTime = GetTickCount()
     
     UserMap = 1
     AlphaNiebla = 75
     EntradaY = 10
     EntradaX = 10
+    UpdateLights = False
     
     Call SwitchMap(UserMap)
-
-    'Inicializamos el socket
-    Call frmMain.Socket1.Startup
     
     'Set the dialog's font
     Dialogos.font = frmMain.font
+    DialogosClanes.font = frmMain.font
     
-    ' Load the form for screenshots
-    Call Load(frmScreenshots)
-
     prgRun = True
     pausa = False
 
@@ -1151,31 +1194,67 @@ Sub Main()
     
     Call General_Set_Connect
     
+    Call engine.GetElapsedTime
+    
     Call Start
  
     
     Exit Sub
 
 Main_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.Main", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.Main", Erl)
     Resume Next
     
 End Sub
 
-Sub WriteVar(ByVal File As String, ByVal Main As String, ByVal Var As String, ByVal Value As String)
+Public Function get_logging_server() As String
+    Dim value As Long
+    Dim k As Integer
+    For k = 1 To 100
+        Value = RandomNumber(1, 100)
+    Next k
+    If Value <= 50 Then
+        get_logging_server = servers_login_connections(1)
+    Else
+        get_logging_server = servers_login_connections(2)
+    End If
+End Function
+
+Public Function randomMap() As Integer
+    Select Case RandomNumber(1, 8)
+        Case 1 ' ulla 45-43
+            randomMap = 1
+        Case 2 ' nix 22-75
+            randomMap = 34
+        Case 3 ' bander 49-43
+            randomMap = 59
+        Case 4 ' Arghal 38-41
+            randomMap = 151
+        Case 5 ' Lindos 63-40
+            randomMap = 62
+        Case 6 ' Arkhein 64-32
+            randomMap = 195
+        Case 7 ' Esperanza 50-45
+            randomMap = 112
+        Case 8 ' Polo 78-66
+            randomMap = 354
+    End Select
+End Function
+
+Sub WriteVar(ByVal File As String, ByVal Main As String, ByVal Var As String, ByVal value As String)
     '*****************************************************************
     'Writes a var to a text file
     '*****************************************************************
     
     On Error GoTo WriteVar_Err
     
-    writeprivateprofilestring Main, Var, Value, File
+    writeprivateprofilestring Main, Var, value, File
 
     
     Exit Sub
 
 WriteVar_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.WriteVar", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.WriteVar", Erl)
     Resume Next
     
 End Sub
@@ -1201,16 +1280,16 @@ Function GetVar(ByVal File As String, ByVal Main As String, ByVal Var As String)
     Exit Function
 
 GetVar_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.GetVar", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.GetVar", Erl)
     Resume Next
     
 End Function
 
 '[CODE 002]:MatuX
 '
-'  Funci√≥n para chequear el email
+'  FunciÛn para chequear el email
 '
-'  Corregida por Maraxus para que reconozca como v√°lidas casillas con puntos antes de la arroba y evitar un chequeo innecesario
+'  Corregida por Maraxus para que reconozca como v·lidas casillas con puntos antes de la arroba y evitar un chequeo innecesario
 Public Function CheckMailString(ByVal sString As String) As Boolean
 
     On Error GoTo errHnd
@@ -1226,10 +1305,10 @@ Public Function CheckMailString(ByVal sString As String) As Boolean
 
     If (lPos <> 0) Then
 
-        '2do test: Busca un simbolo . despu√©s de @ + 1
+        '2do test: Busca un simbolo . despuÈs de @ + 1
         If Not (InStr(lPos, sString, ".", vbBinaryCompare) > lPos + 1) Then Exit Function
         
-        '3er test: Recorre todos los caracteres y los val√≠da
+        '3er test: Recorre todos los caracteres y los valÌda
         For lX = 0 To Len(sString) - 1
 
             If Not (lX = (lPos - 1)) Then   'No chequeamos la '@'
@@ -1250,7 +1329,7 @@ errHnd:
 
 End Function
 
-'  Corregida por Maraxus para que reconozca como v√°lidas casillas con puntos antes de la arroba
+'  Corregida por Maraxus para que reconozca como v·lidas casillas con puntos antes de la arroba
 Private Function CMSValidateChar_(ByVal iAsc As Integer) As Boolean
     
     On Error GoTo CMSValidateChar__Err
@@ -1261,31 +1340,10 @@ Private Function CMSValidateChar_(ByVal iAsc As Integer) As Boolean
     Exit Function
 
 CMSValidateChar__Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.CMSValidateChar_", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.CMSValidateChar_", Erl)
     Resume Next
     
 End Function
-
-Public Sub ShowSendTxt()
-    
-    On Error GoTo ShowSendTxt_Err
-    
-
-    If Not frmCantidad.Visible Then
-
-        '   Call CompletarEnvioMensajes
-        'SendTxt.Visible = True
-        'SendTxt.SetFocus
-    End If
-
-    
-    Exit Sub
-
-ShowSendTxt_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.ShowSendTxt", Erl)
-    Resume Next
-    
-End Sub
 
 Public Sub LeerLineaComandos()
     
@@ -1317,14 +1375,14 @@ Public Sub LeerLineaComandos()
     Exit Sub
 
 LeerLineaComandos_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.LeerLineaComandos", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.LeerLineaComandos", Erl)
     Resume Next
     
 End Sub
 
 Private Sub InicializarNombres()
     '**************************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 11/27/2005
     'Inicializa los nombres de razas, ciudades, clases, skills, atributos, etc.
     '**************************************************************
@@ -1337,6 +1395,7 @@ Private Sub InicializarNombres()
     ListaRazas(eRaza.ElfoOscuro) = "Elfo Oscuro"
     ListaRazas(eRaza.Gnomo) = "Gnomo"
     ListaRazas(eRaza.Enano) = "Enano"
+    ListaRazas(eRaza.Orco) = "Orco"
         
     ListaCiudades(eCiudad.cUllathorpe) = "Ullathorpe"
     ListaCiudades(eCiudad.cNix) = "Nix"
@@ -1346,16 +1405,16 @@ Private Sub InicializarNombres()
    ' ListaCiudades(eCiudad.cHillidan) = "Hillidan"
 
     ListaClases(eClass.Mage) = "Mago"
-    ListaClases(eClass.Cleric) = "Cl√©rigo"
+    ListaClases(eClass.Cleric) = "ClÈrigo"
     ListaClases(eClass.Warrior) = "Guerrero"
     ListaClases(eClass.Assasin) = "Asesino"
     ListaClases(eClass.Bard) = "Bardo"
     ListaClases(eClass.Druid) = "Druida"
-    ListaClases(eClass.paladin) = "Palad√≠n"
+    ListaClases(eClass.paladin) = "PaladÌn"
     ListaClases(eClass.Hunter) = "Cazador"
     ListaClases(eClass.Trabajador) = "Trabajador"
     ListaClases(eClass.Pirat) = "Pirata"
-    ListaClases(eClass.Thief) = "Ladr√≥n"
+    ListaClases(eClass.Thief) = "LadrÛn"
     ListaClases(eClass.Bandit) = "Bandido"
 
     SkillsNames(eSkill.magia) = "Magia"
@@ -1363,7 +1422,7 @@ Private Sub InicializarNombres()
     SkillsNames(eSkill.Tacticas) = "Destreza en combate"
     SkillsNames(eSkill.Armas) = "Combate con armas"
     SkillsNames(eSkill.Meditar) = "Meditar"
-    SkillsNames(eSkill.Apu√±alar) = "Apu√±alar"
+    SkillsNames(eSkill.ApuÒalar) = "ApuÒalar"
     SkillsNames(eSkill.Ocultarse) = "Ocultarse"
     SkillsNames(eSkill.Supervivencia) = "Supervivencia"
     SkillsNames(eSkill.Comerciar) = "Comercio"
@@ -1371,40 +1430,40 @@ Private Sub InicializarNombres()
     SkillsNames(eSkill.Liderazgo) = "Liderazgo"
     SkillsNames(eSkill.Proyectiles) = "Armas a distancia"
     SkillsNames(eSkill.Wrestling) = "Combate sin armas"
-    SkillsNames(eSkill.Navegacion) = "Navegaci√≥n"
-    SkillsNames(eSkill.equitacion) = "Equitaci√≥n"
-    SkillsNames(eSkill.Resistencia) = "Resistencia m√°gica"
+    SkillsNames(eSkill.Navegacion) = "NavegaciÛn"
+    SkillsNames(eSkill.equitacion) = "EquitaciÛn"
+    SkillsNames(eSkill.Resistencia) = "Resistencia m·gica"
     SkillsNames(eSkill.Talar) = "Tala"
     SkillsNames(eSkill.Pescar) = "Pesca"
-    SkillsNames(eSkill.Mineria) = "Miner√≠a"
-    SkillsNames(eSkill.Herreria) = "Herrer√≠a"
-    SkillsNames(eSkill.Carpinteria) = "Carpinter√≠a"
+    SkillsNames(eSkill.Mineria) = "MinerÌa"
+    SkillsNames(eSkill.Herreria) = "HerrerÌa"
+    SkillsNames(eSkill.Carpinteria) = "CarpinterÌa"
     SkillsNames(eSkill.Alquimia) = "Alquimia"
-    SkillsNames(eSkill.Sastreria) = "Sastrer√≠a"
+    SkillsNames(eSkill.Sastreria) = "SastrerÌa"
     SkillsNames(eSkill.Domar) = "Domar"
 
-    SkillsDesc(eSkill.magia) = "Los hechizos requieren un cierto n√∫mero de puntos m√°gicos para ser usados. Sube lanzando cualquier hechizo."
-    SkillsDesc(eSkill.Robar) = "Aumenta las posibilidades de conseguir objetos u oro mientras robas. Se sube robando. Solo el ladr√≥n puede robar objetos, las otras clases solo pueden robar oro."
-    SkillsDesc(eSkill.Tacticas) = "Aumenta la posibilidad de esquivar ataques. Cuantos m√°s puntos tengas, mejor ser√° tu evasi√≥n. Sube mientras peleas cuerpo a cuerpo."
+    SkillsDesc(eSkill.magia) = "Los hechizos requieren un cierto n˙mero de puntos m·gicos para ser usados. Sube lanzando cualquier hechizo."
+    SkillsDesc(eSkill.Robar) = "Aumenta las posibilidades de conseguir objetos u oro mientras robas. Se sube robando. Solo el ladrÛn puede robar objetos, las otras clases solo pueden robar oro."
+    SkillsDesc(eSkill.Tacticas) = "Aumenta la posibilidad de esquivar ataques. Cuantos m·s puntos tengas, mejor ser· tu evasiÛn. Sube mientras peleas cuerpo a cuerpo."
     SkillsDesc(eSkill.Armas) = "Aumenta las posibilidades de golpear al enemigo con un arma.Subes peleando cuerpo a cuerpo usando cualquier arma."
     SkillsDesc(eSkill.Meditar) = "Aumenta la cantidad de mana que recuperamos al meditar. Se sube meditando. Al aumentar los puntos de esta habilidad, aumenta la mana que se recupera."
-    SkillsDesc(eSkill.Apu√±alar) = "Aumenta la probabilidad de apu√±alar. Se sube luchando cuerpo a cuerpo con dagas. Mientras mas skill tengas, mas posibilidad de apu√±alar."
+    SkillsDesc(eSkill.ApuÒalar) = "Aumenta la probabilidad de apuÒalar. Se sube luchando cuerpo a cuerpo con dagas. Mientras mas skill tengas, mas posibilidad de apuÒalar."
     SkillsDesc(eSkill.Ocultarse) = "Esta habilidad es responsable de aumentar las posibilidades de esconderse. Se sube tratando de esconderse. Mientras mas skills, mas tiempo oculto. "
-    SkillsDesc(eSkill.Supervivencia) = "La supervivencia nos permitir√° tomar agua de r√≠os, comer de los √°rboles y ver la vida de los NPCs Hostiles. Tambi√©n aumenta la velocidad que recuperamos energ√≠a o sanamos. Con 30 puntos podemos beber de los rios, con 40 puntos podemos comer de los arboles, con 50 puntos vemos el estado de los demas personajes y el tiempo exacto que le queda de paralizis a una criatura, con 75 puntos vemos la vida exacta de los npcs. Se sube combatiendo con las criaturas o prendiendo fogatas."
-    SkillsDesc(eSkill.Comerciar) = "Cuanto m√°s puntos en comerciar tengas m√°s baratas te saldr√°n las cosas en las tiendas. Sube tanto al comprar como al vender items a NPCs."
-    SkillsDesc(eSkill.Defensa) = "Aumenta las chances de defenderte con un escudo, mientras m√°s puntos tengas, hay m√°s probabilidad de rechazar el golpe del adversario."
+    SkillsDesc(eSkill.Supervivencia) = "La supervivencia nos permitir· tomar agua de rÌos, comer de los ·rboles y ver la vida de los NPCs Hostiles. TambiÈn aumenta la velocidad que recuperamos energÌa o sanamos. Con 30 puntos podemos beber de los rios, con 40 puntos podemos comer de los arboles, con 50 puntos vemos el estado de los demas personajes y el tiempo exacto que le queda de paralizis a una criatura, con 75 puntos vemos la vida exacta de los npcs. Se sube combatiendo con las criaturas o prendiendo fogatas."
+    SkillsDesc(eSkill.Comerciar) = "Cuanto m·s puntos en comerciar tengas m·s baratas te saldr·n las cosas en las tiendas. Sube tanto al comprar como al vender items a NPCs."
+    SkillsDesc(eSkill.Defensa) = "Aumenta las chances de defenderte con un escudo, mientras m·s puntos tengas, hay m·s probabilidad de rechazar el golpe del adversario."
     SkillsDesc(eSkill.Liderazgo) = "Es la habilidad necesaria para crear un clan. Se sube manualmente."
     SkillsDesc(eSkill.Proyectiles) = "Aumenta las probabilidades de pegarle al enemigo con un arco."
     SkillsDesc(eSkill.Wrestling) = "Aumenta las probabilidades de impactar al enemigo en la lucha sin armas, estupidizar o paralizar."
-    SkillsDesc(eSkill.Navegacion) = "Necesaria para poder utilizar traje de ba√±o, barcas, galeras o galeones."
+    SkillsDesc(eSkill.Navegacion) = "Necesaria para poder utilizar traje de baÒo, barcas, galeras o galeones."
     SkillsDesc(eSkill.equitacion) = " Necesaria para equipar una montura."
-    SkillsDesc(eSkill.Resistencia) = "Sirve para que los hechizos no te peguen tan fuerte, mientras m√°s puntos tengas, menos es el da√±o m√°gico que recibes. Se sube cuando un NPC o una persona te ataca con hechizos."
-    SkillsDesc(eSkill.Talar) = "Aumenta la velocidad a la que recoletas madera de los √°rboles."
+    SkillsDesc(eSkill.Resistencia) = "Sirve para que los hechizos no te peguen tan fuerte, mientras m·s puntos tengas, menos es el daÒo m·gico que recibes. Se sube cuando un NPC o una persona te ataca con hechizos."
+    SkillsDesc(eSkill.Talar) = "Aumenta la velocidad a la que recoletas madera de los ·rboles."
     SkillsDesc(eSkill.Pescar) = "Aumenta la velocidad a la que capturas peces."
     SkillsDesc(eSkill.Mineria) = "Aumenta la velocidad a la que extraes minerales de los yacimientos."
-    SkillsDesc(eSkill.Herreria) = "Te permite construir mejores objetos de herrer√≠a."
-    SkillsDesc(eSkill.Carpinteria) = "Te permite construir mejores objetos de carpinter√≠a."
-    SkillsDesc(eSkill.Alquimia) = "Te permite crear pociones m√°s poderosas."
+    SkillsDesc(eSkill.Herreria) = "Te permite construir mejores objetos de herrerÌa."
+    SkillsDesc(eSkill.Carpinteria) = "Te permite construir mejores objetos de carpinterÌa."
+    SkillsDesc(eSkill.Alquimia) = "Te permite crear pociones m·s poderosas."
     SkillsDesc(eSkill.Sastreria) = "Te permite confeccionar mejores vestimentas."
     SkillsDesc(eSkill.Domar) = "Aumenta tu habilidad para domar animales."
     
@@ -1418,7 +1477,7 @@ Private Sub InicializarNombres()
     Exit Sub
 
 InicializarNombres_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.InicializarNombres", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.InicializarNombres", Erl)
     Resume Next
     
 End Sub
@@ -1428,7 +1487,7 @@ End Sub
 
 Public Sub CleanDialogs()
     '**************************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 11/27/2005
     'Removes all text from the console and dialogs
     '**************************************************************
@@ -1436,22 +1495,25 @@ Public Sub CleanDialogs()
     'frmMain.RecTxt.Text = vbNullString
     
     On Error GoTo CleanDialogs_Err
-    
-    
+    If (Not DialogosClanes Is Nothing) Then
+    Call DialogosClanes.RemoveDialogs
+    End If
+    If (Not Dialogos Is Nothing) Then
     Call Dialogos.RemoveAllDialogs
-
+    End If
+    
     
     Exit Sub
 
 CleanDialogs_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.CleanDialogs", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.CleanDialogs", Erl)
     Resume Next
     
 End Sub
 
 Public Sub CloseClient()
     '**************************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 8/14/2007
     'Frees all used resources, cleans up and leaves
     '**************************************************************
@@ -1459,6 +1521,8 @@ Public Sub CloseClient()
     
     On Error GoTo CloseClient_Err
     
+    UserSaliendo = True
+
     Call GuardarOpciones
     
     Call PrevInstance.ReleaseInstance
@@ -1474,21 +1538,21 @@ Public Sub CloseClient()
     
     Rem frmCargando.Show
     
-    ' Call Resolution.ResetResolution
+    Call Resolution.ResetResolution
     'Stop tile engine
     'Engine_Deinit
     'Stop tile engine
     'Call DeinitTileEngine
     'Engine_Deinit
     
-    'Destruimos los objetos p√∫blicos creados
+    'Destruimos los objetos p˙blicos creados
     Set CustomKeys = Nothing
     Set SurfaceDB = Nothing
     Set Dialogos = Nothing
+    Set DialogosClanes = Nothing
     ' Set Audio = Nothing
     Set MainTimer = Nothing
-    Set incomingData = Nothing
-    Set outgoingData = Nothing
+
     Set FormParser = Nothing
     Call EndGame(True)
     
@@ -1498,6 +1562,7 @@ Public Sub CloseClient()
     Set frmComerciar.InvComUsu = Nothing
     Set frmBancoObj.InvBankUsu = Nothing
     Set frmBancoObj.InvBoveda = Nothing
+    Set frmComerciarUsu.InvUser = Nothing
     
     
     Set frmBancoCuenta.InvBankUsuCuenta = Nothing
@@ -1512,7 +1577,7 @@ Public Sub CloseClient()
     Exit Sub
 
 CloseClient_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.CloseClient", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.CloseClient", Erl)
     Resume Next
     
 End Sub
@@ -1523,7 +1588,7 @@ Public Function General_Field_Read(ByVal field_pos As Long, ByVal Text As String
     
 
     '*****************************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero
+    'Author: Juan MartÌn Sotuyo Dodero
     'Last Modify Date: 11/15/2004
     'Gets a field from a delimited string
     '*****************************************************************
@@ -1552,7 +1617,7 @@ Public Function General_Field_Read(ByVal field_pos As Long, ByVal Text As String
     Exit Function
 
 General_Field_Read_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.General_Field_Read", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.General_Field_Read", Erl)
     Resume Next
     
 End Function
@@ -1594,35 +1659,24 @@ Public Function General_Field_Count(ByVal Text As String, ByVal delimiter As Byt
     Exit Function
 
 General_Field_Count_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.General_Field_Count", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.General_Field_Count", Erl)
     Resume Next
     
 End Function
 
-Public Sub InitServersList(ByVal Lst As String)
+Public Sub InitServersList()
     
     On Error GoTo InitServersList_Err
     
+    ReDim ServersLst(1 To UBound(IPServers)) As tServerInfo
 
-    
-
-    Dim NumServers As Integer
-
-    Dim i          As Integer, Cont As Integer
-
-    Cont = General_Field_Count(RawServersList, Asc(";"))
-
-    ReDim ServersLst(1 To Cont) As tServerInfo
-    CantServer = Cont
-
-    For i = 1 To Cont
-
-        Dim cur$
-
-        cur$ = General_Field_Read(i, RawServersList, ";")
-        ServersLst(i).IP = General_Field_Read(1, cur$, ":")
-        ServersLst(i).puerto = Val(General_Field_Read(2, cur$, ":"))
-        ServersLst(i).desc = General_Field_Read(3, cur$, ":")
+    Dim i As Integer
+    For i = 1 To UBound(IPServers)
+        ServersLst(i).IP = General_Field_Read(1, IPServers(i), ":")
+        ServersLst(i).puerto = Val(General_Field_Read(2, IPServers(i), ":"))
+        ServersLst(i).desc = General_Field_Read(3, IPServers(i), ":")
+        ServersLst(i).IpLogin = General_Field_Read(4, IPServers(i), ":")
+        ServersLst(i).puertoLogin = General_Field_Read(5, IPServers(i), ":")
     Next i
 
     CurServer = 1
@@ -1631,7 +1685,7 @@ Public Sub InitServersList(ByVal Lst As String)
     Exit Sub
 
 InitServersList_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.InitServersList", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.InitServersList", Erl)
     Resume Next
     
 End Sub
@@ -1671,13 +1725,13 @@ Public Function General_Get_Elapsed_Time() As Single
     Exit Function
 
 General_Get_Elapsed_Time_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.General_Get_Elapsed_Time", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.General_Get_Elapsed_Time", Erl)
     Resume Next
     
 End Function
 
 
-Public Function max(ByVal A As Double, ByVal B As Double) As Double
+Public Function max(ByVal A As Variant, ByVal B As Variant) As Variant
     
     On Error GoTo max_Err
     
@@ -1693,12 +1747,12 @@ Public Function max(ByVal A As Double, ByVal B As Double) As Double
     Exit Function
 
 max_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.max", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.max", Erl)
     Resume Next
     
 End Function
 
-Public Function min(ByVal A As Double, ByVal B As Double) As Double
+Public Function min(ByVal A As Double, ByVal B As Double) As Variant
     
     On Error GoTo min_Err
     
@@ -1714,47 +1768,89 @@ Public Function min(ByVal A As Double, ByVal B As Double) As Double
     Exit Function
 
 min_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.min", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.min", Erl)
     Resume Next
     
 End Function
 
+Public Function Clamp(ByVal A As Variant, ByVal min As Variant, ByVal max As Variant) As Variant
+    
+    On Error GoTo min_Err
+    
+
+    If A < min Then
+        Clamp = min
+    
+    ElseIf A > max Then
+        Clamp = max
+
+    Else
+        Clamp = A
+    End If
+
+    
+    Exit Function
+
+min_Err:
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.min", Erl)
+    Resume Next
+    
+End Function
+
+
 Public Function LoadInterface(FileName As String) As IPicture
 
-On Error GoTo errhandler
+On Error GoTo ErrHandler
 
-    #If Compresion = 1 Then
-        Set LoadInterface = General_Load_Picture_From_Resource_Ex(LCase$(FileName))
-    
-    #Else
-        Set LoadInterface = LoadPicture(App.Path & "/../Recursos/interface/" & LCase$(FileName))
-    #End If
-    
+    If FileName <> "" Then
+        #If Compresion = 1 Then
+            Set LoadInterface = General_Load_Picture_From_Resource_Ex(LCase$(FileName), ResourcesPassword)
+        #Else
+            Set LoadInterface = LoadPicture(App.Path & "/../Recursos/interface/" & LCase$(FileName))
+        #End If
+    End If
 Exit Function
 
-errhandler:
+ErrHandler:
     MsgBox "Error al cargar la interface: " & FileName
 
 End Function
 
-Public Function Tilde(ByRef Data As String) As String
+Public Function LoadMinimap(ByVal map As Integer) As IPicture
+
+On Error GoTo ErrHandler
+
+    #If Compresion = 1 Then
+        Set LoadMinimap = General_Load_Minimap_From_Resource_Ex("mapa" & map & ".bmp", ResourcesPassword)
+    #Else
+        Set LoadMinimap = LoadPicture(App.Path & "/../Recursos/Minimapas/Mapa" & map & ".bmp")
+    #End If
+    
+Exit Function
+
+ErrHandler:
+    MsgBox "Error al cargar minimapa: Mapa" & map & ".bmp"
+
+End Function
+
+Public Function Tilde(ByRef data As String) As String
     
     On Error GoTo Tilde_Err
     
 
-    Tilde = UCase$(Data)
+    Tilde = UCase$(data)
  
-    Tilde = Replace$(Tilde, "√Å", "A")
-    Tilde = Replace$(Tilde, "√â", "E")
-    Tilde = Replace$(Tilde, "√ç", "I")
-    Tilde = Replace$(Tilde, "√ì", "O")
-    Tilde = Replace$(Tilde, "√ö", "U")
+    Tilde = Replace$(Tilde, "¡", "A")
+    Tilde = Replace$(Tilde, "…", "E")
+    Tilde = Replace$(Tilde, "Õ", "I")
+    Tilde = Replace$(Tilde, "”", "O")
+    Tilde = Replace$(Tilde, "⁄", "U")
         
     
     Exit Function
 
 Tilde_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.Tilde", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.Tilde", Erl)
     Resume Next
     
 End Function
@@ -1783,7 +1879,7 @@ Function RunningInVB() As Boolean
     Exit Function
 
 RunningInVB_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.RunningInVB", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.RunningInVB", Erl)
     Resume Next
     
 End Function
@@ -1820,7 +1916,7 @@ Function GetTimeFromString(str As String) As Long
     Exit Function
 
 GetTimeFromString_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_General.GetTimeFromString", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.GetTimeFromString", Erl)
     Resume Next
     
 End Function
@@ -1839,64 +1935,128 @@ Handler:
 
 End Function
 
-Public Function WriteStringToRegistry(Hkey As Long, strPath As String, strValue As String, strdata As String) As Boolean
+Public Sub CheckResources()
+
+    Dim data(1 To 200) As Byte
     
-    Dim bAns As Boolean
+    Dim handle As Integer
+    handle = FreeFile
+
+    Open App.Path & "/../Recursos/OUTPUT/AO.bin" For Binary Access Read As #handle
     
-    On Error GoTo ErrorHandler
+    Get #handle, , data
     
-       Dim keyhand As Long
-       Dim r As Long
-       r = RegCreateKey(Hkey, strPath, keyhand)
-       If r = 0 Then
-            r = RegSetValueEx(keyhand, strValue, 0, _
-               1, ByVal strdata, Len(strdata))
-            r = RegCloseKey(keyhand)
+    Close #handle
+    
+    Dim length As Integer
+    length = data(UBound(data)) + data(UBound(data) - 1) * 256
+
+    Dim i As Integer
+    
+    For i = 1 To length
+        ResourcesPassword = ResourcesPassword & Chr(data(i * 3 - 1) Xor 37)
+    Next
+
+End Sub
+
+Function ValidarNombre(nombre As String, Error As String) As Boolean
+
+    If Len(nombre) < 3 Or Len(nombre) > 18 Then
+        Error = "Debes ingresar un nombre entre 3 y 18 caracteres"
+        Exit Function
+    End If
+    
+    Dim Temp As String
+    Temp = UCase$(nombre)
+    
+    Dim i As Long, Char As Integer, LastChar As Integer
+    For i = 1 To Len(Temp)
+        Char = Asc(mid$(Temp, i, 1))
+        
+        If (Char < 65 Or Char > 90) And Char <> 32 Then
+            Error = "SÛlo se permites letras y espacios."
+            Exit Function
+        
+        ElseIf Char = 32 And LastChar = 32 Then
+            Error = "No se permiten espacios consecutivos."
+            Exit Function
         End If
         
-       WriteStringToRegistry = (r = 0)
-    
-    Exit Function
-ErrorHandler:
-    WriteStringToRegistry = False
-    Exit Function
-    
-End Function
+        LastChar = Char
+    Next
 
-Public Function ReadRegistryKey(Hkey As Long, strPath As String, strValue As String) As String
-
-    Dim bAns As Boolean
-    
-    On Error GoTo ErrorHandler
-    
-    Dim keyhand As Long
-    Dim r As Long
-    Dim Data As String
-    Dim LenValue As Long
-       
-    r = RegOpenKey(Hkey, strPath, keyhand)
-    If r = 0 Then
-        r = RegQueryValueEx(keyhand, strValue, 0, 1, vbNullString, LenValue)
-        
-        Data = Space(LenValue)
-        
-        r = RegQueryValueEx(keyhand, strValue, 0, 1, ByVal Data, Len(Data))
-        r = RegCloseKey(keyhand)
-        
-        ReadRegistryKey = Left$(Data, Len(Data) - 1)
+    If Asc(mid$(Temp, 1, 1)) = 32 Or Asc(mid$(Temp, Len(Temp), 1)) = 32 Then
+        Error = "No se permiten espacios al inicio o al final."
+        Exit Function
     End If
     
-    Exit Function
-ErrorHandler:
-    ReadRegistryKey = vbNullString
-    Exit Function
+    ValidarNombre = True
 
 End Function
 
-Public Function ComprobarTolerancia0() As Boolean
+Function BeautifyBigNumber(ByVal Number As Long) As String
 
-    If ReadRegistryKey(&H80000002, "Software\Temp", "e14a3ff5b5e67ede599cac94358e1028") = "rekcahnuyos" Then
-        ComprobarTolerancia0 = True
+    If Number > 1000000000 Then
+        BeautifyBigNumber = Round(Number * 0.000000001, 3) & "KKK"
+    ElseIf Number > 10000000 Then
+        BeautifyBigNumber = Round(Number * 0.000001, 2) & "KK"
+    ElseIf Number > 10000& Then
+        BeautifyBigNumber = Round(Number * 0.001, 1) & "K"
+    Else
+        BeautifyBigNumber = Number
     End If
 
+End Function
+
+Public Function IntentarObtenerPezEspecial()
+    
+    Dim acierto As Byte
+    
+    Debug.Print "Aciertos: " & ContadorIntentosPescaEspecial_Acertados & "Posicion barra : " & PosicionBarra
+        'El + y -10 es por inputLag (Margen de error)
+    If PuedeIntentar Then
+        If PosicionBarra >= (90 - 15) And PosicionBarra <= (111 + 15) Then
+            ContadorIntentosPescaEspecial_Acertados = ContadorIntentosPescaEspecial_Acertados + 1
+            acierto = 1
+        Else
+            ContadorIntentosPescaEspecial_Fallados = ContadorIntentosPescaEspecial_Fallados + 1
+            acierto = 2
+        End If
+        
+        PuedeIntentar = False
+        
+        If acierto = 1 Then
+            intentosPesca(ContadorIntentosPescaEspecial_Fallados + ContadorIntentosPescaEspecial_Acertados) = 1
+        ElseIf acierto = 2 Then
+            intentosPesca(ContadorIntentosPescaEspecial_Fallados + ContadorIntentosPescaEspecial_Acertados) = 2
+        End If
+    
+        If ContadorIntentosPescaEspecial_Fallados + ContadorIntentosPescaEspecial_Acertados >= 5 Or ContadorIntentosPescaEspecial_Acertados >= 3 Then
+            PescandoEspecial = False
+            Call WriteFinalizarPescaEspecial
+        ElseIf ContadorIntentosPescaEspecial_Acertados >= 3 Then
+            PescandoEspecial = False
+            Call WriteFinalizarPescaEspecial
+        ElseIf ContadorIntentosPescaEspecial_Fallados >= 3 Then
+            PescandoEspecial = False
+            Call AddtoRichTextBox(frmMain.RecTxt, "El pez ha roto tu linea de pesca.", 255, 0, 0, 1, 0)
+            Call WriteRomperCania
+        End If
+    End If
+    
+    
+    
+End Function
+
+
+Public Function isValidEmail(email As String) As Boolean
+    Dim At As Integer
+    Dim oneDot As Integer
+    Dim twoDots As Integer
+ 
+    isValidEmail = True
+    At = InStr(1, email, "@", vbTextCompare)
+    oneDot = InStr(At + 2, email, ".", vbTextCompare)
+    twoDots = InStr(At + 2, email, "..", vbTextCompare)
+    If At = 0 Or oneDot = 0 Or Not twoDots = 0 Or Right(email, 1) = "." Then isValidEmail = False
 End Function

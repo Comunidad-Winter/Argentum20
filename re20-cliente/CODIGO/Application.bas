@@ -20,7 +20,7 @@ End Type: Private HistorialError As UltimoError
 
 Public Function IsAppActive() As Boolean
     '***************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero (maraxus)
+    'Author: Juan Martín Sotuyo Dodero (maraxus)
     'Last Modify Date: 03/03/2007
     'Checks if this is the active application or not
     '***************************************************
@@ -33,7 +33,7 @@ Public Function IsAppActive() As Boolean
     Exit Function
 
 IsAppActive_Err:
-    Call RegistrarError(Err.number, Err.Description, "Application.IsAppActive", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Application.IsAppActive", Erl)
     Resume Next
     
 End Function
@@ -54,10 +54,11 @@ Public Sub RegistrarError(ByVal Numero As Long, ByVal Descripcion As String, ByV
        
            'Si ya recibimos error en el mismo componente 10 veces, es bastante probable que estemos en un bucle
             'x lo que no hace falta registrar el error.
-102         If HistorialError.Contador = 10 Then
-                Debug.Print "Mismo error"
-                Exit Sub
-            End If
+102        ' If HistorialError.Contador = 10 Then
+           '     Debug.Print "Mismo error"
+           '     Debug.Assert False
+           '     Exit Sub
+           ' End If
         
             'Agregamos el error al historial.
 104         HistorialError.Contador = HistorialError.Contador + 1
@@ -99,7 +100,7 @@ Public Sub RegistrarError(ByVal Numero As Long, ByVal Descripcion As String, ByV
         Exit Sub
 
 RegistrarError_Err:
-        Call RegistrarError(Err.number, Err.Description, "ES.RegistrarError", Erl)
+        Call RegistrarError(Err.Number, Err.Description, "ES.RegistrarError", Erl)
 
         
 End Sub

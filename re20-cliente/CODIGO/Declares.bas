@@ -3,14 +3,42 @@ Attribute VB_Name = "Mod_Declaraciones"
 'Pablo Mercavides
 Option Explicit
 
-
 Public SeguroGame As Boolean
 Public SeguroParty As Boolean
 Public SeguroClanX As Boolean
 Public SeguroResuX As Boolean
 
-Public QuePestaÃ±aInferior As Byte
+Public QuePestañaInferior As Byte
 
+
+Public Enum tMacro
+    dobleclick = 1
+    Coordenadas = 2
+    inasistidoPosFija = 3
+End Enum
+
+Public Enum tMacroButton
+    Inventario = 1
+    Hechizos = 2
+    lista = 3
+    Lanzar = 4
+End Enum
+
+Public LastMacroButton As Long
+
+Public TieneAntorcha As Boolean
+Public Enum TipoAntorcha
+    AntorchaBasica = 0
+    AntorchaReforzada
+    AntorchaLaMejor
+End Enum
+Public DeltaAntorcha As Double
+
+Public credits_shopAO20 As Long
+
+Public CantNpcWorld         As Integer
+
+Public NpcWorlds(1 To 2000) As Byte
 
 Public ViajarInterface                  As Byte
 
@@ -22,19 +50,23 @@ Public DuracionDia                      As Long
 
 Public EsGM                             As Boolean
 
-Public HayFormularioAbierto             As Boolean
-
 Public HayLLamadaDeclan                 As Boolean
+
+Public MapInfoEspeciales                As String
 
 Public LLamadaDeclanMapa                As Byte
 
 Public LLamadaDeclanX                   As Byte
+
+Public EscribeRetrasadoSensui           As Boolean
 
 Public LLamadaDeclanY                   As Byte
 
 Public SugerenciaAMostrar               As Byte
 
 Public UserInvUnlocked                  As Byte
+
+Public Const MAX_PERSONAJES_EN_CUENTA   As Byte = 10
 
 'Slots de Inventarios Generales
 Public Const GRH_SLOT_INVENTARIO_NEGRO  As Long = 26095
@@ -56,18 +88,9 @@ Public Const MAX_NORMAL_INVENTORY_SLOTS As Byte = 24
 ' Cantidad de "slots" en el inventario con slots desbloqueados
 Public Const MAX_INVENTORY_SLOTS        As Byte = 42
 
-Public Const ARBOL_ALPHA_TIME           As Long = 300
+Public Const ARBOL_ALPHA_TIME           As Long = 150
 
 Public Const ARBOL_MIN_ALPHA            As Byte = 130
- 
-Type TRanking
-
-    nombre As String
-    puntos As Long
-
-End Type
-
-Public LRanking(1 To 10) As TRanking
 
 'Creacion de PJ 17/8/20
 Public RazaRecomendada   As String
@@ -112,6 +135,36 @@ Public Type tPaso
 
 End Type
 
+Public Type t_packetCounters
+    TS_CastSpell As Long
+    TS_WorkLeftClick As Long
+    TS_LeftClick As Long
+    TS_UseItem As Long
+    TS_UseItemU As Long
+    TS_Walk As Long
+    TS_Talk As Long
+    TS_Attack As Long
+    TS_Drop As Long
+    TS_Work As Long
+    TS_EquipItem As Long
+    TS_GuildMessage As Long
+    TS_QuestionGM As Long
+    TS_ChangeHeading As Long
+End Type
+
+Public packetCounters As t_packetCounters
+
+
+Public Const CANT_PACKETS_CONTROL As Long = 400
+
+Public Type t_packetControl
+    last_count As Long
+    'cant_iterations As Long = 10
+    iterations(1 To 10) As Long
+End Type
+
+Public packetControl(1 To CANT_PACKETS_CONTROL) As t_packetControl
+
 Public Const NUM_PASOS       As Byte = 6
 
 Public Pasos()               As tPaso
@@ -137,8 +190,16 @@ Public TextAsistente         As String
 Public TextEfectAsistente    As Single
 
 Public ClickEnAsistente      As Long
+Public ClickEnAsistenteRandom      As Long
+Public LastClickAsistente    As Long
 
 Public PJSeleccionado        As Byte
+Public LastPJSeleccionado    As Byte
+Public AlphaRenderCuenta     As Single
+Public RenderCuenta_PosX     As Integer
+Public RenderCuenta_PosY     As Integer
+
+Public Const MAX_ALPHA_RENDER_CUENTA = 85
 
 Public AlphaNiebla           As Byte
 
@@ -164,7 +225,7 @@ Public clicY                 As Long
 
 Public FxLoops               As Long
 
-'Â¿Estamos haciendo efecto fade?
+'¿Estamos haciendo efecto fade?
 Public mFadingStatus         As Byte
 
 Public mFadingMusicMod       As Long
@@ -181,13 +242,15 @@ End Enum
 
 Public Music                       As E_SISTEMA_MUSICA
 
-Public MostrarEscribiendo             As Byte
+Public NumerosCompletosInventario  As Byte
+
+Public MostrarRespiracion          As Boolean
 
 Public PermitirMoverse             As Byte
 
 Public MoverVentana                As Byte
 
-Public CursoresGraficos            As Byte
+Public CursoresGraficos            As Boolean
 
 Public UtilizarPreCarga            As Byte
 
@@ -196,6 +259,8 @@ Public SensibilidadMouse           As Byte
 Public SensibilidadMouseOriginal   As Byte
 
 Public CopiarDialogoAConsola       As Byte
+
+Public InfoItemsEnRender           As Boolean
 
 Public Musica                      As Byte
 
@@ -217,11 +282,9 @@ Public ChatCombate                 As Byte
 
 Public ChatGlobal                  As Byte
 
-Public PantallaCompleta            As Byte
+Public PantallaCompleta            As Boolean
 
 Public Sonido                      As Byte
-
-Public OcultarMacrosAlCastear      As Byte
 
 Public MostrarIconosMeteorologicos As Byte
 
@@ -231,7 +294,7 @@ Public EntradaX                    As Byte
 
 Public EntradaY                    As Byte
 
-Public Declare Function SetPixel Lib "gdi32" (ByVal hdc As Long, ByVal x As Long, ByVal y As Long, ByVal crColor As Long) As Long
+Public Declare Function SetPixel Lib "gdi32" (ByVal hdc As Long, ByVal X As Long, ByVal Y As Long, ByVal crColor As Long) As Long
 
 Public MouseX                 As Long
 
@@ -267,7 +330,12 @@ Public light_transition       As Single
 Public Const Particula_Lluvia As Long = 58
 Public Const Particula_Nieve  As Long = 57
 Public VolMusicFadding        As Integer
-Public RawServersList         As String
+
+#If DEBUGGING = 1 Then
+    Public IPServers(1 To 4) As String
+#Else
+    Public IPServers(1) As String
+#End If
 
 Public Type tServerInfo
 
@@ -275,14 +343,14 @@ Public Type tServerInfo
     puerto As Integer
     desc As String
     estado As Boolean
+    IpLogin As String
+    puertoLogin As Integer
 
 End Type
 
 Public ServersLst()   As tServerInfo
 
 Public EngineStats    As Boolean
-
-Public CuentaDonador  As Byte
 
 Public DeleteUser     As String
 
@@ -294,7 +362,8 @@ Public NamePj(1 To 8) As String
 
 Public ValidacionCode As String
 
-'Objetos pÃºblicos
+'Objetos públicos
+Public DialogosClanes As clsGuildDlg
 Public CurMp3         As Byte
 
 Public Const Mp3_Dir = "\..\Recursos\Mp3\"
@@ -307,16 +376,16 @@ Public Type RGB
 
     r As Long
     G As Long
-    B As Long
+    b As Long
 
 End Type
 
 Public Type ARGB
 
-    A As Single
+    a As Single
     r As Long
     G As Long
-    B As Long
+    b As Long
 
 End Type
 
@@ -334,9 +403,6 @@ Public CustomKeys              As New clsCustomKeys
 
 Public Sound                   As New clsSoundEngine
 
-Public incomingData            As New clsByteQueue
-Public outgoingData            As New clsByteQueue
-
 Public Audio_MP3_Load          As Boolean
 
 Public Audio_MP3_Play          As Boolean
@@ -346,11 +412,11 @@ Public Audio_MP3_Play          As Boolean
 Public MainTimer               As New clsTimer
 
 'Sonidos
-Public Const SND_CAM           As String = "cam.wav"
-
 Public Const SND_EXCLAMACION   As Integer = 451
 
-Public Const SND_CLICK         As Integer = 190
+Public Const SND_CLICK         As String = 500
+
+Public Const SND_CLICK_OVER    As String = 501
 
 Public Const SND_NAVEGANDO     As Integer = 50
 
@@ -371,6 +437,8 @@ Public Const SND_NIEVEOUT      As Integer = 194
 Public Const SND_RESUCITAR     As Integer = 104
 
 Public Const SND_CURAR         As Integer = 101
+
+Public Const SND_DOPA          As Byte = 77
 
 Public TargetXMacro            As Byte
 
@@ -434,7 +502,7 @@ Public Type tColor
 
     r As Byte
     G As Byte
-    B As Byte
+    b As Byte
 
 End Type
 
@@ -454,7 +522,7 @@ Public UserEstupido           As Boolean
 
 Public NoRes                  As Boolean 'no cambiar la resolucion
 
-Public Launcher               As Boolean 'Â¿Habrio desde el Launcher?
+Public Launcher               As Boolean '¿Habrio desde el Launcher?
 
 Public AmbientalesBufferIndex As Long
 
@@ -491,6 +559,9 @@ Public Const UltimoBodyBarco = 87
 
 Public NumEscudosAnims As Integer
 
+Public casteaArea As Boolean
+Public RadioHechizoArea As Byte
+
 Type tHerreria
 
     LHierro As Integer
@@ -507,6 +578,13 @@ Type tSasteria
     PielOsoPolar As Integer
     Index As Integer
 
+End Type
+
+Type tCrafteo
+    nombre As String
+    Ventana As String
+    Inventario As Long
+    Icono As Long
 End Type
 
 Public ArmasHerrero(0 To 100)     As tHerreria
@@ -535,18 +613,13 @@ Public UsaMacro                   As Boolean
 
 Public CnTd                       As Byte
 
-Public Type ObjDonador
-
-    precio As Integer
-    Index As Integer
-
-End Type
-
-Public ObjDonador(0 To 100)           As ObjDonador
+Public TipoCrafteo()              As tCrafteo
 
 Public Const MAX_BANCOINVENTORY_SLOTS As Byte = 42
 
 Public Const MAX_KEYS As Byte = 10
+
+Public Const MAX_SLOTS_CRAFTEO = 5
 
 Public Const LoopAdEternum            As Integer = 999
 
@@ -590,7 +663,7 @@ Public Const FLAG_COSTA              As Integer = &H80
 
 Public Const FLAG_LAVA               As Integer = &H100
 
-Public Const PRIMER_TRIGGER_TECHO    As Byte = 9
+Public Const PRIMER_TRIGGER_TECHO    As Byte = 19
 
 Public Const FOgata                  As Integer = 1521
 
@@ -601,12 +674,12 @@ Public Const INV_FLAG_LAVA           As Single = 1 / FLAG_LAVA
 Public Enum eClass
 
     Mage = 1    'Mago
-    Cleric      'ClÃ©rigo
+    Cleric      'Clérigo
     Warrior     'Guerrero
     Assasin     'Asesino
     Bard        'Bardo
     Druid       'Druida
-    paladin     'PaladÃ­n
+    paladin     'Paladín
     Hunter      'Cazador
     Trabajador  'Trabajador
     Pirat       'Pirata
@@ -644,7 +717,7 @@ Public Enum eSkill
     Tacticas = 3
     Armas = 4
     Meditar = 5
-    ApuÃ±alar = 6
+    Apuñalar = 6
     Ocultarse = 7
     Supervivencia = 8
     Comerciar = 9
@@ -691,11 +764,11 @@ End Enum
 Public Enum PlayerType
 
     User = &H1
-    Consejero = &H2
-    SemiDios = &H4
-    Dios = &H8
-    Admin = &H10
-    RoleMaster = &H20
+    RoleMaster = &H2
+    Consejero = &H4
+    SemiDios = &H8
+    Dios = &H10
+    Admin = &H20
     ChaosCouncil = &H40
     RoyalCouncil = &H80
 
@@ -715,7 +788,7 @@ Public Enum eObjType
     otForos = 10
     otPociones = 11
     otBebidas = 13
-    otLeÃ±a = 14
+    otLeña = 14
     otFogata = 15
     otESCUDO = 16
     otCASCO = 17
@@ -743,7 +816,6 @@ Public Enum eObjType
     otNudillos = 46
     OtCorreo = 47
     OtCofre = 48
-    OtDonador = 50
     otCualquiera = 1000
 
 End Enum
@@ -770,7 +842,7 @@ Public Const MENSAJE_SEGURO_ACTIVADO               As String = "Seguro de ataque
 
 Public Const MENSAJE_SEGURO_DESACTIVADO            As String = "Seguro de ataque desactivado."
 
-Public Const MENSAJE_USAR_MEDITANDO                As String = "Â¡EstÃ¡s meditando! Debes dejar de meditar para usar objetos."
+Public Const MENSAJE_USAR_MEDITANDO                As String = "¡Estás meditando! Debes dejar de meditar para usar objetos."
 
 Public Const MENSAJE_SEGURO_PARTY_ON               As String = "Ahora nadie te podra invitar a un grupo."
 
@@ -789,7 +861,7 @@ Public Const MENSAJE_GOLPE_PIERNA_DER              As String = "La criatura te h
 Public Const MENSAJE_GOLPE_TORSO                   As String = "La criatura te ha pegado en el torso por "
 
 ' MENSAJE_[12]: Aparecen antes y despues del valor de los mensajes anteriores (MENSAJE_GOLPE_*)
-Public Const MENSAJE_1                             As String = "Â¡Â¡"
+Public Const MENSAJE_1                             As String = "¡¡"
 
 Public Const MENSAJE_2                             As String = "."
 
@@ -829,7 +901,7 @@ Public Const MENSAJE_TRABAJO_PESCA                 As String = "Haz click sobre 
 
 Public Const MENSAJE_TRABAJO_ROBAR                 As String = "Haz click sobre la victima..."
 
-Public Const MENSAJE_TRABAJO_TALAR                 As String = "Haz click sobre el Ã¡rbol..."
+Public Const MENSAJE_TRABAJO_TALAR                 As String = "Haz click sobre el árbol..."
 
 Public Const MENSAJE_TRABAJO_MINERIA               As String = "Haz click sobre el yacimiento..."
 
@@ -842,8 +914,8 @@ Public Const MENSAJE_NENE                          As String = "Cantidad de NPCs
 'Inventario
 Type Inventory
 
-    OBJIndex As Integer
-    Name As String
+    ObjIndex As Integer
+    name As String
     GrhIndex As Long
     '[Alejo]: tipo de datos ahora es Long
     Amount As Long
@@ -861,7 +933,7 @@ End Type
 Type MakeObj
 
     GrhIndex As Long ' Indice del grafico que representa el obj
-    Name As String
+    name As String
     MinDef As Integer
     MaxDef As Integer
     MinHit As Integer
@@ -872,8 +944,8 @@ End Type
 
 Type NpCinV
 
-    OBJIndex As Integer
-    Name As String
+    ObjIndex As Integer
+    name As String
     GrhIndex As Long
     Amount As Integer
     Valor As Single
@@ -904,10 +976,8 @@ Type tEstadisticasUsu
     VecesQueMoriste As Long
     Genero As String
     Raza As String
-    Donador As Byte
-    CreditoDonador As Long
-    DiasRestantes As Integer
     BattlePuntos As Long
+    PuntosPesca As Long
 
 End Type
 
@@ -918,6 +988,8 @@ Enum eModoHechizos
 End Enum
 
 Public Nombres                                  As Boolean
+
+Public object_angle                             As Single
 
 'User status vars
 Global OtroInventario(1 To MAX_INVENTORY_SLOTS) As Inventory
@@ -930,7 +1002,7 @@ Public UserHechizosInterval(1 To MAXHECHI)      As Integer
 
 Public UserMeditar                              As Boolean
 
-Public UserName                                 As String
+Public username                                 As String
 
 Public UserPassword                             As String
 
@@ -957,6 +1029,8 @@ Public UserMinHAM                               As Byte
 Public UserGLD                                  As Long
 
 Public UserLvl                                  As Integer
+
+Public OroPorNivel                              As Long
 
 Public UserPort                                 As Integer
 
@@ -988,11 +1062,15 @@ Public UserParalizado                           As Boolean
 
 Public UserInmovilizado                         As Boolean
 
+Public UserStopped                              As Boolean
+
 Public UserNavegando                            As Boolean
 
 Public UserMontado                              As Boolean
 
 Public UserNadando                              As Boolean
+
+Public UserNadandoTrajeCaucho                   As Boolean
 
 Public UserAvisado                              As Boolean
 
@@ -1024,7 +1102,7 @@ Public Const NUMATRIBUTOS                       As Byte = 5
 
 Public Const NUMCLASES                          As Byte = 12
 
-Public Const NUMRAZAS                           As Byte = 5
+Public Const NUMRAZAS                           As Byte = 6
 
 Public Const NUMCIUDADES                        As Byte = 5
 
@@ -1068,34 +1146,31 @@ Public logged                            As Boolean
 
 Public UsingSkill                        As Integer
 
-Public pingTime                          As Long
+Public InvasionActual                    As Byte
+
+Public InvasionPorcentajeVida            As Byte
+
+Public InvasionPorcentajeTiempo          As Byte
 
 Public Enum E_MODO
 
     Normal = 1
     CrearNuevoPj = 2
-    Dados = 3
+    'Dados = 3
     CreandoCuenta = 4
-    ActivandoCuenta = 5
-    IngresandoConCuenta = 6
-    ReValidandoCuenta = 7
-    BorrandoPJ = 8
-    RecuperandoConstraseÃ±a = 9
-    BorrandoCuenta = 10
+    IngresandoConCuenta = 5
+    BorrandoPJ = 6
 
 End Enum
 
 Public EstadoLogin As E_MODO
 
 Public Enum eClanType
-
-    ct_RoyalArmy
-    ct_Evil
-    ct_Neutral
-    ct_GM
-    ct_Legal
+    ct_Neutral = 0
+    ct_Real
+    ct_Caos
+    ct_Ciudadana
     ct_Criminal
-
 End Enum
 
 Public Enum eEditOptions
@@ -1152,8 +1227,13 @@ Public Enum eTrigger
     ZONAPELEA = 6
     CURA = 7
     DETALLEAGUA = 8
-    CARCEL = 9
-
+    
+    VALIDONADO = 11
+    ESCALERA = 12
+    VALIDOPUENTE = 17
+    NADOCOMBINADO = 18
+    CARCEL = 19
+    
 End Enum
 
 'Server stuff
@@ -1166,10 +1246,12 @@ Public stxtbuffercmsg    As String 'Holds temp raw data from server
 Public SendNewChar       As Boolean 'Used during login
 
 Public Connected         As Boolean 'True when connected to server
+Public FullLogout        As Boolean
 
 Public DownloadingMap    As Boolean 'Currently downloading a map from server
 
 Public UserMap           As Integer
+Public LastRenderMap     As Integer
 
 'Control
 Public prgRun            As Boolean 'When true the program ends
@@ -1178,6 +1260,9 @@ Public IPdelServidor     As String
 
 Public PuertoDelServidor As String
 
+Public IPdelServidorLogin     As String
+
+Public PuertoDelServidorLogin As String
 '
 '********** FUNCIONES API ***********
 '
@@ -1195,14 +1280,7 @@ Public Declare Function GetAsyncKeyState Lib "user32" (ByVal nVirtKey As Long) A
 Public Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
 
 'Para ejecutar el Internet Explorer para el manual
-Public Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hWnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
-
-'Para tolerancia 0
-Public Declare Function RegCreateKey Lib "advapi32.dll" Alias "RegCreateKeyA" (ByVal Hkey As Long, ByVal lpSubKey As String, phkResult As Long) As Long
-Public Declare Function RegOpenKey Lib "advapi32.dll" Alias "RegOpenKeyA" (ByVal Hkey As Long, ByVal lpSubKey As String, phkResult As Long) As Long
-Public Declare Function RegQueryValueEx Lib "advapi32.dll" Alias "RegQueryValueExA" (ByVal Hkey As Long, ByVal lpValueName As String, ByVal lpReserved As Long, lpType As Long, lpData As Any, lpcbData As Long) As Long
-Public Declare Function RegCloseKey Lib "advapi32.dll" (ByVal Hkey As Long) As Long
-Public Declare Function RegSetValueEx Lib "advapi32.dll" Alias "RegSetValueExA" (ByVal Hkey As Long, ByVal lpValueName As String, ByVal Reserved As Long, ByVal dwType As Long, lpData As Any, ByVal cbData As Long) As Long
+Public Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
 
 'Lista de cabezas
 Public Type tIndiceCabeza
@@ -1228,9 +1306,6 @@ Public Type tIndiceFx
 
 End Type
 
-#If AntiExternos Then
-    Public Security As New clsSecurity
-#End If
 
 ' Load custom font
 Public Declare Function AddFontResourceEx Lib "gdi32.dll" Alias "AddFontResourceExA" (ByVal lpcstr As String, ByVal dword As Long, ByRef DESIGNVECTOR) As Long

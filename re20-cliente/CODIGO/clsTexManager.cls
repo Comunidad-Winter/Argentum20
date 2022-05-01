@@ -51,7 +51,7 @@ Private Sub Class_Terminate()
     
 
     '**************************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero
+    'Author: Juan Martín Sotuyo Dodero
     'Last Modify Date: 5/04/2005
     '
     '**************************************************************
@@ -103,7 +103,7 @@ Public Function GetTexture(ByVal FileName As Integer, ByRef textwidth As Long, B
         For i = 1 To .surfaceCount
 
             If .SurfaceEntry(i).FileName = FileName Then
-                .SurfaceEntry(i).UltimoAcceso = (timeGetTime() And &H7FFFFFFF)
+                .SurfaceEntry(i).UltimoAcceso = GetTickCount()
                 textwidth = .SurfaceEntry(i).texture_width
                 textheight = .SurfaceEntry(i).texture_height
                 Set GetTexture = .SurfaceEntry(i).Texture
@@ -128,7 +128,7 @@ End Function
 
 Public Function Init(ByRef D3D8 As D3DX8, ByRef d3d_device As Direct3DDevice8, ByVal MaxMemory As Long) As Boolean
     '**************************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero
+    'Author: Juan Martín Sotuyo Dodero
     'Last Modify Date: 5/04/2005
     '
     '**************************************************************
@@ -156,7 +156,7 @@ End Function
 Private Function CrearGrafico(ByVal Archivo As Integer, ByRef texwidth As Long, ByRef textheight As Long) As Direct3DTexture8
 
     '**************************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero
+    'Author: Juan Martín Sotuyo Dodero
     'menduz was here
     '
     '**************************************************************
@@ -181,7 +181,7 @@ Private Function CrearGrafico(ByVal Archivo As Integer, ByRef texwidth As Long, 
             .FileName = Archivo
             
             'Ultimo acceso
-            .UltimoAcceso = (timeGetTime() And &H7FFFFFFF)
+            .UltimoAcceso = GetTickCount()
             
             '  Dim demora As Long
             '  Dim demoraok As Long
@@ -189,14 +189,14 @@ Private Function CrearGrafico(ByVal Archivo As Integer, ByRef texwidth As Long, 
     
             #If Compresion = 1 Then
 
-                If Not Extract_File_EX(graphics, App.Path & "\..\Recursos\OUTPUT\", LTrim(str(Archivo)) & ".png", bytArr) Then
-                    Debug.Print "Â¡No se puede cargar el grafico numero " & Archivo & "!"
+                If Not Extract_File_To_Memory(Graphics, App.Path & "\..\Recursos\OUTPUT\", LTrim(str(Archivo)) & ".png", bytArr, ResourcesPassword) Then
+                    Debug.Print "¡No se puede cargar el grafico numero " & Archivo & "!"
                     Exit Function
 
                 End If
         
                 'demoraok = GetTickCount - demora
-                'Debug.Print "Extract_File_EX Demoro: " & demoraok
+                'Debug.Print "Extract_File_To_Memory Demoro: " & demoraok
         
                 'DirArchico = Windows_Temp_Dir & LTrim(str(Archivo)) & ".png"
         
@@ -208,7 +208,7 @@ Private Function CrearGrafico(ByVal Archivo As Integer, ByRef texwidth As Long, 
                 PathToFile = App.Path & "\..\Recursos\Graficos\" & LTrim(str(Archivo)) & ".png"
         
                 If Not FileExist(PathToFile, vbArchive) Then
-                    Debug.Print "Â¡No se puede cargar el grafico numero " & Archivo & "!"
+                    Debug.Print "¡No se puede cargar el grafico numero " & Archivo & "!"
                     Exit Function
 
                 End If
@@ -259,7 +259,7 @@ Private Function RemoveLRU() As Boolean
 
     Dim surface_desc As D3DSURFACE_DESC
     
-    LRUtime = (timeGetTime() And &H7FFFFFFF)
+    LRUtime = GetTickCount()
     
     'Check out through the whole list for the least recently used
     For i = 0 To HASH_TABLE_SIZE - 1
@@ -331,7 +331,7 @@ Public Sub Grh_Load(ByVal file_num As Integer)
     Static d3dTextures As D3D8Textures
 
     '**************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     'Last Modify Date: 7/16/2005
     'We don't return nothing
     '**************************************************************

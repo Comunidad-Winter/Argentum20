@@ -94,7 +94,7 @@ Public Sub Establecer_Borde(mObject As Object, frmParent As Form, Optional COLOR
         ' contenedor del shape
         Set .Container = mObject.Container
          
-        ' posiciÃ³n
+        ' posición
          
         If estilo_Shape = eCuadrado Then
             .Move mObject.Left - 30, mObject.Top - 30, mObject.Width + 60, mObject.Height + 60
@@ -106,7 +106,7 @@ Public Sub Establecer_Borde(mObject As Object, frmParent As Form, Optional COLOR
 
         End If
          
-        'estilo de borde, color y tamaÃ±o
+        'estilo de borde, color y tamaño
         .BorderStyle = Border_style
 
         If Border_style <> vbTransparent Then .BorderWidth = Size_Border

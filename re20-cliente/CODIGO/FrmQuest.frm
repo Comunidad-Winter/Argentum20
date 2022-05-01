@@ -15,7 +15,7 @@ Begin VB.Form FrmQuests
    ScaleHeight     =   6555
    ScaleWidth      =   12255
    ShowInTaskbar   =   0   'False
-   StartUpPosition =   2  'CenterScreen
+   StartUpPosition =   1  'CenterOwner
    Begin VB.TextBox detalle 
       Alignment       =   2  'Center
       Appearance      =   0  'Flat
@@ -32,27 +32,27 @@ Begin VB.Form FrmQuests
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H00FFFFFF&
-      Height          =   3375
+      Height          =   3255
       Left            =   3880
       LinkItem        =   "detalle"
       MultiLine       =   -1  'True
       TabIndex        =   8
-      Top             =   1920
+      Top             =   2130
       Width           =   3260
    End
    Begin VB.PictureBox PlayerView 
       Appearance      =   0  'Flat
-      BackColor       =   &H00000000&
+      BackColor       =   &H000B0B0B&
       BorderStyle     =   0  'None
       ClipControls    =   0   'False
       ForeColor       =   &H80000008&
-      Height          =   1455
+      Height          =   1215
       Left            =   7320
-      ScaleHeight     =   97
+      ScaleHeight     =   81
       ScaleMode       =   0  'User
       ScaleWidth      =   149
       TabIndex        =   6
-      Top             =   3960
+      Top             =   3800
       Width           =   2235
    End
    Begin VB.PictureBox picture1 
@@ -156,13 +156,13 @@ Begin VB.Form FrmQuests
       Picture         =   "FrmQuest.frx":0000
    End
    Begin MSComctlLib.ListView ListView2 
-      Height          =   2325
+      Height          =   2205
       Left            =   9885
       TabIndex        =   4
-      Top             =   2880
+      Top             =   3000
       Width           =   1890
       _ExtentX        =   3334
-      _ExtentY        =   4101
+      _ExtentY        =   3889
       View            =   3
       LabelEdit       =   1
       LabelWrap       =   -1  'True
@@ -176,7 +176,7 @@ Begin VB.Form FrmQuests
       Appearance      =   0
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
-         Size            =   8.25
+         Size            =   6.75
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -248,11 +248,11 @@ Begin VB.Form FrmQuests
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H00FFFFFF&
-      Height          =   375
+      Height          =   525
       Left            =   7320
       TabIndex        =   7
-      Top             =   3780
-      Width           =   2200
+      Top             =   5040
+      Width           =   2205
    End
    Begin VB.Image Image1 
       Height          =   420
@@ -271,7 +271,7 @@ Begin VB.Form FrmQuests
    Begin VB.Label titulo 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
-      Caption         =   "Â¡No tenes misiones!"
+      Caption         =   "¡No tenes misiones!"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -285,7 +285,7 @@ Begin VB.Form FrmQuests
       Height          =   255
       Left            =   3960
       TabIndex        =   2
-      Top             =   1680
+      Top             =   1800
       Width           =   3255
    End
 End
@@ -305,10 +305,12 @@ Private Sub Form_Load()
     
     Me.Picture = LoadInterface("ventanadetallemision.bmp")
     
+    Call Aplicar_Transparencia(Me.hwnd, 240)
+    
     Exit Sub
 
 Form_Load_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmQuests.Form_Load", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "FrmQuests.Form_Load", Erl)
     Resume Next
     
 End Sub
@@ -316,6 +318,8 @@ End Sub
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
     
     On Error GoTo Form_MouseMove_Err
+    
+    MoverForm Me.hwnd
     
     Image1.Picture = Nothing
     Image1.Tag = 0
@@ -326,7 +330,7 @@ Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y A
     Exit Sub
 
 Form_MouseMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmQuests.Form_MouseMove", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "FrmQuests.Form_MouseMove", Erl)
     Resume Next
     
 End Sub
@@ -344,7 +348,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
     Exit Sub
 
 Form_KeyPress_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmQuests.Form_KeyPress", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "FrmQuests.Form_KeyPress", Erl)
     Resume Next
     
 End Sub
@@ -363,7 +367,7 @@ Private Sub Image1_MouseMove(Button As Integer, Shift As Integer, x As Single, y
     Exit Sub
 
 Image1_MouseMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmQuests.Image1_MouseMove", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "FrmQuests.Image1_MouseMove", Erl)
     Resume Next
     
 End Sub
@@ -378,7 +382,7 @@ Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
     Exit Sub
 
 Image2_MouseUp_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmQuests.Image2_MouseUp", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "FrmQuests.Image2_MouseUp", Erl)
     Resume Next
     
 End Sub
@@ -398,7 +402,7 @@ Private Sub Image2_MouseMove(Button As Integer, Shift As Integer, x As Single, y
     Exit Sub
 
 Image2_MouseMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmQuests.Image2_MouseMove", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "FrmQuests.Image2_MouseMove", Erl)
     Resume Next
     
 End Sub
@@ -443,7 +447,7 @@ Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
     Exit Sub
 
 Image1_MouseUp_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmQuests.Image1_MouseUp", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "FrmQuests.Image1_MouseUp", Erl)
     Resume Next
     
 End Sub
@@ -457,7 +461,7 @@ Unload Me
     Exit Sub
 
 Image3_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmQuests.Image3_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "FrmQuests.Image3_Click", Erl)
     Resume Next
     
 End Sub
@@ -471,7 +475,7 @@ Public Sub ListView1_Click()
 
     If ListView1.SelectedItem.SubItems(2) <> "" Then
         If ListView1.SelectedItem.SubItems(3) = 0 Then
-            Call DibujarBody(ListView1.SelectedItem.SubItems(2), 3)
+            Call DibujarNPC(PlayerView, NpcData(ListView1.SelectedItem.SubItems(2)).Head, NpcData(ListView1.SelectedItem.SubItems(2)).Body, 3)
       
             npclbl.Caption = NpcData(ListView1.SelectedItem.SubItems(2)).Name & " (" & ListView1.SelectedItem.SubItems(1) & ")"
         Else
@@ -480,8 +484,8 @@ Public Sub ListView1_Click()
 
             Dim y As Long
         
-            x = (PlayerView.ScaleWidth - GrhData(ListView1.SelectedItem.SubItems(2)).pixelWidth) / 2
-            y = (PlayerView.ScaleHeight - GrhData(ListView1.SelectedItem.SubItems(2)).pixelHeight) / 2
+            x = (PlayerView.ScaleWidth - GrhData(ObjData(ListView1.SelectedItem.SubItems(2)).GrhIndex).pixelWidth) / 2
+            y = (PlayerView.ScaleHeight - GrhData(ObjData(ListView1.SelectedItem.SubItems(2)).GrhIndex).pixelHeight) / 2
             
             Call Grh_Render_To_Hdc(PlayerView, ObjData(ListView1.SelectedItem.SubItems(2)).GrhIndex, x, y, False, RGB(11, 11, 11))
         
@@ -495,43 +499,7 @@ Public Sub ListView1_Click()
     Exit Sub
 
 ListView1_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmQuests.ListView1_Click", Erl)
-    Resume Next
-    
-End Sub
-
-Sub DibujarBody(ByVal MyBody As Integer, Optional ByVal Heading As Byte = 3)
-    
-    On Error GoTo DibujarBody_Err
-    
-    Dim grh As grh
-
-    grh = BodyData(NpcData(MyBody).Body).Walk(3)
-
-    Dim x    As Long
-
-    Dim y    As Long
-
-    Dim grhH As grh
-
-    grhH = HeadData(NpcData(MyBody).Head).Head(3)
-
-    x = (PlayerView.ScaleWidth - GrhData(grh.GrhIndex).pixelWidth) / 2
-    y = (PlayerView.ScaleHeight - GrhData(grh.GrhIndex).pixelHeight) / 2
-    Call Grh_Render_To_Hdc(PlayerView, GrhData(grh.GrhIndex).Frames(1), x, y, False, RGB(11, 11, 11))
-
-    If NpcData(MyBody).Head <> 0 Then
-        x = (PlayerView.ScaleWidth - GrhData(grhH.GrhIndex).pixelWidth) / 2
-        y = (PlayerView.ScaleHeight - GrhData(grhH.GrhIndex).pixelHeight) / 2 + 8 + BodyData(NpcData(MyBody).Body).HeadOffset.y
-        Call Grh_Render_To_HdcSinBorrar(PlayerView, GrhData(grhH.GrhIndex).Frames(1), x, y, False)
-
-    End If
-
-    
-    Exit Sub
-
-DibujarBody_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmQuests.DibujarBody", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "FrmQuests.ListView1_Click", Erl)
     Resume Next
     
 End Sub
@@ -545,7 +513,7 @@ Public Sub ListView2_Click()
 
     If ListView2.SelectedItem.SubItems(2) <> "" Then
  
-        Call Grh_Render_To_Hdc(picture1, ObjData(ListView2.SelectedItem.SubItems(2)).GrhIndex, 0, 0, False, RGB(11, 11, 11))
+        'Call Grh_Render_To_Hdc(picture1, ObjData(ListView2.SelectedItem.SubItems(2)).GrhIndex, 0, 0, False, RGB(11, 11, 11))
         picture1.Visible = True
         
         objetolbl.Caption = ObjData(ListView2.SelectedItem.SubItems(2)).Name & vbCrLf & " (" & ListView2.SelectedItem.SubItems(1) & ")"
@@ -556,7 +524,7 @@ Public Sub ListView2_Click()
     Exit Sub
 
 ListView2_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmQuests.ListView2_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "FrmQuests.ListView2_Click", Erl)
     Resume Next
     
 End Sub
@@ -574,7 +542,7 @@ Public Sub lstQuests_Click()
     Exit Sub
 
 lstQuests_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "FrmQuests.lstQuests_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "FrmQuests.lstQuests_Click", Erl)
     Resume Next
     
 End Sub

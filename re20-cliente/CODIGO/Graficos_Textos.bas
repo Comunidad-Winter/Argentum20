@@ -20,6 +20,7 @@ Public Sub Engine_Font_Initialize()
     Dim A As Integer
 
     Fuentes(1).Tamanio = 9
+    Fuentes(1).Caracteres(32) = 21494
     Fuentes(1).Caracteres(48) = 21452
     Fuentes(1).Caracteres(49) = 21453
     Fuentes(1).Caracteres(50) = 21454
@@ -137,18 +138,18 @@ Public Sub Engine_Font_Initialize()
     Fuentes(3).Caracteres(57) = 20437 '9
 
     For A = 0 To 25
-        Fuentes(3).Caracteres(A + 97) = 20477 + A 'Desde la a hasta la z (sin √±)
+        Fuentes(3).Caracteres(A + 97) = 20477 + A 'Desde la a hasta la z (sin Ò)
     Next A
 
     For A = 0 To 25
-        Fuentes(3).Caracteres(A + 65) = 20445 + A 'Desde la A hasta la Z (sin √ë)
+        Fuentes(3).Caracteres(A + 65) = 20445 + A 'Desde la A hasta la Z (sin —)
 
     Next A
 
     Fuentes(3).Caracteres(33) = 20413 '!
-    Fuentes(3).Caracteres(161) = 20541 '¬°
+    Fuentes(3).Caracteres(161) = 20541 '°
     Fuentes(3).Caracteres(34) = 20414 '"
-    Fuentes(3).Caracteres(191) = 8488 '¬ø
+    Fuentes(3).Caracteres(191) = 8488 'ø
     Fuentes(3).Caracteres(35) = 8332 '#
     Fuentes(3).Caracteres(36) = 20416    '$
     Fuentes(3).Caracteres(37) = 20417 '%
@@ -177,31 +178,31 @@ Public Sub Engine_Font_Initialize()
     Fuentes(3).Caracteres(58) = 8355 ':
     Fuentes(3).Caracteres(59) = 8356 ';
     Fuentes(3).Caracteres(124) = 20504 '|
-    Fuentes(3).Caracteres(252) = 24948 '    √º
-    Fuentes(3).Caracteres(220) = 24949 '√ú
-    Fuentes(3).Caracteres(225) = 8490 '√°
-    Fuentes(3).Caracteres(233) = 8498 '√©
-    Fuentes(3).Caracteres(237) = 8502 '√≠
-    Fuentes(3).Caracteres(243) = 8508 '√≥
-    Fuentes(3).Caracteres(250) = 8515 '√∫
-    Fuentes(3).Caracteres(253) = 24955 '√Ω
-    Fuentes(3).Caracteres(193) = 8490 '√Å
-    Fuentes(3).Caracteres(201) = 8498 '√â
-    Fuentes(3).Caracteres(205) = 8502 '√ç
-    Fuentes(3).Caracteres(211) = 8508 '√ì
-    Fuentes(3).Caracteres(218) = 8515 '√ö
-    Fuentes(3).Caracteres(221) = 24961 '√ù
-    Fuentes(3).Caracteres(224) = 24962 '√†
-    Fuentes(3).Caracteres(232) = 24963 '√®
-    Fuentes(3).Caracteres(236) = 24964 '√¨
-    Fuentes(3).Caracteres(242) = 24965 '√≤
-    Fuentes(3).Caracteres(249) = 24966 '√π
-    Fuentes(3).Caracteres(192) = 24967 '√º
+    Fuentes(3).Caracteres(252) = 24948 '    ¸
+    Fuentes(3).Caracteres(220) = 24949 '‹
+    Fuentes(3).Caracteres(225) = 8490 '·
+    Fuentes(3).Caracteres(233) = 8498 'È
+    Fuentes(3).Caracteres(237) = 8502 'Ì
+    Fuentes(3).Caracteres(243) = 8508 'Û
+    Fuentes(3).Caracteres(250) = 8515 '˙
+    Fuentes(3).Caracteres(253) = 24955 '˝
+    Fuentes(3).Caracteres(193) = 8490 '¡
+    Fuentes(3).Caracteres(201) = 8498 '…
+    Fuentes(3).Caracteres(205) = 8502 'Õ
+    Fuentes(3).Caracteres(211) = 8508 '”
+    Fuentes(3).Caracteres(218) = 8515 '⁄
+    Fuentes(3).Caracteres(221) = 24961 '›
+    Fuentes(3).Caracteres(224) = 24962 '‡
+    Fuentes(3).Caracteres(232) = 24963 'Ë
+    Fuentes(3).Caracteres(236) = 24964 'Ï
+    Fuentes(3).Caracteres(242) = 24965 'Ú
+    Fuentes(3).Caracteres(249) = 24966 '˘
+    Fuentes(3).Caracteres(192) = 24967 '¸
     Fuentes(3).Caracteres(200) = 24968 '
     Fuentes(3).Caracteres(204) = 24969 '
     Fuentes(3).Caracteres(210) = 24970 '
     Fuentes(3).Caracteres(217) = 24971 '
-    Fuentes(3).Caracteres(241) = 8506 '√±
+    Fuentes(3).Caracteres(241) = 8506 'Ò
     Fuentes(3).Caracteres(209) = 24872 '
     Fuentes(3).Caracteres(196) = 24874 '
     Fuentes(3).Caracteres(194) = 24875 '
@@ -210,8 +211,8 @@ Public Sub Engine_Font_Initialize()
     Fuentes(3).Caracteres(214) = 24878 '
     Fuentes(3).Caracteres(212) = 24879 '
 
-    Fuentes(3).Caracteres(172) = 20552 '¬¨
-    Fuentes(3).Caracteres(186) = 20556 '¬∫
+    Fuentes(3).Caracteres(172) = 20552 '¨
+    Fuentes(3).Caracteres(186) = 20556 '∫
 
     Fuentes(4).Tamanio = 3
     Fuentes(4).Caracteres(48) = 13852
@@ -267,31 +268,31 @@ Public Sub Engine_Font_Initialize()
     Fuentes(4).Caracteres(59) = 13892
     Fuentes(4).Caracteres(124) = 13893
 
-    Fuentes(4).Caracteres(252) = 24948 '    √º
-    Fuentes(4).Caracteres(220) = 24949 '√ú
-    Fuentes(3).Caracteres(225) = 8490 '√°
-    Fuentes(3).Caracteres(233) = 8498 '√©
-    Fuentes(3).Caracteres(237) = 8502 '√≠
-    Fuentes(3).Caracteres(243) = 8508 '√≥
-    Fuentes(3).Caracteres(250) = 8515 '√∫
-    Fuentes(3).Caracteres(253) = 24955 '√Ω
-    Fuentes(3).Caracteres(193) = 8490 '√Å
-    Fuentes(3).Caracteres(201) = 8498 '√â
-    Fuentes(3).Caracteres(205) = 8502 '√ç
-    Fuentes(3).Caracteres(211) = 8508 '√ì
-    Fuentes(3).Caracteres(218) = 8515 '√ö
-    Fuentes(3).Caracteres(221) = 24961 '√ù
-    Fuentes(3).Caracteres(224) = 24962 '√†
-    Fuentes(3).Caracteres(232) = 24963 '√®
-    Fuentes(3).Caracteres(236) = 24964 '√¨
-    Fuentes(3).Caracteres(242) = 24965 '√≤
-    Fuentes(3).Caracteres(249) = 24966 '√π
-    Fuentes(3).Caracteres(192) = 24967 '√º
+    Fuentes(4).Caracteres(252) = 24948 '    ¸
+    Fuentes(4).Caracteres(220) = 24949 '‹
+    Fuentes(3).Caracteres(225) = 8490 '·
+    Fuentes(3).Caracteres(233) = 8498 'È
+    Fuentes(3).Caracteres(237) = 8502 'Ì
+    Fuentes(3).Caracteres(243) = 8508 'Û
+    Fuentes(3).Caracteres(250) = 8515 '˙
+    Fuentes(3).Caracteres(253) = 24955 '˝
+    Fuentes(3).Caracteres(193) = 8490 '¡
+    Fuentes(3).Caracteres(201) = 8498 '…
+    Fuentes(3).Caracteres(205) = 8502 'Õ
+    Fuentes(3).Caracteres(211) = 8508 '”
+    Fuentes(3).Caracteres(218) = 8515 '⁄
+    Fuentes(3).Caracteres(221) = 24961 '›
+    Fuentes(3).Caracteres(224) = 24962 '‡
+    Fuentes(3).Caracteres(232) = 24963 'Ë
+    Fuentes(3).Caracteres(236) = 24964 'Ï
+    Fuentes(3).Caracteres(242) = 24965 'Ú
+    Fuentes(3).Caracteres(249) = 24966 '˘
+    Fuentes(3).Caracteres(192) = 24967 '¸
     Fuentes(3).Caracteres(200) = 24968 '
     Fuentes(3).Caracteres(204) = 24969 '
     Fuentes(3).Caracteres(210) = 24970 '
     Fuentes(3).Caracteres(217) = 24971 '
-    Fuentes(3).Caracteres(241) = 8506 '√±
+    Fuentes(3).Caracteres(241) = 8506 'Ò
     Fuentes(3).Caracteres(209) = 24872 '
     Fuentes(3).Caracteres(196) = 24874 '
     Fuentes(3).Caracteres(194) = 24875 '
@@ -300,8 +301,8 @@ Public Sub Engine_Font_Initialize()
     Fuentes(3).Caracteres(214) = 24878 '
     Fuentes(3).Caracteres(212) = 24879 '
 
-    Fuentes(3).Caracteres(172) = 20552 '¬¨
-    Fuentes(3).Caracteres(186) = 20556 '¬∫
+    Fuentes(3).Caracteres(172) = 20552 '¨
+    Fuentes(3).Caracteres(186) = 20556 '∫
 
     Fuentes(1).Caracteres(196) = 25238
     Fuentes(1).Caracteres(194) = 25239
@@ -331,9 +332,9 @@ Public Sub Engine_Font_Initialize()
     Next A
 
     Fuentes(5).Caracteres(33) = 30112 '!
-    Fuentes(5).Caracteres(161) = 20541 '¬°
+    Fuentes(5).Caracteres(161) = 20541 '°
     Fuentes(5).Caracteres(34) = 30113 '"
-    Fuentes(5).Caracteres(191) = 8488 '¬ø
+    Fuentes(5).Caracteres(191) = 8488 'ø
     Fuentes(5).Caracteres(35) = 8332 '#
     Fuentes(5).Caracteres(36) = 20416    '$
     Fuentes(5).Caracteres(37) = 20417 '%
@@ -362,41 +363,41 @@ Public Sub Engine_Font_Initialize()
     Fuentes(5).Caracteres(58) = 8355 ':
     Fuentes(5).Caracteres(59) = 8356 ';
     Fuentes(5).Caracteres(124) = 20504 '|
-    Fuentes(5).Caracteres(252) = 24948 '    √º
-    Fuentes(5).Caracteres(220) = 24949 '√ú
-    Fuentes(5).Caracteres(225) = 30304 '√°
-    Fuentes(5).Caracteres(233) = 30312 '√©
-    Fuentes(5).Caracteres(237) = 30316 '√≠
-    Fuentes(5).Caracteres(243) = 30322 '√≥
-    Fuentes(5).Caracteres(250) = 30329 '√∫
-    Fuentes(5).Caracteres(253) = 24955 '√Ω
-    Fuentes(5).Caracteres(193) = 30272 '√Å
-    Fuentes(5).Caracteres(201) = 30280 '√â
-    Fuentes(5).Caracteres(205) = 8502 '√ç
-    Fuentes(5).Caracteres(211) = 30290 '√ì
-    Fuentes(5).Caracteres(218) = 8515 '√ö
-    Fuentes(5).Caracteres(221) = 24961 '√ù
-    Fuentes(5).Caracteres(224) = 24962 '√†
-    Fuentes(5).Caracteres(232) = 24963 '√®
-    Fuentes(5).Caracteres(236) = 24964 '√¨
-    Fuentes(5).Caracteres(242) = 24965 '√≤
-    Fuentes(5).Caracteres(249) = 24966 '√π
-    Fuentes(5).Caracteres(192) = 24967 '√º
+    Fuentes(5).Caracteres(252) = 24948 '    ¸
+    Fuentes(5).Caracteres(220) = 24949 '‹
+    Fuentes(5).Caracteres(225) = 30304 '·
+    Fuentes(5).Caracteres(233) = 30312 'È
+    Fuentes(5).Caracteres(237) = 30316 'Ì
+    Fuentes(5).Caracteres(243) = 30322 'Û
+    Fuentes(5).Caracteres(250) = 30329 '˙
+    Fuentes(5).Caracteres(253) = 24955 '˝
+    Fuentes(5).Caracteres(193) = 30272 '¡
+    Fuentes(5).Caracteres(201) = 30280 '…
+    Fuentes(5).Caracteres(205) = 8502 'Õ
+    Fuentes(5).Caracteres(211) = 30290 '”
+    Fuentes(5).Caracteres(218) = 8515 '⁄
+    Fuentes(5).Caracteres(221) = 24961 '›
+    Fuentes(5).Caracteres(224) = 24962 '‡
+    Fuentes(5).Caracteres(232) = 24963 'Ë
+    Fuentes(5).Caracteres(236) = 24964 'Ï
+    Fuentes(5).Caracteres(242) = 24965 'Ú
+    Fuentes(5).Caracteres(249) = 24966 '˘
+    Fuentes(5).Caracteres(192) = 24967 '¸
     Fuentes(5).Caracteres(200) = 24968 '
     Fuentes(5).Caracteres(204) = 24969 '
     Fuentes(5).Caracteres(210) = 24970 '
     Fuentes(5).Caracteres(217) = 24971 '
-    Fuentes(5).Caracteres(241) = 30288 '√±
+    Fuentes(5).Caracteres(241) = 30288 'Ò
     Fuentes(5).Caracteres(209) = 24872 '
     Fuentes(5).Caracteres(196) = 24874 '
-    Fuentes(5).Caracteres(194) = 30305 '√¢
+    Fuentes(5).Caracteres(194) = 30305 '‚
     Fuentes(5).Caracteres(203) = 24876 '
     Fuentes(5).Caracteres(207) = 24877 '
     Fuentes(5).Caracteres(214) = 24878 '
     Fuentes(5).Caracteres(212) = 24879 '
 
-    Fuentes(5).Caracteres(172) = 20552 '¬¨
-    Fuentes(5).Caracteres(186) = 20556 '¬∫
+    Fuentes(5).Caracteres(172) = 20552 '¨
+    Fuentes(5).Caracteres(186) = 20556 '∫
 
     Fuentes(6).Tamanio = 50
     Fuentes(6).Caracteres(48) = 45866
@@ -483,7 +484,7 @@ Public Sub Engine_Font_Initialize()
     Exit Sub
 
 Engine_Font_Initialize_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Textos.Engine_Font_Initialize", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Textos.Engine_Font_Initialize", Erl)
     Resume Next
     
 End Sub
@@ -567,7 +568,7 @@ Public Function Engine_Text_Height(Texto As String, Optional multi As Boolean = 
     Exit Function
 
 Engine_Text_Height_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Textos.Engine_Text_Height", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Textos.Engine_Text_Height", Erl)
     Resume Next
     
 End Function
@@ -721,7 +722,7 @@ Sub Engine_Text_Render_LetraGrande(Texto As String, x As Integer, y As Integer, 
     Exit Sub
 
 Engine_Text_Render_LetraGrande_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Textos.Engine_Text_Render_LetraGrande", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Textos.Engine_Text_Render_LetraGrande", Erl)
     Resume Next
     
 End Sub
@@ -781,7 +782,7 @@ Public Sub Engine_Text_Render_LetraChica(Texto As String, x As Integer, y As Int
     Next i
 
     Dim Sombra(3) As RGBA 'Sombra
-    Call RGBAList(Sombra, text_color(0).R / 6, text_color(0).G / 6, text_color(0).B / 6, Alpha)
+    Call RGBAList(Sombra, text_color(0).r / 6, text_color(0).G / 6, text_color(0).B / 6, Alpha)
 
     If (Len(Texto) = 0) Then Exit Sub
 
@@ -885,12 +886,12 @@ Public Sub Engine_Text_Render_LetraChica(Texto As String, x As Integer, y As Int
     Exit Sub
 
 Engine_Text_Render_LetraChica_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Textos.Engine_Text_Render_LetraChica", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Textos.Engine_Text_Render_LetraChica", Erl)
     Resume Next
     
 End Sub
 
-Public Sub Engine_Text_Render(Texto As String, x As Integer, y As Integer, ByRef text_color() As RGBA, Optional ByVal font_index As Integer = 1, Optional multi_line As Boolean = False, Optional charindex As Integer = 0, Optional ByVal Alpha As Byte = 255)
+Public Sub Engine_Text_Render(Texto As String, ByVal x As Integer, ByVal y As Integer, ByRef text_color() As RGBA, Optional ByVal font_index As Integer = 1, Optional multi_line As Boolean = False, Optional charindex As Integer = 0, Optional ByVal Alpha As Byte = 255)
     
     On Error GoTo Engine_Text_Render_Err
     
@@ -906,14 +907,14 @@ Public Sub Engine_Text_Render(Texto As String, x As Integer, y As Integer, ByRef
     If charindex = 0 Then
         A = 255
     Else
-        A = charlist(charindex).AlphaText
+        A = Clamp(charlist(charindex).AlphaText, 0, 255)
     End If
 
     If Alpha <> 255 Then
         A = Alpha
     End If
     
-    Call RGBAList(temp_array, text_color(0).R, text_color(0).G, text_color(0).B, A)
+    Call RGBAList(temp_array, text_color(0).r, text_color(0).G, text_color(0).B, A)
 
     Dim i              As Long
 
@@ -942,7 +943,7 @@ Public Sub Engine_Text_Render(Texto As String, x As Integer, y As Integer, ByRef
     Next i
 
     Dim Sombra(3) As RGBA 'Sombra
-    Call RGBAList(Sombra, text_color(0).R / 6, text_color(0).G / 6, text_color(0).B / 6, 0.8 * A)
+    Call RGBAList(Sombra, text_color(0).r / 6, text_color(0).G / 6, text_color(0).B / 6, 0.8 * A)
 
     If (Len(Texto) = 0) Then Exit Sub
 
@@ -1042,11 +1043,131 @@ Public Sub Engine_Text_Render(Texto As String, x As Integer, y As Integer, ByRef
     Exit Sub
 
 Engine_Text_Render_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Textos.Engine_Text_Render", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Textos.Engine_Text_Render", Erl)
     Resume Next
     
 End Sub
 
+Public Sub Engine_Text_Render_No_Ladder(Texto As String, ByVal x As Integer, ByVal y As Integer, ByRef text_color() As RGBA, ByVal status As Byte, Optional ByVal font_index As Integer = 1, Optional multi_line As Boolean = False, Optional charindex As Integer = 0, Optional ByVal Alpha As Byte = 255)
+    
+    On Error GoTo Engine_Text_Render_Err
+
+    Dim A As Integer, B As Integer, c As Integer, d As Integer
+
+    Dim graf          As grh
+
+    Dim color1(3) As RGBA
+    Dim color2(3) As RGBA
+
+    If charindex = 0 Then
+        A = 255
+    Else
+        A = Clamp(charlist(charindex).AlphaText, 0, 255)
+    End If
+
+    If Alpha <> 255 Then
+        A = Alpha
+    End If
+    
+     Select Case status
+        Case 0 'criminal
+            Call RGBAList(color1, 225, 0, 0, A)
+            Call RGBAList(color2, 255, 255, 255, A)
+        Case 1 'ciuda
+            Call RGBAList(color1, 0, 128, 255, A)
+            Call RGBAList(color2, 255, 255, 255, A)
+        Case 2 'legiÛn oscura
+            Call RGBAList(color1, 155, 0, 0, A)
+            Call RGBAList(color2, 255, 255, 255, A)
+        Case 3 'armada real
+            Call RGBAList(color1, 0, 175, 255, A)
+            Call RGBAList(color2, 255, 255, 255, A)
+        Case 7 'aviso solicitud
+            Call RGBAList(color2, 255, 255, 0, A)
+        Case 8 'aviso desconectado
+            Call RGBAList(color2, 255, 0, 0, A)
+        Case 9 'aviso conectado
+            Call RGBAList(color2, 10, 182, 70, A)
+        Case 10 'lider
+            Call RGBAList(color1, 222, 194, 112, A)
+            Call RGBAList(color2, 255, 255, 255, A)
+    End Select
+    
+    
+    'Call RGBAList(color2, 255, 255, 255, A)
+    Dim i              As Long
+
+    Dim removedDialogs As Long
+
+    For i = 0 To dialogCount - 1
+
+        'Decrease index to prevent jumping over a dialog
+        'Crappy VB will cache the limit of the For loop, so even if it changed, it won't matter
+        With dialogs(i - removedDialogs)
+
+            If FrameTime - .startTime >= .lifeTime Then
+                Call Char_Dialog_Remove(.charindex, charindex)
+                             
+                If A <= 0 Then
+                    removedDialogs = removedDialogs + 1
+
+                End If
+
+            Else
+            
+            End If
+
+        End With
+
+    Next i
+    
+
+    Dim Sombra(3) As RGBA 'Sombra
+    Call RGBAList(Sombra, text_color(0).r / 6, text_color(0).G / 6, text_color(0).B / 6, 0.8 * A)
+
+    If (Len(Texto) = 0) Then Exit Sub
+
+    Dim row As Integer, charPos As Integer
+    d = 0
+    row = 0
+    charPos = 0
+    Dim separador As Boolean
+        For A = 1 To Len(Texto)
+            B = Asc(mid(Texto, A, 1))
+            graf.GrhIndex = Fuentes(font_index).Caracteres(B)
+            If B = 1 Then separador = Not separador
+                If graf.GrhIndex > 12 Then
+
+                    'mega sombra O-matica
+                    graf.GrhIndex = Fuentes(font_index).Caracteres(B)
+                    
+                    If font_index <> 3 Then
+                        Call Draw_GrhFont(graf.GrhIndex, (x + d) + 1, y + 1 + 10, Sombra())
+                    End If
+                    
+                    If status >= 0 And status <= 3 Or status = 10 Then
+                        If separador Then
+                            Call Draw_GrhFont(graf.GrhIndex, (x + d), y + 10, color1)
+                        Else
+                            Call Draw_GrhFont(graf.GrhIndex, (x + d), y + 10, color2)
+                        End If
+                    Else
+                        Call Draw_GrhFont(graf.GrhIndex, (x + d), y + 10, color2)
+                    End If
+                    d = d + GrhData(GrhData(graf.GrhIndex).Frames(1)).pixelWidth
+                End If
+
+            charPos = charPos + 1
+        Next A
+
+    
+    Exit Sub
+
+Engine_Text_Render_Err:
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Textos.Engine_Text_Render", Erl)
+    Resume Next
+    
+End Sub
 Public Sub Engine_Text_RenderGrande(Texto As String, x As Integer, y As Integer, ByRef text_color() As RGBA, Optional ByVal font_index As Integer = 1, Optional multi_line As Boolean = False, Optional charindex As Integer = 0, Optional ByVal Alpha As Byte = 255)
     
     On Error GoTo Engine_Text_RenderGrande_Err
@@ -1070,7 +1191,7 @@ Public Sub Engine_Text_RenderGrande(Texto As String, x As Integer, y As Integer,
         A = Alpha
     End If
 
-    Call RGBAList(temp_array, text_color(0).R, text_color(0).G, text_color(0).B, A)
+    Call RGBAList(temp_array, text_color(0).r, text_color(0).G, text_color(0).B, A)
 
     Dim i              As Long
 
@@ -1099,7 +1220,7 @@ Public Sub Engine_Text_RenderGrande(Texto As String, x As Integer, y As Integer,
     Next i
 
     Dim Sombra(3) As RGBA 'Sombra
-    Call RGBAList(Sombra, text_color(0).R / 6, text_color(0).G / 6, text_color(0).B / 6, 0.8 * Alpha)
+    Call RGBAList(Sombra, text_color(0).r / 6, text_color(0).G / 6, text_color(0).B / 6, 0.8 * Alpha)
 
     If (Len(Texto) = 0) Then Exit Sub
 
@@ -1199,7 +1320,7 @@ Public Sub Engine_Text_RenderGrande(Texto As String, x As Integer, y As Integer,
     Exit Sub
 
 Engine_Text_RenderGrande_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Textos.Engine_Text_RenderGrande", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Textos.Engine_Text_RenderGrande", Erl)
     Resume Next
     
 End Sub
@@ -1214,10 +1335,10 @@ Public Sub Engine_Text_Render2(Texto As String, x As Integer, y As Integer, ByRe
 
     Dim temp_array(3) As RGBA
 
-    Call RGBAList(temp_array, text_color.R, text_color.G, text_color.B, text_color.A)
+    Call RGBAList(temp_array, text_color.r, text_color.G, text_color.B, text_color.A)
 
     Dim Sombra(3) As RGBA 'Sombra
-    Call RGBAList(Sombra, text_color.R / 6, text_color.G / 6, text_color.B / 6, 0.8 * text_color.A)
+    Call RGBAList(Sombra, text_color.r / 6, text_color.G / 6, text_color.B / 6, 0.8 * text_color.A)
 
     If (Len(Texto) = 0) Then Exit Sub
 
@@ -1317,7 +1438,7 @@ Public Sub Engine_Text_Render2(Texto As String, x As Integer, y As Integer, ByRe
     Exit Sub
 
 Engine_Text_Render2_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Textos.Engine_Text_Render2", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Textos.Engine_Text_Render2", Erl)
     Resume Next
     
 End Sub
@@ -1338,7 +1459,7 @@ Public Sub Engine_Text_Render_Efect(charindex As Integer, Texto As String, x As 
     f = 0
 
     Dim Sombra(3) As RGBA 'Sombra
-    Call RGBAList(Sombra, text_color(0).R / 6, text_color(0).G / 6, text_color(0).B / 6, 0.8 * text_color(0).A)
+    Call RGBAList(Sombra, text_color(0).r / 6, text_color(0).G / 6, text_color(0).B / 6, 0.8 * text_color(0).A)
 
     For A = 1 To Len(Texto)
         B = Asc(mid(Texto, A, 1))
@@ -1381,7 +1502,7 @@ Public Sub Engine_Text_Render_Efect(charindex As Integer, Texto As String, x As 
     Exit Sub
 
 Engine_Text_Render_Efect_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Textos.Engine_Text_Render_Efect", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Textos.Engine_Text_Render_Efect", Erl)
     Resume Next
     
 End Sub
@@ -1407,7 +1528,7 @@ Public Function Engine_Text_Width(Texto As String, Optional multi As Boolean = F
 
                     If graf.GrhIndex = 0 Then graf.GrhIndex = 1
                     If B <> 32 Then
-                        Engine_Text_Width = Engine_Text_Width + GrhData(GrhData(graf.GrhIndex + 1).Frames(1)).pixelWidth '+ 1
+                        Engine_Text_Width = Engine_Text_Width + GrhData(GrhData(graf.GrhIndex).Frames(1)).pixelWidth '+ 1
                     Else
                         Engine_Text_Width = Engine_Text_Width + 4
 
@@ -1509,7 +1630,7 @@ Public Function Engine_Text_Width(Texto As String, Optional multi As Boolean = F
     Exit Function
 
 Engine_Text_Width_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Textos.Engine_Text_Width", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Textos.Engine_Text_Width", Erl)
     Resume Next
     
 End Function
@@ -1638,12 +1759,12 @@ Public Function Engine_Text_WidthCentrado(Texto As String, Optional multi As Boo
     Exit Function
 
 Engine_Text_WidthCentrado_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Textos.Engine_Text_WidthCentrado", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Textos.Engine_Text_WidthCentrado", Erl)
     Resume Next
     
 End Function
 
-Public Sub Text_Render(ByVal font As D3DXFont, Text As String, ByVal Top As Long, ByVal Left As Long, ByVal Width As Long, ByVal Height As Long, ByVal Color As Long, ByVal format As Long, Optional ByVal Shadow As Boolean = False)
+Public Sub Text_Render(ByVal font As D3DXFont, Text As String, ByVal Top As Long, ByVal Left As Long, ByVal Width As Long, ByVal Height As Long, ByVal color As Long, ByVal format As Long, Optional ByVal Shadow As Boolean = False)
     
     On Error GoTo Text_Render_Err
     
@@ -1669,34 +1790,33 @@ Public Sub Text_Render(ByVal font As D3DXFont, Text As String, ByVal Top As Long
 
     End If
     
-    DirectD3D8.DrawText font, Color, Text, TextRect, format
+    DirectD3D8.DrawText font, color, Text, TextRect, format
 
     
     Exit Sub
 
 Text_Render_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Textos.Text_Render", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Textos.Text_Render", Erl)
     Resume Next
     
 End Sub
 
-Public Sub Text_Render_ext(Text As String, ByVal Top As Long, ByVal Left As Long, ByVal Width As Long, ByVal Height As Long, ByVal Color As Long, Optional ByVal Shadow As Boolean = False, Optional ByVal center As Boolean = False, Optional ByVal font As Long = 0)
+Public Sub Text_Render_ext(Text As String, ByVal Top As Long, ByVal Left As Long, ByVal Width As Long, ByVal Height As Long, ByVal color As Long, Optional ByVal Shadow As Boolean = False, Optional ByVal center As Boolean = False, Optional ByVal font As Long = 0)
     
     On Error GoTo Text_Render_ext_Err
     
 
     If center = True Then
-        Call Text_Render(font_list(font), Text, Top, Left, Width, Height, Color, DT_VCENTER & DT_CENTER, Shadow)
+        Call Text_Render(font_list(font), Text, Top, Left, Width, Height, color, DT_VCENTER & DT_CENTER, Shadow)
     Else
-        Call Text_Render(font_list(font), Text, Top, Left, Width, Height, Color, DT_TOP Or DT_LEFT, Shadow)
-
+        Call Text_Render(font_list(font), Text, Top, Left, Width, Height, color, DT_TOP Or DT_LEFT, Shadow)
     End If
 
     
     Exit Sub
 
 Text_Render_ext_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Textos.Text_Render_ext", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Textos.Text_Render_ext", Erl)
     Resume Next
     
 End Sub
@@ -1730,7 +1850,7 @@ Private Sub Font_Make(ByVal font_index As Long, ByVal Style As String, ByVal bol
     Exit Sub
 
 Font_Make_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Textos.Font_Make", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Textos.Font_Make", Erl)
     Resume Next
     
 End Sub
@@ -1756,7 +1876,7 @@ Public Function Font_Next_Open() As Long
     Exit Function
 
 Font_Next_Open_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Textos.Font_Next_Open", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Textos.Font_Next_Open", Erl)
     Resume Next
     
 End Function
@@ -1778,9 +1898,110 @@ Public Function Font_Check(ByVal font_index As Long) As Boolean
     Exit Function
 
 Font_Check_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Textos.Font_Check", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Textos.Font_Check", Erl)
     Resume Next
     
 End Function
+Public Function Prepare_Multiline_Text(Text As String, ByVal MaxWidth As Integer, Optional ByVal FontIndex As Integer = 1) As String()
+        
+    On Error GoTo Handler
+    
+    Dim Lines() As String
+    
+    If LenB(Text) = 0 Then
+        ReDim Lines(0)
+        Prepare_Multiline_Text = Lines
+        Exit Function
+    End If
 
+    Dim LetterIndex As Long, CurLetter As Integer, LastBreak As Long, CanBreak As Long, CurWidth As Integer, CurLine As Integer, CanBreakWidth As Integer
+
+    With Fuentes(FontIndex)
+
+        LastBreak = 1
+
+        For LetterIndex = 1 To Len(Text)
+            CurLetter = Asc(mid$(Text, LetterIndex, 1))
+
+            If CurLetter = vbKeyReturn Then
+                ReDim Preserve Lines(CurLine)
+                
+                If LetterIndex - LastBreak > 0 Then
+                    Lines(CurLine) = mid$(Text, LastBreak, LetterIndex - LastBreak)
+                End If
+
+                LastBreak = LetterIndex + 2
+                CanBreak = LastBreak
+                CurLine = CurLine + 1
+                CurWidth = 0
+            
+            Else
+                If .Caracteres(CurLetter) <> 0 Then CurWidth = CurWidth + GrhData(.Caracteres(CurLetter)).pixelWidth
+
+
+                If CurLetter = vbKeySpace Or CurLetter = vbKeyTab Then
+                    CanBreak = LetterIndex
+                    CanBreakWidth = CurWidth
+                End If
+
+                If CurWidth > MaxWidth And MaxWidth > 0 Then
+                    ReDim Preserve Lines(CurLine)
+
+                    If CanBreak - LastBreak > 0 Then
+                        Lines(CurLine) = mid$(Text, LastBreak, CanBreak - LastBreak)
+                        CurWidth = CurWidth - CanBreakWidth
+                        LastBreak = CanBreak + 1
+                    Else
+                        Lines(CurLine) = mid$(Text, LastBreak, LetterIndex - LastBreak)
+                        CurWidth = GrhData(.Caracteres(CurLetter)).pixelWidth
+                        LastBreak = LetterIndex
+                    End If
+
+                    CanBreak = LastBreak
+                    CurLine = CurLine + 1
+                End If
+            End If
+        Next
+        
+        If LetterIndex - LastBreak > 0 Then
+            ReDim Preserve Lines(CurLine)
+            Lines(CurLine) = mid$(Text, LastBreak, LetterIndex - LastBreak)
+        End If
+
+    End With
+    
+    Prepare_Multiline_Text = Lines
+    
+    Exit Function
+    
+Handler:
+    Call RegistrarError(Err.Number, Err.Description, "clsDX8Engine.Prepare_Multiline_Text", Erl)
+    
+    ReDim Lines(0)
+    Prepare_Multiline_Text = Lines
+        
+End Function
+
+Public Function Text_Width(Text As String, Optional ByVal FontIndex As Byte = 1) As Integer
+
+    On Error GoTo Handler
+    
+    Dim LetterIndex As Long, CurLetter As Integer
+
+    With Fuentes(FontIndex)
+
+        For LetterIndex = 1 To Len(Text)
+            CurLetter = Asc(mid$(Text, LetterIndex, 1))
+
+            Text_Width = Text_Width + GrhData(.Caracteres(CurLetter)).pixelWidth
+        Next
+
+    End With
+    
+    Exit Function
+
+Handler:
+    Call RegistrarError(Err.Number, Err.Description, "clsDX8Engine.Text_Width", Erl)
+
+End Function
 

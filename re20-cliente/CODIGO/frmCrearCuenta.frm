@@ -48,7 +48,7 @@ Begin VB.Form frmCrearCuenta
       Top             =   3920
       Width           =   975
    End
-   Begin VB.TextBox Constrase√±a 
+   Begin VB.TextBox ConstraseÒa 
       Alignment       =   2  'Center
       Appearance      =   0  'Flat
       BackColor       =   &H00000000&
@@ -67,7 +67,7 @@ Begin VB.Form frmCrearCuenta
       IMEMode         =   3  'DISABLE
       Left            =   480
       MaxLength       =   20
-      PasswordChar    =   "‚Ä¢"
+      PasswordChar    =   "ï"
       TabIndex        =   1
       Top             =   2040
       Width           =   2535
@@ -160,7 +160,7 @@ Private Declare Function SetLayeredWindowAttributes Lib "user32" (ByVal hwnd As 
 'Recupera el estilo de la ventana
 Private Declare Function GetWindowLong Lib "user32" Alias "GetWindowLongA" (ByVal hwnd As Long, ByVal nIndex As Long) As Long
   
-'Declaraci√≥n del Api SetWindowLong necesaria para aplicar un estilo _
+'DeclaraciÛn del Api SetWindowLong necesaria para aplicar un estilo _
  al form antes de usar el Api SetLayeredWindowAttributes
   
 Private Declare Function SetWindowLong Lib "user32" Alias "SetWindowLongA" (ByVal hwnd As Long, ByVal nIndex As Long, ByVal dwNewLong As Long) As Long
@@ -171,8 +171,8 @@ Private Const LWA_ALPHA = &H2
 
 Private Const WS_EX_LAYERED = &H80000
 
-'Funci√≥n para saber si formulario ya es transparente. _
- Se le pasa el Hwnd del formulario en cuesti√≥n
+'FunciÛn para saber si formulario ya es transparente. _
+ Se le pasa el Hwnd del formulario en cuestiÛn
   
 Public Function Is_Transparent(ByVal hwnd As Long) As Boolean
     
@@ -206,7 +206,7 @@ Is_Transparent_Err:
     
 End Function
   
-'Funci√≥n que aplica la transparencia, se le pasa el hwnd del form y un valor de 0 a 255
+'FunciÛn que aplica la transparencia, se le pasa el hwnd del form y un valor de 0 a 255
 Public Function Aplicar_Transparencia(ByVal hwnd As Long, Valor As Integer) As Long
     
     On Error GoTo Aplicar_Transparencia_Err
@@ -275,22 +275,22 @@ Private Function CheckearDatos() As Boolean
     Dim CharAscii As Integer
     
     If Len(Email.Text) = 0 Or Not CheckMailString(Email.Text) Then
-        MsgBox ("Direcci√≥n de email invalida")
+        MsgBox ("DirecciÛn de email invalida")
         Exit Function
 
     End If
     
-    If Len(Constrase√±a.Text) = 0 Then
+    If Len(ConstraseÒa.Text) = 0 Then
         MsgBox ("Ingrese un password.")
         Exit Function
 
     End If
     
-    For loopc = 1 To Len(Constrase√±a.Text)
-        CharAscii = Asc(mid$(Constrase√±a.Text, loopc, 1))
+    For loopc = 1 To Len(ConstraseÒa.Text)
+        CharAscii = Asc(mid$(ConstraseÒa.Text, loopc, 1))
 
         If Not LegalCharacter(CharAscii) Then
-            MsgBox ("Password inv√°lido. El caract√©r " & Chr$(CharAscii) & " no est√° permitido.")
+            MsgBox ("Password inv·lido. El caractÈr " & Chr$(CharAscii) & " no est· permitido.")
             Exit Function
 
         End If
@@ -402,13 +402,13 @@ Private Sub Image2_Click()
     End If
     
     If ValidacionNumber <> texVer Then
-        Call MensajeAdvertencia("El codigo de verificaci√≥n es invalido, por favor reintente.")
+        Call MensajeAdvertencia("El codigo de verificaciÛn es invalido, por favor reintente.")
         Exit Sub
 
     End If
 
     If CheckearDatos Then
-        CuentaPassword = Constrase√±a
+        CuentaPassword = ConstraseÒa
         CuentaEmail = Email
     
         EstadoLogin = E_MODO.CreandoCuenta

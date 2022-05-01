@@ -1,23 +1,23 @@
-permite customizar los colores de los PJs
+'<<<<<<<<<<ESTE CAMBIA EL NICKS>>>>>>>>>>
 'todos los valores deben estar entre 0 y 255
-'los rangos van de 1 a 48 (inclusive). El 0 y el 49,50 estan reservados. Mas arriba son ignorados.
+'los rangos van de 1 a 47 (inclusive). El 0 y el 48,49,50 estan reservados. Mas arriba son ignorados.
 
-'Neutral
+
+'neutral/exiliado?(afuturo) (sobreescribe el 48)
 [Ne]
-R=233
-G=50
-B=0
+R=188
+G=188
+B=188
 
-'ciudadanos
+'ciudadanos (sobreescribe el 49)
 [Ci]
 R=0
-G=128
+G=120
 B=255
 
-
-'Criminal
+'criminales (sobreescribe el 50)
 [Cr]
-R=255
+R=233
 G=0
 B=0
 
@@ -26,57 +26,59 @@ R=0
 G=0
 B=0
 
-'consejeros
+'consejeros (GM)
 [1]
-R=30
-G=150
-B=30
+R=0
+G=136
+B=0
 
-'semidioses
+'rolmasters (GM)
 [2]
-R=217
-G=164
-B=32
+R=0
+G=136
+B=0
 
-'dioses
+'semidioses (GM)
 [3]
-R=217
-G=164
-B=32
+R=0
+G=225
+B=0
 
-'admins
+'dioses (GM)
 [4]
 R=217
 G=164
 B=32
 
-'rolmasters
+'admins (GM)
 [5]
-R=2
-G=161
-B=38
+R=217
+G=164
+B=32
 
 'caos
 [6]
-R=255
-G=50
+R=155
+G=0
 B=0
 
-'consejo de bander
+' Concilio Caos
 [7]
-R=0
-G=195
-B=255
+R=180
+G=180
+B=180
 
+' Armada
 [8]
 R=0
-G=0
-B=0
+G=175
+B=255
 
+' Consejero armada
 [9]
-R=0
-G=0
-B=0
+R=41
+G=238
+B=254
 
 [10]
 R=0
@@ -268,17 +270,20 @@ R=0
 G=0
 B=0
 
+' Neutrales
 [48]
 R=0
 G=0
 B=0
 
+' Ciudadanos
 [49]
 R=0
 G=0
 B=0
 
+' Criminales
 [50]
 R=0
 G=0
-B= 
+B=0

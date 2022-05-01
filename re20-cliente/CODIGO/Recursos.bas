@@ -72,7 +72,7 @@ Public FontTypes([FONTTYPE_MAX] - 1) As tFont
 ' *********************************************************
 'The only current map
 
-
+Public ResourcesPassword As String
 
 Private Type tMapHeader
 
@@ -140,7 +140,7 @@ Private Type tDatosObjs
 
     x As Integer
     y As Integer
-    OBJIndex As Integer
+    ObjIndex As Integer
     ObjAmmount As Integer
 
 End Type
@@ -186,12 +186,31 @@ Private Type tMapDat
 
 End Type
 
-Private MapSize As tMapSize
+Public MapSize As tMapSize
 Public MapDat   As tMapDat
 Public iplst    As String
 ' *********************************************************
 '   FIN - CARGA DE MAPAS
 ' *********************************************************
+
+''''''''''''''' CARGA DE NPCS DATA MAP QUEST QCYO VIEJA nO ME IMPORTA NADA '''''''''''''''''''''''''''''''
+
+Private Type t_Position
+
+    X As Integer
+    y As Integer
+
+End Type
+
+Public Type t_QuestNPCMapData
+    Position As Position
+    NPCNumber As Integer
+    State As Integer
+End Type
+
+Public ListNPCMapData() As t_QuestNPCMapData
+Public Const MAX_QUESTNPCS_VISIBLE As Long = 100
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 Private Type tMoldeCuerpo
     x As Long
@@ -214,28 +233,32 @@ Public Sub CargarRecursos()
         Call PreloadGraphics
     End If
     
+    Call CargarNPCsMapData
     Call CargarParticulasBinary
     Call CargarIndicesOBJ
     Call Cargarmapsworlddata
     Call InitFontTypes
-    
-    Call LoadGrhData
+    Call CargarZonas
+
+    'Call LoadGrhData
+    Call LoadGrhIni
     Call CargarMoldes
     Call CargarCabezas
     Call CargarCascos
     Call CargarCuerpos
     Call CargarFxs
-    Call CargarMiniMap
     Call CargarPasos
     Call CargarAnimArmas
     Call CargarAnimEscudos
     Call CargarColores
-
+    Call CargarCrafteo
+    
+    
     
     Exit Sub
 
 CargarRecursos_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarRecursos", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Recursos.CargarRecursos", Erl)
     Resume Next
     
 End Sub
@@ -249,7 +272,7 @@ Public Sub InitFontTypes()
     
 
     '***************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero (Maraxus)
+    'Author: Juan Martín Sotuyo Dodero (Maraxus)
     'Last Modification: 05/17/06
     '
     '***************************************************
@@ -267,10 +290,10 @@ Public Sub InitFontTypes()
     End With
     
     With FontTypes(FontTypeNames.FONTTYPE_WARNING)
-        .red = 32
-        .green = 51
-        .blue = 223
-        .bold = 1
+        .red = 255
+        .green = 0
+        .blue = 0
+        .bold = 0
         .italic = 1
 
     End With
@@ -570,7 +593,7 @@ Public Sub InitFontTypes()
     Exit Sub
 
 InitFonts_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.InitFonts", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Recursos.InitFonts", Erl)
     Resume Next
     
 End Sub
@@ -616,7 +639,7 @@ Public Sub CargarPasos()
     Exit Sub
 
 CargarPasos_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarPasos", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Recursos.CargarPasos", Erl)
     Resume Next
     
 End Sub
@@ -629,12 +652,12 @@ Sub CargarDatosMapa(ByVal map As Integer)
     If Len(NameMaps(map).desc) <> 0 Then
         frmMapaGrande.Label1.Caption = NameMaps(map).desc
     Else
-        frmMapaGrande.Label1.Caption = "Sin informaciÃ³n relevante."
+        frmMapaGrande.Label1.Caption = "Sin información relevante."
     End If
 
     '**************************************************************
     'Formato de mapas optimizado para reducir el espacio que ocupan.
-    'DiseÃ±ado y creado por Juan MartÃ­n Sotuyo Dodero (Maraxus) (juansotuyo@hotmail.com)
+    'Diseñado y creado por Juan Martín Sotuyo Dodero (Maraxus) (juansotuyo@hotmail.com)
     '**************************************************************
 
     Dim fh           As Integer
@@ -663,11 +686,9 @@ Sub CargarDatosMapa(ByVal map As Integer)
     
     #If Compresion = 1 Then
 
-        If Not Extract_File(Maps, App.Path & "\..\Recursos\OUTPUT\", "mapa" & map & ".csm", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de mapas! El juego se cerrara."
-            MsgBox Err.Description
-            End
-
+        If Not Extract_File(Maps, App.Path & "\..\Recursos\OUTPUT\", "mapa" & map & ".csm", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Debug.Print "Error al cargar datos del mapa " & map
+            Exit Sub
         End If
 
         MapRoute = Windows_Temp_Dir & "mapa" & map & ".csm"
@@ -862,9 +883,9 @@ Sub CargarDatosMapa(ByVal map As Integer)
 
         End With
 
-        Close fh
-
     End With
+    
+    Close #fh
     
     #If Compresion = 1 Then
         Delete_File Windows_Temp_Dir & "mapa" & map & ".csm"
@@ -886,8 +907,7 @@ Sub CargarDatosMapa(ByVal map As Integer)
     Exit Sub
 
 CargarDatosMapa_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarDatosMapa", Erl)
-    Resume Next
+    Call RegistrarError(Err.Number, Err.Description, "Recursos.CargarDatosMapa", Erl)
     
 End Sub
 
@@ -898,7 +918,7 @@ Public Sub CargarMapa(ByVal map As Integer)
 
     '**************************************************************
     'Formato de mapas optimizado para reducir el espacio que ocupan.
-    'DiseÃ±ado y creado por Juan MartÃ­n Sotuyo Dodero (Maraxus) (juansotuyo@hotmail.com)
+    'Diseñado y creado por Juan Martín Sotuyo Dodero (Maraxus) (juansotuyo@hotmail.com)
     '**************************************************************
     Dim fh           As Integer
 
@@ -929,12 +949,14 @@ Public Sub CargarMapa(ByVal map As Integer)
     Dim demora       As Long
     Dim demorafinal  As Long
 
-    demora = timeGetTime And &H7FFFFFFF
-    
+    demora = GetTickCount()
+
+    Debug.Assert map <> 0
+
     #If Compresion = 1 Then
 
-        If Not Extract_File(Maps, App.Path & "\..\Recursos\OUTPUT\", "mapa" & map & ".csm", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de mapas! El juego se cerrara."
+        If Not Extract_File(Maps, App.Path & "\..\Recursos\OUTPUT\", "mapa" & map & ".csm", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Err.Description = "No se pudo cargar el mapa " & map & ", el juego se cerrará. Si su personaje se encuentra en un mapa inválido, por favor, avise a un GM."
             Call MsgBox(Err.Description)
             End
 
@@ -948,6 +970,19 @@ Public Sub CargarMapa(ByVal map As Integer)
     #End If
     
     'Limpiamos los efectos remantentes del mapa.
+    For x = 1 To 100
+        For y = 1 To 100
+            With MapData(x, y)
+
+                Call SetRGBA(.light_value(0), 0, 0, 0)
+                Call SetRGBA(.light_value(1), 0, 0, 0)
+                Call SetRGBA(.light_value(2), 0, 0, 0)
+                Call SetRGBA(.light_value(3), 0, 0, 0)
+
+            End With
+        Next y
+    Next x
+    
     Call LucesCuadradas.Light_Remove_All
     Call LucesRedondas.Delete_All_LigthRound(False)
     Call Graficos_Particulas.Particle_Group_Remove_All
@@ -968,13 +1003,8 @@ Public Sub CargarMapa(ByVal map As Integer)
     
     ReDim MapData(1 To 100, 1 To 100)
     
-    If MapDat.base_light = 0 Then
-        Call RestaurarLuz
-        
-    Else
-        Call SetGlobalLight(MapDat.base_light)
-    End If
-        
+    UpdateLights = True
+    
     For x = 1 To 100
         For y = 1 To 100
             With MapData(x, y)
@@ -1071,7 +1101,7 @@ Public Sub CargarMapa(ByVal map As Integer)
                 MapData(x, y).Graphic(3).GrhIndex = L3(i).GrhIndex
             
                 InitGrh MapData(x, y).Graphic(3), MapData(x, y).Graphic(3).GrhIndex
-                
+
                 If EsArbol(L3(i).GrhIndex) Then
                     MapData(x, y).Blocked = MapData(x, y).Blocked Or FLAG_ARBOL
                 End If
@@ -1113,7 +1143,7 @@ Public Sub CargarMapa(ByVal map As Integer)
                     RoofsLight(Triggers(i).Trigger) = 255
                     
                 ' Trigger detalles en agua
-                ElseIf Triggers(i).Trigger = eTrigger.DETALLEAGUA Then
+                ElseIf Triggers(i).Trigger = eTrigger.DETALLEAGUA Or Triggers(i).Trigger = eTrigger.VALIDONADO Or Triggers(i).Trigger = eTrigger.NADOCOMBINADO Then
                     ' Borro flag de costa
                     MapData(Triggers(i).x, Triggers(i).y).Blocked = MapData(Triggers(i).x, Triggers(i).y).Blocked And Not FLAG_COSTA
                 End If
@@ -1160,9 +1190,9 @@ Public Sub CargarMapa(ByVal map As Integer)
             Get #fh, , Objetos
 
             For i = 1 To .NumeroOBJs
-                MapData(Objetos(i).x, Objetos(i).y).OBJInfo.OBJIndex = Objetos(i).OBJIndex
+                MapData(Objetos(i).x, Objetos(i).y).OBJInfo.ObjIndex = Objetos(i).ObjIndex
                 MapData(Objetos(i).x, Objetos(i).y).OBJInfo.Amount = Objetos(i).ObjAmmount
-                MapData(Objetos(i).x, Objetos(i).y).ObjGrh.GrhIndex = ObjData(Objetos(i).OBJIndex).GrhIndex
+                MapData(Objetos(i).x, Objetos(i).y).ObjGrh.GrhIndex = ObjData(Objetos(i).ObjIndex).GrhIndex
                 Call InitGrh(MapData(Objetos(i).x, Objetos(i).y).ObjGrh, MapData(Objetos(i).x, Objetos(i).y).ObjGrh.GrhIndex)
 
             Next i
@@ -1173,17 +1203,51 @@ Public Sub CargarMapa(ByVal map As Integer)
 
     Close fh
     
+    '
+    'Creo un array de zonas provisorio de ese mapa
+    ReDim Temp_zone(1 To 1) As MapZone
+    Dim UpperB As Integer
+    Dim TieneZona As Boolean
+    For i = 1 To UBound(Zonas)
+        'Me fijo se la zona pertenece al mapa, de serlo agrego la zona al array
+        If Zonas(i).NumMapa = map Then
+            TieneZona = True
+            ReDim Preserve Temp_zone(1 To i) As MapZone
+            
+            
+            Temp_zone(i).NumMapa = Zonas(i).NumMapa
+            Temp_zone(i).Musica = Zonas(i).Musica
+            Temp_zone(i).OcultarNombre = Zonas(i).OcultarNombre
+            Temp_zone(i).x1 = Zonas(i).x1
+            Temp_zone(i).x2 = Zonas(i).x2
+            Temp_zone(i).y1 = Zonas(i).y1
+            Temp_zone(i).y2 = Zonas(i).y2
+        End If
+    Next i
+    
+    'If UBound(Temp_zone) > 0 Then
+    '    ReDim Preserve Temp_zone(1 To UBound(Temp_zone) - 1) As MapZone
+    'End If
+    
+    If TieneZona Then
+        For i = 1 To (UBound(Temp_zone))
+            For x = Temp_zone(i).x1 To Temp_zone(i).x2
+                For y = Temp_zone(i).y1 To Temp_zone(i).y2
+                    MapData(x, y).zone.OcultarNombre = Temp_zone(i).OcultarNombre
+                    MapData(x, y).zone.Musica = Temp_zone(i).Musica
+                Next y
+            Next x
+        Next i
+    End If
+    
     #If Compresion = 1 Then
         Delete_File Windows_Temp_Dir & "mapa" & map & ".csm"
     #End If
 
-    Call LucesRedondas.LightRenderAll
-    Call LucesCuadradas.Light_Render_All
-    
     Exit Sub
 
 CargarMapa_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarMapa", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Recursos.CargarMapa", Erl)
     Resume Next
     
 End Sub
@@ -1197,7 +1261,7 @@ Public Sub CargarParticulas()
     'Coded by OneZero (onezero_ss@hotmail.com)
     'Last Modified: 6/4/03
     'Loads the Particles.ini file to the ComboBox
-    'Edited by Juan MartÃ­n Sotuyo Dodero to add speed and life
+    'Edited by Juan Martín Sotuyo Dodero to add speed and life
     '*************************************
     Dim loopc      As Long
     Dim i          As Long
@@ -1208,8 +1272,8 @@ Public Sub CargarParticulas()
 
     #If Compresion = 1 Then
 
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "particles.ini", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de particles.ini!"
+        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "particles.ini", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Err.Description = "¡No se puede cargar el archivo de particles.ini!"
             MsgBox Err.Description
 
         End If
@@ -1287,7 +1351,7 @@ Public Sub CargarParticulas()
     Exit Sub
 
 CargarParticulas_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarParticulas", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Recursos.CargarParticulas", Erl)
     Resume Next
     
 End Sub
@@ -1301,7 +1365,7 @@ Public Sub CargarParticulasBinary()
     'Coded by OneZero (onezero_ss@hotmail.com)
     'Last Modified: 6/4/03
     'Loads the Particles.ini file to the ComboBox
-    'Edited by Juan MartÃ­n Sotuyo Dodero to add speed and life
+    'Edited by Juan Martín Sotuyo Dodero to add speed and life
     '*************************************
     Dim loopc      As Long
     Dim i          As Long
@@ -1317,8 +1381,8 @@ Public Sub CargarParticulasBinary()
 
     #If Compresion = 1 Then
 
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "particles.ind", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de particles.ind!"
+        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "particles.ind", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Err.Description = "¡No se puede cargar el archivo de particles.ind!"
             MsgBox Err.Description
 
         End If
@@ -1328,22 +1392,22 @@ Public Sub CargarParticulasBinary()
         StreamFile = App.Path & "\..\Recursos\init\particles.ind"
     #End If
 
-    Dim N As Integer
+    Dim n As Integer
     
-    N = FreeFile()
+    n = FreeFile()
 
-    Open StreamFile For Binary Access Read As #N
+    Open StreamFile For Binary Access Read As #n
     'num de cabezas
-    Get #N, , ParticulasTotales
+    Get #n, , ParticulasTotales
 
     ReDim StreamData(1 To ParticulasTotales) As Stream
 
     'fill StreamData array with info from Particles.ini
     For loopc = 1 To ParticulasTotales
-        Get #N, , StreamData(loopc)
+        Get #n, , StreamData(loopc)
     Next loopc
     
-    Close #N
+    Close #n
 
     Exit Sub
     ParticulasTotales = Val(General_Var_Get(StreamFile, "INIT", "Total"))
@@ -1385,114 +1449,7 @@ Public Sub CargarParticulasBinary()
     Exit Sub
 
 CargarParticulasBinary_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarParticulasBinary", Erl)
-    Resume Next
-    
-End Sub
-
-
-Public Sub CargarIndicesOBJBinary()
-    
-    On Error GoTo CargarIndicesOBJBinary_Err
-    
-
-    Dim Obj       As Integer
-    Dim Npc       As Integer
-    Dim Hechizo   As Integer
-    Dim i         As Integer
-    Dim SearchVar As String
-
-    #If Compresion = 1 Then
-
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "localindex.ind", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de localindex.ind!"
-            MsgBox Err.Description
-
-        End If
-    
-        ObjFile = Windows_Temp_Dir & "localindex.ind"
-        
-    #Else
-    
-        ObjFile = App.Path & "\..\Recursos\init\localindex.ind"
-        
-    #End If
-
-    Dim Handle As Integer
-
-    'Open files
-    Handle = FreeFile()
-
-    Dim N As Integer
-    
-    N = FreeFile()
-
-    Open ObjFile For Binary Access Read As #N
-    'num de cabezas
-    Get #N, , NumOBJs
-
-    ReDim ObjData(0 To NumOBJs) As ObjDatas
-    
-    'ReDim NpcData(0 To NumNpcs) As NpcDatas
-    ' ReDim HechizoData(0 To NumHechizos) As HechizoDatas
-    'ReDim Locale_SMG(0 To NumLocaleMsg) As String
-
-    For Obj = 1 To NumOBJs
-        DoEvents
-        Get #N, , ObjData(Obj)
-    Next Obj
-
-    Get #N, , NumNpcs
-
-    ReDim NpcData(0 To NumNpcs) As NpcDatas
-    
-    For Npc = 1 To NumNpcs
-        Get #N, , NpcData(Npc)
-    Next Npc
-
-    Get #N, , NumHechizos
-    
-    ReDim HechizoData(0 To NumHechizos) As HechizoDatas
-    
-    For Hechizo = 1 To NumHechizos
-        DoEvents
-        Get #N, , HechizoData(Npc)
-    Next Hechizo
-
-    Get #N, , NumLocaleMsg
-    
-    ReDim Locale_SMG(0 To NumLocaleMsg) As String
-    
-    For i = 1 To NumLocaleMsg
-        Get #N, , Locale_SMG(i)
-    Next i
-
-    'Modificadores de Raza
-    For i = 1 To NUMRAZAS
-
-        With ModRaza(i)
-            Get #N, , .Fuerza
-            Get #N, , .Agilidad
-            Get #N, , .Inteligencia
-            Get #N, , .Constitucion
-            Get #N, , .Carisma
-        End With
-
-    Next i
-    
-    #If Compresion = 1 Then
-        Delete_File Windows_Temp_Dir & "localindex.ind"
-    #End If
-
-    Close #N
-
-    Exit Sub
-
-    
-    Exit Sub
-
-CargarIndicesOBJBinary_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarIndicesOBJBinary", Erl)
+    'Call RegistrarError(Err.Number, Err.Description, "Recursos.CargarParticulasBinary", Erl)
     Resume Next
     
 End Sub
@@ -1511,19 +1468,19 @@ Public Sub CargarIndicesOBJ()
     Dim i       As Integer
     
     #If Compresion = 1 Then
-
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "localindex.dat", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de localindex.dat!"
+        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "localindex.dat", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Err.Description = "¡No se puede cargar el archivo de localindex.dat!"
             MsgBox Err.Description
 
         End If
-    
         ObjFile = Windows_Temp_Dir & "localindex.dat"
     #Else
         ObjFile = App.Path & "\..\Recursos\init\localindex.dat"
     #End If
+    
             
     Dim Leer As New clsIniManager
+    Debug.Assert FileExist(ObjFile, vbNormal)
     Call Leer.Initialize(ObjFile)
 
     NumOBJs = Val(Leer.GetValue("INIT", "NumObjs"))
@@ -1531,24 +1488,21 @@ Public Sub CargarIndicesOBJ()
     NumHechizos = Val(Leer.GetValue("INIT", "NumeroHechizo"))
     NumHechizos = Val(Leer.GetValue("INIT", "NumeroHechizo"))
     NumLocaleMsg = Val(Leer.GetValue("INIT", "NumLocaleMsg"))
-    
     NumQuest = Val(Leer.GetValue("INIT", "NUMQUESTS"))
-    
     NumSug = Val(Leer.GetValue("INIT", "NUMSUGERENCIAS"))
-    
+
     ReDim ObjData(0 To NumOBJs) As ObjDatas
     ReDim NpcData(0 To NumNpcs) As NpcDatas
     ReDim HechizoData(0 To NumHechizos) As HechizoDatas
     ReDim Locale_SMG(0 To NumLocaleMsg) As String
+    ReDim ObjShop(1 To 1) As ObjDatas
     
+    Debug.Assert NumQuest > 0
+    Debug.Assert NumSug > 0
     
     ReDim QuestList(1 To NumQuest)
-
-    
-    ReDim Sugerencia(1 To NumSug) As String
-
-    
     ReDim PosMap(1 To NumQuest) As Integer
+    ReDim Sugerencia(1 To NumSug) As String
 
     For Obj = 1 To NumOBJs
         DoEvents
@@ -1579,6 +1533,15 @@ Public Sub CargarIndicesOBJ()
         ObjData(Obj).SkPociones = Val(Leer.GetValue("OBJ" & Obj, "SkPociones"))
         ObjData(Obj).Sksastreria = Val(Leer.GetValue("OBJ" & Obj, "Sksastreria"))
         ObjData(Obj).Valor = Val(Leer.GetValue("OBJ" & Obj, "Valor"))
+        ObjData(Obj).Agarrable = Val(Leer.GetValue("OBJ" & Obj, "Agarrable"))
+        ObjData(Obj).Llave = Val(Leer.GetValue("OBJ" & Obj, "Llave"))
+            
+        If Val(Leer.GetValue("OBJ" & Obj, "NFT")) = 1 Then
+            ObjShop(i).Name = Leer.GetValue("OBJ" & Obj, "Name")
+            ObjShop(i).Valor = Val(Leer.GetValue("OBJ" & Obj, "Valor"))
+            ObjShop(i).objNum = Obj
+            ReDim Preserve ObjShop(1 To (UBound(ObjShop) + 1)) As ObjDatas
+        End If
         
     Next Obj
     
@@ -1592,7 +1555,7 @@ Public Sub CargarIndicesOBJ()
         NpcData(Npc).Name = Leer.GetValue("npc" & Npc, "Name")
 
         If NpcData(Npc).Name = "" Then
-            NpcData(Npc).Name = "Vacio"
+            NpcData(Npc).Name = "Vacío"
 
         End If
 
@@ -1606,6 +1569,8 @@ Public Sub CargarIndicesOBJ()
         NpcData(Npc).oro = Val(Leer.GetValue("npc" & Npc, "oro"))
         
         NpcData(Npc).ExpClan = Val(Leer.GetValue("npc" & Npc, "GiveEXPClan"))
+        
+        NpcData(Npc).PuedeInvocar = Val(Leer.GetValue("npc" & Npc, "PuedeInvocar"))
        
         aux = Val(Leer.GetValue("npc" & Npc, "NumQuiza"))
 
@@ -1657,6 +1622,7 @@ Public Sub CargarIndicesOBJ()
         QuestList(Hechizo).NextQuest = Leer.GetValue("QUEST" & Hechizo, "NEXTQUEST")
         QuestList(Hechizo).DescFinal = Leer.GetValue("QUEST" & Hechizo, "DESCFINAL")
         QuestList(Hechizo).RequiredLevel = Leer.GetValue("QUEST" & Hechizo, "RequiredLevel")
+        QuestList(Hechizo).Repetible = Val(Leer.GetValue("QUEST" & Hechizo, "Repetible"))
         PosMap(Hechizo) = Leer.GetValue("QUEST" & Hechizo, "PosMap")
     Next Hechizo
     
@@ -1696,7 +1662,7 @@ Public Sub CargarIndicesOBJ()
     Exit Sub
 
 CargarIndicesOBJ_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarIndicesOBJ", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Recursos.CargarIndicesOBJ", Erl)
     Resume Next
     
 End Sub
@@ -1714,8 +1680,8 @@ Public Sub Cargarmapsworlddata()
 
     #If Compresion = 1 Then
 
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "mapsworlddata.dat", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de mapsworlddata.dat!"
+        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "mapsworlddata.dat", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Err.Description = "¡No se puede cargar el archivo de mapsworlddata.dat!"
             MsgBox Err.Description
 
         End If
@@ -1743,8 +1709,6 @@ Public Sub Cargarmapsworlddata()
              Mundo(j).MapIndice(i) = Val(Leer.GetValue("WORLDMAP" & j, i))
          Next i
          
-         frmMapaGrande.ComMundo.AddItem "Mapa " & j
-         
      Next j
     
     
@@ -1757,7 +1721,7 @@ Public Sub Cargarmapsworlddata()
     Exit Sub
 
 Cargarmapsworlddata_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.Cargarmapsworlddata", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Recursos.Cargarmapsworlddata", Erl)
     Resume Next
     
 End Sub
@@ -1774,8 +1738,8 @@ Sub CargarMoldes()
     
     #If Compresion = 1 Then
 
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "moldes.ini", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de moldes.ini!"
+        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "moldes.ini", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Err.Description = "¡No se puede cargar el archivo de moldes.ini!"
             MsgBox Err.Description
 
         End If
@@ -1815,13 +1779,37 @@ Sub CargarMoldes()
     #End If
 
 End Sub
+Sub CargarZonas()
+    Dim Reader As clsIniManager
+    Dim cantidadZonas As Integer
+    Dim i As Integer
+    Set Reader = New clsIniManager
+    
+    Call Reader.Initialize(App.Path & "\..\Recursos\Dat\zonas.dat")
+    
+    cantidadZonas = Reader.GetValue("Config", "Cantidad")
+    
+    ReDim Zonas(1 To cantidadZonas) As MapZone
+    
+    For i = 1 To cantidadZonas
+        Zonas(i).Musica = Val(Reader.GetValue("Zona" & i, "Musica"))
+        Zonas(i).OcultarNombre = Val(Reader.GetValue("Zona" & i, "OcultarNombre"))
+        Zonas(i).NumMapa = Val(Reader.GetValue("Zona" & i, "Mapa"))
+        Zonas(i).x1 = Val(Reader.GetValue("Zona" & i, "X1"))
+        Zonas(i).x2 = Val(Reader.GetValue("Zona" & i, "X2"))
+        Zonas(i).y1 = Val(Reader.GetValue("Zona" & i, "Y1"))
+        Zonas(i).y2 = Val(Reader.GetValue("Zona" & i, "Y2"))
+    Next i
+    
+    Set Reader = Nothing
+End Sub
 
 Sub CargarCabezas()
     
     On Error GoTo CargarCabezas_Err
     
 
-    Dim N            As Integer
+    Dim n            As Integer
 
     Dim i            As Long
 
@@ -1829,33 +1817,34 @@ Sub CargarCabezas()
 
     Dim Miscabezas() As tIndiceCabeza
     
-    N = FreeFile()
+    n = FreeFile()
     
     #If Compresion = 1 Then
 
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "cabezas.ind", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de Cabezas.ind!"
+        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "cabezas.ind", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Err.Description = "¡No se puede cargar el archivo de Cabezas.ind!"
             MsgBox Err.Description
 
         End If
 
-        Open Windows_Temp_Dir & "cabezas.ind" For Binary Access Read As #N
+        Open Windows_Temp_Dir & "cabezas.ind" For Binary Access Read As #n
     #Else
-        Open App.Path & "\..\Recursos\init\cabezas.ind" For Binary Access Read As #N
+        Open App.Path & "\..\Recursos\init\cabezas.ind" For Binary Access Read As #n
     #End If
 
+    
     'cabecera
-    Get #N, , MiCabecera
+    Get #n, , MiCabecera
     
     'num de cabezas
-    Get #N, , Numheads
+    Get #n, , Numheads
     
     'Resize array
     ReDim HeadData(0 To Numheads) As HeadData
     ReDim Miscabezas(0 To Numheads) As tIndiceCabeza
     
     For i = 1 To Numheads
-        Get #N, , Miscabezas(i)
+        Get #n, , Miscabezas(i)
         
         If Miscabezas(i).Head(1) Then
             Call InitGrh(HeadData(i).Head(1), Miscabezas(i).Head(1), 0)
@@ -1867,7 +1856,7 @@ Sub CargarCabezas()
 
     Next i
     
-    Close #N
+    Close #n
     
     #If Compresion = 1 Then
         Delete_File Windows_Temp_Dir & "cabezas.ind"
@@ -1877,7 +1866,7 @@ Sub CargarCabezas()
     Exit Sub
 
 CargarCabezas_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarCabezas", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Recursos.CargarCabezas", Erl)
     Resume Next
     
 End Sub
@@ -1887,7 +1876,7 @@ Sub CargarCascos()
     On Error GoTo CargarCascos_Err
     
 
-    Dim N            As Integer
+    Dim n            As Integer
 
     Dim i            As Long
 
@@ -1895,33 +1884,35 @@ Sub CargarCascos()
 
     Dim Miscabezas() As tIndiceCabeza
     
-    N = FreeFile()
+    n = FreeFile()
   
     #If Compresion = 1 Then
 
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "cascos.ind", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de Cabezas.ind!"
+        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "cascos.ind", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Err.Description = "¡No se puede cargar el archivo de Cabezas.ind!"
             MsgBox Err.Description
 
         End If
 
-        Open Windows_Temp_Dir & "cascos.ind" For Binary Access Read As #N
+        Open Windows_Temp_Dir & "cascos.ind" For Binary Access Read As #n
     #Else
-        Open App.Path & "\..\Recursos\init\cascos.ind" For Binary Access Read As #N
+        Open App.Path & "\..\Recursos\init\cascos.ind" For Binary Access Read As #n
     #End If
+        
+       
     
     'cabecera
-    Get #N, , MiCabecera
-    
+    Get #n, , MiCabecera
+      
     'num de cabezas
-    Get #N, , NumCascos
+    Get #n, , NumCascos
     
     'Resize array
     ReDim CascoAnimData(0 To NumCascos) As HeadData
     ReDim Miscabezas(0 To NumCascos) As tIndiceCabeza
     
     For i = 1 To NumCascos
-        Get #N, , Miscabezas(i)
+        Get #n, , Miscabezas(i)
         
         If Miscabezas(i).Head(1) Then
             Call InitGrh(CascoAnimData(i).Head(1), Miscabezas(i).Head(1), 0)
@@ -1933,7 +1924,7 @@ Sub CargarCascos()
 
     Next i
     
-    Close #N
+    Close #n
     
     #If Compresion = 1 Then
         Delete_File Windows_Temp_Dir & "cascos.ind"
@@ -1943,78 +1934,11 @@ Sub CargarCascos()
     Exit Sub
 
 CargarCascos_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarCascos", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Recursos.CargarCascos", Erl)
     Resume Next
     
 End Sub
 
-Sub CargarCuerposViejo()
-    
-    On Error GoTo CargarCuerpos_Err
-    
-
-    Dim N            As Integer
-
-    Dim i            As Long
-
-    Dim NumCuerpos   As Integer
-
-    Dim MisCuerpos() As tIndiceCuerpo
-    
-    N = FreeFile()
-    
-    #If Compresion = 1 Then
-
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "personajes.ind", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de personajes.ind!"
-            MsgBox Err.Description
-
-        End If
-
-        Open Windows_Temp_Dir & "personajes.ind" For Binary Access Read As #N
-    #Else
-        Open App.Path & "\..\Recursos\init\personajes.ind" For Binary Access Read As #N
-    #End If
-    
-    'cabecera
-    Get #N, , MiCabecera
-    
-    'num de cabezas
-    Get #N, , NumCuerpos
-    
-    'Resize array
-    ReDim BodyData(0 To NumCuerpos) As BodyData
-    ReDim MisCuerpos(0 To NumCuerpos) As tIndiceCuerpo
-    
-    For i = 1 To NumCuerpos
-        Get #N, , MisCuerpos(i)
-        
-        If MisCuerpos(i).Body(1) Then
-            InitGrh BodyData(i).Walk(1), MisCuerpos(i).Body(1), 0
-            InitGrh BodyData(i).Walk(2), MisCuerpos(i).Body(2), 0
-            InitGrh BodyData(i).Walk(3), MisCuerpos(i).Body(3), 0
-            InitGrh BodyData(i).Walk(4), MisCuerpos(i).Body(4), 0
-            
-            BodyData(i).HeadOffset.x = MisCuerpos(i).HeadOffsetX
-            BodyData(i).HeadOffset.y = MisCuerpos(i).HeadOffsetY
-
-        End If
-
-    Next i
-    
-    Close #N
-    #If Compresion = 1 Then
-        Delete_File Windows_Temp_Dir & "personajes.ind"
-    #End If
-
-    
-    Exit Sub
-
-CargarCuerpos_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarCuerpos", Erl)
-    Resume Next
-    
-End Sub
 
 Sub CargarCuerpos()
     
@@ -2052,8 +1976,8 @@ Sub CargarCuerpos()
     
     #If Compresion = 1 Then
 
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "cuerpos.dat", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de cuerpos.dat!"
+        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "cuerpos.dat", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Err.Description = "¡No se puede cargar el archivo de cuerpos.dat!"
             MsgBox Err.Description
 
         End If
@@ -2072,8 +1996,13 @@ Sub CargarCuerpos()
         BodyKey = "BODY" & i
     
         Std = Val(Loader.GetValue(BodyKey, "Std"))
-        BodyData(i).HeadOffset.x = Val(Loader.GetValue(BodyKey, "HeadOffsetX"))
-        BodyData(i).HeadOffset.y = Val(Loader.GetValue(BodyKey, "HeadOffsetY"))
+        
+        With BodyData(i)
+            .BodyOffset.x = Val(Loader.GetValue(BodyKey, "BodyOffsetX"))
+            .BodyOffset.y = Val(Loader.GetValue(BodyKey, "BodyOffsetY"))
+            .HeadOffset.x = Val(Loader.GetValue(BodyKey, "HeadOffsetX")) + .BodyOffset.x
+            .HeadOffset.y = Val(Loader.GetValue(BodyKey, "HeadOffsetY")) + .BodyOffset.y
+        End With
 
         If Std = 0 Then
             InitGrh BodyData(i).Walk(1), Val(Loader.GetValue(BodyKey, "Walk1")), 0
@@ -2165,7 +2094,7 @@ Sub CargarCuerpos()
     Exit Sub
 
 CargarCuerpos_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarCuerpos", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Recursos.CargarCuerpos", Erl)
     Resume Next
     
 End Sub
@@ -2175,41 +2104,42 @@ Sub CargarFxs()
     On Error GoTo CargarFxs_Err
     
 
-    Dim N      As Integer
+    Dim n      As Integer
 
     Dim i      As Long
 
     Dim NumFxs As Integer
     
-    N = FreeFile()
+    n = FreeFile()
 
     #If Compresion = 1 Then
 
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "fxs.ind", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de fxs.ind!"
+        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "fxs.ind", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Err.Description = "¡No se puede cargar el archivo de fxs.ind!"
             MsgBox Err.Description
 
         End If
 
-        Open Windows_Temp_Dir & "fxs.ind" For Binary Access Read As #N
+        Open Windows_Temp_Dir & "fxs.ind" For Binary Access Read As #n
     #Else
-        Open App.Path & "\..\Recursos\init\fxs.ind" For Binary Access Read As #N
+        Open App.Path & "\..\Recursos\init\fxs.ind" For Binary Access Read As #n
     #End If
+       
     
     'cabecera
-    Get #N, , MiCabecera
-    
+    Get #n, , MiCabecera
+       
     'num de cabezas
-    Get #N, , NumFxs
+    Get #n, , NumFxs
     
     'Resize array
     ReDim FxData(1 To NumFxs) As tIndiceFx
     
     For i = 1 To NumFxs
-        Get #N, , FxData(i)
+        Get #n, , FxData(i)
     Next i
     
-    Close #N
+    Close #n
     
     #If Compresion = 1 Then
         Delete_File Windows_Temp_Dir & "fxs.ind"
@@ -2219,7 +2149,7 @@ Sub CargarFxs()
     Exit Sub
 
 CargarFxs_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarFxs", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Recursos.CargarFxs", Erl)
     Resume Next
     
 End Sub
@@ -2239,8 +2169,8 @@ Public Function LoadGrhData() As Boolean
     
     #If Compresion = 1 Then
 
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "graficos.ind", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de recurso!"
+        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "graficos.ind", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Err.Description = "¡No se puede cargar el archivo de recurso!"
             GoTo ErrorHandler
 
         End If
@@ -2363,110 +2293,178 @@ ErrorHandler:
     
 End Function
 
-Public Function CargarMiniMap()
-    
-    On Error GoTo CargarMiniMap_Err
-    
+Public Sub LoadGrhIni()
+    On Error GoTo hErr
 
-    Dim count  As Long
-
-    Dim Handle As Integer
-
-    Handle = FreeFile
+    Dim FileHandle     As Integer
+    Dim grh            As Long
+    Dim Frame          As Long
+    Dim SeparadorClave As String
+    Dim SeparadorGrh   As String
+    Dim CurrentLine    As String
+    Dim Fields()       As String
     
+    ' Guardo el separador en una variable asi no lo busco en cada bucle.
+    SeparadorClave = "="
+    SeparadorGrh = "-"
+
+    ' Abrimos el archivo. No uso FileManager porque obliga a cargar todo el archivo en memoria
+    ' y es demasiado grande. En cambio leo linea por linea y procesamos de a una.
+    FileHandle = FreeFile()
+
     #If Compresion = 1 Then
 
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "minimap.bin", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de recurso!"
-            GoTo ErrorHandler
-
+        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "Graficos.ini", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Err.Description = "¡No se puede cargar el archivo de recurso!"
+            GoTo hErr
         End If
     
-        Open Windows_Temp_Dir & "minimap.bin" For Binary Access Read As #Handle
+        Open Windows_Temp_Dir & "Graficos.ini" For Input As #FileHandle
     #Else
-    
-        Open App.Path & "\..\Recursos\init\minimap.bin" For Binary Access Read As #Handle
+        Open App.Path & "\..\Recursos\init\Graficos.ini" For Input As #FileHandle
+    #End If
+
+    ' Leemos el total de Grhs
+    Do While Not EOF(FileHandle)
+        ' Leemos la linea actual
+        Line Input #FileHandle, CurrentLine
+
+        Fields = Split(CurrentLine, SeparadorClave)
+            
+        ' Buscamos la clave "NumGrh"
+        If Fields(0) = "NumGrh" Then
+            ' Asignamos el tamano al array de Grhs
+            MaxGrh = Val(Fields(1))
+
+            ReDim GrhData(1 To MaxGrh) As GrhData
+                
+            Exit Do
+        End If
+    Loop
         
-    #End If
-
-    For count = 1 To MaxGrh
-
-        If GrhData(count).active Then
-            Get #Handle, , GrhData(count).MiniMap_color
-
+    ' Chequeamos si pudimos leer la cantidad de Grhs
+    If UBound(GrhData) <= 0 Then GoTo hErr
+        
+    ' Buscamos la posicion del primer Grh
+    Do While Not EOF(FileHandle)
+        ' Leemos la linea actual
+        Line Input #FileHandle, CurrentLine
+            
+        ' Buscamos el nodo "[Graphics]"
+        If UCase$(CurrentLine) = "[GRAPHICS]" Then
+            ' Ya lo tenemos, salimos
+            Exit Do
         End If
-
-    Next count
+    Loop
+        
+    ' Recorremos todos los Grhs
+    Do While Not EOF(FileHandle)
+        ' Leemos la linea actual
+        Line Input #FileHandle, CurrentLine
+            
+        ' Ignoramos lineas vacias
+        If CurrentLine <> vbNullString Then
+            
+            ' Divimos por el "="
+            Fields = Split(CurrentLine, SeparadorClave)
+                
+            ' Leemos el numero de Grh (el numero a la derecha de la palabra "Grh")
+            grh = Right(Fields(0), Len(Fields(0)) - 3)
+            
+            ' Leemos los campos de datos del Grh
+            Fields = Split(Fields(1), SeparadorGrh)
+                
+            With GrhData(grh)
+                    
+                ' Primer lugar: cantidad de frames.
+                .NumFrames = Val(Fields(0))
     
-    Close #Handle
-    
-    #If Compresion = 1 Then
-        Delete_File Windows_Temp_Dir & "minimap.bin"
-    #End If
-    
-    Exit Function
-
-ErrorHandler:
-    CargarMiniMap = False
-    MsgBox "Error " & Err.Description & " durante la carga de Grh.dat! La carga se ha detenido en GRH: " & count
-
-    
-    Exit Function
-
-CargarMiniMap_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarMiniMap", Erl)
-    Resume Next
-    
-End Function
-
-
-Sub CargarAnimArmasViejo()
-    
-    On Error GoTo CargarAnimArmasViejo_Err
-    
-
-    
-
-    Dim loopc As Long
-
-    Dim Arch  As String
-    
-    #If Compresion = 1 Then
-
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "armas.dat", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de armas.dat!"
-            MsgBox Err.Description
-
+                ReDim .Frames(1 To .NumFrames)
+                    
+                ' Tiene mas de un frame entonces es una animacion
+                If .NumFrames > 1 Then
+                    
+                    ' Segundo lugar: Leemos los numeros de grh de la animacion
+                    For Frame = 1 To .NumFrames
+                        .Frames(Frame) = Val(Fields(Frame))
+                        If .Frames(Frame) <= LBound(GrhData) Or .Frames(Frame) > UBound(GrhData) Then GoTo hErr
+                    Next
+                        
+                    ' Tercer lugar: leemos la velocidad de la animacion
+                    .speed = Val(Fields(Frame))
+                    If .speed <= 0 Then GoTo hErr
+                        
+                    ' Por ultimo, copiamos las dimensiones del primer frame
+                    .pixelHeight = GrhData(.Frames(1)).pixelHeight
+                    .pixelWidth = GrhData(.Frames(1)).pixelWidth
+                    .TileWidth = GrhData(.Frames(1)).TileWidth
+                    .TileHeight = GrhData(.Frames(1)).TileHeight
+        
+                ElseIf .NumFrames = 1 Then
+                    
+                    ' Si es un solo frame lo asignamos a si mismo
+                    .Frames(1) = grh
+                        
+                    ' Segundo lugar: NumeroDelGrafico.bmp, pero sin el ".bmp"
+                    .FileNum = Val(Fields(1))
+                    If .FileNum <= 0 Then GoTo hErr
+                            
+                    ' Tercer Lugar: La coordenada X del grafico
+                    .sX = Val(Fields(2))
+                    If .sX < 0 Then GoTo hErr
+                            
+                    ' Cuarto Lugar: La coordenada Y del grafico
+                    .sY = Val(Fields(3))
+                    If .sY < 0 Then GoTo hErr
+                            
+                    ' Quinto lugar: El ancho del grafico
+                    .pixelWidth = Val(Fields(4))
+                    If .pixelWidth <= 0 Then GoTo hErr
+                            
+                    ' Sexto lugar: La altura del grafico
+                    .pixelHeight = Val(Fields(5))
+                    If .pixelHeight <= 0 Then GoTo hErr
+                        
+                    ' Calculamos el ancho y alto en tiles
+                    .TileWidth = .pixelWidth / TilePixelHeight
+                    .TileHeight = .pixelHeight / TilePixelWidth
+                        
+                Else
+                    ' 0 frames o negativo? Error
+                    GoTo hErr
+                End If
+        
+            End With
         End If
-
-        Arch = Windows_Temp_Dir & "armas.dat"
-    #Else
-        Arch = App.Path & "\..\Recursos\init\armas.dat"
-    #End If
+    Loop
     
-    NumWeaponAnims = Val(GetVar(Arch, "INIT", "NumArmas"))
+hErr:
+    Close FileHandle
     
-    ReDim WeaponAnimData(1 To NumWeaponAnims) As WeaponAnimData
-
-    For loopc = 1 To NumWeaponAnims
-        InitGrh WeaponAnimData(loopc).WeaponWalk(1), Val(GetVar(Arch, "ARMA" & loopc, "Dir1")), 0
-        InitGrh WeaponAnimData(loopc).WeaponWalk(2), Val(GetVar(Arch, "ARMA" & loopc, "Dir2")), 0
-        InitGrh WeaponAnimData(loopc).WeaponWalk(3), Val(GetVar(Arch, "ARMA" & loopc, "Dir3")), 0
-        InitGrh WeaponAnimData(loopc).WeaponWalk(4), Val(GetVar(Arch, "ARMA" & loopc, "Dir4")), 0
-    Next loopc
+    If Err.Number <> 0 Then
+        
+        If Err.Number = 53 Then
+            Call MsgBox("El archivo Graficos.ini no existe. Por favor, reinstale el juego.", , "Argentum 20")
+        
+        ElseIf grh > 0 Then
+            Call MsgBox("Hay un error en Graficos.ini con el Grh" & grh & ".", , "Argentum 20")
+        
+        Else
+            Call MsgBox("Hay un error en Graficos.ini. Por favor, reinstale el juego.", , "Argentum 20")
+        End If
+        
+        Call CloseClient
+        
+    End If
     
     #If Compresion = 1 Then
-        Delete_File Windows_Temp_Dir & "armas.dat"
+        Delete_File Windows_Temp_Dir & "graficos.ini"
     #End If
-
     
     Exit Sub
 
-CargarAnimArmasViejo_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarAnimArmasViejo", Erl)
-    Resume Next
-    
 End Sub
+
 
 Sub CargarAnimArmas()
     
@@ -2508,8 +2506,8 @@ Sub CargarAnimArmas()
     
     #If Compresion = 1 Then
 
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "armas.dat", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de armas.dat!"
+        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "armas.dat", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Err.Description = "¡No se puede cargar el archivo de armas.dat!"
             MsgBox Err.Description
 
         End If
@@ -2614,7 +2612,7 @@ Sub CargarAnimArmas()
     Exit Sub
 
 CargarAnimArmas_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarAnimArmas", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Recursos.CargarAnimArmas", Erl)
     Resume Next
     
 End Sub
@@ -2630,8 +2628,8 @@ Sub CargarColores()
 
     #If Compresion = 1 Then
 
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "colores.dat", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de colores.dat!"
+        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "colores.dat", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Err.Description = "¡No se puede cargar el archivo de colores.dat!"
             MsgBox Err.Description
 
         End If
@@ -2676,9 +2674,53 @@ Sub CargarColores()
     Exit Sub
 
 CargarColores_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarColores", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Recursos.CargarColores", Erl)
     Resume Next
     
+End Sub
+
+Sub CargarCrafteo()
+    Dim FileName As String
+
+    #If Compresion = 1 Then
+        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "crafteo.ini", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Err.Description = "No se puede cargar el archivo de crafteo.ini"
+            MsgBox Err.Description
+        End If
+        
+        FileName = Windows_Temp_Dir & "crafteo.ini"
+    #Else
+        FileName = App.Path & "\..\Recursos\init\crafteo.ini"
+    #End If
+    
+    Dim Reader As clsIniManager
+    Set Reader = New clsIniManager
+    
+    Call Reader.Initialize(FileName)
+    
+    ReDim TipoCrafteo(1 To Reader.NodesCount)
+    
+    Dim i As Byte
+    For i = 0 To Reader.NodesCount - 1
+        Dim nombre As String
+        nombre = Reader.GetNode(i)
+        
+        Dim id As Byte
+        id = Val(Reader.GetValue(nombre, "ID"))
+        
+        With TipoCrafteo(id)
+            .nombre = nombre
+            .Ventana = Reader.GetValue(nombre, "Ventana")
+            .Inventario = Val(Reader.GetValue(nombre, "Inventario"))
+            .Icono = Val(Reader.GetValue(nombre, "Icono"))
+        End With
+    Next
+
+    Set Reader = Nothing
+    
+    #If Compresion = 1 Then
+        Delete_File FileName
+    #End If
 End Sub
 
 Sub CargarAnimEscudos()
@@ -2721,8 +2763,8 @@ Sub CargarAnimEscudos()
     
     #If Compresion = 1 Then
 
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "escudos.dat", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de escudos.dat!"
+        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "escudos.dat", Windows_Temp_Dir, ResourcesPassword, False) Then
+            Err.Description = "¡No se puede cargar el archivo de escudos.dat!"
             MsgBox Err.Description
 
         End If
@@ -2825,57 +2867,11 @@ Sub CargarAnimEscudos()
     Exit Sub
 
 CargarAnimEscudos_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarAnimEscudos", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Recursos.CargarAnimEscudos", Erl)
     Resume Next
     
 End Sub
 
-
-Sub CargarAnimEscudosViejo()
-    
-    On Error GoTo CargarAnimEscudos_Err
-    
-
-    Dim loopc As Long
-
-    Dim Arch  As String
-    
-    #If Compresion = 1 Then
-
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "escudos.dat", Windows_Temp_Dir, False) Then
-            Err.Description = "Â¡No se puede cargar el archivo de escudos.dat!"
-            MsgBox Err.Description
-
-        End If
-
-        Arch = Windows_Temp_Dir & "escudos.dat"
-    #Else
-        Arch = App.Path & "\..\Recursos\init\escudos.dat"
-    #End If
-    
-    NumEscudosAnims = Val(GetVar(Arch, "INIT", "NumEscudos"))
-    
-    ReDim ShieldAnimData(1 To NumEscudosAnims) As ShieldAnimData
-    
-    For loopc = 1 To NumEscudosAnims
-        InitGrh ShieldAnimData(loopc).ShieldWalk(1), Val(GetVar(Arch, "ESC" & loopc, "Dir1")), 0
-        InitGrh ShieldAnimData(loopc).ShieldWalk(2), Val(GetVar(Arch, "ESC" & loopc, "Dir2")), 0
-        InitGrh ShieldAnimData(loopc).ShieldWalk(3), Val(GetVar(Arch, "ESC" & loopc, "Dir3")), 0
-        InitGrh ShieldAnimData(loopc).ShieldWalk(4), Val(GetVar(Arch, "ESC" & loopc, "Dir4")), 0
-    Next loopc
-    
-    #If Compresion = 1 Then
-        Delete_File Windows_Temp_Dir & "escudos.dat"
-    #End If
-
-    
-    Exit Sub
-
-CargarAnimEscudos_Err:
-    Call RegistrarError(Err.number, Err.Description, "Recursos.CargarAnimEscudos", Erl)
-    Resume Next
-    
-End Sub
 
 Sub LoadFonts()
     If LoadFont("Cardo.ttf") Then
@@ -2907,6 +2903,34 @@ Sub LoadFonts()
 
         Call SelLineSpacing(frmMain.RecTxt, 5, 22)
     End If
+    
+    Dim arr() As Byte
+    
+    ReDim arr(1 To 16) As Byte
+    
+    arr(1) = 1
+    arr(2) = 62
+    arr(3) = 7
+    arr(4) = 2
+    arr(5) = 56
+    arr(6) = 22
+    arr(7) = 9
+    arr(8) = 21
+    arr(9) = 52
+    arr(10) = 23
+    arr(11) = 28
+    arr(12) = 19
+    arr(13) = 38
+    arr(14) = 22
+    arr(15) = 11
+    arr(16) = 64
+    MapInfoEspeciales = estaInmovilizado(arr)
+    
+    #If DEBUGGING = 1 Then
+        Debug.Print MapInfoEspeciales
+    #Else
+    
+    #End If
 End Sub
 
 Function LoadFont(Name As String) As Boolean
@@ -2918,3 +2942,40 @@ Function LoadFont(Name As String) As Boolean
         YaMostreError = True
     End If
 End Function
+
+Public Sub CargarNPCsMapData()
+    Dim fh As Integer
+    fh = FreeFile
+    
+    Open App.Path & "\..\Recursos\OUTPUT\QuestNPCsMapData.bin" For Binary As fh
+    
+    Dim NumMaps As Integer
+    NumMaps = 600 ' cargar  desde archivo
+    ReDim ListNPCMapData(1 To NumMaps, 1 To MAX_QUESTNPCS_VISIBLE) As t_QuestNPCMapData
+    
+    Do While Not EOF(fh)
+        Dim Map As Integer
+        Get fh, , map
+        
+        If map > 0 Then
+            Dim i As Long
+            For i = 1 To MAX_QUESTNPCS_VISIBLE
+                Dim TempInt As Integer
+                Get #fh, , TempInt
+                'Debug.Assert map > 0
+                ListNPCMapData(map, i).NPCNumber = TempInt
+                
+                Get #fh, , TempInt
+                ListNPCMapData(map, i).Position.x = TempInt
+                
+                Get #fh, , TempInt
+                ListNPCMapData(map, i).Position.y = TempInt
+                
+                Get #fh, , TempInt
+                ListNPCMapData(map, i).State = TempInt
+            Next i
+        End If
+        DoEvents
+    Loop
+    Close fh
+End Sub

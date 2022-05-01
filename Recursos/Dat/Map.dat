@@ -1,5 +1,5 @@
-'En √©ste archivo se debe especificar la cantidad de mapas
-'que cargar√° el servidor
+'En Èste archivo se debe especificar la cantidad de mapas
+'que cargar· el servidor
 
 [INIT]
 NumMaps=672

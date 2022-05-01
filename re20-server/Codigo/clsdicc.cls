@@ -40,14 +40,14 @@ Option Explicit
 
 Private Const MAX_ELEM = 100
 
-Private Type diccElem
+Private Type t_diccElem
 
     clave As String
     def As Variant
 
 End Type
 
-Private p_elementos(1 To MAX_ELEM) As diccElem 'visual basic es una mierda para usar memoria dinamica, asi que uso esto
+Private p_elementos(1 To MAX_ELEM) As t_diccElem 'visual basic es una mierda para usar memoria dinamica, asi que uso esto
 
 Private p_cant                     As Integer
 
@@ -62,8 +62,8 @@ Public Sub Class_Initialize()
         Exit Sub
 
 Class_Initialize_Err:
-102     Call RegistrarError(Err.Number, Err.description, "diccionario.Class_Initialize", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "diccionario.Class_Initialize", Erl)
+104
         
 End Sub
 
@@ -83,8 +83,8 @@ Public Property Get CantElem() As Integer
         Exit Property
 
 CantElem_Err:
-102     Call RegistrarError(Err.Number, Err.description, "diccionario.CantElem", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "diccionario.CantElem", Erl)
+104
         
 End Property
 
@@ -131,8 +131,8 @@ Public Function AtPut(ByVal clave As String, ByRef elem As Variant) As Boolean
         Exit Function
 
 AtPut_Err:
-130     Call RegistrarError(Err.Number, Err.description, "diccionario.AtPut", Erl)
-132     Resume Next
+130     Call TraceError(Err.Number, Err.Description, "diccionario.AtPut", Erl)
+132
         
 End Function
 
@@ -161,8 +161,8 @@ Public Function At(ByVal clave As String) As Variant
         Exit Function
 
 At_Err:
-112     Call RegistrarError(Err.Number, Err.description, "diccionario.At", Erl)
-114     Resume Next
+112     Call TraceError(Err.Number, Err.Description, "diccionario.At", Erl)
+114
         
 End Function
 
@@ -176,8 +176,8 @@ Public Function AtIndex(ByVal i As Integer) As String
         Exit Function
 
 AtIndex_Err:
-102     Call RegistrarError(Err.Number, Err.description, "diccionario.AtIndex", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "diccionario.AtIndex", Erl)
+104
         
 End Function
 
@@ -215,8 +215,8 @@ Public Function MayorValor(ByRef cant As Integer) As String
         Exit Function
 
 MayorValor_Err:
-120     Call RegistrarError(Err.Number, Err.description, "diccionario.MayorValor", Erl)
-122     Resume Next
+120     Call TraceError(Err.Number, Err.Description, "diccionario.MayorValor", Erl)
+122
         
 End Function
 
@@ -238,7 +238,7 @@ Public Sub DumpAll()
         Exit Sub
 
 DumpAll_Err:
-110     Call RegistrarError(Err.Number, Err.description, "diccionario.DumpAll", Erl)
-112     Resume Next
+110     Call TraceError(Err.Number, Err.Description, "diccionario.DumpAll", Erl)
+112
         
 End Sub

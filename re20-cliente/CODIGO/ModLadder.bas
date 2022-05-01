@@ -7,8 +7,7 @@ Public Const DegreeToRadian As Single = 0.01745329251994 'Pi / 180
 Public Const RadianToDegree As Single = 57.2958279087977 '180 / Pi
 
 'Nueva seguridad
-Public Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" (destination As Any, source As Any, ByVal length As Long)
-Private Declare Function GetAdaptersInfo Lib "iphlpapi" (lpAdapterInfo As Any, lpSize As Long) As Long
+Public Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" (destination As Any, source As Any, ByVal Length As Long)
 Private Declare Function GetAsyncKeyState Lib "user32" (ByVal vKey As Long) As Integer
 'get mac adress
 
@@ -21,16 +20,11 @@ End Type
 Public ListaClanes      As Boolean
 Public ClanesList()     As Tclan
 
-Public MacAdress        As String
-Public HDserial         As Long
 Public CheckMD5         As String
 
 Public intro            As Byte
 
 Public InviCounter      As Integer
-Public ScrollExpCounter As Long
-Public ScrollOroCounter As Long
-Public OxigenoCounter   As Long
 Public DrogaCounter     As Integer
 
 Type Effect_Type
@@ -40,23 +34,23 @@ Type Effect_Type
     ViajeChar  As Integer  '< CharIndex al que viaja.
     DestinoChar As Integer
     Viaje_X    As Integer   '< X hacia donde se dirije.
-    End_Effect As Integer  '< Particula De la explosiÃ³n.
-    FxEnd_Effect As Integer  '< Particula De la explosiÃ³n.
-    End_Loops  As Integer  '< Loops del fx de la explosiÃ³n.
+    End_Effect As Integer  '< Particula De la explosión.
+    FxEnd_Effect As Integer  '< Particula De la explosión.
+    End_Loops  As Integer  '< Loops del fx de la explosión.
     Viaje_Y    As Integer   '< Y hacia donde se dirije.
     ViajeSpeed As Single   '< Velocidad de viaje.
     Now_Moved  As Long     '< Tiempo del movimiento actual.
-    Last_Move  As Long     '< Tiempo del Ãºltimo movimiento.
-    Now_X      As Integer  '< PosiciÃ³n X actual
-    Now_Y      As Integer  '< PosiciÃ³n Y actual
-    Slot_Used  As Boolean  '< Si estÃ¡ usandose este slot.
+    Last_Move  As Long     '< Tiempo del último movimiento.
+    Now_X      As Integer  '< Posición X actual
+    Now_Y      As Integer  '< Posición Y actual
+    Slot_Used  As Boolean  '< Si está usandose este slot.
     wav        As Integer
     DestX As Byte
     DesyY As Byte
 
 End Type
  
-Public Const NO_INDEX = -1         '< Ãndice no vÃ¡lido.
+Public Const NO_INDEX = -1         '< Índice no válido.
  
 Public Effect()     As Effect_Type
 
@@ -73,63 +67,13 @@ Public Enum FXSound
     MP_SOUND = 150
 End Enum
 
-Public Const MAX_CORREOS_SLOTS = 60
-
-Public LastIndex2                        As Integer
-
-Public CorreoMsj(1 To MAX_CORREOS_SLOTS) As CorreoMsj
-
-Public ItemLista(1 To 10)                As Obj
-Public ItemCount                         As Byte
-
-Public Type CorreoMsj
-    Remitente As String
-    mensaje As String
-    ItemCount As Byte
-    ItemArray As String
-    Leido As Byte
-    Fecha As String
-End Type
-
-Public TieneFamiliar As Long
-
-Public PetPercExp    As Long
-
 Public HayLayer4     As Boolean
-
-'Logros
-Public NPcLogros     As TLogros
-Public UserLogros    As TLogros
-Public LevelLogros   As TLogros
-Public MostrarTrofeo As Boolean
-
-Type TLogros
-    nombre As String
-    desc As String
-    cant As Long
-    TipoRecompensa As Byte
-    ObjRecompensa As String
-    OroRecompensa As Long
-    ExpRecompensa As Long
-    HechizoRecompensa As Byte
-    NpcsMatados As Integer
-    NivelUser As Byte
-    UserMatados As Integer
-    Finalizada As Boolean
-End Type
 
 Public CantPartLLuvia     As Integer
 Public MeteoIndex         As Integer
 
-'Servidores
-Public ChequeandoServidor As Byte
-Public CantServer         As Byte
-
 'Dropeo
-Public CantdPaquetes      As Long
 Public PingRender         As Integer
-Public InBytes            As Long
-Public OutBytes           As Long
 
 Public NumOBJs            As Integer
 Public NumNpcs            As Integer
@@ -187,11 +131,10 @@ End Type
 Public PosMap()           As Integer
 
 Public ObjData()          As ObjDatas
+Public ObjShop()          As ObjDatas
 Public NpcData()          As NpcDatas
 
 Public Locale_SMG()       As String
-
-
 
 'Sistema de mapa del mundo
 Public TotalWorlds As Byte
@@ -218,14 +161,6 @@ Public WorldActual As Byte
 Public HechizoData()      As HechizoDatas
 
 Public NameMaps(1 To 1000) As NameMapas
-
-Public ShowMacros         As Byte
-
-Public OcultarMacro       As Boolean
-
-Public ModoCaminata       As Boolean
-
-Public MacrosBloqeados    As Boolean
 
 Public Type ObjDatas
 
@@ -256,7 +191,9 @@ Public Type ObjDatas
     SkPociones As Byte
     Sksastreria As Byte
     Valor As Long
-
+    Agarrable As Boolean
+    Llave As Integer
+    ObjNum As Long
 End Type
 
 Public Type NpcDatas
@@ -273,6 +210,7 @@ Public Type NpcDatas
     NumQuiza As Byte
     QuizaDropea() As Integer
     ExpClan As Long
+    PuedeInvocar As Byte
     
 End Type
 
@@ -404,9 +342,7 @@ Public Type tIntervalos
 
 End Type
 
-Public LogeoAlgunaVez               As Boolean
-
-Public Pjs(1 To 10)                 As UserCuentaPJS
+Public Pjs(1 To MAX_PERSONAJES_EN_CUENTA)       As UserCuentaPJS
 
 Public RecordarCuenta               As Boolean
 
@@ -419,6 +355,8 @@ Type UserCuentaPJS
     nombre As String
     nivel As Byte
     Mapa As Integer
+    PosX As Integer
+    PosY As Integer
     Body As Integer
     Head As Integer
     Criminal As Byte
@@ -544,7 +482,7 @@ Sub inputbox_Password(El_Form As Form, Caracter As String)
     Exit Sub
 
 inputbox_Password_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.inputbox_Password", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.inputbox_Password", Erl)
     Resume Next
     
 End Sub
@@ -568,7 +506,7 @@ Private Sub TimerProc(ByVal hwnd As Long, ByVal uMsg As Long, ByVal idEvent As L
     Exit Sub
 
 TimerProc_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.TimerProc", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.TimerProc", Erl)
     Resume Next
     
 End Sub
@@ -606,7 +544,7 @@ Public Function LoadPNGtoICO(pngData() As Byte) As IPicture
     Exit Function
 
 LoadPNGtoICO_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.LoadPNGtoICO", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.LoadPNGtoICO", Erl)
     Resume Next
     
 End Function
@@ -628,14 +566,14 @@ Public Function SetTopMostWindow(hwnd As Long, Topmost As Boolean) As Long
     Exit Function
 
 SetTopMostWindow_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.SetTopMostWindow", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.SetTopMostWindow", Erl)
     Resume Next
     
 End Function
 
 Public Sub LogError(desc As String)
 
-    On Error GoTo errhandler
+    On Error GoTo ErrHandler
 
     Dim nfile As Integer
 
@@ -646,7 +584,7 @@ Public Sub LogError(desc As String)
 
     Exit Sub
 
-errhandler:
+ErrHandler:
 
 End Sub
 
@@ -688,7 +626,7 @@ Sub IniciarCrearPj()
     Exit Sub
 
 IniciarCrearPj_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.IniciarCrearPj", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.IniciarCrearPj", Erl)
     Resume Next
     
 End Sub
@@ -701,21 +639,20 @@ Sub General_Set_Connect()
     AlphaNiebla = 75
     EntradaY = 10
     EntradaX = 10
-
-    UserMap = 1
+    
+    UserMap = randomMap()
     Call SwitchMap(UserMap)
 
     If QueRender <> 1 Then
         frmConnect.Show
         FrmLogear.Show , frmConnect
-        FrmLogear.Top = FrmLogear.Top + 3500
     End If
             
     intro = 1
     frmMain.Picture = LoadInterface("ventanaprincipal.bmp")
     frmMain.panelInf.Picture = LoadInterface("ventanaprincipal_stats.bmp")
     frmMain.panel.Picture = LoadInterface("centroinventario.bmp")
-    frmMain.ExpBar.Picture = LoadInterface("barraexperiencia.bmp")
+    frmMain.EXPBAR.Picture = LoadInterface("barraexperiencia.bmp")
     frmMain.COMIDAsp.Picture = LoadInterface("barradehambre.bmp")
     frmMain.AGUAsp.Picture = LoadInterface("barradesed.bmp")
     frmMain.MANShp.Picture = LoadInterface("barrademana.bmp")
@@ -744,75 +681,72 @@ Sub General_Set_Connect()
     CurMp3 = 1
 
     QueRender = 1
-    frmConnect.relampago.Enabled = True
-    'Sound.Sound_Play 650, False, 0, 0
-
-    'frmConnect.Timer1.Enabled = True
-
-    frmConnect.relampago.Enabled = True
-    'Sound.Sound_Play 404, False, 0, 0   LADDER REVISAR SAQUE TRUENO
+    EscribeRetrasadoSensui = False
+    frmMain.timerRetrasadoSensui = False
+    
     ClickEnAsistente = 0
 
     If CuentaRecordada.nombre <> "" Then
-        Call TextoAlAsistente("Â¡Bienvenido de nuevo! Â¡Disfruta tu viaje por Argentum20!") ' hay que poner 20 aniversario
+        Call TextoAlAsistente("¡Bienvenido de nuevo! ¡Disfruta tu viaje por Argentum20!") ' hay que poner 20 aniversario
     Else
-        Call TextoAlAsistente("Â¡Bienvenido a Argentum20! Â¿Ya tenes tu cuenta? Logea! sino, toca sobre Cuenta para crearte una.") ' hay que poner 20 aniversario
+        Call TextoAlAsistente("¡Bienvenido a Argentum20! ¿Ya tenes tu cuenta? Logea! sino, toca sobre Cuenta para crearte una.") ' hay que poner 20 aniversario
 
     End If
-
+    
+    engine.FadeInAlpha = 255
     
     Exit Sub
 
 General_Set_Connect_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.General_Set_Connect", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.General_Set_Connect", Erl)
     Resume Next
     
 End Sub
  
-Public Sub InitializeSurfaceCapture(frm As Form)
+Public Sub InitializeSurfaceCapture(Frm As Form)
     
     On Error GoTo InitializeSurfaceCapture_Err
     
     lRegion = CreateRectRgn(0, 0, 0, 0)
-    frm.Visible = False
+    Frm.Visible = False
 
     
     Exit Sub
 
 InitializeSurfaceCapture_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.InitializeSurfaceCapture", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.InitializeSurfaceCapture", Erl)
     Resume Next
     
 End Sub
 
-Public Sub ReleaseSurfaceCapture(frm As Form)
+Public Sub ReleaseSurfaceCapture(Frm As Form)
     
     On Error GoTo ReleaseSurfaceCapture_Err
     
-    ApplySurfaceTo frm
-    frm.Visible = True
+    ApplySurfaceTo Frm
+    Frm.Visible = True
     Call DeleteObject(lRegion)
 
     
     Exit Sub
 
 ReleaseSurfaceCapture_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.ReleaseSurfaceCapture", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.ReleaseSurfaceCapture", Erl)
     Resume Next
     
 End Sub
  
-Public Sub ApplySurfaceTo(frm As Form)
+Public Sub ApplySurfaceTo(Frm As Form)
     
     On Error GoTo ApplySurfaceTo_Err
     
-    Call SetWindowRgn(frm.hwnd, lRegion, True)
+    Call SetWindowRgn(Frm.hwnd, lRegion, True)
 
     
     Exit Sub
 
 ApplySurfaceTo_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.ApplySurfaceTo", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.ApplySurfaceTo", Erl)
     Resume Next
     
 End Sub
@@ -852,7 +786,7 @@ Public Sub CreateSurfacefromPoints(ParamArray XY())
     Exit Sub
 
 CreateSurfacefromPoints_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.CreateSurfacefromPoints", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.CreateSurfacefromPoints", Erl)
     Resume Next
     
 End Sub
@@ -873,7 +807,7 @@ Public Sub CreateSurfacefromEllipse(x1 As Integer, y1 As Integer, x2 As Integer,
     Exit Sub
 
 CreateSurfacefromEllipse_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.CreateSurfacefromEllipse", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.CreateSurfacefromEllipse", Erl)
     Resume Next
     
 End Sub
@@ -894,7 +828,7 @@ Public Sub CreateSurfacefromRect(x1 As Integer, y1 As Integer, x2 As Integer, y2
     Exit Sub
 
 CreateSurfacefromRect_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.CreateSurfacefromRect", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.CreateSurfacefromRect", Erl)
     Resume Next
     
 End Sub
@@ -1028,7 +962,7 @@ Public Sub CreateSurfacefromMask(Obj As Object, Optional lBackColor As Long)
     Exit Sub
 
 CreateSurfacefromMask_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.CreateSurfacefromMask", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.CreateSurfacefromMask", Erl)
     Resume Next
     
 End Sub
@@ -1097,7 +1031,7 @@ Public Sub CreateSurfacefromMask_GetPixel(Obj As Object, Optional lBackColor As 
     Exit Sub
 
 CreateSurfacefromMask_GetPixel_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.CreateSurfacefromMask_GetPixel", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.CreateSurfacefromMask_GetPixel", Erl)
     Resume Next
     
 End Sub
@@ -1117,7 +1051,7 @@ Public Sub General_Var_Write(ByVal File As String, ByVal Main As String, ByVal V
     Exit Sub
 
 General_Var_Write_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.General_Var_Write", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.General_Var_Write", Erl)
     Resume Next
     
 End Sub
@@ -1132,7 +1066,7 @@ Public Sub MensajeAdvertencia(ByVal mensaje As String)
     Exit Sub
 
 MensajeAdvertencia_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.MensajeAdvertencia", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.MensajeAdvertencia", Erl)
     Resume Next
     
 End Sub
@@ -1156,7 +1090,7 @@ Public Sub ReproducirMp3(ByVal mp3 As Byte)
     Exit Sub
 
 ReproducirMp3_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.ReproducirMp3", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.ReproducirMp3", Erl)
     Resume Next
     
 End Sub
@@ -1175,88 +1109,45 @@ Public Sub ForzarMp3(ByVal mp3 As Byte)
     Exit Sub
 
 ForzarMp3_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.ForzarMp3", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.ForzarMp3", Erl)
     Resume Next
     
 End Sub
 
 Public Sub CargarCuentasGuardadas()
-    
-    On Error GoTo CargarCuentasGuardadas_Err
-    
 
     Dim Arch As String
-
-    Arch = App.Path & "\..\Recursos\OUTPUT\" & "Configuracion.ini"
+        Arch = App.Path & "\..\Recursos\OUTPUT\Cuenta.ini"
+    
     CuentaRecordada.nombre = GetVar(Arch, "CUENTA", "Nombre")
     CuentaRecordada.Password = UnEncryptStr(GetVar(Arch, "CUENTA", "Password"), 9256)
-    FrmLogear.Image4.Tag = "0"
+    
+    FrmLogear.chkRecordar.Tag = "0"
  
-    If CuentaRecordada.nombre <> "" Then
+    If LenB(CuentaRecordada.nombre) <> 0 Then
         FrmLogear.NameTxt = CuentaRecordada.nombre
         FrmLogear.PasswordTxt = CuentaRecordada.Password
-        FrmLogear.Image4.Picture = LoadInterface("check-amarillo.bmp")
-        FrmLogear.Image4.Tag = "1"
-        'FrmLogear.Check1.value = 1
-         
+        FrmLogear.chkRecordar.Picture = LoadInterface("check-amarillo.bmp")
+        FrmLogear.chkRecordar.Tag = "1"
         FrmLogear.PasswordTxt.TabIndex = 0
-        
         FrmLogear.PasswordTxt.SelStart = Len(FrmLogear.PasswordTxt)
-
-        'FrmLogear.lstServers.TabIndex = 1
-        'FrmLogear.cmdConnect.TabIndex = 2
     End If
 
-    Rem FrmLogear.PasswordTxt = CuentaRecordada(1).Password
-    
-    Exit Sub
-
-CargarCuentasGuardadas_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.CargarCuentasGuardadas", Erl)
-    Resume Next
-    
 End Sub
 
-Public Sub GrabarNuevaCuenta(ByVal Name As String, ByVal Password As String)
-    
-    On Error GoTo GrabarNuevaCuenta_Err
-    
+Public Sub GuardarCuenta(ByVal Name As String, ByVal Password As String)
 
-    Dim Arch As String
-
-    Arch = App.Path & "\..\Recursos\OUTPUT\" & "Configuracion.ini"
-    Call WriteVar(Arch, "CUENTA", "Nombre", Name)
-    Call WriteVar(Arch, "CUENTA", "Password", EncryptStr(Password, 9256))
+    Dim Archivo As String
+        Archivo = App.Path & "\..\Recursos\OUTPUT\Cuenta.ini"
+    
+    ' Si el parametro Password no es vbNullString, encriptamos el string
+    If LenB(Password) Then Password = EncryptStr(Password, 9256)
+    
+    Call WriteVar(Archivo, "CUENTA", "Nombre", Name)
+    Call WriteVar(Archivo, "CUENTA", "Password", Password)
+    
     Call CargarCuentasGuardadas
 
-    
-    Exit Sub
-
-GrabarNuevaCuenta_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.GrabarNuevaCuenta", Erl)
-    Resume Next
-    
-End Sub
-
-Public Sub ResetearCuentas()
-    
-    On Error GoTo ResetearCuentas_Err
-    
-
-    Dim Arch As String
-
-    Arch = App.Path & "\..\Recursos\OUTPUT\Configuracion.ini"
-    Call WriteVar(Arch, "CUENTA", "Nombre", "")
-    Call WriteVar(Arch, "CUENTA", "Password", "")
-    Call CargarCuentasGuardadas
-
-    
-    Exit Sub
-
-ResetearCuentas_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.ResetearCuentas", Erl)
-    Resume Next
-    
 End Sub
 
 '*****************************************************************
@@ -1283,7 +1174,7 @@ End Sub
 '*****************************************************************
 
 '*****************************************************************
-'Augusto JosÃ© Rando (barrin@imperiumao.com.ar)
+'Augusto José Rando (barrin@imperiumao.com.ar)
 '   - First Relase
 '*****************************************************************
 
@@ -1310,7 +1201,7 @@ Public Function IntervaloPermiteClick(Optional ByVal Actualizar As Boolean = Tru
     Exit Function
 
 IntervaloPermiteClick_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.IntervaloPermiteClick", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.IntervaloPermiteClick", Erl)
     Resume Next
     
 End Function
@@ -1338,7 +1229,7 @@ Public Function IntervaloPermiteHeading(Optional ByVal Actualizar As Boolean = T
     Exit Function
 
 IntervaloPermiteHeading_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.IntervaloPermiteHeading", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.IntervaloPermiteHeading", Erl)
     Resume Next
     
 End Function
@@ -1363,7 +1254,7 @@ Public Function IntervaloPermiteLLamadaClan() As Boolean
     Exit Function
 
 IntervaloPermiteLLamadaClan_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.IntervaloPermiteLLamadaClan", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.IntervaloPermiteLLamadaClan", Erl)
     Resume Next
     
 End Function
@@ -1387,7 +1278,7 @@ Public Function IntervaloPermiteAnim() As Boolean
     Exit Function
 
 IntervaloPermiteAnim_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.IntervaloPermiteAnim", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.IntervaloPermiteAnim", Erl)
     Resume Next
     
 End Function
@@ -1411,25 +1302,41 @@ Public Function IntervaloPermiteConectar() As Boolean
     Exit Function
 
 IntervaloPermiteConectar_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.IntervaloPermiteConectar", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.IntervaloPermiteConectar", Erl)
     Resume Next
     
 End Function
-
+Sub initPacketControl()
+    Dim i As Long, j As Long
+    
+    'ReDim packetControl(1 To CANT_PACKETS_CONTROL) As t_packetControl
+    
+    For i = 1 To CANT_PACKETS_CONTROL
+        With packetControl(i)
+            .last_count = 0
+           ' .cant_iterations = 0
+           For j = 1 To 10
+                .iterations(j) = 0
+            Next j
+        End With
+    Next i
+    
+End Sub
 Sub CargarOpciones()
 
     On Error GoTo ErrorHandler
+    Set DialogosClanes = New clsGuildDlg
     
     If FileExist(App.Path & "\..\Recursos\OUTPUT\Configuracion.ini", vbArchive) Then
         Call LoadImpAoInit
     Else
-        Call MsgBox("Â¡No se puede cargar el archivo de opciones! La reinstalacion del juego podria solucionar el problema.", vbCritical, "Error al cargar")
+        Call MsgBox("¡No se puede cargar el archivo de opciones! La reinstalacion del juego podria solucionar el problema.", vbCritical, "Error al cargar")
         End
     End If
     
     Dim ConfigFile As clsIniManager
     Set ConfigFile = New clsIniManager
-    Call ConfigFile.Initialize(App.Path & "\..\Recursos\OUTPUT\" & "Configuracion.ini")
+    Call ConfigFile.Initialize(App.Path & "\..\Recursos\OUTPUT\Configuracion.ini")
     
     'Musica y Sonido
     Musica = ConfigFile.GetValue("AUDIO", "Musica")
@@ -1448,9 +1355,15 @@ Sub CargarOpciones()
     PantallaCompleta = ConfigFile.GetValue("VIDEO", "PantallaCompleta")
     CursoresGraficos = IIf(RunningInVB, 0, ConfigFile.GetValue("VIDEO", "CursoresGraficos"))
     UtilizarPreCarga = ConfigFile.GetValue("VIDEO", "UtilizarPreCarga")
+    InfoItemsEnRender = Val(ConfigFile.GetValue("VIDEO", "InfoItemsEnRender"))
+    ModoAceleracion = ConfigFile.GetValue("VIDEO", "Aceleracion")
+    VSyncActivado = Val(ConfigFile.GetValue("VIDEO", "Vsync"))
     
+    Dim Value As String
+    Value = ConfigFile.GetValue("VIDEO", "MostrarRespiracion")
+    MostrarRespiracion = IIf(LenB(Value) > 0, Val(Value), True)
+
     FxNavega = ConfigFile.GetValue("OPCIONES", "FxNavega")
-    OcultarMacrosAlCastear = ConfigFile.GetValue("OPCIONES", "OcultarMacrosAlCastear")
     MostrarIconosMeteorologicos = ConfigFile.GetValue("OPCIONES", "MostrarIconosMeteorologicos")
     CopiarDialogoAConsola = ConfigFile.GetValue("OPCIONES", "CopiarDialogoAConsola")
     PermitirMoverse = ConfigFile.GetValue("OPCIONES", "PermitirMoverse")
@@ -1458,7 +1371,8 @@ Sub CargarOpciones()
     FPSFLAG = ConfigFile.GetValue("OPCIONES", "FPSFLAG")
     AlphaMacro = ConfigFile.GetValue("OPCIONES", "AlphaMacro")
     ModoHechizos = Val(ConfigFile.GetValue("OPCIONES", "ModoHechizos"))
-    MostrarEscribiendo = Val(ConfigFile.GetValue("OPCIONES", "MostrarEscribiendo"))
+    DialogosClanes.Activo = Val(ConfigFile.GetValue("OPCIONES", "DialogosClanes"))
+    NumerosCompletosInventario = Val(ConfigFile.GetValue("OPCIONES", "NumerosCompletosInventario"))
     
     'Init
     ServerIndex = Val(ConfigFile.GetValue("INIT", "ServerIndex"))
@@ -1473,13 +1387,14 @@ Sub CargarOpciones()
     
     Call General_Set_Mouse_Speed(SensibilidadMouse)
     
+    'Dialogos clanes
     Exit Sub
     
 ErrorHandler:
     
     Set ConfigFile = Nothing
     
-    Call MsgBox("Ha ocurrido un error al cargar la configuraciÃ³n del juego.", vbCritical, "ConfiguraciÃ³n del Juego")
+    Call MsgBox("Ha ocurrido un error al cargar la configuración del juego.", vbCritical, "Configuración del Juego")
     
     End
     
@@ -1501,29 +1416,30 @@ Sub GuardarOpciones()
     Call WriteVar(Arch, "AUDIO", "VolAmbient", VolAmbient)
     Call WriteVar(Arch, "AUDIO", "AmbientalActivated", AmbientalActivated)
     
-    'Call WriteVar(Arch, "VIDEO", "CursoresGraficos", CursoresGraficos)
-    
     Call WriteVar(Arch, "OPCIONES", "MoverVentana", MoverVentana)
     Call WriteVar(Arch, "OPCIONES", "PermitirMoverse", PermitirMoverse)
     Call WriteVar(Arch, "OPCIONES", "CopiarDialogoAConsola", CopiarDialogoAConsola)
-    Call WriteVar(Arch, "OPCIONES", "InvertirSonido", InvertirSonido)
     Call WriteVar(Arch, "OPCIONES", "FPSFLAG", FPSFLAG)
     Call WriteVar(Arch, "OPCIONES", "AlphaMacro", AlphaMacro)
     Call WriteVar(Arch, "OPCIONES", "ModoHechizos", ModoHechizos)
     Call WriteVar(Arch, "OPCIONES", "FxNavega", FxNavega)
     
-    Call WriteVar(Arch, "OPCIONES", "MostrarEscribiendo", MostrarEscribiendo)
-    
+    Call WriteVar(Arch, "OPCIONES", "NumerosCompletosInventario", NumerosCompletosInventario)
 
-    Call WriteVar(Arch, "OPCIONES", "OcultarMacrosAlCastear", OcultarMacrosAlCastear)
-    
+    Call WriteVar(Arch, "VIDEO", "MostrarRespiracion", IIf(MostrarRespiracion, 1, 0))
+    Call WriteVar(Arch, "VIDEO", "PantallaCompleta", IIf(PantallaCompleta, 1, 0))
+    Call WriteVar(Arch, "VIDEO", "InfoItemsEnRender", IIf(InfoItemsEnRender, 1, 0))
+    Call WriteVar(Arch, "VIDEO", "Aceleracion", ModoAceleracion)
+    Call WriteVar(Arch, "VIDEO", "Vsync", IIf(VSyncActivado, 1, 0))
+
     Call WriteVar(Arch, "OPCIONES", "SensibilidadMouse", SensibilidadMouse)
+    Call WriteVar(Arch, "OPCIONES", "DialogosClanes", IIf(DialogosClanes.Activo, 1, 0))
 
     
     Exit Sub
 
 GuardarOpciones_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.GuardarOpciones", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.GuardarOpciones", Erl)
     Resume Next
     
 End Sub
@@ -1545,41 +1461,35 @@ Public Sub WriteChatOverHeadInConsole(ByVal charindex As Integer, ByVal ChatText
     End If
     
     With charlist(charindex)
-        'Todo: Hacer que los colores se usen de Colores.dat
-        'Haciendo uso de ColoresPj ya que el mismo en algun momento lo hace para DX
-        Select Case .priv
 
+        Select Case .priv
+            ' Usuario normal
             Case 0
 
-                If .status = 0 Then
-                    NameRed = 128
-                    NameGreen = 128
-                    NameBlue = 128
-                ElseIf .status = 1 Then
-                    NameRed = 0
-                    NameGreen = 128
-                    NameBlue = 190
-                ElseIf .status = 2 Then
-                    NameRed = 179
-                    NameGreen = 0
-                    NameBlue = 4
-                ElseIf .status = 3 Then
-                    NameRed = 31
-                    NameGreen = 139
-                    NameBlue = 139
+                If .status = 0 Then ' Criminal
+                    NameRed = ColoresPJ(50).r
+                    NameGreen = ColoresPJ(50).G
+                    NameBlue = ColoresPJ(50).B
+                ElseIf .status = 1 Then ' Ciudadano
+                    NameRed = ColoresPJ(49).r
+                    NameGreen = ColoresPJ(49).G
+                    NameBlue = ColoresPJ(49).B
+                ElseIf .status = 2 Then ' Caos
+                    NameRed = ColoresPJ(6).r
+                    NameGreen = ColoresPJ(6).G
+                    NameBlue = ColoresPJ(6).B
+                ElseIf .status = 3 Then ' Armada
+                    NameRed = ColoresPJ(8).r
+                    NameGreen = ColoresPJ(8).G
+                    NameBlue = ColoresPJ(8).B
 
                 End If
 
-            Case 1, 2
-
-                NameRed = 2
-                NameGreen = 161
-                NameBlue = 38
-
-            Case 3, 4
-                NameRed = 217
-                NameGreen = 164
-                NameBlue = 32
+            ' Consejeros, SemiDioses, Dioses y Admin (GM)
+            Case Else
+                NameRed = ColoresPJ(.priv).r
+                NameGreen = ColoresPJ(.priv).G
+                NameBlue = ColoresPJ(.priv).B
             
         End Select
 
@@ -1599,10 +1509,8 @@ Public Sub WriteChatOverHeadInConsole(ByVal charindex As Integer, ByVal ChatText
         If LenB(.nombre) <> 0 And LenB(ChatText) > 0 Then
             Call AddtoRichTextBox2(frmMain.RecTxt, "[" & Name & "] ", NameRed, NameGreen, NameBlue, True, False, True, rtfLeft)
             Call AddtoRichTextBox2(frmMain.RecTxt, ChatText, red, green, blue, False, False, False, rtfLeft)
-
         End If
 
-        Dim i As Byte
 
     End With
     
@@ -1610,65 +1518,11 @@ Public Sub WriteChatOverHeadInConsole(ByVal charindex As Integer, ByVal ChatText
     Exit Sub
 
 WriteChatOverHeadInConsole_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.WriteChatOverHeadInConsole", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.WriteChatOverHeadInConsole", Erl)
     Resume Next
     
 End Sub
 
-Public Sub CopiarDialogoToConsola(ByVal NickName As String, Dialogo As String, Color As Long)
-    
-    On Error GoTo CopiarDialogoToConsola_Err
-    
-
-    If NickName = "" Then Exit Sub
-    If Right$(Dialogo, 1) = " " Or Left(Dialogo, 1) = " " Then
-        Dialogo = Trim(Dialogo)
-
-    End If
-
-    Dim Pos  As Long
-
-    Dim Nick As String
-
-    Pos = InStr(NickName, "<")
-
-    If Pos = 0 Then Pos = Len(NickName) + 2
-    'Nick
-    Nick = Left$(NickName, Pos - 2)
-
-    Select Case Color
-
-        Case 255255255 ' Blanco comun
-            Call AddtoRichTextBox(frmMain.RecTxt, Nick & "> " & Dialogo, 255, 255, 255, False, True, False)
-
-        Case 25513015 'Gritar GMS!
-            Call AddtoRichTextBox(frmMain.RecTxt, Nick & "> " & Dialogo, 225, 225, 0, False, True, False)
-
-        Case 25500 ' Gritar!
-            Call AddtoRichTextBox(frmMain.RecTxt, Nick & "> " & Dialogo, 255, 0, 0, False, True, False)
-
-        Case 2000 'GM
-            Call AddtoRichTextBox(frmMain.RecTxt, Nick & "> " & Dialogo, 0, 200, , False, True, False)
-
-        Case -14117888 ' Global
-            Call AddtoRichTextBox(frmMain.RecTxt, Nick & "> " & Dialogo, 0, 201, 197, False, True, False)
-
-        Case 192192192 'Gris
-            Call AddtoRichTextBox(frmMain.RecTxt, Nick & "> " & Dialogo, 164, 164, 164, False, True, False)
-
-        Case 15722620 'Privado
-            Call AddtoRichTextBox(frmMain.RecTxt, Nick & "> " & Dialogo, 157, 226, 20, False, True, False)
-
-    End Select
-
-    
-    Exit Sub
-
-CopiarDialogoToConsola_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.CopiarDialogoToConsola", Erl)
-    Resume Next
-    
-End Sub
 
 Public Function PonerPuntos(Numero As Long) As String
     
@@ -1709,7 +1563,7 @@ Public Function PonerPuntos(Numero As Long) As String
     Exit Function
 
 PonerPuntos_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.PonerPuntos", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.PonerPuntos", Erl)
     Resume Next
     
 End Function
@@ -1740,7 +1594,7 @@ Sub AmbientarAudio(ByVal UserMap As Long)
         '  AmbientalesBufferIndex = Audio.PlayWave(Wav & ".wav", , , LoopStyle.Enabled)
     Else
    
-        wav = ReadField(2, Val(MapDat.extra1), Asc("-"))
+        wav = ReadField(2, Val(MapDat.ambient), Asc("-"))
 
         If wav = 0 Then Exit Sub
         If Sound.AmbienteActual <> wav Then
@@ -1763,7 +1617,7 @@ Sub AmbientarAudio(ByVal UserMap As Long)
     Exit Sub
 
 AmbientarAudio_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.AmbientarAudio", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.AmbientarAudio", Erl)
     Resume Next
     
 End Sub
@@ -1799,7 +1653,7 @@ Public Function General_Var_Get(ByVal File As String, ByVal Main As String, ByVa
     Exit Function
 
 General_Var_Get_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.General_Var_Get", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.General_Var_Get", Erl)
     Resume Next
     
 End Function
@@ -1807,50 +1661,61 @@ End Function
 Public Sub DibujarMiniMapa()
     
     On Error GoTo DibujarMiniMapa_Err
-    
 
-    Dim map_x   As Long, map_y As Long
-
-    Dim termine As Boolean
-
-    frmMain.MiniMap.BackColor = vbBlack
-
-    For map_y = 1 To 100
-        For map_x = 1 To 100
-
-            If MapData(map_x, map_y).Graphic(1).GrhIndex > 0 Then
-                SetPixel frmMain.MiniMap.hdc, map_x - 1, map_y - 1, GrhData(MapData(map_x, map_y).Graphic(1).GrhIndex).MiniMap_color
-
-            End If
-
-            If MapData(map_x, map_y).Graphic(2).GrhIndex > 0 Then
-                SetPixel frmMain.MiniMap.hdc, map_x - 1, map_y - 1, GrhData(MapData(map_x, map_y).Graphic(2).GrhIndex).MiniMap_color
-
-            End If
-
-            If MapData(map_x, map_y).Graphic(4).GrhIndex > 0 Then
-                SetPixel frmMain.MiniMap.hdc, map_x - 1, map_y - 1, GrhData(MapData(map_x, map_y).Graphic(4).GrhIndex).MiniMap_color
-
-            End If
+    frmMain.MiniMap.Picture = LoadMinimap(UserMap)
+    'Pintamos los NPCs en Minimapa:
+    If ListNPCMapData(UserMap, 1).NPCNumber > 0 Then
+        Dim i As Long
+        For i = 1 To MAX_QUESTNPCS_VISIBLE
+            Dim posX As Long
+            Dim posY As Long
             
-        Next map_x
-    Next map_y
-     
-    frmMain.MiniMap.Refresh
+            PosX = (ListNPCMapData(UserMap, i).Position.X - HalfWindowTileWidth - 2) * (100 / (100 - 2 * HalfWindowTileWidth - 4)) - 2
+            PosY = (ListNPCMapData(UserMap, i).Position.y - HalfWindowTileHeight - 1) * (100 / (100 - 2 * HalfWindowTileHeight - 2)) - 1
+            
+            
+            Dim color As Long
+            
+            Select Case ListNPCMapData(UserMap, i).State
+                Case 1
+                    color = RGB(0, 198, 254)
+                Case 2
+                    color = RGB(255, 201, 14)
+                    Case Else
+                    Color = RGB(255, 201, 14)
+            End Select
+            
+            
+            
+            Call SetPixel(frmMain.MiniMap.hdc, PosX + 1, PosY, color)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX, PosY + 1, color)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX + 1, PosY + 1, color)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX, PosY, color)
+            
+            Call SetPixel(frmMain.MiniMap.hdc, PosX, PosY - 1, &H808080)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX + 1, PosY - 1, &H808080)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX + 2, PosY, &H808080)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX + 2, PosY + 1, &H808080)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX + 1, PosY + 2, &H808080)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX, PosY + 2, &H808080)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX - 1, PosY + 1, &H808080)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX - 1, PosY, &H808080)
 
-    
+        Next i
+        
+        frmMain.MiniMap.Refresh
+    End If
     Exit Sub
 
 DibujarMiniMapa_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.DibujarMiniMapa", Erl)
-    Resume Next
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.DibujarMiniMapa", Erl)
     
 End Sub
 
 Rem Encripta una cadena de caracteres.
 Rem S = Cadena a encriptar
 Rem P = Password
-Function EncryptStr(ByVal s As String, ByVal p As String) As String
+Function EncryptStr(ByVal s As String, ByVal P As String) As String
     
     On Error GoTo EncryptStr_Err
     
@@ -1861,15 +1726,15 @@ Function EncryptStr(ByVal s As String, ByVal p As String) As String
 
     r = ""
 
-    If Len(p) > 0 Then
+    If Len(P) > 0 Then
 
         For i = 1 To Len(s)
             c1 = Asc(mid(s, i, 1))
 
-            If i > Len(p) Then
-                C2 = Asc(mid(p, i Mod Len(p) + 1, 1))
+            If i > Len(P) Then
+                C2 = Asc(mid(P, i Mod Len(P) + 1, 1))
             Else
-                C2 = Asc(mid(p, i, 1))
+                C2 = Asc(mid(P, i, 1))
 
             End If
 
@@ -1890,7 +1755,7 @@ Function EncryptStr(ByVal s As String, ByVal p As String) As String
     Exit Function
 
 EncryptStr_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.EncryptStr", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.EncryptStr", Erl)
     Resume Next
     
 End Function
@@ -1898,7 +1763,7 @@ End Function
 Rem Desencripta una cadena de caracteres.
 Rem S = Cadena a desencriptar
 Rem P = Password
-Function UnEncryptStr(ByVal s As String, ByVal p As String) As String
+Function UnEncryptStr(ByVal s As String, ByVal P As String) As String
     
     On Error GoTo UnEncryptStr_Err
     
@@ -1909,15 +1774,15 @@ Function UnEncryptStr(ByVal s As String, ByVal p As String) As String
 
     r = ""
 
-    If Len(p) > 0 Then
+    If Len(P) > 0 Then
 
         For i = 1 To Len(s)
             c1 = Asc(mid(s, i, 1))
 
-            If i > Len(p) Then
-                C2 = Asc(mid(p, i Mod Len(p) + 1, 1))
+            If i > Len(P) Then
+                C2 = Asc(mid(P, i Mod Len(P) + 1, 1))
             Else
-                C2 = Asc(mid(p, i, 1))
+                C2 = Asc(mid(P, i, 1))
 
             End If
 
@@ -1938,15 +1803,15 @@ Function UnEncryptStr(ByVal s As String, ByVal p As String) As String
     Exit Function
 
 UnEncryptStr_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.UnEncryptStr", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.UnEncryptStr", Erl)
     Resume Next
     
 End Function
 
 Public Function Input_Key_Get(ByVal key_code As Byte) As Boolean
     '**************************************************************
-    'Author: Aaron Perkins - Juan MartÃ­n Sotuyo Dodero
-    'Modified by Augusto JosÃ© Rando
+    'Author: Aaron Perkins - Juan Martín Sotuyo Dodero
+    'Modified by Augusto José Rando
     'Now we use DirectInput Keyboard
     'Last Modify Date: 10/07/2002
     '
@@ -1961,7 +1826,7 @@ Public Function Input_Key_Get(ByVal key_code As Byte) As Boolean
     Exit Function
 
 Input_Key_Get_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.Input_Key_Get", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.Input_Key_Get", Erl)
     Resume Next
     
 End Function
@@ -1969,7 +1834,7 @@ End Function
 Public Function Input_Click_Get(ByVal Botton As Byte) As Boolean
     '**************************************************************
     'Author: Pablo Mercavides
-    'Modified by Augusto JosÃ© Rando
+    'Modified by Augusto José Rando
     'Now we use DirectInput Keyboard
     'Last Modify Date: 10/07/2002
     '
@@ -1984,7 +1849,7 @@ Public Function Input_Click_Get(ByVal Botton As Byte) As Boolean
     Exit Function
 
 Input_Click_Get_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.Input_Click_Get", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.Input_Click_Get", Erl)
     Resume Next
     
 End Function
@@ -1995,7 +1860,7 @@ Public Function General_Get_Temp_Dir() As String
     
 
     '**************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     'Last Modify Date: 6/11/2005
     'Gets windows temporary directory
     '**************************************************************
@@ -2021,14 +1886,14 @@ Public Function General_Get_Temp_Dir() As String
     Exit Function
 
 General_Get_Temp_Dir_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.General_Get_Temp_Dir", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.General_Get_Temp_Dir", Erl)
     Resume Next
     
 End Function
 
 Public Function General_Get_Mouse_Speed() As Long
     '**************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     'Last Modify Date: 6/11/2005
     '
     '**************************************************************
@@ -2042,14 +1907,14 @@ Public Function General_Get_Mouse_Speed() As Long
     Exit Function
 
 General_Get_Mouse_Speed_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.General_Get_Mouse_Speed", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.General_Get_Mouse_Speed", Erl)
     Resume Next
     
 End Function
  
 Public Sub General_Set_Mouse_Speed(ByVal lngSpeed As Long)
     '**************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     'Last Modify Date: 6/11/2005
     '
     '**************************************************************
@@ -2063,14 +1928,14 @@ Public Sub General_Set_Mouse_Speed(ByVal lngSpeed As Long)
     Exit Sub
 
 General_Set_Mouse_Speed_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.General_Set_Mouse_Speed", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.General_Set_Mouse_Speed", Erl)
     Resume Next
     
 End Sub
 
 Public Sub ResetearUserMacro()
     '**************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     'Last Modify Date: 6/11/2005
     '
     '**************************************************************
@@ -2100,7 +1965,7 @@ Public Sub ResetearUserMacro()
     Exit Sub
 
 ResetearUserMacro_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.ResetearUserMacro", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.ResetearUserMacro", Erl)
     Resume Next
     
 End Sub
@@ -2114,21 +1979,21 @@ Public Sub CargarLst()
 
     FrmLogear.lstServers.Clear
 
-    For i = 1 To CantServer
+    For i = 1 To UBound(ServersLst)
         FrmLogear.lstServers.AddItem ServersLst(i).desc
     Next i
     
 #If DEBUGGING = 1 Then
     FrmLogear.lstServers.ListIndex = Val(ServerIndex)
 #Else
-    FrmLogear.lstServers.ListIndex = 1
+    FrmLogear.lstServers.ListIndex = 0
 #End If
 
     
     Exit Sub
 
 CargarLst_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.CargarLst", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.CargarLst", Erl)
     Resume Next
     
 End Sub
@@ -2156,7 +2021,7 @@ Public Sub CrearFantasma(ByVal charindex As Integer)
     Exit Sub
 
 CrearFantasma_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.CrearFantasma", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.CrearFantasma", Erl)
     Resume Next
     
 End Sub
@@ -2174,7 +2039,7 @@ Public Sub CompletarAccionBarra(ByVal BarAccion As Byte)
     Exit Sub
 
 CompletarAccionBarra_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.CompletarAccionBarra", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.CompletarAccionBarra", Erl)
     Resume Next
     
 End Sub
@@ -2184,7 +2049,7 @@ Public Sub ComprobarEstado()
     On Error GoTo ComprobarEstado_Err
     
 
-    Call InitServersList(RawServersList)
+    Call InitServersList
 
     Call CargarLst
 
@@ -2192,7 +2057,7 @@ Public Sub ComprobarEstado()
     Exit Sub
 
 ComprobarEstado_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.ComprobarEstado", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.ComprobarEstado", Erl)
     Resume Next
     
 End Sub
@@ -2207,7 +2072,7 @@ Public Function General_Distance_Get(ByVal x1 As Integer, ByVal y1 As Integer, B
     Exit Function
 
 General_Distance_Get_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.General_Distance_Get", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.General_Distance_Get", Erl)
     Resume Next
     
 End Function
@@ -2226,7 +2091,7 @@ Public Sub EndGame(Optional ByVal Closed_ByUser As Boolean = False, Optional ByV
     prgRun = False
 
     '0. Cerramos el socket
-    If frmMain.Socket1.State <> sckClosed Then frmMain.Socket1.Disconnect
+    Call modNetwork.Disconnect
 
     '2. Eliminamos objetos DX
     Call Client_UnInitialize_DirectX_Objects
@@ -2234,7 +2099,7 @@ Public Sub EndGame(Optional ByVal Closed_ByUser As Boolean = False, Optional ByV
     '6. Cerramos los forms y nos vamos
     Call UnloadAllForms
 
-    '7. AdiÃ³s MuteX - Restauramos MouseSpeed
+    '7. Adiós MuteX - Restauramos MouseSpeed
 
     End
 
@@ -2242,7 +2107,7 @@ Public Sub EndGame(Optional ByVal Closed_ByUser As Boolean = False, Optional ByV
     Exit Sub
 
 EndGame_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.EndGame", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.EndGame", Erl)
     Resume Next
     
 End Sub
@@ -2258,13 +2123,13 @@ Public Sub Client_UnInitialize_DirectX_Objects()
     Sound.Engine_DeInitialize
     Set Sound = Nothing
 
-    '2. Cerramos el engine grÃ¡fico y borramos textures
+    '2. Cerramos el engine gráfico y borramos textures
 
     
     Exit Sub
 
 Client_UnInitialize_DirectX_Objects_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.Client_UnInitialize_DirectX_Objects", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.Client_UnInitialize_DirectX_Objects", Erl)
     Resume Next
     
 End Sub
@@ -2280,7 +2145,7 @@ Public Sub TextoAlAsistente(ByVal Texto As String)
     Exit Sub
 
 TextoAlAsistente_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.TextoAlAsistente", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.TextoAlAsistente", Erl)
     Resume Next
     
 End Sub
@@ -2323,7 +2188,7 @@ Public Function GetTimeFormated(Mins As Integer) As String
     Exit Function
 
 GetTimeFormated_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.GetTimeFormated", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.GetTimeFormated", Erl)
     Resume Next
     
 End Function
@@ -2343,7 +2208,7 @@ Public Function GetHora(Mins As Integer) As String
     Exit Function
 
 GetHora_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.GetHora", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.GetHora", Erl)
     Resume Next
     
 End Function
@@ -2373,7 +2238,7 @@ Public Sub PreloadGraphics()
     
     #If Compresion = 1 Then
 
-        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "preload.ind", Windows_Temp_Dir, False) Then
+        If Not Extract_File(Scripts, App.Path & "\..\Recursos\OUTPUT\", "preload.ind", Windows_Temp_Dir, ResourcesPassword, False) Then
             Err.Description = "No se ha logrado extraer el archivo de recurso."
             GoTo ErrorHandler
 
@@ -2420,170 +2285,10 @@ ErrorHandler:
     Exit Sub
 
 PreloadGraphics_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.PreloadGraphics", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.PreloadGraphics", Erl)
     Resume Next
     
 End Sub
-
-Public Sub CalcularPosicionMAPA()
-    
-    On Error GoTo CalcularPosicionMAPA_Err
-    
-    frmMapaGrande.lblMapInfo(0) = MapDat.map_name & "(" & UserMap & ")"
-
-    If NameMaps(UserMap).desc <> "" Then
-        frmMapaGrande.Label1.Caption = NameMaps(UserMap).desc
-    Else
-        frmMapaGrande.Label1.Caption = "Sin informaciÃ³n relevante."
-
-    End If
-
-    Dim i       As Integer
-    Dim j       As Byte
-
-    Dim Encontre As Boolean
-    
-    
-    For j = 1 To TotalWorlds
-        For i = 1 To Mundo(j).Ancho * Mundo(j).Alto
-    
-            If Mundo(j).MapIndice(i) = UserMap Then
-                idmap = i
-                Encontre = True
-                frmMapaGrande.picMap.Picture = LoadInterface("mapa" & j & ".bmp")
-                frmMapaGrande.Image2.Picture = Nothing
-                WorldActual = j
-                frmMapaGrande.ComMundo.ListIndex = j - 1
-                Exit For
-            End If
-        Next i
-        
-        If Encontre Then
-            Exit For
-        End If
-    Next j
-    
-    If Encontre = False Then
-        If frmMapaGrande.Visible = False Then
-            frmMapaGrande.picMap.Picture = LoadInterface("mapa1.bmp")
-            frmMapaGrande.Image2.Picture = Nothing
-        End If
-
-    End If
-    
-    Call CargarDatosMapa(UserMap)
-
-    Dim x As Long
-
-    Dim y As Long
-
-    x = (idmap - 1) Mod 16
-    y = Int((idmap - 1) / 16)
-
-    frmMapaGrande.lblAllies.Top = y * 27
-    frmMapaGrande.lblAllies.Left = x * 27
-
-    frmMapaGrande.Shape1.Top = y * 27 + (UserPos.y / 4.5)
-    frmMapaGrande.Shape1.Left = x * 27 + (UserPos.x / 4.5)
-
-    
-    Exit Sub
-
-CalcularPosicionMAPA_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.CalcularPosicionMAPA", Erl)
-    Resume Next
-    
-End Sub
-
-Public Function GetDriveSerialNumber(Optional ByVal DriveLetter As String) As Long
-    
-    On Error GoTo GetDriveSerialNumber_Err
-    
-
-    '***************************************************
-    'Author: Nahuel Casas (Zagen)
-    'Last Modify Date: 07/12/2009
-    ' 07/12/2009: Zagen - ConvertÃ¬ las funciones, en formulas mas fÃ ciles de modificar.
-    '***************************************************
-    
-
-    Dim fso As Object, Drv As Object, DriveSerial As Long
-         
-    'Creamos el objeto FileSystemObject.
-    Set fso = CreateObject("Scripting.FileSystemObject")
-         
-    'Asignamos el driver principal.
-    If DriveLetter <> "" Then
-        Set Drv = fso.GetDrive(DriveLetter)
-    Else
-        Set Drv = fso.GetDrive(fso.GetDriveName(App.Path))
-
-    End If
-     
-    With Drv
-
-        If .IsReady Then
-            DriveSerial = Abs(.SerialNumber)
-        Else    '"Si el driver no estÃ  como para empezar ..."
-            DriveSerial = -1
-
-        End If
-
-    End With
-         
-    'Borramos y limpiamos.
-    Set Drv = Nothing
-    Set fso = Nothing
-    'Seteamos :)
-    GetDriveSerialNumber = DriveSerial
-         
-    
-    Exit Function
-
-GetDriveSerialNumber_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.GetDriveSerialNumber", Erl)
-    Resume Next
-    
-End Function
-
-Public Function GetMacAddress() As String
-    
-    On Error GoTo GetMacAddress_Err
-    
-
-    Const OFFSET_LENGTH As Long = 400
-
-    Dim lSize           As Long
-
-    Dim baBuffer()      As Byte
-
-    Dim lIdx            As Long
-
-    Dim sRetVal         As String
-    
-    Call GetAdaptersInfo(ByVal 0, lSize)
-
-    If lSize <> 0 Then
-        ReDim baBuffer(0 To lSize - 1) As Byte
-        Call GetAdaptersInfo(baBuffer(0), lSize)
-        Call CopyMemory(lSize, baBuffer(OFFSET_LENGTH), 4)
-
-        For lIdx = OFFSET_LENGTH + 4 To OFFSET_LENGTH + 4 + lSize - 1
-            sRetVal = IIf(LenB(sRetVal) <> 0, sRetVal & ":", vbNullString) & Right$("0" & hex$(baBuffer(lIdx)), 2)
-        Next
-
-    End If
-
-    GetMacAddress = sRetVal
-
-    
-    Exit Function
-
-GetMacAddress_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.GetMacAddress", Erl)
-    Resume Next
-    
-End Function
 
 Public Function ObtenerIdMapaDeLlamadaDeClan(ByVal Mapa As Integer) As Integer
     
@@ -2613,7 +2318,7 @@ Public Function ObtenerIdMapaDeLlamadaDeClan(ByVal Mapa As Integer) As Integer
     Exit Function
 
 ObtenerIdMapaDeLlamadaDeClan_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.ObtenerIdMapaDeLlamadaDeClan", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.ObtenerIdMapaDeLlamadaDeClan", Erl)
     Resume Next
     
 End Function
@@ -2629,7 +2334,7 @@ Public Sub Auto_Drag(ByVal hwnd As Long)
     Exit Sub
 
 Auto_Drag_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.Auto_Drag", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.Auto_Drag", Erl)
     Resume Next
     
 End Sub

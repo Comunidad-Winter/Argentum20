@@ -49,7 +49,7 @@ Private oldResWidth  As Long
 Private oldDepth     As Integer
 Private oldFrequency As Long
 
-Private bNoResChange As Boolean
+Private bResChange As Boolean
 
 Private Declare Function EnumDisplaySettings Lib "user32" Alias "EnumDisplaySettingsA" (ByVal lpszDeviceName As Long, ByVal iModeNum As Long, lptypDevMode As Any) As Boolean
 Private Declare Function ChangeDisplaySettings Lib "user32" Alias "ChangeDisplaySettingsA" (lptypDevMode As Any, ByVal dwFlags As Long) As Long
@@ -65,7 +65,7 @@ Public Sub SetResolution()
     'Autor: Unknown
     'Last Modification: 03/29/08
     'Changes the display resolution if needed.
-    'Last Modified By: Juan MartÃ­n Sotuyo Dodero (Maraxus)
+    'Last Modified By: Juan Martín Sotuyo Dodero (Maraxus)
     ' 03/29/2008: Maraxus - Retrieves current settings storing display depth and frequency for proper restoration.
     '***************************************************
     Dim lRes              As Long
@@ -77,8 +77,8 @@ Public Sub SetResolution()
     oldResWidth = Screen.Width \ Screen.TwipsPerPixelX
     oldResHeight = Screen.Height \ Screen.TwipsPerPixelY
     
-    If NoRes Then
-        CambiarResolucion = (oldResWidth < 1024 Or oldResHeight < 768)
+    If NoRes And Not PantallaCompleta Then
+        CambiarResolucion = (oldResWidth <= 1024 Or oldResHeight <= 768)
     Else
         CambiarResolucion = (oldResWidth <> 1024 Or oldResHeight <> 768)
     End If
@@ -98,8 +98,12 @@ Public Sub SetResolution()
         
         lRes = ChangeDisplaySettings(MidevM, CDS_TEST)
         
+        If frmMain.Visible Then frmMain.Top = 0: frmMain.Left = 0
+        If frmOpciones.Visible Then frmOpciones.Top = (Screen.Height - frmOpciones.Height) \ 2: frmOpciones.Left = (Screen.Width - frmOpciones.Width) \ 2
+        
+        bResChange = True
     Else
-        bNoResChange = True
+        bResChange = False
 
     End If
 
@@ -107,7 +111,7 @@ Public Sub SetResolution()
     Exit Sub
 
 SetResolution_Err:
-    Call RegistrarError(Err.number, Err.Description, "Resolution.SetResolution", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Resolution.SetResolution", Erl)
     Resume Next
     
 End Sub
@@ -121,14 +125,14 @@ Public Sub ResetResolution()
     'Autor: Unknown
     'Last Modification: 03/29/08
     'Changes the display resolution if needed.
-    'Last Modified By: Juan MartÃ­n Sotuyo Dodero (Maraxus)
+    'Last Modified By: Juan Martín Sotuyo Dodero (Maraxus)
     ' 03/29/2008: Maraxus - Properly restores display depth and frequency.
     '***************************************************
     Dim typDevM As typDevMODE
     Dim lRes    As Long
     
-    If Not bNoResChange Then
-    
+    If bResChange Then
+
         lRes = EnumDisplaySettings(0, ENUM_CURRENT_SETTINGS, typDevM)
         
         With typDevM
@@ -141,6 +145,9 @@ Public Sub ResetResolution()
         End With
         
         lRes = ChangeDisplaySettings(typDevM, CDS_TEST)
+        
+        If frmMain.Visible Then frmMain.Top = (Screen.Height - frmMain.Height) \ 2: frmMain.Left = (Screen.Width - frmMain.Width) \ 2
+        If frmOpciones.Visible Then frmOpciones.Top = (Screen.Height - frmOpciones.Height) \ 2: frmOpciones.Left = (Screen.Width - frmOpciones.Width) \ 2
 
     End If
 
@@ -148,7 +155,7 @@ Public Sub ResetResolution()
     Exit Sub
 
 ResetResolution_Err:
-    Call RegistrarError(Err.number, Err.Description, "Resolution.ResetResolution", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Resolution.ResetResolution", Erl)
     Resume Next
     
 End Sub

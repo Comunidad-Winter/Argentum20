@@ -1,6 +1,13 @@
 Attribute VB_Name = "ModTorneos"
-
-Public Type tTorneo
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
+Public Type t_Torneo
 
     HayTorneoaActivo As Boolean
     NivelMinimo As Byte
@@ -16,6 +23,9 @@ Public Type tTorneo
     Paladin As Byte
     cazador As Byte
     Trabajador As Byte
+    Pirata As Byte
+    Ladron As Byte
+    Bandido As Byte
     ClasesTexto As String
     Participantes As Byte
     IndexParticipantes() As Integer
@@ -27,17 +37,17 @@ Public Type tTorneo
 
 End Type
 
-Public Torneo        As tTorneo
+Public Torneo        As t_Torneo
 
 Public MensajeTorneo As String
 
 Public Sub IniciarTorneo()
-        
         On Error GoTo IniciarTorneo_Err
         
-
-100     ReDim Torneo.IndexParticipantes(1 To Torneo.cupos)
-
+        Dim i As Long
+        Dim inscriptos As Byte
+100     inscriptos = 0
+        
 102     If Torneo.mago > 0 Then Torneo.ClasesTexto = "Mago,"
 104     If Torneo.clerico > 0 Then Torneo.ClasesTexto = Torneo.ClasesTexto & "Clerigo,"
 106     If Torneo.guerrero > 0 Then Torneo.ClasesTexto = Torneo.ClasesTexto & "Guerrero,"
@@ -46,19 +56,31 @@ Public Sub IniciarTorneo()
 112     If Torneo.druido > 0 Then Torneo.ClasesTexto = Torneo.ClasesTexto & "Druida,"
 114     If Torneo.Paladin > 0 Then Torneo.ClasesTexto = Torneo.ClasesTexto & "Paladin,"
 116     If Torneo.cazador > 0 Then Torneo.ClasesTexto = Torneo.ClasesTexto & "Cazador,"
-118     If Torneo.Trabajador > 0 Then Torneo.ClasesTexto = Torneo.ClasesTexto & "Trabajador"
+118     If Torneo.Trabajador > 0 Then Torneo.ClasesTexto = Torneo.ClasesTexto & "Trabajador,"
+120     If Torneo.Pirata > 0 Then Torneo.ClasesTexto = Torneo.ClasesTexto & "Pirata,"
+122     If Torneo.Ladron > 0 Then Torneo.ClasesTexto = Torneo.ClasesTexto & "Ladron,"
+124     If Torneo.Bandido > 0 Then Torneo.ClasesTexto = Torneo.ClasesTexto & "Bandido"
 
-120     Torneo.HayTorneoaActivo = True
+126     If Not Torneo.HayTorneoaActivo Then
+128         ReDim Torneo.IndexParticipantes(1 To Torneo.cupos)
+130         Torneo.HayTorneoaActivo = True
+        Else
+132         For i = 1 To Torneo.cupos
+134             If Torneo.IndexParticipantes(i) > 0 Then
+136                 inscriptos = inscriptos + 1
+                End If
+138         Next i
+        End If
 
-122     Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Evento> Se abren las inscripciones para: " & Torneo.nombre & ": caracterÃ­sticas: Nivel entre: " & Torneo.NivelMinimo & "/" & Torneo.nivelmaximo & ". Cupos disponibles: " & Torneo.cupos & " personajes. Precio de inscripciÃ³n: " & PonerPuntos(Torneo.costo) & " monedas de oro. Reglas: " & Torneo.reglas & ".", FontTypeNames.FONTTYPE_CITIZEN))
-124     Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Clases participantes: " & Torneo.ClasesTexto & ". EscribÃ­ /PARTICIPAR para ingresar al evento. ", FontTypeNames.FONTTYPE_CITIZEN))
+140     Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Evento> Están abiretas las inscripciones para: " & Torneo.nombre & ": características: Nivel entre: " & Torneo.NivelMinimo & "/" & Torneo.nivelmaximo & ". Inscriptos: " & inscriptos & "/" & Torneo.cupos & ". Precio de inscripción: " & PonerPuntos(Torneo.costo) & " monedas de oro. Reglas: " & Torneo.reglas & ".", e_FontTypeNames.FONTTYPE_CITIZEN))
+142     Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Evento> Clases participantes: " & Torneo.ClasesTexto & ". Escribí /PARTICIPAR para ingresar al evento. ", e_FontTypeNames.FONTTYPE_CITIZEN))
 
         
         Exit Sub
 
 IniciarTorneo_Err:
-126     Call RegistrarError(Err.Number, Err.description, "ModTorneos.IniciarTorneo", Erl)
-128     Resume Next
+144     Call TraceError(Err.Number, Err.Description, "ModTorneos.IniciarTorneo", Erl)
+
         
 End Sub
 
@@ -75,14 +97,14 @@ Public Sub ParticiparTorneo(ByVal UserIndex As Integer)
 104     Torneo.Participantes = Torneo.Participantes + 1
 106     UserList(UserIndex).flags.EnTorneo = True
     
-108     Call WriteConsoleMsg(UserIndex, "Â¡Ya estas anotado! Solo debes aguardar hasta que seas enviado a la sala de espera.", FontTypeNames.FONTTYPE_INFOIAO)
+108     Call WriteConsoleMsg(UserIndex, "¡Ya estas anotado! Solo debes aguardar hasta que seas enviado a la sala de espera.", e_FontTypeNames.FONTTYPE_INFOIAO)
     
         
         Exit Sub
 
 ParticiparTorneo_Err:
-110     Call RegistrarError(Err.Number, Err.description, "ModTorneos.ParticiparTorneo", Erl)
-112     Resume Next
+110     Call TraceError(Err.Number, Err.Description, "ModTorneos.ParticiparTorneo", Erl)
+
         
 End Sub
 
@@ -107,12 +129,12 @@ Public Function BuscarIndexFreeTorneo() As Byte
         Exit Function
 
 BuscarIndexFreeTorneo_Err:
-108     Call RegistrarError(Err.Number, Err.description, "ModTorneos.BuscarIndexFreeTorneo", Erl)
-110     Resume Next
+108     Call TraceError(Err.Number, Err.Description, "ModTorneos.BuscarIndexFreeTorneo", Erl)
+
         
 End Function
 
-Public Sub BorrarIndexInTorneo(ByVal index As Integer)
+Public Sub BorrarIndexInTorneo(ByVal Index As Integer)
         
         On Error GoTo BorrarIndexInTorneo_Err
         
@@ -121,7 +143,7 @@ Public Sub BorrarIndexInTorneo(ByVal index As Integer)
 
 100     For i = 1 To Torneo.cupos
 
-102         If Torneo.IndexParticipantes(i) = index Then
+102         If Torneo.IndexParticipantes(i) = Index Then
 104             Torneo.IndexParticipantes(i) = 0
                 Exit For
 
@@ -135,8 +157,8 @@ Public Sub BorrarIndexInTorneo(ByVal index As Integer)
         Exit Sub
 
 BorrarIndexInTorneo_Err:
-110     Call RegistrarError(Err.Number, Err.description, "ModTorneos.BorrarIndexInTorneo", Erl)
-112     Resume Next
+110     Call TraceError(Err.Number, Err.Description, "ModTorneos.BorrarIndexInTorneo", Erl)
+
         
 End Sub
 
@@ -153,22 +175,22 @@ Public Sub ComenzarTorneoOk()
 
 100     For i = 1 To Torneo.Participantes
     
-102         nombres = nombres & UserList(Torneo.IndexParticipantes(i)).name & ", "
+102         nombres = nombres & UserList(Torneo.IndexParticipantes(i)).Name & ", "
 104         X = Torneo.X
 106         Y = Torneo.Y
 108         Call FindLegalPos(Torneo.IndexParticipantes(i), Torneo.Mapa, X, Y)
 110         Call WarpUserChar(Torneo.IndexParticipantes(i), Torneo.Mapa, X, Y, True)
-            ' Call WriteConsoleMsg(Torneo.IndexParticipantes(i), "Â¡Ya estas participado! Solo debes aguardar aquÃ­ hasta que seas convocado al torneo.", FontTypeNames.FONTTYPE_INFO)
+            ' Call WriteConsoleMsg(Torneo.IndexParticipantes(i), "¡Ya estas participado! Solo debes aguardar aquí hasta que seas convocado al torneo.", e_FontTypeNames.FONTTYPE_INFO)
 112     Next i
 
-114     Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Evento> Los elegidos para participar son: " & nombres & " damos inicio al evento.", FontTypeNames.FONTTYPE_CITIZEN))
+114     Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Evento> Los elegidos para participar son: " & nombres & " damos inicio al evento.", e_FontTypeNames.FONTTYPE_CITIZEN))
 
         
         Exit Sub
 
 ComenzarTorneoOk_Err:
-116     Call RegistrarError(Err.Number, Err.description, "ModTorneos.ComenzarTorneoOk", Erl)
-118     Resume Next
+116     Call TraceError(Err.Number, Err.Description, "ModTorneos.ComenzarTorneoOk", Erl)
+
         
 End Sub
 
@@ -192,27 +214,31 @@ Public Sub ResetearTorneo()
 120     Torneo.druido = 0
 122     Torneo.Paladin = 0
 124     Torneo.cazador = 0
-126     Torneo.ClasesTexto = ""
-128     Torneo.Mapa = 0
-130     Torneo.X = 0
-132     Torneo.Y = 0
-134     Torneo.Trabajador = 0
-136     Torneo.nombre = ""
-138     Torneo.reglas = 0
-    
-140     For i = 1 To Torneo.Participantes
-142         UserList(Torneo.IndexParticipantes(i)).flags.EnTorneo = False
-144     Next i
+126     Torneo.Trabajador = 0
+128     Torneo.Pirata = 0
+130     Torneo.Ladron = 0
+132     Torneo.Bandido = 0
+134     Torneo.ClasesTexto = ""
+136     Torneo.Mapa = 0
+138     Torneo.X = 0
+140     Torneo.Y = 0
 
-146     Torneo.Participantes = 0
-148     ReDim Torneo.IndexParticipantes(1 To 1)
-150     Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Eventos> Evento Finalizado. ", FontTypeNames.FONTTYPE_CITIZEN))
+142     Torneo.nombre = ""
+144     Torneo.reglas = 0
+    
+146     For i = 1 To Torneo.Participantes
+148         UserList(Torneo.IndexParticipantes(i)).flags.EnTorneo = False
+150     Next i
+
+152     Torneo.Participantes = 0
+154     ReDim Torneo.IndexParticipantes(1 To 1)
+156     Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Eventos> Evento Finalizado. ", e_FontTypeNames.FONTTYPE_CITIZEN))
 
         
         Exit Sub
 
 ResetearTorneo_Err:
-152     Call RegistrarError(Err.Number, Err.description, "ModTorneos.ResetearTorneo", Erl)
-154     Resume Next
+158     Call TraceError(Err.Number, Err.Description, "ModTorneos.ResetearTorneo", Erl)
+
         
 End Sub

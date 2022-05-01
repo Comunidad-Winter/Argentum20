@@ -3,14 +3,14 @@ Begin VB.Form MenuGM
    BackColor       =   &H00000000&
    BorderStyle     =   0  'None
    Caption         =   "Form1"
-   ClientHeight    =   4680
+   ClientHeight    =   2535
    ClientLeft      =   0
    ClientTop       =   0
    ClientWidth     =   1950
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   312
+   ScaleHeight     =   169
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   130
    ShowInTaskbar   =   0   'False
@@ -130,7 +130,7 @@ Begin VB.Form MenuGM
    Begin VB.Label OpcionLbl 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
-      Caption         =   "BANEAR*no anda"
+      Caption         =   "BANEAR"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -158,7 +158,7 @@ Begin VB.Form MenuGM
    Begin VB.Label OpcionLbl 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
-      Caption         =   "CARCEL*no anda"
+      Caption         =   "CARCEL 5 min"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -186,7 +186,7 @@ Begin VB.Form MenuGM
    Begin VB.Label OpcionLbl 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
-      Caption         =   "ADVERTIR*no anda"
+      Caption         =   "CONSULTA"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -214,7 +214,7 @@ Begin VB.Form MenuGM
    Begin VB.Label OpcionLbl 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
-      Caption         =   "ECHAR"
+      Caption         =   "REVIVIR"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -305,7 +305,7 @@ Begin VB.Form MenuGM
    Begin VB.Label OpcionLbl 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
-      Caption         =   "MANDAR CIUDAD*no anda"
+      Caption         =   "NICK2IP"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -333,7 +333,7 @@ Begin VB.Form MenuGM
    Begin VB.Label OpcionLbl 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
-      Caption         =   "DEVOLVER*no anda"
+      Caption         =   "SILENCIAR"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -390,7 +390,7 @@ Option Explicit
 Private Over As Integer
 
 Private Sub Form_Load()
-    Call Aplicar_Transparencia(Me.hWnd, 180)
+    Call Aplicar_Transparencia(Me.hwnd, 180)
     
     Over = -1
 End Sub
@@ -401,21 +401,23 @@ Private Sub OpcionImg_Click(Index As Integer)
         Case 0
             Call ParseUserCommand("/SUM")
         Case 1
-            Call ParseUserCommand("/DEVOLVER")
+            Call ParseUserCommand("/SILENCIAR " & TargetName & "@" & "15")
         Case 2
-            Call ParseUserCommand("/CIUDAD")
+            Call ParseUserCommand("/NICK2IP " & TargetName)
         Case 3
             Call ParseUserCommand("/INFO " & TargetName)
         Case 4
             Call ParseUserCommand("/INV " & TargetName)
         Case 5
-            Call ParseUserCommand("/ECHAR " & TargetName)
+            Call ParseUserCommand("/REVIVIR " & TargetName)
         Case 6
-            Call ParseUserCommand("/ADVERTIR")
+            Call ParseUserCommand("/CONSULTA " & TargetName)
         Case 7
-            Call ParseUserCommand("/CARCEL")
+            'Call ParseUserCommand("/CARCEL")' ver ReyarB
+            Call WriteJail(TargetName, "Prevencion u ofensa", "5")
         Case 8
-            Call ParseUserCommand("/BAN")
+            'Call ParseUserCommand("/BAN")' ver ReyarB
+            Call WriteBanChar(TargetName, "Incumplimiento de reglas")
         Case 9
             Call ParseUserCommand("/PENAS " & TargetName)
         Case 10

@@ -20,11 +20,11 @@ Begin VB.Form frmCargando
    StartUpPosition =   2  'CenterScreen
    Begin ComctlLib.ProgressBar cargar 
       Height          =   300
-      Left            =   840
+      Left            =   1125
       TabIndex        =   1
       Top             =   2160
-      Width           =   4290
-      _ExtentX        =   7567
+      Width           =   4320
+      _ExtentX        =   7620
       _ExtentY        =   529
       _Version        =   327682
       Appearance      =   0
@@ -42,15 +42,16 @@ Begin VB.Form frmCargando
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H000000FF&
+      ForeColor       =   &H0000FFFF&
       Height          =   255
-      Left            =   4320
+      Left            =   4080
       TabIndex        =   2
-      Top             =   1920
+      Top             =   1800
       Visible         =   0   'False
       Width           =   735
    End
    Begin VB.Label Label1 
+      Alignment       =   2  'Center
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
       Caption         =   " Cargando Mapas"
@@ -66,9 +67,9 @@ Begin VB.Form frmCargando
       ForeColor       =   &H00FFFFFF&
       Height          =   195
       Index           =   2
-      Left            =   840
+      Left            =   1680
       TabIndex        =   0
-      Top             =   1920
+      Top             =   1800
       Width           =   3255
    End
    Begin VB.Label lblDragForm 
@@ -87,7 +88,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 'Argentum Online 0.11.6
-'Copyright (C) 2002 MÃ¡rquez Pablo Ignacio
+'Copyright (C) 2002 Márquez Pablo Ignacio
 '
 'This program is free software; you can redistribute it and/or modify
 'it under the terms of the Affero General Public License;
@@ -109,10 +110,10 @@ Attribute VB_Exposed = False
 'You can contact me at:
 'morgolock@speedy.com.ar
 'www.geocities.com/gmorgolock
-'Calle 3 nÃºmero 983 piso 7 dto A
+'Calle 3 número 983 piso 7 dto A
 'La Plata - Pcia, Buenos Aires - Republica Argentina
-'CÃ³digo Postal 1900
-'Pablo Ignacio MÃ¡rquez
+'Código Postal 1900
+'Pablo Ignacio Márquez
 
 ' Form Always On Top
 Private Declare Function SetWindowPos Lib "user32" (ByVal hwnd As Long, ByVal hWndInsertAfter As Long, ByVal X As Long, ByVal Y As Long, ByVal cx As Long, ByVal cy As Long, ByVal wFlags As Long) As Long

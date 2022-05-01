@@ -1,12 +1,11 @@
-[Miner√≠a]
-# Se setea desde cada yacimiento (objetos), para m√°s control.
+[MinerÌa]
+# Se setea desde cada yacimiento (objetos), para m·s control.
 
 [Tala]
-Items=2
-# 1% de tirar frutos del bosque
-Item1=22-100
-# 2% de chance de tirar manzana
-Item2=1-50
+Items=0
+Item1=
+Item2=
 
 [Pesca]
-Items=0
+Items=1
+Item1=372-150000

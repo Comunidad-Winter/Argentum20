@@ -141,7 +141,7 @@ Private Sub Form_Activate()
     On Error GoTo Form_Activate_Err
     
     If InvKeys.OBJIndex(1) = 0 Then
-        NombreLlave.Caption = "Aqu√≠ aparecer√°n las llaves que consigas"
+        NombreLlave.Caption = "AquÌ aparecer·n las llaves que consigas"
     End If
     
     Exit Sub

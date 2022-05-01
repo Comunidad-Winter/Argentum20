@@ -3,45 +3,45 @@
 ## [1.0.5]
 
 [CLIENTE]
-- Aumentamos el tama√±o de la fuente en Hechizos
+- Aumentamos el tamaÒo de la fuente en Hechizos
 - Hacer que el ; se salga despues de mandar un mensaje de mundo para evitar mensajes accidentales
 - Fix: Asignar skills funcionando mal para profesiones
 - Fix: Encajar mejor el nombre del mapa en el frmMain
 - Fix: FX curar veneno
-- Fix: Cuando compr√°s sin tener un digito marcado en el cartel de comercio, tira Type mismatch
-- Fix: Cuando se quiere asignar Carpinter√≠a, sube el numerito de Herrer√≠a
-- Fix: usar √∫ltimo slot del inventario
+- Fix: Cuando compr·s sin tener un digito marcado en el cartel de comercio, tira Type mismatch
+- Fix: Cuando se quiere asignar CarpinterÌa, sube el numerito de HerrerÌa
+- Fix: usar ˙ltimo slot del inventario
 
 [RECURSOS]
 - Agregar ogros en las afueras de DM
-- Da√±o de oso polar aparece muy abajo.
-- Dise√±o de Ventana de Clanes
-- Corregir da√±os, valores y clases permitidas de las armas
-- Corregir experiencia, drop, vida y da√±o de criaturas
-- Modificaci√≥n de items, npcs y vendedores
-- Reemplazada Hacha Acerada por Hacha de B√°rbaro
+- DaÒo de oso polar aparece muy abajo.
+- DiseÒo de Ventana de Clanes
+- Corregir daÒos, valores y clases permitidas de las armas
+- Corregir experiencia, drop, vida y daÒo de criaturas
+- ModificaciÛn de items, npcs y vendedores
+- Reemplazada Hacha Acerada por Hacha de B·rbaro
 - En Banderbill ahora se venden Heridas Graves
 - El npc Asesino ahora da 200 de oro (* multiplicador)
-- Se quit√≥ item Lanza de los vendedores
-- Se quit√≥ Lamento de la Banshee de los vendedores
-- Se quit√≥ la Dos Filos de los vendedores
-- Tormienta de Fuego de 250 a 150 de man√°
+- Se quitÛ item Lanza de los vendedores
+- Se quitÛ Lamento de la Banshee de los vendedores
+- Se quitÛ la Dos Filos de los vendedores
+- Tormienta de Fuego de 250 a 150 de man·
 
 [SERVIDOR]
 - Bajar la probabilidad de subir skills
 - GM nace invisible
 - Ponerle fin a meditar
-- Balance de da√±os, evasiones y escudos tomados de la 11.2
+- Balance de daÒos, evasiones y escudos tomados de la 11.2
 - Oro de los NPCs al piso
-- Est√° muy baja la probabilidad de subir def con escudos en comparaci√≥n a otros skills
+- Est· muy baja la probabilidad de subir def con escudos en comparaciÛn a otros skills
 - Sistema de llaves
 - Poner record onlines en db para guardarlo
 - Sacar record de usuario de server.ini y ponerlo en otro archivo para evitar pisarlo con ci/cd
 - Fix: No equipar objetos con Body = 0
-- Fix: Cuando dejas de trabajar no aumenta la energ√≠a si no te mov√©s
+- Fix: Cuando dejas de trabajar no aumenta la energÌa si no te movÈs
 - Fix: Se crean personajes invi y podes atacar a los npc y si te moris y revivis te ven pero no te atacan
 - Fix: Paralizar no permite que los jugadores roten en su lugar, deja a los guerreros inutilizados
-- Fix: Inmovilizar deber√≠a dejar a la criatura quieta y solo pegando hacia adelante
+- Fix: Inmovilizar deberÌa dejar a la criatura quieta y solo pegando hacia adelante
 - Fix: Cuando llueve no te consume la energia
 - Fix: Oro Multiplicado al hacer grupo
 - Fix: Corregir tiempo de inmovilizar / paralizar
@@ -53,7 +53,7 @@
 ## [1.0.6]
 
 [CLIENTE]
-- Mejoras de rendimiento al motor gr√°fico
+- Mejoras de rendimiento al motor gr·fico
 - Bloqueos parciales
 - Fix: Auras se pierden al reloguear
 
@@ -66,61 +66,61 @@
 
 [CLIENTE]
 - Refactor sistema de luz de mapa y fixes de luces superpuestas
-- Nuevo agua y movimiento por v√©rtices
+- Nuevo agua y movimiento por vÈrtices
 - Reflejo del personaje en agua
-- Nuevo efecto respiraci√≥n de chars
+- Nuevo efecto respiraciÛn de chars
 - Sombras del personaje
 - Ahora se guarda un Errores.log en la carpeta del cliente
-- Fix: m√∫sica y efectos invertidos en opciones
+- Fix: m˙sica y efectos invertidos en opciones
 - Fix: Entrar al newbie dungeon siendo nivel alto
 - Fix: Comercio dice valor = 1 pero en realidad vale 0
-- Fix: Si no seleccionas un objeto en carpinter√≠a se buguea
-- Fix: Transparencias en √°rboles y textos
-- Fix: Indicador FPS contaba el doble que en realidad hab√≠a
-- Ahora se pueden superponer da√±os encima de chars
+- Fix: Si no seleccionas un objeto en carpinterÌa se buguea
+- Fix: Transparencias en ·rboles y textos
+- Fix: Indicador FPS contaba el doble que en realidad habÌa
+- Ahora se pueden superponer daÒos encima de chars
 - Intervalo de hechizos ahora se bloquea al soltar
-- Bloqueo tambi√©n del intervalo golpe hechizo
-- Habilitado el bot√≥n para domar
-- Comandos /quieto, /acompa√±ar y /liberar para mascotas
+- Bloqueo tambiÈn del intervalo golpe hechizo
+- Habilitado el botÛn para domar
+- Comandos /quieto, /acompaÒar y /liberar para mascotas
 
 [SERVIDOR]
-- Agregar mas ciclos intermedios entre el d√≠a y la noche.
-- Deshardcodear herramientas del c√≥digo.
+- Agregar mas ciclos intermedios entre el dÌa y la noche.
+- Deshardcodear herramientas del cÛdigo.
 - Transferir plata hacerlo que funcione con la DB
 - GM invisible y caspers se atravesan
 - Implementado comando /HOGAR (solo muertos) con tiempo en funcion de la distancia de mapas con respecto al hogar elegido.
-- Fix: Al nacer con 0 de man√° m√°xima se oculta el indicador de man√°. Pero no se vuelve a mostrar cuando gan√°s man√°.
-- Fix: Desloguear paralizado qued√°s paralizado para siempre
+- Fix: Al nacer con 0 de man· m·xima se oculta el indicador de man·. Pero no se vuelve a mostrar cuando gan·s man·.
+- Fix: Desloguear paralizado qued·s paralizado para siempre
 - Ahora los personajes nacen con pociones violetas newbie en vez de comunes.
-- Agrego IA mascotas y elementales, y hechizos de invocaci√≥n.
+- Agrego IA mascotas y elementales, y hechizos de invocaciÛn.
 
 [RECURSOS]
 - Se agregaron nuevas casas tanto para NPC como de venta.
-- Se agrego sistema de llavero para posterior asignaci√≥n de casas.
-- Se agreg√≥ sombras por motor en los personajes.
-- Se Modificaron todos los carteles del juego, de los NPC, se√±alizacion Etc.
-- Se modificaron las ara√±as de las catacumbas nivel 2 (se agregaron 5 nuevas).
-- Se agreg√≥ movimiento por motor al Agua.
+- Se agrego sistema de llavero para posterior asignaciÛn de casas.
+- Se agregÛ sombras por motor en los personajes.
+- Se Modificaron todos los carteles del juego, de los NPC, seÒalizacion Etc.
+- Se modificaron las araÒas de las catacumbas nivel 2 (se agregaron 5 nuevas).
+- Se agregÛ movimiento por motor al Agua.
 - Se agregaron reflejos en agua.
-- Se agregaron respiraci√≥n por motor a todos los personajes
-- Se Agreg√≥ nuevo sistema de Quest.
+- Se agregaron respiraciÛn por motor a todos los personajes
+- Se AgregÛ nuevo sistema de Quest.
 - Se implemento la eleccion del lugar de nacimiento (Nix, Bander y Ulla)
-- Se agreg√≥ elementales como NPC, hechizos para invocar y mimetismo.
-- Se agregaron nuevos gr√°ficos para el cementerio.
-- Se agregaron nuevos √°rboles para cementerio.
-- Se modific√≥ aspecto gr√°fico de Nix, Iglesia, muelles Mercader etc.
-- Se actualiz√≥ gr√°fico de catacumbas nivel 2 y 3.
-- Se renov√≥ la ciudad de Arkain.
-- Se Se extendi√≥ y se mejor√≥ el mapa desierto.
-- Se agregaron costas con arena cercanas al desierto y se extendi√≥ el mismo.
-- Se modificaron todos los √°rboles.
+- Se agregÛ elementales como NPC, hechizos para invocar y mimetismo.
+- Se agregaron nuevos gr·ficos para el cementerio.
+- Se agregaron nuevos ·rboles para cementerio.
+- Se modificÛ aspecto gr·fico de Nix, Iglesia, muelles Mercader etc.
+- Se actualizÛ gr·fico de catacumbas nivel 2 y 3.
+- Se renovÛ la ciudad de Arkain.
+- Se Se extendiÛ y se mejorÛ el mapa desierto.
+- Se agregaron costas con arena cercanas al desierto y se extendiÛ el mismo.
+- Se modificaron todos los ·rboles.
 
 ## [1.0.8]
 
 [SERVIDOR]
-- Nuevas clases: Ladr√≥n, Bandido y Pirata.
-- Los Game Masters de rango Semi Dios y de menor jerarqu√≠a no pueden dropear items ni comerciar.
-- Fix: No andaba la miner√≠a.
+- Nuevas clases: LadrÛn, Bandido y Pirata.
+- Los Game Masters de rango Semi Dios y de menor jerarquÌa no pueden dropear items ni comerciar.
+- Fix: No andaba la minerÌa.
 - Fix: Podias invitar a mas de 6 personas a un grupo.
 
 ## [1.0.10]
@@ -128,25 +128,25 @@
 [SERVIDOR]
 - Fix: NPCs de tierra tiran items en agua
 - Fix: Mensaje de skills al fundir mineral
-- Fix: Hechizo fuerza sub√≠a de m√°s
+- Fix: Hechizo fuerza subÌa de m·s
 - Fix: Crear personaje no logueaba
 - Fixes en muchos mapas
-- Se sac√≥ el l√≠mite de las dopas
-- Se baj√≥ el intervalo golpe-usar a 750ms
-- Se cambi√≥ lo que pide de experienca en algunos niveles.
-- Nivel m√°ximo ahora es 50
+- Se sacÛ el lÌmite de las dopas
+- Se bajÛ el intervalo golpe-usar a 750ms
+- Se cambiÛ lo que pide de experienca en algunos niveles.
+- Nivel m·ximo ahora es 50
 - Ahora se puede domar 3 mascotas
 - Ocultarse navegando con pirata ahora puede fallar
-- Se puede domar de un poco m√°s lejos
-- Se baj√≥ el intervalo de hechizo de 1300 a 1100ms
-- Comando /DONAR para donar oro a la iglesia y perdir perd√≥n
-- Ahora se pesca s√≥lo desde la costa
+- Se puede domar de un poco m·s lejos
+- Se bajÛ el intervalo de hechizo de 1300 a 1100ms
+- Comando /DONAR para donar oro a la iglesia y perdir perdÛn
+- Ahora se pesca sÛlo desde la costa
 - Paralizar NPCs ahora dura 2min
 - Ahora se puede scrollear en la consola sin que se baje
 - Herramientas doradas solo para trabajadores
-- Ajustes de da√±o m√°gico en b√°culos
+- Ajustes de daÒo m·gico en b·culos
 - Se sacan luces de objetos
-- Ajustes de da√±os en armas
+- Ajustes de daÒos en armas
 - Modificada catacumbas de Nix
 - Modificado mapa de Veriil
 - 10 Quests nuevas
@@ -156,21 +156,21 @@
 
 [SERVIDOR]
 - Sistema de Consultas con GM: Durante consulta sos inmune a ataques de NPC's y Usuarios.
-- Se mejor√≥ el sistema de aumento de vida por nivel.
+- Se mejorÛ el sistema de aumento de vida por nivel.
 - Nuevo comando: /PROMEDIO
-- Bajo el intervalo de fabricaci√≥n de items.
-- Ahora intercambias posiciones con los fantasmas, no los pate√°s mas.
+- Bajo el intervalo de fabricaciÛn de items.
+- Ahora intercambias posiciones con los fantasmas, no los pate·s mas.
 - Lo que ganas al trabajar solo lo ve el mismo usuario.
-- El ladr√≥n roba mejor y a 2 tiles de distancia.
-- Bandido pega golpe cr√≠tico a NPC's.
-- La meditaci√≥n es constante y sale cuanto man√° recuperaste por consola.
-- Ahora estar desnudo te baja energ√≠a.
-- Fixes en el reparto de experiencia en grupos y distancia m√°xima para recibir la misma de 20 tiles.
+- El ladrÛn roba mejor y a 2 tiles de distancia.
+- Bandido pega golpe crÌtico a NPC's.
+- La meditaciÛn es constante y sale cuanto man· recuperaste por consola.
+- Ahora estar desnudo te baja energÌa.
+- Fixes en el reparto de experiencia en grupos y distancia m·xima para recibir la misma de 20 tiles.
 - Fixes varios al crear personaje
 - Fix: Navegar oculto.
 - Fix: Osos en ciudades.
 - Fix: Transferir oro a usuario inexistente.
-- Fix: Hacer lingotes no sub√≠a skill de Mineria.
+- Fix: Hacer lingotes no subÌa skill de Mineria.
 
 [CLIENTE]
 - Efecto en el agua de la barca mejorado.
@@ -184,97 +184,97 @@
 - Fix: Se mostraba la cabeza del PJ y el body de la barca en el Panel de Cuenta.
 - Fix: Echar miembro Offline en Clan.
 - Fix: Aceptar miembro Offline en Clan.
-- Fix: √çtems vendidos a cero.
-- Fix: Nuevo balance de da√±o sin armas.
-- Fix: Calculos de da√±o.
+- Fix: Õtems vendidos a cero.
+- Fix: Nuevo balance de daÒo sin armas.
+- Fix: Calculos de daÒo.
 - Fix: Guardias de Arkhein atacaban Criminales
 - Fix: Caminata de Fantasma.
 - Fix: Caminata de Esqueleto Grande.
-- Fix: Ara√±a ten√≠a mal indexeada la caminata.
+- Fix: AraÒa tenÌa mal indexeada la caminata.
 - Fix: Bloqueo laterales en puertas: provocaba problemas al salir de casas/tiendas. 
-- Fix: Da√±o sin Armas.
+- Fix: DaÒo sin Armas.
 - Fix: Sonido del Sacerdote al curar.
-- Fix: funci√≥n FaltanItemsQuest()
-- Fix: Objetos que no se pod√≠an usar.
-- Fix: Bug de clan cuando entrabas a la interface siendo L√≠der.
-- Fix: Item se desequipaba cuando aun quedaban m√°s en el inventario
+- Fix: funciÛn FaltanItemsQuest()
+- Fix: Objetos que no se podÌan usar.
+- Fix: Bug de clan cuando entrabas a la interface siendo LÌder.
+- Fix: Item se desequipaba cuando aun quedaban m·s en el inventario
 - Fix: Usuarios no podian atacar NPCs
 - Fix: Navegar oculto.
 - Fix: Hechizo Ceguera.
-- Fix: Crear m√°s de 10 personajes
-- Fix: Personajes que aparec√≠an en la pantalla de carga Ullathorpe.
-- Fix: Hacer lingotes sube miner√≠a
+- Fix: Crear m·s de 10 personajes
+- Fix: Personajes que aparecÌan en la pantalla de carga Ullathorpe.
+- Fix: Hacer lingotes sube minerÌa
 - Cambios varios en Mapas.
-- Corregida las faltas de ortograf√≠a en todas las Quests.
-- Optimizaci√≥n de Gr√°ficos.
+- Corregida las faltas de ortografÌa en todas las Quests.
+- OptimizaciÛn de Gr·ficos.
 - La invisibilidad ahora es 100%
 - Ahora los portales dicen a donde te llevan.
 - Ahora si ya tengo la cantidad requerida del item de quest, no sigue dropeando.
 - Ahora el drop de Quest va directo al inventario.
-- Se mejor√≥ el sistema de Quests.
+- Se mejorÛ el sistema de Quests.
 - Se mejoro el sistema anti-cheat
 - Se implemento que cuando clickeas la barra de vida muestra el promedio de la misma.
 
 ## [1.0.16]
 
-- Arreglado Da√±o con Armas.
-- Arreglado Da√±o M√°gico. 
-- Arreglado Apu√±alar.
+- Arreglado DaÒo con Armas.
+- Arreglado DaÒo M·gico. 
+- Arreglado ApuÒalar.
 - Nuevo Balance.
 - Ajuste de Armas.
 - Ajuste de Escudos.
 - Ajuste de Armaduras.
-- Ajuste de T√∫nicas.
+- Ajuste de T˙nicas.
 - Ajustes de Cascos / Gorros.
 - Ajustes en Comerciantes de distintas ciudades.
 - Ajustes en Hechizos.
 - Ajustes de Flechas.
-- Nuevos √≠tems m√°gicos seg√∫n clase.
-- Nuevos gr√°ficos e √≠tems.
+- Nuevos Ìtems m·gicos seg˙n clase.
+- Nuevos gr·ficos e Ìtems.
 - Nuevo sistema anti-cheat.
 - Nuevo sistema de advertencias.
-- Optimizaci√≥n de Mapas
+- OptimizaciÛn de Mapas
 - Cambio en Mapas.
-- "Restablecer Versi√≥n" en Launcher.
+- "Restablecer VersiÛn" en Launcher.
 - Incorporamos /Hogar.
-- Incorporado Arbol √âlfico y Le√±a Elfica
-- Incorporado Escudos, Cascos, Armaduras y Armas en Herrer√≠a.
+- Incorporado Arbol …lfico y LeÒa Elfica
+- Incorporado Escudos, Cascos, Armaduras y Armas en HerrerÌa.
 - Incorporado nuevos bodys para altos y enanos.
 - Incorporadas Armaduras y Tunicas Faccionarias a la venta.
 - Incorporado Mapas de Dungeons.
 - Incorporados ITEMS de DROP.
-- Incorporado cr√≠tico del Bandido.
+- Incorporado crÌtico del Bandido.
 - Mayor dificultad en Drop de Gemas.
 - Eliminadas las Herramientas Doradas. 
-- Eliminadas las T√∫nicas de Resistencia M√°gica.
+- Eliminadas las T˙nicas de Resistencia M·gica.
 - Fix en Bugs Menores. 
 - Fix: Minerales de Oro.
-- Fix: √çtems que no pod√≠an usar algunas clases.
-- Fix: Runa de Teletrasportaci√≥n.
+- Fix: Õtems que no podÌan usar algunas clases.
+- Fix: Runa de TeletrasportaciÛn.
 - Fix: Translado que te llevaba a Mapa 300 (Nada)
 - Fix: Ausencia de BLOQS en Dungeons.
 - Fix: Cazador mostraba "FALLAS" estando Oculto.
 - Fix: Dados de Elfo Drow.
-- Fix: Luces negras que quedaban en el tile cuando agarrabas un √≠tem. 
+- Fix: Luces negras que quedaban en el tile cuando agarrabas un Ìtem. 
 
 ## [1.0.17]
 
 - Ajuste de Intervalo Golpe Hechizo.
 - Ajuste de Intervalo Hechizo - Hechizo.
 - El Asesino usa el hechizo Curar Heridas Graves.
-- El Pirata en Agua hace un 15% de da√±o.
-- La Galera/Gale√≥n no incrementa el Da√±o de Ataque.
-- El hechizo Mimetismo copia el nombre del PJ al que mimez√°s.
+- El Pirata en Agua hace un 15% de daÒo.
+- La Galera/GaleÛn no incrementa el DaÒo de Ataque.
+- El hechizo Mimetismo copia el nombre del PJ al que mimez·s.
 - Solo los druidas pueden domar.
 - Para fundar clan necesitar ser nivel 35 + 100 de skills de Liderazgo + Gema Azul + Gema Roja
 - Fix: Nombre no aparecia al conectar
 - Fix: Teleports que te pisaban.
 - Fix: Varios Mapas.
 - Fix: Mimetismo te dejaba robar personajes.
-- Fix: Click en reportar bug y no se ve√≠a.
-- Fix: Con la Flauta M√°gica consum√≠as menos man√° al usar hechizos.
+- Fix: Click en reportar bug y no se veÌa.
+- Fix: Con la Flauta M·gica consumÌas menos man· al usar hechizos.
 - Fix: Vulnerabilidad no chequeaba que el PJ pertenezca a la cuenta antes de borrarlo.
 - Fix: Vulnerabilidad no chequeaba que el PJ pertenezca a la cuenta antes de loguear con el mismo.
-- Fix: Vulnerabilidad que permit√≠a ejecutar querys a la base de datos desde el cliente. (Posible injecci√≥n SQL)
+- Fix: Vulnerabilidad que permitÌa ejecutar querys a la base de datos desde el cliente. (Posible injecciÛn SQL)
 - Fix: Error en el reparto de experiencia grupal.
-- Fix: Te pod√≠as casar con m√°s de 1 PJ.
+- Fix: Te podÌas casar con m·s de 1 PJ.

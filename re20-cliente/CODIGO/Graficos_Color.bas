@@ -1,7 +1,7 @@
 Attribute VB_Name = "Graficos_Color"
 ' ****************************************************
-' MÃ³dulo de colores hecho por Alexis Caraballo (WyroX)
-' Para una fÃ¡cil conversiÃ³n entre RGBA(4 bytes) y Long
+' Módulo de colores hecho por Alexis Caraballo (WyroX)
+' Para una fácil conversión entre RGBA(4 bytes) y Long
 ' Nota: No uso D3DCOLORVALUE porque usa 4 singles
 ' ****************************************************
 
@@ -171,6 +171,28 @@ RGBAList_Err:
     
 End Sub
 
+
+Sub RGBA_ToList(Dest() As RGBA, Color As RGBA)
+    '***************************************************
+    'Author: Alexis Caraballo (WyroX)
+    '***************************************************
+    
+    On Error GoTo RGBAList_Err
+    
+    Dim i As Long
+    
+    For i = 0 To 3
+        Call SetRGBA(Dest(i), Color.r, Color.G, Color.B, Color.A)
+    Next
+    
+    Exit Sub
+
+RGBAList_Err:
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Color.RGBA_ToList", Erl)
+    Resume Next
+    
+End Sub
+
 Sub Copy_RGBAList(Dest() As RGBA, Src() As RGBA)
     '***************************************************
     'Author: Alexis Caraballo (WyroX)
@@ -210,6 +232,27 @@ Sub LerpRGBA(Dest As RGBA, A As RGBA, B As RGBA, ByVal Factor As Single)
 
 LerpRGBA_Err:
     Call RegistrarError(Err.number, Err.Description, "Graficos_Color.LerpRGBA", Erl)
+    Resume Next
+    
+End Sub
+
+Sub LerpRGB(Dest As RGBA, A As RGBA, B As RGBA, ByVal Factor As Single)
+    '***************************************************
+    'Author: Martín Trionfetti (HarThaoS)
+    '***************************************************
+    
+    On Error GoTo LerpRGB_Err
+    
+    Dim InvFactor As Single: InvFactor = (1 - Factor)
+
+    Dest.r = A.r * InvFactor + B.r * Factor
+    Dest.G = A.G * InvFactor + B.G * Factor
+    Dest.B = A.B * InvFactor + B.B * Factor
+    
+    Exit Sub
+
+LerpRGB_Err:
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Color.LerpRGB", Erl)
     Resume Next
     
 End Sub

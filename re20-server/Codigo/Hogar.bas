@@ -1,187 +1,18 @@
 Attribute VB_Name = "Hogar"
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
 Option Explicit
 
 'Cantidad de Ciudades
 Public Const NUMCIUDADES    As Byte = 6
 
-Type HomeDistance
-    distanceToCity(1 To NUMCIUDADES) As Integer
-End Type
-
-Public Ciudades(1 To NUMCIUDADES)         As WorldPos
-Public distanceToCities()                 As HomeDistance
-
-Public Const MATRIX_INITIAL_MAP           As Integer = 1
-Public Const GOHOME_PENALTY               As Integer = 5
-
-Public Function getLimit(ByVal Mapa As Integer, ByVal side As Byte) As Integer
-        
-        On Error GoTo getLimit_Err
-    
-        
-
-        '***************************************************
-        'Author: Budi
-        'Last Modification: 31/01/2010
-        'Retrieves the limit in the given side in the given map.
-        'TODO: This should be set in the .inf map file.
-        '***************************************************
-        Dim X As Long
-
-        Dim Y As Long
-
-100     If Mapa <= 0 Then Exit Function
-
-102     For X = 15 To 87
-104         For Y = 0 To 3
-
-106             Select Case side
-
-                    Case eHeading.NORTH
-108                     getLimit = MapData(Mapa, X, 7 + Y).TileExit.Map
-
-110                 Case eHeading.EAST
-112                     getLimit = MapData(Mapa, 92 - Y, X).TileExit.Map
-
-114                 Case eHeading.SOUTH
-116                     getLimit = MapData(Mapa, X, 94 - Y).TileExit.Map
-
-118                 Case eHeading.WEST
-120                     getLimit = MapData(Mapa, 9 + Y, X).TileExit.Map
-
-                End Select
-
-122             If getLimit > 0 Then Exit Function
-124         Next Y
-126     Next X
-
-        
-        Exit Function
-
-getLimit_Err:
-128     Call RegistrarError(Err.Number, Err.description, "Hogar.getLimit", Erl)
-
-        
-End Function
-
-Public Sub generateMatrix(ByVal Mapa As Integer)
-        '***************************************************
-        'Author: Unknown
-        'Last Modification: -
-        '
-        '***************************************************
-        
-        On Error GoTo generateMatrix_Err
-    
-        
-
-        Dim i As Integer
-
-        Dim j As Integer
-    
-100     ReDim distanceToCities(1 To NumMaps) As HomeDistance
-    
-102     For j = 1 To NUMCIUDADES
-104         For i = 1 To NumMaps
-106             distanceToCities(i).distanceToCity(j) = -1
-108         Next i
-110     Next j
-    
-112     For j = 1 To NUMCIUDADES
-
-114         For i = 1 To 4
-
-116             Select Case i
-
-                    Case eHeading.NORTH
-118                     Call setDistance(getLimit(Ciudades(j).Map, eHeading.NORTH), j, i, 0, -1)
-
-120                 Case eHeading.EAST
-122                     Call setDistance(getLimit(Ciudades(j).Map, eHeading.EAST), j, i, 1, 0)
-
-124                 Case eHeading.SOUTH
-126                     Call setDistance(getLimit(Ciudades(j).Map, eHeading.SOUTH), j, i, 0, 1)
-
-128                 Case eHeading.WEST
-130                     Call setDistance(getLimit(Ciudades(j).Map, eHeading.WEST), j, i, -1, 0)
-
-                End Select
-
-132         Next i
-134     Next j
-
-        
-        Exit Sub
-
-generateMatrix_Err:
-136     Call RegistrarError(Err.Number, Err.description, "Hogar.generateMatrix", Erl)
-
-        
-End Sub
-
-Public Sub setDistance(ByVal Mapa As Integer, _
-                       ByVal city As Byte, _
-                       ByVal side As Integer, _
-                       Optional ByVal X As Integer = 0, _
-                       Optional ByVal Y As Integer = 0)
-        '***************************************************
-        'Author: Unknown
-        'Last Modification: -
-        '
-        '***************************************************
-        
-        On Error GoTo setDistance_Err
-    
-        
-
-        Dim i   As Integer
-
-        Dim lim As Integer
-
-100     If Mapa <= 0 Or Mapa > NumMaps Then Exit Sub
-
-102     If distanceToCities(Mapa).distanceToCity(city) >= 0 Then Exit Sub
-
-104     If Mapa = Ciudades(city).Map Then
-106         distanceToCities(Mapa).distanceToCity(city) = 0
-        Else
-108         distanceToCities(Mapa).distanceToCity(city) = Abs(X) + Abs(Y)
-
-        End If
-
-110     For i = 1 To 4
-112         lim = getLimit(Mapa, i)
-
-114         If lim > 0 Then
-
-116             Select Case i
-
-                    Case eHeading.NORTH
-118                     Call setDistance(lim, city, i, X, Y - 1)
-
-120                 Case eHeading.EAST
-122                     Call setDistance(lim, city, i, X + 1, Y)
-
-124                 Case eHeading.SOUTH
-126                     Call setDistance(lim, city, i, X, Y + 1)
-
-128                 Case eHeading.WEST
-130                     Call setDistance(lim, city, i, X - 1, Y)
-
-                End Select
-
-            End If
-
-132     Next i
-
-        
-        Exit Sub
-
-setDistance_Err:
-134     Call RegistrarError(Err.Number, Err.description, "Hogar.setDistance", Erl)
-
-        
-End Sub
+Public Ciudades(1 To NUMCIUDADES)         As t_WorldPos
 
 Public Sub goHome(ByVal UserIndex As Integer)
         '***************************************************
@@ -191,31 +22,27 @@ Public Sub goHome(ByVal UserIndex As Integer)
         '***************************************************
         
         On Error GoTo goHome_Err
-    
         
-
-        Dim Distance As Long
-        Dim Tiempo   As Long
-    
 100     With UserList(UserIndex)
 
 102         If .flags.Muerto = 1 Then
 
-104             If .donador.activo = 0 And Not EsGM(UserIndex) Then  ' Donador no espera tiempo
-106                 Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageParticleFX(.Char.CharIndex, ParticulasIndex.Runa, 800, False))
-108                 Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageBarFx(.Char.CharIndex, 800, Accion_Barra.Hogar))
+104             If EsGM(UserIndex) Then
+106                 .Counters.TimerBarra = 5
                 Else
-110                 Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageParticleFX(.Char.CharIndex, ParticulasIndex.Runa, 100, False))
-112                 Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageBarFx(.Char.CharIndex, 100, Accion_Barra.Hogar))
+108                 .Counters.TimerBarra = 210
                 End If
-                
-114             .Accion.Particula = ParticulasIndex.Runa
+110             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageParticleFX(.Char.CharIndex, e_ParticulasIndex.Runa, .Counters.TimerBarra * 100, False))
+112             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageBarFx(.Char.CharIndex, .Counters.TimerBarra, e_AccionBarra.Hogar))
+                Call WriteConsoleMsg(UserIndex, "Volver·s a tu hogar en " & .Counters.TimerBarra & " segundos.", e_FontTypeNames.FONTTYPE_New_Gris)
+                    
+114             .Accion.Particula = e_ParticulasIndex.Runa
 116             .Accion.AccionPendiente = True
-118             .Accion.TipoAccion = Accion_Barra.Hogar
+118             .Accion.TipoAccion = e_AccionBarra.Hogar
             
             Else
         
-120             Call WriteConsoleMsg(UserIndex, "Debes estar muerto para poder utilizar este comando.", FontTypeNames.FONTTYPE_FIGHT)
+120             Call WriteConsoleMsg(UserIndex, "Debes estar muerto para poder utilizar este comando.", e_FontTypeNames.FONTTYPE_FIGHT)
 
             End If
         
@@ -225,10 +52,11 @@ Public Sub goHome(ByVal UserIndex As Integer)
         Exit Sub
 
 goHome_Err:
-122     Call RegistrarError(Err.Number, Err.description, "Hogar.goHome", Erl)
+122     Call TraceError(Err.Number, Err.Description, "Hogar.goHome", Erl)
 
         
 End Sub
+
 
 ''
 ' Maneja el tiempo de arrivo al hogar
@@ -255,40 +83,11 @@ Public Sub TravelingEffect(ByVal UserIndex As Integer)
         Exit Sub
 
 TravelingEffect_Err:
-104     Call RegistrarError(Err.Number, Err.description, "Hogar.TravelingEffect", Erl)
+104     Call TraceError(Err.Number, Err.Description, "Hogar.TravelingEffect", Erl)
 
         
 End Sub
 
-
-Public Function GetHomeArrivalTime(ByVal UserIndex As Integer) As Integer
-        
-        On Error GoTo GetHomeArrivalTime_Err
-    
-        
-
-        '**************************************************************
-        'Author: ZaMa
-        'Last Modify by: ZaMa
-        'Last Modify Date: 01/06/2010
-        'Calculates the time left to arrive home.
-        '**************************************************************
-        Dim TActual As Long
-    
-100     TActual = GetTickCount()
-    
-102     With UserList(UserIndex)
-104         GetHomeArrivalTime = (.Counters.goHome - TActual) * 0.001
-        End With
-
-        
-        Exit Function
-
-GetHomeArrivalTime_Err:
-106     Call RegistrarError(Err.Number, Err.description, "Hogar.GetHomeArrivalTime", Erl)
-
-        
-End Function
 
 Public Sub HomeArrival(ByVal UserIndex As Integer)
         '**************************************************************
@@ -330,7 +129,7 @@ Public Sub HomeArrival(ByVal UserIndex As Integer)
 124         Call FindLegalPos(UserIndex, tMap, CByte(tX), CByte(tY))
 126         Call WarpUserChar(UserIndex, tMap, tX, tY, True)
         
-128         Call WriteConsoleMsg(UserIndex, "Has regresado a tu ciudad de origen.", FontTypeNames.FONTTYPE_WARNING)
+128         Call WriteConsoleMsg(UserIndex, "Has regresado a tu ciudad de origen.", e_FontTypeNames.FONTTYPE_WARNING)
         
 130         .flags.Traveling = 0
 132         .Counters.goHome = 0
@@ -341,7 +140,7 @@ Public Sub HomeArrival(ByVal UserIndex As Integer)
         Exit Sub
 
 HomeArrival_Err:
-134     Call RegistrarError(Err.Number, Err.description, "Hogar.HomeArrival", Erl)
+134     Call TraceError(Err.Number, Err.Description, "Hogar.HomeArrival", Erl)
 
         
 End Sub
@@ -386,80 +185,8 @@ Public Function IntervaloGoHome(ByVal UserIndex As Integer, _
         Exit Function
 
 IntervaloGoHome_Err:
-114     Call RegistrarError(Err.Number, Err.description, "Hogar.IntervaloGoHome", Erl)
+114     Call TraceError(Err.Number, Err.Description, "Hogar.IntervaloGoHome", Erl)
 
         
 End Function
 
-Public Sub HandleHome(ByVal UserIndex As Integer)
-        
-        On Error GoTo HandleHome_Err
-    
-        
-
-        '***************************************************
-        'Author: Budi
-        'Creation Date: 06/01/2010
-        'Last Modification: 05/06/10
-        'Pato - 05/06/10: Add the UCase$ to prevent problems.
-        '***************************************************
-    
-100     With UserList(UserIndex)
-        
-102         Call .incomingData.ReadInteger
-
-104         If .flags.Muerto = 0 Then
-106             Call WriteConsoleMsg(UserIndex, "Debes estar muerto para utilizar este comando.", FontTypeNames.FONTTYPE_FIGHT)
-                Exit Sub
-
-            End If
-                
-            'Si el mapa tiene alguna restriccion (newbie, dungeon, etc...), no lo dejamos viajar.
-108         If MapInfo(.Pos.Map).zone = "NEWBIE" Then
-110             Call WriteConsoleMsg(UserIndex, "No pueder viajar a tu hogar desde este mapa.", FontTypeNames.FONTTYPE_FIGHT)
-                Exit Sub
-            
-            End If
-        
-            'Si es un mapa comun y no esta en cana
-112         If .Counters.Pena <> 0 Then
-114             Call WriteConsoleMsg(UserIndex, "No puedes usar este comando en prisi√≥n.", FontTypeNames.FONTTYPE_FIGHT)
-                Exit Sub
-
-            End If
-        
-116         If .flags.Muerto = 0 Then
-118             Call WriteConsoleMsg(UserIndex, "Debes estar muerto para utilizar este comando.", FontTypeNames.FONTTYPE_FIGHT)
-                Exit Sub
-
-            End If
-
-120         If .flags.Traveling = 0 Then
-            
-122             If .Pos.Map <> Ciudades(.Hogar).Map Then
-124                 Call goHome(UserIndex)
-                
-                Else
-126                 Call WriteConsoleMsg(UserIndex, "Ya te encuentras en tu hogar.", FontTypeNames.FONTTYPE_INFO)
-
-                End If
-
-            Else
-
-128             .flags.Traveling = 0
-130             .Counters.goHome = 0
-            
-132             Call WriteConsoleMsg(UserIndex, "Ya hay un viaje en curso.", FontTypeNames.FONTTYPE_INFO)
-            
-            End If
-        
-        End With
-
-        
-        Exit Sub
-
-HandleHome_Err:
-134     Call RegistrarError(Err.Number, Err.description, "Hogar.HandleHome", Erl)
-
-        
-End Sub

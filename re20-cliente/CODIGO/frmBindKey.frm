@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmBindKey 
    BackColor       =   &H00000000&
    BorderStyle     =   0  'None
-   Caption         =   "Asignar acciÃ³n"
+   Caption         =   "Asignar acción"
    ClientHeight    =   2700
    ClientLeft      =   0
    ClientTop       =   -75

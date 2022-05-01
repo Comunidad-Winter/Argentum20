@@ -19,7 +19,6 @@ Function Principal(ByRef UserIndex As Integer, ByRef Logout As Boolean) As JS_Ob
 106         Objeto.Item("name") = .name
 108         Objeto.Item("level") = .Stats.ELV
 110         Objeto.Item("exp") = CLng(.Stats.Exp)
-112         Objeto.Item("elu") = .Stats.ELU
 114         Objeto.Item("genre_id") = .genero
 116         Objeto.Item("race_id") = .raza
 118         Objeto.Item("class_id") = .clase
@@ -94,7 +93,7 @@ Function Principal(ByRef UserIndex As Integer, ByRef Logout As Boolean) As JS_Ob
 238         Objeto.Item("pertenece_consejo_caos") = (.flags.Privilegios And PlayerType.ChaosCouncil)
 240         Objeto.Item("pertenece_real") = .Faccion.ArmadaReal
 242         Objeto.Item("pertenece_caos") = .Faccion.FuerzasCaos
-244         Objeto.Item("ciudadanos_matados") = .Faccion.CiudadanosMatados
+244         Objeto.Item("ciudadanos_matados") = .Faccion.ciudadanosMatados
 246         Objeto.Item("criminales_matados") = .Faccion.CriminalesMatados
 248         Objeto.Item("recibio_armadura_real") = .Faccion.RecibioArmaduraReal
 250         Objeto.Item("recibio_armadura_caos") = .Faccion.RecibioArmaduraCaos
@@ -108,7 +107,6 @@ Function Principal(ByRef UserIndex As Integer, ByRef Logout As Boolean) As JS_Ob
 266         Objeto.Item("matados_ingreso") = .Faccion.MatadosIngreso
 268         Objeto.Item("siguiente_recompensa") = .Faccion.NextRecompensa
 270         Objeto.Item("status") = .Faccion.Status
-272         Objeto.Item("battle_points") = .flags.BattlePuntos
 274         Objeto.Item("guild_index") = .GuildIndex
 276         Objeto.Item("chat_combate") = .ChatCombate
 278         Objeto.Item("chat_global") = .ChatGlobal
@@ -324,7 +322,7 @@ Function Mascotas(ByRef UserIndex As Integer) As JS_Array
                 'CHOTS | I got this logic from SaveUserToCharfile
 112             If .MascotasIndex(i) > 0 Then
             
-114                 If Npclist(.MascotasIndex(i)).Contadores.TiempoExistencia = 0 Then
+114                 If NpcList(.MascotasIndex(i)).Contadores.TiempoExistencia = 0 Then
 116                     petType = .MascotasType(i)
                     Else
 118                     petType = 0

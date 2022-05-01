@@ -1,6 +1,0 @@
-[History]
-1=#P0#=mb	#P1#=RenderToPicture	#P2#=WorldEditor/modRenderer/RenderToPicture	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201227220417	#P7#=0	#P8#=61	.
-2=#P0#=mb	#P1#=CargarIndicesDeCuerpos	#P2#=WorldEditor/modIndices/CargarIndicesDeCuerpos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201227220057	#P7#=0	#P8#=3	.
-3=#P0#=mb	#P1#=CargarIndicesDeCabezas	#P2#=WorldEditor/modIndices/CargarIndicesDeCabezas	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201227214432	#P7#=0	#P8#=4	.
-4=#P0#=mb	#P1#=Load_Map_Data_CSM	#P2#=WorldEditor/modIAO/Load_Map_Data_CSM	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201209202517	#P7#=0	#P8#=261	.
-5=#P0#=mb	#P1#=CargarMapIni	#P2#=WorldEditor/modGeneral/CargarMapIni	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201209201142	#P7#=0	#P8#=40	.

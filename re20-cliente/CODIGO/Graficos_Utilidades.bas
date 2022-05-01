@@ -87,7 +87,7 @@ Public Sub Geometry_Create_Box(ByRef verts() As TYPE_VERTEX, ByRef Dest As RECT,
 
     '**************************************************************
     'Author: Aaron Perkins
-    'Modified by Juan MartÃ­n Sotuyo Dodero
+    'Modified by Juan Martín Sotuyo Dodero
     'Last Modify Date: 11/17/2002
     '
     ' * v1      * v3
@@ -209,7 +209,7 @@ Public Function BinarySearch(ByVal charindex As Integer) As Integer
     
 
     '**************************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero
+    'Author: Juan Martín Sotuyo Dodero
     'Last Modify Date: 07/28/07
     'Returns the index of the dialog in the list, or the negation
     'of the position were it should be if not found (for binary insertion)
@@ -257,8 +257,8 @@ Public Sub InitComposedTexture()
     On Error GoTo InitComposedTexture_Err
     
 
-    ComposedTextureWidth = 128
-    ComposedTextureHeight = 128
+    ComposedTextureWidth = 256
+    ComposedTextureHeight = 256
 
     ComposedTextureCenterX = ComposedTextureWidth \ 2
 

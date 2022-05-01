@@ -101,8 +101,8 @@ Private Function BuscaVentana(Wnd As Long, str As String) As Long
         Exit Function
 
 BuscaVentana_Err:
-120     Call RegistrarError(Err.Number, Err.description, "clsEstadisticasIPC.BuscaVentana", Erl)
-122     Resume Next
+120     Call TraceError(Err.Number, Err.Description, "clsEstadisticasIPC.BuscaVentana", Erl)
+122
         
 End Function
 
@@ -121,8 +121,8 @@ Public Function Informar(ByVal QueCosa As EstaNotificaciones, ByVal Parametro As
         Exit Function
 
 Informar_Err:
-106     Call RegistrarError(Err.Number, Err.description, "clsEstadisticasIPC.Informar", Erl)
-108     Resume Next
+106     Call TraceError(Err.Number, Err.Description, "clsEstadisticasIPC.Informar", Erl)
+108
         
 End Function
 
@@ -139,8 +139,8 @@ Public Function EstadisticasAndando() As Boolean
         Exit Function
 
 EstadisticasAndando_Err:
-104     Call RegistrarError(Err.Number, Err.description, "clsEstadisticasIPC.EstadisticasAndando", Erl)
-106     Resume Next
+104     Call TraceError(Err.Number, Err.Description, "clsEstadisticasIPC.EstadisticasAndando", Erl)
+106
         
 End Function
 
@@ -155,8 +155,8 @@ Public Sub Inicializa(ByVal hWnd As Long)
         Exit Sub
 
 Inicializa_Err:
-104     Call RegistrarError(Err.Number, Err.description, "clsEstadisticasIPC.Inicializa", Erl)
-106     Resume Next
+104     Call TraceError(Err.Number, Err.Description, "clsEstadisticasIPC.Inicializa", Erl)
+106
         
 End Sub
 
@@ -170,7 +170,7 @@ Private Sub BuscaWndEstadisticas()
         Exit Sub
 
 BuscaWndEstadisticas_Err:
-102     Call RegistrarError(Err.Number, Err.description, "clsEstadisticasIPC.BuscaWndEstadisticas", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "clsEstadisticasIPC.BuscaWndEstadisticas", Erl)
+104
         
 End Sub

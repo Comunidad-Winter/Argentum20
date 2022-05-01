@@ -1,0 +1,58 @@
+Nueva Actualización:
+-El tirar items ahora permite seguir caminando.
+-Se arregló el problema al cartelear.
+-Si el Druida tiene equipada Flauta Elfica, el coste de mana para Apocalipsis se reduce a 900.
+-Se aumentó el daño mágico de la Flauta Mágica y el Bastón Nudoso en un 2%.
+-Las quests para conseguir el traje de caucho ahora son repetibles.
+-Se redujo el coste de la bolsa de municiones de 12 a 6.
+-Se redujeron los requisitos para ingresar a la armada: Nivel 21 y 50 criminales matados.
+-Se arreglaron algunas túnicas que solo permitía comprar 1.
+-Se arregló la Tunica de Druida bajos que solo podian equipar los Enanos.
+-Se redujo el precio del Casco de Cazador (De 50.000 a 40.000)
+-Se volvió a cambiar el pasillo del oscuro del mapa 142 al original.
+
+-El ocultar ya no se pierde al hablar.
+-Ahora al /salir, sigue contando el tiempo restante de invisibilidad.
+-Se redujo el costo de los siguientes hechizos para Paladin, Bandido y Asesino:
+    - Inmovilizar y Remover Paralisis : 250 mana
+    - Invisibilidad (Solo Paladin y Asesino): 350 mana
+
+
+-Se aumentó la evasión del bandido.
+-Se redujo el modificador de daño con armas y el acierto con armas del bardo.
+-Se redujo el daño magico de los instrumentos.
+-Se aumentó el coste de lingotes de hierro y plata del anillo de resistengia magica y ya no pide lingotes de oro.
+-Se redujo la evasión de las criaturas de Dungeon Naga
+
+-Se agregó la Tela Trabajada a la sastreria, con coste de 1 piel de lobo
+-Se agregó la Cruz Mágica a la venta, item requerido para poder usar Resucitar. 
+-Ahora para usar el hechizo resucitar, requiere una Cruz Mágica, o Laúd Élfico, o Flauta Élfica, o Baculo Engarzado, o Vara de Mago.
+-Ahora algunos npcs del mundo dan una pequeña cantidad de puntos de experiencia de clan.
+-Ahora el Mago puede utilizar Descarga Electrica, Elemental Acuático y Terrestre con Vara de Fresno
+-Ahora el druida puede domar tiburones.
+-Se agregó un huargo domable en el mapa 206
+-Se aumentó el daño magico de el Bastón Nudoso y la Vara de Fresno
+-Se agregaron anillos con resistencia mágica a la venta
+-Ahora el Hacha de Barbaro puede acertar golpes críticos
+-Se redujo la evasión y defensa con escudos del clérigo
+-Se aumentó la defensa con escudo del bardo
+
+-Nuevos requisitos y beneficios para los clanes: 
+Para fundar un clan es necesario tener un personaje nivel 25, con 90 skills en liderazgo, una gema polar de fundación y una gema roja de fundación.
+Nivel 1 (500 exp de clan requerida) permite hasta 5 miembros
+Nivel 2 (1000 exp de clan requerida) permite hasta 7 miembros y habilita el "Pedir Ayuda"
+Nivel 3 (2000 exp de clan requerida) permite hasta 7 miembros y habilita el seguro de clan
+Nivel 4 (2500 exp de clan requerida) permite hasta 12 miembros 
+Nivel 5 (3000 exp de clan requerida) permite hasta 15 miembros y habilita las barras de vida y mana de los compañeros
+Nivel 6 (4000 exp de clan requerida) permite hasta 20 miembros y habilita el verse invisibles entre compañeros
+
+-Mejoras visuales para los integrantes del clan
+-Ahora permite fundar clanes de alineamiento Ciudadano (Armadas y ciudadanos) y Criminal (Caoticos y criminales)
+-Se solucionó el error donde mostraba como miembro a un personaje que habia sido echado.
+
+-Ahora el Yeti dropea una parte del botín en oro, y otra en una Runa Helada.
+-Se mejoraron algunos sonidos del juego.
+-Se aumentó levemente la experiencia de los leviatanes.
+-Se aumentó la vida, experiencia y oro de algunas arañas de Catacumbas nivel 2.
+-Se ajustaron los daños, defensas y evasión de algunos bosses.
+-Se agregó un pequeño intervalo entre ocultar y ocultar.

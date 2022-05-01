@@ -34,13 +34,13 @@ Attribute VB_Exposed = False
 '*****************************************************************
 
 '*****************************************************************
-'Augusto JosÃ© Rando (barrin@imperiumao.com.ar)
+'Augusto José Rando (barrin@imperiumao.com.ar)
 '   - First Relase
 '*****************************************************************
 
 Option Explicit
 
-Private DirectX                        As DirectX8
+Private DirectX                   As DirectX8
 
 '**** Direct Sound ********
 Private DS                        As DirectSound8
@@ -85,30 +85,30 @@ Private MP3Path                   As String
 'Manejador de buffers
 Private Buffers                   As CBufferMan
 
-'El volÃºmen actual real (sonidos)
+'El volúmen actual real (sonidos)
 Private mEffectsVolume            As Long
 
-'El volÃºmen actual real (ambientes)
+'El volúmen actual real (ambientes)
 Private mEffectsVolumeAmbient     As Long
 
-'El volÃºmen actual real (mÃºsica)
+'El volúmen actual real (música)
 Private mMusicVolume              As Long
 
-'El volÃºmen mÃ¡ximo en la configuraciÃ³n (sonidos)
+'El volúmen máximo en la configuración (sonidos)
 Private mEffectsVolumeMax         As Long
 
-'El volÃºmen mÃ¡ximo en la configuraciÃ³n (ambientes)
+'El volúmen máximo en la configuración (ambientes)
 Private mAmbientVolumeMax         As Long
 
-'El volÃºmen mÃ¡ximo en la configuraciÃ³n (mÃºsica)
+'El volúmen máximo en la configuración (música)
 Private mMusicVolumeMax           As Long
 
-'Â¿Estamos haciendo efecto fade?
+'¿Estamos haciendo efecto fade?
 Private mFadingStatus             As Byte
 
 Private mFadingMusicMod           As Long
 
-'Â¿PrÃ³ximo MP3 o MIDI?
+'¿Próximo MP3 o MIDI?
 Private mNextMusic                As Integer
 
 Private INTERIOR_VOLUME           As Long
@@ -348,7 +348,6 @@ Public Property Get MusicActual() As Integer
     On Error GoTo MusicActual_Err
     
     MusicActual = mMusActual
-
     
     Exit Property
 
@@ -565,8 +564,10 @@ Public Function Sound_Stop_All() As Boolean
     
     On Error GoTo Sound_Stop_All_Err
     
-
-    Buffers.DetenerTodo
+    If (Not Buffers Is Nothing) Then
+        Buffers.DetenerTodo
+    End If
+    
     mAmbienteActual = 0
     Sound_Stop_All = True
 
@@ -647,7 +648,7 @@ End Function
 
 Public Function Music_Load(ByVal file_str As String, Optional ByVal Volume As Long = 0, Optional ByVal balance As Long = 0) As Boolean '**** Loads a MP3 *****
     '**************************************************************
-    'Author: Augusto JosÃ© Rando (barrin@imperiumao.com.ar)
+    'Author: Augusto José Rando (barrin@imperiumao.com.ar)
     'Last Modify Date: 2/08/2006
     '**************************************************************
     
@@ -655,21 +656,21 @@ Public Function Music_Load(ByVal file_str As String, Optional ByVal Volume As Lo
 
     On Error GoTo Error_Handl
     
-    Dim ret As Long
+    Dim Ret As Long
     
     If (LenB(file_str) <= 0) Or (Musica = CONST_DESHABILITADA) Then Exit Function
  
     #If Compresion = 1 Then
 
         If Music = CONST_MP3 Then
-            If Extract_File(mp3, App.Path & "\..\Recursos\OUTPUT\", file_str & ".mp3", Windows_Temp_Dir, False) Then
+            If Extract_File(mp3, App.Path & "\..\Recursos\OUTPUT\", file_str & ".mp3", Windows_Temp_Dir, ResourcesPassword, False) Then
                 If Not Music_Empty() = True Then GoTo Error_Handl
                 Set IMC = New FilgraphManager
                 IMC.RenderFile Windows_Temp_Dir & file_str & ".mp3"
                 Kill Windows_Temp_Dir & file_str & ".mp3"
                 lastMid = False
-            ElseIf Extract_File(midi, MidiPath, file_str & ".mid", Windows_Temp_Dir, False) Then
-
+            
+            ElseIf Extract_File(Midi, MidiPath, file_str & ".mid", Windows_Temp_Dir, ResourcesPassword, False) Then
                 If Not Music_Empty() = True Then GoTo Error_Handl
                 Set dmSeg = dmLoader.LoadSegment(Windows_Temp_Dir & file_str & ".mid")
                 dmSeg.SetStandardMidiFile
@@ -682,7 +683,7 @@ Public Function Music_Load(ByVal file_str As String, Optional ByVal Volume As Lo
 
         ElseIf Music = CONST_MIDI Then
 
-            If Extract_File(midi, App.Path & "\..\Recursos\OUTPUT\", file_str & ".mid", Windows_Temp_Dir, False) Then
+            If Extract_File(Midi, App.Path & "\..\Recursos\OUTPUT\", file_str & ".mid", Windows_Temp_Dir, ResourcesPassword, False) Then
                 If Not Music_Empty() = True Then GoTo Error_Handl
                 Set dmSeg = dmLoader.LoadSegment(Windows_Temp_Dir & file_str & ".mid")
                 dmSeg.SetStandardMidiFile
@@ -762,13 +763,13 @@ End Function
 
 Public Function Music_Play() As Boolean
     '**************************************************************
-    'Author: Augusto JosÃ© Rando (barrin@imperiumao.com.ar)
+    'Author: Augusto José Rando (barrin@imperiumao.com.ar)
     'Last Modify Date: 2/08/2006
     '**************************************************************
     
     On Error GoTo Error_Handl
     
-    Dim ret As Long
+    Dim Ret As Long
     
     If (Musica = CONST_DESHABILITADA) Then Exit Function
     
@@ -882,7 +883,7 @@ Public Function Ambient_Load(ByVal file_name As Integer, Optional ByVal Volume A
     
     #If Compresion = 1 Then
 
-        If Extract_File(wav, App.Path & "\..\Recursos\OUTPUT\", file_name & ".wav", Windows_Temp_Dir, False) Then
+        If Extract_File(wav, App.Path & "\..\Recursos\OUTPUT\", file_name & ".wav", Windows_Temp_Dir, ResourcesPassword, False) Then
             Set ambient_buffer = DS.CreateSoundBufferFromFile(Windows_Temp_Dir & file_name & ".wav", dsbd)
             'Delete_File Windows_Temp_Dir & file_name & ".wav"
         Else
@@ -969,15 +970,12 @@ End Function
 
 Public Function Sound_Render()
     '**************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     'Last Modify Date: 17/08/2005
     '
     '**************************************************************
     
     On Error GoTo Sound_Render_Err
-    
-
-    
 
     Dim TiempoActual    As Long, x As Integer, y As Integer
 
@@ -1028,7 +1026,7 @@ Public Function Sound_Render()
 
             End If
 
-        Else 'No aplica efectos meteorolÃ³gicos a la zona
+        Else 'No aplica efectos meteorológicos a la zona
 
             If LastAmbienteActual > 0 Then
                 Call Ambient_Stop
@@ -1039,7 +1037,7 @@ Public Function Sound_Render()
 
             End If
                 
-            If bTecho Then 'En los interiores el sonido es mÃ¡s suave :)
+            If bTecho Then 'En los interiores el sonido es más suave :)
                 
                 If mEffectsVolumeAmbient <> VolAmbient - 1000 Then
 
@@ -1088,7 +1086,7 @@ Public Function Sound_Render()
  
         TiempoActual = FrameTime
         
-        'Â¿Fade up or fade down? Primero fade down, despuÃ©s fade up
+        '¿Fade up or fade down? Primero fade down, después fade up
         If TimeElapsed + 60 < TiempoActual Then
             
             TimeElapsed = TiempoActual
@@ -1153,7 +1151,7 @@ End Function
 
 Public Function Sound_Load(ByVal file_num As Integer) As Boolean
     '**************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     'Last Modify Date: 7/16/2005
     '**************************************************************
     
@@ -1176,7 +1174,7 @@ End Function
 
 Public Function Calculate_Pan(ByVal map_x As Integer, ByVal map_y As Integer) As Long
     '**************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     'Last Modify Date: 7/16/2005
     '**************************************************************
     
@@ -1226,7 +1224,7 @@ End Function
 
 Public Function Calculate_Volume(ByVal map_x As Integer, ByVal map_y As Integer) As Long
     '**************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     'Last Modify Date: 7/16/2005
     '**************************************************************
     

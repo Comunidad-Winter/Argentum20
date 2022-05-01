@@ -25,8 +25,8 @@ Begin VB.Form frmServidor
       EndProperty
       Height          =   1575
       Left            =   3840
-      TabIndex        =   26
-      Top             =   2400
+      TabIndex        =   22
+      Top             =   2880
       Width           =   3615
       Begin VB.CommandButton Command4 
          Caption         =   "Hacer un Backup del mundo"
@@ -41,7 +41,7 @@ Begin VB.Form frmServidor
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   30
+         TabIndex        =   26
          Top             =   240
          Width           =   3255
       End
@@ -58,7 +58,7 @@ Begin VB.Form frmServidor
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   29
+         TabIndex        =   25
          Top             =   520
          Width           =   3255
       End
@@ -75,7 +75,7 @@ Begin VB.Form frmServidor
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   28
+         TabIndex        =   24
          Top             =   820
          Width           =   3255
       End
@@ -92,7 +92,7 @@ Begin VB.Form frmServidor
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   27
+         TabIndex        =   23
          Top             =   1120
          Width           =   3255
       End
@@ -108,11 +108,45 @@ Begin VB.Form frmServidor
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   2415
+      Height          =   2775
       Left            =   3840
-      TabIndex        =   18
+      TabIndex        =   14
       Top             =   0
       Width           =   3615
+      Begin VB.CommandButton cmdReloadGuilds 
+         Caption         =   "Recargar base de datos de clanes"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   120
+         TabIndex        =   28
+         Top             =   2430
+         Width           =   3255
+      End
+      Begin VB.CommandButton cmdDumpLogs 
+         Caption         =   "Dump Logs"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   120
+         TabIndex        =   27
+         Top             =   2170
+         Width           =   3255
+      End
       Begin VB.CommandButton Command6 
          Caption         =   "ReSpawn Guardias en pos. originales"
          BeginProperty Font 
@@ -126,7 +160,7 @@ Begin VB.Form frmServidor
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   25
+         TabIndex        =   21
          Top             =   240
          Width           =   3255
       End
@@ -144,7 +178,7 @@ Begin VB.Form frmServidor
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   24
+         TabIndex        =   20
          Top             =   510
          Width           =   3255
       End
@@ -161,7 +195,7 @@ Begin VB.Form frmServidor
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   23
+         TabIndex        =   19
          Top             =   800
          Width           =   3255
       End
@@ -178,7 +212,7 @@ Begin VB.Form frmServidor
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   22
+         TabIndex        =   18
          Top             =   1080
          Width           =   3255
       End
@@ -195,7 +229,7 @@ Begin VB.Form frmServidor
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   21
+         TabIndex        =   17
          Top             =   1360
          Width           =   3255
       End
@@ -212,7 +246,7 @@ Begin VB.Form frmServidor
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   20
+         TabIndex        =   16
          Top             =   1650
          Width           =   3255
       End
@@ -229,8 +263,8 @@ Begin VB.Form frmServidor
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   19
-         Top             =   1940
+         TabIndex        =   15
+         Top             =   1920
          Width           =   3255
       End
    End
@@ -263,25 +297,8 @@ Begin VB.Form frmServidor
          EndProperty
          Height          =   255
          Left            =   240
-         TabIndex        =   17
+         TabIndex        =   13
          Top             =   1800
-         Width           =   3255
-      End
-      Begin VB.CommandButton Command26 
-         Caption         =   "Reset Listen"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   255
-         Left            =   240
-         TabIndex        =   16
-         Top             =   2040
          Width           =   3255
       End
       Begin VB.CommandButton Command10 
@@ -297,63 +314,12 @@ Begin VB.Form frmServidor
          EndProperty
          Height          =   255
          Left            =   240
-         TabIndex        =   15
+         TabIndex        =   12
          Top             =   360
          Width           =   3255
       End
-      Begin VB.CommandButton Command11 
-         Caption         =   "Stats de los slots"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   255
-         Left            =   240
-         TabIndex        =   14
-         Top             =   600
-         Width           =   3255
-      End
-      Begin VB.CommandButton Command13 
-         Caption         =   "Debug listening socket"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   255
-         Left            =   240
-         TabIndex        =   13
-         Top             =   840
-         Width           =   3255
-      End
       Begin VB.CommandButton Command22 
-         Caption         =   "AdministraciÃ³n"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   255
-         Left            =   240
-         TabIndex        =   12
-         Top             =   1080
-         Width           =   3255
-      End
-      Begin VB.CommandButton Command24 
-         Caption         =   "Estadisticas"
+         Caption         =   "Administración"
          BeginProperty Font 
             Name            =   "Tahoma"
             Size            =   8.25
@@ -366,7 +332,7 @@ Begin VB.Form frmServidor
          Height          =   255
          Left            =   240
          TabIndex        =   11
-         Top             =   1320
+         Top             =   1080
          Width           =   3255
       End
       Begin VB.CommandButton Command27 
@@ -538,83 +504,8 @@ Begin VB.Form frmServidor
       Height          =   255
       Left            =   6480
       TabIndex        =   0
-      Top             =   4200
-      Width           =   945
-   End
-   Begin VB.Label Label4 
-      BackStyle       =   0  'Transparent
-      Caption         =   "pablito_3_15@hotmail.com"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H000000FF&
-      Height          =   255
-      Left            =   3960
-      TabIndex        =   34
       Top             =   4560
-      Width           =   2295
-   End
-   Begin VB.Label Label3 
-      BackStyle       =   0  'Transparent
-      Caption         =   "2008"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   255
-      Left            =   5520
-      TabIndex        =   33
-      Top             =   4080
-      Width           =   495
-   End
-   Begin VB.Label Label2 
-      BackStyle       =   0  'Transparent
-      Caption         =   "Pablo Daniel Mercavides"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H000000FF&
-      Height          =   255
-      Left            =   3960
-      TabIndex        =   32
-      Top             =   4320
-      Width           =   2295
-   End
-   Begin VB.Label Label1 
-      BackStyle       =   0  'Transparent
-      Caption         =   "RevolucionAo 1.1"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H0000C000&
-      Height          =   255
-      Left            =   3960
-      TabIndex        =   31
-      Top             =   4080
-      Width           =   2295
+      Width           =   945
    End
 End
 Attribute VB_Name = "frmServidor"
@@ -623,7 +514,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 'Argentum Online 0.11.6
-'Copyright (C) 2002 MÃ¡rquez Pablo Ignacio
+'Copyright (C) 2002 Márquez Pablo Ignacio
 '
 'This program is free software; you can redistribute it and/or modify
 'it under the terms of the Affero General Public License;
@@ -645,12 +536,17 @@ Attribute VB_Exposed = False
 'You can contact me at:
 'morgolock@speedy.com.ar
 'www.geocities.com/gmorgolock
-'Calle 3 nÃºmero 983 piso 7 dto A
+'Calle 3 número 983 piso 7 dto A
 'La Plata - Pcia, Buenos Aires - Republica Argentina
-'CÃ³digo Postal 1900
-'Pablo Ignacio MÃ¡rquez
+'Código Postal 1900
+'Pablo Ignacio Márquez
 
 Option Explicit
+
+
+Private Sub cmdReloadGuilds_Click()
+    Call modGuilds.LoadGuildsDB
+End Sub
 
 Private Sub Command1_Click()
         
@@ -664,8 +560,8 @@ Private Sub Command1_Click()
         Exit Sub
 
 Command1_Click_Err:
-106     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command1_Click", Erl)
-108     Resume Next
+106     Call TraceError(Err.Number, Err.Description, "frmServidor.Command1_Click", Erl)
+
         
 End Sub
 
@@ -679,23 +575,8 @@ Private Sub Command10_Click()
         Exit Sub
 
 Command10_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command10_Click", Erl)
-104     Resume Next
-        
-End Sub
+102     Call TraceError(Err.Number, Err.Description, "frmServidor.Command10_Click", Erl)
 
-Private Sub Command11_Click()
-        
-        On Error GoTo Command11_Click_Err
-        
-100     frmConID.Show
-
-        
-        Exit Sub
-
-Command11_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command11_Click", Erl)
-104     Resume Next
         
 End Sub
 
@@ -709,23 +590,8 @@ Private Sub Command12_Click()
         Exit Sub
 
 Command12_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command12_Click", Erl)
-104     Resume Next
-        
-End Sub
+102     Call TraceError(Err.Number, Err.Description, "frmServidor.Command12_Click", Erl)
 
-Private Sub Command13_Click()
-        
-        On Error GoTo Command13_Click_Err
-        
-100     frmDebugSocket.Visible = True
-
-        
-        Exit Sub
-
-Command13_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command13_Click", Erl)
-104     Resume Next
         
 End Sub
 
@@ -739,8 +605,8 @@ Private Sub Command14_Click()
         Exit Sub
 
 Command14_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command14_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmServidor.Command14_Click", Erl)
+
         
 End Sub
 
@@ -760,7 +626,7 @@ Private Sub Command15_Click()
 
         Dim sENtrada As String
 
-100     sENtrada = InputBox("Escribe ""estoy DE acuerdo"" entre comillas y con disticiÃ³n de mayusculas minusculas para desbanear a todos los personajes", "UnBan", "hola")
+100     sENtrada = InputBox("Escribe ""estoy DE acuerdo"" entre comillas y con distición de mayusculas minusculas para desbanear a todos los personajes", "UnBan", "hola")
 
 102     If sENtrada = "estoy DE acuerdo" Then
 
@@ -788,7 +654,7 @@ Private Sub Command15_Click()
         Exit Sub
 
 Command15_Click_Err:
-126     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command15_Click", Erl)
+126     Call TraceError(Err.Number, Err.Description, "frmServidor.Command15_Click", Erl)
 
         
 End Sub
@@ -798,13 +664,15 @@ Private Sub Command16_Click()
         On Error GoTo Command16_Click_Err
         
 100     Call LoadSini
+        Call LoadMD5
+        Call LoadPrivateKey
 
         
         Exit Sub
 
 Command16_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command16_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmServidor.Command16_Click", Erl)
+
         
 End Sub
 
@@ -818,8 +686,8 @@ Private Sub Command17_Click()
         Exit Sub
 
 Command17_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command17_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmServidor.Command17_Click", Erl)
+
         
 End Sub
 
@@ -836,8 +704,8 @@ Private Sub Command18_Click()
         Exit Sub
 
 Command18_Click_Err:
-108     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command18_Click", Erl)
-110     Resume Next
+108     Call TraceError(Err.Number, Err.Description, "frmServidor.Command18_Click", Erl)
+
         
 End Sub
 
@@ -850,14 +718,14 @@ Private Sub Command19_Click()
 
         Dim sENtrada As String
 
-100     sENtrada = InputBox("Escribe ""estoy DE acuerdo"" sin comillas y con disticiÃ³n de mayusculas minusculas para desbanear a todos los personajes", "UnBan", "hola")
+100     sENtrada = InputBox("Escribe ""estoy DE acuerdo"" sin comillas y con distición de mayusculas minusculas para desbanear a todos los personajes", "UnBan", "hola")
 
 102     If sENtrada = "estoy DE acuerdo" Then
     
-104         n = BanIps.Count
+104         n = IP_Blacklist.Count
 
-106         For i = 1 To BanIps.Count
-108             BanIps.Remove 1
+106         For i = 1 To n
+108             IP_Blacklist.Remove (0)
 110         Next i
     
 112         MsgBox "Se han habilitado " & n & " ipes"
@@ -868,8 +736,8 @@ Private Sub Command19_Click()
         Exit Sub
 
 Command19_Click_Err:
-114     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command19_Click", Erl)
-116     Resume Next
+114     Call TraceError(Err.Number, Err.Description, "frmServidor.Command19_Click", Erl)
+
         
 End Sub
 
@@ -883,25 +751,33 @@ Private Sub Command2_Click()
         Exit Sub
 
 Command2_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command2_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmServidor.Command2_Click", Erl)
+
         
 End Sub
 
 Private Sub Command20_Click()
         
         On Error GoTo Command20_Click_Err
+        
+        Dim LoopC As Long
+        
+100     If MsgBox("Esta seguro que desea reiniciar los sockets ? Se cerrarán todas las conexiones activas.", vbYesNo, "Reiniciar Sockets") = vbYes Then
+102         Call modNetwork.Disconnect
 
-100     If MsgBox("Esta seguro que desea reiniciar los sockets ? Se cerrarÃ¡n todas las conexiones activas.", vbYesNo, "Reiniciar Sockets") = vbYes Then
-102         Call WSApiReiniciarSockets
+104         For LoopC = 1 To MaxUsers
+106             Call CloseSocket(LoopC)
+            Next
+            
+            Call modNetwork.Listen(MaxUsers, "0.0.0.0", CStr(Puerto))
         End If
 
         
         Exit Sub
 
 Command20_Click_Err:
-118     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command20_Click", Erl)
-120     Resume Next
+108     Call TraceError(Err.Number, Err.Description, "frmServidor.Command20_Click", Erl)
+
         
 End Sub
 
@@ -926,8 +802,8 @@ Private Sub Command21_Click()
         Exit Sub
 
 Command21_Click_Err:
-114     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command21_Click", Erl)
-116     Resume Next
+114     Call TraceError(Err.Number, Err.Description, "frmServidor.Command21_Click", Erl)
+
         
 End Sub
 
@@ -942,8 +818,8 @@ Private Sub Command22_Click()
         Exit Sub
 
 Command22_Click_Err:
-104     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command22_Click", Erl)
-106     Resume Next
+104     Call TraceError(Err.Number, Err.Description, "frmServidor.Command22_Click", Erl)
+
         
 End Sub
 
@@ -972,42 +848,8 @@ Private Sub Command23_Click()
         Exit Sub
 
 Command23_Click_Err:
-110     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command23_Click", Erl)
-112     Resume Next
-        
-End Sub
+110     Call TraceError(Err.Number, Err.Description, "frmServidor.Command23_Click", Erl)
 
-Private Sub Command24_Click()
-        
-        On Error GoTo Command24_Click_Err
-        
-100     frmEstadisticas.Show
-
-        
-        Exit Sub
-
-Command24_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command24_Click", Erl)
-104     Resume Next
-        
-End Sub
-
-Private Sub Command26_Click()
-        
-        On Error GoTo Command26_Click_Err
-
-        'Cierra el socket de escucha
-100     If SockListen >= 0 Then Call apiclosesocket(SockListen)
-    
-        'Inicia el socket de escucha
-102     SockListen = ListenForConnect(Puerto, hWndMsg, "")
-
-        
-        Exit Sub
-
-Command26_Click_Err:
-104     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command26_Click", Erl)
-106     Resume Next
         
 End Sub
 
@@ -1021,8 +863,8 @@ Private Sub Command27_Click()
         Exit Sub
 
 Command27_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command27_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmServidor.Command27_Click", Erl)
+
         
 End Sub
 
@@ -1036,8 +878,8 @@ Private Sub Command28_Click()
         Exit Sub
 
 Command28_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command28_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmServidor.Command28_Click", Erl)
+
         
 End Sub
 
@@ -1046,7 +888,7 @@ Private Sub Command3_Click()
         On Error GoTo Command3_Click_Err
         
 
-100     If MsgBox("Â¡Â¡Atencion!! Si reinicia el servidor puede provocar la perdida de datos de los usarios. Â¿Desea reiniciar el servidor de todas maneras?", vbYesNo) = vbYes Then
+100     If MsgBox("¡¡Atencion!! Si reinicia el servidor puede provocar la perdida de datos de los usarios. ¿Desea reiniciar el servidor de todas maneras?", vbYesNo) = vbYes Then
 102         Me.Visible = False
 104         Call Restart
 
@@ -1056,8 +898,8 @@ Private Sub Command3_Click()
         Exit Sub
 
 Command3_Click_Err:
-106     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command3_Click", Erl)
-108     Resume Next
+106     Call TraceError(Err.Number, Err.Description, "frmServidor.Command3_Click", Erl)
+
         
 End Sub
 
@@ -1070,9 +912,10 @@ Private Sub Command4_Click()
 104     Call DoBackUp
 106     Me.MousePointer = 0
 108     MsgBox "WORLDSAVE OK!!"
+
         Exit Sub
 eh:
-110     Call LogError("Error en WORLDSAVE")
+110     Call TraceError(Err.Number, Err.Description, "frmServidor.Command4_Click", Erl)
 
 End Sub
 
@@ -1096,38 +939,36 @@ Private Sub Command5_Click()
 112     If FileExist(App.Path & "\logs\Resurrecciones.log", vbNormal) Then Kill App.Path & "\logs\Resurrecciones.log"
 114     If FileExist(App.Path & "\logs\Teleports.Log", vbNormal) Then Kill App.Path & "\logs\Teleports.Log"
 
-
-116     Call apiclosesocket(SockListen)
-
         Dim LoopC As Integer
-
-124     For LoopC = 1 To MaxUsers
-126         Call CloseSocket(LoopC)
+116     For LoopC = 1 To MaxUsers
+118         Call CloseSocket(LoopC)
         Next
+        Call modNetwork.Disconnect
 
-128     LastUser = 0
-130     NumUsers = 0
+120     LastUser = 0
+122     NumUsers = 0
 
-132     Call FreeNPCs
-134     Call FreeCharIndexes
+124     Call FreeNPCs
+126     Call FreeCharIndexes
 
-136     Call LoadSini
-138     Call LoadIntervalos
-140     Call CargarBackUp
-142     Call LoadOBJData
-144     Call LoadPesca
-146     Call LoadRecursosEspeciales
+128     Call LoadSini
+        Call LoadMD5
+129     Call LoadPrivateKey
+130     Call LoadIntervalos
+132     Call CargarBackUp
+134     Call LoadOBJData
+136     Call LoadPesca
+138     Call LoadRecursosEspeciales
 
-148     SockListen = ListenForConnect(Puerto, hWndMsg, "")
+140     Call modNetwork.Listen(MaxUsers, "0.0.0.0", CStr(Puerto))
 
-
-176     If frmMain.Visible Then frmMain.txStatus.Caption = "Escuchando conexiones entrantes ..."
+142     If frmMain.Visible Then frmMain.txStatus.Caption = "Escuchando conexiones entrantes ..."
 
         
         Exit Sub
 
 Command5_Click_Err:
-178     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command5_Click", Erl)
+144     Call TraceError(Err.Number, Err.Description, "frmServidor.Command5_Click", Erl)
 
         
 End Sub
@@ -1142,8 +983,8 @@ Private Sub Command6_Click()
         Exit Sub
 
 Command6_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command6_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmServidor.Command6_Click", Erl)
+
         
 End Sub
 
@@ -1157,8 +998,8 @@ Private Sub Command7_Click()
         Exit Sub
 
 Command7_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command7_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmServidor.Command7_Click", Erl)
+
         
 End Sub
 
@@ -1172,8 +1013,8 @@ Private Sub Command8_Click()
         Exit Sub
 
 Command8_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command8_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmServidor.Command8_Click", Erl)
+
         
 End Sub
 
@@ -1187,8 +1028,8 @@ Private Sub Command9_Click()
         Exit Sub
 
 Command9_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "frmServidor.Command9_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmServidor.Command9_Click", Erl)
+
         
 End Sub
 
@@ -1202,8 +1043,8 @@ Private Sub Form_Deactivate()
         Exit Sub
 
 Form_Deactivate_Err:
-102     Call RegistrarError(Err.Number, Err.description, "frmServidor.Form_Deactivate", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "frmServidor.Form_Deactivate", Erl)
+
         
 End Sub
 
@@ -1212,12 +1053,11 @@ Private Sub Form_Load()
         On Error GoTo Form_Load_Err
 
 100     Command20.Visible = True
-102     Command26.Visible = True
       
         Exit Sub
 
 Form_Load_Err:
-112     Call RegistrarError(Err.Number, Err.description, "frmServidor.Form_Load", Erl)
-114     Resume Next
+104     Call TraceError(Err.Number, Err.Description, "frmServidor.Form_Load", Erl)
+
         
 End Sub

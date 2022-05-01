@@ -89,7 +89,7 @@ Begin VB.Form frmGuildDetails
          Height          =   315
          ItemData        =   "frmGuildDetails.frx":0000
          Left            =   240
-         List            =   "frmGuildDetails.frx":000A
+         List            =   "frmGuildDetails.frx":0013
          Style           =   2  'Dropdown List
          TabIndex        =   4
          Top             =   840
@@ -98,7 +98,7 @@ Begin VB.Form frmGuildDetails
       Begin VB.Label Label2 
          Alignment       =   2  'Center
          BackStyle       =   0  'Transparent
-         Caption         =   "El alineamiento del clan es el que decide quÃ© tipo de miembro podrÃ¡ ingresar al clan y cuÃ¡l no."
+         Caption         =   "El alineamiento del clan es el que decide qué tipo de miembro podrá ingresar al clan y cuál no."
          BeginProperty Font 
             Name            =   "Tahoma"
             Size            =   6.75
@@ -120,14 +120,14 @@ Begin VB.Form frmGuildDetails
       Height          =   375
       Index           =   1
       Left            =   120
-      MouseIcon       =   "frmGuildDetails.frx":0023
+      MouseIcon       =   "frmGuildDetails.frx":009D
       MousePointer    =   99  'Custom
       TabIndex        =   2
       Top             =   3480
       Width           =   3120
    End
    Begin VB.Frame frmDesc 
-      Caption         =   "DescripciÃ³n"
+      Caption         =   "Descripción"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -160,10 +160,10 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 'Argentum Online 0.11.6
 '
-'Copyright (C) 2002 MÃ¡rquez Pablo Ignacio
+'Copyright (C) 2002 Márquez Pablo Ignacio
 'Copyright (C) 2002 Otto Perez
 'Copyright (C) 2002 Aaron Perkins
-'Copyright (C) 2002 MatÃ­as Fernando PequeÃ±o
+'Copyright (C) 2002 Matías Fernando Pequeño
 '
 'This program is free software; you can redistribute it and/or modify
 'it under the terms of the Affero General Public License;
@@ -185,12 +185,13 @@ Attribute VB_Exposed = False
 'You can contact me at:
 'morgolock@speedy.com.ar
 'www.geocities.com/gmorgolock
-'Calle 3 nÃºmero 983 piso 7 dto A
+'Calle 3 número 983 piso 7 dto A
 'La Plata - Pcia, Buenos Aires - Republica Argentina
-'CÃ³digo Postal 1900
-'Pablo Ignacio MÃ¡rquez
+'Código Postal 1900
+'Pablo Ignacio Márquez
 
 Option Explicit
+
 
 Private Sub Command1_Click(Index As Integer)
     
@@ -215,7 +216,7 @@ Private Sub Command1_Click(Index As Integer)
             Dim Alineacion As Byte
             
             If txtClanName.Text = "" Then
-                MensajeAdvertencia "Â¡Ingrese un nombre!"
+                MensajeAdvertencia "¡Ingrese un nombre!"
                 Exit Sub
 
             End If
@@ -235,7 +236,7 @@ Private Sub Command1_Click(Index As Integer)
 
             ClanName = txtClanName
     
-            fdesc = Replace(txtDesc, vbCrLf, "Âº", , , vbBinaryCompare)
+            fdesc = Replace(txtDesc, vbCrLf, "º", , , vbBinaryCompare)
     
             '    If Not AsciiValidos(fdesc) Then
             '        MsgBox "La descripcion contiene caracteres invalidos"
@@ -249,17 +250,21 @@ Private Sub Command1_Click(Index As Integer)
             End If
     
             If CreandoClan Then
-                If Combo1.Text = "" Then
+                If Combo1.ListIndex < 0 Then
                     MensajeAdvertencia "Debes definir el alineamiento del clan."
                     Exit Sub
-
                 End If
 
-                If UCase$(Combo1.Text) = "CIUDADANA" Then
-                    Alineacion = eClanType.ct_Legal
-                ElseIf UCase$(Combo1.Text) = "CRIMINAL" Then
-                    Alineacion = eClanType.ct_Evil
-
+                If Combo1.ListIndex = eClanType.ct_Neutral Then
+                    Alineacion = eClanType.ct_Neutral
+                ElseIf Combo1.ListIndex = eClanType.ct_Real Then
+                    Alineacion = eClanType.ct_Real
+                ElseIf Combo1.ListIndex = eClanType.ct_Caos Then
+                    Alineacion = eClanType.ct_Caos
+                ElseIf Combo1.ListIndex = eClanType.ct_Ciudadana Then
+                    Alineacion = eClanType.ct_Ciudadana
+                ElseIf Combo1.ListIndex = eClanType.ct_Criminal Then
+                    Alineacion = eClanType.ct_Criminal
                 End If
         
                 Call WriteCreateNewGuild(fdesc, ClanName, Alineacion)

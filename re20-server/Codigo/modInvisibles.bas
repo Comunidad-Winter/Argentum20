@@ -1,4 +1,12 @@
 Attribute VB_Name = "modInvisibles"
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
 Option Explicit
 
 ' 0 = viejo
@@ -23,7 +31,7 @@ Public Sub PonerInvisible(ByVal UserIndex As Integer, ByVal estado As Boolean)
 
             Dim EstadoActual As Boolean
 
-            ' Est√° invisible ?
+            ' Est· invisible ?
 108         EstadoActual = (UserList(UserIndex).flags.invisible = 1)
 
             'If EstadoActual <> Modo Then
@@ -32,7 +40,7 @@ Public Sub PonerInvisible(ByVal UserIndex As Integer, ByVal estado As Boolean)
                 ' clientes un Borrar Char
 112             UserList(UserIndex).flags.invisible = 1
                 '        'Call SendData(SendTarget.ToMap, 0, UserList(UserIndex).Pos.Map, "NOVER" & UserList(UserIndex).Char.CharIndex & ",1")
-114             Call SendData(SendTarget.toMap, UserList(UserIndex).Pos.Map, PrepareMessageCharacterRemove(UserList(UserIndex).Char.CharIndex, True))
+114             Call SendData(SendTarget.toMap, UserList(UserIndex).Pos.Map, PrepareMessageCharacterRemove(1, UserList(UserIndex).Char.CharIndex, True))
             Else
         
             End If
@@ -45,8 +53,8 @@ Public Sub PonerInvisible(ByVal UserIndex As Integer, ByVal estado As Boolean)
         Exit Sub
 
 PonerInvisible_Err:
-116     Call RegistrarError(Err.Number, Err.description, "modInvisibles.PonerInvisible", Erl)
-118     Resume Next
+116     Call TraceError(Err.Number, Err.Description, "modInvisibles.PonerInvisible", Erl)
+
         
 End Sub
 

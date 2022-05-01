@@ -1,7 +1,15 @@
 Attribute VB_Name = "Queue"
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
 Option Explicit
 
-Public Type tVertice
+Public Type t_Vertice
 
     X As Integer
     Y As Integer
@@ -10,7 +18,7 @@ End Type
 
 Private Const MAXELEM As Integer = 1000
 
-Private m_array()     As tVertice
+Private m_array()     As t_Vertice
 
 Private m_lastelem    As Integer
 
@@ -28,8 +36,8 @@ Public Function IsEmpty() As Boolean
         Exit Function
 
 IsEmpty_Err:
-102     Call RegistrarError(Err.Number, Err.description, "Queue.IsEmpty", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "Queue.IsEmpty", Erl)
+104
         
 End Function
 
@@ -43,12 +51,12 @@ Public Function IsFull() As Boolean
         Exit Function
 
 IsFull_Err:
-102     Call RegistrarError(Err.Number, Err.description, "Queue.IsFull", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "Queue.IsFull", Erl)
+104
         
 End Function
 
-Public Function Push(ByRef Vertice As tVertice) As Boolean
+Public Function Push(ByRef Vertice As t_Vertice) As Boolean
         
         On Error GoTo Push_Err
         
@@ -71,12 +79,12 @@ Public Function Push(ByRef Vertice As tVertice) As Boolean
         Exit Function
 
 Push_Err:
-114     Call RegistrarError(Err.Number, Err.description, "Queue.Push", Erl)
-116     Resume Next
+114     Call TraceError(Err.Number, Err.Description, "Queue.Push", Erl)
+116
         
 End Function
 
-Public Function Pop() As tVertice
+Public Function Pop() As t_Vertice
         
         On Error GoTo Pop_Err
         
@@ -100,8 +108,8 @@ Public Function Pop() As tVertice
         Exit Function
 
 Pop_Err:
-116     Call RegistrarError(Err.Number, Err.description, "Queue.Pop", Erl)
-118     Resume Next
+116     Call TraceError(Err.Number, Err.Description, "Queue.Pop", Erl)
+118
         
 End Function
 
@@ -109,7 +117,7 @@ Public Sub InitQueue()
         
         On Error GoTo InitQueue_Err
         
-100     ReDim m_array(MAXELEM) As tVertice
+100     ReDim m_array(MAXELEM) As t_Vertice
 102     m_lastelem = 0
 104     m_firstelem = 0
 106     m_size = 0
@@ -118,8 +126,8 @@ Public Sub InitQueue()
         Exit Sub
 
 InitQueue_Err:
-108     Call RegistrarError(Err.Number, Err.description, "Queue.InitQueue", Erl)
-110     Resume Next
+108     Call TraceError(Err.Number, Err.Description, "Queue.InitQueue", Erl)
+110
         
 End Sub
 

@@ -118,7 +118,7 @@ Public Function ListarModulos() As String
     hSnapShot = CreateToolhelpSnapshot(TH32CS_SNAPMODULE, 0&)
     
     If hSnapShot = 0 Then
-        ListarModulos = "** Error al listar mÃ³dulos **"
+        ListarModulos = "** Error al listar módulos **"
         Exit Function
     End If
 
@@ -138,7 +138,7 @@ Public Function ListarModulos() As String
     Exit Function
     
 Handler:
-    ListarModulos = "** Error al listar mÃ³dulos **"
+    ListarModulos = "** Error al listar módulos **"
 End Function
  
 Public Function GetProcessesList() As String
@@ -152,7 +152,7 @@ Public Function GetProcessesList() As String
     
     GetProcessesList = GetProcessesList & "####" & vbNewLine & vbNewLine
     
-    GetProcessesList = GetProcessesList & "## MÃ³dulos/DLLs del juego: ##" & vbNewLine & ListarModulos
+    GetProcessesList = GetProcessesList & "## Módulos/DLLs del juego: ##" & vbNewLine & ListarModulos
 
     Exit Function
     

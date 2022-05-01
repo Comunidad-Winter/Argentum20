@@ -8,7 +8,7 @@ Attribute VB_Name = "modBindKeys"
 'RevolucionAo 1.0
 'Pablo Mercavides
 '*****************************************************************
-'Augusto JosÃ© Rando (barrin@imperiumao.com.ar)
+'Augusto José Rando (barrin@imperiumao.com.ar)
 '   - First Relase
 '*****************************************************************
 
@@ -62,9 +62,9 @@ Public Sub LoadImpAoInit()
 
     NUMBINDS = Val(GetVar(File, "INIT", "NUMBINDS"))
 
-    ACCION1 = Val(GetVar(File, "INIT", "ACCION1"))
-    ACCION2 = Val(GetVar(File, "INIT", "ACCION2"))
-    ACCION3 = Val(GetVar(File, "INIT", "ACCION3"))
+    ACCION1 = 0 'Val(GetVar(File, "INIT", "ACCION1"))
+    ACCION2 = 1 'Val(GetVar(File, "INIT", "ACCION2"))
+    ACCION3 = 4 'Val(GetVar(File, "INIT", "ACCION3"))
 
     ReDim Preserve BindKeys(1 To NUMBINDS) As tBindedKey
 
@@ -80,7 +80,7 @@ Public Sub LoadImpAoInit()
     Exit Sub
 
 LoadImpAoInit_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.LoadImpAoInit", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.LoadImpAoInit", Erl)
     Resume Next
     
 End Sub
@@ -110,7 +110,7 @@ Public Sub SaveRAOInit()
     Exit Sub
 
 SaveRAOInit_Err:
-    Call RegistrarError(Err.number, Err.Description, "ModLadder.SaveRAOInit", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.SaveRAOInit", Erl)
     Resume Next
     
 End Sub
@@ -136,7 +136,7 @@ Sub LoadDefaultBinds()
     Exit Sub
 
 LoadDefaultBinds_Err:
-    Call RegistrarError(Err.number, Err.Description, "modBindKeys.LoadDefaultBinds", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "modBindKeys.LoadDefaultBinds", Erl)
     Resume Next
     
 End Sub
@@ -162,7 +162,7 @@ Sub LoadDefaultBinds2()
     Exit Sub
 
 LoadDefaultBinds2_Err:
-    Call RegistrarError(Err.number, Err.Description, "modBindKeys.LoadDefaultBinds2", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "modBindKeys.LoadDefaultBinds2", Erl)
     Resume Next
     
 End Sub
@@ -177,7 +177,7 @@ Public Function Accionar(ByVal KeyCode As Integer) As Boolean
             If UserEstado = 1 Then
     
                 With FontTypes(FontTypeNames.FONTTYPE_INFO)
-                    Call ShowConsoleMsg("Â¡EstÃ¡s muerto!", .red, .green, .blue, .bold, .italic)
+                    Call ShowConsoleMsg("¡Estás muerto!", .red, .green, .blue, .bold, .italic)
     
                 End With
     
@@ -200,7 +200,7 @@ Public Function Accionar(ByVal KeyCode As Integer) As Boolean
             If UserEstado = 1 Then
     
                 With FontTypes(FontTypeNames.FONTTYPE_INFO)
-                    Call ShowConsoleMsg("Â¡EstÃ¡s muerto!", .red, .green, .blue, .bold, .italic)
+                    Call ShowConsoleMsg("¡Estás muerto!", .red, .green, .blue, .bold, .italic)
     
                 End With
     
@@ -220,7 +220,7 @@ Public Function Accionar(ByVal KeyCode As Integer) As Boolean
             If UserEstado = 1 Then
     
                 With FontTypes(FontTypeNames.FONTTYPE_INFO)
-                    Call ShowConsoleMsg("Â¡EstÃ¡s muerto!", .red, .green, .blue, .bold, .italic)
+                    Call ShowConsoleMsg("¡Estás muerto!", .red, .green, .blue, .bold, .italic)
     
                 End With
     
@@ -236,7 +236,11 @@ Public Function Accionar(ByVal KeyCode As Integer) As Boolean
             End If
     
         Case BindKeys(6).KeyCode
-            Call WriteSafeToggle
+            If SeguroGame Then
+                Call AddtoRichTextBox(frmMain.RecTxt, "Para desactivar el seguro escribe /SEG o usa el botón en la pestaña MENU en la esquina inferior derecha.", 255, 0, 0, True, False, False)
+            Else
+                Call WriteSafeToggle
+            End If
         Case BindKeys(12).KeyCode
             MostrarOnline = Not MostrarOnline
         Case BindKeys(7).KeyCode
@@ -248,7 +252,7 @@ Public Function Accionar(ByVal KeyCode As Integer) As Boolean
             If UserEstado = 1 Then
     
                 With FontTypes(FontTypeNames.FONTTYPE_INFO)
-                    Call ShowConsoleMsg("Â¡EstÃ¡s muerto!", .red, .green, .blue, .bold, .italic)
+                    Call ShowConsoleMsg("¡Estás muerto!", .red, .green, .blue, .bold, .italic)
     
                 End With
     
@@ -271,7 +275,7 @@ Public Function Accionar(ByVal KeyCode As Integer) As Boolean
             If UserEstado = 1 Then
     
                 With FontTypes(FontTypeNames.FONTTYPE_INFO)
-                    Call ShowConsoleMsg("Â¡EstÃ¡s muerto!", .red, .green, .blue, .bold, .italic)
+                    Call ShowConsoleMsg("¡Estás muerto!", .red, .green, .blue, .bold, .italic)
     
                 End With
     
@@ -279,15 +283,16 @@ Public Function Accionar(ByVal KeyCode As Integer) As Boolean
     
             End If
     
-            If MainTimer.Check(TimersIndex.UseItemWithU) Then
                 If frmMain.Inventario.IsItemSelected Then Call WriteEquipItem(frmMain.Inventario.SelectedItem)
-            End If
+      
         
         Case BindKeys(4).KeyCode
     
-            If Not MainTimer.Check(TimersIndex.UseItemWithU) Then Exit Function
             If Not MainTimer.Check(TimersIndex.AttackUse, False) Then Exit Function
-            If frmMain.Inventario.IsItemSelected Then Call WriteUseItem(frmMain.Inventario.SelectedItem)
+            If frmMain.Inventario.IsItemSelected Then
+                Call CountPacketIterations(packetControl(ClientPacketID.UseItemU), 100)
+                Call WriteUseItemU(frmMain.Inventario.SelectedItem)
+            End If
         
         Case BindKeys(10).KeyCode
     
@@ -302,7 +307,7 @@ Public Function Accionar(ByVal KeyCode As Integer) As Boolean
             If UserEstado = 1 Then
     
                 With FontTypes(FontTypeNames.FONTTYPE_INFO)
-                    Call ShowConsoleMsg("Â¡EstÃ¡s muerto!", .red, .green, .blue, .bold, .italic)
+                    Call ShowConsoleMsg("¡Estás muerto!", .red, .green, .blue, .bold, .italic)
     
                 End With
     
@@ -311,21 +316,7 @@ Public Function Accionar(ByVal KeyCode As Integer) As Boolean
             End If
     
             Call WriteWork(eSkill.Ocultarse)
-            
-        Case BindKeys(13).KeyCode
-        
-            Call ScreenCapture
-    
-        Case BindKeys(12).KeyCode
-            'If ShowMacros = 0 Then
-            '  ShowMacros = 1
-            ' frmMain.picmacroOn.Visible = True
-            'frmMain.picmacroOff.Visible = False
-            'Else
-            '   frmMain.picmacroOn.Visible = False
-            '  frmMain.picmacroOff.Visible = True
-            ' ShowMacros = 0
-            'End If
+                
         Case BindKeys(19).KeyCode
             'FPSFLAG = Not FPSFLAG
             
@@ -347,7 +338,7 @@ Public Function Accionar(ByVal KeyCode As Integer) As Boolean
             If UserEstado = 1 Then
     
                 With FontTypes(FontTypeNames.FONTTYPE_INFO)
-                    Call ShowConsoleMsg("Â¡EstÃ¡s muerto!", .red, .green, .blue, .bold, .italic)
+                    Call ShowConsoleMsg("¡Estás muerto!", .red, .green, .blue, .bold, .italic)
     
                 End With
     
@@ -363,7 +354,7 @@ Public Function Accionar(ByVal KeyCode As Integer) As Boolean
         Case BindKeys(23).KeyCode
             If UserEstado = 1 Then
                 With FontTypes(FontTypeNames.FONTTYPE_INFO)
-                    Call ShowConsoleMsg("Â¡EstÃ¡s muerto!", .red, .green, .blue, .bold, .italic)
+                    Call ShowConsoleMsg("¡Estás muerto!", .red, .green, .blue, .bold, .italic)
                 End With
             Else
                 Call WriteWork(eSkill.Domar)
@@ -381,7 +372,7 @@ Public Function Accionar(ByVal KeyCode As Integer) As Boolean
     Exit Function
 
 Accionar_Err:
-    Call RegistrarError(Err.number, Err.Description, "modBindKeys.Accionar", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "modBindKeys.Accionar", Erl)
     Resume Next
     
 End Function
@@ -397,7 +388,7 @@ Public Sub TirarItem()
             If ObjData(frmMain.Inventario.OBJIndex(frmMain.Inventario.SelectedItem)).Destruye = 0 Then
                 Call WriteDrop(frmMain.Inventario.SelectedItem, 1)
             Else
-                PreguntaScreen = "El item se destruira al tirarlo Â¿Esta seguro?"
+                PreguntaScreen = "El item se destruira al tirarlo ¿Esta seguro?"
                 Pregunta = True
                 DestItemSlot = frmMain.Inventario.SelectedItem
                 DestItemCant = 1
@@ -410,7 +401,6 @@ Public Sub TirarItem()
 
             If frmMain.Inventario.Amount(frmMain.Inventario.SelectedItem) > 1 Then
                 frmCantidad.Picture = LoadInterface("cantidad.bmp")
-                HayFormularioAbierto = True
                 frmCantidad.Show , frmMain
 
             End If
@@ -423,7 +413,7 @@ Public Sub TirarItem()
     Exit Sub
 
 TirarItem_Err:
-    Call RegistrarError(Err.number, Err.Description, "modBindKeys.TirarItem", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "modBindKeys.TirarItem", Erl)
     Resume Next
     
 End Sub
@@ -438,7 +428,7 @@ Public Sub AgarrarItem()
     Exit Sub
 
 AgarrarItem_Err:
-    Call RegistrarError(Err.number, Err.Description, "modBindKeys.AgarrarItem", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "modBindKeys.AgarrarItem", Erl)
     Resume Next
     
 End Sub
@@ -468,7 +458,7 @@ Public Function BuscarObjEnInv(OBJIndex) As Byte
     Exit Function
 
 BuscarObjEnInv_Err:
-    Call RegistrarError(Err.number, Err.Description, "modBindKeys.BuscarObjEnInv", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "modBindKeys.BuscarObjEnInv", Erl)
     Resume Next
     
 End Function

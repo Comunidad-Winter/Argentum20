@@ -40,6 +40,7 @@ Private m_Pre_IBuffer_Full As Direct3DIndexBuffer8
 Private Const WATER_WAVE_SIZE_X = 4
 Private Const WATER_WAVE_SIZE_Y = 4
 Private Const WATER_WAVE_HEIGHT = 3
+Private Const WATER_OBJECT_WAVE_HEIGHT = 3
 Private Const WATER_WAVE_FACTOR_X = (2 * PI) / (WATER_WAVE_SIZE_X * TilePixelWidth)
 Private Const WATER_WAVE_FACTOR_Y = (2 * PI) / (WATER_WAVE_SIZE_Y * TilePixelHeight)
 Private Const WATER_TILE_FACTOR_X = TilePixelWidth * WATER_WAVE_FACTOR_X
@@ -60,17 +61,16 @@ Public Sub Begin()
     
     On Error GoTo Begin_Err
     
-    Call DirectDevice.SetTexture(0, Nothing)
     Call DirectDevice.SetStreamSource(0, m_VBuffer, 24)
     Call DirectDevice.SetIndices(m_IBuffer, 0)
 
     Call SetAlpha(False)
-
+    Call SetTexture(Nothing)
     
     Exit Sub
 
 Begin_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsBatch.Begin", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsBatch.Begin", Erl)
     Resume Next
     
 End Sub
@@ -88,7 +88,7 @@ Public Sub BeginPrecalculated(ByVal x As Single, ByVal y As Single)
     Exit Sub
 
 BeginPrecalculated_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsBatch.BeginPrecalculated", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsBatch.BeginPrecalculated", Erl)
     Resume Next
     
 End Sub
@@ -103,7 +103,7 @@ Public Sub EndPrecalculated()
     Exit Sub
 
 EndPrecalculated_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsBatch.EndPrecalculated", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsBatch.EndPrecalculated", Erl)
     Resume Next
     
 End Sub
@@ -126,7 +126,7 @@ Public Sub SetAlpha(ByVal IsAlpha As Boolean)
         ' Update the new state of the batch
         '
         If IsAlpha Then
-            Call DirectDevice.SetRenderState(D3DRS_SRCBLEND, D3DBLEND_ONE)
+            Call DirectDevice.SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA)
             Call DirectDevice.SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE)
         Else
             Call DirectDevice.SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA)
@@ -139,7 +139,7 @@ Public Sub SetAlpha(ByVal IsAlpha As Boolean)
     Exit Sub
 
 SetAlpha_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsBatch.SetAlpha", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsBatch.SetAlpha", Erl)
     Resume Next
     
 End Sub
@@ -169,7 +169,7 @@ Public Sub SetTexture(ByRef Texture As Direct3DTexture8)
     Exit Sub
 
 SetTexture_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsBatch.SetTexture", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsBatch.SetTexture", Erl)
     Resume Next
     
 End Sub
@@ -216,8 +216,8 @@ Friend Sub Draw(ByVal x As Long, _
  
     If Angle > 0 And Angle <= 360 Then
    
-        NewX = CenterX + (m_Data(m_Position).x - CenterX) * -CosRad - (m_Data(m_Position).y - CenterY) * -SinRad
-        NewY = CenterY + (m_Data(m_Position).y - CenterY) * -CosRad + (m_Data(m_Position).x - CenterX) * -SinRad
+        NewX = CenterX + (m_Data(m_Position).x - CenterX) * CosRad - (m_Data(m_Position).y - CenterY) * SinRad
+        NewY = CenterY + (m_Data(m_Position).y - CenterY) * CosRad + (m_Data(m_Position).x - CenterX) * SinRad
        
         m_Data(m_Position).x = NewX
         m_Data(m_Position).y = NewY
@@ -235,8 +235,8 @@ Friend Sub Draw(ByVal x As Long, _
    
     If Angle > 0 And Angle <= 360 Then
    
-        NewX = CenterX + (m_Data(m_Position).x - CenterX) * -CosRad - (m_Data(m_Position).y - CenterY) * -SinRad
-        NewY = CenterY + (m_Data(m_Position).y - CenterY) * -CosRad + (m_Data(m_Position).x - CenterX) * -SinRad
+        NewX = CenterX + (m_Data(m_Position).x - CenterX) * CosRad - (m_Data(m_Position).y - CenterY) * SinRad
+        NewY = CenterY + (m_Data(m_Position).y - CenterY) * CosRad + (m_Data(m_Position).x - CenterX) * SinRad
        
         m_Data(m_Position).x = NewX
         m_Data(m_Position).y = NewY
@@ -254,8 +254,8 @@ Friend Sub Draw(ByVal x As Long, _
  
     If Angle > 0 And Angle <= 360 Then
    
-        NewX = CenterX + (m_Data(m_Position).x - CenterX) * -CosRad - (m_Data(m_Position).y - CenterY) * -SinRad
-        NewY = CenterY + (m_Data(m_Position).y - CenterY) * -CosRad + (m_Data(m_Position).x - CenterX) * -SinRad
+        NewX = CenterX + (m_Data(m_Position).x - CenterX) * CosRad - (m_Data(m_Position).y - CenterY) * SinRad
+        NewY = CenterY + (m_Data(m_Position).y - CenterY) * CosRad + (m_Data(m_Position).x - CenterX) * SinRad
        
         m_Data(m_Position).x = NewX
         m_Data(m_Position).y = NewY
@@ -273,8 +273,8 @@ Friend Sub Draw(ByVal x As Long, _
  
     If Angle > 0 And Angle <= 360 Then
    
-        NewX = CenterX + (m_Data(m_Position).x - CenterX) * -CosRad - (m_Data(m_Position).y - CenterY) * -SinRad
-        NewY = CenterY + (m_Data(m_Position).y - CenterY) * -CosRad + (m_Data(m_Position).x - CenterX) * -SinRad
+        NewX = CenterX + (m_Data(m_Position).x - CenterX) * CosRad - (m_Data(m_Position).y - CenterY) * SinRad
+        NewY = CenterY + (m_Data(m_Position).y - CenterY) * CosRad + (m_Data(m_Position).x - CenterX) * SinRad
        
         m_Data(m_Position).x = NewX
         m_Data(m_Position).y = NewY
@@ -291,7 +291,7 @@ Friend Sub Draw(ByVal x As Long, _
     Exit Sub
 
 Draw_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsBatch.Draw", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsBatch.Draw", Erl)
     Resume Next
     
 End Sub
@@ -313,7 +313,7 @@ Friend Sub DrawShadow(ByVal x As Long, _
 
     Dim i As Integer
     For i = 0 To 3
-        Color(i).A = (0.2126 * ColorLight(i).R + 0.7152 * ColorLight(i).G + 0.0722 * ColorLight(i).B) ^ 2 * 0.000625
+        Color(i).A = (0.2126 * ColorLight(i).r + 0.7152 * ColorLight(i).G + 0.0722 * ColorLight(i).B) ^ 2 * 0.000625
     Next
 
     Dim dX As Single, dy As Single
@@ -371,7 +371,7 @@ Friend Sub DrawShadow(ByVal x As Long, _
     Exit Sub
 
 DrawShadow_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsBatch.DrawShadow", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsBatch.DrawShadow", Erl)
     Resume Next
     
 End Sub
@@ -394,7 +394,7 @@ Friend Sub DrawReflection(ByVal x As Long, _
     Dim i As Integer
     For i = 0 To 3
         Color(i).A = ColorLight(i).A * 0.5
-        Color(i).R = ColorLight(i).R * 0.2
+        Color(i).r = ColorLight(i).r * 0.2
         Color(i).G = ColorLight(i).G * 0.5
         Color(i).B = ColorLight(i).B
     Next
@@ -448,7 +448,7 @@ Friend Sub DrawReflection(ByVal x As Long, _
     Exit Sub
 
 DrawReflection_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsBatch.DrawReflection", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsBatch.DrawReflection", Erl)
     Resume Next
     
 End Sub
@@ -467,11 +467,10 @@ Friend Sub DrawBreathing(ByVal x As Long, _
     On Error GoTo DrawBreathing_Err
     
 
-    Dim dX As Long, dy As Long
-    dX = Fix(ease)
-    dy = Fix(3 * ease)
+    Dim dy As Integer
+    dy = Int(2 * ease)
 
-    m_Data(m_Position).x = x
+    m_Data(m_Position).x = x + 0.25
     m_Data(m_Position).y = y + Height
     m_Data(m_Position).z = 0
     m_Data(m_Position).Color = Color(0)
@@ -480,7 +479,7 @@ Friend Sub DrawBreathing(ByVal x As Long, _
  
     m_Position = m_Position + 1
     
-    m_Data(m_Position).x = x
+    m_Data(m_Position).x = x + 0.25
     m_Data(m_Position).y = y - dy
     m_Data(m_Position).z = 0
     m_Data(m_Position).Color = Color(1)
@@ -489,7 +488,7 @@ Friend Sub DrawBreathing(ByVal x As Long, _
    
     m_Position = m_Position + 1
    
-    m_Data(m_Position).x = x + Width
+    m_Data(m_Position).x = x + Width + 0.25
     m_Data(m_Position).y = y + Height
     m_Data(m_Position).z = 0
     m_Data(m_Position).Color = Color(2)
@@ -498,7 +497,7 @@ Friend Sub DrawBreathing(ByVal x As Long, _
 
     m_Position = m_Position + 1
    
-    m_Data(m_Position).x = x + Width + dX
+    m_Data(m_Position).x = x + Width + 0.25
     m_Data(m_Position).y = y - dy
     m_Data(m_Position).z = 0
     m_Data(m_Position).Color = Color(3)
@@ -515,7 +514,7 @@ Friend Sub DrawBreathing(ByVal x As Long, _
     Exit Sub
 
 DrawBreathing_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsBatch.DrawBreathing", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsBatch.DrawBreathing", Erl)
     Resume Next
     
 End Sub
@@ -590,7 +589,131 @@ Friend Sub DrawWater(ByVal x As Single, _
     Exit Sub
 
 DrawWater_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsBatch.DrawWater", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsBatch.DrawWater", Erl)
+    Resume Next
+    
+End Sub
+
+Friend Sub DrawItemInWater(ByVal x As Single, _
+                    ByVal y As Single, _
+                    ByVal Width As Long, _
+                    ByVal Height As Long, _
+                    ByRef Color() As RGBA, _
+                    ByVal Tx1 As Single, _
+                    ByVal Ty1 As Single, _
+                    ByVal Tx2 As Single, _
+                    ByVal Ty2 As Single, _
+                    ByVal Angle As Single)
+    
+    On Error GoTo DrawWater_Err
+    
+    Dim t As Double
+    t = (FrameTime Mod 62831) * 0.001
+    
+    If Angle > 0 And Angle <= 360 Then
+        Dim NewX     As Single
+        Dim NewY     As Single
+        Dim SinRad   As Single
+        Dim CosRad   As Single
+        Dim RadAngle As Single
+        Dim CenterX  As Single
+        Dim CenterY  As Single
+       
+        RadAngle = Angle * 0.017453292519
+   
+        CenterX = x + (Width * 0.5)
+        CenterY = y + (Height * 0.5)
+       
+        SinRad = Sin(RadAngle)
+        CosRad = Cos(RadAngle)
+       
+    End If
+    
+    m_Data(m_Position).x = x + Cos(t + WATER_TILE_FACTOR_Y) * WATER_OBJECT_WAVE_HEIGHT
+    m_Data(m_Position).y = y + Height + Sin(t + WATER_TILE_FACTOR_Y) * WATER_OBJECT_WAVE_HEIGHT
+    m_Data(m_Position).z = 1
+    m_Data(m_Position).Color = Color(0)
+    m_Data(m_Position).tX = Tx1
+    m_Data(m_Position).tY = Ty2
+
+    If Angle > 0 And Angle <= 360 Then
+   
+        NewX = CenterX + (m_Data(m_Position).x - CenterX) * CosRad - (m_Data(m_Position).y - CenterY) * SinRad
+        NewY = CenterY + (m_Data(m_Position).y - CenterY) * CosRad + (m_Data(m_Position).x - CenterX) * SinRad
+       
+        m_Data(m_Position).x = NewX
+        m_Data(m_Position).y = NewY
+       
+    End If
+
+    m_Position = m_Position + 1
+    
+    m_Data(m_Position).x = x + Cos(t) * WATER_OBJECT_WAVE_HEIGHT
+    m_Data(m_Position).y = y + Sin(t) * WATER_OBJECT_WAVE_HEIGHT
+    m_Data(m_Position).z = 1
+    m_Data(m_Position).Color = Color(1)
+    m_Data(m_Position).tX = Tx1
+    m_Data(m_Position).tY = Ty1
+   
+    If Angle > 0 And Angle <= 360 Then
+   
+        NewX = CenterX + (m_Data(m_Position).x - CenterX) * CosRad - (m_Data(m_Position).y - CenterY) * SinRad
+        NewY = CenterY + (m_Data(m_Position).y - CenterY) * CosRad + (m_Data(m_Position).x - CenterX) * SinRad
+       
+        m_Data(m_Position).x = NewX
+        m_Data(m_Position).y = NewY
+       
+    End If
+   
+    m_Position = m_Position + 1
+   
+    m_Data(m_Position).x = x + Width + Cos(t + WATER_TILE_FACTOR_X + WATER_TILE_FACTOR_Y) * WATER_OBJECT_WAVE_HEIGHT
+    m_Data(m_Position).y = y + Height + Sin(t + WATER_TILE_FACTOR_Y) * WATER_OBJECT_WAVE_HEIGHT
+    m_Data(m_Position).z = 1
+    m_Data(m_Position).Color = Color(2)
+    m_Data(m_Position).tX = Tx2
+    m_Data(m_Position).tY = Ty2
+
+    If Angle > 0 And Angle <= 360 Then
+   
+        NewX = CenterX + (m_Data(m_Position).x - CenterX) * CosRad - (m_Data(m_Position).y - CenterY) * SinRad
+        NewY = CenterY + (m_Data(m_Position).y - CenterY) * CosRad + (m_Data(m_Position).x - CenterX) * SinRad
+       
+        m_Data(m_Position).x = NewX
+        m_Data(m_Position).y = NewY
+       
+    End If
+
+    m_Position = m_Position + 1
+   
+    m_Data(m_Position).x = x + Width + Cos(t + WATER_TILE_FACTOR_X) * WATER_OBJECT_WAVE_HEIGHT
+    m_Data(m_Position).y = y + Sin(t) * WATER_OBJECT_WAVE_HEIGHT
+    m_Data(m_Position).z = 1
+    m_Data(m_Position).Color = Color(3)
+    m_Data(m_Position).tX = Tx2
+    m_Data(m_Position).tY = Ty1
+
+    If Angle > 0 And Angle <= 360 Then
+   
+        NewX = CenterX + (m_Data(m_Position).x - CenterX) * CosRad - (m_Data(m_Position).y - CenterY) * SinRad
+        NewY = CenterY + (m_Data(m_Position).y - CenterY) * CosRad + (m_Data(m_Position).x - CenterX) * SinRad
+       
+        m_Data(m_Position).x = NewX
+        m_Data(m_Position).y = NewY
+       
+    End If
+
+    m_Position = m_Position + 1
+   
+    If m_Position >= UBound(m_Data) Then
+        Call Flush
+    End If
+   
+    
+    Exit Sub
+
+DrawWater_Err:
+    Call RegistrarError(Err.Number, Err.Description, "clsBatch.DrawWater", Erl)
     Resume Next
     
 End Sub
@@ -665,7 +788,7 @@ Friend Sub DrawLava(ByVal x As Single, _
     Exit Sub
 
 DrawLava_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsBatch.DrawLava", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsBatch.DrawLava", Erl)
     Resume Next
     
 End Sub
@@ -690,7 +813,7 @@ Friend Sub DrawVertices(vertices() As TYPE_VERTEX)
     Exit Sub
 
 DrawVertices_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsBatch.DrawVertices", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsBatch.DrawVertices", Erl)
     Resume Next
     
 End Sub
@@ -709,7 +832,7 @@ Public Sub Finish()
     Exit Sub
 
 Finish_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsBatch.Finish", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsBatch.Finish", Erl)
     Resume Next
     
 End Sub
@@ -742,7 +865,7 @@ Public Sub Flush()
     Exit Sub
 
 Flush_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsBatch.Flush", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsBatch.Flush", Erl)
     Resume Next
     
 End Sub
@@ -787,7 +910,7 @@ Public Sub Initialize(ByVal Capacity As Long)
     Exit Sub
 
 Initialize_Err:
-    Call RegistrarError(Err.number, Err.Description, "clsBatch.Initialize", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "clsBatch.Initialize", Erl)
     Resume Next
     
 End Sub

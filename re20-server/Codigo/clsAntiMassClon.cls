@@ -12,7 +12,7 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 'Argentum Online 0.11.6
-'Copyright (C) 2002 MÃ¡rquez Pablo Ignacio
+'Copyright (C) 2002 Márquez Pablo Ignacio
 '
 'This program is free software; you can redistribute it and/or modify
 'it under the terms of the Affero General Public License;
@@ -34,10 +34,10 @@ Attribute VB_Exposed = False
 'You can contact me at:
 'morgolock@speedy.com.ar
 'www.geocities.com/gmorgolock
-'Calle 3 nÃºmero 983 piso 7 dto A
+'Calle 3 número 983 piso 7 dto A
 'La Plata - Pcia, Buenos Aires - Republica Argentina
-'CÃ³digo Postal 1900
-'Pablo Ignacio MÃ¡rquez
+'Código Postal 1900
+'Pablo Ignacio Márquez
 Option Explicit
 
 Private Const MaximoPersonajesPorIP = 15
@@ -53,7 +53,7 @@ Public Function MaxPersonajes(sIp As String) As Boolean
 
 100     For i = 1 To m_coleccion.Count
 
-102         If m_coleccion.Item(i).ip = sIp Then
+102         If m_coleccion.Item(i).IP = sIp Then
 104             m_coleccion.Item(i).PersonajesCreados = m_coleccion.Item(i).PersonajesCreados + 1
 106             MaxPersonajes = (m_coleccion.Item(i).PersonajesCreados > MaximoPersonajesPorIP)
 
@@ -71,8 +71,8 @@ Public Function MaxPersonajes(sIp As String) As Boolean
         Exit Function
 
 MaxPersonajes_Err:
-114     Call RegistrarError(Err.Number, Err.description, "clsAntiMassClon.MaxPersonajes", Erl)
-116     Resume Next
+114     Call TraceError(Err.Number, Err.Description, "clsAntiMassClon.MaxPersonajes", Erl)
+116
         
 End Function
 
@@ -88,7 +88,7 @@ Public Function VaciarColeccion()
 
         Exit Function
 ErrHandler:
-104     Call LogError("Error en RestarConexion " & Err.description)
+104     Call LogError("Error en RestarConexion " & Err.Description)
 
 End Function
 

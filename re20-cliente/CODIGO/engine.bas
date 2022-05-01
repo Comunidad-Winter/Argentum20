@@ -1,6 +1,7 @@
 Attribute VB_Name = "engine"
 Option Explicit
 
+Private Declare Function timeGetTime Lib "winmm.dll" () As Long
 
 Public FrameNum               As Long
 
@@ -8,12 +9,6 @@ Public FrameNum               As Long
 Public Dialogos                 As clsDialogs
 Public LucesRedondas            As clsLucesRedondas
 Public LucesCuadradas           As clsLucesCuadradas
-Private Estrella                As grh
-Private Marco                   As grh
-Private BarraMana               As grh
-Private BarraVida               As grh
-Private BarraGris               As grh
-
 ''
 ' Maximum number of dialogs that can exist.
 Public Const MAX_DIALOGS     As Byte = 100
@@ -24,12 +19,11 @@ Public Const MAX_LENGTH      As Byte = 18
 
 ''
 ' Number of milliseconds to add to the lifetime per dialog character
-Public Const MS_PER_CHAR     As Byte = 100
+Public Const MS_PER_CHAR     As Byte = 60
 
 ''
 ' Number of extra milliseconds to add to the lifetime of a new dialog
 Public Const MS_ADD_EXTRA    As Integer = 5000
-
 ''
 ' The dialog structure
 '
@@ -100,26 +94,34 @@ Private Declare Function QueryPerformanceCounter Lib "kernel32" (lpPerformanceCo
 Public fps                     As Long
 Private FramesPerSecCounter    As Long
 Private lFrameTimer            As Long
-Public FrameTime          As Long
+Public FrameTime               As Long
+
+Public FadeInAlpha             As Integer
 
 Private ScrollPixelsPerFrameX  As Single
 Private ScrollPixelsPerFrameY  As Single
 
 Private TileBufferPixelOffsetX As Integer
 Private TileBufferPixelOffsetY As Integer
+Private TimeLast As Long
 
 Private Const GrhFogata        As Integer = 1521
 
 ' Colores estaticos
+
+Public flash(3)        As RGBA
 Public COLOR_EMPTY              As RGBA
 Public COLOR_WHITE(3)           As RGBA
+Public COLOR_RED(3)             As RGBA
+Public COLOR_GREEN(3)           As RGBA
+Public r As Byte
+Public G As Byte
+Public B As Byte
 Public textcolorAsistente(3)    As RGBA
 
 'Sets a Grh animation to loop indefinitely.
 
-#Const HARDCODED = False 'True ' == M√ÅS FPS ^^
-
-Private Function GetElapsedTime() As Single
+Public Function GetElapsedTime() As Single
     
     On Error GoTo GetElapsedTime_Err
     
@@ -130,9 +132,7 @@ Private Function GetElapsedTime() As Single
     'Gets the time that past since the last call
     '**************************************************************
     Dim Start_Time    As Currency
-
     Static end_time   As Currency
-
     Static timer_freq As Currency
 
     'Get the timer frequency
@@ -151,15 +151,13 @@ Private Function GetElapsedTime() As Single
     Exit Function
 
 GetElapsedTime_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.GetElapsedTime", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.GetElapsedTime", Erl)
     Resume Next
     
 End Function
 
 Private Function Init_DirectDevice(ByVal ModoAceleracion As CONST_D3DCREATEFLAGS) As Boolean
 On Error GoTo ErrorHandler:
-    
-    Dim VSync As String: VSync = CByte(GetVar(App.Path & "\..\Recursos\OUTPUT\Configuracion.ini", "VIDEO", "VSync"))
     
     ' Retrieve the information about your current display adapter.
     Call DirectD3D.GetAdapterDisplayMode(D3DADAPTER_DEFAULT, DispMode)
@@ -168,7 +166,7 @@ On Error GoTo ErrorHandler:
     
         .Windowed = True
 
-        If VSync Then
+        If VSyncActivado Then
             .SwapEffect = D3DSWAPEFFECT_COPY_VSYNC
         Else
             .SwapEffect = D3DSWAPEFFECT_DISCARD
@@ -183,7 +181,7 @@ On Error GoTo ErrorHandler:
         .EnableAutoDepthStencil = 1
         .AutoDepthStencilFormat = D3DFMT_D24S8
         
-        .hDeviceWindow = frmMain.renderer.hWnd
+        .hDeviceWindow = frmMain.renderer.hwnd
         
     End With
     
@@ -208,11 +206,6 @@ Private Sub Engine_InitExtras()
     On Error GoTo Engine_InitExtras_Err
     
 
-    Call InitGrh(Estrella, 35764)
-    Call InitGrh(Marco, 839)
-    Call InitGrh(BarraMana, 840)
-    Call InitGrh(BarraVida, 841)
-    Call InitGrh(BarraGris, 842)
     
     With Render_Connect_Rect
         .Top = 0
@@ -242,10 +235,7 @@ Private Sub Engine_InitExtras()
     'Call Font_Create("Tahoma", 8, True, 0)
     'Call Font_Create("Verdana", 8, False, 0)
     'Call Font_Create("Verdana", 11, True, False)
-    
-    ' Inventario
-    Call Initialize
-    
+        
     ' Inicializar textura compuesta
     Call InitComposedTexture
     
@@ -253,7 +243,7 @@ Private Sub Engine_InitExtras()
     Exit Sub
 
 Engine_InitExtras_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Engine_InitExtras", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Engine_InitExtras", Erl)
     Resume Next
     
 End Sub
@@ -265,52 +255,50 @@ Public Sub Engine_InitColors()
 
     ' Colores comunes
     Call Long_2_RGBAList(COLOR_WHITE, -1)
-
-    Call RGBAList(textcolorAsistente, 0, 200, 0)
+    
+    Call RGBAList(textcolorAsistente, 0, 255, 0)
 
     
     Exit Sub
 
 Engine_InitColors_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Engine_InitColors", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Engine_InitColors", Erl)
     Resume Next
     
 End Sub
 
 Public Sub Engine_Init()
 
-On Error GoTo errhandler:
+On Error GoTo ErrHandler:
     
     ' Initialize all DirectX objects.
     Set DirectX = New DirectX8
     Set DirectD3D = DirectX.Direct3DCreate()
     Set DirectD3D8 = New D3DX8
-    
-    Dim Modo As String: Modo = GetVar(App.Path & "\..\Recursos\OUTPUT\Configuracion.ini", "VIDEO", "Aceleracion")
-    
-    Select Case Modo
+
+    Select Case ModoAceleracion
     
         Case "Auto"
             If Not Init_DirectDevice(D3DCREATE_HARDWARE_VERTEXPROCESSING) Then
                 If Not Init_DirectDevice(D3DCREATE_MIXED_VERTEXPROCESSING) Then
                     If Not Init_DirectDevice(D3DCREATE_SOFTWARE_VERTEXPROCESSING) Then
                         
-                        GoTo errhandler
+                        GoTo ErrHandler
                         
                     End If
                 End If
             End If
                 
         Case "Hardware"
-            If Init_DirectDevice(D3DCREATE_HARDWARE_VERTEXPROCESSING) = False Then GoTo errhandler
+            If Init_DirectDevice(D3DCREATE_HARDWARE_VERTEXPROCESSING) = False Then GoTo ErrHandler
             Debug.Print "Modo de Renderizado: HARDWARE"
             
         Case "Mixed"
-            If Init_DirectDevice(D3DCREATE_MIXED_VERTEXPROCESSING) = False Then GoTo errhandler
+            If Init_DirectDevice(D3DCREATE_MIXED_VERTEXPROCESSING) = False Then GoTo ErrHandler
             Debug.Print "Modo de Renderizado: MIXED"
         
         Case Else
-            If Init_DirectDevice(D3DCREATE_SOFTWARE_VERTEXPROCESSING) = False Then GoTo errhandler
+            If Init_DirectDevice(D3DCREATE_SOFTWARE_VERTEXPROCESSING) = False Then GoTo ErrHandler
             Debug.Print "Modo de Renderizado: SOFTWARE"
     
     End Select
@@ -363,12 +351,12 @@ On Error GoTo errhandler:
     
     Exit Sub
     
-errhandler:
+ErrHandler:
     
     Call MsgBox("Ha ocurrido un error al iniciar el motor grafico." & vbNewLine & _
-                "Aseg√∫rate de tener los drivers gr√°ficos actualizados y la librer√≠a DX8VB.dll registrada correctamente.", vbCritical, "Argentum20")
+                "Aseg˙rate de tener los drivers gr·ficos actualizados y la librerÌa DX8VB.dll registrada correctamente.", vbCritical, "Argentum20")
     
-    Debug.Print "Error Number Returned: " & Err.number
+    Debug.Print "Error Number Returned: " & Err.Number
 
     End
 
@@ -377,36 +365,45 @@ End Sub
 Public Sub Engine_BeginScene(Optional ByVal Color As Long = 0)
     
     On Error GoTo Engine_BeginScene_Err
+  
     
-    
+    If DirectDevice.TestCooperativeLevel <> D3D_OK Then
+        If DirectDevice.TestCooperativeLevel = D3DERR_DEVICENOTRESET Then
+            Call Engine_Init
+            prgRun = True
+            pausa = False
+            QueRender = 0
+        End If
+    End If
     Call DirectDevice.Clear(0, ByVal 0, D3DCLEAR_TARGET Or D3DCLEAR_ZBUFFER, Color, 1, 0)
-    
     Call DirectDevice.BeginScene
-    
     Call SpriteBatch.Begin
-
-    
     Exit Sub
 
 Engine_BeginScene_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Engine_BeginScene", Erl)
-    Resume Next
+    
+    Call RegistrarError(Err.Number, Err.Description, "engine.Engine_BeginScene", Erl)
+
     
 End Sub
 
-Public Sub Engine_EndScene(ByRef DestRect As RECT, Optional ByVal hWnd As Long = 0)
+Public Sub Engine_EndScene(ByRef DestRect As RECT, Optional ByVal hwnd As Long = 0)
 
-On Error GoTo ErrorHandler:
-    
+On Error GoTo ErrorHandlerDD:
+    If DirectDevice.TestCooperativeLevel <> D3D_OK Then
+        Exit Sub
+    End If
+  
+  
     Call SpriteBatch.Flush
     
     Call DirectDevice.EndScene
-        
-    Call DirectDevice.Present(DestRect, ByVal 0, hWnd, ByVal 0)
+      
+    Call DirectDevice.Present(DestRect, ByVal 0, hwnd, ByVal 0)
     
     Exit Sub
     
-ErrorHandler:
+ErrorHandlerDD:
 
     If DirectDevice.TestCooperativeLevel = D3DERR_DEVICENOTRESET Then
         
@@ -419,6 +416,7 @@ ErrorHandler:
     End If
         
 End Sub
+
 
 Public Sub Engine_Deinit()
     
@@ -437,7 +435,7 @@ Public Sub Engine_Deinit()
     Exit Sub
 
 Engine_Deinit_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Engine_Deinit", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Engine_Deinit", Erl)
     Resume Next
     
 End Sub
@@ -457,7 +455,7 @@ Public Sub Engine_ActFPS()
     Exit Sub
 
 Engine_ActFPS_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Engine_ActFPS", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Engine_ActFPS", Erl)
     Resume Next
     
 End Sub
@@ -475,7 +473,7 @@ Public Sub Draw_GrhIndex(ByVal grh_index As Long, ByVal x As Integer, ByVal y As
     Exit Sub
 
 Draw_GrhIndex_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Draw_GrhIndex", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Draw_GrhIndex", Erl)
     Resume Next
     
 End Sub
@@ -494,7 +492,7 @@ Public Sub Draw_GrhColor(ByVal grh_index As Long, ByVal x As Integer, ByVal y As
     Exit Sub
 
 Draw_GrhColor_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Draw_GrhColor", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Draw_GrhColor", Erl)
     Resume Next
     
 End Sub
@@ -506,13 +504,13 @@ Public Sub Draw_GrhFont(ByVal grh_index As Long, ByVal x As Integer, ByVal y As 
 
     If grh_index <= 0 Then Exit Sub
 
-    Call Batch_Textured_Box_Advance(x, y, GrhData(grh_index).pixelWidth, GrhData(grh_index).pixelHeight, GrhData(grh_index).sX, GrhData(grh_index).sY, GrhData(grh_index).FileNum, GrhData(grh_index).pixelWidth + 1, GrhData(grh_index).pixelHeight + 1, text_color)
+    Call Batch_Textured_Box_Advance(x, y, GrhData(grh_index).pixelWidth + 1, GrhData(grh_index).pixelHeight + 1, GrhData(grh_index).sX, GrhData(grh_index).sY, GrhData(grh_index).FileNum, GrhData(grh_index).pixelWidth + 1, GrhData(grh_index).pixelHeight + 1, text_color)
 
     
     Exit Sub
 
 Draw_GrhFont_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Draw_GrhFont", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Draw_GrhFont", Erl)
     Resume Next
     
 End Sub
@@ -530,7 +528,7 @@ Public Sub Draw_GrhIndexColor(ByVal grh_index As Long, ByVal x As Integer, ByVal
     Exit Sub
 
 Draw_GrhIndexColor_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Draw_GrhIndexColor", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Draw_GrhIndexColor", Erl)
     Resume Next
     
 End Sub
@@ -539,7 +537,7 @@ Public Sub Draw_Grh(ByRef grh As grh, ByVal x As Integer, ByVal y As Integer, By
     
     On Error GoTo Draw_Grh_Err
 
-    If grh.GrhIndex = 0 Or grh.GrhIndex > MaxGrh Then Exit Sub
+    If grh.grhIndex = 0 Or grh.grhIndex > MaxGrh Then Exit Sub
     
     Dim CurrentFrame As Integer
     CurrentFrame = 1
@@ -549,8 +547,8 @@ Public Sub Draw_Grh(ByRef grh As grh, ByVal x As Integer, ByVal y As Integer, By
             Dim ElapsedFrames As Long
             ElapsedFrames = Fix(0.5 * (FrameTime - grh.Started) / grh.speed)
 
-            If grh.Loops = INFINITE_LOOPS Or ElapsedFrames < GrhData(grh.GrhIndex).NumFrames * (grh.Loops + 1) Then
-                CurrentFrame = ElapsedFrames Mod GrhData(grh.GrhIndex).NumFrames + 1
+            If grh.Loops = INFINITE_LOOPS Or ElapsedFrames < GrhData(grh.grhIndex).NumFrames * (grh.Loops + 1) Then
+                CurrentFrame = ElapsedFrames Mod GrhData(grh.grhIndex).NumFrames + 1
 
             Else
                 grh.Started = 0
@@ -562,16 +560,16 @@ Public Sub Draw_Grh(ByRef grh As grh, ByVal x As Integer, ByVal y As Integer, By
     
     Dim CurrentGrhIndex As Long
     'Figure out what frame to draw (always 1 if not animated)
-    CurrentGrhIndex = GrhData(grh.GrhIndex).Frames(CurrentFrame)
+    CurrentGrhIndex = GrhData(grh.grhIndex).Frames(CurrentFrame)
 
     'Center Grh over X,Y pos
     If center Then
         If GrhData(CurrentGrhIndex).TileWidth <> 1 Then
-            x = x - Int(GrhData(CurrentGrhIndex).TileWidth * (32 \ 2)) + 32 \ 2
+            x = x - Int(GrhData(CurrentGrhIndex).TileWidth * TilePixelWidth \ 2) + TilePixelWidth \ 2
         End If
 
-        If GrhData(grh.GrhIndex).TileHeight <> 1 Then
-            y = y - Int(GrhData(CurrentGrhIndex).TileHeight * 32) + 32
+        If GrhData(grh.grhIndex).TileHeight <> 1 Then
+            y = y - Int(GrhData(CurrentGrhIndex).TileHeight * TilePixelHeight) + TilePixelHeight
         End If
     End If
 
@@ -596,7 +594,7 @@ Public Sub Draw_Grh(ByRef grh As grh, ByVal x As Integer, ByVal y As Integer, By
     Exit Sub
 
 Draw_Grh_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Draw_Grh", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Draw_Grh", Erl)
     Resume Next
     
 End Sub
@@ -605,7 +603,7 @@ Public Sub Draw_Grh_Breathing(ByRef grh As grh, ByVal x As Integer, ByVal y As I
     
     On Error GoTo Draw_Grh_Breathing_Err
 
-    If grh.GrhIndex = 0 Or grh.GrhIndex > MaxGrh Then Exit Sub
+    If grh.grhIndex = 0 Or grh.grhIndex > MaxGrh Then Exit Sub
     
     Dim CurrentFrame As Integer
     CurrentFrame = 1
@@ -615,8 +613,8 @@ Public Sub Draw_Grh_Breathing(ByRef grh As grh, ByVal x As Integer, ByVal y As I
             Dim ElapsedFrames As Long
             ElapsedFrames = Fix(0.5 * (FrameTime - grh.Started) / grh.speed)
 
-            If grh.Loops = INFINITE_LOOPS Or ElapsedFrames < GrhData(grh.GrhIndex).NumFrames * (grh.Loops + 1) Then
-                CurrentFrame = ElapsedFrames Mod GrhData(grh.GrhIndex).NumFrames + 1
+            If grh.Loops = INFINITE_LOOPS Or ElapsedFrames < GrhData(grh.grhIndex).NumFrames * (grh.Loops + 1) Then
+                CurrentFrame = ElapsedFrames Mod GrhData(grh.grhIndex).NumFrames + 1
 
             Else
                 grh.Started = 0
@@ -628,16 +626,16 @@ Public Sub Draw_Grh_Breathing(ByRef grh As grh, ByVal x As Integer, ByVal y As I
     
     Dim CurrentGrhIndex As Long
     'Figure out what frame to draw (always 1 if not animated)
-    CurrentGrhIndex = GrhData(grh.GrhIndex).Frames(CurrentFrame)
+    CurrentGrhIndex = GrhData(grh.grhIndex).Frames(CurrentFrame)
 
     'Center Grh over X,Y pos
     If center Then
         If GrhData(CurrentGrhIndex).TileWidth <> 1 Then
-            x = x - Int(GrhData(CurrentGrhIndex).TileWidth * (32 \ 2)) + 32 \ 2
+            x = x + Int(TilePixelWidth - GrhData(CurrentGrhIndex).pixelWidth) \ 2
         End If
 
-        If GrhData(grh.GrhIndex).TileHeight <> 1 Then
-            y = y - Int(GrhData(CurrentGrhIndex).TileHeight * 32) + 32
+        If GrhData(grh.grhIndex).TileHeight <> 1 Then
+            y = y - Int(GrhData(CurrentGrhIndex).TileHeight * TilePixelHeight) + TilePixelHeight
         End If
     End If
 
@@ -653,12 +651,13 @@ Public Sub Draw_Grh_Breathing(ByRef grh As grh, ByVal x As Integer, ByVal y As I
         Call SpriteBatch.SetAlpha(Alpha)
         
         If .Tx2 = 0 And .FileNum > 0 Then
-            .Tx1 = .sX / TextureWidth
+            .Tx1 = (.sX + 0.25) / TextureWidth
             .Tx2 = (.sX + .pixelWidth) / TextureWidth
-            .Ty1 = .sY / TextureHeight
+            .Ty1 = (.sY + 0.25) / TextureHeight
             .Ty2 = (.sY + .pixelHeight) / TextureHeight
         End If
-
+        'Debug.Print ease
+        'Debug.Print .Ty1
         Call SpriteBatch.DrawBreathing(x, y, .pixelWidth, .pixelHeight, ease, rgb_list, .Tx1, .Ty1, .Tx2, .Ty2)
 
     End With
@@ -666,7 +665,7 @@ Public Sub Draw_Grh_Breathing(ByRef grh As grh, ByVal x As Integer, ByVal y As I
     Exit Sub
 
 Draw_Grh_Breathing_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Draw_Grh_Breathing", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Draw_Grh_Breathing", Erl)
     Resume Next
     
 End Sub
@@ -678,7 +677,7 @@ Sub Draw_GrhFX(ByRef grh As grh, ByVal x As Integer, ByVal y As Integer, ByVal c
 
     
 
-    If grh.GrhIndex = 0 Or grh.GrhIndex > MaxGrh Then Exit Sub
+    If grh.grhIndex = 0 Or grh.grhIndex > MaxGrh Then Exit Sub
     
     Dim CurrentFrame As Integer
     CurrentFrame = 1
@@ -692,8 +691,8 @@ Sub Draw_GrhFX(ByRef grh As grh, ByVal x As Integer, ByVal y As Integer, ByVal c
                 grh.AnimacionContador = grh.AnimacionContador - ElapsedFrames
             End If
 
-            If grh.Loops = INFINITE_LOOPS Or ElapsedFrames < GrhData(grh.GrhIndex).NumFrames * (grh.Loops + 1) Then
-                CurrentFrame = ElapsedFrames Mod GrhData(grh.GrhIndex).NumFrames + 1
+            If grh.Loops = INFINITE_LOOPS Or ElapsedFrames < GrhData(grh.grhIndex).NumFrames * (grh.Loops + 1) Then
+                CurrentFrame = ElapsedFrames Mod GrhData(grh.grhIndex).NumFrames + 1
 
             Else
                 grh.Started = 0
@@ -705,7 +704,7 @@ Sub Draw_GrhFX(ByRef grh As grh, ByVal x As Integer, ByVal y As Integer, ByVal c
     
     Dim CurrentGrhIndex As Long
     'Figure out what frame to draw (always 1 if not animated)
-    CurrentGrhIndex = GrhData(grh.GrhIndex).Frames(CurrentFrame)
+    CurrentGrhIndex = GrhData(grh.grhIndex).Frames(CurrentFrame)
 
     If grh.AnimacionContador < grh.CantAnim * 0.1 Then
             
@@ -733,11 +732,11 @@ Sub Draw_GrhFX(ByRef grh As grh, ByVal x As Integer, ByVal y As Integer, ByVal c
     'Center Grh over X,Y pos
     If center Then
         If GrhData(CurrentGrhIndex).TileWidth <> 1 Then
-            x = x - Int(GrhData(CurrentGrhIndex).TileWidth * (32 \ 2)) + 32 \ 2
+            x = x - Int(GrhData(CurrentGrhIndex).TileWidth * (TilePixelWidth \ 2)) + TilePixelWidth \ 2
         End If
 
-        If GrhData(grh.GrhIndex).TileHeight <> 1 Then
-            y = y - Int(GrhData(CurrentGrhIndex).TileHeight * 32) + 32
+        If GrhData(grh.grhIndex).TileHeight <> 1 Then
+            y = y - Int(GrhData(CurrentGrhIndex).TileHeight * TilePixelHeight) + TilePixelHeight
         End If
     End If
 
@@ -767,7 +766,7 @@ Sub Draw_GrhFX(ByRef grh As grh, ByVal x As Integer, ByVal y As Integer, ByVal c
     Exit Sub
 
 Draw_GrhFX_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Draw_GrhFX", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Draw_GrhFX", Erl)
     Resume Next
     
 End Sub
@@ -779,7 +778,7 @@ Private Sub Draw_GrhSinLuz(ByRef grh As grh, ByVal x As Integer, ByVal y As Inte
 
     
 
-    If grh.GrhIndex = 0 Or grh.GrhIndex > MaxGrh Then Exit Sub
+    If grh.grhIndex = 0 Or grh.grhIndex > MaxGrh Then Exit Sub
     
     Dim CurrentFrame As Integer
     CurrentFrame = 1
@@ -789,8 +788,8 @@ Private Sub Draw_GrhSinLuz(ByRef grh As grh, ByVal x As Integer, ByVal y As Inte
             Dim ElapsedFrames As Long
             ElapsedFrames = Fix((FrameTime - grh.Started) / grh.speed)
 
-            If grh.Loops = INFINITE_LOOPS Or ElapsedFrames < GrhData(grh.GrhIndex).NumFrames * (grh.Loops + 1) Then
-                CurrentFrame = ElapsedFrames Mod GrhData(grh.GrhIndex).NumFrames + 1
+            If grh.Loops = INFINITE_LOOPS Or ElapsedFrames < GrhData(grh.grhIndex).NumFrames * (grh.Loops + 1) Then
+                CurrentFrame = ElapsedFrames Mod GrhData(grh.grhIndex).NumFrames + 1
 
             Else
                 grh.Started = 0
@@ -802,17 +801,17 @@ Private Sub Draw_GrhSinLuz(ByRef grh As grh, ByVal x As Integer, ByVal y As Inte
     
     Dim CurrentGrhIndex As Long
     'Figure out what frame to draw (always 1 if not animated)
-    CurrentGrhIndex = GrhData(grh.GrhIndex).Frames(CurrentFrame)
+    CurrentGrhIndex = GrhData(grh.grhIndex).Frames(CurrentFrame)
 
     'Center Grh over X,Y pos
     If center Then
         If GrhData(CurrentGrhIndex).TileWidth <> 1 Then
-            x = x - Int(GrhData(CurrentGrhIndex).TileWidth * (32 \ 2)) + 32 \ 2
+            x = x - Int(GrhData(CurrentGrhIndex).TileWidth * (TilePixelWidth \ 2)) + TilePixelWidth \ 2
 
         End If
 
-        If GrhData(grh.GrhIndex).TileHeight <> 1 Then
-            y = y - Int(GrhData(CurrentGrhIndex).TileHeight * 32) + 32
+        If GrhData(grh.grhIndex).TileHeight <> 1 Then
+            y = y - Int(GrhData(CurrentGrhIndex).TileHeight * TilePixelHeight) + TilePixelHeight
 
         End If
 
@@ -832,7 +831,7 @@ Private Sub Draw_GrhSinLuz(ByRef grh As grh, ByVal x As Integer, ByVal y As Inte
     Exit Sub
 
 Draw_GrhSinLuz_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Draw_GrhSinLuz", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Draw_GrhSinLuz", Erl)
     Resume Next
     
 End Sub
@@ -841,7 +840,6 @@ Public Sub render()
     
     On Error GoTo render_Err
     
-
     '*****************************************************
     '****** Coded by Menduz (lord.yo.wo@gmail.com) *******
     '*****************************************************
@@ -856,67 +854,25 @@ Public Sub render()
        
     If frmMain.Contadores.Enabled Then
 
-        Dim PosY As Integer
-       
-        Dim PosX As Integer
-
-        PosY = -10
-        PosX = 5
+        Dim posY As Integer: posY = -10
+        Dim posX As Integer: posX = 5
 
         If DrogaCounter > 0 Then
             Call RGBAList(temp_array, 0, 153, 0)
-            
-            PosY = PosY + 15
-            Engine_Text_Render "Potenciado: " & CLng(DrogaCounter) & "s", PosX, PosY, temp_array, 1, True, 0, 160
-
-        End If
-        
-        If OxigenoCounter > 0 Then
-
-            Dim HR                  As Integer
-
-            Dim ms                  As Integer
-
-            Dim SS                  As Integer
-
-            Dim secs                As Integer
-
-            Dim TextoOxigenoCounter As String
-        
-            Call RGBAList(temp_array, 50, 100, 255)
-
-            secs = OxigenoCounter
-            HR = secs \ 3600
-            ms = (secs Mod 3600) \ 60
-            SS = (secs Mod 3600) Mod 60
-
-            If SS > 9 Then
-                TextoOxigenoCounter = ms & ":" & SS
-            Else
-                TextoOxigenoCounter = ms & ":0" & SS
-
-            End If
-            
-            PosY = PosY + 15
-
-            If ms < 1 Then
-                frmMain.oxigenolbl = SS
-                frmMain.oxigenolbl.ForeColor = vbRed
-            Else
-                frmMain.oxigenolbl = ms
-                frmMain.oxigenolbl.ForeColor = vbWhite
-
-            End If
-
-            Engine_Text_Render "Oxigeno: " & TextoOxigenoCounter, PosX, PosY, temp_array, 1, True, 0, 128
-
+            posY = posY + 15
+            Call Engine_Text_Render("Potenciado: " & CLng(DrogaCounter) & "s", posX, posY, temp_array, 1, True, 0, 160)
         End If
 
     End If
     
+    If FadeInAlpha > 0 Then
+        Call Engine_Draw_Box(0, 0, frmMain.renderer.ScaleWidth, frmMain.renderer.ScaleHeight, RGBA_From_Comp(0, 0, 0, FadeInAlpha))
+        FadeInAlpha = FadeInAlpha - 1
+    End If
+    
     Call Engine_EndScene(Render_Main_Rect)
     
-    FrameTime = (timeGetTime() And &H7FFFFFFF)
+    FrameTime = GetTickCount()
     FramesPerSecCounter = FramesPerSecCounter + 1
     timerElapsedTime = GetElapsedTime()
     timerTicksPerFrame = timerElapsedTime * engineBaseSpeed
@@ -925,11 +881,8 @@ Public Sub render()
 
     Exit Sub
 
-    
-    Exit Sub
-
 render_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.render", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.render", Erl)
     Resume Next
     
 End Sub
@@ -975,18 +928,20 @@ Sub ShowNextFrame()
     End If
 
     Call ConvertCPtoTP(MouseX, MouseY, tX, tY)
+    
     Call RenderScreen(UserPos.x - AddtoUserPos.x, UserPos.y - AddtoUserPos.y, OffsetCounterX, OffsetCounterY, HalfWindowTileWidth, HalfWindowTileHeight)
-
+    
+    Call DialogosClanes.Draw
     
     Exit Sub
 
 ShowNextFrame_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.ShowNextFrame", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.ShowNextFrame", Erl)
     Resume Next
     
 End Sub
 
-Private Sub Device_Box_Textured_Render_Advance(ByVal GrhIndex As Long, ByVal dest_x As Integer, ByVal dest_y As Integer, ByVal src_width As Integer, ByVal src_height As Integer, ByRef rgb_list() As RGBA, ByVal src_x As Integer, ByVal src_y As Integer, ByVal dest_width As Integer, Optional ByVal dest_height As Integer, Optional ByVal alpha_blend As Boolean, Optional ByVal Angle As Single)
+Private Sub Device_Box_Textured_Render_Advance(ByVal grhIndex As Long, ByVal dest_x As Integer, ByVal dest_y As Integer, ByVal src_width As Integer, ByVal src_height As Integer, ByRef rgb_list() As RGBA, ByVal src_x As Integer, ByVal src_y As Integer, ByVal dest_width As Integer, Optional ByVal dest_height As Integer, Optional ByVal alpha_blend As Boolean, Optional ByVal Angle As Single)
     
     On Error GoTo Device_Box_Textured_Render_Advance_Err
     
@@ -995,7 +950,7 @@ Private Sub Device_Box_Textured_Render_Advance(ByVal GrhIndex As Long, ByVal des
     'Author: Aaron Perkins
     'Last Modify Date: 5/15/2003
     'Copies the Textures allowing resizing
-    'Modified by Juan Mart√≠n Sotuyo Dodero
+    'Modified by Juan MartÌn Sotuyo Dodero
     '**************************************************************
     Static src_rect            As RECT
 
@@ -1007,9 +962,9 @@ Private Sub Device_Box_Textured_Render_Advance(ByVal GrhIndex As Long, ByVal des
 
     Static light_value(0 To 3) As RGBA
     
-    If GrhIndex = 0 Then Exit Sub
+    If grhIndex = 0 Then Exit Sub
     
-    Set d3dTextures.Texture = SurfaceDB.GetTexture(GrhData(GrhIndex).FileNum, d3dTextures.texwidth, d3dTextures.texheight)
+    Set d3dTextures.Texture = SurfaceDB.GetTexture(GrhData(grhIndex).FileNum, d3dTextures.texwidth, d3dTextures.texheight)
     
     light_value(0) = rgb_list(0)
     light_value(1) = rgb_list(1)
@@ -1073,7 +1028,7 @@ Private Sub Device_Box_Textured_Render_Advance(ByVal GrhIndex As Long, ByVal des
     Exit Sub
 
 Device_Box_Textured_Render_Advance_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Device_Box_Textured_Render_Advance", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Device_Box_Textured_Render_Advance", Erl)
     Resume Next
     
 End Sub
@@ -1103,7 +1058,7 @@ Public Sub Batch_Textured_Box(ByVal x As Long, ByVal y As Long, _
         Call .SetAlpha(Alpha)
 
         If TextureWidth <> 0 And TextureHeight <> 0 Then
-            Call .Draw(x, y, Width * ScaleX, Height * ScaleY, Color, sX / TextureWidth, sY / TextureHeight, (sX + Width) / TextureWidth, (sY + Height) / TextureHeight, Angle)
+            Call .Draw(x, y, Width * ScaleX, Height * ScaleY, Color, (sX + 0.25) / TextureWidth, (sY + 0.25) / TextureHeight, (sX + Width) / TextureWidth, (sY + Height) / TextureHeight, Angle)
         Else
             Call .Draw(x, y, TextureWidth * ScaleX, TextureHeight * ScaleY, Color, , , , , Angle)
         End If
@@ -1114,7 +1069,7 @@ Public Sub Batch_Textured_Box(ByVal x As Long, ByVal y As Long, _
     Exit Sub
 
 Batch_Textured_Box_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Batch_Textured_Box", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Batch_Textured_Box", Erl)
     Resume Next
     
 End Sub
@@ -1146,7 +1101,7 @@ Public Sub Batch_Textured_Box_Advance(ByVal x As Long, ByVal y As Long, _
         Call .SetAlpha(Alpha)
         
         If TextureWidth <> 0 And TextureHeight <> 0 Then
-            Call .Draw(x, y, dw * ScaleX, dH * ScaleY, Color, sX / TextureWidth, sY / TextureHeight, (sX + Width) / TextureWidth, (sY + Height) / TextureHeight, Angle)
+            Call .Draw(x, y, dw * ScaleX, dH * ScaleY, Color, (sX + 0.25) / TextureWidth, (sY + 0.25) / TextureHeight, (sX + Width) / TextureWidth, (sY + Height) / TextureHeight, Angle)
         Else
             Call .Draw(x, y, TextureWidth * ScaleX, TextureHeight * ScaleY, Color, , , , , Angle)
         End If
@@ -1157,7 +1112,7 @@ Public Sub Batch_Textured_Box_Advance(ByVal x As Long, ByVal y As Long, _
     Exit Sub
 
 Batch_Textured_Box_Advance_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Batch_Textured_Box_Advance", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Batch_Textured_Box_Advance", Erl)
     Resume Next
     
 End Sub
@@ -1195,7 +1150,7 @@ Public Sub Batch_Textured_Box_Pre(ByVal x As Long, ByVal y As Long, _
     Exit Sub
 
 Batch_Textured_Box_Pre_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Batch_Textured_Box_Pre", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Batch_Textured_Box_Pre", Erl)
     Resume Next
     
 End Sub
@@ -1221,7 +1176,7 @@ Public Sub Batch_Textured_Box_Shadow(ByVal x As Long, ByVal y As Long, _
         Call .SetAlpha(False)
         
         If TextureWidth <> 0 And TextureHeight <> 0 Then
-            Call .DrawShadow(x, y, Width, Height, Color, sX / TextureWidth, sY / TextureHeight, (sX + Width) / TextureWidth, (sY + Height) / TextureHeight)
+            Call .DrawShadow(x, y, Width, Height, Color, (sX + 0.25) / TextureWidth, (sY + 0.25) / TextureHeight, (sX + Width) / TextureWidth, (sY + Height) / TextureHeight)
         Else
             Call .DrawShadow(x, y, TextureWidth, TextureHeight, Color)
         End If
@@ -1232,18 +1187,18 @@ Public Sub Batch_Textured_Box_Shadow(ByVal x As Long, ByVal y As Long, _
     Exit Sub
 
 Batch_Textured_Box_Shadow_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Batch_Textured_Box_Shadow", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Batch_Textured_Box_Shadow", Erl)
     Resume Next
     
 End Sub
 
-Public Sub Device_Box_Textured_Render(ByVal GrhIndex As Long, ByVal dest_x As Integer, ByVal dest_y As Integer, ByVal src_width As Integer, ByVal src_height As Integer, ByRef Color() As RGBA, ByVal src_x As Integer, ByVal src_y As Integer, Optional ByVal alpha_blend As Boolean, Optional ByVal Angle As Single)
+Public Sub Device_Box_Textured_Render(ByVal grhIndex As Long, ByVal dest_x As Integer, ByVal dest_y As Integer, ByVal src_width As Integer, ByVal src_height As Integer, ByRef Color() As RGBA, ByVal src_x As Integer, ByVal src_y As Integer, Optional ByVal alpha_blend As Boolean, Optional ByVal Angle As Single)
     
     On Error GoTo Device_Box_Textured_Render_Err
     
 
     '**************************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero
+    'Author: Juan MartÌn Sotuyo Dodero
     'Last Modify Date: 2/12/2004
     'Just copies the Textures
     '**************************************************************
@@ -1255,9 +1210,9 @@ Public Sub Device_Box_Textured_Render(ByVal GrhIndex As Long, ByVal dest_x As In
 
     Static d3dTextures         As D3D8Textures
     
-    If GrhIndex = 0 Then Exit Sub
+    If grhIndex = 0 Then Exit Sub
     
-    Set d3dTextures.Texture = SurfaceDB.GetTexture(GrhData(GrhIndex).FileNum, d3dTextures.texwidth, d3dTextures.texheight)
+    Set d3dTextures.Texture = SurfaceDB.GetTexture(GrhData(grhIndex).FileNum, d3dTextures.texwidth, d3dTextures.texheight)
 
     'Set up the source rectangle
     With src_rect
@@ -1308,7 +1263,7 @@ Public Sub Device_Box_Textured_Render(ByVal GrhIndex As Long, ByVal dest_x As In
     Exit Sub
 
 Device_Box_Textured_Render_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Device_Box_Textured_Render", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Device_Box_Textured_Render", Erl)
     Resume Next
     
 End Sub
@@ -1408,7 +1363,7 @@ Sub Char_TextRender(ByVal charindex As Integer, ByVal PixelOffsetX As Integer, B
     Exit Sub
 
 Char_TextRender_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Char_TextRender", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Char_TextRender", Erl)
     Resume Next
     
 End Sub
@@ -1419,7 +1374,7 @@ Sub Char_Render(ByVal charindex As Long, ByVal PixelOffsetX As Integer, ByVal Pi
     
 
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 12/03/04
     'Draw char's to screen without offcentering them
     '***************************************************
@@ -1430,6 +1385,7 @@ Sub Char_Render(ByVal charindex As Long, ByVal PixelOffsetX As Integer, ByVal Pi
     Dim Color(3)            As RGBA
     
     Dim NameColor(3)        As RGBA
+    Dim NameColorClan(3)    As RGBA
 
     Dim colorCorazon(3)     As RGBA
 
@@ -1457,7 +1413,25 @@ Sub Char_Render(ByVal charindex As Long, ByVal PixelOffsetX As Integer, ByVal Pi
     With charlist(charindex)
 
         If .Heading = 0 Then Exit Sub
-    
+        
+        Dim dibujaMiembroClan As Boolean
+        dibujaMiembroClan = False
+        
+        Dim verVidaClan As Boolean
+        
+        verVidaClan = False
+        If .clan_index > 0 Then
+            If .clan_index = charlist(UserCharIndex).clan_index And charindex <> UserCharIndex And .Muerto = 0 Then
+                If .clan_nivel >= 6 Then
+                    dibujaMiembroClan = True
+                End If
+                
+                If .clan_nivel >= 5 Then
+                    verVidaClan = True
+                End If
+            End If
+        End If
+        
         If .Moving Then
 
             'If needed, move left and right
@@ -1488,12 +1462,30 @@ Sub Char_Render(ByVal charindex As Long, ByVal PixelOffsetX As Integer, ByVal Pi
                 .Moving = False
             End If
 
+        ElseIf .AnimatingBody Then
+            If .Body.Walk(.Heading).Started = 0 Then
+                .AnimatingBody = 0
+                
+                If .iBody Then
+                    .Body = BodyData(.iBody)
+                Else
+                    .Body = BodyData(0)
+                End If
+
+                .Body.Walk(.Heading).Loops = -1
+                
+                If .Idle Or .Navegando Then
+                    'Start animation
+                    .Body.Walk(.Heading).Started = FrameTime
+                End If
+            End If
+
         ElseIf Not .Idle Then
-            
+
             If .Muerto Then
                 If charindex <> UserCharIndex Then
                     ' Si no somos nosotros, esperamos un intervalo
-                    ' antes de poner la animaci√≥n idle para evitar saltos
+                    ' antes de poner la animaciÛn idle para evitar saltos
                     If FrameTime - .LastStep > TIME_CASPER_IDLE Then
                         .Body = BodyData(CASPER_BODY_IDLE)
                         .Body.Walk(.Heading).Started = FrameTime
@@ -1508,7 +1500,7 @@ Sub Char_Render(ByVal charindex As Long, ByVal PixelOffsetX As Integer, ByVal Pi
 
             Else
                 'Stop animations
-                If .Navegando = False Then
+                If .Navegando = False Or UserNadandoTrajeCaucho = True Then
                     .Body.Walk(.Heading).Started = 0
                     If Not .MovArmaEscudo Then
                         .Arma.WeaponWalk(.Heading).Started = 0
@@ -1522,9 +1514,13 @@ Sub Char_Render(ByVal charindex As Long, ByVal PixelOffsetX As Integer, ByVal Pi
         PixelOffsetY = PixelOffsetY + .MoveOffsetY
         
         Dim ease As Single
-        ease = EaseBreathing((((FrameTime - .TimeCreated) * 0.25) Mod 1000) * 0.001)
+        If MostrarRespiracion Then
+            ease = EaseBreathing((((FrameTime - .TimeCreated) * 0.25) Mod 1000) * 0.001)
+        Else
+            ease = 0
+        End If
 
-        If .Body.Walk(.Heading).GrhIndex Then
+        If .Body.Walk(.Heading).grhIndex Then
 
             If UserCiego Then
                 MostrarNombre = False
@@ -1533,12 +1529,73 @@ Sub Char_Render(ByVal charindex As Long, ByVal PixelOffsetX As Integer, ByVal Pi
 
                 If IsCharVisible(charindex) Then
                     Call RGBAList(Color, 255, 255, 255, 100)
-                    Call RGBAList(NameColor, 100, 100, 200)
+                    
+                    If .priv = 0 Then
+                        
+                        Select Case .status
+                            ' Criminal
+                            Case 0
+                                Call SetRGBA(NameColor(0), ColoresPJ(50).r, ColoresPJ(50).G, ColoresPJ(50).B)
+                            
+                            ' Ciudadano
+                            Case 1
+                                Call SetRGBA(NameColor(0), ColoresPJ(49).r, ColoresPJ(49).G, ColoresPJ(49).B)
+                            
+                            ' Caos
+                            Case 2
+                                Call SetRGBA(NameColor(0), ColoresPJ(6).r, ColoresPJ(6).G, ColoresPJ(6).B)
+    
+                            ' Armada
+                            Case 3
+                                Call SetRGBA(NameColor(0), ColoresPJ(8).r, ColoresPJ(8).G, ColoresPJ(8).B)
+    
+                        End Select
+                             
+                    Else
+                        Call SetRGBA(NameColor(0), ColoresPJ(.priv).r, ColoresPJ(.priv).G, ColoresPJ(.priv).B)
+                    End If
+                    
+                    Call LerpRGBA(NameColor(0), NameColor(0), RGBA_From_Comp(0, 0, 0), 0.5)
+                    Call RGBA_ToList(NameColor, NameColor(0))
+                    Call RGBA_ToList(colorCorazon, NameColor(0))
+                    
                     MostrarNombre = True
                         
                 Else
+                    'refactorizar bien esto, es un asco sino
                     Call RGBAList(Color, 0, 0, 0, 0)
                     MostrarNombre = False
+                    If dibujaMiembroClan Then
+                        MostrarNombre = True
+                        If .priv = 0 Then
+                        
+                            Select Case .status
+                                ' Criminal
+                                Case 0
+                                    Call SetRGBA(NameColor(0), ColoresPJ(50).r, ColoresPJ(50).G, ColoresPJ(50).b)
+                                
+                                ' Ciudadano
+                                Case 1
+                                    Call SetRGBA(NameColor(0), ColoresPJ(49).r, ColoresPJ(49).G, ColoresPJ(49).b)
+                                
+                                ' Caos
+                                Case 2
+                                    Call SetRGBA(NameColor(0), ColoresPJ(6).r, ColoresPJ(6).G, ColoresPJ(6).b)
+        
+                                ' Armada
+                                Case 3
+                                    Call SetRGBA(NameColor(0), ColoresPJ(8).r, ColoresPJ(8).G, ColoresPJ(8).b)
+        
+                            End Select
+                        Else
+                            Call SetRGBA(NameColor(0), ColoresPJ(.priv).r, ColoresPJ(.priv).G, ColoresPJ(.priv).b)
+                        End If
+                    
+                        Call LerpRGBA(NameColor(0), NameColor(0), RGBA_From_Comp(0, 0, 0), 0.5)
+                        Call RGBA_ToList(NameColor, NameColor(0))
+                        Call RGBA_ToList(colorCorazon, NameColor(0))
+                        Call RGBAList(Color, 180, 160, 160, 160)
+                    End If
                 End If
 
             Else
@@ -1554,56 +1611,51 @@ Sub Char_Render(ByVal charindex As Long, ByVal PixelOffsetX As Integer, ByVal Pi
                         Call RGBAList(NameColor, 210, 105, 30)
                         Call InitGrh(TempGrh, 839)
                         
-                        If .UserMinHp > 0 Then
+                        If .UserMaxHp > 0 Then
                             Dim TempColor(3) As RGBA
                             Call RGBAList(TempColor, 255, 255, 255, 200)
-                            Call Draw_Grh(TempGrh, PixelOffsetX + 1, PixelOffsetY + 10, 1, 0, TempColor, False, 0, 0, 0)
-                           
-                            Engine_Draw_Box PixelOffsetX + 4, PixelOffsetY + 36, (((.UserMinHp + 1 / 100) / (.UserMaxHp + 1 / 100))) * 26, 4, RGBA_From_Comp(255, 0, 0, 255)
+                            Call Draw_Grh(TempGrh, PixelOffsetX + 1 + .Body.BodyOffset.x, PixelOffsetY + 10 + .Body.BodyOffset.y, 1, 0, TempColor, False, 0, 0, 0)
+
+                            Engine_Draw_Box PixelOffsetX + 5 + .Body.BodyOffset.x, PixelOffsetY + 37 + .Body.BodyOffset.y, .UserMinHp / .UserMaxHp * 26, 4, RGBA_From_Comp(255, 0, 0, 255)
                         End If
                     End If
 
                     If .simbolo <> 0 Then
-                        Call Draw_GrhIndex(5257 + .simbolo, PixelOffsetX + 6, PixelOffsetY + .Body.HeadOffset.y - 12 - 10 * Sin((FrameTime Mod 31415) * 0.002) ^ 2)
+                        Call Draw_GrhIndex(5257 + .simbolo, PixelOffsetX + 6 + .Body.HeadOffset.x, PixelOffsetY + .Body.HeadOffset.y - 12 - 10 * Sin((FrameTime Mod 31415) * 0.002) ^ 2)
                     End If
                     
                 Else
-                    'If HayTecho(.Pos.x, .Pos.y) Then
-                       ' If MapData(.Pos.x, .Pos.y).Trigger = MapData(UserPos.x, UserPos.y).Trigger Then
-                            'If Abs(tX - .Pos.x) < 1 And tY - .Pos.y < 1 And .Pos.y - tY < 2 Then
-                              '  MostrarNombre = True
-                           ' End If
-                       ' End If
-                        
-                   ' Else
-                        MostrarNombre = True
-                   ' End If
+                    MostrarNombre = True
                     
                     If .priv = 0 Then
                         
                         Select Case .status
-    
+                            ' Criminal
                             Case 0
                                 Call RGBAList(NameColor, ColoresPJ(50).r, ColoresPJ(50).G, ColoresPJ(50).B)
                                 Call RGBAList(colorCorazon, ColoresPJ(50).r, ColoresPJ(50).G, ColoresPJ(50).B)
-    
+                            
+                            ' Ciudadano
                             Case 1
                                 Call RGBAList(NameColor, ColoresPJ(49).r, ColoresPJ(49).G, ColoresPJ(49).B)
                                 Call RGBAList(colorCorazon, ColoresPJ(49).r, ColoresPJ(49).G, ColoresPJ(49).B)
-    
+                            
+                            ' Caos
                             Case 2
                                 Call RGBAList(NameColor, ColoresPJ(6).r, ColoresPJ(6).G, ColoresPJ(6).B)
                                 Call RGBAList(colorCorazon, ColoresPJ(6).r, ColoresPJ(6).G, ColoresPJ(6).B)
     
+                            ' Armada
                             Case 3
-                                Call RGBAList(NameColor, ColoresPJ(7).r, ColoresPJ(7).G, ColoresPJ(7).B)
-                                Call RGBAList(colorCorazon, ColoresPJ(7).r, ColoresPJ(7).G, ColoresPJ(7).B)
+                                Call RGBAList(NameColor, ColoresPJ(8).r, ColoresPJ(8).G, ColoresPJ(8).B)
+                                Call RGBAList(colorCorazon, ColoresPJ(8).r, ColoresPJ(8).G, ColoresPJ(8).B)
     
                         End Select
                                 
                     Else
                         Call RGBAList(NameColor, ColoresPJ(.priv).r, ColoresPJ(.priv).G, ColoresPJ(.priv).B)
                         Call RGBAList(colorCorazon, ColoresPJ(.priv).r, ColoresPJ(.priv).G, ColoresPJ(.priv).B)
+                        
                     End If
                                         
                     If .group_index > 0 Then
@@ -1615,30 +1667,26 @@ Sub Char_Render(ByVal charindex As Long, ByVal PixelOffsetX As Integer, ByVal Pi
                             Call SetRGBA(colorCorazon(3), 0, 255, 255)
                         End If
                     End If
-                        
-                    If .clan_index > 0 Then
-                        If .clan_index = charlist(UserCharIndex).clan_index And charindex <> UserCharIndex And .Muerto = 0 Then
-                            If .clan_nivel = 5 Then
-                                OffsetYname = 8
-                                OffsetYClan = 6
-                                Grh_Render Marco, PixelOffsetX, PixelOffsetY + 5, Color, True, True, False
-                                Engine_Draw_Box_Border PixelOffsetX + 3, PixelOffsetY + 31, (((.UserMinHp + 1 / 100) / (.UserMaxHp + 1 / 100))) * 26, 4, RGBA_From_Comp(255, 200, 0, 0), RGBA_From_Comp(0, 200, 200, 200)
-                            End If
-                        End If
-                    End If
                 End If
             End If
             
+            
+            If (verVidaClan And Not .Invisible) Or dibujaMiembroClan Then
+                OffsetYname = 8
+                OffsetYClan = 8
+                Call DibujarVidaChar(charindex, PixelOffsetX, PixelOffsetY, OffsetYname, OffsetYClan)
+            End If
+            
             ' Si tiene cabeza, componemos la textura
-            If .Head.Head(.Heading).GrhIndex Then
+            If .Head.Head(.Heading).grhIndex Then
             
                 If .EsEnano Then
                     OffArma = 7
                     OffAuras = 7
                 End If
 
-                OffArma = OffArma - ease * 4
-                OffHead = .Body.HeadOffset.y - ease * 2
+                OffArma = OffArma - Int(ease * 3) - .Body.BodyOffset.y
+                OffHead = .Body.HeadOffset.y - Int(ease * 1.75) - 1 - .Body.BodyOffset.y
     
                 BeginComposedTexture
                 
@@ -1649,112 +1697,146 @@ Sub Char_Render(ByVal charindex As Long, ByVal PixelOffsetX As Integer, ByVal Pi
 
                     Case E_Heading.EAST
     
-                        If .Escudo.ShieldWalk(.Heading).GrhIndex Then Call Draw_Grh(.Escudo.ShieldWalk(.Heading), TextureX, TextureY + OffArma, 1, 1, COLOR_WHITE, False, x, y)
+                        If .Escudo.ShieldWalk(.Heading).grhIndex Then Call Draw_Grh(.Escudo.ShieldWalk(.Heading), TextureX, TextureY + OffArma, 1, 1, COLOR_WHITE, False, x, y)
                                                                     
                         Call Draw_Grh_Breathing(.Body.Walk(.Heading), TextureX, TextureY, 1, 1, COLOR_WHITE, ease)
                                          
                         Call Draw_Grh(.Head.Head(.Heading), TextureX + .Body.HeadOffset.x, TextureY + OffHead, 1, 0, COLOR_WHITE, False, x, y)
                                          
-                        If .Casco.Head(.Heading).GrhIndex Then Call Draw_Grh(.Casco.Head(.Heading), TextureX + .Body.HeadOffset.x, TextureY + OffHead, 1, 0, COLOR_WHITE, False, x, y)
+                        If .Casco.Head(.Heading).grhIndex Then Call Draw_Grh(.Casco.Head(.Heading), TextureX + .Body.HeadOffset.x, TextureY + OffHead, 1, 0, COLOR_WHITE, False, x, y)
                                              
-                        If .Arma.WeaponWalk(.Heading).GrhIndex Then Call Draw_Grh(.Arma.WeaponWalk(.Heading), TextureX, TextureY + OffArma, 1, 1, COLOR_WHITE, False, x, y)
+                        If .Arma.WeaponWalk(.Heading).grhIndex Then Call Draw_Grh(.Arma.WeaponWalk(.Heading), TextureX, TextureY + OffArma, 1, 1, COLOR_WHITE, False, x, y)
                                      
                     Case E_Heading.NORTH
     
-                        If .Arma.WeaponWalk(.Heading).GrhIndex Then Call Draw_Grh(.Arma.WeaponWalk(.Heading), TextureX, TextureY + OffArma, 1, 1, COLOR_WHITE, False, x, y)
+                        If .Arma.WeaponWalk(.Heading).grhIndex Then Call Draw_Grh(.Arma.WeaponWalk(.Heading), TextureX, TextureY + OffArma, 1, 1, COLOR_WHITE, False, x, y)
                                              
-                        If .Escudo.ShieldWalk(.Heading).GrhIndex Then Call Draw_Grh(.Escudo.ShieldWalk(.Heading), TextureX, TextureY + OffArma, 1, 1, COLOR_WHITE, False, x, y)
+                        If .Escudo.ShieldWalk(.Heading).grhIndex Then Call Draw_Grh(.Escudo.ShieldWalk(.Heading), TextureX, TextureY + OffArma, 1, 1, COLOR_WHITE, False, x, y)
                                              
                         Call Draw_Grh_Breathing(.Body.Walk(.Heading), TextureX, TextureY, 1, 1, COLOR_WHITE, ease)
                                          
                         Call Draw_Grh(.Head.Head(.Heading), TextureX + .Body.HeadOffset.x, TextureY + OffHead, 1, 0, COLOR_WHITE, False, x, y)
                                          
-                        If .Casco.Head(.Heading).GrhIndex Then Call Draw_Grh(.Casco.Head(.Heading), TextureX + .Body.HeadOffset.x, TextureY + OffHead, 1, 0, COLOR_WHITE, False, x, y)
+                        If .Casco.Head(.Heading).grhIndex Then Call Draw_Grh(.Casco.Head(.Heading), TextureX + .Body.HeadOffset.x, TextureY + OffHead, 1, 0, COLOR_WHITE, False, x, y)
                                      
                     Case E_Heading.WEST
     
-                        If .Arma.WeaponWalk(.Heading).GrhIndex Then Call Draw_Grh(.Arma.WeaponWalk(.Heading), TextureX, TextureY + OffArma, 1, 1, COLOR_WHITE, False, x, y)
+                        If .Arma.WeaponWalk(.Heading).grhIndex Then Call Draw_Grh(.Arma.WeaponWalk(.Heading), TextureX, TextureY + OffArma, 1, 1, COLOR_WHITE, False, x, y)
                                              
                         Call Draw_Grh_Breathing(.Body.Walk(.Heading), TextureX, TextureY, 1, 1, COLOR_WHITE, ease)
                                          
                         Call Draw_Grh(.Head.Head(.Heading), TextureX + .Body.HeadOffset.x, TextureY + OffHead, 1, 0, COLOR_WHITE, False, x, y)
                                          
-                        If .Casco.Head(.Heading).GrhIndex Then Call Draw_Grh(.Casco.Head(.Heading), TextureX + .Body.HeadOffset.x, TextureY + OffHead, 1, 0, COLOR_WHITE, False, x, y)
+                        If .Casco.Head(.Heading).grhIndex Then Call Draw_Grh(.Casco.Head(.Heading), TextureX + .Body.HeadOffset.x, TextureY + OffHead, 1, 0, COLOR_WHITE, False, x, y)
                                          
-                        If .Escudo.ShieldWalk(.Heading).GrhIndex Then Call Draw_Grh(.Escudo.ShieldWalk(.Heading), TextureX, TextureY + OffArma, 1, 1, COLOR_WHITE, False, x, y)
+                        If .Escudo.ShieldWalk(.Heading).grhIndex Then Call Draw_Grh(.Escudo.ShieldWalk(.Heading), TextureX, TextureY + OffArma, 1, 1, COLOR_WHITE, False, x, y)
     
                     Case E_Heading.south
-                                         
+
                         Call Draw_Grh_Breathing(.Body.Walk(.Heading), TextureX, TextureY, 1, 1, COLOR_WHITE, ease)
-                                         
+
                         Call Draw_Grh(.Head.Head(.Heading), TextureX + .Body.HeadOffset.x, TextureY + OffHead, 1, 0, COLOR_WHITE, False, x, y)
                                          
-                        If .Casco.Head(.Heading).GrhIndex Then Call Draw_Grh(.Casco.Head(.Heading), TextureX + .Body.HeadOffset.x, TextureY + OffHead, 1, 0, COLOR_WHITE, False, x, y)
+                        If .Casco.Head(.Heading).grhIndex Then Call Draw_Grh(.Casco.Head(.Heading), TextureX + .Body.HeadOffset.x, TextureY + OffHead, 1, 0, COLOR_WHITE, False, x, y)
                                          
-                        If .Escudo.ShieldWalk(.Heading).GrhIndex Then Call Draw_Grh(.Escudo.ShieldWalk(.Heading), TextureX, TextureY + OffArma, 1, 1, COLOR_WHITE, False, x, y)
+                        If .Escudo.ShieldWalk(.Heading).grhIndex Then Call Draw_Grh(.Escudo.ShieldWalk(.Heading), TextureX, TextureY + OffArma, 1, 1, COLOR_WHITE, False, x, y)
                                              
-                        If .Arma.WeaponWalk(.Heading).GrhIndex Then Call Draw_Grh(.Arma.WeaponWalk(.Heading), TextureX, TextureY + OffArma, 1, 1, COLOR_WHITE, False, x, y)
+                        If .Arma.WeaponWalk(.Heading).grhIndex Then Call Draw_Grh(.Arma.WeaponWalk(.Heading), TextureX, TextureY + OffArma, 1, 1, COLOR_WHITE, False, x, y)
     
                 End Select
-
+                     
                 EndComposedTexture
-
-                If Not .Invisible Then
+               
+                        
+                If Not .Invisible Or dibujaMiembroClan Then
                     ' Reflejo
-                    PresentComposedTexture PixelOffsetX, PixelOffsetY, Color, 0, , True
+                    PresentComposedTexture PixelOffsetX + .Body.BodyOffset.x, PixelOffsetY + .Body.BodyOffset.y, Color, 0, , True
 
                     ' Sombra
-                    PresentComposedTexture PixelOffsetX, PixelOffsetY, Color, 0, True
+                    PresentComposedTexture PixelOffsetX + .Body.BodyOffset.x, PixelOffsetY + .Body.BodyOffset.y, Color, 0, True
 
-                    If LenB(.Body_Aura) <> 0 And .Body_Aura <> "0" Then Call Renderizar_Aura(.Body_Aura, PixelOffsetX, PixelOffsetY + OffArma, x, y, charindex)
-                    If LenB(.Arma_Aura) <> 0 And .Arma_Aura <> "0" Then Call Renderizar_Aura(.Arma_Aura, PixelOffsetX, PixelOffsetY + OffArma, x, y, charindex)
-                    If LenB(.Otra_Aura) <> 0 And .Otra_Aura <> "0" Then Call Renderizar_Aura(.Otra_Aura, PixelOffsetX, PixelOffsetY + OffArma, x, y, charindex)
-                    If LenB(.Escudo_Aura) <> 0 And .Escudo_Aura <> "0" Then Call Renderizar_Aura(.Escudo_Aura, PixelOffsetX, PixelOffsetY + OffArma, x, y, charindex)
-                    If LenB(.DM_Aura) <> 0 And .DM_Aura <> "0" Then Call Renderizar_Aura(.DM_Aura, PixelOffsetX, PixelOffsetY + OffArma, x, y, charindex)
-                    If LenB(.RM_Aura) <> 0 And .RM_Aura <> "0" Then Call Renderizar_Aura(.RM_Aura, PixelOffsetX, PixelOffsetY + OffArma, x, y, charindex)
+                    If LenB(.Body_Aura) <> 0 And .Body_Aura <> "0" Then Call Renderizar_Aura(.Body_Aura, PixelOffsetX + .Body.BodyOffset.x, PixelOffsetY + OffArma + .Body.BodyOffset.y, x, y, charindex)
+                    If LenB(.Arma_Aura) <> 0 And .Arma_Aura <> "0" Then Call Renderizar_Aura(.Arma_Aura, PixelOffsetX + .Body.BodyOffset.x, PixelOffsetY + OffArma + .Body.BodyOffset.y, x, y, charindex)
+                    If LenB(.Otra_Aura) <> 0 And .Otra_Aura <> "0" Then Call Renderizar_Aura(.Otra_Aura, PixelOffsetX + .Body.BodyOffset.x, PixelOffsetY + OffArma + .Body.BodyOffset.y, x, y, charindex)
+                    If LenB(.Escudo_Aura) <> 0 And .Escudo_Aura <> "0" Then Call Renderizar_Aura(.Escudo_Aura, PixelOffsetX + .Body.BodyOffset.x, PixelOffsetY + OffArma + .Body.BodyOffset.y, x, y, charindex)
+                    If LenB(.DM_Aura) <> 0 And .DM_Aura <> "0" Then Call Renderizar_Aura(.DM_Aura, PixelOffsetX + .Body.BodyOffset.x, PixelOffsetY + OffArma + .Body.BodyOffset.y, x, y, charindex)
+                    If LenB(.RM_Aura) <> 0 And .RM_Aura <> "0" Then Call Renderizar_Aura(.RM_Aura, PixelOffsetX + .Body.BodyOffset.x, PixelOffsetY + OffArma + .Body.BodyOffset.y, x, y, charindex)
                 End If
 
                 ' Char
-                PresentComposedTexture PixelOffsetX, PixelOffsetY, Color, False
+                PresentComposedTexture PixelOffsetX + .Body.BodyOffset.x, PixelOffsetY + .Body.BodyOffset.y, Color, False
                 
             ' Si no, solo dibujamos body
             Else
-                Call Draw_Sombra(.Body.Walk(.Heading), PixelOffsetX, PixelOffsetY, 1, 1, False, x, y)
-                Call Draw_Grh(.Body.Walk(.Heading), PixelOffsetX, PixelOffsetY, 1, 1, Color, False, x, y)
+                Call Draw_Sombra(.Body.Walk(.Heading), PixelOffsetX + .Body.BodyOffset.x, PixelOffsetY + .Body.BodyOffset.y, 1, 1, False, x, y)
+                Call Draw_Grh(.Body.Walk(.Heading), PixelOffsetX + .Body.BodyOffset.x, PixelOffsetY + .Body.BodyOffset.y, 1, 1, Color, False, x, y)
             End If
     
             'Draw name over head
-            If Nombres And Len(.nombre) > 0 And MostrarNombre Then
-
-                Pos = InStr(.nombre, "<")
-                
-                If Pos = 0 Then Pos = InStr(.nombre, "[")
-
-                If Pos = 0 Then Pos = Len(.nombre) + 2
-
-                'Nick
-                line = Left$(.nombre, Pos - 2)
-                Engine_Text_Render line, PixelOffsetX + 15 - CInt(Engine_Text_Width(line, True) / 2), PixelOffsetY + 30 + OffsetYname - Engine_Text_Height(line, True), NameColor, 1
-                
-                'Clan
-                Select Case .priv
-
-                    Case 1, 2, 3, 4
-                        line = "<Game Master>"
-
-                    Case Else
-                        line = .clan
-
-                End Select
-                    
-                Engine_Text_Render line, PixelOffsetX + 15 - CInt(Engine_Text_Width(line, True) / 2), PixelOffsetY + 45 + OffsetYClan - Engine_Text_Height(line, True), NameColor, 1
-
-                If .Donador = 1 Then
-                    Grh_Render Estrella, PixelOffsetX + 7 + CInt(Engine_Text_Width(.nombre, 1) / 2), PixelOffsetY + 10 + OffsetYname, colorCorazon, True, True, False
-                End If
             
+          '  If Nombres Then
+            Nombres = Not MapData(charlist(charindex).Pos.x, charlist(charindex).Pos.y).zone.OcultarNombre
+            
+            If UserCharIndex > 0 Then
+                If Sound.MusicActual <> MapData(charlist(UserCharIndex).Pos.x, charlist(UserCharIndex).Pos.y).zone.Musica And MapData(charlist(UserCharIndex).Pos.x, charlist(UserCharIndex).Pos.y).zone.Musica > 0 Then
+                    Sound.Music_Stop
+                    Sound.Music_Load MapData(charlist(UserCharIndex).Pos.x, charlist(UserCharIndex).Pos.y).zone.Musica, Sound.VolumenActualMusicMax
+                    Sound.Fading = 100
+                    Sound.Music_Play
+                ElseIf MapData(charlist(UserCharIndex).Pos.x, charlist(UserCharIndex).Pos.y).zone.Musica = 0 And Sound.MusicActual <> MapDat.music_numberLow Then
+                    Sound.Music_Stop
+                    Sound.Music_Load MapDat.music_numberLow, Sound.VolumenActualMusicMax
+                    Sound.Fading = 100
+                    Sound.Music_Play
+                End If
             End If
+            
+           ' End If
 
+           
+            If Nombres And Len(.nombre) > 0 And MostrarNombre Then
+                Pos = InStr(.nombre, "<")
+                If Pos = 0 Then Pos = InStr(.nombre, "[")
+                If Pos = 0 Then Pos = Len(.nombre) + 2
+                'Nick
+
+                line = Left$(.nombre, Pos - 2)
+
+                Dim factor As Double
+                factor = MapData(x, y).light_value(0).r / 255
+                NameColor(0).r = NameColor(0).r * factor
+                NameColor(0).G = NameColor(0).G * factor
+                NameColor(0).B = NameColor(0).B * factor
+                NameColor(1).r = NameColor(1).r * factor
+                NameColor(1).G = NameColor(1).G * factor
+                NameColor(1).B = NameColor(1).B * factor
+                NameColor(2).r = NameColor(2).r * factor
+                NameColor(2).G = NameColor(2).G * factor
+                NameColor(2).B = NameColor(2).B * factor
+                NameColor(3).r = NameColor(3).r * factor
+                NameColor(3).G = NameColor(3).G * factor
+                NameColor(3).B = NameColor(3).B * factor
+                Engine_Text_Render line, PixelOffsetX + 16 - CInt(Engine_Text_Width(line, True) / 2) + .Body.BodyOffset.x, PixelOffsetY + .Body.BodyOffset.y + 30 + OffsetYname - Engine_Text_Height(line, True), NameColor, 1, False, 0, IIf(.Invisible, 160, 255)
+
+                'Clan
+                If .priv > 1 And .priv < &H40 Then
+                    line = "<Game Master>"
+                Else
+                    line = .clan
+                End If
+                
+                'Seteo color de nombre del clan solo si es de mi clan
+                Call SetRGBA(NameColorClan(0), 255, 255, 0, 255)
+                Call SetRGBA(NameColorClan(1), 255, 255, 0, 255)
+                Call SetRGBA(NameColorClan(2), 255, 255, 0, 255)
+                Call SetRGBA(NameColorClan(3), 255, 255, 0, 255)
+                
+                If (.clan_index = charlist(UserCharIndex).clan_index And charindex <> UserCharIndex And .EsNpc = False) Or (charindex = UserCharIndex And .Invisible) Then
+                    Engine_Text_Render line, PixelOffsetX + 16 - CInt(Engine_Text_Width(line, True) / 2) + .Body.BodyOffset.x, PixelOffsetY + .Body.BodyOffset.y + 42 + OffsetYClan - Engine_Text_Height(line, True), NameColorClan, 1, False, 0, IIf(.Invisible, 160, 255)
+                Else
+                    Engine_Text_Render line, PixelOffsetX + 16 - CInt(Engine_Text_Width(line, True) / 2) + .Body.BodyOffset.x, PixelOffsetY + .Body.BodyOffset.y + 42 + OffsetYClan - Engine_Text_Height(line, True), NameColor, 1, False, 0, IIf(.Invisible, 160, 255)
+                End If
+            End If
         End If
 
         If .particle_count > 0 Then
@@ -1762,56 +1844,58 @@ Sub Char_Render(ByVal charindex As Long, ByVal PixelOffsetX As Integer, ByVal Pi
             For i = 1 To .particle_count
 
                 If .particle_group(i) > 0 Then
-                    Particle_Group_Render .particle_group(i), PixelOffsetX + .Body.HeadOffset.x + (32 / 2), PixelOffsetY
+                    Particle_Group_Render .particle_group(i), PixelOffsetX + .Body.BodyOffset.x + (TilePixelWidth / 2), PixelOffsetY + .Body.BodyOffset.y
                 End If
 
             Next i
 
         End If
-    
+        If Nombres And Len(.nombre) > 0 And MostrarNombre And .tipoUsuario > 0 Then
+            Dim StarGrh As grh
+            Call InitGrh(StarGrh, 32472)
+            
+            Select Case .tipoUsuario
+                Case eTipoUsuario.cafecito
+                    'cafecito
+                    Call RGBAList(Color, 185, 122, 87, IIf(.Invisible, 160, 255))
+                Case eTipoUsuario.aventurero
+                    ' Aventurero
+                    Call RGBAList(Color, 240, 212, 175, IIf(.Invisible, 120, 255))
+                Case eTipoUsuario.heroe
+                    'HÈroe
+                    Call RGBAList(Color, 240, 135, 101, IIf(.Invisible, 160, 255))
+                Case eTipoUsuario.Legend
+                    'Leyenda
+                    Call RGBAList(Color, 222, 177, 45, IIf(.Invisible, 120, 255))
+            End Select
+            
+            Call Draw_Grh(StarGrh, PixelOffsetX + 1 + .Body.BodyOffset.x + (Engine_Text_Width(.nombre, True) / 2) + 8, PixelOffsetY + 20 + .Body.BodyOffset.y, 1, 0, Color, False, 0, 0, 0)
+        End If
         
         'Barra de tiempo
         If .BarTime < .MaxBarTime Then
-            'Engine_Draw_Box PixelOffsetX - 17, PixelOffsetY - 40, 70, 7, RGBA_From_Comp(0, 0, 0, 255)
-                        Call InitGrh(TempGrh, 839)
+            Call InitGrh(TempGrh, 839)
             Call RGBAList(Color, 255, 255, 255, 200)
 
-            Call Draw_Grh(TempGrh, PixelOffsetX + 1, PixelOffsetY - 55, 1, 0, Color, False, 0, 0, 0)
+            Call Draw_Grh(TempGrh, PixelOffsetX + 1 + .Body.BodyOffset.x, PixelOffsetY - 55 + .Body.BodyOffset.y, 1, 0, Color, False, 0, 0, 0)
             
-            
-            Engine_Draw_Box_Border PixelOffsetX + 5, PixelOffsetY - 29, (((.BarTime / 100) / (.MaxBarTime / 100))) * 24, 3, RGBA_From_Comp(0, 128, 128, 255), RGBA_From_Comp(0, 0, 0, 255)
+            Engine_Draw_Box PixelOffsetX + 5 + .Body.BodyOffset.x, PixelOffsetY - 28 + .Body.BodyOffset.y, .BarTime / .MaxBarTime * 26, 4, RGBA_From_Comp(3, 214, 166, 120) ', RGBA_From_Comp(0, 0, 0, 255)
 
-            .BarTime = .BarTime + (4 * timerTicksPerFrame * Sgn(1))
-                             
+            .BarTime = .BarTime + (timerElapsedTime / 1000)
+            'Debug.Print .BarTime
             If .BarTime >= .MaxBarTime Then
-                If charindex = UserCharIndex Then
-                    Call CompletarAccionBarra(.BarAccion)
-
-                End If
-
                 charlist(charindex).BarTime = 0
                 charlist(charindex).BarAccion = 99
                 charlist(charindex).MaxBarTime = 0
-
             End If
 
         End If
-                        
-        If .Escribiendo = True And Not .Invisible Then
-
-            
-            Call InitGrh(TempGrh, 32017)
-            Call RGBAList(Color, 255, 255, 255, 200)
-
-            Call Draw_Grh(TempGrh, PixelOffsetX + 20, PixelOffsetY - 45, 1, 0, Color, False, 0, 0, 0)
-
-        End If
-
-        ' Meditaci√≥n
+                   
+        ' MeditaciÛn
         If .FxIndex <> 0 And .fX.Started <> 0 Then
             Call RGBAList(Color, 255, 255, 255, 180)
 
-            Call Draw_GrhFX(.fX, PixelOffsetX + FxData(.FxIndex).OffsetX, PixelOffsetY + FxData(.FxIndex).OffsetY + 4, 1, 1, Color, False, , , , charindex)
+            Call Draw_GrhFX(.fX, PixelOffsetX + FxData(.FxIndex).OffsetX + .Body.BodyOffset.x, PixelOffsetY + FxData(.FxIndex).OffsetY + 4 + .Body.BodyOffset.y, 1, 1, Color, False, , , , charindex)
        
         End If
 
@@ -1823,9 +1907,9 @@ Sub Char_Render(ByVal charindex As Long, ByVal PixelOffsetX As Integer, ByVal Pi
                     Call RGBAList(Color, 255, 255, 255, 220)
 
                     If FxData(.FxList(i).FxIndex).IsPNG = 1 Then
-                        Call Draw_GrhFX(.FxList(i), PixelOffsetX + FxData(.FxList(i).FxIndex).OffsetX, PixelOffsetY + FxData(.FxList(i).FxIndex).OffsetY + 20, 1, 1, Color, False, , , , charindex)
+                        Call Draw_GrhFX(.FxList(i), PixelOffsetX + FxData(.FxList(i).FxIndex).OffsetX + .Body.BodyOffset.x, PixelOffsetY + FxData(.FxList(i).FxIndex).OffsetY + 20 + .Body.BodyOffset.y, 1, 1, Color, False, , , , charindex)
                     Else
-                        Call Draw_GrhFX(.FxList(i), PixelOffsetX + FxData(.FxList(i).FxIndex).OffsetX, PixelOffsetY + FxData(.FxList(i).FxIndex).OffsetY + 20, 1, 1, Color, True, , , , charindex)
+                        Call Draw_GrhFX(.FxList(i), PixelOffsetX + FxData(.FxList(i).FxIndex).OffsetX + .Body.BodyOffset.x, PixelOffsetY + FxData(.FxList(i).FxIndex).OffsetY + 20 + .Body.BodyOffset.y, 1, 1, Color, True, , , , charindex)
                     End If
 
                 End If
@@ -1850,9 +1934,28 @@ Sub Char_Render(ByVal charindex As Long, ByVal PixelOffsetX As Integer, ByVal Pi
     Exit Sub
 
 Char_Render_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Char_Render", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Char_Render", Erl)
     Resume Next
     
+End Sub
+
+Public Sub DibujarVidaChar(ByVal charindex As Integer, ByVal PixelOffsetX As Integer, ByVal PixelOffsetY As Integer, ByRef OffsetYname As Byte, ByRef OffsetYClan As Byte)
+    With charlist(charindex)
+        Engine_Draw_Box PixelOffsetX + .Body.BodyOffset.x, PixelOffsetY + 33 + .Body.BodyOffset.y, 33, 5, RGBA_From_Comp(10, 10, 10)
+        If .UserMaxHp <> 0 Then
+            Engine_Draw_Box PixelOffsetX + 1 + .Body.BodyOffset.x, PixelOffsetY + 34 + .Body.BodyOffset.y, .UserMinHp / .UserMaxHp * 31, 3, RGBA_From_Comp(255, 0, 0)
+        Else
+            Engine_Draw_Box PixelOffsetX + 1 + .Body.BodyOffset.x, PixelOffsetY + 34 + .Body.BodyOffset.y, 31, 4, RGBA_From_Comp(255, 0, 0)
+        End If
+    
+        If .UserMaxMAN <> 0 Then
+            OffsetYname = 12
+            OffsetYClan = 12
+    
+            Engine_Draw_Box PixelOffsetX + .Body.BodyOffset.x, PixelOffsetY + 38 + .Body.BodyOffset.y, 33, 4, RGBA_From_Comp(10, 10, 10)
+            Engine_Draw_Box PixelOffsetX + 1 + .Body.BodyOffset.y, PixelOffsetY + 38 + .Body.BodyOffset.y, .UserMinMAN / .UserMaxMAN * 31, 3, RGBA_From_Comp(0, 100, 255)
+        End If
+    End With
 End Sub
 
 Public Function IsCharVisible(ByVal charindex As Integer) As Boolean
@@ -1868,15 +1971,6 @@ Public Function IsCharVisible(ByVal charindex As Integer) As Boolean
             IsCharVisible = True
             Exit Function
         End If
-        
-        If .clan_index > 0 Then
-            If .clan_index = charlist(UserCharIndex).clan_index Then
-                If .clan_nivel >= 3 Then
-                    IsCharVisible = True
-                    Exit Function
-                End If
-            End If
-        End If
 
     End With
 
@@ -1886,15 +1980,12 @@ Public Sub Start()
     
     On Error GoTo Start_Err
     
-
+    
     DoEvents
 
     Do While prgRun
 
-        Call FlushBuffer
-
         If frmMain.WindowState <> vbMinimized Then
-            
             Select Case QueRender
 
                 Case 0
@@ -1904,35 +1995,36 @@ Public Sub Start()
                     Moviendose = False
                     DrawMainInventory
 
-                    If HayFormularioAbierto Then
-                        If frmComerciar.Visible Then
-                            DrawInterfaceComerciar
-                        ElseIf frmBancoObj.Visible Then
-                            DrawInterfaceBoveda
-                        End If
-                        
-                        If frmBancoCuenta.Visible Then
-                            DrawInterfaceBovedaCuenta
-                        End If
-                        
-                        If frmMapaGrande.Visible Then
-                            DrawMapaMundo
-                        End If
-                        
-                        If FrmKeyInv.Visible Then
-                            DrawInterfaceKeys
-                        End If
+                    If frmComerciar.Visible Then
+                        DrawInterfaceComerciar
 
+                    ElseIf frmBancoObj.Visible Then
+                        DrawInterfaceBoveda
+
+                    ElseIf frmBancoCuenta.Visible Then
+                        DrawInterfaceBovedaCuenta
+
+                    ElseIf frmCrafteo.Visible Then
+                        DrawInterfaceCrafting
+                    End If
+
+                    If FrmKeyInv.Visible Then
+                        DrawInterfaceKeys
+                    End If
+                    
+                    If frmComerciarUsu.Visible Then
+                        DrawInventoryComercio
+                        DrawInventoryUserComercio
+                        DrawInventoryOtherComercio
                     End If
 
                 Case 1
                     If Not frmConnect.Visible Then
                         frmConnect.Show
                         FrmLogear.Show , frmConnect
-                        FrmLogear.Top = FrmLogear.Top + 3500
                     End If
                     
-                    RenderConnect 51, 49, 0, 0
+                    RenderConnect 57, 45, 0, 0
 
                 Case 2
                     rendercuenta 42, 43, 0, 0
@@ -1946,20 +2038,12 @@ Public Sub Start()
         Else
             Sleep 60&
             Call frmMain.Inventario.ReDraw
-
         End If
 
         DoEvents
-        Rem Limitar FPS
-        '   If LimitarFps Then
-        '   While (GetTickCount - FrameTime) < FramesPerSecCounter
-        '     Sleep 1
-        '  Wend
-        '   While GetTickCount - FrameTime < 55
-        '     Sleep 5
-        '   Wend
-        '  End If
-    Loop '
+
+        Call modNetwork.Poll
+    Loop
 
     EngineRun = False
 
@@ -1969,14 +2053,14 @@ Public Sub Start()
     Exit Sub
 
 Start_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Start", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Start", Erl)
     Resume Next
     
 End Sub
 
 Public Sub SetMapFx(ByVal x As Byte, ByVal y As Byte, ByVal fX As Integer, ByVal Loops As Integer)
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 12/03/04
     'Sets an FX to the character.
     '***************************************************
@@ -2002,7 +2086,7 @@ Public Sub SetMapFx(ByVal x As Byte, ByVal y As Byte, ByVal fX As Integer, ByVal
     Exit Sub
 
 SetMapFx_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.SetMapFx", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.SetMapFx", Erl)
     Resume Next
     
 End Sub
@@ -2013,17 +2097,17 @@ Private Function Engine_FToDW(f As Single) As Long
     
 
     ' single > long
-    Dim Buf As D3DXBuffer
+    Dim buf As D3DXBuffer
 
-    Set Buf = DirectD3D8.CreateBuffer(4)
-    DirectD3D8.BufferSetData Buf, 0, 4, 1, f
-    DirectD3D8.BufferGetData Buf, 0, 4, 1, Engine_FToDW
+    Set buf = DirectD3D8.CreateBuffer(4)
+    DirectD3D8.BufferSetData buf, 0, 4, 1, f
+    DirectD3D8.BufferGetData buf, 0, 4, 1, Engine_FToDW
 
     
     Exit Function
 
 Engine_FToDW_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Engine_FToDW", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Engine_FToDW", Erl)
     Resume Next
     
 End Function
@@ -2045,7 +2129,7 @@ Private Function VectorToRGBA(Vec As D3DVECTOR, fHeight As Single) As Long
     Exit Function
 
 VectorToRGBA_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.VectorToRGBA", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.VectorToRGBA", Erl)
     Resume Next
     
 End Function
@@ -2055,8 +2139,8 @@ Public Sub DrawMainInventory()
     On Error GoTo DrawMainInventory_Err
     
 
-    ' S√≥lo dibujamos cuando es necesario
-    If Not frmMain.Inventario.NeedsRedraw Then Exit Sub
+    ' SÛlo dibujamos cuando es necesario
+    'If Not frmMain.Inventario.NeedsRedraw Then Exit Sub
 
     Dim InvRect As RECT
 
@@ -2078,13 +2162,13 @@ Public Sub DrawMainInventory()
     Call frmMain.Inventario.DrawDraggedItem
 
     ' Presentamos la escena
-    Call Engine_EndScene(InvRect, frmMain.picInv.hWnd)
+    Call Engine_EndScene(InvRect, frmMain.picInv.hwnd)
 
     
     Exit Sub
 
 DrawMainInventory_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.DrawMainInventory", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.DrawMainInventory", Erl)
     Resume Next
     
 End Sub
@@ -2094,7 +2178,7 @@ Public Sub DrawInterfaceComerciar()
     On Error GoTo DrawInterfaceComerciar_Err
     
 
-    ' S√≥lo dibujamos cuando es necesario
+    ' SÛlo dibujamos cuando es necesario
     If Not frmComerciar.InvComNpc.NeedsRedraw And Not frmComerciar.InvComUsu.NeedsRedraw Then Exit Sub
 
     Dim InvRect As RECT
@@ -2116,23 +2200,23 @@ Public Sub DrawInterfaceComerciar()
     ' Dibujamos items del usuario
     Call frmComerciar.InvComUsu.DrawInventory
 
-    ' Dibujamos "ambos" items arrastrados (aunque s√≥lo puede estar uno activo a la vez)
+    ' Dibujamos "ambos" items arrastrados (aunque sÛlo puede estar uno activo a la vez)
     Call frmComerciar.InvComNpc.DrawDraggedItem
     Call frmComerciar.InvComUsu.DrawDraggedItem
     
-    ' Me fijo qu√© inventario est√° seleccionado
+    ' Me fijo quÈ inventario est· seleccionado
     Dim CurrentInventory As clsGrapchicalInventory
     
     Dim cantidad         As Integer
 
     If frmComerciar.InvComNpc.SelectedItem > 0 Then
         Set CurrentInventory = frmComerciar.InvComNpc
-        ' Al comprar, calculamos el valor seg√∫n la cantidad exacta que ingres√≥
+        ' Al comprar, calculamos el valor seg˙n la cantidad exacta que ingresÛ
         cantidad = Val(frmComerciar.cantidad.Text)
     ElseIf frmComerciar.InvComUsu.SelectedItem > 0 Then
         Set CurrentInventory = frmComerciar.InvComUsu
-        ' Al vender, calculamos el valor seg√∫n el min(cantidad_ingresada, cantidad_items)
-        cantidad = min(Val(frmComerciar.cantidad.Text), CurrentInventory.Amount(CurrentInventory.SelectedItem))
+        ' Al vender, calculamos el valor seg˙n el min(cantidad_ingresada, cantidad_items)
+        cantidad = Min(Val(frmComerciar.cantidad.Text), CurrentInventory.Amount(CurrentInventory.SelectedItem))
 
     End If
     
@@ -2155,7 +2239,7 @@ Public Sub DrawInterfaceComerciar()
                 str = str & "Clase)"
 
             Case 3
-                str = str & "Facci√≥n)"
+                str = str & "FacciÛn)"
 
             Case 4
                 str = str & "Skill)"
@@ -2172,7 +2256,7 @@ Public Sub DrawInterfaceComerciar()
         End Select
                            
         frmComerciar.lblnombre = CurrentInventory.ItemName(CurrentInventory.SelectedItem) & str
-        frmComerciar.lbldesc = CurrentInventory.GetInfo(CurrentInventory.OBJIndex(CurrentInventory.SelectedItem))
+        frmComerciar.lbldesc = CurrentInventory.GetInfo(CurrentInventory.ObjIndex(CurrentInventory.SelectedItem))
         frmComerciar.lblcosto = PonerPuntos(Fix(CurrentInventory.Valor(CurrentInventory.SelectedItem) * cantidad))
         
         Set CurrentInventory = Nothing
@@ -2180,22 +2264,23 @@ Public Sub DrawInterfaceComerciar()
     End If
 
     ' Presentamos la escena
-    Call Engine_EndScene(InvRect, frmComerciar.interface.hWnd)
+    Call Engine_EndScene(InvRect, frmComerciar.interface.hwnd)
 
     
     Exit Sub
 
 DrawInterfaceComerciar_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.DrawInterfaceComerciar", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.DrawInterfaceComerciar", Erl)
     Resume Next
     
 End Sub
+
 Public Sub DrawInterfaceBovedaCuenta()
     
     On Error GoTo DrawInterfaceBoveda_Err
     
 
-    ' S√≥lo dibujamos cuando es necesario
+    ' SÛlo dibujamos cuando es necesario
     If Not frmBancoCuenta.InvBovedaCuenta.NeedsRedraw And Not frmBancoCuenta.InvBankUsuCuenta.NeedsRedraw Then Exit Sub
 
     Dim InvRect As RECT
@@ -2208,20 +2293,20 @@ Public Sub DrawInterfaceBovedaCuenta()
     ' Comenzamos la escena
     Call Engine_BeginScene
 
-    ' Dibujamos el fondo de la b√≥veda
+    ' Dibujamos el fondo de la bÛveda
     Call Draw_GrhIndex(838, 0, 0)
 
-    ' Dibujamos items de la b√≥veda
+    ' Dibujamos items de la bÛveda
     Call frmBancoCuenta.InvBovedaCuenta.DrawInventory
     
     ' Dibujamos items del usuario
     Call frmBancoCuenta.InvBankUsuCuenta.DrawInventory
 
-    ' Dibujamos "ambos" items arrastrados (aunque s√≥lo puede estar uno activo a la vez)
+    ' Dibujamos "ambos" items arrastrados (aunque sÛlo puede estar uno activo a la vez)
     Call frmBancoCuenta.InvBovedaCuenta.DrawDraggedItem
     Call frmBancoCuenta.InvBankUsuCuenta.DrawDraggedItem
     
-    ' Me fijo qu√© inventario est√° seleccionado
+    ' Me fijo quÈ inventario est· seleccionado
     Dim CurrentInventory As clsGrapchicalInventory
     
     If frmBancoCuenta.InvBovedaCuenta.SelectedItem > 0 Then
@@ -2248,7 +2333,7 @@ Public Sub DrawInterfaceBovedaCuenta()
                 str = str & "Clase)"
 
             Case 3
-                str = str & "Facci√≥n)"
+                str = str & "FacciÛn)"
 
             Case 4
                 str = str & "Skill)"
@@ -2265,29 +2350,31 @@ Public Sub DrawInterfaceBovedaCuenta()
         End Select
         
         frmBancoCuenta.lblnombre.Caption = CurrentInventory.ItemName(CurrentInventory.SelectedItem) & str
-        frmBancoCuenta.lbldesc.Caption = CurrentInventory.GetInfo(CurrentInventory.OBJIndex(CurrentInventory.SelectedItem))
+        frmBancoCuenta.lbldesc.Caption = CurrentInventory.GetInfo(CurrentInventory.ObjIndex(CurrentInventory.SelectedItem))
         
         Set CurrentInventory = Nothing
 
     End If
 
     ' Presentamos la escena
-    Call Engine_EndScene(InvRect, frmBancoCuenta.interface.hWnd)
+    Call Engine_EndScene(InvRect, frmBancoCuenta.interface.hwnd)
+    Call Engine_EndScene(InvRect, frmBancoCuenta.interface.hwnd)
 
     
     Exit Sub
 
 DrawInterfaceBoveda_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.DrawInterfaceBoveda", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.DrawInterfaceBoveda", Erl)
     Resume Next
     
 End Sub
+
 Public Sub DrawInterfaceBoveda()
     
     On Error GoTo DrawInterfaceBoveda_Err
     
 
-    ' S√≥lo dibujamos cuando es necesario
+    ' SÛlo dibujamos cuando es necesario
     If Not frmBancoObj.InvBoveda.NeedsRedraw And Not frmBancoObj.InvBankUsu.NeedsRedraw Then Exit Sub
 
     Dim InvRect As RECT
@@ -2300,20 +2387,20 @@ Public Sub DrawInterfaceBoveda()
     ' Comenzamos la escena
     Call Engine_BeginScene
 
-    ' Dibujamos el fondo de la b√≥veda
+    ' Dibujamos el fondo de la bÛveda
     Call Draw_GrhIndex(838, 0, 0)
 
-    ' Dibujamos items de la b√≥veda
+    ' Dibujamos items de la bÛveda
     Call frmBancoObj.InvBoveda.DrawInventory
     
     ' Dibujamos items del usuario
     Call frmBancoObj.InvBankUsu.DrawInventory
 
-    ' Dibujamos "ambos" items arrastrados (aunque s√≥lo puede estar uno activo a la vez)
+    ' Dibujamos "ambos" items arrastrados (aunque sÛlo puede estar uno activo a la vez)
     Call frmBancoObj.InvBoveda.DrawDraggedItem
     Call frmBancoObj.InvBankUsu.DrawDraggedItem
     
-    ' Me fijo qu√© inventario est√° seleccionado
+    ' Me fijo quÈ inventario est· seleccionado
     Dim CurrentInventory As clsGrapchicalInventory
     
     If frmBancoObj.InvBoveda.SelectedItem > 0 Then
@@ -2340,7 +2427,7 @@ Public Sub DrawInterfaceBoveda()
                 str = str & "Clase)"
 
             Case 3
-                str = str & "Facci√≥n)"
+                str = str & "FacciÛn)"
 
             Case 4
                 str = str & "Skill)"
@@ -2357,29 +2444,30 @@ Public Sub DrawInterfaceBoveda()
         End Select
         
         frmBancoObj.lblnombre.Caption = CurrentInventory.ItemName(CurrentInventory.SelectedItem) & str
-        frmBancoObj.lbldesc.Caption = CurrentInventory.GetInfo(CurrentInventory.OBJIndex(CurrentInventory.SelectedItem))
+        frmBancoObj.lbldesc.Caption = CurrentInventory.GetInfo(CurrentInventory.ObjIndex(CurrentInventory.SelectedItem))
         
         Set CurrentInventory = Nothing
 
     End If
 
     ' Presentamos la escena
-    Call Engine_EndScene(InvRect, frmBancoObj.interface.hWnd)
+    Call Engine_EndScene(InvRect, frmBancoObj.interface.hwnd)
 
     
     Exit Sub
 
 DrawInterfaceBoveda_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.DrawInterfaceBoveda", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.DrawInterfaceBoveda", Erl)
     Resume Next
     
 End Sub
+
 Public Sub DrawInterfaceKeys()
     
     On Error GoTo DrawInterfaceKeys_Err
     
 
-    ' S√≥lo dibujamos cuando es necesario
+    ' SÛlo dibujamos cuando es necesario
     If Not FrmKeyInv.InvKeys.NeedsRedraw Then Exit Sub
 
     Dim InvRect As RECT
@@ -2392,85 +2480,171 @@ Public Sub DrawInterfaceKeys()
     ' Comenzamos la escena
     Call Engine_BeginScene
 
-    ' Dibujamos el fondo de la b√≥veda
+    ' Dibujamos el fondo de la bÛveda
     'Call Draw_GrhIndex(838, 0, 0)
     
     ' Dibujamos llaves
     Call FrmKeyInv.InvKeys.DrawInventory
 
     ' Presentamos la escena
-    Call Engine_EndScene(InvRect, FrmKeyInv.interface.hWnd)
+    Call Engine_EndScene(InvRect, FrmKeyInv.interface.hwnd)
 
     
     Exit Sub
 
 DrawInterfaceKeys_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.DrawInterfaceKeys", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.DrawInterfaceKeys", Erl)
     Resume Next
     
 End Sub
 
-Public Sub DrawMapaMundo()
+Public Sub DrawInventoryComercio()
     
-    On Error GoTo DrawMapaMundo_Err
-    
-
+    On Error GoTo DrawInventorysComercio_Err
     
 
-    Static re As RECT
-    re.Left = 0
-    re.Top = 0
-    re.Bottom = 89
-    re.Right = 177
-    
-    frmMapaGrande.PlayerView.Height = 89
-    frmMapaGrande.PlayerView.Width = 177
-    frmMapaGrande.PlayerView.ScaleHeight = 89
-    frmMapaGrande.PlayerView.ScaleWidth = 177
-    
-    If frmMapaGrande.ListView1.ListItems.count <= 0 Then Exit Sub
-    
+    ' SÛlo dibujamos cuando es necesario
+    If Not frmComerciarUsu.InvUser.NeedsRedraw Then Exit Sub
+
+    Dim InvRect As RECT
+
+    InvRect.Left = 0
+    InvRect.Top = 0
+    InvRect.Right = frmComerciarUsu.picInv.ScaleWidth
+    InvRect.Bottom = frmComerciarUsu.picInv.ScaleHeight
+
+    ' Comenzamos la escena
     Call Engine_BeginScene
-        
-    Dim i    As Byte
-
-    Dim x    As Integer
-
-    Dim y    As Integer
     
-    Dim Head As grh, grh As grh
-    Dim HeadID As Integer, BodyID As Integer
-    HeadID = NpcData(frmMapaGrande.ListView1.SelectedItem.SubItems(2)).Head
-    BodyID = NpcData(frmMapaGrande.ListView1.SelectedItem.SubItems(2)).Body
+    ' Dibujamos llaves
+    Call frmComerciarUsu.InvUser.DrawInventory
     
-    Dim tmp           As String
-
-    Dim temp_array As RGBA
-    Call SetRGBA(temp_array, 7, 7, 7)
-
-    Engine_Draw_Box x, y, 177, 89, temp_array 'Fondo del inventario
-    
-    If BodyID > 0 Then
-        grh = BodyData(BodyID).Walk(3)
-        x = (frmMapaGrande.PlayerView.ScaleWidth - GrhData(grh.GrhIndex).pixelWidth) \ 2
-        y = (frmMapaGrande.PlayerView.ScaleHeight - GrhData(grh.GrhIndex).pixelHeight) \ 2
-        Call Draw_Grh(grh, x, y, 0, 1, COLOR_WHITE, False, 0, 0, 0)
-    End If
-
-    If HeadID > 0 Then
-        Head = HeadData(HeadID).Head(3)
-        x = (frmMapaGrande.PlayerView.ScaleWidth - GrhData(Head.GrhIndex).pixelWidth) \ 2
-        y = (frmMapaGrande.PlayerView.ScaleHeight - GrhData(Head.GrhIndex).pixelHeight) \ 2 + 8 + BodyData(NpcData(frmMapaGrande.ListView1.SelectedItem.SubItems(2)).Body).HeadOffset.y
-        Call Draw_Grh(Head, x, y, 0, 1, COLOR_WHITE, False, 0, 0, 0)
-    End If
-    
-    Call Engine_EndScene(re, frmMapaGrande.PlayerView.hWnd)
+    ' Presentamos la escena
+    Call Engine_EndScene(InvRect, frmComerciarUsu.picInv.hwnd)
 
     
     Exit Sub
 
-DrawMapaMundo_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.DrawMapaMundo", Erl)
+DrawInventorysComercio_Err:
+    Call RegistrarError(Err.Number, Err.Description, "engine.DrawInventorysComercio", Erl)
+    Resume Next
+    
+End Sub
+
+Public Sub DrawInventoryUserComercio()
+    
+    On Error GoTo DrawInventoryUserComercio_Err
+    
+
+    ' SÛlo dibujamos cuando es necesario
+    If Not frmComerciarUsu.InvUserSell.NeedsRedraw Then Exit Sub
+
+    Dim InvRect As RECT
+
+    InvRect.Left = 0
+    InvRect.Top = 0
+    InvRect.Right = frmComerciarUsu.picInvUserSell.ScaleWidth
+    InvRect.Bottom = frmComerciarUsu.picInvUserSell.ScaleHeight
+
+    ' Comenzamos la escena
+    Call Engine_BeginScene
+    
+    ' Dibujamos llaves
+    Call frmComerciarUsu.InvUserSell.DrawInventory
+    
+    ' Presentamos la escena
+    Call Engine_EndScene(InvRect, frmComerciarUsu.picInvUserSell.hwnd)
+
+    
+    Exit Sub
+
+DrawInventoryUserComercio_Err:
+    Call RegistrarError(Err.Number, Err.Description, "engine.DrawInventoryUserComercio", Erl)
+    Resume Next
+    
+End Sub
+
+Public Sub DrawInventoryOtherComercio()
+    
+    On Error GoTo DrawInventoryOtherComercio_Err
+    
+
+    ' SÛlo dibujamos cuando es necesario
+    If Not frmComerciarUsu.InvOtherSell.NeedsRedraw Then Exit Sub
+
+    Dim InvRect As RECT
+
+    InvRect.Left = 0
+    InvRect.Top = 0
+    InvRect.Right = frmComerciarUsu.picInvOtherSell.ScaleWidth
+    InvRect.Bottom = frmComerciarUsu.picInvOtherSell.ScaleHeight
+
+    ' Comenzamos la escena
+    Call Engine_BeginScene
+    
+    ' Dibujamos llaves
+    Call frmComerciarUsu.InvOtherSell.DrawInventory
+    
+    ' Presentamos la escena
+    Call Engine_EndScene(InvRect, frmComerciarUsu.picInvOtherSell.hwnd)
+
+    
+    Exit Sub
+
+DrawInventoryOtherComercio_Err:
+    Call RegistrarError(Err.Number, Err.Description, "engine.DrawInventoryOtherComercio", Erl)
+    Resume Next
+    
+End Sub
+
+Public Sub DrawInterfaceCrafting()
+    
+    On Error GoTo DrawInterfaceBoveda_Err
+
+    ' SÛlo dibujamos cuando es necesario
+    If Not frmCrafteo.InvCraftUser.NeedsRedraw And Not frmCrafteo.InvCraftItems.NeedsRedraw And Not frmCrafteo.InvCraftCatalyst.NeedsRedraw Then Exit Sub
+
+    Dim InvRect As RECT
+    InvRect.Left = 0
+    InvRect.Top = 0
+    InvRect.Right = frmCrafteo.PicInven.ScaleWidth
+    InvRect.Bottom = frmCrafteo.PicInven.ScaleHeight
+
+    ' Comenzamos la escena
+    Call Engine_BeginScene
+
+    ' Dibujamos el fondo
+    Call Draw_GrhIndex(frmCrafteo.InventoryGrhIndex, 0, 0)
+
+    ' Dibujamos los inventarios
+    Call frmCrafteo.InvCraftUser.DrawInventory
+    Call frmCrafteo.InvCraftItems.DrawInventory
+    Call frmCrafteo.InvCraftCatalyst.DrawInventory
+    
+    ' Dibujamos el resultado o, si no hay ninguno, el tipo de crafteo
+    If frmCrafteo.ResultGrhIndex Then
+        Call Draw_GrhIndex(frmCrafteo.ResultGrhIndex, 100, 15)
+        Call Engine_Text_Render("Probabilidad de Èxito: " & frmCrafteo.PorcentajeAcierto & "%", 25, 60, COLOR_WHITE)
+
+        Dim Color(3) As RGBA
+        Call RGBAList(Color, 255, 255, 0)
+        Call Engine_Text_Render("Costo: " & PonerPuntos(frmCrafteo.PrecioCrafteo) & " monedas de oro", 25, 140, Color)
+    Else
+        Call Draw_GrhIndex(frmCrafteo.TipoGrhIndex, 100, 15)
+    End If
+
+    ' Dibujamos los items arrastrados (aunque sÛlo puede estar uno activo a la vez)
+    Call frmCrafteo.InvCraftUser.DrawDraggedItem
+    Call frmCrafteo.InvCraftItems.DrawDraggedItem
+    Call frmCrafteo.InvCraftCatalyst.DrawDraggedItem
+
+    ' Presentamos la escena
+    Call Engine_EndScene(InvRect, frmCrafteo.PicInven.hwnd)
+
+    Exit Sub
+
+DrawInterfaceBoveda_Err:
+    Call RegistrarError(Err.Number, Err.Description, "engine.DrawInterfaceCrafting", Erl)
     Resume Next
     
 End Sub
@@ -2481,9 +2655,9 @@ Public Sub Grh_Render_Advance(ByRef grh As grh, ByVal screen_x As Integer, ByVal
     
 
     '**************************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (juansotuyo@hotmail.com)
+    'Author: Juan MartÌn Sotuyo Dodero (juansotuyo@hotmail.com)
     'Last Modify Date: 11/19/2003
-    'Similar to Grh_Render, but let¬¥s you resize the Grh
+    'Similar to Grh_Render, but let¥s you resize the Grh
     '**************************************************************
     Dim tile_width  As Integer
 
@@ -2491,7 +2665,7 @@ Public Sub Grh_Render_Advance(ByRef grh As grh, ByVal screen_x As Integer, ByVal
 
     Dim grh_index   As Long
     
-    If grh.GrhIndex = 0 Or grh.GrhIndex > MaxGrh Then Exit Sub
+    If grh.grhIndex = 0 Or grh.grhIndex > MaxGrh Then Exit Sub
     
     Dim CurrentFrame As Integer
     CurrentFrame = 1
@@ -2500,8 +2674,8 @@ Public Sub Grh_Render_Advance(ByRef grh As grh, ByVal screen_x As Integer, ByVal
         Dim ElapsedFrames As Long
         ElapsedFrames = Fix((FrameTime - grh.Started) / grh.speed)
 
-        If grh.Loops = INFINITE_LOOPS Or ElapsedFrames < GrhData(grh.GrhIndex).NumFrames * (grh.Loops + 1) Then
-            CurrentFrame = ElapsedFrames Mod GrhData(grh.GrhIndex).NumFrames + 1
+        If grh.Loops = INFINITE_LOOPS Or ElapsedFrames < GrhData(grh.grhIndex).NumFrames * (grh.Loops + 1) Then
+            CurrentFrame = ElapsedFrames Mod GrhData(grh.grhIndex).NumFrames + 1
 
         Else
             grh.Started = 0
@@ -2510,7 +2684,7 @@ Public Sub Grh_Render_Advance(ByRef grh As grh, ByVal screen_x As Integer, ByVal
     End If
 
     'Figure out what frame to draw (always 1 if not animated)
-    grh_index = GrhData(grh.GrhIndex).Frames(CurrentFrame)
+    grh_index = GrhData(grh.grhIndex).Frames(CurrentFrame)
     
     'Center Grh over X, Y pos
     If GrhData(grh_index).TileWidth <> 1 Then
@@ -2531,7 +2705,7 @@ Public Sub Grh_Render_Advance(ByRef grh As grh, ByVal screen_x As Integer, ByVal
     Exit Sub
 
 Grh_Render_Advance_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Grh_Render_Advance", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Grh_Render_Advance", Erl)
     Resume Next
     
 End Sub
@@ -2544,7 +2718,7 @@ Public Sub Grh_Render(ByRef grh As grh, ByVal screen_x As Integer, ByVal screen_
     '**************************************************************
     'Author: Aaron Perkins
     'Last Modify Date: 2/28/2003
-    'Modified by Juan Mart√≠n Sotuyo Dodero
+    'Modified by Juan MartÌn Sotuyo Dodero
     'Added centering
     '**************************************************************
     Dim tile_width  As Integer
@@ -2553,7 +2727,7 @@ Public Sub Grh_Render(ByRef grh As grh, ByVal screen_x As Integer, ByVal screen_
 
     Dim grh_index   As Long
     
-    If grh.GrhIndex = 0 Or grh.GrhIndex > MaxGrh Then Exit Sub
+    If grh.grhIndex = 0 Or grh.grhIndex > MaxGrh Then Exit Sub
     
     Dim CurrentFrame As Integer
     CurrentFrame = 1
@@ -2562,8 +2736,8 @@ Public Sub Grh_Render(ByRef grh As grh, ByVal screen_x As Integer, ByVal screen_
         Dim ElapsedFrames As Long
         ElapsedFrames = Fix((FrameTime - grh.Started) / grh.speed)
 
-        If grh.Loops = INFINITE_LOOPS Or ElapsedFrames < GrhData(grh.GrhIndex).NumFrames * (grh.Loops + 1) Then
-            CurrentFrame = ElapsedFrames Mod GrhData(grh.GrhIndex).NumFrames + 1
+        If grh.Loops = INFINITE_LOOPS Or ElapsedFrames < GrhData(grh.grhIndex).NumFrames * (grh.Loops + 1) Then
+            CurrentFrame = ElapsedFrames Mod GrhData(grh.grhIndex).NumFrames + 1
 
         Else
             grh.Started = 0
@@ -2572,7 +2746,7 @@ Public Sub Grh_Render(ByRef grh As grh, ByVal screen_x As Integer, ByVal screen_
     End If
 
     'Figure out what frame to draw (always 1 if not animated)
-    grh_index = GrhData(grh.GrhIndex).Frames(CurrentFrame)
+    grh_index = GrhData(grh.grhIndex).Frames(CurrentFrame)
     
     'Center Grh over X, Y pos
     If GrhData(grh_index).TileWidth <> 1 Then
@@ -2593,7 +2767,7 @@ Public Sub Grh_Render(ByRef grh As grh, ByVal screen_x As Integer, ByVal screen_
     Exit Sub
 
 Grh_Render_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Grh_Render", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Grh_Render", Erl)
     Resume Next
     
 End Sub
@@ -2604,7 +2778,7 @@ Private Function Grh_Check(ByVal grh_index As Long) As Boolean
     
 
     '**************************************************************
-    'Author: Aaron Perkins - Modified by Juan Mart√≠n Sotuyo Dodero
+    'Author: Aaron Perkins - Modified by Juan MartÌn Sotuyo Dodero
     'Last Modify Date: 1/04/2003
     '
     '**************************************************************
@@ -2618,7 +2792,7 @@ Private Function Grh_Check(ByVal grh_index As Long) As Boolean
     Exit Function
 
 Grh_Check_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Grh_Check", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Grh_Check", Erl)
     Resume Next
     
 End Function
@@ -2636,7 +2810,7 @@ Function Engine_PixelPosX(ByVal x As Integer) As Integer
     Exit Function
 
 Engine_PixelPosX_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Engine_PixelPosX", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Engine_PixelPosX", Erl)
     Resume Next
     
 End Function
@@ -2654,7 +2828,7 @@ Function Engine_PixelPosY(ByVal y As Integer) As Integer
     Exit Function
 
 Engine_PixelPosY_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Engine_PixelPosY", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Engine_PixelPosY", Erl)
     Resume Next
     
 End Function
@@ -2679,12 +2853,12 @@ Function Engine_ElapsedTime() As Long
     Exit Function
 
 Engine_ElapsedTime_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Engine_ElapsedTime", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Engine_ElapsedTime", Erl)
     Resume Next
     
 End Function
 
-Private Sub Renderizar_Aura(ByVal aura_index As String, ByVal x As Integer, ByVal y As Integer, ByVal map_x As Byte, ByVal map_y As Byte, Optional ByVal userindex As Long = 0)
+Private Sub Renderizar_Aura(ByVal aura_index As String, ByVal x As Integer, ByVal y As Integer, ByVal map_x As Byte, ByVal map_y As Byte, Optional ByVal userIndex As Long = 0)
     
     On Error GoTo Renderizar_Aura_Err
     
@@ -2709,14 +2883,14 @@ Private Sub Renderizar_Aura(ByVal aura_index As String, ByVal x As Integer, ByVa
     lado = Val(ReadField(4, aura_index, Asc(":")))
 
     'Debug.Print charlist(userindex).AuraAngle
-    If giro > 0 And userindex > 0 Then
+    If giro > 0 And userIndex > 0 Then
         'If lado = 0 Then
-        charlist(userindex).AuraAngle = charlist(userindex).AuraAngle + (timerTicksPerFrame * giro)
+        charlist(userIndex).AuraAngle = charlist(userIndex).AuraAngle + (timerTicksPerFrame * giro)
         'Else
         'charlist(userindex).AuraAngle = charlist(userindex).AuraAngle - (timerTicksPerFrame * giro)
         ' End If
     
-        If charlist(userindex).AuraAngle >= 360 Then charlist(userindex).AuraAngle = 0
+        If charlist(userIndex).AuraAngle >= 360 Then charlist(userIndex).AuraAngle = 0
 
     End If
 
@@ -2726,8 +2900,8 @@ Private Sub Renderizar_Aura(ByVal aura_index As String, ByVal x As Integer, ByVa
     Call InitGrh(aura_grh, Index)
 
     'Y por ultimo renderizamos esta capa con Draw_Grh
-    If giro > 0 And userindex > 0 Then
-        Call Draw_Grh(aura_grh, x, y + 30, 1, 0, rgb_list(), True, map_x, map_y, charlist(userindex).AuraAngle)
+    If giro > 0 And userIndex > 0 Then
+        Call Draw_Grh(aura_grh, x, y + 30, 1, 0, rgb_list(), True, map_x, map_y, charlist(userIndex).AuraAngle)
     Else
         Call Draw_Grh(aura_grh, x, y + 30, 1, 0, rgb_list(), True, map_x, map_y, 0)
 
@@ -2737,7 +2911,7 @@ Private Sub Renderizar_Aura(ByVal aura_index As String, ByVal x As Integer, ByVa
     Exit Sub
 
 Renderizar_Aura_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Renderizar_Aura", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Renderizar_Aura", Erl)
     Resume Next
     
 End Sub
@@ -2749,39 +2923,66 @@ Public Sub RenderConnect(ByVal tilex As Integer, ByVal tiley As Integer, ByVal P
 
     Call Engine_BeginScene
 
+     Select Case UserMap
+        Case 1 ' ulla 45-43
+            tilex = 45
+            tiley = 43
+        Case 34 ' nix 22-75
+            tilex = 22
+            tiley = 75
+        Case 59 ' bander 49-43
+            tilex = 49
+            tiley = 43
+        Case 151 ' Arghal 38-41
+            tilex = 41
+            tiley = 50
+        Case 62 ' Lindos 63-40
+            tilex = 64
+            tiley = 44
+        Case 195 ' Arkhein 64-32
+            tilex = 76
+            tiley = 26
+        Case 112 ' Esperanza 50-45
+            tilex = 62
+            tiley = 51
+        Case 354 ' Polo 78-66
+            tilex = 33
+            tiley = 38
+        Case 559 ' Penthar 33-50
+            tilex = 34
+            tiley = 50
+        Case 188 ' Penthar 48-36
+            tilex = 48
+            tiley = 36
+    End Select
+    
+    
     Call RenderScreen(tilex, tiley, PixelOffsetX, PixelOffsetY, HalfConnectTileWidth, HalfConnectTileHeight)
         
     Dim DefaultColor(3) As Long
 
     Dim Color           As Long
-
+    Dim ColorGM(3) As RGBA
+    ColorGM(0) = RGBA_From_Comp(248, 107, 3)
+    ColorGM(1) = ColorGM(0)
+    ColorGM(2) = ColorGM(0)
+    ColorGM(3) = ColorGM(0)
     intro = 1
 
     If intro = 1 Then
-        Draw_Grh BodyData(640).Walk(3), 470 + 15, 366, 1, 0, COLOR_WHITE
-        Draw_Grh HeadData(602).Head(3), 470 + 15, 327 + 2, 1, 0, COLOR_WHITE
+        Draw_Grh BodyData(773).Walk(3), 490, 333, 1, 0, COLOR_WHITE
+        Draw_Grh HeadData(118).Head(3), 490, 296, 1, 0, COLOR_WHITE
             
-        Draw_Grh CascoAnimData(48).Head(3), 470 + 15, 327, 1, 0, COLOR_WHITE
-        Draw_Grh WeaponAnimData(82).WeaponWalk(3), 470 + 15, 366, 1, 0, COLOR_WHITE
-            
-        Engine_Text_Render_LetraChica "v" & App.Major & "." & App.Minor & " Build: " & App.Revision, 870, 750, COLOR_WHITE, 4, False
+        Draw_Grh CascoAnimData(13).Head(3), 490, 294, 1, 0, COLOR_WHITE
+        Draw_Grh WeaponAnimData(6).WeaponWalk(3), 490, 333, 1, 0, COLOR_WHITE
+        Engine_Text_Render "Gulfas Morgolock", 454, 367, ColorGM, 1
+        Engine_Text_Render "<Creador del Mundo>", 443, 382, ColorGM, 1
 
-        Dim ItemName As String
-
-        'itemname = "abcdfghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789¬°!¬øTEST?#$100%&/\()=-@^[]<>*+.,:; p√°lmas s√©so te p√≠so s√≥lo p√∫to √Ω L√ÅL L√â"
-            
-        ' itemname = "p√°lmas s√©so te p√≠so s√≥lo p√∫to √Ω l√Å √âlefante P√çS√ìS P√öTO √ëO√±o"
-        Engine_Text_Render_LetraChica ItemName, 100, 730, COLOR_WHITE, 4, False
-
-        If ClickEnAsistente < 30 Then
-            Call Particle_Group_Render(spell_particle, 500, 365)
-        End If
-
+        Engine_Text_Render_LetraChica "v" & App.Major & "." & App.Minor & " Build: " & App.Revision, 40, 20, COLOR_WHITE, 4, False
     End If
 
     LastOffsetX = ParticleOffsetX
     LastOffsetY = ParticleOffsetY
-    'Engine_Weather_UpdateFog
     
     TextEfectAsistente = TextEfectAsistente + (15 * timerTicksPerFrame * Sgn(-1))
 
@@ -2789,67 +2990,44 @@ Public Sub RenderConnect(ByVal tilex As Integer, ByVal tiley As Integer, ByVal P
         TextEfectAsistente = 0
     End If
 
-    Engine_Text_Render TextAsistente, 510 - Engine_Text_Width(TextAsistente, True, 1) / 2, 320 - Engine_Text_Height(TextAsistente, True) + TextEfectAsistente, textcolorAsistente, 1, True, , 200
-
-    '
-    ' Engine_Draw_Box 975, 5, 15, 15, D3DColorARGB(100, 70, 0, 0)
-    'Engine_Text_Render UserCuenta, 490 - Engine_Text_Width(UserCuenta, False, 3) / 2, 38 - Engine_Text_Height(UserCuenta, False, 3), DefaultColor, 3, False
-    ' Engine_Text_Render "X", 977, 5, DefaultColor, 1, False
-    
-    '   Engine_Draw_Box 955, 5, 15, 15, D3DColorARGB(100, 70, 0, 0)
-    'Engine_Text_Render UserCuenta, 490 - Engine_Text_Width(UserCuenta, False, 3) / 2, 38 - Engine_Text_Height(UserCuenta, False, 3), DefaultColor, 3, False
-    ' Engine_Text_Render "_", 957, 3, DefaultColor, 1, False
+    Engine_Text_Render TextAsistente, 510 - Engine_Text_Width(TextAsistente, True, 1) / 2, 287 - Engine_Text_Height(TextAsistente, True) + TextEfectAsistente, textcolorAsistente, 1, True, , 200
 
     'Logo viejo
     Dim TempGrh As grh, cc(3) As RGBA
-    Call InitGrh(TempGrh, 1171)
     
     Call InitGrh(TempGrh, 1172)
 
-    Call RGBAList(cc, 255, 255, 255, 220)
+    Call RGBAList(cc, 255, 255, 255, 255)
 
-    Draw_Grh TempGrh, 494, 275, 1, 1, cc(), False
+    Draw_Grh TempGrh, (frmConnect.ScaleWidth - GrhData(TempGrh.GrhIndex).pixelWidth) \ 2 + 6, 10, 0, 1, cc(), False
 
     'Logo nuevo
     'Marco
     Call InitGrh(TempGrh, 1169)
 
     Draw_Grh TempGrh, 0, 0, 0, 0, COLOR_WHITE, False
-    
-    'Marco
 
-    #If DEBUGGING = 1 Then
-        ' Botones debug
-        Engine_Text_Render "Debug:", 50, 300, COLOR_WHITE
-    
-        ' Crear cuenta a manopla
-        Engine_Draw_Box 40, 330, 155, 35, RGBA_From_Comp(0, 0, 0, 150)
-        Engine_Text_Render "Crear cuenta en cliente", 50, 340, COLOR_WHITE
-    #End If
+    Call InitGrh(TempGrh, 16577)
 
-    'TempGrh.framecounter = 1
-    'TempGrh.GrhIndex = 32016
+    Draw_Grh TempGrh, 810, 655, 0, 1, cc(), False
 
-    ' cc(0) = D3DColorARGB(255, 255, 255, 255)
-    ' cc(1) = cc(0)
-    ' cc(2) = cc(0)
-    ' cc(3) = cc(0)
+    If FadeInAlpha > 0 Then
+        Call Engine_Draw_Box(0, 0, frmConnect.ScaleWidth, frmConnect.ScaleHeight, RGBA_From_Comp(0, 0, 0, FadeInAlpha))
+        FadeInAlpha = FadeInAlpha - 10 * timerTicksPerFrame
+    End If
 
     ' Draw_Grh TempGrh, 480, 100, 1, 1, cc(), False
-    Call Engine_EndScene(Render_Connect_Rect, frmConnect.render.hWnd)
+    Call Engine_EndScene(Render_Connect_Rect, frmConnect.render.hwnd)
     
-    FrameTime = (timeGetTime() And &H7FFFFFFF)
+    FrameTime = GetTickCount()
     'FramesPerSecCounter = FramesPerSecCounter + 1
     timerElapsedTime = GetElapsedTime()
     timerTicksPerFrame = timerElapsedTime * engineBaseSpeed
-
-    Exit Sub
-
     
     Exit Sub
 
 RenderConnect_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.RenderConnect", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.RenderConnect", Erl)
     Resume Next
     
 End Sub
@@ -2876,9 +3054,9 @@ Public Sub RenderCrearPJ(ByVal tilex As Integer, ByVal tiley As Integer, ByVal P
 
     Draw_Grh TempGrh, 0, 0, 0, 0, COLOR_WHITE, False
 
-    Call Engine_EndScene(Render_Connect_Rect, frmConnect.render.hWnd)
+    Call Engine_EndScene(Render_Connect_Rect, frmConnect.render.hwnd)
 
-    FrameTime = (timeGetTime() And &H7FFFFFFF)
+    FrameTime = GetTickCount()
     FramesPerSecCounter = FramesPerSecCounter + 1
     timerElapsedTime = GetElapsedTime()
     timerTicksPerFrame = timerElapsedTime * engineBaseSpeed
@@ -2889,7 +3067,7 @@ Public Sub RenderCrearPJ(ByVal tilex As Integer, ByVal tiley As Integer, ByVal P
     Exit Sub
 
 RenderCrearPJ_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.RenderCrearPJ", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.RenderCrearPJ", Erl)
     Resume Next
     
 End Sub
@@ -2901,16 +3079,16 @@ Public Sub rendercuenta(ByVal tilex As Integer, ByVal tiley As Integer, ByVal Pi
 
     Call Engine_BeginScene
 
-    FrameTime = (timeGetTime() And &H7FFFFFFF)
+    FrameTime = GetTickCount()
     FramesPerSecCounter = FramesPerSecCounter + 1
     timerElapsedTime = GetElapsedTime()
     timerTicksPerFrame = timerElapsedTime * engineBaseSpeed
 
     RenderPjsCuenta
     
-    Call Particle_Group_Render(ParticleLluviaDorada, 400, 0)
+    'Call Particle_Group_Render(ParticleLluviaDorada, 400, 0)
 
-    Call Engine_EndScene(Render_Connect_Rect, frmConnect.render.hWnd)
+    Call Engine_EndScene(Render_Connect_Rect, frmConnect.render.hwnd)
     
     Exit Sub
 
@@ -2918,7 +3096,7 @@ Public Sub rendercuenta(ByVal tilex As Integer, ByVal tiley As Integer, ByVal Pi
     Exit Sub
 
 rendercuenta_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.rendercuenta", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.rendercuenta", Erl)
     Resume Next
     
 End Sub
@@ -3003,75 +3181,32 @@ Public Sub RenderUICrearPJ()
     
     'Atributos
     Engine_Text_Render_LetraChica "Atributos ", 235 + OffX, 385 + Offy, COLOR_WHITE, 6, True
-    Engine_Draw_Box 175 + OffX, 405 + Offy, 185, 150, RGBA_From_Comp(0, 0, 0, 80)
-  '  Engine_Draw_Box 610, 405, 220, 180, D3DColorARGB(120, 100, 100, 100)
     
+    Dim atributeValue As Long
+    
+    atributeValue = Val(frmCrearPersonaje.lbFuerza.Caption) + Val(frmCrearPersonaje.modfuerza.Caption)
     Engine_Text_Render_LetraChica "Fuerza ", 185 + OffX, 410 + Offy, COLOR_WHITE, 1, True
-   ' Engine_Text_Render "<", 260, 410, DefaultColor, 1, True
-   ' Engine_Text_Render ">", 310, 410, DefaultColor, 1, True
-    Engine_Draw_Box 280 + OffX, 409 + Offy, 20, 20, RGBA_From_Comp(1, 1, 1, 100)
-    Engine_Text_Render_LetraChica frmCrearPersonaje.lbFuerza.Caption, 282 + OffX, 413 + Offy, COLOR_WHITE, 1, True ' Atributo fuerza
-    'Engine_Text_Render "+", 335, 410, DefaultColor, 1, True
-    Engine_Draw_Box 317 + OffX, 409 + Offy, 25, 20, RGBA_From_Comp(1, 1, 1, 100)
-    Engine_Text_Render_LetraChica frmCrearPersonaje.modfuerza.Caption, 320 + OffX, 413 + Offy, COLOR_WHITE, 1, True ' Bonificacion fuerza
+    Call renderAttributesColors(atributeValue, 305 + OffX, 413 + Offy) 'Atributo Fuerza
     
-    
+    atributeValue = Val(frmCrearPersonaje.lbAgilidad.Caption) + Val(frmCrearPersonaje.modAgilidad.Caption)
     Engine_Text_Render "Agilidad ", 185 + OffX, 440 + Offy, COLOR_WHITE, 1, True
-   ' Engine_Text_Render "<", 260, 440, DefaultColor, 1, True
-   ' Engine_Text_Render ">", 310, 440, DefaultColor, 1, True
-    Engine_Draw_Box 280 + OffX, 440 + Offy, 20, 20, RGBA_From_Comp(1, 1, 1, 100)
-    Engine_Text_Render frmCrearPersonaje.lbAgilidad.Caption, 282 + OffX, 443 + Offy, COLOR_WHITE, 1, True ' Atributo Agilidad
-   ' Engine_Text_Render "+", 335, 440, DefaultColor, 1, True
-    Engine_Draw_Box 317 + OffX, 440 + Offy, 25, 20, RGBA_From_Comp(1, 1, 1, 100)
-    Engine_Text_Render frmCrearPersonaje.modAgilidad.Caption, 320 + OffX, 443 + Offy, COLOR_WHITE, 1, True ' Bonificacion Agilidad
+    Call renderAttributesColors(atributeValue, 305 + OffX, 443 + Offy) ' Atributo Agilidad
     
     
-    
+    atributeValue = Val(frmCrearPersonaje.lbInteligencia.Caption) + Val(frmCrearPersonaje.modInteligencia.Caption)
     Engine_Text_Render "Inteligencia ", 185 + OffX, 470 + Offy, COLOR_WHITE, 1, True
-    'Engine_Text_Render "<", 260, 470, DefaultColor, 1, True
-    'Engine_Text_Render ">", 310, 470, DefaultColor, 1, True
-    Engine_Draw_Box 280 + OffX, 470 + Offy, 20, 20, RGBA_From_Comp(1, 1, 1, 100)
-    Engine_Text_Render frmCrearPersonaje.lbInteligencia.Caption, 282 + OffX, 473 + Offy, COLOR_WHITE, 1, True ' Atributo Inteligencia
-    'Engine_Text_Render "+", 335, 470, DefaultColor, 1, True
-    Engine_Draw_Box 317 + OffX, 470 + Offy, 25, 20, RGBA_From_Comp(1, 1, 1, 100)
-    Engine_Text_Render frmCrearPersonaje.modInteligencia.Caption, 320 + OffX, 473 + Offy, COLOR_WHITE, 1, True ' Bonificacion Inteligencia
+    Call renderAttributesColors(atributeValue, 305 + OffX, 473 + Offy) ' Atributo Inteligencia
     
     
-    Engine_Text_Render "Constituci√≥n ", 185 + OffX, 500 + Offy, COLOR_WHITE, , True
-    'Engine_Text_Render "<", 260, 500, DefaultColor, 1, True
-   ' Engine_Text_Render ">", 310, 500, DefaultColor, 1, True
-    Engine_Draw_Box 280 + OffX, 500 + Offy, 20, 20, RGBA_From_Comp(1, 1, 1, 100)
-    Engine_Text_Render frmCrearPersonaje.lbConstitucion.Caption, 283 + OffX, 503 + Offy, COLOR_WHITE, 1, True ' Atributo Constituci√≥n
-    '
-   ' Engine_Text_Render "+", 335, 500, DefaultColor, 1, True
-    Engine_Draw_Box 317 + OffX, 500 + Offy, 25, 20, RGBA_From_Comp(1, 1, 1, 100)
-    Engine_Text_Render frmCrearPersonaje.modConstitucion.Caption, 320 + OffX, 503 + Offy, COLOR_WHITE, 1, True ' Bonificacion Constituci√≥n
+    atributeValue = Val(frmCrearPersonaje.lbConstitucion.Caption) + Val(frmCrearPersonaje.modConstitucion.Caption)
+    Engine_Text_Render "ConstituciÛn ", 185 + OffX, 500 + Offy, COLOR_WHITE, , True
+    Call renderAttributesColors(atributeValue, 305 + OffX, 503 + Offy) ' Atributo ConstituciÛn
     
     
-    
-        Engine_Text_Render "Carisma ", 185 + OffX, 530 + Offy, COLOR_WHITE, , True
-    'Engine_Text_Render "<", 260, 500, DefaultColor, 1, True
-   ' Engine_Text_Render ">", 310, 500, DefaultColor, 1, True
-    Engine_Draw_Box 280 + OffX, 530 + Offy, 20, 20, RGBA_From_Comp(1, 1, 1, 100)
-    Engine_Text_Render frmCrearPersonaje.lbCarisma.Caption, 283 + OffX, 533 + Offy, COLOR_WHITE, 1, True ' Atributo Carisma
-    '
-   ' Engine_Text_Render "+", 335, 500, DefaultColor, 1, True
-    Engine_Draw_Box 317 + OffX, 530 + Offy, 25, 20, RGBA_From_Comp(1, 1, 1, 100)
-    Engine_Text_Render frmCrearPersonaje.modCarisma.Caption, 320 + OffX, 533 + Offy, COLOR_WHITE, 1, True ' Bonificacion Carisma
-    
-    
+    atributeValue = Val(frmCrearPersonaje.lbCarisma.Caption) + Val(frmCrearPersonaje.modCarisma.Caption)
+    Engine_Text_Render "Carisma ", 185 + OffX, 530 + Offy, COLOR_WHITE, , True
+    Call renderAttributesColors(atributeValue, 305 + OffX, 533 + Offy) ' Atributo Carisma
       
-    '
-    'Engine_Draw_Box 290, 528, 20, 20, D3DColorARGB(120, 1, 150, 150)
-    'Engine_Text_Render "Puntos disponibles", 175, 530, DefaultColor, 1, True '
-    'Engine_Text_Render frmCrearPersonaje.lbLagaRulzz.Caption, 291, 530, DefaultColor, 1, True '
-    'Cabeza
-    'Engine_Draw_Box 425, 415, 140, 100, D3DColorARGB(120, 100, 100, 100)
-
-   ' Engine_Text_Render "Selecciona el rostro que m√°s te agrade.", 662, 260, DefaultColor, 1, True
-    
-    
-    
     
     
 
@@ -3182,17 +3317,25 @@ Public Sub RenderUICrearPJ()
 
        
     'Engine_Text_Render "DADO", 670, 390, DefaultColor()
-    Draw_GrhIndex 1123, 655, 345
+    'Draw_GrhIndex 1123, 655, 345
 
     
     Exit Sub
 
 RenderUICrearPJ_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.RenderUICrearPJ", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.RenderUICrearPJ", Erl)
     Resume Next
     
 End Sub
-
+Private Function renderAttributesColors(ByVal value As Integer, ByVal x As Integer, ByVal y As Integer)
+        If value > 18 Then
+        Engine_Text_Render_LetraChica str(value), x, y, COLOR_GREEN, 1, True
+    ElseIf value < 18 Then
+        Engine_Text_Render_LetraChica str(value), x, y, COLOR_RED, 1, True
+    Else
+        Engine_Text_Render_LetraChica str(value), x, y, COLOR_WHITE, 1, True
+    End If
+End Function
 Public Sub RenderPjsCuenta()
     
     On Error GoTo RenderPjsCuenta_Err
@@ -3215,14 +3358,50 @@ Public Sub RenderPjsCuenta()
     Texto = CuentaEmail
 
     'Render fondo
-    Draw_GrhIndex 1170, 0, 0
+    
+   
+   
+   'Draw_GrhIndex 1170, 0, 0
     
     Dim temp_array(3) As RGBA
 
     Dim sumax As Long
 
     sumax = 84
-            
+    
+    Dim TempColor(3) As RGBA
+    Dim grh As grh
+    
+    'Dibujo la escena debajo del mapa
+    Call RenderScreen(RenderCuenta_PosX, RenderCuenta_PosY, 0, 0, HalfConnectTileWidth, HalfConnectTileHeight)
+    
+    If LastPJSeleccionado <> PJSeleccionado Then
+        If AlphaRenderCuenta < MAX_ALPHA_RENDER_CUENTA Then
+            AlphaRenderCuenta = Min(AlphaRenderCuenta + timerTicksPerFrame * 10, MAX_ALPHA_RENDER_CUENTA)
+        Else
+            LastPJSeleccionado = PJSeleccionado
+
+            If PJSeleccionado <> 0 Then
+                Call SwitchMap(Pjs(PJSeleccionado).Mapa)
+                RenderCuenta_PosX = Pjs(PJSeleccionado).posX
+                RenderCuenta_PosY = Pjs(PJSeleccionado).posY
+            End If
+        End If
+    ElseIf PJSeleccionado <> 0 And AlphaRenderCuenta > 0 Then
+        If Pjs(PJSeleccionado).Mapa <> 0 Then
+            AlphaRenderCuenta = max(AlphaRenderCuenta - timerTicksPerFrame * 10, 0)
+        End If
+    End If
+
+    Call RGBAList(TempColor, 255, 255, 255, 170 + AlphaRenderCuenta)
+    
+    Call InitGrh(grh, 4531)
+                        
+    Call Draw_Grh(grh, 0, 0, 0, 0, TempColor, False, 0, 0, 0)
+
+    'Dibujamos frente 3839
+    Draw_GrhIndex 3839, 0, 0
+      
     For i = 1 To 10
             
         If (i > 5) Then
@@ -3240,13 +3419,6 @@ Public Sub RenderPjsCuenta()
         temp_array(1) = Pjs(i).LetraColor
         temp_array(2) = Pjs(i).LetraColor
         temp_array(3) = Pjs(i).LetraColor
-        
-        'Offset de la cabeza / enanos.
-        ' If (Pjs(i).Clase <> eClass.Warrior) Then
-        ' notY = 5
-        ' Else
-        Rem   notY = -5
-        ' End If
         
         'Si tiene cuerpo dibuja
         If (Pjs(i).Body <> 0) Then
@@ -3273,34 +3445,35 @@ Public Sub RenderPjsCuenta()
             
             If (Pjs(i).Casco <> 0) Then
                 'If Not nohead Then
-                Draw_Grh CascoAnimData(Pjs(i).Casco).Head(3), x + 15, y - notY + BodyData(Pjs(i).Body).HeadOffset.y + 10, 1, 0, COLOR_WHITE
-
+                If Pjs(i).Casco <= UBound(CascoAnimData) And Pjs(i).Casco >= LBound(CascoAnimData) Then
+                    Draw_Grh CascoAnimData(Pjs(i).Casco).Head(3), x + 15, y - notY + BodyData(Pjs(i).Body).HeadOffset.y + 10, 1, 0, COLOR_WHITE
+                End If
                 ' End If
             End If
             
             If (Pjs(i).Escudo <> 0) Then
                 'If Not nohead Then
-                Draw_Grh ShieldAnimData(Pjs(i).Escudo).ShieldWalk(3), x + 14, y - notY + 10, 1, 0, COLOR_WHITE
-
+                If Pjs(i).Escudo <= UBound(ShieldAnimData) And Pjs(i).Escudo >= LBound(ShieldAnimData) Then
+                    Draw_Grh ShieldAnimData(Pjs(i).Escudo).ShieldWalk(3), x + 14, y - notY + 10, 1, 0, COLOR_WHITE
+                End If
                 ' End If
             End If
                         
             If (Pjs(i).Arma <> 0) Then
                 'If Not nohead Then
-                Draw_Grh WeaponAnimData(Pjs(i).Arma).WeaponWalk(3), x + 14, y - notY + 10, 1, 0, COLOR_WHITE
+                If Pjs(i).Arma <= UBound(WeaponAnimData) And Pjs(i).Arma >= LBound(WeaponAnimData) Then
+                    Draw_Grh WeaponAnimData(Pjs(i).Arma).WeaponWalk(3), x + 14, y - notY + 10, 1, 0, COLOR_WHITE
+                End If
 
                 ' End If
-            End If
-        
-            If CuentaDonador = 1 Then
-                Grh_Render Estrella, x + 17 + 6 + Engine_Text_Width(Pjs(i).nombre, 1) / 2, y + 19, temp_array(), True, True, False
-
             End If
 
             Engine_Text_Render Pjs(i).nombre, x + 30 - Engine_Text_Width(Pjs(i).nombre, True) / 2, y + 56 - Engine_Text_Height(Pjs(i).nombre, True), temp_array(), 1, True
             
             If PJSeleccionado = i Then
-            
+                
+              
+                
                 Dim Offy As Byte
 
                 Offy = 0
@@ -3316,10 +3489,10 @@ Public Sub RenderPjsCuenta()
 
                 End If
 
-                Engine_Text_Render "Clase: " & ListaClases(Pjs(i).Clase), 511 - Engine_Text_Width("Clase:" & ListaClases(Pjs(i).Clase), True) / 2, Offy + 585 - Engine_Text_Height("Clase:" & ListaClases(Pjs(i).Clase), True), COLOR_WHITE, 1, True
+                Engine_Text_Render "Clase: " & ListaClases(Pjs(i).Clase), 511 - Engine_Text_Width("Clase:" & ListaClases(Pjs(i).Clase), True) / 2, Offy + 570 - Engine_Text_Height("Clase:" & ListaClases(Pjs(i).Clase), True), COLOR_WHITE, 1, True
                 
-                Engine_Text_Render "Nivel: " & Pjs(i).nivel, 511 - Engine_Text_Width("Nivel:" & Pjs(i).nivel, True) / 2, Offy + 600 - Engine_Text_Height("Nivel:" & Pjs(i).nivel, True), COLOR_WHITE, 1, True
-                Engine_Text_Render CStr(Pjs(i).NameMapa), 5111 - Engine_Text_Width(CStr(Pjs(i).NameMapa), True) / 2, Offy + 615 - Engine_Text_Height(CStr(Pjs(i).NameMapa), True), COLOR_WHITE, 1, True
+                Engine_Text_Render "Nivel: " & Pjs(i).nivel, 511 - Engine_Text_Width("Nivel:" & Pjs(i).nivel, True) / 2, Offy + 585 - Engine_Text_Height("Nivel:" & Pjs(i).nivel, True), COLOR_WHITE, 1, True
+                Engine_Text_Render CStr(Pjs(i).NameMapa), 511 - Engine_Text_Width(CStr(Pjs(i).NameMapa), True) / 2, Offy + 615 - Engine_Text_Height(CStr(Pjs(i).NameMapa), True), COLOR_WHITE, 1, True
 
             End If
             
@@ -3327,20 +3500,19 @@ Public Sub RenderPjsCuenta()
 
     Next i
 
-    
     Exit Sub
 
 RenderPjsCuenta_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.RenderPjsCuenta", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.RenderPjsCuenta", Erl)
     Resume Next
     
 End Sub
 
-Sub EfectoEnPantalla(ByVal Color As Long, ByVal Time As Long)
+Sub EfectoEnPantalla(ByVal Color As Long, ByVal time As Long)
     
     On Error GoTo EfectoEnPantalla_Err
     
-    frmMain.Efecto.Interval = Time
+    frmMain.Efecto.Interval = time
     frmMain.Efecto.Enabled = True
     EfectoEnproceso = True
     Call SetGlobalLight(Color)
@@ -3349,14 +3521,14 @@ Sub EfectoEnPantalla(ByVal Color As Long, ByVal Time As Long)
     Exit Sub
 
 EfectoEnPantalla_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.EfectoEnPantalla", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.EfectoEnPantalla", Erl)
     Resume Next
     
 End Sub
 
 Public Sub SetBarFx(ByVal charindex As Integer, ByVal BarTime As Integer)
     '***************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+    'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
     'Last Modify Date: 12/03/04
     'Sets an FX to the character.
     '***************************************************
@@ -3373,7 +3545,7 @@ Public Sub SetBarFx(ByVal charindex As Integer, ByVal BarTime As Integer)
     Exit Sub
 
 SetBarFx_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.SetBarFx", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.SetBarFx", Erl)
     Resume Next
     
 End Sub
@@ -3393,7 +3565,7 @@ Public Function Engine_Get_2_Points_Angle(ByVal x1 As Long, ByVal y1 As Long, By
     Exit Function
 
 Engine_Get_2_Points_Angle_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Engine_Get_2_Points_Angle", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Engine_Get_2_Points_Angle", Erl)
     Resume Next
     
 End Function
@@ -3440,14 +3612,14 @@ Public Function Engine_Get_X_Y_Angle(ByVal x As Double, ByVal y As Double) As Do
     Exit Function
 
 Engine_Get_X_Y_Angle_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Engine_Get_X_Y_Angle", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Engine_Get_X_Y_Angle", Erl)
     Resume Next
     
 End Function
 
 Public Function Engine_Convert_Radians_To_Degrees(ByVal s_radians As Double) As Integer
     '**************************************************************
-    'Author: Juan Mart√≠n Sotuyo Dodero
+    'Author: Juan MartÌn Sotuyo Dodero
     'Last Modify Date: 8/25/2004
     'Converts a radian to degrees
     '**************************************************************
@@ -3461,14 +3633,14 @@ Public Function Engine_Convert_Radians_To_Degrees(ByVal s_radians As Double) As 
     Exit Function
 
 Engine_Convert_Radians_To_Degrees_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Engine_Convert_Radians_To_Degrees", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Engine_Convert_Radians_To_Degrees", Erl)
     Resume Next
     
 End Function
 
 ' programado por maTih.-
  
-Public Sub Initialize()
+Public Sub InitializeInventory()
     '
     ' @ Inicializa el array de efectos.
     
@@ -3483,6 +3655,9 @@ Public Sub Initialize()
     Set frmComerciar.InvComNpc = New clsGrapchicalInventory
     Set frmBancoObj.InvBankUsu = New clsGrapchicalInventory
     Set frmBancoObj.InvBoveda = New clsGrapchicalInventory
+    Set frmComerciarUsu.InvUser = New clsGrapchicalInventory
+    Set frmComerciarUsu.InvUserSell = New clsGrapchicalInventory
+    Set frmComerciarUsu.InvOtherSell = New clsGrapchicalInventory
     
     Set frmBancoCuenta.InvBankUsuCuenta = New clsGrapchicalInventory
     Set frmBancoCuenta.InvBovedaCuenta = New clsGrapchicalInventory
@@ -3492,23 +3667,31 @@ Public Sub Initialize()
     Call frmMain.Inventario.Initialize(frmMain.picInv, MAX_INVENTORY_SLOTS, , , 0, 0, 3, 3, True, 9)
     Call frmComerciar.InvComUsu.Initialize(frmComerciar.interface, MAX_INVENTORY_SLOTS, 210, 0, 252, 0, 3, 3, True)
     Call frmComerciar.InvComNpc.Initialize(frmComerciar.interface, MAX_INVENTORY_SLOTS, 210, , 1, 0, 3, 3)
+    Call frmComerciarUsu.InvUser.Initialize(frmComerciarUsu.picInv, MAX_INVENTORY_SLOTS, , , 0, 0, 3, 3, True)
+    Call frmComerciarUsu.InvUserSell.Initialize(frmComerciarUsu.picInvUserSell, 6, , , 0, 0, 3, 3, True)
+    Call frmComerciarUsu.InvOtherSell.Initialize(frmComerciarUsu.picInvOtherSell, 6, , , 0, 0, 3, 3, True)
    
     Call frmBancoObj.InvBankUsu.Initialize(frmBancoObj.interface, MAX_INVENTORY_SLOTS, 210, 0, 252, 0, 3, 3, True)
     Call frmBancoObj.InvBoveda.Initialize(frmBancoObj.interface, MAX_BANCOINVENTORY_SLOTS, 210, 0, 0, 0, 3, 3)
     
     Call frmBancoCuenta.InvBankUsuCuenta.Initialize(frmBancoCuenta.interface, MAX_INVENTORY_SLOTS, 210, 0, 252, 0, 3, 3, True)
     Call frmBancoCuenta.InvBovedaCuenta.Initialize(frmBancoCuenta.interface, MAX_BANCOINVENTORY_SLOTS, 210, 0, 0, 0, 3, 3)
-    
-    
-    'Ladder
+
     Call FrmKeyInv.InvKeys.Initialize(FrmKeyInv.interface, MAX_KEYS, , , 0, 0, 3, 3, True) 'Inventario de llaves
     FrmKeyInv.InvKeys.MostrarCantidades = False
- 
     
+    Set frmCrafteo.InvCraftUser = New clsGrapchicalInventory
+    Set frmCrafteo.InvCraftItems = New clsGrapchicalInventory
+    Set frmCrafteo.InvCraftCatalyst = New clsGrapchicalInventory
+
+    Call frmCrafteo.InvCraftUser.Initialize(frmCrafteo.PicInven, MAX_INVENTORY_SLOTS, 210, , 250, 0, 3, 3, True)
+    Call frmCrafteo.InvCraftItems.Initialize(frmCrafteo.PicInven, MAX_SLOTS_CRAFTEO, 175, , 25, 180, 3, 3, True)
+    Call frmCrafteo.InvCraftCatalyst.Initialize(frmCrafteo.PicInven, 1, 35, 35, 100, 90, 3, 3, True)
+
     Exit Sub
 
 Initialize_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Initialize", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Initialize", Erl)
     Resume Next
     
 End Sub
@@ -3523,7 +3706,7 @@ Public Sub Terminate_Index(ByVal effect_Index As Integer)
  
     Dim clear_Index As Effect_Type
  
-    'Si es un slot v√°lido
+    'Si es un slot v·lido
     If (effect_Index <> 0) And (effect_Index <= UBound(Effect())) Then
         Effect(effect_Index) = clear_Index
 
@@ -3533,7 +3716,7 @@ Public Sub Terminate_Index(ByVal effect_Index As Integer)
     Exit Sub
 
 Terminate_Index_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Terminate_Index", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Terminate_Index", Erl)
     Resume Next
     
 End Sub
@@ -3564,7 +3747,7 @@ Public Function Effect_Begin(ByVal Fx_Index As Integer, ByVal Bind_Speed As Sing
          
             .wav = wav
          
-            'Explosi√≥n?
+            'ExplosiÛn?
             If (explosion_FX_Index <> 0) And (fX = 0) Then
                 .End_Effect = explosion_FX_Index
                 .End_Loops = explosion_FX_Loops
@@ -3589,7 +3772,7 @@ Public Function Effect_Begin(ByVal Fx_Index As Integer, ByVal Bind_Speed As Sing
     Exit Function
 
 Effect_Begin_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Effect_Begin", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Effect_Begin", Erl)
     Resume Next
     
 End Function
@@ -3621,7 +3804,7 @@ Public Function Effect_BeginXY(ByVal Fx_Index As Integer, ByVal Bind_Speed As Si
          
             .wav = wav
          
-            'Explosi√≥n?
+            'ExplosiÛn?
             If (explosion_FX_Index <> 0) And (fX = 0) Then
                 .End_Effect = explosion_FX_Index
                 .End_Loops = explosion_FX_Loops
@@ -3646,7 +3829,7 @@ Public Function Effect_BeginXY(ByVal Fx_Index As Integer, ByVal Bind_Speed As Si
     Exit Function
 
 Effect_BeginXY_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Effect_BeginXY", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Effect_BeginXY", Erl)
     Resume Next
     
 End Function
@@ -3679,7 +3862,7 @@ Public Sub Effect_Render_All()
     Exit Sub
 
 Effect_Render_All_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Effect_Render_All", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Effect_Render_All", Erl)
     Resume Next
     
 End Sub
@@ -3703,11 +3886,11 @@ Public Sub Effect_Render_Slot(ByVal effect_Index As Integer)
  
         Dim target_Angle As Single
      
-        .Now_Moved = (timeGetTime() And &H7FFFFFFF)
+        .Now_Moved = GetTickCount()
      
         'Controla el intervalo de vuelo
         If (.Last_Move + 10) < .Now_Moved Then
-            .Last_Move = (timeGetTime() And &H7FFFFFFF)
+            .Last_Move = GetTickCount()
         
             'Si tiene char de destino.
             If (.DestinoChar <> 0) Then
@@ -3727,20 +3910,20 @@ Public Sub Effect_Render_Slot(ByVal effect_Index As Integer)
         
         End If
       
-        'Actualiza el √°ngulo.
+        'Actualiza el ·ngulo.
         target_Angle = Engine_GetAngle(.Now_X, .Now_Y, CInt(.Viaje_X), CInt(.Viaje_Y))
     
-        'Actualiza la posici√≥n del efecto.
+        'Actualiza la posiciÛn del efecto.
         .Now_X = (.Now_X + Sin(target_Angle * DegreeToRadian) * .ViajeSpeed)
         .Now_Y = (.Now_Y - Cos(target_Angle * DegreeToRadian) * .ViajeSpeed)
 
-        'Si hay posici√≥n dibuja.
+        'Si hay posiciÛn dibuja.
         If (.Now_X <> 0) And (.Now_Y <> 0) Then
             ' Call DDrawTransGrhtoSurface(.FX_Grh, .Now_X, .Now_Y, 1, 1)
 
             Call Particle_Group_Render(spell_particle, .Now_X, .Now_Y)
         
-            'Check si termin√≥.
+            'Check si terminÛ.
             ' If (.FX_Grh.Started = 0) Then .Fx_Index = 0: .Slot_Used = False
         
             If Abs(CInt(.Viaje_X) - CInt(.Now_X)) < 5 Then
@@ -3756,7 +3939,7 @@ Public Sub Effect_Render_Slot(ByVal effect_Index As Integer)
         
             If (.Now_X = .Viaje_X) And (.Now_Y = .Viaje_Y) Then
        
-                'Inicializa la explosi√≥n : p
+                'Inicializa la explosiÛn : p
                 If (.End_Effect <> 0) And .DestinoChar <> 0 Then
                     If .DestinoChar <> 0 Then
                         Call General_Char_Particle_Create(.End_Effect, .DestinoChar, .End_Loops)
@@ -3804,7 +3987,7 @@ Public Sub Effect_Render_Slot(ByVal effect_Index As Integer)
     Exit Sub
 
 Effect_Render_Slot_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Effect_Render_Slot", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Effect_Render_Slot", Erl)
     Resume Next
     
 End Sub
@@ -3866,8 +4049,12 @@ Public Function Engine_GetAngle(ByVal CenterX As Integer, ByVal CenterY As Integ
     SideA = Sqr(Abs(TargetX - CenterX) ^ 2 + TargetY ^ 2)
  
     'Calculate the angle
-    Engine_GetAngle = (SideA ^ 2 - CenterY ^ 2 - SideC ^ 2) / (CenterY * SideC * -2)
-    Engine_GetAngle = (Atn(-Engine_GetAngle / Sqr(-Engine_GetAngle * Engine_GetAngle + 1)) + 1.5708) * 57.29583
+    If CenterY = 0 Then
+        Engine_GetAngle = 90
+    Else
+        Engine_GetAngle = (SideA ^ 2 - CenterY ^ 2 - SideC ^ 2) / (CenterY * SideC * -2)
+        Engine_GetAngle = (Atn(-Engine_GetAngle / Sqr(-Engine_GetAngle * Engine_GetAngle + 1)) + 1.5708) * 57.29583
+    End If
  
     'If the angle is >180, subtract from 360
     If TargetX < CenterX Then Engine_GetAngle = 360 - Engine_GetAngle
@@ -3892,13 +4079,13 @@ Public Function GetFreeIndex() As Integer
     
  
     '
-    ' @ Devuelve un √≠ndice para un nuevo FX.
+    ' @ Devuelve un Ìndice para un nuevo FX.
  
     Dim i As Long
  
     For i = 1 To UBound(Effect())
 
-        'No est√° usado.
+        'No est· usado.
         If Not Effect(i).Slot_Used Then
             GetFreeIndex = CInt(i)
             Exit Function
@@ -3913,19 +4100,98 @@ Public Function GetFreeIndex() As Integer
     Exit Function
 
 GetFreeIndex_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.GetFreeIndex", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.GetFreeIndex", Erl)
     Resume Next
     
 End Function
 
+Public Sub Draw_Grh_ItemInWater(ByRef grh As grh, ByVal x As Integer, ByVal y As Integer, ByVal center As Byte, ByVal animate As Byte, ByRef rgb_list() As RGBA, Optional ByVal Alpha As Boolean = False, Optional ByVal map_x As Byte = 1, Optional ByVal map_y As Byte = 1, Optional ByVal Angle As Single)
+    
+    On Error GoTo Draw_Grh_Err
+
+    If grh.GrhIndex = 0 Or grh.GrhIndex > MaxGrh Then Exit Sub
+    
+    Dim CurrentFrame As Integer
+    CurrentFrame = 1
+
+    If animate Then
+        If grh.Started > 0 Then
+            Dim ElapsedFrames As Long
+            ElapsedFrames = Fix(0.5 * (FrameTime - grh.Started) / grh.speed)
+
+            If grh.Loops = INFINITE_LOOPS Or ElapsedFrames < GrhData(grh.GrhIndex).NumFrames * (grh.Loops + 1) Then
+                CurrentFrame = ElapsedFrames Mod GrhData(grh.GrhIndex).NumFrames + 1
+
+            Else
+                grh.Started = 0
+            End If
+
+        End If
+
+    End If
+    
+    Dim CurrentGrhIndex As Long
+    'Figure out what frame to draw (always 1 if not animated)
+    CurrentGrhIndex = GrhData(grh.GrhIndex).Frames(CurrentFrame)
+
+    'Center Grh over X,Y pos
+    If center Then
+        If GrhData(CurrentGrhIndex).TileWidth <> 1 Then
+            x = x - Int(GrhData(CurrentGrhIndex).TileWidth * TilePixelWidth \ 2) + TilePixelWidth \ 2
+        End If
+
+        If GrhData(grh.GrhIndex).TileHeight <> 1 Then
+            y = y - Int(GrhData(CurrentGrhIndex).TileHeight * TilePixelHeight) + TilePixelHeight
+        End If
+    End If
+
+    With GrhData(CurrentGrhIndex)
+
+        If .FileNum > 0 Then
+            Dim Texture As Direct3DTexture8
+
+            Dim TextureWidth As Long, TextureHeight As Long
+            Set Texture = SurfaceDB.GetTexture(.FileNum, TextureWidth, TextureHeight)
+            
+        
+            .Tx1 = .sX / TextureWidth
+            .Tx2 = (.sX + .pixelWidth) / TextureWidth
+            .Ty1 = .sY / TextureHeight
+            .Ty2 = (.sY + .pixelHeight) / TextureHeight
+            
+            If Alpha Then
+                DirectDevice.SetRenderState D3DRS_SRCBLEND, D3DBLEND_ONE
+                DirectDevice.SetRenderState D3DRS_DESTBLEND, D3DBLEND_ONE
+            End If
+            
+            Call SpriteBatch.SetTexture(Texture)
+            Call SpriteBatch.DrawItemInWater(x, y, .pixelWidth, .pixelHeight, rgb_list, .Tx1, .Ty1, .Tx2, .Ty2, Angle Mod 360) ' Angle
+            
+            If Alpha Then
+                DirectDevice.SetRenderState D3DRS_SRCBLEND, D3DBLEND_SRCALPHA
+                DirectDevice.SetRenderState D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA
+            End If
+        End If
+        
+        'Call Batch_Textured_Box_Pre(x, y, .pixelWidth, .pixelHeight, .Tx1, .Ty1, .Tx2, .Ty2, .FileNum, rgb_list, Alpha, Angle)
+    
+    End With
+    
+    Exit Sub
+
+Draw_Grh_Err:
+    Call RegistrarError(Err.Number, Err.Description, "engine.Draw_Grh", Erl)
+    Resume Next
+    
+End Sub
+
 Public Sub Draw_Grh_Precalculated(ByRef grh As grh, ByRef rgb_list() As RGBA, ByVal EsAgua As Boolean, ByVal EsLava As Boolean, ByVal MapX As Integer, ByVal MapY As Integer, ByVal MinX As Integer, ByVal MaxX As Integer, ByVal MinY As Integer, ByVal MaxY As Integer)
     
     On Error GoTo Draw_Grh_Precalculated_Err
-    
 
     
 
-    If grh.GrhIndex = 0 Or grh.GrhIndex > MaxGrh Then Exit Sub
+    If grh.grhIndex = 0 Or grh.grhIndex > MaxGrh Then Exit Sub
     
     Dim CurrentFrame As Integer
     CurrentFrame = 1
@@ -3934,8 +4200,8 @@ Public Sub Draw_Grh_Precalculated(ByRef grh As grh, ByRef rgb_list() As RGBA, By
         Dim ElapsedFrames As Long
         ElapsedFrames = Fix((FrameTime - grh.Started) / grh.speed)
 
-        If grh.Loops = INFINITE_LOOPS Or ElapsedFrames < GrhData(grh.GrhIndex).NumFrames * (grh.Loops + 1) Then
-            CurrentFrame = ElapsedFrames Mod GrhData(grh.GrhIndex).NumFrames + 1
+        If grh.Loops = INFINITE_LOOPS Or ElapsedFrames < GrhData(grh.grhIndex).NumFrames * (grh.Loops + 1) Then
+            CurrentFrame = ElapsedFrames Mod GrhData(grh.grhIndex).NumFrames + 1
 
         Else
             grh.Started = 0
@@ -3945,7 +4211,7 @@ Public Sub Draw_Grh_Precalculated(ByRef grh As grh, ByRef rgb_list() As RGBA, By
     
     Dim CurrentGrhIndex As Long
     'Figure out what frame to draw (always 1 if not animated)
-    CurrentGrhIndex = GrhData(grh.GrhIndex).Frames(CurrentFrame)
+    CurrentGrhIndex = GrhData(grh.grhIndex).Frames(CurrentFrame)
 
     Dim Texture As Direct3DTexture8
 
@@ -3982,7 +4248,9 @@ Public Sub Draw_Grh_Precalculated(ByRef grh As grh, ByRef rgb_list() As RGBA, By
             Call SpriteBatch.DrawLava(grh.x, grh.y, TilePixelWidth, TilePixelHeight, rgb_list, .Tx1, .Ty1, .Tx2, .Ty2, MapX, MapY, Top, Right, Bottom, Left)
         
         Else
-            Call SpriteBatch.Draw(grh.x, grh.y, TilePixelWidth, TilePixelHeight, rgb_list, .Tx1, .Ty1, .Tx2, .Ty2)
+             Call SpriteBatch.Draw(grh.x, grh.y, TilePixelWidth, TilePixelHeight, rgb_list, .Tx1, .Ty1, .Tx2, .Ty2)
+             
+             
         End If
     
     End With
@@ -3991,7 +4259,7 @@ Public Sub Draw_Grh_Precalculated(ByRef grh As grh, ByRef rgb_list() As RGBA, By
     Exit Sub
 
 Draw_Grh_Precalculated_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Draw_Grh_Precalculated", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Draw_Grh_Precalculated", Erl)
     Resume Next
     
 End Sub
@@ -4011,7 +4279,7 @@ Public Sub Engine_Draw_Box(ByVal x As Integer, ByVal y As Integer, ByVal Width A
     Exit Sub
 
 Engine_Draw_Box_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Engine_Draw_Box", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Engine_Draw_Box", Erl)
     Resume Next
     
 End Sub
@@ -4032,7 +4300,58 @@ Public Sub Engine_Draw_Box_Border(ByVal x As Integer, ByVal y As Integer, ByVal 
     Exit Sub
 
 Engine_Draw_Box_Border_Err:
-    Call RegistrarError(Err.number, Err.Description, "engine.Engine_Draw_Box_Border", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "engine.Engine_Draw_Box_Border", Erl)
     Resume Next
     
 End Sub
+
+Public Sub DibujarNPC(PicBox As PictureBox, ByVal Head As Integer, ByVal Body As Integer, Optional ByVal Heading As Byte = 3)
+
+    On Error GoTo DibujarNPC_Err
+
+    Dim x As Integer
+    Dim y As Integer
+
+    Dim BodyGrh As Long, HeadGrh As Long
+
+    If Body Then
+        BodyGrh = BodyData(Body).Walk(Heading).grhIndex
+    End If
+
+    If Head Then
+        HeadGrh = HeadData(Head).Head(Heading).grhIndex
+    End If
+    
+    If BodyGrh Then
+        BodyGrh = GrhData(BodyGrh).Frames(1)
+    
+        x = (PicBox.ScaleWidth - GrhData(BodyGrh).pixelWidth) \ 2
+        y = Min(PicBox.ScaleHeight - GrhData(BodyGrh).pixelHeight + BodyData(Body).HeadOffset.y \ 2, (PicBox.ScaleHeight - GrhData(BodyGrh).pixelHeight) \ 2)
+        
+        Call Grh_Render_To_Hdc(PicBox, BodyGrh, x, y, False, RGB(11, 11, 11))
+
+        If HeadGrh Then
+            HeadGrh = GrhData(HeadGrh).Frames(1)
+            
+            x = (PicBox.ScaleWidth - GrhData(HeadGrh).pixelWidth) \ 2 + 1
+            y = y + GrhData(BodyGrh).pixelHeight - GrhData(HeadGrh).pixelHeight + BodyData(Body).HeadOffset.y
+
+            Call Grh_Render_To_HdcSinBorrar(PicBox, HeadGrh, x, y, False)
+        End If
+        
+    End If
+    
+    Exit Sub
+
+DibujarNPC_Err:
+    Call RegistrarError(Err.Number, Err.Description, "FrmQuestInfo.DibujarNPC", Erl)
+    Resume Next
+    
+End Sub
+
+Public Function GetTickCount() As Long
+    ' Devolvemos el valor absoluto de la cantidad de ticks que paso desde que prendimos la PC
+    
+    GetTickCount = (timeGetTime And &H7FFFFFFF)
+    
+End Function

@@ -1,92 +1,95 @@
 [INIT]
-NumArmaduras=30
+NumArmaduras=31
 
 [Armadura1] 'Armadura de Herrero
 Index=1912
 
-[Armadura2] 'Escudo de Hierro
-Index=128
-
-[Armadura3] 'Escudo de Bronce
-Index=2933
-
-[Armadura4] 'Escudo Imperial
-Index=1702
-
-[Armadura5] 'Escudo Clerical
-Index=1003
-
-[Armadura6] 'Escudo de Huesos
-Index=1720
-
-[Armadura7] 'Casco Vikingo
-Index=1079
-
-[Armadura8] 'Casco de Hierro Completo
-Index=132
-
-[Armadura9] 'Casco de Plata
-Index=601
-
-[Armadura10] 'Casco de Vikingo Completo
-Index=1266
-
-[Armadura11] 'Armadura de Placas Completas
-Index=243 
-
-[Armadura12] 'Armadura de Placas Completas
+[Armadura2] 'Armadura de Placas Completas
 Index=1987
 
-[Armadura13] 'Armadura de Placas Azules (Mujer)
+[Armadura3] 'Armadura de Placas Completas
+Index=243 
+
+[Armadura4] 'Armadura de Placas Azules (Hombre)
+Index=1915
+
+[Armadura5] 'Armadura de Placas Azules (Mujer)
 Index=1923 
 
-[Armadura14] 'Armadura de las Sombras (Bajos)
-Index=1634
-
-[Armadura15] 'Armadura de las Sombras
+[Armadura6] 'Armadura de las Sombras
 Index=1929
 
-[Armadura16] 'Cota del Gran Cazador
+[Armadura7] 'Armadura de las Sombras (Bajos)
+Index=1634
+
+[Armadura8] 'Cota del Gran Cazador
 Index=1907
 
-[Armadura17] 'Cota del Gran Cazador (Bajos)
+[Armadura9] 'Cota del Gran Cazador (Bajos)
 Index=1908
 
-[Armadura18] 'Coraza Clerical
+[Armadura10] 'Coraza Clerical
 Index=135
 
-[Armadura19] 'Coraza Clerical (Bajos)
+[Armadura11] 'Coraza Clerical (Bajos)
 Index=2948
 
-[Armadura20] 'Manto de AgonÃ­a
-Index=2890
-
-[Armadura21] 'Manto de AgonÃ­a (Bajos)
-Index=2949
-
-[Armadura22] 'Armadura BruÃ±ida (Bajos)
-Index=500
-
-[Armadura23] 'Armadura de la Cienaga
+[Armadura12] 'Armadura de la Cienaga
 Index=1941
 
-[Armadura24] 'Armadura Escarlata
+[Armadura13] 'Armadura Escarlata
 Index=495
 
-[Armadura25] 'Dama de las Tinieblas
+[Armadura14] 'Dama de las Tinieblas
 Index=487
 
-[Armadura26] 'Armadura Legendaria
+[Armadura15] 'Armadura Legendaria
 Index=1914
 
-[Armadura27] 'Armadura Dragon Rojo
-Index=481
+[Armadura16] 'Armadura Bruñida (Bajos)
+Index=500
 
-[Armadura28] 'Armadura Dragon Rojo (Mujer)
-Index=482
+[Armadura17] 'Coraza de Harald
+Index=1803
 
-[Armadura29] 'Armadura Dragon Rojo (Bajos)
-Index=483
+[Armadura18] 'Coraza de Harald
+Index=1804
 
-[Armadura30] 'Escudo de CampeÃ³n
-Index=1695
+[Armadura19] 'Armadura de la Iluminación
+Index=1922
+
+[Armadura20] 'Armadura de la Iluminación (bajos)
+Index=1993
+
+[Armadura21] 'Escudo de Hierro
+Index=1715
+
+[Armadura22] 'Escudo de Bronce
+Index=2933
+
+[Armadura23] 'Escudo Imperial
+Index=1702
+
+[Armadura24] 'Anillo de Resistencia Mágica
+Index=2324
+
+[Armadura25] 'Anillo de Protección Mágica
+Index=2323
+
+[Armadura26] 'Anillo del Silencio
+Index=755
+
+[Armadura27] 'Casco Vikingo
+Index=1079
+
+[Armadura28] 'Casco de Hierro Completo
+Index=132
+
+[Armadura29] 'Casco de Cazador
+Index=1767
+
+[Armadura30] 'Casco de Plata
+Index=601
+
+[Armadura31] 'Hebilla Mochila
+Index=3461

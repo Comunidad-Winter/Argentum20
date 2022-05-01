@@ -103,7 +103,7 @@ Public Type particle_group
     frame_counter As Single
     frame_speed As Single
     
-    stream_type As Byte
+    stream_type As Integer
 
     particle_stream() As Particle
     particle_count As Long
@@ -142,7 +142,8 @@ Public Type particle_group
     move_y2 As Integer
     rgb_list(3) As RGBA
     
-    'Added by Juan MartÃ­n Sotuyo Dodero
+    
+    'Added by Juan Martín Sotuyo Dodero
     speed As Single
     life_counter As Long
     
@@ -150,6 +151,8 @@ Public Type particle_group
     grh_resize As Boolean
     grh_resizex As Integer
     grh_resizey As Integer
+    
+    noBorrar As Boolean
 
 End Type
 
@@ -179,7 +182,7 @@ Public Function Particle_Group_Create(ByVal map_x As Integer, ByVal map_y As Int
    Optional ByVal XMove As Boolean, Optional ByVal move_x1 As Integer, Optional ByVal move_x2 As Integer, _
    Optional ByVal move_y1 As Integer, Optional ByVal move_y2 As Integer, Optional ByVal YMove As Boolean, _
    Optional ByVal spin_speedH As Single, Optional ByVal spin As Boolean, Optional grh_resize As Boolean, _
-   Optional grh_resizex As Integer, Optional grh_resizey As Integer)
+   Optional grh_resizex As Integer, Optional grh_resizey As Integer, Optional ByVal noBorrar As Boolean)
     
     On Error GoTo Particle_Group_Create_Err
     
@@ -189,14 +192,14 @@ Public Function Particle_Group_Create(ByVal map_x As Integer, ByVal map_y As Int
     'Modified by: Ryan Cain (Onezero)
     'Last Modify Date: 5/14/2003
     'Returns the particle_group_index if successful, else 0
-    'Modified by Juan MartÃ­n Sotuyo Dodero
-    'Modified by Augusto JosÃ© Rando
+    'Modified by Juan Martín Sotuyo Dodero
+    'Modified by Augusto José Rando
     '**************************************************************
     If (map_x <> -1) And (map_y <> -1) Then
         If Map_Particle_Group_Get(map_x, map_y) = 0 Then
             Particle_Group_Create = Particle_Group_Next_Open
-
             Particle_Group_Make Particle_Group_Create, map_x, map_y, particle_count, stream_type, grh_index_list(), rgb_list(), alpha_blend, alive_counter, frame_speed, id, x1, y1, Angle, vecx1, vecx2, vecy1, vecy2, life1, life2, fric, spin_speedL, gravity, grav_strength, bounce_strength, x2, y2, XMove, move_x1, move_x2, move_y1, move_y2, YMove, spin_speedH, spin, grh_resize, grh_resizex, grh_resizey
+            particle_group_list(Particle_Group_Create).noBorrar = noBorrar
 
         End If
 
@@ -204,6 +207,7 @@ Public Function Particle_Group_Create(ByVal map_x As Integer, ByVal map_y As Int
         Particle_Group_Create = Particle_Group_Next_Open
       
         Particle_Group_Make Particle_Group_Create, map_x, map_y, particle_count, stream_type, grh_index_list(), rgb_list(), alpha_blend, alive_counter, frame_speed, id, x1, y1, Angle, vecx1, vecx2, vecy1, vecy2, life1, life2, fric, spin_speedL, gravity, grav_strength, bounce_strength, x2, y2, XMove, move_x1, move_x2, move_y1, move_y2, YMove, spin_speedH, spin, grh_resize, grh_resizex, grh_resizey
+        particle_group_list(Particle_Group_Create).noBorrar = noBorrar
 
     End If
 
@@ -263,7 +267,9 @@ Public Function Particle_Group_Remove_All() As Boolean
 
         'Make sure it's a legal index
         If Particle_Group_Check(Index) Then
-            Particle_Group_Destroy Index
+            If Not particle_group_list(Index).noBorrar Then
+                Particle_Group_Destroy Index
+            End If
 
         End If
 
@@ -437,7 +443,7 @@ Public Sub Particle_Group_Make(ByVal particle_group_index As Long, ByVal map_x A
     'Modified by: Ryan Cain (Onezero)
     'Last Modify Date: 5/15/2003
     'Makes a new particle effect
-    'Modified by Juan MartÃ­n Sotuyo Dodero
+    'Modified by Juan Martín Sotuyo Dodero
     '*****************************************************************
     'Update array size
     If particle_group_index > particle_group_last Then
@@ -564,7 +570,7 @@ Public Sub Char_Particle_Group_Make(ByVal particle_group_index As Long, ByVal ch
     'Modified by: Ryan Cain (Onezero)
     'Last Modify Date: 5/15/2003
     'Makes a new particle effect
-    'Modified by Juan MartÃ­n Sotuyo Dodero
+    'Modified by Juan Martín Sotuyo Dodero
     '*****************************************************************
     'Update array size
     If particle_group_index > particle_group_last Then
@@ -696,7 +702,7 @@ Public Sub Particle_Group_Render(ByVal particle_group_index As Long, ByVal scree
     '*****************************************************************
     'Author: Aaron Perkins
     'Modified by: Ryan Cain (Onezero)
-    'Modified by: Juan MartÃ­n Sotuyo Dodero
+    'Modified by: Juan Martín Sotuyo Dodero
     'Last Modify Date: 5/15/2003
     'Renders a particle stream at a paticular screen point
     '*****************************************************************
@@ -709,7 +715,8 @@ Public Sub Particle_Group_Render(ByVal particle_group_index As Long, ByVal scree
     Dim no_move          As Boolean
     
     'Set colors
-  
+    'Exit Sub
+    particle_group_index = min(particle_group_index, UBound(particle_group_list))
     temp_rgb(0) = particle_group_list(particle_group_index).rgb_list(0)
     temp_rgb(1) = particle_group_list(particle_group_index).rgb_list(1)
     temp_rgb(2) = particle_group_list(particle_group_index).rgb_list(2)
@@ -822,7 +829,7 @@ Public Sub Particle_Group_Render(ByVal particle_group_index As Long, ByVal scree
     Exit Sub
 
 Particle_Group_Render_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Particulas.Particle_Group_Render", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Particulas.Particle_Group_Render", Erl)
     Resume Next
     
 End Sub
@@ -844,7 +851,7 @@ Public Sub Particle_Render(ByRef temp_particle As Particle, ByVal screen_x As In
     '**************************************************************
     'Author: Aaron Perkins
     'Modified by: Ryan Cain (Onezero)
-    'Modified by: Juan MartÃ­n Sotuyo Dodero
+    'Modified by: Juan Martín Sotuyo Dodero
     'Last Modify Date: 5/15/2003
     '**************************************************************
     
@@ -856,7 +863,7 @@ Public Sub Particle_Render(ByRef temp_particle As Particle, ByVal screen_x As In
         If temp_particle.alive_counter = 0 And Not destruir Then
             'Start new particle
             InitGrh temp_particle.grh, grh_index
-            temp_particle.grh.Alpha = alpha_blend
+            temp_particle.grh.Alpha = 255
             temp_particle.x = RandomNumber(x1, x2) - (32 / 2)
             temp_particle.y = RandomNumber(y1, y2) - (32 / 2)
             temp_particle.vector_x = RandomNumber(vecx1, vecx2)
@@ -923,10 +930,10 @@ Public Sub Particle_Render(ByRef temp_particle As Particle, ByVal screen_x As In
         Call RGBAList(rgb_list, 5, 5, 5, 5)
 
     ElseIf Not alpha_blend Then
-        Call SetRGBA(rgb_list(0), rgb_list(0).R, rgb_list(0).G, rgb_list(0).B, temp_particle.Angle)
-        Call SetRGBA(rgb_list(1), rgb_list(1).R, rgb_list(1).G, rgb_list(1).B, temp_particle.Angle)
-        Call SetRGBA(rgb_list(2), rgb_list(2).R, rgb_list(2).G, rgb_list(2).B, temp_particle.Angle)
-        Call SetRGBA(rgb_list(3), rgb_list(3).R, rgb_list(3).G, rgb_list(3).B, temp_particle.Angle)
+        Call SetRGBA(rgb_list(0), rgb_list(0).r, rgb_list(0).G, rgb_list(0).B, temp_particle.grh.Alpha)
+        Call SetRGBA(rgb_list(1), rgb_list(1).r, rgb_list(1).G, rgb_list(1).B, temp_particle.grh.Alpha)
+        Call SetRGBA(rgb_list(2), rgb_list(2).r, rgb_list(2).G, rgb_list(2).B, temp_particle.grh.Alpha)
+        Call SetRGBA(rgb_list(3), rgb_list(3).r, rgb_list(3).G, rgb_list(3).B, temp_particle.grh.Alpha)
     End If
     
     If grh_resize = True Then
@@ -962,7 +969,7 @@ Public Function Particle_Type_Get(ByVal particle_Index As Long) As Long
     
 
     '*****************************************************************
-    'Author: Juan MartÃ­n Sotuyo Dodero (juansotuyo@hotmail.com)
+    'Author: Juan Martín Sotuyo Dodero (juansotuyo@hotmail.com)
     'Last Modify Date: 8/27/2003
     'Returns the stream type of a particle stream
     '*****************************************************************
@@ -982,7 +989,7 @@ End Function
 
 Public Function Engine_MeteoParticle_Get() As Long
     '*****************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     'Last Modify Date: 6/11/2002
     '*****************************************************************
     
@@ -1027,7 +1034,7 @@ End Function
 
 Public Sub Engine_MeteoParticle_Set(ByVal meteo_part As Long)
     '*****************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     'Last Modify Date: 6/11/2002
     '*****************************************************************
     
@@ -1056,7 +1063,7 @@ End Sub
 
 Public Sub Engine_spell_Particle_Set(ByVal spell_part As Long)
     '*****************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     'Last Modify Date: 6/11/2002
     '*****************************************************************
     
@@ -1083,7 +1090,7 @@ End Sub
 
 Public Sub Engine_Select_Particle_Set(ByVal Select_particle As Long)
     '*****************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     'Last Modify Date: 6/11/2002
     '*****************************************************************
     
@@ -1095,7 +1102,7 @@ Public Sub Engine_Select_Particle_Set(ByVal Select_particle As Long)
     ElseIf (Select_part <> -1) Then
 
         If Select_part <> 0 Then Call Particle_Group_Remove(Select_part)
-        Select_part = General_Particle_Create(Select_particle, -1, -1)
+        Select_part = General_Particle_Create(Select_particle, -1, -1, , True)
 
     End If
     
@@ -1175,22 +1182,31 @@ ErrorHandler:
 
 End Function
 
-Public Function General_Char_Particle_Create(ByVal ParticulaInd As Long, ByVal char_index As Integer, Optional ByVal particle_life As Long = 0) As Long
+Public Function General_Char_Particle_Create(ByVal ParticulaInd As Long, ByVal char_index As Integer, Optional ByVal particle_life As Long = 0, Optional ByVal grh As Long = 0) As Long
     
     On Error GoTo General_Char_Particle_Create_Err
-    
 
     If ParticulaInd = 0 Then Exit Function
-
+    
+    If grh > 0 Then
+        Dim i As Byte
+        StreamData(ParticulaInd).grh_list(1) = grh
+        For i = 0 To 3
+            StreamData(ParticulaInd).colortint(i).r = 255
+            StreamData(ParticulaInd).colortint(i).G = 255
+            StreamData(ParticulaInd).colortint(i).B = 255
+        Next i
+    End If
+    
     Dim rgb_list(0 To 3) As RGBA
-
-    Call SetRGBA(rgb_list(0), StreamData(ParticulaInd).colortint(0).B, StreamData(ParticulaInd).colortint(0).G, StreamData(ParticulaInd).colortint(0).R)
+    
+    Call SetRGBA(rgb_list(0), StreamData(ParticulaInd).colortint(0).r, StreamData(ParticulaInd).colortint(0).G, StreamData(ParticulaInd).colortint(0).r)
     Call SetRGBA(rgb_list(1), StreamData(ParticulaInd).colortint(1).B, StreamData(ParticulaInd).colortint(1).G, StreamData(ParticulaInd).colortint(1).R)
     Call SetRGBA(rgb_list(2), StreamData(ParticulaInd).colortint(2).B, StreamData(ParticulaInd).colortint(2).G, StreamData(ParticulaInd).colortint(2).R)
     Call SetRGBA(rgb_list(3), StreamData(ParticulaInd).colortint(3).B, StreamData(ParticulaInd).colortint(3).G, StreamData(ParticulaInd).colortint(3).R)
 
     General_Char_Particle_Create = Char_Particle_Group_Create(char_index, StreamData(ParticulaInd).grh_list, rgb_list(), StreamData(ParticulaInd).NumOfParticles, ParticulaInd, _
-       StreamData(ParticulaInd).AlphaBlend, IIf(particle_life = 0, StreamData(ParticulaInd).life_counter, particle_life), StreamData(ParticulaInd).speed, , StreamData(ParticulaInd).x1, StreamData(ParticulaInd).y1, StreamData(ParticulaInd).Angle, _
+       grh = 0 And StreamData(ParticulaInd).AlphaBlend, IIf(particle_life = 0, StreamData(ParticulaInd).life_counter, particle_life), StreamData(ParticulaInd).speed, , StreamData(ParticulaInd).x1, StreamData(ParticulaInd).y1, StreamData(ParticulaInd).Angle, _
        StreamData(ParticulaInd).vecx1, StreamData(ParticulaInd).vecx2, StreamData(ParticulaInd).vecy1, StreamData(ParticulaInd).vecy2, _
        StreamData(ParticulaInd).life1, StreamData(ParticulaInd).life2, StreamData(ParticulaInd).friction, StreamData(ParticulaInd).spin_speedL, _
        StreamData(ParticulaInd).gravity, StreamData(ParticulaInd).grav_strength, StreamData(ParticulaInd).bounce_strength, StreamData(ParticulaInd).x2, _
@@ -1206,7 +1222,7 @@ General_Char_Particle_Create_Err:
     
 End Function
 
-Public Function General_Particle_Create(ByVal ParticulaInd As Long, ByVal x As Integer, ByVal y As Integer, Optional ByVal particle_life As Long = 0) As Long
+Public Function General_Particle_Create(ByVal ParticulaInd As Long, ByVal x As Integer, ByVal y As Integer, Optional ByVal particle_life As Long = 0, Optional ByVal noBorrar As Boolean) As Long
     
     On Error GoTo General_Particle_Create_Err
     
@@ -1226,13 +1242,13 @@ Public Function General_Particle_Create(ByVal ParticulaInd As Long, ByVal x As I
        StreamData(ParticulaInd).life1, StreamData(ParticulaInd).life2, StreamData(ParticulaInd).friction, StreamData(ParticulaInd).spin_speedL, _
        StreamData(ParticulaInd).gravity, StreamData(ParticulaInd).grav_strength, StreamData(ParticulaInd).bounce_strength, StreamData(ParticulaInd).x2, _
        StreamData(ParticulaInd).y2, StreamData(ParticulaInd).XMove, StreamData(ParticulaInd).move_x1, StreamData(ParticulaInd).move_x2, StreamData(ParticulaInd).move_y1, _
-       StreamData(ParticulaInd).move_y2, StreamData(ParticulaInd).YMove, StreamData(ParticulaInd).spin_speedH, StreamData(ParticulaInd).spin, StreamData(ParticulaInd).grh_resize, StreamData(ParticulaInd).grh_resizex, StreamData(ParticulaInd).grh_resizey)
+       StreamData(ParticulaInd).move_y2, StreamData(ParticulaInd).YMove, StreamData(ParticulaInd).spin_speedH, StreamData(ParticulaInd).spin, StreamData(ParticulaInd).grh_resize, StreamData(ParticulaInd).grh_resizex, StreamData(ParticulaInd).grh_resizey, noBorrar)
 
     
     Exit Function
 
 General_Particle_Create_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Particulas.General_Particle_Create", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Particulas.General_Particle_Create", Erl)
     Resume Next
     
 End Function
@@ -1253,7 +1269,7 @@ Public Function Char_Particle_Group_Create(ByVal char_index As Integer, ByRef gr
    Optional ByVal spin_speedH As Single, Optional ByVal spin As Boolean, Optional grh_resize As Boolean, _
    Optional grh_resizex As Integer, Optional grh_resizey As Integer)
     '**************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     '**************************************************************
     
     On Error GoTo Char_Particle_Group_Create_Err
@@ -1284,7 +1300,7 @@ End Function
 
 Public Function Char_Particle_Group_Remove(ByVal char_index As Integer, ByVal stream_type As Long)
     '**************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     '**************************************************************
     
     On Error GoTo Char_Particle_Group_Remove_Err
@@ -1311,7 +1327,7 @@ Public Function Char_Particle_Group_Remove(ByVal char_index As Integer, ByVal st
     Exit Function
 
 Char_Particle_Group_Remove_Err:
-    Call RegistrarError(Err.number, Err.Description, "Graficos_Particulas.Char_Particle_Group_Remove", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Graficos_Particulas.Char_Particle_Group_Remove", Erl)
     Resume Next
     
 End Function
@@ -1322,7 +1338,7 @@ Public Function Char_Particle_Group_Remove_All(ByVal char_index As Integer)
     
 
     '**************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     '**************************************************************
     Dim i As Integer
     
@@ -1347,7 +1363,7 @@ End Function
 Private Function Char_Particle_Group_Find(ByVal char_index As Integer, ByVal stream_type As Long) As Integer
 
     '*****************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     'Modified: returns slot or -1
     '*****************************************************************
     On Error GoTo ErrorHandler:
@@ -1375,7 +1391,7 @@ End Function
 Public Function Char_Particle_Group_Next_Open(ByVal char_index As Integer) As Integer
 
     '*****************************************************************
-    'Author: Augusto JosÃ© Rando
+    'Author: Augusto José Rando
     '*****************************************************************
     On Error GoTo ErrorHandler:
 

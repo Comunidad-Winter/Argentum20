@@ -1,6 +1,14 @@
 Attribute VB_Name = "UsUaRiOs"
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
 'Argentum Online 0.11.6
-'Copyright (C) 2002 M√°rquez Pablo Ignacio
+'Copyright (C) 2002 M·rquez Pablo Ignacio
 '
 'This program is free software; you can redistribute it and/or modify
 'it under the terms of the Affero General Public License;
@@ -22,20 +30,716 @@ Attribute VB_Name = "UsUaRiOs"
 'You can contact me at:
 'morgolock@speedy.com.ar
 'www.geocities.com/gmorgolock
-'Calle 3 n√∫mero 983 piso 7 dto A
+'Calle 3 n˙mero 983 piso 7 dto A
 'La Plata - Pcia, Buenos Aires - Republica Argentina
-'C√≥digo Postal 1900
-'Pablo Ignacio M√°rquez
+'CÛdigo Postal 1900
+'Pablo Ignacio M·rquez
 
 Option Explicit
 
-'?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø
+'?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø
 '                        Modulo Usuarios
-'?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø
+'?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø
 'Rutinas de los usuarios
-'?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø?¬ø
+'?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø
 
-Sub ActStats(ByVal VictimIndex As Integer, ByVal attackerIndex As Integer)
+Public Function ConnectUser_Check(ByVal UserIndex As Integer, _
+                                  ByRef name As String) As Boolean
+                           
+    On Error GoTo Check_ConnectUser_Err
+
+    With UserList(UserIndex)
+        
+        ConnectUser_Check = False
+        
+        If .flags.UserLogged Then
+            Call LogSecurity("El usuario " & .name & " ha intentado loguear a " & name & " desde la IP " & .IP)
+            'Kick player ( and leave character inside :D )!
+            Call CloseSocketSL(UserIndex)
+            Call Cerrar_Usuario(UserIndex)
+            Exit Function
+        End If
+        
+        'Controlo si superÛ el tiempo para conectarse nuevamente
+        
+        If dcnUsersLastLogout.Exists(UCase$(name)) Then
+            Dim lastLogOut As Long
+            lastLogOut = dcnUsersLastLogout(UCase$(name))
+            If lastLogOut + 5000 >= GetTickCount() Then
+                Call WriteShowMessageBox(UserIndex, "Aguarda un momento.")
+                Exit Function
+            End If
+        End If
+        
+        'øYa esta conectado el personaje?
+        Dim tIndex As Integer: tIndex = NameIndex(Name)
+
+        If tIndex > 0 And tIndex <> UserIndex Then
+
+            If UserList(tIndex).Counters.Saliendo Then
+                Call WriteShowMessageBox(userindex, "El personaje est· saliendo.")
+
+            Else
+                
+                Call WriteShowMessageBox(userindex, "El personaje ya est· conectado. Espere mientras es desconectado.")
+
+                ' Le avisamos al usuario que est· jugando, en caso de que haya uno
+                Call WriteShowMessageBox(tIndex, "Alguien est· ingresando con tu personaje. Si no has sido t˙, por favor cambia la contraseÒa de tu cuenta.")
+            '    Call Cerrar_Usuario(tIndex)
+
+            End If
+
+            Call CloseSocket(UserIndex)
+            Exit Function
+
+        End If
+        
+        'øSupera el m·ximo de usuarios por cuenta?
+        If MaxUsersPorCuenta > 0 Then
+
+            If ContarUsuariosMismaCuenta(.AccountID) >= MaxUsersPorCuenta Then
+
+                If MaxUsersPorCuenta = 1 Then
+                    Call WriteShowMessageBox(UserIndex, "Ya hay un usuario conectado con esta cuenta.")
+                Else
+                    Call WriteShowMessageBox(userindex, "La cuenta ya alcanzÛ el m·ximo de " & MaxUsersPorCuenta & " usuarios conectados.")
+
+                End If
+
+                Call CloseSocket(UserIndex)
+                Exit Function
+
+            End If
+
+        End If
+        
+        'Controlamos no pasar el maximo de usuarios
+        If NumUsers >= MaxUsers Then
+            Call WriteShowMessageBox(UserIndex, "El servidor ha alcanzado el maximo de usuarios soportado, por favor vuelva a intertarlo mas tarde.")
+            Call CloseSocket(UserIndex)
+            Exit Function
+
+        End If
+        
+        'øEste IP ya esta conectado?
+        If MaxConexionesIP > 0 Then
+
+            If ContarMismaIP(UserIndex, .IP) >= MaxConexionesIP Then
+                Call WriteShowMessageBox(userindex, "Has alcanzado el lÌmite de conexiones por IP.")
+                Call CloseSocket(UserIndex)
+                Exit Function
+
+            End If
+
+        End If
+        
+        'Le damos los privilegios
+            .flags.Privilegios = UserDarPrivilegioLevel(Name)
+        'Add RM flag if needed
+        If EsRolesMaster(Name) Then
+            .flags.Privilegios = .flags.Privilegios Or e_PlayerType.RoleMaster
+        End If
+        
+        If EsGM(UserIndex) Then
+            Call SendData(SendTarget.ToAdmins, 0, PrepareMessageConsoleMsg("Servidor ª " & name & " se conecto al juego.", e_FontTypeNames.FONTTYPE_INFOBOLD))
+            Call LogGM(name, "Se conectÛ con IP: " & .IP)
+        Else
+            If ServerSoloGMs > 0 Then
+                Dim i As Integer
+                Dim EsCuentaGM As Boolean
+                For i = 0 To AdministratorAccounts.Count - 1
+                    ' Si el e-mail est· declarado junto al nick de la cuenta donde esta el PJ GM en el Server.ini te dejo entrar.
+                    If UCase$(AdministratorAccounts.Items(i)) = UCase$(UserList(UserIndex).Email) Then
+                        EsCuentaGM = True
+                    End If
+                Next
+                If Not EsCuentaGM Then
+                    Call WriteShowMessageBox(UserIndex, "Servidor restringido a administradores. Por favor reintente en unos momentos.")
+                    Call CloseSocket(UserIndex)
+                    Exit Function
+                End If
+            End If
+        End If
+        
+        If EnPausa Then
+
+            Call WritePauseToggle(UserIndex)
+            Call WriteConsoleMsg(userindex, "Servidor ª Lo sentimos mucho pero el servidor se encuentra actualmente detenido. Intenta ingresar m·s tarde.", e_FontTypeNames.FONTTYPE_SERVER)
+            Call CloseSocket(UserIndex)
+            Exit Function
+
+        End If
+
+    
+    End With
+    
+    ConnectUser_Check = True
+
+    Exit Function
+
+Check_ConnectUser_Err:
+    Call TraceError(Err.Number, Err.Description, "UsUaRiOs.ConnectUser_Check", Erl)
+        
+End Function
+
+Public Sub ConnectUser_Prepare(ByVal UserIndex As Integer, ByRef Name As String, ByRef UserCuenta As String)
+
+        On Error GoTo Prepare_ConnectUser_Err
+
+100     With UserList(UserIndex)
+    
+            'Reseteamos los FLAGS
+105         .flags.Escondido = 0
+110         .flags.TargetNPC = 0
+115         .flags.TargetNpcTipo = e_NPCType.Comun
+120         .flags.TargetObj = 0
+125         .flags.TargetUser = 0
+130         .Char.FX = 0
+135         .Counters.CuentaRegresiva = -1
+
+            ' Seteamos el nombre
+170         .Name = Name
+        
+            ' Vinculamos el nombre con el UserIndex
+175         m_NameIndex(UCase$(Name)) = UserIndex
+
+180         .showName = True
+    
+        End With
+    
+        Exit Sub
+
+Prepare_ConnectUser_Err:
+        Call TraceError(Err.Number, Err.Description, "UsUaRiOs.ConnectUser_Prepare", Erl)
+
+End Sub
+
+Public Function ConnectUser_Complete(ByVal UserIndex As Integer, _
+                                     ByRef Name As String, _
+                                     ByRef UserCuenta As String)
+
+        On Error GoTo Complete_ConnectUser_Err
+        
+        Dim n    As Integer
+        Dim tStr As String
+        
+100     With UserList(UserIndex)
+            
+            ' -----------------------------------------------------------------------
+            '   INFORMACION INICIAL DEL PERSONAJE
+            ' -----------------------------------------------------------------------
+
+105         If .flags.Paralizado = 1 Then
+110             .Counters.Paralisis = IntervaloParalizado
+            End If
+
+115         If .flags.Muerto = 0 Then
+120             .Char = .OrigChar
+            
+125             If .Char.Body = 0 Then
+130                 Call DarCuerpoDesnudo(UserIndex)
+                End If
+            
+135             If .Char.Head = 0 Then
+140                 .Char.Head = 1
+                End If
+            Else
+145             .Char.Body = iCuerpoMuerto
+150             .Char.Head = iCabezaMuerto
+155             .Char.WeaponAnim = NingunArma
+160             .Char.ShieldAnim = NingunEscudo
+165             .Char.CascoAnim = NingunCasco
+170             .Char.Heading = e_Heading.SOUTH
+            End If
+            
+            .Stats.UserAtributos(e_Atributos.Fuerza) = 18 + ModRaza(.raza).Fuerza
+            .Stats.UserAtributos(e_Atributos.Agilidad) = 18 + ModRaza(.raza).Agilidad
+            .Stats.UserAtributos(e_Atributos.Inteligencia) = 18 + ModRaza(.raza).Inteligencia
+            .Stats.UserAtributos(e_Atributos.Constitucion) = 18 + ModRaza(.raza).Constitucion
+            .Stats.UserAtributos(e_Atributos.Carisma) = 18 + ModRaza(.raza).Carisma
+                    
+            .Stats.UserAtributosBackUP(e_Atributos.Fuerza) = .Stats.UserAtributos(e_Atributos.Fuerza)
+            .Stats.UserAtributosBackUP(e_Atributos.Agilidad) = .Stats.UserAtributos(e_Atributos.Agilidad)
+            .Stats.UserAtributosBackUP(e_Atributos.Inteligencia) = .Stats.UserAtributos(e_Atributos.Inteligencia)
+            .Stats.UserAtributosBackUP(e_Atributos.Constitucion) = .Stats.UserAtributos(e_Atributos.Constitucion)
+            .Stats.UserAtributosBackUP(e_Atributos.Carisma) = .Stats.UserAtributos(e_Atributos.Carisma)
+                    
+            'Obtiene el indice-objeto del arma
+175         If .Invent.WeaponEqpSlot > 0 Then
+180             If .Invent.Object(.Invent.WeaponEqpSlot).ObjIndex > 0 Then
+185                 .Invent.WeaponEqpObjIndex = .Invent.Object(.Invent.WeaponEqpSlot).ObjIndex
+
+190                 If .flags.Muerto = 0 Then
+195                     .Char.Arma_Aura = ObjData(.Invent.WeaponEqpObjIndex).CreaGRH
+                    End If
+                Else
+200                 .Invent.WeaponEqpSlot = 0
+                End If
+            End If
+
+            'Obtiene el indice-objeto del armadura
+205         If .Invent.ArmourEqpSlot > 0 Then
+210             If .Invent.Object(.Invent.ArmourEqpSlot).ObjIndex > 0 Then
+215                 .Invent.ArmourEqpObjIndex = .Invent.Object(.Invent.ArmourEqpSlot).ObjIndex
+
+220                 If .flags.Muerto = 0 Then
+225                     .Char.Body_Aura = ObjData(.Invent.ArmourEqpObjIndex).CreaGRH
+                    End If
+                Else
+230                 .Invent.ArmourEqpSlot = 0
+                End If
+235             .flags.Desnudo = 0
+            Else
+240             .flags.Desnudo = 1
+            End If
+
+            'Obtiene el indice-objeto del escudo
+245         If .Invent.EscudoEqpSlot > 0 Then
+250             If .Invent.Object(.Invent.EscudoEqpSlot).ObjIndex > 0 Then
+255                 .Invent.EscudoEqpObjIndex = .Invent.Object(.Invent.EscudoEqpSlot).ObjIndex
+
+260                 If .flags.Muerto = 0 Then
+265                     .Char.Escudo_Aura = ObjData(.Invent.EscudoEqpObjIndex).CreaGRH
+                    End If
+                Else
+270                 .Invent.EscudoEqpSlot = 0
+                End If
+            End If
+        
+            'Obtiene el indice-objeto del casco
+275         If .Invent.CascoEqpSlot > 0 Then
+280             If .Invent.Object(.Invent.CascoEqpSlot).ObjIndex > 0 Then
+285                 .Invent.CascoEqpObjIndex = .Invent.Object(.Invent.CascoEqpSlot).ObjIndex
+
+290                 If .flags.Muerto = 0 Then
+295                     .Char.Head_Aura = ObjData(.Invent.CascoEqpObjIndex).CreaGRH
+                    End If
+                Else
+300                 .Invent.CascoEqpSlot = 0
+                End If
+            End If
+
+            'Obtiene el indice-objeto barco
+305         If .Invent.BarcoSlot > 0 Then
+310             If .Invent.Object(.Invent.BarcoSlot).ObjIndex > 0 Then
+315                 .Invent.BarcoObjIndex = .Invent.Object(.Invent.BarcoSlot).ObjIndex
+                Else
+320                 .Invent.BarcoSlot = 0
+                End If
+            End If
+
+            'Obtiene el indice-objeto municion
+325         If .Invent.MunicionEqpSlot > 0 Then
+330             If .Invent.Object(.Invent.MunicionEqpSlot).ObjIndex > 0 Then
+335                 .Invent.MunicionEqpObjIndex = .Invent.Object(.Invent.MunicionEqpSlot).ObjIndex
+                Else
+340                 .Invent.MunicionEqpSlot = 0
+                End If
+            End If
+
+            ' DM
+345         If .Invent.DaÒoMagicoEqpSlot > 0 Then
+350             If .Invent.Object(.Invent.DaÒoMagicoEqpSlot).ObjIndex > 0 Then
+355                 .Invent.DaÒoMagicoEqpObjIndex = .Invent.Object(.Invent.DaÒoMagicoEqpSlot).ObjIndex
+
+360                 If .flags.Muerto = 0 Then
+365                     .Char.DM_Aura = ObjData(.Invent.DaÒoMagicoEqpObjIndex).CreaGRH
+                    End If
+                Else
+370                 .Invent.DaÒoMagicoEqpSlot = 0
+                End If
+            End If
+            
+            ' RM
+375         If .Invent.ResistenciaEqpSlot > 0 Then
+380             If .Invent.Object(.Invent.ResistenciaEqpSlot).ObjIndex > 0 Then
+385                 .Invent.ResistenciaEqpObjIndex = .Invent.Object(.Invent.ResistenciaEqpSlot).ObjIndex
+
+390                 If .flags.Muerto = 0 Then
+395                     .Char.RM_Aura = ObjData(.Invent.ResistenciaEqpObjIndex).CreaGRH
+                    End If
+                Else
+400                 .Invent.ResistenciaEqpSlot = 0
+                End If
+            End If
+
+405         If .Invent.MonturaSlot > 0 Then
+410             If .Invent.Object(.Invent.MonturaSlot).ObjIndex > 0 Then
+415                 .Invent.MonturaObjIndex = .Invent.Object(.Invent.MonturaSlot).ObjIndex
+                Else
+420                 .Invent.MonturaSlot = 0
+                End If
+            End If
+        
+425         If .Invent.HerramientaEqpSlot > 0 Then
+430             If .Invent.Object(.Invent.HerramientaEqpSlot).ObjIndex Then
+435                 .Invent.HerramientaEqpObjIndex = .Invent.Object(.Invent.HerramientaEqpSlot).ObjIndex
+                Else
+440                 .Invent.HerramientaEqpSlot = 0
+                End If
+            End If
+        
+445         If .Invent.NudilloSlot > 0 Then
+450             If .Invent.Object(.Invent.NudilloSlot).ObjIndex > 0 Then
+455                 .Invent.NudilloObjIndex = .Invent.Object(.Invent.NudilloSlot).ObjIndex
+
+460                 If .flags.Muerto = 0 Then
+465                     .Char.Arma_Aura = ObjData(.Invent.NudilloObjIndex).CreaGRH
+                    End If
+                Else
+470                 .Invent.NudilloSlot = 0
+                End If
+            End If
+        
+475         If .Invent.MagicoSlot > 0 Then
+480             If .Invent.Object(.Invent.MagicoSlot).ObjIndex Then
+485                 .Invent.MagicoObjIndex = .Invent.Object(.Invent.MagicoSlot).ObjIndex
+
+490                 If .flags.Muerto = 0 Then
+495                     .Char.Otra_Aura = ObjData(.Invent.MagicoObjIndex).CreaGRH
+                    End If
+                Else
+500                 .Invent.MagicoSlot = 0
+                End If
+            End If
+            
+505         If .Invent.EscudoEqpSlot = 0 Then .Char.ShieldAnim = NingunEscudo
+510         If .Invent.CascoEqpSlot = 0 Then .Char.CascoAnim = NingunCasco
+515         If .Invent.WeaponEqpSlot = 0 And .Invent.NudilloSlot = 0 And .Invent.HerramientaEqpSlot = 0 Then .Char.WeaponAnim = NingunArma
+            ' -----------------------------------------------------------------------
+            '   FIN - INFORMACION INICIAL DEL PERSONAJE
+            ' -----------------------------------------------------------------------
+            
+520         If Not ValidateChr(UserIndex) Then
+525             Call WriteShowMessageBox(UserIndex, "Error en el personaje. Comuniquese con el staff.")
+530             Call CloseSocket(UserIndex)
+                Exit Function
+
+            End If
+            
+535         .flags.SeguroParty = True
+540         .flags.SeguroClan = True
+545         .flags.SeguroResu = True
+        
+550         .CurrentInventorySlots = getMaxInventorySlots(UserIndex)
+        
+555         Call WriteInventoryUnlockSlots(UserIndex)
+        
+560         Call LoadUserIntervals(UserIndex)
+565         Call WriteIntervals(UserIndex)
+        
+570         Call UpdateUserInv(True, UserIndex, 0)
+575         Call UpdateUserHechizos(True, UserIndex, 0)
+        
+580         Call EnviarLlaves(UserIndex)
+
+590         If .flags.Paralizado Then Call WriteParalizeOK(UserIndex)
+        
+595         If .flags.Inmovilizado Then Call WriteInmovilizaOK(UserIndex)
+
+            ''
+            'TODO : Feo, esto tiene que ser parche cliente
+600         If .flags.Estupidez = 0 Then
+605             Call WriteDumbNoMore(UserIndex)
+            End If
+        
+            'Ladder Inmunidad
+610         .flags.Inmunidad = 1
+615         .Counters.TiempoDeInmunidad = IntervaloPuedeSerAtacado
+            'Ladder Inmunidad
+            
+            .Counters.TiempoDeInmunidadParalisisNoMagicas = 0
+        
+            'Mapa v·lido
+620         If Not MapaValido(.Pos.Map) Then
+625             Call WriteErrorMsg(UserIndex, "EL PJ se encuenta en un mapa invalido.")
+630             Call CloseSocket(UserIndex)
+                Exit Function
+
+            End If
+        
+            'Tratamos de evitar en lo posible el "Telefrag". Solo 1 intento de loguear en pos adjacentes.
+            'Codigo por Pablo (ToxicWaste) y revisado por Nacho (Integer), corregido para que realmetne ande y no tire el server por Juan Martin Sotuyo Dodero (Maraxus)
+635         If MapData(.Pos.Map, .Pos.X, .Pos.Y).UserIndex <> 0 Or MapData(.Pos.Map, .Pos.X, .Pos.Y).NpcIndex <> 0 Then
+
+                Dim FoundPlace As Boolean
+                Dim esAgua     As Boolean
+                Dim tX         As Long
+                Dim tY         As Long
+        
+640             FoundPlace = False
+645             esAgua = (MapData(.Pos.Map, .Pos.X, .Pos.Y).Blocked And FLAG_AGUA) <> 0
+
+650             For tY = .Pos.Y - 1 To .Pos.Y + 1
+655                 For tX = .Pos.X - 1 To .Pos.X + 1
+
+660                     If esAgua Then
+
+                            'reviso que sea pos legal en agua, que no haya User ni NPC para poder loguear.
+665                         If LegalPos(.Pos.Map, tX, tY, True, True, False, False, False) Then
+670                             FoundPlace = True
+                                Exit For
+
+                            End If
+
+                        Else
+
+                            'reviso que sea pos legal en tierra, que no haya User ni NPC para poder loguear.
+675                         If LegalPos(.Pos.Map, tX, tY, False, True, False, False, False) Then
+680                             FoundPlace = True
+                                Exit For
+
+                            End If
+
+                        End If
+
+685                 Next tX
+            
+690                 If FoundPlace Then Exit For
+695             Next tY
+        
+700             If FoundPlace Then 'Si encontramos un lugar, listo, nos quedamos ahi
+
+705                 .Pos.X = tX
+710                 .Pos.Y = tY
+
+                Else
+
+                    'Si no encontramos un lugar, sacamos al usuario que tenemos abajo, y si es un NPC, lo pisamos.
+715                 If MapData(.Pos.Map, .Pos.X, .Pos.Y).UserIndex <> 0 Then
+
+                        'Si no encontramos lugar, y abajo teniamos a un usuario, lo pisamos y cerramos su comercio seguro
+720                     If UserList(MapData(.Pos.Map, .Pos.X, .Pos.Y).UserIndex).ComUsu.DestUsu > 0 Then
+
+                            'Le avisamos al que estaba comerciando que se tuvo que ir.
+725                         If UserList(UserList(MapData(.Pos.Map, .Pos.X, .Pos.Y).UserIndex).ComUsu.DestUsu).flags.UserLogged Then
+730                             Call FinComerciarUsu(UserList(MapData(.Pos.Map, .Pos.X, .Pos.Y).UserIndex).ComUsu.DestUsu)
+735                             Call WriteConsoleMsg(UserList(MapData(.Pos.Map, .Pos.X, .Pos.Y).UserIndex).ComUsu.DestUsu, "Comercio cancelado. El otro usuario se ha desconectado.", e_FontTypeNames.FONTTYPE_WARNING)
+
+                            End If
+
+                            'Lo sacamos.
+740                         If UserList(MapData(.Pos.Map, .Pos.X, .Pos.Y).UserIndex).flags.UserLogged Then
+745                             Call FinComerciarUsu(MapData(.Pos.Map, .Pos.X, .Pos.Y).UserIndex)
+750                             Call WriteErrorMsg(MapData(.Pos.Map, .Pos.X, .Pos.Y).UserIndex, "Alguien se ha conectado donde te encontrabas, por favor reconectate...")
+
+                            End If
+
+                        End If
+                
+755                     Call CloseSocket(MapData(.Pos.Map, .Pos.X, .Pos.Y).UserIndex)
+
+                    End If
+
+                End If
+
+            End If
+        
+            'If in the water, and has a boat, equip it!
+760         If .Invent.BarcoObjIndex > 0 And (MapData(.Pos.Map, .Pos.X, .Pos.Y).Blocked And FLAG_AGUA) <> 0 Then
+765             .flags.Navegando = 1
+770             Call EquiparBarco(UserIndex)
+
+            End If
+            
+775         If .Invent.MagicoObjIndex <> 0 Then
+780             If ObjData(.Invent.MagicoObjIndex).EfectoMagico = 11 Then .flags.Paraliza = 1
+            End If
+
+785         Call WriteUserIndexInServer(UserIndex) 'Enviamos el User index
+        
+795         Call WriteHora(UserIndex)
+800         Call WriteChangeMap(UserIndex, .Pos.Map) 'Carga el mapa
+            
+805         Select Case .flags.Privilegios
+            
+                Case e_PlayerType.Admin
+810                 .flags.ChatColor = RGB(217, 164, 32)
+                
+815             Case e_PlayerType.Dios
+820                 .flags.ChatColor = RGB(217, 164, 32)
+                    
+825             Case e_PlayerType.SemiDios
+830                 .flags.ChatColor = RGB(2, 161, 38)
+                    
+835             Case e_PlayerType.Consejero
+840                 .flags.ChatColor = RGB(2, 161, 38)
+                
+845             Case Else
+850                 .flags.ChatColor = vbWhite
+                
+            End Select
+            
+            ' Jopi: Te saco de los mapas de retos (si logueas ahi) 324 372 389 390
+855         If Not EsGM(UserIndex) And (.Pos.Map = 324 Or .Pos.Map = 372 Or .Pos.Map = 389 Or .Pos.Map = 390) Then
+                
+                ' Si tiene una posicion a la que volver, lo mando ahi
+860             If MapaValido(.flags.ReturnPos.Map) And .flags.ReturnPos.X > 0 And .flags.ReturnPos.X <= XMaxMapSize And .flags.ReturnPos.Y > 0 And .flags.ReturnPos.Y <= YMaxMapSize Then
+                    
+865                 Call WarpToLegalPos(UserIndex, .flags.ReturnPos.Map, .flags.ReturnPos.X, .flags.ReturnPos.Y, True)
+                
+                Else ' Lo mando a su hogar
+                    
+870                 Call WarpToLegalPos(UserIndex, Ciudades(.Hogar).Map, Ciudades(.Hogar).X, Ciudades(.Hogar).Y, True)
+                    
+                End If
+                
+            End If
+            
+            ''[EL OSO]: TRAIGO ESTO ACA ARRIBA PARA DARLE EL IP!
+            #If ConUpTime Then
+875             .LogOnTime = Now
+            #End If
+        
+            'Crea  el personaje del usuario
+880         Call MakeUserChar(True, .Pos.Map, UserIndex, .Pos.Map, .Pos.X, .Pos.Y, 1)
+
+885         Call WriteUserCharIndexInServer(UserIndex)
+890         Call ActualizarVelocidadDeUsuario(UserIndex)
+        
+895         If .flags.Privilegios And (e_PlayerType.SemiDios Or e_PlayerType.Dios Or e_PlayerType.Admin) Then
+                Call DoAdminInvisible(UserIndex)
+            End If
+900         Call WriteUpdateUserStats(UserIndex)
+905         Call WriteUpdateHungerAndThirst(UserIndex)
+910         Call WriteUpdateDM(UserIndex)
+915         Call WriteUpdateRM(UserIndex)
+        
+920         Call SendMOTD(UserIndex)
+   
+            'Actualiza el Num de usuarios
+930         NumUsers = NumUsers + 1
+935         .flags.UserLogged = True
+940         .Counters.LastSave = GetTickCount
+        
+945         MapInfo(.Pos.Map).NumUsers = MapInfo(.Pos.Map).NumUsers + 1
+        
+950         If .Stats.SkillPts > 0 Then
+955             Call WriteSendSkills(UserIndex)
+960             Call WriteLevelUp(UserIndex, .Stats.SkillPts)
+
+            End If
+        
+965         If NumUsers > DayStats.MaxUsuarios Then DayStats.MaxUsuarios = NumUsers
+        
+970         If NumUsers > RecordUsuarios Then
+975             Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg("Record de usuarios conectados simult·neamente: " & NumUsers & " usuarios.", e_FontTypeNames.FONTTYPE_INFO))
+980             RecordUsuarios = NumUsers
+            End If
+
+990         Call SendData(SendTarget.ToIndex, userindex, PrepareMessageOnlineUser(NumUsers))
+
+995         Call WriteFYA(UserIndex)
+1000         Call WriteBindKeys(UserIndex)
+        
+1005         If .NroMascotas > 0 And MapInfo(.Pos.Map).Seguro = 0 And .flags.MascotasGuardadas = 0 Then
+                 Dim i As Integer
+
+1010             For i = 1 To MAXMASCOTAS
+
+1015                If .MascotasType(i) > 0 Then
+1020                    .MascotasIndex(i) = SpawnNpc(.MascotasType(i), .Pos, False, False, False, UserIndex)
+                    
+1025                    If .MascotasIndex(i) > 0 Then
+1030                        NpcList(.MascotasIndex(i)).MaestroUser = UserIndex
+1035                        Call FollowAmo(.MascotasIndex(i))
+                        
+                         Else
+1040                        .MascotasIndex(i) = 0
+
+                         End If
+                     End If
+
+1045            Next i
+
+             End If
+        
+1050        If .flags.Navegando = 1 Then
+1055            Call WriteNavigateToggle(UserIndex)
+1060            Call EquiparBarco(UserIndex)
+
+             End If
+                     
+1065        If .flags.Montado = 1 Then
+1070            Call WriteEquiteToggle(UserIndex)
+
+             End If
+
+1075        Call ActualizarVelocidadDeUsuario(UserIndex)
+        
+1080        If .GuildIndex > 0 Then
+
+                 'welcome to the show baby...
+1085            If Not modGuilds.m_ConectarMiembroAClan(UserIndex, .GuildIndex) Then
+1090                Call WriteConsoleMsg(UserIndex, "Tu estado no te permite entrar al clan.", e_FontTypeNames.FONTTYPE_GUILD)
+                 End If
+
+             End If
+
+1100        If LenB(.LastGuildRejection) <> 0 Then
+1105            Call WriteShowMessageBox(UserIndex, "Tu solicitud de ingreso al clan ha sido rechazada. El clan te explica que: " & .LastGuildRejection)
+
+                .LastGuildRejection = vbNullString
+                
+                Call SaveUserGuildRejectionReason(.Name, vbNullString)
+             End If
+
+1110        If Lloviendo Then Call WriteRainToggle(UserIndex)
+        
+1115        If ServidorNublado Then Call WriteNubesToggle(UserIndex)
+
+1120        Call WriteLoggedMessage(UserIndex)
+        
+1125        If .Stats.ELV = 1 Then
+1130            Call WriteConsoleMsg(userindex, "°Bienvenido a las tierras de AO20! °" & .name & " que tengas buen viaje y mucha suerte!", e_FontTypeNames.FONTTYPE_GUILD)
+
+1135        ElseIf .Stats.ELV < 14 Then
+1140            Call WriteConsoleMsg(userindex, "°Bienvenido de nuevo " & .name & "! Actualmente estas en el nivel " & .Stats.ELV & " en " & get_map_name(.Pos.map) & ", °buen viaje y mucha suerte!", e_FontTypeNames.FONTTYPE_GUILD)
+
+             End If
+
+1145        If Status(UserIndex) = Criminal Or Status(UserIndex) = e_Facciones.Caos Then
+1150            Call WriteSafeModeOff(UserIndex)
+1155            .flags.Seguro = False
+
+             Else
+1160            .flags.Seguro = True
+1165            Call WriteSafeModeOn(UserIndex)
+
+             End If
+        
+1170        If LenB(.MENSAJEINFORMACION) > 0 Then
+                 Dim Lines() As String
+1175            Lines = Split(.MENSAJEINFORMACION, vbNewLine)
+
+1180            For i = 0 To UBound(Lines)
+
+1185                If LenB(Lines(i)) > 0 Then
+1190                    Call WriteConsoleMsg(UserIndex, Lines(i), e_FontTypeNames.FONTTYPE_New_DONADOR)
+                     End If
+
+                 Next
+
+1195            .MENSAJEINFORMACION = vbNullString
+             End If
+
+1215        If EventoActivo Then
+1220            Call WriteConsoleMsg(UserIndex, PublicidadEvento & ". Tiempo restante: " & TiempoRestanteEvento & " minuto(s).", e_FontTypeNames.FONTTYPE_New_Eventos)
+             End If
+        
+1225        Call WriteContadores(UserIndex)
+1227        Call WritePrivilegios(UserIndex)
+            
+         End With
+
+         Exit Function
+
+Complete_ConnectUser_Err:
+1235    Call TraceError(Err.Number, Err.Description, "UsUaRiOs.ConnectUser_Complete", Erl)
+
+End Function
+
+Sub ActStats(ByVal VictimIndex As Integer, ByVal AttackerIndex As Integer)
         
         On Error GoTo ActStats_Err
         
@@ -46,55 +750,48 @@ Sub ActStats(ByVal VictimIndex As Integer, ByVal attackerIndex As Integer)
     
 100     DaExp = CInt(UserList(VictimIndex).Stats.ELV * 2)
     
-102     If UserList(attackerIndex).Stats.ELV < STAT_MAXELV Then
-104         UserList(attackerIndex).Stats.Exp = UserList(attackerIndex).Stats.Exp + DaExp
+102     If UserList(AttackerIndex).Stats.ELV < STAT_MAXELV Then
+104         UserList(AttackerIndex).Stats.Exp = UserList(AttackerIndex).Stats.Exp + DaExp
 
-106         If UserList(attackerIndex).Stats.Exp > MAXEXP Then UserList(attackerIndex).Stats.Exp = MAXEXP
+106         If UserList(AttackerIndex).Stats.Exp > MAXEXP Then UserList(AttackerIndex).Stats.Exp = MAXEXP
 
-108         Call WriteUpdateExp(attackerIndex)
-110         Call CheckUserLevel(attackerIndex)
+108         Call WriteUpdateExp(AttackerIndex)
+110         Call CheckUserLevel(AttackerIndex)
 
         End If
     
         'Lo mata
-        'Call WriteConsoleMsg(attackerIndex, "Has matado a " & UserList(VictimIndex).name & "!", FontTypeNames.FONTTYPE_FIGHT)
+        'Call WriteConsoleMsg(attackerIndex, "Has matado a " & UserList(VictimIndex).name & "!", e_FontTypeNames.FONTTYPE_FIGHT)
     
-112     Call WriteLocaleMsg(attackerIndex, "184", FontTypeNames.FONTTYPE_FIGHT, UserList(VictimIndex).name)
-114     Call WriteLocaleMsg(attackerIndex, "140", FontTypeNames.FONTTYPE_EXP, DaExp)
+112     Call WriteLocaleMsg(AttackerIndex, "184", e_FontTypeNames.FONTTYPE_FIGHT, UserList(VictimIndex).Name)
+114     Call WriteLocaleMsg(AttackerIndex, "140", e_FontTypeNames.FONTTYPE_EXP, DaExp)
           
-        'Call WriteConsoleMsg(VictimIndex, UserList(attackerIndex).name & " te ha matado!", FontTypeNames.FONTTYPE_FIGHT)
-116     Call WriteLocaleMsg(VictimIndex, "185", FontTypeNames.FONTTYPE_FIGHT, UserList(attackerIndex).name)
+        'Call WriteConsoleMsg(VictimIndex, UserList(attackerIndex).name & " te ha matado!", e_FontTypeNames.FONTTYPE_FIGHT)
+116     Call WriteLocaleMsg(VictimIndex, "185", e_FontTypeNames.FONTTYPE_FIGHT, UserList(AttackerIndex).Name)
     
-118     If TriggerZonaPelea(VictimIndex, attackerIndex) <> TRIGGER6_PERMITE Then
-120         EraCriminal = Status(attackerIndex)
+118     If TriggerZonaPelea(VictimIndex, AttackerIndex) <> TRIGGER6_PERMITE Then
+120         EraCriminal = Status(AttackerIndex)
         
-122         If EraCriminal = 2 And Status(attackerIndex) < 2 Then
-124             Call RefreshCharStatus(attackerIndex)
-126         ElseIf EraCriminal < 2 And Status(attackerIndex) = 2 Then
-128             Call RefreshCharStatus(attackerIndex)
+122         If EraCriminal = 2 And Status(AttackerIndex) < 2 Then
+124             Call RefreshCharStatus(AttackerIndex)
+126         ElseIf EraCriminal < 2 And Status(AttackerIndex) = 2 Then
+128             Call RefreshCharStatus(AttackerIndex)
 
             End If
 
         End If
     
 130     Call UserDie(VictimIndex)
-    
-132     If UserList(attackerIndex).flags.BattleModo = 1 Then
-134         Call ContarPuntoBattle(VictimIndex, attackerIndex)
-
+        
+132     If UserList(AttackerIndex).Stats.UsuariosMatados < MAXUSERMATADOS Then
+134         UserList(AttackerIndex).Stats.UsuariosMatados = UserList(AttackerIndex).Stats.UsuariosMatados + 1
         End If
-    
-136     If UserList(attackerIndex).Stats.UsuariosMatados < MAXUSERMATADOS Then UserList(attackerIndex).Stats.UsuariosMatados = UserList(attackerIndex).Stats.UsuariosMatados + 1
-        'Call CheckearRecompesas(attackerIndex, 2)
-    
-    
-
         
         Exit Sub
 
 ActStats_Err:
-138     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.ActStats", Erl)
-140     Resume Next
+136     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.ActStats", Erl)
+
         
 End Sub
 
@@ -116,138 +813,114 @@ Sub RevivirUsuario(ByVal UserIndex As Integer, Optional ByVal MedianteHechizo As
 114             Call WriteUpdateHungerAndThirst(UserIndex)
             End If
         
-118         Call WriteUpdateHP(UserIndex)
+116         Call WriteUpdateHP(UserIndex)
             
-120         If .flags.Navegando = 1 Then
-    
-                Dim Barco As ObjData
-    
-122             Barco = ObjData(.Invent.BarcoObjIndex)
-
-124             If Barco.Subtipo = 0 Then
-126                 .Char.Head = .OrigChar.Head
-                    
-128                 If .Invent.CascoEqpObjIndex > 0 Then
-130                     .Char.CascoAnim = ObjData(.Invent.CascoEqpObjIndex).CascoAnim
-                    End If
-
-132                 Call WriteNadarToggle(UserIndex, True)
-                Else
-134                 .Char.Head = 0
-136                 Call WriteNadarToggle(UserIndex, False)
-                End If
-        
-138             .Char.Body = Barco.Ropaje
-        
-140             .Char.ShieldAnim = NingunEscudo
-142             .Char.WeaponAnim = NingunArma
-144             .Char.speeding = Barco.Velocidad
-       
+118         If .flags.Navegando = 1 Then
+120             Call EquiparBarco(UserIndex)
             Else
-        
-146             .Char.Head = .OrigChar.Head
+
+122             .Char.Head = .OrigChar.Head
     
-148             If .Invent.CascoEqpObjIndex > 0 Then
-150                 .Char.CascoAnim = ObjData(.Invent.CascoEqpObjIndex).CascoAnim
+124             If .Invent.CascoEqpObjIndex > 0 Then
+126                 .Char.CascoAnim = ObjData(.Invent.CascoEqpObjIndex).CascoAnim
                 End If
     
-152             If .Invent.EscudoEqpObjIndex > 0 Then
-154                 .Char.ShieldAnim = ObjData(.Invent.EscudoEqpObjIndex).ShieldAnim
+128             If .Invent.EscudoEqpObjIndex > 0 Then
+130                 .Char.ShieldAnim = ObjData(.Invent.EscudoEqpObjIndex).ShieldAnim
     
                 End If
     
-156             If .Invent.WeaponEqpObjIndex > 0 Then
-158                 .Char.WeaponAnim = ObjData(.Invent.WeaponEqpObjIndex).WeaponAnim
+132             If .Invent.WeaponEqpObjIndex > 0 Then
+134                 .Char.WeaponAnim = ObjData(.Invent.WeaponEqpObjIndex).WeaponAnim
         
-160                 If ObjData(.Invent.WeaponEqpObjIndex).CreaGRH <> "" Then
-162                     .Char.Arma_Aura = ObjData(.Invent.WeaponEqpObjIndex).CreaGRH
-164                     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(.Char.CharIndex, .Char.Arma_Aura, False, 1))
+136                 If ObjData(.Invent.WeaponEqpObjIndex).CreaGRH <> "" Then
+138                     .Char.Arma_Aura = ObjData(.Invent.WeaponEqpObjIndex).CreaGRH
+140                     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(.Char.CharIndex, .Char.Arma_Aura, False, 1))
     
                     End If
             
                 End If
     
-166             If .Invent.ArmourEqpObjIndex > 0 Then
-168                 .Char.Body = ObjData(.Invent.ArmourEqpObjIndex).Ropaje
+142             If .Invent.ArmourEqpObjIndex > 0 Then
+144                 .Char.Body = ObjData(.Invent.ArmourEqpObjIndex).Ropaje
         
-170                 If ObjData(.Invent.ArmourEqpObjIndex).CreaGRH <> "" Then
-172                     .Char.Body_Aura = ObjData(.Invent.ArmourEqpObjIndex).CreaGRH
-174                     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(.Char.CharIndex, .Char.Body_Aura, False, 2))
+146                 If ObjData(.Invent.ArmourEqpObjIndex).CreaGRH <> "" Then
+148                     .Char.Body_Aura = ObjData(.Invent.ArmourEqpObjIndex).CreaGRH
+150                     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(.Char.CharIndex, .Char.Body_Aura, False, 2))
     
                     End If
     
                 Else
-176                 Call DarCuerpoDesnudo(UserIndex)
+152                 Call DarCuerpoDesnudo(UserIndex)
             
                 End If
     
-178             If .Invent.EscudoEqpObjIndex > 0 Then
-180                 .Char.ShieldAnim = ObjData(.Invent.EscudoEqpObjIndex).ShieldAnim
+154             If .Invent.EscudoEqpObjIndex > 0 Then
+156                 .Char.ShieldAnim = ObjData(.Invent.EscudoEqpObjIndex).ShieldAnim
     
-182                 If ObjData(.Invent.EscudoEqpObjIndex).CreaGRH <> "" Then
-184                     .Char.Escudo_Aura = ObjData(.Invent.EscudoEqpObjIndex).CreaGRH
-186                     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(.Char.CharIndex, .Char.Escudo_Aura, False, 3))
-    
-                    End If
-            
-                End If
-    
-188             If .Invent.CascoEqpObjIndex > 0 Then
-190                 .Char.CascoAnim = ObjData(.Invent.CascoEqpObjIndex).CascoAnim
-    
-192                 If ObjData(.Invent.CascoEqpObjIndex).CreaGRH <> "" Then
-194                     .Char.Head_Aura = ObjData(.Invent.CascoEqpObjIndex).CreaGRH
-196                     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(.Char.CharIndex, .Char.Head_Aura, False, 4))
+158                 If ObjData(.Invent.EscudoEqpObjIndex).CreaGRH <> "" Then
+160                     .Char.Escudo_Aura = ObjData(.Invent.EscudoEqpObjIndex).CreaGRH
+162                     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(.Char.CharIndex, .Char.Escudo_Aura, False, 3))
     
                     End If
             
                 End If
     
-198             If .Invent.MagicoObjIndex > 0 Then
-200                 If ObjData(.Invent.MagicoObjIndex).CreaGRH <> "" Then
-202                     .Char.Otra_Aura = ObjData(.Invent.MagicoObjIndex).CreaGRH
-204                     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(.Char.CharIndex, .Char.Otra_Aura, False, 5))
+164             If .Invent.CascoEqpObjIndex > 0 Then
+166                 .Char.CascoAnim = ObjData(.Invent.CascoEqpObjIndex).CascoAnim
+    
+168                 If ObjData(.Invent.CascoEqpObjIndex).CreaGRH <> "" Then
+170                     .Char.Head_Aura = ObjData(.Invent.CascoEqpObjIndex).CreaGRH
+172                     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(.Char.CharIndex, .Char.Head_Aura, False, 4))
+    
+                    End If
+            
+                End If
+    
+174             If .Invent.MagicoObjIndex > 0 Then
+176                 If ObjData(.Invent.MagicoObjIndex).CreaGRH <> "" Then
+178                     .Char.Otra_Aura = ObjData(.Invent.MagicoObjIndex).CreaGRH
+180                     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(.Char.CharIndex, .Char.Otra_Aura, False, 5))
     
                     End If
     
                 End If
     
-206             If .Invent.NudilloObjIndex > 0 Then
-208                 If ObjData(.Invent.NudilloObjIndex).CreaGRH <> "" Then
-210                     .Char.Arma_Aura = ObjData(.Invent.NudilloObjIndex).CreaGRH
-212                     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(.Char.CharIndex, .Char.Arma_Aura, False, 1))
+182             If .Invent.NudilloObjIndex > 0 Then
+184                 If ObjData(.Invent.NudilloObjIndex).CreaGRH <> "" Then
+186                     .Char.Arma_Aura = ObjData(.Invent.NudilloObjIndex).CreaGRH
+188                     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(.Char.CharIndex, .Char.Arma_Aura, False, 1))
     
-                    End If
-                End If
-                
-214             If .Invent.Da√±oMagicoEqpObjIndex > 0 Then
-216                 If ObjData(.Invent.Da√±oMagicoEqpObjIndex).CreaGRH <> "" Then
-218                     .Char.DM_Aura = ObjData(.Invent.Da√±oMagicoEqpObjIndex).CreaGRH
-220                     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(.Char.CharIndex, .Char.DM_Aura, False, 6))
-                    End If
-                End If
-                
-222             If .Invent.ResistenciaEqpObjIndex > 0 Then
-224                 If ObjData(.Invent.ResistenciaEqpObjIndex).CreaGRH <> "" Then
-226                     .Char.RM_Aura = ObjData(.Invent.ResistenciaEqpObjIndex).CreaGRH
-228                     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(.Char.CharIndex, .Char.RM_Aura, False, 7))
                     End If
                 End If
                 
-230             .Char.speeding = VelocidadNormal
+190             If .Invent.DaÒoMagicoEqpObjIndex > 0 Then
+192                 If ObjData(.Invent.DaÒoMagicoEqpObjIndex).CreaGRH <> "" Then
+194                     .Char.DM_Aura = ObjData(.Invent.DaÒoMagicoEqpObjIndex).CreaGRH
+196                     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(.Char.CharIndex, .Char.DM_Aura, False, 6))
+                    End If
+                End If
+                
+198             If .Invent.ResistenciaEqpObjIndex > 0 Then
+200                 If ObjData(.Invent.ResistenciaEqpObjIndex).CreaGRH <> "" Then
+202                     .Char.RM_Aura = ObjData(.Invent.ResistenciaEqpObjIndex).CreaGRH
+204                     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(.Char.CharIndex, .Char.RM_Aura, False, 7))
+                    End If
+                End If
     
             End If
     
-232         Call ChangeUserChar(UserIndex, .Char.Body, .Char.Head, .Char.Heading, .Char.WeaponAnim, .Char.ShieldAnim, .Char.CascoAnim)
-234         Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageSpeedingACT(.Char.CharIndex, .Char.speeding))
-
+206         Call ActualizarVelocidadDeUsuario(UserIndex)
+208         Call ChangeUserChar(UserIndex, .Char.Body, .Char.Head, .Char.Heading, .Char.WeaponAnim, .Char.ShieldAnim, .Char.CascoAnim)
+            
+         Call MakeUserChar(True, UserList(UserIndex).Pos.Map, UserIndex, UserList(UserIndex).Pos.Map, UserList(UserIndex).Pos.X, UserList(UserIndex).Pos.Y, 0)
         End With
         
         Exit Sub
 
 RevivirUsuario_Err:
-236     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.RevivirUsuario", Erl)
-238     Resume Next
+210     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.RevivirUsuario", Erl)
+
         
 End Sub
 
@@ -272,12 +945,12 @@ Sub ChangeUserChar(ByVal UserIndex As Integer, ByVal Body As Integer, ByVal Head
         Exit Sub
 
 ChangeUserChar_Err:
-116     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.ChangeUserChar", Erl)
-118     Resume Next
+116     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.ChangeUserChar", Erl)
+
         
 End Sub
 
-Sub EraseUserChar(ByVal UserIndex As Integer, ByVal Desvanecer As Boolean)
+Sub EraseUserChar(ByVal UserIndex As Integer, ByVal Desvanecer As Boolean, Optional ByVal FueWarp As Boolean = False)
 
         On Error GoTo ErrorHandler
 
@@ -301,12 +974,16 @@ Sub EraseUserChar(ByVal UserIndex As Integer, ByVal Desvanecer As Boolean)
 
 114     Error = "2"
     
-        'Le mandamos el mensaje para que borre el personaje a los clientes que est√©n cerca
-116     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageCharacterRemove(UserList(UserIndex).Char.CharIndex, Desvanecer))
+      #If UNIT_TEST = 0 Then
+        'Le mandamos el mensaje para que borre el personaje a los clientes que estÈn cerca
+116     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageCharacterRemove(4, UserList(UserIndex).Char.CharIndex, Desvanecer, FueWarp))
+
+      
 118     Error = "3"
 120     Call QuitarUser(UserIndex, UserList(UserIndex).Pos.Map)
 122     Error = "4"
-    
+      #End If
+      
 124     MapData(UserList(UserIndex).Pos.Map, UserList(UserIndex).Pos.X, UserList(UserIndex).Pos.Y).UserIndex = 0
 126     Error = "5"
 128     UserList(UserIndex).Char.CharIndex = 0
@@ -316,7 +993,7 @@ Sub EraseUserChar(ByVal UserIndex As Integer, ByVal Desvanecer As Boolean)
         Exit Sub
     
 ErrorHandler:
-134     Call LogError("Error en EraseUserchar " & Error & " - " & Err.Number & ": " & Err.Description)
+134     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.EraseUserChar", Erl)
 
 End Sub
 
@@ -330,29 +1007,39 @@ Sub RefreshCharStatus(ByVal UserIndex As Integer)
         'Last modified: 6/04/2007
         'Refreshes the status and tag of UserIndex.
         '*************************************************
-        Dim klan As String, name As String
+        Dim klan As String, Name As String
 
 100     If UserList(UserIndex).showName Then
-102         If UserList(UserIndex).flags.Mimetizado = 0 Then
+
+102         If UserList(UserIndex).flags.Mimetizado = e_EstadoMimetismo.Desactivado Then
+
 104             If UserList(UserIndex).GuildIndex > 0 Then
 106                 klan = modGuilds.GuildName(UserList(UserIndex).GuildIndex)
 108                 klan = " <" & klan & ">"
                 End If
             
-110             name = UserList(UserIndex).name & klan
+110             Name = UserList(UserIndex).Name & klan
+
             Else
-112             name = UserList(UserIndex).NameMimetizado
+112             Name = UserList(UserIndex).NameMimetizado
             End If
+            
+114         If UserList(UserIndex).clase = e_Class.Pirat Then
+116             If UserList(UserIndex).flags.Oculto = 1 Then
+118                 Name = vbNullString
+                End If
+            End If
+            
         End If
     
-114     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageUpdateTagAndStatus(UserIndex, UserList(UserIndex).Faccion.Status, name))
+120     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageUpdateTagAndStatus(UserIndex, UserList(UserIndex).Faccion.Status, Name))
 
         
         Exit Sub
 
 RefreshCharStatus_Err:
-116     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.RefreshCharStatus", Erl)
-118     Resume Next
+122     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.RefreshCharStatus", Erl)
+
         
 End Sub
 
@@ -391,12 +1078,12 @@ Sub MakeUserChar(ByVal toMap As Boolean, _
 114             If Not toMap Then
                 
 116                 If .showName Then
-118                     If .flags.Mimetizado = 0 Then
+118                     If .flags.Mimetizado = e_EstadoMimetismo.Desactivado Then
 120                         If .GuildIndex > 0 Then
                     
 122                             klan = modGuilds.GuildName(.GuildIndex)
 124                             clan_nivel = modGuilds.NivelDeClan(.GuildIndex)
-126                             TempName = .name & " <" & klan & ">"
+126                             TempName = .Name & " <" & klan & ">"
                     
                             Else
                         
@@ -405,11 +1092,11 @@ Sub MakeUserChar(ByVal toMap As Boolean, _
                             
 132                             If .flags.EnConsulta Then
                                 
-134                                 TempName = .name & " [CONSULTA]"
+134                                 TempName = .Name & " [CONSULTA]"
                                 
                                 Else
                             
-136                                 TempName = .name
+136                                 TempName = .Name
                             
                                 End If
                             
@@ -419,8 +1106,7 @@ Sub MakeUserChar(ByVal toMap As Boolean, _
                         End If
                     End If
 
-140                 Call WriteCharacterCreate(sndIndex, .Char.Body, .Char.Head, .Char.Heading, .Char.CharIndex, X, Y, .Char.WeaponAnim, .Char.ShieldAnim, .Char.FX, 999, .Char.CascoAnim, TempName, .Faccion.Status, .flags.Privilegios, .Char.ParticulaFx, .Char.Head_Aura, .Char.Arma_Aura, .Char.Body_Aura, .Char.DM_Aura, .Char.RM_Aura, .Char.Otra_Aura, .Char.Escudo_Aura, .Char.speeding, 0, .donador.activo, appear, .Grupo.Lider, .GuildIndex, clan_nivel, .Stats.MinHp, .Stats.MaxHp, 0, False, .flags.Navegando)
-                                         
+140                 Call WriteCharacterCreate(sndIndex, .Char.Body, .Char.Head, .Char.Heading, .Char.CharIndex, X, Y, .Char.WeaponAnim, .Char.ShieldAnim, .Char.FX, 999, .Char.CascoAnim, TempName, .Faccion.Status, .flags.Privilegios, .Char.ParticulaFx, .Char.Head_Aura, .Char.Arma_Aura, .Char.Body_Aura, .Char.DM_Aura, .Char.RM_Aura, .Char.Otra_Aura, .Char.Escudo_Aura, .Char.speeding, 0, appear, .Grupo.Lider, .GuildIndex, clan_nivel, .Stats.MinHp, .Stats.MaxHp, .Stats.MinMAN, .Stats.MaxMAN, 0, False, .flags.Navegando, .Stats.tipoUsuario)
                 Else
             
                     'Hide the name and clan - set privs as normal user
@@ -438,10 +1124,10 @@ HayError:
         
         Dim Desc As String
 144         Desc = Err.Description & vbNewLine & _
-                    " Usuario: " & UserList(UserIndex).name & vbNewLine & _
+                    " Usuario: " & UserList(UserIndex).Name & vbNewLine & _
                     "Pos: " & Map & "-" & X & "-" & Y
             
-146     Call RegistrarError(Err.Number, Err.Description, "Usuarios.MakeUserChar", Erl())
+146     Call TraceError(Err.Number, Err.Description, "Usuarios.MakeUserChar", Erl())
         
 148     Call CloseSocket(UserIndex)
 
@@ -457,9 +1143,9 @@ Sub CheckUserLevel(ByVal UserIndex As Integer)
         '01/10/2007 Tavo - Corregido el BUG de STAT_MAXELV
         '24/01/2007 Pablo (ToxicWaste) - Agrego modificaciones en ELU al subir de nivel.
         '24/01/2007 Pablo (ToxicWaste) - Agrego modificaciones de la subida de mana de los magos por lvl.
-        '13/03/2007 Pablo (ToxicWaste) - Agrego diferencias entre el 18 y el 19 en Constituci√≥n.
-        '09/01/2008 Pablo (ToxicWaste) - Ahora el incremento de vida por Consituci√≥n se controla desde Balance.dat
-        '17/12/2020 WyroX: Distribuci√≥n normal de las vidas
+        '13/03/2007 Pablo (ToxicWaste) - Agrego diferencias entre el 18 y el 19 en ConstituciÛn.
+        '09/01/2008 Pablo (ToxicWaste) - Ahora el incremento de vida por ConsituciÛn se controla desde Balance.dat
+        '17/12/2020 WyroX: DistribuciÛn normal de las vidas
         '*************************************************
 
         On Error GoTo ErrHandler
@@ -485,6 +1171,7 @@ Sub CheckUserLevel(ByVal UserIndex As Integer)
         Dim aux              As Integer
     
         Dim PasoDeNivel      As Boolean
+        Dim experienceToLevelUp As Long
 
         ' Randomizo las vidas
 100     Randomize Time
@@ -492,129 +1179,128 @@ Sub CheckUserLevel(ByVal UserIndex As Integer)
 102     With UserList(UserIndex)
 
 104         WasNewbie = EsNewbie(UserIndex)
+106         experienceToLevelUp = ExpLevelUp(.Stats.ELV)
         
-106         Do While .Stats.Exp >= .Stats.ELU And .Stats.ELV < STAT_MAXELV
+108         Do While .Stats.Exp >= experienceToLevelUp And .Stats.ELV < STAT_MAXELV
             
                 'Store it!
                 'Call Statistics.UserLevelUp(UserIndex)
 
-108             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageCreateFX(.Char.CharIndex, 106, 0))
-110             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessagePlayWave(SND_NIVEL, .Pos.X, .Pos.Y))
-112             Call WriteLocaleMsg(UserIndex, "186", FontTypeNames.FONTTYPE_INFO)
+110             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageCreateFX(.Char.CharIndex, 106, 0))
+112             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessagePlayWave(SND_NIVEL, .Pos.X, .Pos.Y))
+114             Call WriteLocaleMsg(UserIndex, "186", e_FontTypeNames.FONTTYPE_INFO)
             
-114             .Stats.Exp = .Stats.Exp - .Stats.ELU
+116             .Stats.Exp = .Stats.Exp - experienceToLevelUp
                 
-130             Pts = Pts + 5
+118             Pts = Pts + 5
             
                 ' Calculo subida de vida by WyroX
-                ' Obtengo el promedio seg√∫n clase y constituci√≥n
-132             PromedioObjetivo = ModClase(.clase).Vida - (21 - .Stats.UserAtributos(eAtributos.Constitucion)) * 0.5
+                ' Obtengo el promedio seg˙n clase y constituciÛn
+120             PromedioObjetivo = ModClase(.clase).Vida - (21 - .Stats.UserAtributos(e_Atributos.Constitucion)) * 0.5
                 ' Obtengo el promedio actual del user
-134             PromedioUser = CalcularPromedioVida(UserIndex)
-                ' Lo modifico para compensar si est√° muy bajo o muy alto
-136             Promedio = PromedioObjetivo + (PromedioObjetivo - PromedioUser) * DesbalancePromedioVidas
-                ' Obtengo un entero al azar con m√°s tendencia al promedio
-138             AumentoHP = RandomIntBiased(PromedioObjetivo - RangoVidas, PromedioObjetivo + RangoVidas, Promedio, InfluenciaPromedioVidas)
+122             PromedioUser = CalcularPromedioVida(UserIndex)
+                ' Lo modifico para compensar si est· muy bajo o muy alto
+124             Promedio = PromedioObjetivo + (PromedioObjetivo - PromedioUser) * DesbalancePromedioVidas
+                ' Obtengo un entero al azar con m·s tendencia al promedio
+126             AumentoHP = RandomIntBiased(PromedioObjetivo - RangoVidas, PromedioObjetivo + RangoVidas, Promedio, InfluenciaPromedioVidas)
 
                 ' WyroX: Aumento del resto de stats
-140             AumentoSta = ModClase(.clase).AumentoSta
-142             AumentoMANA = ModClase(.clase).MultMana * .Stats.UserAtributos(eAtributos.Inteligencia)
-144             AumentoHIT = IIf(.Stats.ELV < 36, ModClase(.clase).HitPre36, ModClase(.clase).HitPost36)
+128             AumentoSta = ModClase(.clase).AumentoSta
+130             AumentoMANA = ModClase(.clase).MultMana * .Stats.UserAtributos(e_Atributos.Inteligencia)
+132             AumentoHIT = IIf(.Stats.ELV < 36, ModClase(.clase).HitPre36, ModClase(.clase).HitPost36)
 
-146             .Stats.ELV = .Stats.ELV + 1
-147             .Stats.ELU = ExpLevelUp(.Stats.ELV)
+134             .Stats.ELV = .Stats.ELV + 1
+136             experienceToLevelUp = ExpLevelUp(.Stats.ELV)
                 
                 'Actualizamos HitPoints
-148             .Stats.MaxHp = .Stats.MaxHp + AumentoHP
+138             .Stats.MaxHp = .Stats.MaxHp + AumentoHP
 
-150             If .Stats.MaxHp > STAT_MAXHP Then .Stats.MaxHp = STAT_MAXHP
+140             If .Stats.MaxHp > STAT_MAXHP Then .Stats.MaxHp = STAT_MAXHP
                 'Actualizamos Stamina
-152             .Stats.MaxSta = .Stats.MaxSta + AumentoSta
+142             .Stats.MaxSta = .Stats.MaxSta + AumentoSta
 
-154             If .Stats.MaxSta > STAT_MAXSTA Then .Stats.MaxSta = STAT_MAXSTA
+144             If .Stats.MaxSta > STAT_MAXSTA Then .Stats.MaxSta = STAT_MAXSTA
                 'Actualizamos Mana
-156             .Stats.MaxMAN = .Stats.MaxMAN + AumentoMANA
+146             .Stats.MaxMAN = .Stats.MaxMAN + AumentoMANA
 
-158             If .Stats.MaxMAN > STAT_MAXMAN Then .Stats.MaxMAN = STAT_MAXMAN
+148             If .Stats.MaxMAN > STAT_MAXMAN Then .Stats.MaxMAN = STAT_MAXMAN
 
-                'Actualizamos Golpe M√°ximo
-160             .Stats.MaxHit = .Stats.MaxHit + AumentoHIT
+                'Actualizamos Golpe M·ximo
+150             .Stats.MaxHit = .Stats.MaxHit + AumentoHIT
             
-                'Actualizamos Golpe M√≠nimo
-162             .Stats.MinHIT = .Stats.MinHIT + AumentoHIT
+                'Actualizamos Golpe MÌnimo
+152             .Stats.MinHIT = .Stats.MinHIT + AumentoHIT
         
                 'Notificamos al user
-164             If AumentoHP > 0 Then
-                    'Call WriteConsoleMsg(UserIndex, "Has ganado " & AumentoHP & " puntos de vida.", FontTypeNames.FONTTYPE_INFO)
-166                 Call WriteLocaleMsg(UserIndex, "197", FontTypeNames.FONTTYPE_INFO, AumentoHP)
+154             If AumentoHP > 0 Then
+                    'Call WriteConsoleMsg(UserIndex, "Has ganado " & AumentoHP & " puntos de vida.", e_FontTypeNames.FONTTYPE_INFO)
+156                 Call WriteLocaleMsg(UserIndex, "197", e_FontTypeNames.FONTTYPE_INFO, AumentoHP)
 
                 End If
 
-168             If AumentoSta > 0 Then
-                    'Call WriteConsoleMsg(UserIndex, "Has ganado " & AumentoSTA & " puntos de vitalidad.", FontTypeNames.FONTTYPE_INFO)
-170                 Call WriteLocaleMsg(UserIndex, "198", FontTypeNames.FONTTYPE_INFO, AumentoSta)
+158             If AumentoSta > 0 Then
+                    'Call WriteConsoleMsg(UserIndex, "Has ganado " & AumentoSTA & " puntos de vitalidad.", e_FontTypeNames.FONTTYPE_INFO)
+160                 Call WriteLocaleMsg(UserIndex, "198", e_FontTypeNames.FONTTYPE_INFO, AumentoSta)
 
                 End If
 
-172             If AumentoMANA > 0 Then
-174                 Call WriteLocaleMsg(UserIndex, "199", FontTypeNames.FONTTYPE_INFO, AumentoMANA)
+162             If AumentoMANA > 0 Then
+164                 Call WriteLocaleMsg(UserIndex, "199", e_FontTypeNames.FONTTYPE_INFO, AumentoMANA)
 
-                    'Call WriteConsoleMsg(UserIndex, "Has ganado " & AumentoMANA & " puntos de magia.", FontTypeNames.FONTTYPE_INFO)
+                    'Call WriteConsoleMsg(UserIndex, "Has ganado " & AumentoMANA & " puntos de magia.", e_FontTypeNames.FONTTYPE_INFO)
                 End If
 
-176             If AumentoHIT > 0 Then
-178                 Call WriteLocaleMsg(UserIndex, "200", FontTypeNames.FONTTYPE_INFO, AumentoHIT)
+166             If AumentoHIT > 0 Then
+168                 Call WriteLocaleMsg(UserIndex, "200", e_FontTypeNames.FONTTYPE_INFO, AumentoHIT)
 
-                    'Call WriteConsoleMsg(UserIndex, "Tu golpe aumento en " & AumentoHIT & " puntos.", FontTypeNames.FONTTYPE_INFO)
+                    'Call WriteConsoleMsg(UserIndex, "Tu golpe aumento en " & AumentoHIT & " puntos.", e_FontTypeNames.FONTTYPE_INFO)
                 End If
 
-180             PasoDeNivel = True
+170             PasoDeNivel = True
              
-                ' Call LogDesarrollo(.name & " paso a nivel " & .Stats.ELV & " gano HP: " & AumentoHP)
-
-182             .Stats.MinHp = .Stats.MaxHp
+172             .Stats.MinHp = .Stats.MaxHp
             
                 ' Call UpdateUserInv(True, UserIndex, 0)
             
-184             If OroPorNivel > 0 Then
-186                 If EsNewbie(UserIndex) Then
+174             If OroPorNivel > 0 Then
+176                 If EsNewbie(UserIndex) Then
                         Dim OroRecompenza As Long
     
-188                     OroRecompenza = OroPorNivel * .Stats.ELV * OroMult * .flags.ScrollOro
-190                     .Stats.GLD = .Stats.GLD + OroRecompenza
-                        'Call WriteConsoleMsg(UserIndex, "Has ganado " & OroRecompenza & " monedas de oro.", FontTypeNames.FONTTYPE_INFO)
-192                     Call WriteLocaleMsg(UserIndex, "29", FontTypeNames.FONTTYPE_INFO, PonerPuntos(OroRecompenza))
+178                     OroRecompenza = OroPorNivel * .Stats.ELV * OroMult
+180                     .Stats.GLD = .Stats.GLD + OroRecompenza
+                        'Call WriteConsoleMsg(UserIndex, "Has ganado " & OroRecompenza & " monedas de oro.", e_FontTypeNames.FONTTYPE_INFO)
+182                     Call WriteLocaleMsg(UserIndex, "29", e_FontTypeNames.FONTTYPE_INFO, PonerPuntos(OroRecompenza))
                     End If
                 End If
             
-194             If Not EsNewbie(UserIndex) And WasNewbie Then
+184             If Not EsNewbie(UserIndex) And WasNewbie Then
         
-196                 Call QuitarNewbieObj(UserIndex)
+186                 Call QuitarNewbieObj(UserIndex)
             
                 End If
         
             Loop
         
-198         If PasoDeNivel Then
-200             If .Stats.ELV >= STAT_MAXELV Then .Stats.Exp = 0
+188         If PasoDeNivel Then
+190             If .Stats.ELV >= STAT_MAXELV Then .Stats.Exp = 0
         
-206             Call UpdateUserInv(True, UserIndex, 0)
+192             Call UpdateUserInv(True, UserIndex, 0)
                 'Call CheckearRecompesas(UserIndex, 3)
-208             Call WriteUpdateUserStats(UserIndex)
+194             Call WriteUpdateUserStats(UserIndex)
             
-210             If Pts > 0 Then
+196             If Pts > 0 Then
                 
-212                 .Stats.SkillPts = .Stats.SkillPts + Pts
-214                 Call WriteLevelUp(UserIndex, .Stats.SkillPts)
-216                 Call WriteLocaleMsg(UserIndex, "187", FontTypeNames.FONTTYPE_INFO, Pts)
+198                 .Stats.SkillPts = .Stats.SkillPts + Pts
+200                 Call WriteLevelUp(UserIndex, .Stats.SkillPts)
+202                 Call WriteLocaleMsg(UserIndex, "187", e_FontTypeNames.FONTTYPE_INFO, Pts)
 
-                    'Call WriteConsoleMsg(UserIndex, "Has ganado un total de " & Pts & " skillpoints.", FontTypeNames.FONTTYPE_INFO)
+                    'Call WriteConsoleMsg(UserIndex, "Has ganado un total de " & Pts & " skillpoints.", e_FontTypeNames.FONTTYPE_INFO)
                 End If
                 
-218             If .Stats.ELV >= MapInfo(.Pos.Map).MaxLevel And Not EsGM(UserIndex) Then
-220                 If MapInfo(.Pos.Map).Salida.Map <> 0 Then
-222                     Call WriteConsoleMsg(UserIndex, "Tu nivel no te permite seguir en el mapa.", FontTypeNames.FONTTYPE_INFO)
-224                     Call WarpUserChar(UserIndex, MapInfo(.Pos.Map).Salida.Map, MapInfo(.Pos.Map).Salida.X, MapInfo(.Pos.Map).Salida.Y, True)
+204             If .Stats.ELV >= MapInfo(.Pos.Map).MaxLevel And Not EsGM(UserIndex) Then
+206                 If MapInfo(.Pos.Map).Salida.Map <> 0 Then
+208                     Call WriteConsoleMsg(UserIndex, "Tu nivel no te permite seguir en el mapa.", e_FontTypeNames.FONTTYPE_INFO)
+210                     Call WarpUserChar(UserIndex, MapInfo(.Pos.Map).Salida.Map, MapInfo(.Pos.Map).Salida.X, MapInfo(.Pos.Map).Salida.Y, True)
                     End If
                 End If
 
@@ -625,116 +1311,124 @@ Sub CheckUserLevel(ByVal UserIndex As Integer)
         Exit Sub
 
 ErrHandler:
-226     Call LogError("Error en la subrutina CheckUserLevel - Error : " & Err.Number & " - Description : " & Err.Description)
+212     Call LogError("Error en la subrutina CheckUserLevel - Error : " & Err.Number & " - Description : " & Err.Description)
 
 End Sub
 
-Function MoveUserChar(ByVal UserIndex As Integer, ByVal nHeading As eHeading) As Boolean
-    ' 20/01/2021 - WyroX: Lo convierto a funci√≥n y saco los WritePosUpdate, ahora est√°n en el paquete
+Function MoveUserChar(ByVal UserIndex As Integer, ByVal nHeading As e_Heading) As Boolean
+        ' 20/01/2021 - WyroX: Lo convierto a funciÛn y saco los WritePosUpdate, ahora est·n en el paquete
 
-    On Error GoTo MoveUserChar_Err
+        On Error GoTo MoveUserChar_Err
 
-    Dim nPos         As WorldPos
-    Dim nPosOriginal As WorldPos
-    Dim nPosMuerto   As WorldPos
-    Dim IndexMover As Integer
-    Dim OppositeHeading As eHeading
+        Dim nPos         As t_WorldPos
+        Dim nPosOriginal As t_WorldPos
+        Dim nPosMuerto   As t_WorldPos
+        Dim IndexMover As Integer
+        Dim Opposite_Heading As e_Heading
 
-    With UserList(UserIndex)
+100     With UserList(UserIndex)
 
-        nPos = .Pos
-        Call HeadtoPos(nHeading, nPos)
+102         nPos = .Pos
+104         Call HeadtoPos(nHeading, nPos)
 
-        If Not LegalWalk(.Pos.Map, nPos.X, nPos.Y, nHeading, .flags.Navegando = 1, .flags.Navegando = 0, .flags.Montado) Then
-            Exit Function
-        End If
-
-        If .Accion.AccionPendiente = True Then
-            Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageParticleFX(.Char.CharIndex, .Accion.Particula, 1, True))
-            Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageBarFx(.Char.CharIndex, 1, Accion_Barra.CancelarAccion))
-            .Accion.AccionPendiente = False
-            .Accion.Particula = 0
-            .Accion.TipoAccion = Accion_Barra.CancelarAccion
-            .Accion.HechizoPendiente = 0
-            .Accion.RunaObj = 0
-            .Accion.ObjSlot = 0
-            .Accion.AccionPendiente = False
-        End If
-
-        If .flags.Muerto = 0 Then
-            If MapData(nPos.Map, nPos.X, nPos.Y).TileExit.Map <> 0 And .Counters.TiempoDeMapeo > 0 Then
-                Call WriteConsoleMsg(UserIndex, "Est√°s en combate, debes aguardar " & .Counters.TiempoDeMapeo & " segundo(s) para escapar...", FontTypeNames.FONTTYPE_INFOBOLD)
+106         If Not LegalWalk(.Pos.Map, nPos.X, nPos.Y, nHeading, .flags.Navegando = 1, .flags.Navegando = 0, .flags.Montado, , UserIndex) Then
                 Exit Function
             End If
-        End If
-
-        'Si no estoy solo en el mapa...
-        If MapInfo(.Pos.Map).NumUsers > 1 Then
-            ' Intercambia posici√≥n si hay un casper o gm invisible
-            IndexMover = MapData(nPos.Map, nPos.X, nPos.Y).UserIndex
             
-            If IndexMover <> 0 Then
-                ' S√≥lo puedo patear caspers/gms invisibles si no es √©l un gm invisible
-                If .flags.AdminInvisible = 0 Then Exit Function
+            If .flags.Navegando And .Invent.BarcoObjIndex = 197 And Not (MapData(.Pos.Map, nPos.X, nPos.Y).trigger = e_Trigger.DETALLEAGUA Or MapData(.Pos.Map, nPos.X, nPos.Y).trigger = e_Trigger.NADOCOMBINADO Or MapData(.Pos.Map, nPos.X, nPos.Y).trigger = e_Trigger.VALIDONADO) Then
+                Exit Function
+            End If
 
-                Call WritePosUpdate(IndexMover)
-                OppositeHeading = InvertHeading(nHeading)
-                Call HeadtoPos(OppositeHeading, UserList(IndexMover).Pos)
+108         If .Accion.AccionPendiente = True Then
+110             .Counters.TimerBarra = 0
+112             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageParticleFX(.Char.CharIndex, .Accion.Particula, .Counters.TimerBarra, True))
+114             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageBarFx(.Char.CharIndex, .Counters.TimerBarra, e_AccionBarra.CancelarAccion))
+116             .Accion.AccionPendiente = False
+118             .Accion.Particula = 0
+120             .Accion.TipoAccion = e_AccionBarra.CancelarAccion
+122             .Accion.HechizoPendiente = 0
+124             .Accion.RunaObj = 0
+126             .Accion.ObjSlot = 0
+128             .Accion.AccionPendiente = False
+            End If
+
+            'If .flags.Muerto = 0 Then
+            '    If MapData(nPos.Map, nPos.X, nPos.Y).TileExit.Map <> 0 And .Counters.EnCombate > 0 Then
+            '        Call WriteConsoleMsg(UserIndex, "Est·s en combate, debes aguardar " & .Counters.EnCombate & " segundo(s) para escapar...", e_FontTypeNames.FONTTYPE_INFOBOLD)
+            '        Exit Function
+            '    End If
+            'End If
+
+            'Si no estoy solo en el mapa...
+130         If MapInfo(.Pos.Map).NumUsers > 1 Then
+
+                ' Intercambia posiciÛn si hay un casper o gm invisible
+132             IndexMover = MapData(nPos.Map, nPos.X, nPos.Y).UserIndex
+            
+134             If IndexMover <> 0 Then
+                    ' SÛlo puedo patear caspers/gms invisibles si no es Èl un gm invisible
+136                 If UserList(UserIndex).flags.AdminInvisible <> 0 Then Exit Function
+
+138                 Call WritePosUpdate(IndexMover)
+
+140                 Opposite_Heading = InvertHeading(nHeading)
+142                 Call HeadtoPos(Opposite_Heading, UserList(IndexMover).Pos)
                 
-                ' Si es un admin invisible, no se avisa a los demas clientes
-                If UserList(IndexMover).flags.AdminInvisible = 0 Then
-                    Call SendData(SendTarget.ToPCAreaButIndex, IndexMover, PrepareMessageCharacterMove(UserList(IndexMover).Char.CharIndex, UserList(IndexMover).Pos.X, UserList(IndexMover).Pos.Y))
-                Else
-                    Call SendData(SendTarget.ToAdminAreaButIndex, IndexMover, PrepareMessageCharacterMove(UserList(IndexMover).Char.CharIndex, UserList(IndexMover).Pos.X, UserList(IndexMover).Pos.Y))
+                    ' Si es un admin invisible, no se avisa a los demas clientes
+144                 If UserList(IndexMover).flags.AdminInvisible = 0 Then
+146                     Call SendData(SendTarget.ToPCAreaButIndex, IndexMover, PrepareMessageCharacterMove(UserList(IndexMover).Char.CharIndex, UserList(IndexMover).Pos.X, UserList(IndexMover).Pos.Y))
+                    Else
+148                     Call SendData(SendTarget.ToAdminAreaButIndex, IndexMover, PrepareMessageCharacterMove(UserList(IndexMover).Char.CharIndex, UserList(IndexMover).Pos.X, UserList(IndexMover).Pos.Y))
+                    End If
+                    
+150                 Call WriteForceCharMove(IndexMover, Opposite_Heading)
+                
+                    'Update map and char
+152                 UserList(IndexMover).Char.Heading = Opposite_Heading
+154                 MapData(UserList(IndexMover).Pos.Map, UserList(IndexMover).Pos.X, UserList(IndexMover).Pos.Y).UserIndex = IndexMover
+                
+                    'Actualizamos las areas de ser necesario
+156                 Call ModAreas.CheckUpdateNeededUser(IndexMover, Opposite_Heading, 0)
                 End If
-                Call WriteForceCharMove(IndexMover, OppositeHeading)
-                
-                'Update map and char
-                UserList(IndexMover).Char.Heading = OppositeHeading
-                MapData(UserList(IndexMover).Pos.Map, UserList(IndexMover).Pos.X, UserList(IndexMover).Pos.Y).UserIndex = IndexMover
-                
-                'Actualizamos las areas de ser necesario
-                Call ModAreas.CheckUpdateNeededUser(IndexMover, OppositeHeading, 0)
+
+158             If .flags.AdminInvisible = 0 Then
+160                 Call SendData(SendTarget.ToPCAreaButIndex, UserIndex, PrepareMessageCharacterMove(.Char.CharIndex, nPos.X, nPos.Y))
+                Else
+162                 Call SendData(SendTarget.ToAdminAreaButIndex, UserIndex, PrepareMessageCharacterMove(.Char.CharIndex, nPos.X, nPos.Y))
+                End If
+            End If
+        
+            'Update map and user pos
+164         If MapData(.Pos.Map, .Pos.X, .Pos.Y).UserIndex = UserIndex Then
+166             MapData(.Pos.Map, .Pos.X, .Pos.Y).UserIndex = 0
             End If
 
-            If .flags.AdminInvisible = 0 Then
-                Call SendData(SendTarget.ToPCAreaButIndex, UserIndex, PrepareMessageCharacterMove(.Char.CharIndex, nPos.X, nPos.Y))
-            Else
-                Call SendData(SendTarget.ToAdminAreaButIndex, UserIndex, PrepareMessageCharacterMove(.Char.CharIndex, nPos.X, nPos.Y))
+168         .Pos = nPos
+170         .Char.Heading = nHeading
+172         MapData(.Pos.Map, .Pos.X, .Pos.Y).UserIndex = UserIndex
+        
+            'Actualizamos las ·reas de ser necesario
+174         Call ModAreas.CheckUpdateNeededUser(UserIndex, nHeading, 0)
+
+176         If .Counters.Trabajando Then
+178             Call WriteMacroTrabajoToggle(UserIndex, False)
             End If
-        End If
-        
-        'Update map and user pos
-        If MapData(.Pos.Map, .Pos.X, .Pos.Y).UserIndex = UserIndex Then
-            MapData(.Pos.Map, .Pos.X, .Pos.Y).UserIndex = 0
-        End If
 
-        .Pos = nPos
-        .Char.Heading = nHeading
-        MapData(.Pos.Map, .Pos.X, .Pos.Y).UserIndex = UserIndex
-        
-        'Actualizamos las √°reas de ser necesario
-        Call ModAreas.CheckUpdateNeededUser(UserIndex, nHeading, 0)
-
-        If .Counters.Trabajando Then
-            Call WriteMacroTrabajoToggle(UserIndex, False)
-        End If
-
-        If .Counters.Ocultando Then .Counters.Ocultando = .Counters.Ocultando - 1
+180         If .Counters.Ocultando Then .Counters.Ocultando = .Counters.Ocultando - 1
     
-    End With
+        End With
     
-    MoveUserChar = True
+182     MoveUserChar = True
     
-    Exit Function
+        Exit Function
     
 MoveUserChar_Err:
-    Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.MoveUserChar", Erl)
-    Resume Next
+184     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.MoveUserChar", Erl)
+
         
 End Function
 
-Public Function InvertHeading(ByVal nHeading As eHeading) As eHeading
+Public Function InvertHeading(ByVal nHeading As e_Heading) As e_Heading
         
         On Error GoTo InvertHeading_Err
     
@@ -747,17 +1441,17 @@ Public Function InvertHeading(ByVal nHeading As eHeading) As eHeading
         '*************************************************
 100     Select Case nHeading
 
-            Case eHeading.EAST
-102             InvertHeading = eHeading.WEST
+            Case e_Heading.EAST
+102             InvertHeading = e_Heading.WEST
 
-104         Case eHeading.WEST
-106             InvertHeading = eHeading.EAST
+104         Case e_Heading.WEST
+106             InvertHeading = e_Heading.EAST
 
-108         Case eHeading.SOUTH
-110             InvertHeading = eHeading.NORTH
+108         Case e_Heading.SOUTH
+110             InvertHeading = e_Heading.NORTH
 
-112         Case eHeading.NORTH
-114             InvertHeading = eHeading.SOUTH
+112         Case e_Heading.NORTH
+114             InvertHeading = e_Heading.SOUTH
 
         End Select
 
@@ -765,24 +1459,24 @@ Public Function InvertHeading(ByVal nHeading As eHeading) As eHeading
         Exit Function
 
 InvertHeading_Err:
-116     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.InvertHeading", Erl)
+116     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.InvertHeading", Erl)
 
         
 End Function
 
-Sub ChangeUserInv(ByVal UserIndex As Integer, ByVal slot As Byte, ByRef Object As UserOBJ)
+Sub ChangeUserInv(ByVal UserIndex As Integer, ByVal Slot As Byte, ByRef Object As t_UserOBJ)
         
         On Error GoTo ChangeUserInv_Err
         
-100     UserList(UserIndex).Invent.Object(slot) = Object
-102     Call WriteChangeInventorySlot(UserIndex, slot)
+100     UserList(UserIndex).Invent.Object(Slot) = Object
+102     Call WriteChangeInventorySlot(UserIndex, Slot)
 
         
         Exit Sub
 
 ChangeUserInv_Err:
-104     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.ChangeUserInv", Erl)
-106     Resume Next
+104     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.ChangeUserInv", Erl)
+
         
 End Sub
 
@@ -811,8 +1505,8 @@ Function NextOpenCharIndex() As Integer
         Exit Function
 
 NextOpenCharIndex_Err:
-112     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.NextOpenCharIndex", Erl)
-114     Resume Next
+112     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.NextOpenCharIndex", Erl)
+
         
 End Function
 
@@ -826,7 +1520,7 @@ Function NextOpenUser() As Integer
 100     For LoopC = 1 To MaxUsers + 1
 
 102         If LoopC > MaxUsers Then Exit For
-104         If (UserList(LoopC).ConnID = -1 And UserList(LoopC).flags.UserLogged = False) Then Exit For
+104         If (Not UserList(LoopC).ConnIDValida And UserList(LoopC).flags.UserLogged = False) Then Exit For
 106     Next LoopC
    
 108     NextOpenUser = LoopC
@@ -835,8 +1529,8 @@ Function NextOpenUser() As Integer
         Exit Function
 
 NextOpenUser_Err:
-110     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.NextOpenUser", Erl)
-112     Resume Next
+110     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.NextOpenUser", Erl)
+
         
 End Function
 
@@ -847,44 +1541,44 @@ Sub SendUserStatsTxt(ByVal sendIndex As Integer, ByVal UserIndex As Integer)
 
         Dim GuildI As Integer
 
-100     Call WriteConsoleMsg(sendIndex, "Estadisticas de: " & UserList(UserIndex).name, FontTypeNames.FONTTYPE_INFO)
-102     Call WriteConsoleMsg(sendIndex, "Nivel: " & UserList(UserIndex).Stats.ELV & "  EXP: " & UserList(UserIndex).Stats.Exp & "/" & UserList(UserIndex).Stats.ELU, FontTypeNames.FONTTYPE_INFO)
-104     Call WriteConsoleMsg(sendIndex, "Salud: " & UserList(UserIndex).Stats.MinHp & "/" & UserList(UserIndex).Stats.MaxHp & "  Mana: " & UserList(UserIndex).Stats.MinMAN & "/" & UserList(UserIndex).Stats.MaxMAN & "  Vitalidad: " & UserList(UserIndex).Stats.MinSta & "/" & UserList(UserIndex).Stats.MaxSta, FontTypeNames.FONTTYPE_INFO)
+100     Call WriteConsoleMsg(sendIndex, "Estadisticas de: " & UserList(UserIndex).Name, e_FontTypeNames.FONTTYPE_INFO)
+102     Call WriteConsoleMsg(sendIndex, "Nivel: " & UserList(UserIndex).Stats.ELV & "  EXP: " & UserList(UserIndex).Stats.Exp & "/" & ExpLevelUp(UserList(UserIndex).Stats.ELV), e_FontTypeNames.FONTTYPE_INFO)
+104     Call WriteConsoleMsg(sendIndex, "Salud: " & UserList(UserIndex).Stats.MinHp & "/" & UserList(UserIndex).Stats.MaxHp & "  Mana: " & UserList(UserIndex).Stats.MinMAN & "/" & UserList(UserIndex).Stats.MaxMAN & "  Vitalidad: " & UserList(UserIndex).Stats.MinSta & "/" & UserList(UserIndex).Stats.MaxSta, e_FontTypeNames.FONTTYPE_INFO)
     
 106     If UserList(UserIndex).Invent.WeaponEqpObjIndex > 0 Then
-108         Call WriteConsoleMsg(sendIndex, "Menor Golpe/Mayor Golpe: " & UserList(UserIndex).Stats.MinHIT & "/" & UserList(UserIndex).Stats.MaxHit & " (" & ObjData(UserList(UserIndex).Invent.WeaponEqpObjIndex).MinHIT & "/" & ObjData(UserList(UserIndex).Invent.WeaponEqpObjIndex).MaxHit & ")", FontTypeNames.FONTTYPE_INFO)
+108         Call WriteConsoleMsg(sendIndex, "Menor Golpe/Mayor Golpe: " & UserList(UserIndex).Stats.MinHIT & "/" & UserList(UserIndex).Stats.MaxHit & " (" & ObjData(UserList(UserIndex).Invent.WeaponEqpObjIndex).MinHIT & "/" & ObjData(UserList(UserIndex).Invent.WeaponEqpObjIndex).MaxHit & ")", e_FontTypeNames.FONTTYPE_INFO)
         Else
-110         Call WriteConsoleMsg(sendIndex, "Menor Golpe/Mayor Golpe: " & UserList(UserIndex).Stats.MinHIT & "/" & UserList(UserIndex).Stats.MaxHit, FontTypeNames.FONTTYPE_INFO)
+110         Call WriteConsoleMsg(sendIndex, "Menor Golpe/Mayor Golpe: " & UserList(UserIndex).Stats.MinHIT & "/" & UserList(UserIndex).Stats.MaxHit, e_FontTypeNames.FONTTYPE_INFO)
 
         End If
     
 112     If UserList(UserIndex).Invent.ArmourEqpObjIndex > 0 Then
 114         If UserList(UserIndex).Invent.EscudoEqpObjIndex > 0 Then
-116             Call WriteConsoleMsg(sendIndex, "(CUERPO) Min Def/Max Def: " & ObjData(UserList(UserIndex).Invent.ArmourEqpObjIndex).MinDef + ObjData(UserList(UserIndex).Invent.EscudoEqpObjIndex).MinDef & "/" & ObjData(UserList(UserIndex).Invent.ArmourEqpObjIndex).MaxDef + ObjData(UserList(UserIndex).Invent.EscudoEqpObjIndex).MaxDef, FontTypeNames.FONTTYPE_INFO)
+116             Call WriteConsoleMsg(sendIndex, "(CUERPO) Min Def/Max Def: " & ObjData(UserList(UserIndex).Invent.ArmourEqpObjIndex).MinDef + ObjData(UserList(UserIndex).Invent.EscudoEqpObjIndex).MinDef & "/" & ObjData(UserList(UserIndex).Invent.ArmourEqpObjIndex).MaxDef + ObjData(UserList(UserIndex).Invent.EscudoEqpObjIndex).MaxDef, e_FontTypeNames.FONTTYPE_INFO)
             Else
-118             Call WriteConsoleMsg(sendIndex, "(CUERPO) Min Def/Max Def: " & ObjData(UserList(UserIndex).Invent.ArmourEqpObjIndex).MinDef & "/" & ObjData(UserList(UserIndex).Invent.ArmourEqpObjIndex).MaxDef, FontTypeNames.FONTTYPE_INFO)
+118             Call WriteConsoleMsg(sendIndex, "(CUERPO) Min Def/Max Def: " & ObjData(UserList(UserIndex).Invent.ArmourEqpObjIndex).MinDef & "/" & ObjData(UserList(UserIndex).Invent.ArmourEqpObjIndex).MaxDef, e_FontTypeNames.FONTTYPE_INFO)
 
             End If
 
         Else
-120         Call WriteConsoleMsg(sendIndex, "(CUERPO) Min Def/Max Def: 0", FontTypeNames.FONTTYPE_INFO)
+120         Call WriteConsoleMsg(sendIndex, "(CUERPO) Min Def/Max Def: 0", e_FontTypeNames.FONTTYPE_INFO)
 
         End If
     
 122     If UserList(UserIndex).Invent.CascoEqpObjIndex > 0 Then
-124         Call WriteConsoleMsg(sendIndex, "(CABEZA) Min Def/Max Def: " & ObjData(UserList(UserIndex).Invent.CascoEqpObjIndex).MinDef & "/" & ObjData(UserList(UserIndex).Invent.CascoEqpObjIndex).MaxDef, FontTypeNames.FONTTYPE_INFO)
+124         Call WriteConsoleMsg(sendIndex, "(CABEZA) Min Def/Max Def: " & ObjData(UserList(UserIndex).Invent.CascoEqpObjIndex).MinDef & "/" & ObjData(UserList(UserIndex).Invent.CascoEqpObjIndex).MaxDef, e_FontTypeNames.FONTTYPE_INFO)
         Else
-126         Call WriteConsoleMsg(sendIndex, "(CABEZA) Min Def/Max Def: 0", FontTypeNames.FONTTYPE_INFO)
+126         Call WriteConsoleMsg(sendIndex, "(CABEZA) Min Def/Max Def: 0", e_FontTypeNames.FONTTYPE_INFO)
 
         End If
     
 128     GuildI = UserList(UserIndex).GuildIndex
 
 130     If GuildI > 0 Then
-132         Call WriteConsoleMsg(sendIndex, "Clan: " & modGuilds.GuildName(GuildI), FontTypeNames.FONTTYPE_INFO)
+132         Call WriteConsoleMsg(sendIndex, "Clan: " & modGuilds.GuildName(GuildI), e_FontTypeNames.FONTTYPE_INFO)
 
-134         If UCase$(modGuilds.GuildLeader(GuildI)) = UCase$(UserList(sendIndex).name) Then
-136             Call WriteConsoleMsg(sendIndex, "Status: Lider", FontTypeNames.FONTTYPE_INFO)
+134         If UCase$(modGuilds.GuildLeader(GuildI)) = UCase$(UserList(sendIndex).Name) Then
+136             Call WriteConsoleMsg(sendIndex, "Status: LÌder", e_FontTypeNames.FONTTYPE_INFO)
 
             End If
 
@@ -902,19 +1596,19 @@ Sub SendUserStatsTxt(ByVal sendIndex As Integer, ByVal UserIndex As Integer)
 138         TempDate = Now - UserList(UserIndex).LogOnTime
 140         TempSecs = (UserList(UserIndex).UpTime + (Abs(Day(TempDate) - 30) * 24 * 3600) + (Hour(TempDate) * 3600) + (Minute(TempDate) * 60) + Second(TempDate))
 142         TempStr = (TempSecs \ 86400) & " Dias, " & ((TempSecs Mod 86400) \ 3600) & " Horas, " & ((TempSecs Mod 86400) Mod 3600) \ 60 & " Minutos, " & (((TempSecs Mod 86400) Mod 3600) Mod 60) & " Segundos."
-144         Call WriteConsoleMsg(sendIndex, "Logeado hace: " & Hour(TempDate) & ":" & Minute(TempDate) & ":" & Second(TempDate), FontTypeNames.FONTTYPE_INFO)
-146         Call WriteConsoleMsg(sendIndex, "Total: " & TempStr, FontTypeNames.FONTTYPE_INFO)
+144         Call WriteConsoleMsg(sendIndex, "Logeado hace: " & Hour(TempDate) & ":" & Minute(TempDate) & ":" & Second(TempDate), e_FontTypeNames.FONTTYPE_INFO)
+146         Call WriteConsoleMsg(sendIndex, "Total: " & TempStr, e_FontTypeNames.FONTTYPE_INFO)
         #End If
 
-148     Call WriteConsoleMsg(sendIndex, "Oro: " & UserList(UserIndex).Stats.GLD & "  Posicion: " & UserList(UserIndex).Pos.X & "," & UserList(UserIndex).Pos.Y & " en mapa " & UserList(UserIndex).Pos.Map, FontTypeNames.FONTTYPE_INFO)
-150     Call WriteConsoleMsg(sendIndex, "Dados: " & UserList(UserIndex).Stats.UserAtributos(eAtributos.Fuerza) & ", " & UserList(UserIndex).Stats.UserAtributos(eAtributos.Agilidad) & ", " & UserList(UserIndex).Stats.UserAtributos(eAtributos.Inteligencia) & ", " & UserList(UserIndex).Stats.UserAtributos(eAtributos.Constitucion) & ", " & UserList(UserIndex).Stats.UserAtributos(eAtributos.Carisma), FontTypeNames.FONTTYPE_INFO)
-152     Call WriteConsoleMsg(sendIndex, "Veces que Moriste: " & UserList(UserIndex).flags.VecesQueMoriste, FontTypeNames.FONTTYPE_INFO)
+148     Call WriteConsoleMsg(sendIndex, "Oro: " & UserList(UserIndex).Stats.GLD & "  Posicion: " & UserList(UserIndex).Pos.X & "," & UserList(UserIndex).Pos.Y & " en mapa " & UserList(UserIndex).Pos.Map, e_FontTypeNames.FONTTYPE_INFO)
+150     Call WriteConsoleMsg(sendIndex, "Dados: " & UserList(UserIndex).Stats.UserAtributos(e_Atributos.Fuerza) & ", " & UserList(UserIndex).Stats.UserAtributos(e_Atributos.Agilidad) & ", " & UserList(UserIndex).Stats.UserAtributos(e_Atributos.Inteligencia) & ", " & UserList(UserIndex).Stats.UserAtributos(e_Atributos.Constitucion) & ", " & UserList(UserIndex).Stats.UserAtributos(e_Atributos.Carisma), e_FontTypeNames.FONTTYPE_INFO)
+152     Call WriteConsoleMsg(sendIndex, "Veces que Moriste: " & UserList(UserIndex).flags.VecesQueMoriste, e_FontTypeNames.FONTTYPE_INFO)
 
         Exit Sub
 
 SendUserStatsTxt_Err:
-154     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.SendUserStatsTxt", Erl)
-156     Resume Next
+154     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.SendUserStatsTxt", Erl)
+
         
 End Sub
 
@@ -927,92 +1621,31 @@ Sub SendUserMiniStatsTxt(ByVal sendIndex As Integer, ByVal UserIndex As Integer)
         'Author: Unknown
         'Last modified: 23/01/2007
         'Shows the users Stats when the user is online.
-        '23/01/2007 Pablo (ToxicWaste) - Agrego de funciones y mejora de distribuci√≥n de par√°metros.
+        '23/01/2007 Pablo (ToxicWaste) - Agrego de funciones y mejora de distribuciÛn de par·metros.
         '*************************************************
 100     With UserList(UserIndex)
-102         Call WriteConsoleMsg(sendIndex, "Pj: " & .name, FontTypeNames.FONTTYPE_INFO)
-104         Call WriteConsoleMsg(sendIndex, "Ciudadanos Matados: " & .Faccion.CiudadanosMatados & " Criminales Matados: " & .Faccion.CriminalesMatados & " UsuariosMatados: " & .Stats.UsuariosMatados, FontTypeNames.FONTTYPE_INFO)
-106         Call WriteConsoleMsg(sendIndex, "NPCsMuertos: " & .Stats.NPCsMuertos, FontTypeNames.FONTTYPE_INFO)
-108         Call WriteConsoleMsg(sendIndex, "Clase: " & ListaClases(.clase), FontTypeNames.FONTTYPE_INFO)
-110         Call WriteConsoleMsg(sendIndex, "Pena: " & .Counters.Pena, FontTypeNames.FONTTYPE_INFO)
+102         Call WriteConsoleMsg(sendIndex, "Pj: " & .Name, e_FontTypeNames.FONTTYPE_INFO)
+104         Call WriteConsoleMsg(sendIndex, "Ciudadanos Matados: " & .Faccion.ciudadanosMatados & " Criminales Matados: " & .Faccion.CriminalesMatados & " UsuariosMatados: " & .Stats.UsuariosMatados, e_FontTypeNames.FONTTYPE_INFO)
+106         Call WriteConsoleMsg(sendIndex, "NPCsMuertos: " & .Stats.NPCsMuertos, e_FontTypeNames.FONTTYPE_INFO)
+108         Call WriteConsoleMsg(sendIndex, "Clase: " & ListaClases(.clase), e_FontTypeNames.FONTTYPE_INFO)
+110         Call WriteConsoleMsg(sendIndex, "Pena: " & .Counters.Pena, e_FontTypeNames.FONTTYPE_INFO)
 
 112         If .GuildIndex > 0 Then
-114             Call WriteConsoleMsg(sendIndex, "Clan: " & GuildName(.GuildIndex), FontTypeNames.FONTTYPE_INFO)
+114             Call WriteConsoleMsg(sendIndex, "Clan: " & GuildName(.GuildIndex), e_FontTypeNames.FONTTYPE_INFO)
 
             End If
 
-116         Call WriteConsoleMsg(sendIndex, "Oro en billetera: " & .Stats.GLD, FontTypeNames.FONTTYPE_INFO)
-118         Call WriteConsoleMsg(sendIndex, "Oro en banco: " & .Stats.Banco, FontTypeNames.FONTTYPE_INFO)
-    
-120         Call WriteConsoleMsg(sendIndex, "Cuenta: " & .Cuenta, FontTypeNames.FONTTYPE_INFO)
-122         Call WriteConsoleMsg(sendIndex, "Creditos: " & .donador.CreditoDonador, FontTypeNames.FONTTYPE_INFO)
-124         Call WriteConsoleMsg(sendIndex, "Fecha Vencimiento Donador: " & .donador.FechaExpiracion, FontTypeNames.FONTTYPE_INFO)
-    
+116         Call WriteConsoleMsg(sendIndex, "Oro en billetera: " & .Stats.GLD, e_FontTypeNames.FONTTYPE_INFO)
+118         Call WriteConsoleMsg(sendIndex, "Oro en banco: " & .Stats.Banco, e_FontTypeNames.FONTTYPE_INFO)
+
         End With
 
         
         Exit Sub
 
 SendUserMiniStatsTxt_Err:
-126     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.SendUserMiniStatsTxt", Erl)
-128     Resume Next
-        
-End Sub
+126     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.SendUserMiniStatsTxt", Erl)
 
-Sub SendUserMiniStatsTxtFromChar(ByVal sendIndex As Integer, ByVal CharName As String)
-        
-        On Error GoTo SendUserMiniStatsTxtFromChar_Err
-        
-
-        '*************************************************
-        'Author: Unknown
-        'Last modified: 23/01/2007
-        'Shows the users Stats when the user is offline.
-        '23/01/2007 Pablo (ToxicWaste) - Agrego de funciones y mejora de distribuci√≥n de par√°metros.
-        '*************************************************
-        Dim CharFile      As String
-
-        Dim Ban           As String
-
-        Dim BanDetailPath As String
-
-100     BanDetailPath = App.Path & "\logs\" & "BanDetail.dat"
-102     CharFile = CharPath & CharName & ".chr"
-    
-104     If FileExist(CharFile) Then
-106         Call WriteConsoleMsg(sendIndex, "Pj: " & CharName, FontTypeNames.FONTTYPE_INFO)
-108         Call WriteConsoleMsg(sendIndex, "CiudadanosMatados: " & GetVar(CharFile, "FACCIONES", "CiudMatados") & " CriminalesMatados: " & GetVar(CharFile, "FACCIONES", "CrimMatados") & " UsuariosMatados: " & GetVar(CharFile, "MUERTES", "UserMuertes"), FontTypeNames.FONTTYPE_INFO)
-110         Call WriteConsoleMsg(sendIndex, "NPCsMuertos: " & GetVar(CharFile, "MUERTES", "NpcsMuertes"), FontTypeNames.FONTTYPE_INFO)
-112         Call WriteConsoleMsg(sendIndex, "Clase: " & ListaClases(GetVar(CharFile, "INIT", "Clase")), FontTypeNames.FONTTYPE_INFO)
-114         Call WriteConsoleMsg(sendIndex, "Pena: " & GetVar(CharFile, "COUNTERS", "PENA"), FontTypeNames.FONTTYPE_INFO)
-116         Call WriteConsoleMsg(sendIndex, "Oro en billetera: " & GetVar(CharFile, "STATS", "GLD"), FontTypeNames.FONTTYPE_INFO)
-118         Call WriteConsoleMsg(sendIndex, "Oro en boveda: " & GetVar(CharFile, "STATS", "BANCO"), FontTypeNames.FONTTYPE_INFO)
-120         Call WriteConsoleMsg(sendIndex, "Cuenta: " & GetVar(CharFile, "INIT", "Cuenta"), FontTypeNames.FONTTYPE_INFO)
-        
-122         If IsNumeric(GetVar(CharFile, "Guild", "GUILDINDEX")) Then
-124             Call WriteConsoleMsg(sendIndex, "Clan: " & modGuilds.GuildName(CInt(GetVar(CharFile, "Guild", "GUILDINDEX"))), FontTypeNames.FONTTYPE_INFO)
-
-            End If
-        
-126         Ban = GetVar(CharFile, "BAN", "BanMotivo")
-128         Call WriteConsoleMsg(sendIndex, "Ban: " & Ban, FontTypeNames.FONTTYPE_INFO)
-
-130         If Ban = "1" Then
-132             Call WriteConsoleMsg(sendIndex, "Ban por: " & GetVar(CharFile, CharName, "BannedBy") & " Motivo: " & GetVar(BanDetailPath, CharName, "Reason"), FontTypeNames.FONTTYPE_INFO)
-
-            End If
-        
-        Else
-134         Call WriteConsoleMsg(sendIndex, "El pj no existe: " & CharName, FontTypeNames.FONTTYPE_INFO)
-
-        End If
-
-        
-        Exit Sub
-
-SendUserMiniStatsTxtFromChar_Err:
-136     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.SendUserMiniStatsTxtFromChar", Erl)
-138     Resume Next
         
 End Sub
 
@@ -1026,13 +1659,13 @@ Sub SendUserInvTxt(ByVal sendIndex As Integer, ByVal UserIndex As Integer)
 
         Dim j As Long
     
-100     Call WriteConsoleMsg(sendIndex, UserList(UserIndex).name, FontTypeNames.FONTTYPE_INFO)
-102     Call WriteConsoleMsg(sendIndex, "Tiene " & UserList(UserIndex).Invent.NroItems & " objetos.", FontTypeNames.FONTTYPE_INFO)
+100     Call WriteConsoleMsg(sendIndex, UserList(UserIndex).Name, e_FontTypeNames.FONTTYPE_INFO)
+102     Call WriteConsoleMsg(sendIndex, "Tiene " & UserList(UserIndex).Invent.NroItems & " objetos.", e_FontTypeNames.FONTTYPE_INFO)
     
 104     For j = 1 To UserList(UserIndex).CurrentInventorySlots
 
 106         If UserList(UserIndex).Invent.Object(j).ObjIndex > 0 Then
-108             Call WriteConsoleMsg(sendIndex, " Objeto " & j & " " & ObjData(UserList(UserIndex).Invent.Object(j).ObjIndex).name & " Cantidad:" & UserList(UserIndex).Invent.Object(j).Amount, FontTypeNames.FONTTYPE_INFO)
+108             Call WriteConsoleMsg(sendIndex, " Objeto " & j & " " & ObjData(UserList(UserIndex).Invent.Object(j).ObjIndex).Name & " Cantidad:" & UserList(UserIndex).Invent.Object(j).amount, e_FontTypeNames.FONTTYPE_INFO)
 
             End If
 
@@ -1042,53 +1675,7 @@ Sub SendUserInvTxt(ByVal sendIndex As Integer, ByVal UserIndex As Integer)
         Exit Sub
 
 SendUserInvTxt_Err:
-112     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.SendUserInvTxt", Erl)
-
-        
-End Sub
-
-Sub SendUserInvTxtFromChar(ByVal sendIndex As Integer, ByVal CharName As String)
-        
-        On Error GoTo SendUserInvTxtFromChar_Err
-    
-        
-
-        
-
-        Dim j        As Long
-
-        Dim CharFile As String, Tmp As String
-
-        Dim ObjInd   As Long, ObjCant As Long
-    
-100     CharFile = CharPath & CharName & ".chr"
-    
-102     If FileExist(CharFile, vbNormal) Then
-104         Call WriteConsoleMsg(sendIndex, CharName, FontTypeNames.FONTTYPE_INFO)
-106         Call WriteConsoleMsg(sendIndex, " Tiene " & GetVar(CharFile, "Inventory", "CantidadItems") & " objetos.", FontTypeNames.FONTTYPE_INFO)
-        
-108         For j = 1 To MAX_INVENTORY_SLOTS
-110             Tmp = GetVar(CharFile, "Inventory", "Obj" & j)
-112             ObjInd = ReadField(1, Tmp, Asc("-"))
-114             ObjCant = ReadField(2, Tmp, Asc("-"))
-
-116             If ObjInd > 0 Then
-118                 Call WriteConsoleMsg(sendIndex, " Objeto " & j & " " & ObjData(ObjInd).name & " Cantidad:" & ObjCant, FontTypeNames.FONTTYPE_INFO)
-
-                End If
-
-120         Next j
-
-        Else
-122         Call WriteConsoleMsg(sendIndex, "Usuario inexistente: " & CharName, FontTypeNames.FONTTYPE_INFO)
-
-        End If
-    
-        
-        Exit Sub
-
-SendUserInvTxtFromChar_Err:
-124     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.SendUserInvTxtFromChar", Erl)
+112     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.SendUserInvTxt", Erl)
 
         
 End Sub
@@ -1103,53 +1690,21 @@ Sub SendUserSkillsTxt(ByVal sendIndex As Integer, ByVal UserIndex As Integer)
 
         Dim j As Integer
 
-100     Call WriteConsoleMsg(sendIndex, UserList(UserIndex).name, FontTypeNames.FONTTYPE_INFO)
+100     Call WriteConsoleMsg(sendIndex, UserList(UserIndex).Name, e_FontTypeNames.FONTTYPE_INFO)
 
 102     For j = 1 To NUMSKILLS
-104         Call WriteConsoleMsg(sendIndex, SkillsNames(j) & " = " & UserList(UserIndex).Stats.UserSkills(j), FontTypeNames.FONTTYPE_INFO)
+104         Call WriteConsoleMsg(sendIndex, SkillsNames(j) & " = " & UserList(UserIndex).Stats.UserSkills(j), e_FontTypeNames.FONTTYPE_INFO)
         Next
-106     Call WriteConsoleMsg(sendIndex, " SkillLibres:" & UserList(UserIndex).Stats.SkillPts, FontTypeNames.FONTTYPE_INFO)
+106     Call WriteConsoleMsg(sendIndex, " SkillLibres:" & UserList(UserIndex).Stats.SkillPts, e_FontTypeNames.FONTTYPE_INFO)
 
         
         Exit Sub
 
 SendUserSkillsTxt_Err:
-108     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.SendUserSkillsTxt", Erl)
+108     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.SendUserSkillsTxt", Erl)
 
         
 End Sub
-
-Function DameUserIndex(SocketId As Integer) As Integer
-        
-        On Error GoTo DameUserIndex_Err
-        
-
-        Dim LoopC As Integer
-  
-100     LoopC = 1
-  
-102     Do Until UserList(LoopC).ConnID = SocketId
-
-104         LoopC = LoopC + 1
-    
-106         If LoopC > MaxUsers Then
-108             DameUserIndex = 0
-                Exit Function
-
-            End If
-    
-        Loop
-  
-110     DameUserIndex = LoopC
-
-        
-        Exit Function
-
-DameUserIndex_Err:
-112     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.DameUserIndex", Erl)
-114     Resume Next
-        
-End Function
 
 Function DameUserIndexConNombre(ByVal nombre As String) As Integer
         
@@ -1162,7 +1717,7 @@ Function DameUserIndexConNombre(ByVal nombre As String) As Integer
   
 102     nombre = UCase$(nombre)
 
-104     Do Until UCase$(UserList(LoopC).name) = nombre
+104     Do Until UCase$(UserList(LoopC).Name) = nombre
 
 106         LoopC = LoopC + 1
     
@@ -1180,34 +1735,23 @@ Function DameUserIndexConNombre(ByVal nombre As String) As Integer
         Exit Function
 
 DameUserIndexConNombre_Err:
-114     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.DameUserIndexConNombre", Erl)
-116     Resume Next
+114     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.DameUserIndexConNombre", Erl)
+
         
 End Function
 
 Sub NPCAtacado(ByVal NpcIndex As Integer, ByVal UserIndex As Integer)
-        
         On Error GoTo NPCAtacado_Err
         
-
-        '**********************************************
-        'Author: Unknown
-        'Last Modification: 24/07/2007
-        '24/01/2007 -> Pablo (ToxicWaste): Agrego para que se actualize el tag si corresponde.
-        '24/07/2007 -> Pablo (ToxicWaste): Guardar primero que ataca NPC y el que atacas ahora.
-        '**********************************************
-        
-        ' WyroX: El usuario pierde la protecci√≥n
+        ' WyroX: El usuario pierde la protecciÛn
 100     UserList(UserIndex).Counters.TiempoDeInmunidad = 0
 102     UserList(UserIndex).flags.Inmunidad = 0
-        
-        Dim EraCriminal As Byte
 
         'Guardamos el usuario que ataco el npc.
-104     If NpcList(NpcIndex).Movement <> ESTATICO And NpcList(NpcIndex).flags.AttackedFirstBy = vbNullString Then
+104     If NpcList(NpcIndex).Movement <> Estatico And NpcList(NpcIndex).flags.AttackedFirstBy = vbNullString Then
 106         NpcList(NpcIndex).Target = UserIndex
-108         NpcList(NpcIndex).Movement = TipoAI.NpcMaloAtacaUsersBuenos
-110         NpcList(NpcIndex).flags.AttackedBy = UserList(UserIndex).name
+108         NpcList(NpcIndex).Hostile = 1
+110         NpcList(NpcIndex).flags.AttackedBy = UserList(UserIndex).Name
         End If
 
         'Npc que estabas atacando.
@@ -1217,130 +1761,88 @@ Sub NPCAtacado(ByVal NpcIndex As Integer, ByVal UserIndex As Integer)
         'Guarda el NPC que estas atacando ahora.
 114     UserList(UserIndex).flags.NPCAtacado = NpcIndex
 
-        'Revisamos robo de npc.
-        'Guarda el primer nick que lo ataca.
-116     If NpcList(NpcIndex).flags.AttackedFirstBy = vbNullString Then
-
-            'El que le pegabas antes ya no es tuyo
-118         If LastNpcHit <> 0 Then
-120             If NpcList(LastNpcHit).flags.AttackedFirstBy = UserList(UserIndex).name Then
-122                 NpcList(LastNpcHit).flags.AttackedFirstBy = vbNullString
-
-                End If
-
-            End If
-
-124         NpcList(NpcIndex).flags.AttackedFirstBy = UserList(UserIndex).name
-126     ElseIf NpcList(NpcIndex).flags.AttackedFirstBy <> UserList(UserIndex).name Then
-
-            'Estas robando NPC
-            'El que le pegabas antes ya no es tuyo
-128         If LastNpcHit <> 0 Then
-130             If NpcList(LastNpcHit).flags.AttackedFirstBy = UserList(UserIndex).name Then
-132                 NpcList(LastNpcHit).flags.AttackedFirstBy = vbNullString
-
-                End If
-
-            End If
-
-        End If
-
-        '  EraCriminal = Status(UserIndex)
-
-134     If NpcList(NpcIndex).NPCtype = eNPCType.GuardiaReal Then
-136         If Status(UserIndex) = 1 Or Status(UserIndex) = 3 Then
-138             Call VolverCriminal(UserIndex)
-
-            End If
-
+116     If NpcList(NpcIndex).flags.Faccion = Armada And Status(UserIndex) = e_Facciones.Ciudadano Then
+118         Call VolverCriminal(UserIndex)
         End If
         
-140     If NpcList(NpcIndex).MaestroUser > 0 Then
-142         If NpcList(NpcIndex).MaestroUser <> UserIndex Then
-144             Call AllMascotasAtacanUser(UserIndex, NpcList(NpcIndex).MaestroUser)
-            End If
+120     If NpcList(NpcIndex).MaestroUser > 0 And NpcList(NpcIndex).MaestroUser <> UserIndex Then
+122         Call AllMascotasAtacanUser(UserIndex, NpcList(NpcIndex).MaestroUser)
         End If
 
-146     Call CheckPets(NpcIndex, UserIndex, False)
+124     'Call AllMascotasAtacanNPC(NpcIndex, UserIndex)
         
         Exit Sub
 
 NPCAtacado_Err:
-148     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.NPCAtacado", Erl)
-150     Resume Next
+126     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.NPCAtacado", Erl)
+
         
 End Sub
 
 Sub SubirSkill(ByVal UserIndex As Integer, ByVal Skill As Integer)
-        
         On Error GoTo SubirSkill_Err
-        
 
-100     If UserList(UserIndex).Stats.UserSkills(Skill) = MAXSKILLPOINTS Then Exit Sub
+        Dim Lvl As Integer, maxPermitido As Integer
+100         Lvl = UserList(UserIndex).Stats.ELV
 
-102     If UserList(UserIndex).flags.Hambre = 0 And UserList(UserIndex).flags.Sed = 0 Then
-        
-            Dim Lvl As Integer
+102     If UserList(UserIndex).Stats.UserSkills(Skill) = MAXSKILLPOINTS Then Exit Sub
 
-104         Lvl = UserList(UserIndex).Stats.ELV
-        
-106         If Lvl > UBound(LevelSkill) Then Lvl = UBound(LevelSkill)
-            
-108         If UserList(UserIndex).Stats.UserSkills(Skill) >= LevelSkill(Lvl).LevelValue Then Exit Sub
-        
+        ' Se suben 5 skills cada dos niveles como m·ximo.
+104     If (Lvl Mod 2 = 0) Then ' El level es numero par
+106         maxPermitido = (Lvl \ 2) * 5
+        Else ' El level es numero impar
+            ' Esta cuenta signifca, que si el nivel anterior terminaba en 5 ahora
+            ' suma dos puntos mas, sino 3. Lo de siempre.
+108         maxPermitido = (Lvl \ 2) * 5 + 3 - (((((Lvl - 1) \ 2) * 5) Mod 10) \ 5)
+        End If
+
+110     If UserList(UserIndex).Stats.UserSkills(Skill) >= maxPermitido Then Exit Sub
+
+112     If UserList(UserIndex).Stats.MinHam > 0 And UserList(UserIndex).Stats.MinAGU > 0 Then
+
             Dim Aumenta As Integer
-
             Dim Prob    As Integer
-
             Dim Menor   As Byte
-
-110         Menor = 10
+            
+114         Menor = 10
+            
+            Select Case Lvl
+                Case Is <= 12
+                    Prob = 15
+                Case Is <= 24
+                    Prob = 30
+                Case Else
+                    Prob = 50
+            End Select
              
-112         If Lvl <= 3 Then
-114             Prob = 25
-116         ElseIf Lvl > 3 And Lvl < 6 Then
-118             Prob = 27
-120         ElseIf Lvl >= 6 And Lvl < 10 Then
-122             Prob = 30
-124         ElseIf Lvl >= 10 And Lvl < 20 Then
-126             Prob = 33
-            Else
-128             Prob = 38
+134         Aumenta = RandomNumber(1, Prob * DificultadSubirSkill)
+             
+136         If UserList(UserIndex).flags.PendienteDelExperto = 1 Then
+138             Menor = 15
             End If
-             
-130         Aumenta = RandomNumber(1, Prob * DificultadSubirSkill)
-             
-132         If UserList(UserIndex).flags.PendienteDelExperto = 1 Then
-134             Menor = 15
-
-            End If
-        
-136         If Aumenta < Menor Then
-138             UserList(UserIndex).Stats.UserSkills(Skill) = UserList(UserIndex).Stats.UserSkills(Skill) + 1
+            
+140         If Aumenta < Menor Then
+142             UserList(UserIndex).Stats.UserSkills(Skill) = UserList(UserIndex).Stats.UserSkills(Skill) + 1
     
-140             Call WriteConsoleMsg(UserIndex, "¬°Has mejorado tu skill " & SkillsNames(Skill) & " en un punto!. Ahora tienes " & UserList(UserIndex).Stats.UserSkills(Skill) & " pts.", FontTypeNames.FONTTYPE_INFO)
+144             Call WriteConsoleMsg(userindex, "°Has mejorado tu skill " & SkillsNames(Skill) & " en un punto!. Ahora tienes " & UserList(userindex).Stats.UserSkills(Skill) & " pts.", e_FontTypeNames.FONTTYPE_INFO)
             
                 Dim BonusExp As Long
-
-142             BonusExp = 5 * ExpMult * UserList(UserIndex).flags.ScrollExp
+146             BonusExp = 50& * ExpMult
         
-144             If UserList(UserIndex).donador.activo = 1 Then
-146                 BonusExp = BonusExp * 1.1
-
-                End If
-        
-148             If UserList(UserIndex).Stats.ELV < STAT_MAXELV Then
-150                 UserList(UserIndex).Stats.Exp = UserList(UserIndex).Stats.Exp + BonusExp
-
-152                 If UserList(UserIndex).Stats.Exp > MAXEXP Then UserList(UserIndex).Stats.Exp = MAXEXP
-            
-154                 If UserList(UserIndex).ChatCombate = 1 Then
-156                     Call WriteLocaleMsg(UserIndex, "140", FontTypeNames.FONTTYPE_EXP, BonusExp)
-
+                Call WriteConsoleMsg(userindex, "°Has ganado " & BonusExp & " puntos de experiencia!", e_FontTypeNames.FONTTYPE_INFOIAO)
+                
+152             If UserList(UserIndex).Stats.ELV < STAT_MAXELV Then
+154                 UserList(UserIndex).Stats.Exp = UserList(UserIndex).Stats.Exp + BonusExp
+156                 If UserList(UserIndex).Stats.Exp > MAXEXP Then UserList(UserIndex).Stats.Exp = MAXEXP
+                    
+                    UserList(UserIndex).flags.ModificoSkills = True
+                    
+158                 If UserList(UserIndex).ChatCombate = 1 Then
+160                     Call WriteLocaleMsg(UserIndex, "140", e_FontTypeNames.FONTTYPE_EXP, BonusExp)
                     End If
                 
-158                 Call WriteUpdateExp(UserIndex)
-160                 Call CheckUserLevel(UserIndex)
+162                 Call WriteUpdateExp(UserIndex)
+164                 Call CheckUserLevel(UserIndex)
 
                 End If
 
@@ -1352,34 +1854,38 @@ Sub SubirSkill(ByVal UserIndex As Integer, ByVal Skill As Integer)
         Exit Sub
 
 SubirSkill_Err:
-162     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.SubirSkill", Erl)
-164     Resume Next
+166     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.SubirSkill", Erl)
+
         
 End Sub
 
-Sub SubirSkillDeArmaActual(ByVal UserIndex As Integer)
-    
-    ' Autor WyroX - 16/01/2021
+Public Sub SubirSkillDeArmaActual(ByVal UserIndex As Integer)
+        On Error GoTo SubirSkillDeArmaActual_Err
 
-    With UserList(UserIndex)
-    
-        If .Invent.WeaponEqpObjIndex > 0 Then
-            
-            ' Arma con proyectiles, subimos armas a distancia
-            If ObjData(.Invent.WeaponEqpObjIndex).Proyectil Then
-                Call SubirSkill(UserIndex, eSkill.Proyectiles)
-            
-            ' Sino, subimos combate con armas
+100     With UserList(UserIndex)
+
+102         If .Invent.WeaponEqpObjIndex > 0 Then
+                ' Arma con proyectiles, subimos armas a distancia
+104             If ObjData(.Invent.WeaponEqpObjIndex).Proyectil Then
+106                 Call SubirSkill(UserIndex, e_Skill.Proyectiles)
+
+                ' Sino, subimos combate con armas
+                Else
+108                 Call SubirSkill(UserIndex, e_Skill.Armas)
+                End If
+
+            ' Si no est· usando un arma, subimos combate sin armas
             Else
-                Call SubirSkill(UserIndex, eSkill.Armas)
+110             Call SubirSkill(UserIndex, e_Skill.Wrestling)
             End If
 
-        ' Si no est√° usando un arma, subimos combate sin armas
-        Else
-            Call SubirSkill(UserIndex, eSkill.Wrestling)
-        End If
-    
-    End With
+        End With
+
+        Exit Sub
+
+SubirSkillDeArmaActual_Err:
+112         Call TraceError(Err.Number, Err.Description, "UsUaRiOs.SubirSkillDeArmaActual", Erl)
+
 
 End Sub
 
@@ -1403,280 +1909,245 @@ Sub UserDie(ByVal UserIndex As Integer)
         Dim aN As Integer
     
 100     With UserList(UserIndex)
+102         .Counters.Mimetismo = 0
+104         .flags.Mimetizado = e_EstadoMimetismo.Desactivado
+106         Call RefreshCharStatus(UserIndex)
     
             'Sonido
-102         Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessagePlayWave(IIf(.genero = eGenero.Hombre, e_SoundIndex.MUERTE_HOMBRE, e_SoundIndex.MUERTE_MUJER), .Pos.X, .Pos.Y))
+108         Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessagePlayWave(IIf(.genero = e_Genero.Hombre, e_SoundIndex.MUERTE_HOMBRE, e_SoundIndex.MUERTE_MUJER), .Pos.X, .Pos.Y))
         
             'Quitar el dialogo del user muerto
-104         Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageRemoveCharDialog(.Char.CharIndex))
+110         Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageRemoveCharDialog(.Char.CharIndex))
         
-106         .Stats.MinHp = 0
-108         .Stats.MinSta = 0
-110         .flags.AtacadoPorUser = 0
-112         .flags.Envenenado = 0
-114         .flags.Ahogandose = 0
-116         .flags.Incinerado = 0
+112         .Stats.MinHp = 0
+114         .Stats.MinSta = 0
+116         .flags.AtacadoPorUser = 0
+
 118         .flags.incinera = 0
 120         .flags.Paraliza = 0
 122         .flags.Envenena = 0
 124         .flags.Estupidiza = 0
 126         .flags.Muerto = 1
-            '.flags.SeguroParty = True
-            'Call WritePartySafeOn(UserIndex)
             
-128         Call WriteUpdateHP(UserIndex)
-130         Call WriteUpdateSta(UserIndex)
+130         Call WriteUpdateHP(UserIndex)
+132         Call WriteUpdateSta(UserIndex)
         
-132         aN = .flags.AtacadoPorNpc
+134         aN = .flags.AtacadoPorNpc
     
-134         If aN > 0 Then
-136             NpcList(aN).Movement = NpcList(aN).flags.OldMovement
-138             NpcList(aN).Hostile = NpcList(aN).flags.OldHostil
-140             NpcList(aN).flags.AttackedBy = vbNullString
+136         If aN > 0 Then
+138             NpcList(aN).Movement = NpcList(aN).flags.OldMovement
+140             NpcList(aN).Hostile = NpcList(aN).flags.OldHostil
+142             NpcList(aN).flags.AttackedBy = vbNullString
+144             NpcList(aN).Target = 0
             End If
         
-142         aN = .flags.NPCAtacado
+146         aN = .flags.NPCAtacado
     
-144         If aN > 0 Then
-146             If NpcList(aN).flags.AttackedFirstBy = .name Then
-148                 NpcList(aN).flags.AttackedFirstBy = vbNullString
+148         If aN > 0 Then
+150             If NpcList(aN).flags.AttackedFirstBy = .Name Then
+152                 NpcList(aN).flags.AttackedFirstBy = vbNullString
                 End If
             End If
     
-150         .flags.AtacadoPorNpc = 0
-152         .flags.NPCAtacado = 0
-        
-            '<<<< Paralisis >>>>
-154         If .flags.Paralizado = 1 Then
-156             .flags.Paralizado = 0
-158             Call WriteParalizeOK(UserIndex)
-            End If
-        
-            '<<<< Inmovilizado >>>>
-160         If .flags.Inmovilizado = 1 Then
-162             .flags.Inmovilizado = 0
-164             Call WriteInmovilizaOK(UserIndex)
-            End If
-        
-            '<<< Estupidez >>>
-166         If .flags.Estupidez = 1 Then
-168             .flags.Estupidez = 0
-170             Call WriteDumbNoMore(UserIndex)
-            End If
-        
-            '<<<< Descansando >>>>
-172         If .flags.Descansar Then
-174             .flags.Descansar = False
-176             Call WriteRestOK(UserIndex)
-            End If
-        
-            '<<<< Meditando >>>>
-178         If .flags.Meditando Then
-180             .flags.Meditando = False
-182             .Char.FX = 0
-184             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageMeditateToggle(.Char.CharIndex, 0))
-            End If
-        
-            'If .Familiar.Invocado = 1 Then
-            ' Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageFxPiso("17", NpcList(.Familiar.Id).Pos.x, NpcList(.Familiar.Id).Pos.Y))
-            ' .Familiar.Invocado = 0
-            ' Call QuitarNPC(.Familiar.Id)
-            ' End If
-        
-            '<<<< Invisible >>>>
-186         If (.flags.invisible = 1 Or .flags.Oculto = 1) And .flags.AdminInvisible = 0 Then
-188             .flags.Oculto = 0
-190             .flags.invisible = 0
-192             .Counters.TiempoOculto = 0
-194             .Counters.Invisibilidad = 0
-                'no hace falta encriptar este NOVER
-196             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageSetInvisible(.Char.CharIndex, False))
-            End If
+154         .flags.AtacadoPorNpc = 0
+156         .flags.NPCAtacado = 0
     
-198         If MapData(.Pos.Map, .Pos.X, .Pos.Y).trigger <> eTrigger.ZONAPELEA And .flags.BattleModo = 0 Then
+158         If MapData(.Pos.Map, .Pos.X, .Pos.Y).trigger <> e_Trigger.ZONAPELEA Then
 
-200             If (.flags.Privilegios And PlayerType.user) <> 0 Then
+160             If (.flags.Privilegios And e_PlayerType.user) <> 0 Then
 
-202                 If .flags.PendienteDelSacrificio = 0 Then
+162                 If .flags.PendienteDelSacrificio = 0 Then
                 
-204                     Call TirarTodosLosItems(UserIndex)
+164                     Call TirarTodosLosItems(UserIndex)
     
                     Else
                 
-                        Dim MiObj As obj
+                        Dim MiObj As t_Obj
 
-206                     MiObj.Amount = 1
-208                     MiObj.ObjIndex = PENDIENTE
-210                     Call QuitarObjetos(PENDIENTE, 1, UserIndex)
-212                     Call MakeObj(MiObj, .Pos.Map, .Pos.X, .Pos.Y)
-214                     Call WriteConsoleMsg(UserIndex, "Has perdido tu pendiente del sacrificio.", FontTypeNames.FONTTYPE_INFO)
+166                     MiObj.amount = 1
+168                     MiObj.ObjIndex = PENDIENTE
+170                     Call QuitarObjetos(PENDIENTE, 1, UserIndex)
+172                     Call MakeObj(MiObj, .Pos.Map, .Pos.X, .Pos.Y)
+174                     Call WriteConsoleMsg(UserIndex, "Has perdido tu pendiente del sacrificio.", e_FontTypeNames.FONTTYPE_INFO)
 
                     End If
     
                 End If
     
             End If
+            
+            Call Desequipar(UserIndex, .Invent.ArmourEqpSlot)
+            Call Desequipar(UserIndex, .Invent.WeaponEqpSlot)
+            Call Desequipar(UserIndex, .Invent.EscudoEqpSlot)
+            Call Desequipar(UserIndex, .Invent.CascoEqpSlot)
+            Call Desequipar(userindex, .Invent.DaÒoMagicoEqpSlot)
+            Call Desequipar(UserIndex, .Invent.HerramientaEqpSlot)
+            Call Desequipar(UserIndex, .Invent.MonturaSlot)
+            Call Desequipar(UserIndex, .Invent.MunicionEqpSlot)
+            Call Desequipar(UserIndex, .Invent.NudilloSlot)
+            Call Desequipar(UserIndex, .Invent.MagicoSlot)
+            Call Desequipar(UserIndex, .Invent.ResistenciaEqpSlot)
         
-216         .flags.CarroMineria = 0
+176         .flags.CarroMineria = 0
    
             'desequipar montura
-218         If .flags.Montado > 0 Then
-220             Call DoMontar(UserIndex, ObjData(.Invent.MonturaObjIndex), .Invent.MonturaSlot)
+178         If .flags.Montado > 0 Then
+180             Call DoMontar(UserIndex, ObjData(.Invent.MonturaObjIndex), .Invent.MonturaSlot)
             End If
         
             ' << Reseteamos los posibles FX sobre el personaje >>
-222         If .Char.loops = INFINITE_LOOPS Then
-224             .Char.FX = 0
-226             .Char.loops = 0
+182         If .Char.loops = INFINITE_LOOPS Then
+184             .Char.FX = 0
+186             .Char.loops = 0
     
             End If
         
-228         .flags.VecesQueMoriste = .flags.VecesQueMoriste + 1
+188         .flags.VecesQueMoriste = .flags.VecesQueMoriste + 1
         
             ' << Restauramos los atributos >>
-230         If .flags.TomoPocion = True And .flags.BattleModo = 0 Then
+190         If .flags.TomoPocion Then
     
-232             For i = 1 To 4
-234                 .Stats.UserAtributos(i) = .Stats.UserAtributosBackUP(i)
-236             Next i
+192             For i = 1 To 4
+194                 .Stats.UserAtributos(i) = .Stats.UserAtributosBackUP(i)
+196             Next i
     
-238             Call WriteFYA(UserIndex)
-    
-            End If
-        
-240         .flags.VecesQueMoriste = .flags.VecesQueMoriste + 1
-        
-            ' << Restauramos los atributos >>
-242         If .flags.TomoPocion = True And .flags.BattleModo = 0 Then
-    
-244             For i = 1 To 4
-246                 .Stats.UserAtributos(i) = .Stats.UserAtributosBackUP(i)
-248             Next i
-    
-250             Call WriteFYA(UserIndex)
+198             Call WriteFYA(UserIndex)
     
             End If
+            
+            ' << Frenamos el contador de la droga >>
+            .flags.DuracionEfecto = 0
         
             '<< Cambiamos la apariencia del char >>
-252         If .flags.Navegando = 0 Then
-254             .Char.Body = iCuerpoMuerto
-256             .Char.Head = 0
-258             .Char.ShieldAnim = NingunEscudo
-260             .Char.WeaponAnim = NingunArma
-262             .Char.CascoAnim = NingunCasco
-            
-264             .Char.speeding = VelocidadMuerto
+200         If .flags.Navegando = 0 Then
+202             .Char.Body = iCuerpoMuerto
+204             .Char.Head = 0
+206             .Char.ShieldAnim = NingunEscudo
+208             .Char.WeaponAnim = NingunArma
+210             .Char.CascoAnim = NingunCasco
             Else
-    
-266             If ObjData(.Invent.BarcoObjIndex).Ropaje = iTraje Then
-268                 .Char.Body = iRopaBuceoMuerto
-270                 .Char.Head = iCabezaMuerto
-                Else
-272                 .Char.Body = iFragataFantasmal ';)
-274                 .Char.Head = 0
-                End If
-                
-276             .Char.speeding = ObjData(.Invent.BarcoObjIndex).Velocidad
+212             Call EquiparBarco(UserIndex)
             End If
             
-278         Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageSpeedingACT(.Char.CharIndex, .Char.speeding))
+214         Call ActualizarVelocidadDeUsuario(UserIndex)
+216         Call LimpiarEstadosAlterados(UserIndex)
         
-280         For i = 1 To MAXMASCOTAS
-282             If .MascotasIndex(i) > 0 Then
-284                 Call MuereNpc(.MascotasIndex(i), 0)
+218         For i = 1 To MAXMASCOTAS
+220             If .MascotasIndex(i) > 0 Then
+222                 Call MuereNpc(.MascotasIndex(i), 0)
+                        
                 End If
-286         Next i
-        
-288         .NroMascotas = 0
+224         Next i
+            
+            
+            If .clase = e_Class.Druid Then
+            
+                Dim Params() As Variant
+                Dim ParamC As Long
+                ReDim Params(MAXMASCOTAS * 3 - 1)
+                ParamC = 0
+                
+                For i = 1 To MAXMASCOTAS
+                    Params(ParamC) = .ID
+                    ParamC = ParamC + 1
+                    Params(ParamC) = i
+                    ParamC = ParamC + 1
+                    Params(ParamC) = 0
+                    ParamC = ParamC + 1
+                Next i
+                
+                Call Execute(QUERY_UPSERT_PETS, Params)
+            End If
+226         .NroMascotas = 0
         
             '<< Actualizamos clientes >>
-290         Call ChangeUserChar(UserIndex, .Char.Body, .Char.Head, .Char.Heading, NingunArma, NingunEscudo, NingunCasco)
+228         Call ChangeUserChar(UserIndex, .Char.Body, .Char.Head, .Char.Heading, NingunArma, NingunEscudo, NingunCasco)
 
-            Call WriteConsoleMsg(UserIndex, "Escribe /HOGAR si deseas regresar r√°pido a tu hogar.", FontTypeNames.FONTTYPE_New_Naranja)
+230         If MapInfo(.Pos.Map).Seguro = 0 Then
+232             Call WriteConsoleMsg(userindex, "Escribe /HOGAR si deseas regresar r·pido a tu hogar.", e_FontTypeNames.FONTTYPE_New_Naranja)
+            End If
+            
+234         If .flags.EnReto Then
+236             Call MuereEnReto(UserIndex)
+            End If
+            
+            'Borramos todos los personajes del area
+            
+            
+            Dim LoopC     As Long
+            Dim tempIndex As Integer
+            Dim Map       As Integer
+            Dim AreaX     As Integer
+            Dim AreaY     As Integer
+            
+             AreaX = UserList(UserIndex).AreasInfo.AreaPerteneceX
+             AreaY = UserList(UserIndex).AreasInfo.AreaPerteneceY
+                        
+             For LoopC = 1 To ConnGroups(UserList(UserIndex).Pos.Map).CountEntrys
+                 tempIndex = ConnGroups(UserList(UserIndex).Pos.Map).UserEntrys(LoopC)
+        
+                If UserList(tempIndex).AreasInfo.AreaReciveX And AreaX Then  'Esta en el area?
+                    If UserList(tempIndex).AreasInfo.AreaReciveY And AreaY Then
+        
+                        If UserList(tempIndex).ConnIDValida And tempIndex <> UserIndex And UserList(tempIndex).GuildIndex <> UserList(UserIndex).GuildIndex Then
+                            Call SendData(SendTarget.ToIndex, UserIndex, PrepareMessageCharacterRemove(3, UserList(tempIndex).Char.CharIndex, True))
+                        End If
+                    End If
+                End If
+        
+             Next LoopC
+            
+            
 
         End With
 
         Exit Sub
 
 ErrorHandler:
-292     Call LogError("Error en SUB USERDIE. Error: " & Err.Number & " Descripci√≥n: " & Err.Description)
+238        Call TraceError(Err.Number, Err.Description, "UsUaRiOs.UserDie", Erl)
 
 End Sub
 
 Sub ContarMuerte(ByVal Muerto As Integer, ByVal Atacante As Integer)
-        
-        On Error GoTo ContarMuerte_Err
-        
+            On Error GoTo ContarMuerte_Err
 
-100     If EsNewbie(Muerto) Then Exit Sub
-102     If TriggerZonaPelea(Muerto, Atacante) = TRIGGER6_PERMITE Then Exit Sub
-104     If Abs(CInt(UserList(Muerto).Stats.ELV) - CInt(UserList(Atacante).Stats.ELV)) > 14 Then Exit Sub
-106     If Status(Muerto) = 0 Then
-108         If UserList(Atacante).flags.LastCrimMatado <> UserList(Muerto).name Then
-110             UserList(Atacante).flags.LastCrimMatado = UserList(Muerto).name
 
-112             If UserList(Atacante).Faccion.CriminalesMatados < MAXUSERMATADOS Then UserList(Atacante).Faccion.CriminalesMatados = UserList(Atacante).Faccion.CriminalesMatados + 1
+100         If EsNewbie(Muerto) Then Exit Sub
+102         If TriggerZonaPelea(Muerto, Atacante) = TRIGGER6_PERMITE Then Exit Sub
+            'Si se llevan m·s de 10 niveles no le cuento la muerte.
+            If CInt(UserList(Atacante).Stats.ELV) - CInt(UserList(Muerto).Stats.ELV) > 10 Then Exit Sub
+106         If Status(Muerto) = 0 Or Status(Muerto) = 2 Then
+108             If UserList(Atacante).flags.LastCrimMatado <> UserList(Muerto).Name Then
+110                 UserList(Atacante).flags.LastCrimMatado = UserList(Muerto).Name
+
+112                 If UserList(Atacante).Faccion.CriminalesMatados < MAXUSERMATADOS Then
+114                     UserList(Atacante).Faccion.CriminalesMatados = UserList(Atacante).Faccion.CriminalesMatados + 1
+                    End If
+                End If
+
+116         ElseIf Status(Muerto) = 1 Or Status(Muerto) = 3 Then
+
+118             If UserList(Atacante).flags.LastCiudMatado <> UserList(Muerto).Name Then
+120                 UserList(Atacante).flags.LastCiudMatado = UserList(Muerto).Name
+
+122                 If UserList(Atacante).Faccion.ciudadanosMatados < MAXUSERMATADOS Then
+124                     UserList(Atacante).Faccion.ciudadanosMatados = UserList(Atacante).Faccion.ciudadanosMatados + 1
+                    End If
+
+                End If
 
             End If
-        
-114         If UserList(Atacante).Faccion.RecibioExpInicialCaos = 1 And UserList(Muerto).Faccion.FuerzasCaos = 1 Then
-116             UserList(Atacante).Faccion.Reenlistadas = 200  'jaja que trucho
-            
-                'con esto evitamos que se vuelva a reenlistar
-            End If
 
-118     ElseIf Status(Muerto) = 1 Then
-
-120         If UserList(Atacante).flags.LastCiudMatado <> UserList(Muerto).name Then
-122             UserList(Atacante).flags.LastCiudMatado = UserList(Muerto).name
-
-124             If UserList(Atacante).Faccion.CiudadanosMatados < MAXUSERMATADOS Then UserList(Atacante).Faccion.CiudadanosMatados = UserList(Atacante).Faccion.CiudadanosMatados + 1
-
-            End If
-
-        End If
-
-        
-        Exit Sub
+            Exit Sub
 
 ContarMuerte_Err:
-126     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.ContarMuerte", Erl)
-128     Resume Next
-        
+126         Call TraceError(Err.Number, Err.Description, "UsUaRiOs.ContarMuerte", Erl)
+
+
 End Sub
 
-Sub ContarPuntoBattle(ByVal Muerto As Integer, ByVal Atacante As Integer)
-        
-        On Error GoTo ContarPuntoBattle_Err
-        
+Sub Tilelibre(ByRef Pos As t_WorldPos, ByRef nPos As t_WorldPos, ByRef obj As t_Obj, ByRef Agua As Boolean, ByRef Tierra As Boolean, Optional ByVal InitialPos As Boolean = True)
 
-100     If UserList(Muerto).flags.LevelBackup < 40 And UserList(Atacante).flags.LevelBackup < 40 Then Exit Sub
-102     If Abs(CInt(UserList(Muerto).flags.LevelBackup) - CInt(UserList(Atacante).flags.LevelBackup)) > 5 Then Exit Sub
-
-104     If UserList(Atacante).flags.LastCrimMatado <> UserList(Muerto).name Then
-106         UserList(Atacante).flags.LastCrimMatado = UserList(Muerto).name
-            
-108         UserList(Atacante).flags.BattlePuntos = UserList(Atacante).flags.BattlePuntos + 1
-110         UserList(Muerto).flags.BattlePuntos = UserList(Muerto).flags.BattlePuntos - 1
-            
-112         Call WriteConsoleMsg(Atacante, "Has ganado 1 punto battle.", FontTypeNames.FONTTYPE_EXP)
-114         Call WriteConsoleMsg(Muerto, "Has perdido 1 punto battle.", FontTypeNames.FONTTYPE_EXP)
-116         Call CheckRanking(Battle, Atacante, UserList(Atacante).flags.BattlePuntos)
-118         Call CheckRanking(Battle, Muerto, UserList(Muerto).flags.BattlePuntos)
-120         Call GuardarRanking
-
-        End If
-
-        
-        Exit Sub
-
-ContarPuntoBattle_Err:
-122     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.ContarPuntoBattle", Erl)
-124     Resume Next
-        
-End Sub
-
-Sub Tilelibre(ByRef Pos As WorldPos, ByRef nPos As WorldPos, ByRef obj As obj, ByRef Agua As Boolean, ByRef Tierra As Boolean)
         
         On Error GoTo Tilelibre_Err
         
@@ -1695,10 +2166,10 @@ Sub Tilelibre(ByRef Pos As WorldPos, ByRef nPos As WorldPos, ByRef obj As obj, B
         Dim tY       As Integer
 
         Dim hayobj   As Boolean
-
+        
 100     hayobj = False
 102     nPos.Map = Pos.Map
-    
+
 104     Do While Not LegalPos(Pos.Map, nPos.X, nPos.Y, Agua, Tierra) Or hayobj
         
 106         If LoopC > 15 Then
@@ -1714,9 +2185,9 @@ Sub Tilelibre(ByRef Pos As WorldPos, ByRef nPos As WorldPos, ByRef obj As obj, B
                         'We continue if: a - the item is different from 0 and the dropped item or b - the Amount dropped + Amount in map exceeds MAX_INVENTORY_OBJS
 116                     hayobj = (MapData(nPos.Map, tX, tY).ObjInfo.ObjIndex > 0 And MapData(nPos.Map, tX, tY).ObjInfo.ObjIndex <> obj.ObjIndex)
 
-118                     If Not hayobj Then hayobj = (MapData(nPos.Map, tX, tY).ObjInfo.Amount + obj.Amount > MAX_INVENTORY_OBJS)
+118                     If Not hayobj Then hayobj = (MapData(nPos.Map, tX, tY).ObjInfo.amount + obj.amount > MAX_INVENTORY_OBJS)
 
-120                     If Not hayobj And MapData(nPos.Map, tX, tY).TileExit.Map = 0 Then
+120                     If Not hayobj And MapData(nPos.Map, tX, tY).TileExit.Map = 0 And (InitialPos Or (tX <> Pos.X And tY <> Pos.Y)) Then
 122                         nPos.X = tX
 124                         nPos.Y = tY
 126                         tX = Pos.X + LoopC
@@ -1743,274 +2214,191 @@ Sub Tilelibre(ByRef Pos As WorldPos, ByRef nPos As WorldPos, ByRef obj As obj, B
         Exit Sub
 
 Tilelibre_Err:
-142     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.Tilelibre", Erl)
-144     Resume Next
+142     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.Tilelibre", Erl)
+
         
 End Sub
 
 Sub WarpToLegalPos(ByVal UserIndex As Integer, ByVal Map As Integer, ByVal X As Byte, ByVal Y As Byte, Optional ByVal FX As Boolean = False, Optional ByVal AguaValida As Boolean = False)
-        'Santo: Sub para buscar la posici√≥n legal mas cercana al objetivo y warpearlo.
-        
+
         On Error GoTo WarpToLegalPos_Err
-        
 
-        Dim ALoop As Byte, Find As Boolean, lX As Long, lY As Long
+        Dim LoopC    As Integer
 
-100     Find = False
-102     ALoop = 0
+        Dim tX       As Integer
 
-104     Do Until Find = True
+        Dim tY       As Integer
 
-106         For lX = X - ALoop To X + ALoop
-108             For lY = Y - ALoop To Y + ALoop
+102     Do While True
 
-110                 With MapData(Map, lX, lY)
+104         If LoopC > 20 Then Exit Sub
 
-112                     If .UserIndex <= 0 Then
-                            ' No podemos transportarnos a bloqueos totales
-114                         If (.Blocked And eBlock.ALL_SIDES) <> eBlock.ALL_SIDES And ((.Blocked And FLAG_AGUA) = 0 Or AguaValida) Then
-
-116                             If .TileExit.Map = 0 Then
-118                                 If .NpcIndex <= 0 Then
-                                        ' A partir del 50 empiezan las casas privadas, ah√≠ no se puede transportar
-120                                     If .trigger < 50 Then
-122                                         Call WarpUserChar(UserIndex, Map, lX, lY, FX)
-124                                         Find = True
-                                            Exit Sub
-                                        End If
-                                    End If
-
-                                End If
-
-                            End If
-
+108         For tY = Y - LoopC To Y + LoopC
+110             For tX = X - LoopC To X + LoopC
+            
+112                 If LegalPos(Map, tX, tY, AguaValida, True, UserList(UserIndex).flags.Montado = 1, False, False) Then
+                        If MapData(Map, tX, tY).trigger < 50 Then
+114                         Call WarpUserChar(UserIndex, Map, tX, tY, FX)
+                            Exit Sub
                         End If
-
-                    End With
-
-126             Next lY
-128         Next lX
-
-130         ALoop = ALoop + 1
+                    End If
+        
+122             Next tX
+124         Next tY
+    
+126         LoopC = LoopC + 1
+    
         Loop
 
-        
+        Call WarpUserChar(UserIndex, Map, X, Y, FX)
+
         Exit Sub
 
 WarpToLegalPos_Err:
-132     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.WarpToLegalPos", Erl)
-134     Resume Next
+132     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.WarpToLegalPos", Erl)
+
         
 End Sub
 
-Sub WarpUserChar(ByVal UserIndex As Integer, ByVal Map As Integer, ByVal X As Integer, ByVal Y As Integer, Optional ByVal FX As Boolean = False)
+Sub WarpUserChar(ByVal UserIndex As Integer, _
+                 ByVal Map As Integer, _
+                 ByVal X As Integer, _
+                 ByVal Y As Integer, _
+                 Optional ByVal FX As Boolean = False)
         
         On Error GoTo WarpUserChar_Err
-        
 
         Dim OldMap As Integer
         Dim OldX   As Integer
         Dim OldY   As Integer
     
-100     If UserList(UserIndex).ComUsu.DestUsu > 0 Then
-102         If UserList(UserList(UserIndex).ComUsu.DestUsu).flags.UserLogged Then
-104             If UserList(UserList(UserIndex).ComUsu.DestUsu).ComUsu.DestUsu = UserIndex Then
-106                 Call WriteConsoleMsg(UserList(UserIndex).ComUsu.DestUsu, "Comercio cancelado por el otro usuario", FontTypeNames.FONTTYPE_TALK)
-108                 Call FinComerciarUsu(UserList(UserIndex).ComUsu.DestUsu)
-                
-
-                End If
-
-            End If
-
-        End If
-    
-        'Quitar el dialogo
-110     Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageRemoveCharDialog(UserList(UserIndex).Char.CharIndex))
-    
-112     Call WriteRemoveAllDialogs(UserIndex)
-    
-114     OldMap = UserList(UserIndex).Pos.Map
-116     OldX = UserList(UserIndex).Pos.X
-118     OldY = UserList(UserIndex).Pos.Y
-    
-120     Call EraseUserChar(UserIndex, True)
-    
-122     If OldMap <> Map Then
-        
-124         Call WriteChangeMap(UserIndex, Map)
-            'Call WriteLight(UserIndex, map)
-            'Call WriteHora(UserIndex)
-        
-            ' If MapInfo(OldMap).music_numberLow <> MapInfo(map).music_numberLow Then
-            'Call WritePlayMidi(UserIndex, MapInfo(map).music_numberLow, 1)
-            'End If
-        
-126         If MapInfo(OldMap).Seguro = 1 And MapInfo(Map).Seguro = 0 And UserList(UserIndex).Stats.ELV < 42 Then
-128             Call WriteConsoleMsg(UserIndex, "Est√°s saliendo de una zona segura, recuerda que aqu√≠ corres riesgo de ser atacado.", FontTypeNames.FONTTYPE_WARNING)
-
-            End If
-        
-130         UserList(UserIndex).flags.NecesitaOxigeno = RequiereOxigeno(Map)
-
-132         If UserList(UserIndex).flags.NecesitaOxigeno Then
-134             Call WriteContadores(UserIndex)
-136             Call WriteOxigeno(UserIndex)
-
-138             If UserList(UserIndex).Counters.Oxigeno = 0 Then
-140                 UserList(UserIndex).flags.Ahogandose = 1
-
-                End If
-
-            End If
-            
-142         UserList(UserIndex).Counters.TiempoDeInmunidad = IntervaloPuedeSerAtacado
-144         UserList(UserIndex).flags.Inmunidad = 1
-
-146         If RequiereOxigeno(OldMap) = True And UserList(UserIndex).flags.NecesitaOxigeno = False Then  'And UserList(UserIndex).Stats.ELV < 35 Then
-        
-                'Call WriteConsoleMsg(UserIndex, "Ya no necesitas oxigeno.", FontTypeNames.FONTTYPE_WARNING)
-148             Call WriteContadores(UserIndex)
-150             Call WriteOxigeno(UserIndex)
-
-            End If
-        
-            'Update new Map Users
-152         MapInfo(Map).NumUsers = MapInfo(Map).NumUsers + 1
-        
-            'Update old Map Users
-154         MapInfo(OldMap).NumUsers = MapInfo(OldMap).NumUsers - 1
-
-156         If MapInfo(OldMap).NumUsers < 0 Then
-158             MapInfo(OldMap).NumUsers = 0
-
-            End If
-            
-            'Si el mapa al que entro NO ES superficial AND en el que estaba TAMPOCO ES superficial, ENTONCES
-            Dim nextMap, previousMap As Boolean
-            
-160         nextMap = distanceToCities(Map).distanceToCity(UserList(UserIndex).Hogar) >= 0
-162         previousMap = distanceToCities(UserList(UserIndex).Pos.Map).distanceToCity(UserList(UserIndex).Hogar) >= 0
-
-164         If previousMap And nextMap Then '138 => 139 (Ambos superficiales, no tiene que pasar nada)
-                'NO PASA NADA PORQUE NO ENTRO A UN DUNGEON.
-            
-166         ElseIf previousMap And Not nextMap Then '139 => 140 (139 es superficial, 140 no. Por lo tanto 139 es el ultimo mapa superficial)
-168             UserList(UserIndex).flags.lastMap = UserList(UserIndex).Pos.Map
-            
-170         ElseIf Not previousMap And nextMap Then '140 => 139 (140 es no es superficial, 139 si. Por lo tanto, el ultimo mapa es 0 ya que no esta en un dungeon)
-172             UserList(UserIndex).flags.lastMap = 0
-            
-174         ElseIf Not previousMap And Not nextMap Then '140 => 141 (Ninguno es superficial, el ultimo mapa es el mismo de antes)
-176             UserList(UserIndex).flags.lastMap = UserList(UserIndex).flags.lastMap
-
-            End If
-        
-
-178         If UserList(UserIndex).flags.Traveling = 1 Then
-180             UserList(UserIndex).flags.Traveling = 0
-182             UserList(UserIndex).Counters.goHome = 0
-184             Call WriteConsoleMsg(UserIndex, "El viaje ha terminado.", FontTypeNames.FONTTYPE_INFOBOLD)
-    
-            End If
-
-        End If
-    
-186     UserList(UserIndex).Pos.X = X
-188     UserList(UserIndex).Pos.Y = Y
-190     UserList(UserIndex).Pos.Map = Map
-    
-192     If FX Then
-194         Call MakeUserChar(True, Map, UserIndex, Map, X, Y, 1)
-        Else
-196         Call MakeUserChar(True, Map, UserIndex, Map, X, Y, 0)
-
-        End If
-    
-198     Call WriteUserCharIndexInServer(UserIndex)
-    
-        'Seguis invisible al pasar de mapa
-200     If (UserList(UserIndex).flags.invisible = 1 Or UserList(UserIndex).flags.Oculto = 1) And (Not UserList(UserIndex).flags.AdminInvisible = 1) Then
-            ' Si el mapa lo permite
-202         If MapInfo(Map).SinInviOcul Then
-204             UserList(UserIndex).flags.invisible = 0
-206             UserList(UserIndex).flags.Oculto = 0
-208             UserList(UserIndex).Counters.TiempoOculto = 0
-210             Call WriteConsoleMsg(UserIndex, "Una fuerza divina que vigila esta zona te ha vuelto visible.", FontTypeNames.FONTTYPE_INFO)
-            Else
-212             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageSetInvisible(UserList(UserIndex).Char.CharIndex, True))
-            End If
-
-        End If
-    
-        'Reparacion temporal del bug de particulas. 08/07/09 LADDER
-
-        'Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageAuraToChar(UserList(UserIndex).Char.CharIndex, 71, False))
-    
-214     If UserList(UserIndex).flags.AdminInvisible = 0 Then
-216         If FX Then 'FX
-218             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessagePlayWave(SND_WARP, X, Y))
-220             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageCreateFX(UserList(UserIndex).Char.CharIndex, FXIDs.FXWARP, 0))
-            End If
-        Else
-222         Call EnviarDatosASlot(UserIndex, PrepareMessageSetInvisible(UserList(UserIndex).Char.CharIndex, True))
-        End If
-        
-224     If UserList(UserIndex).NroMascotas > 0 Then Call WarpMascotas(UserIndex)
-    
-226     If MapInfo(Map).zone = "DUNGEON" Then
-228         If UserList(UserIndex).flags.Montado > 0 Then
-230             Call DoMontar(UserIndex, ObjData(UserList(UserIndex).Invent.MonturaObjIndex), UserList(UserIndex).Invent.MonturaSlot)
-
-            End If
-
-        End If
-    
-        ' Call WarpFamiliar(UserIndex)
-        
-        Exit Sub
-
-WarpUserChar_Err:
-232     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.WarpUserChar", Erl)
-234     Resume Next
-        
-End Sub
-
-Sub WarpFamiliar(ByVal UserIndex As Integer)
-        
-        On Error GoTo WarpFamiliar_Err
-        
-
 100     With UserList(UserIndex)
+            If map <= 0 Then Exit Sub
+102         If .ComUsu.DestUsu > 0 Then
 
-102         If .Familiar.Invocado = 1 Then
-104             Call QuitarNPC(.Familiar.Id)
-                ' If MapInfo(UserList(UserIndex).Pos.map).Pk = True Then
-106             .Familiar.Id = SpawnNpc(.Familiar.NpcIndex, UserList(UserIndex).Pos, False, True)
+104             If UserList(.ComUsu.DestUsu).flags.UserLogged Then
 
-                'Controlamos que se sumoneo OK
-108             If .Familiar.Id = 0 Then
-110                 Call WriteConsoleMsg(UserIndex, "No hay espacio aqu√≠ para tu mascota.", FontTypeNames.FONTTYPE_INFO)
-                    Exit Sub
+106                 If UserList(.ComUsu.DestUsu).ComUsu.DestUsu = UserIndex Then
+108                     Call WriteConsoleMsg(.ComUsu.DestUsu, "Comercio cancelado por el otro usuario", e_FontTypeNames.FONTTYPE_TALK)
+110                     Call FinComerciarUsu(.ComUsu.DestUsu)
+
+                    End If
 
                 End If
 
-112             Call CargarFamiliar(UserIndex)
-            Else
+            End If
+    
+            'Quitar el dialogo
+112         Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageRemoveCharDialog(.Char.CharIndex))
+    
+114         Call WriteRemoveAllDialogs(UserIndex)
+    
+116         OldMap = .Pos.Map
+118         OldX = .Pos.X
+120         OldY = .Pos.Y
+    
+122         Call EraseUserChar(UserIndex, True, FX)
+    
+124         If OldMap <> Map Then
+126             Call WriteChangeMap(UserIndex, Map)
 
-                'Call WriteConsoleMsg(UserIndex, "No se permiten familiares en zona segura. " & .Familiar.Nombre & " te esperar√° afuera.", FontTypeNames.FONTTYPE_INFO)
+128             If MapInfo(OldMap).Seguro = 1 And MapInfo(Map).Seguro = 0 And .Stats.ELV < 42 Then
+130                 Call WriteConsoleMsg(userindex, "Est·s saliendo de una zona segura, recuerda que aquÌ corres riesgo de ser atacado.", e_FontTypeNames.FONTTYPE_WARNING)
+
+                End If
+        
+
+        
+                'Update new Map Users
+156             MapInfo(Map).NumUsers = MapInfo(Map).NumUsers + 1
+        
+                'Update old Map Users
+158             MapInfo(OldMap).NumUsers = MapInfo(OldMap).NumUsers - 1
+
+160             If MapInfo(OldMap).NumUsers < 0 Then
+162                 MapInfo(OldMap).NumUsers = 0
+
+                End If
+
+164             If .flags.Traveling = 1 Then
+166                 .flags.Traveling = 0
+168                 .Counters.goHome = 0
+170                 Call WriteConsoleMsg(UserIndex, "El viaje ha terminado.", e_FontTypeNames.FONTTYPE_INFOBOLD)
+
+                End If
+   
+            End If
+    
+172         .Pos.X = X
+174         .Pos.Y = Y
+176         .Pos.Map = Map
+
+178         If .Grupo.EnGrupo = True Then
+180             Call CompartirUbicacion(UserIndex)
+            End If
+    
+182         If FX Then
+184             Call MakeUserChar(True, Map, UserIndex, Map, X, Y, 1)
+            Else
+186             Call MakeUserChar(True, Map, UserIndex, Map, X, Y, 0)
+            End If
+    
+188         Call WriteUserCharIndexInServer(UserIndex)
+    
+            'Seguis invisible al pasar de mapa
+190         If (.flags.invisible = 1 Or .flags.Oculto = 1) And (Not .flags.AdminInvisible = 1) Then
+
+                ' Si el mapa lo permite
+192             If MapInfo(Map).SinInviOcul Then
+            
+194                 .flags.invisible = 0
+196                 .flags.Oculto = 0
+                    .Counters.TiempoOcultar = 1
+198                 .Counters.TiempoOculto = 0
+                
+200                 Call WriteConsoleMsg(UserIndex, "Una fuerza divina que vigila esta zona te ha vuelto visible.", e_FontTypeNames.FONTTYPE_INFO)
+                
+                Else
+202                 Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageSetInvisible(.Char.CharIndex, True))
+
+                End If
+
+            End If
+    
+            'Reparacion temporal del bug de particulas. 08/07/09 LADDER
+204         If .flags.AdminInvisible = 0 Then
+        
+206             If FX Then 'FX
+208                 Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessagePlayWave(SND_WARP, X, Y))
+210                 Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageCreateFX(.Char.CharIndex, e_FXIDs.FXWARP, 0))
+                End If
+
+            Else
+212             Call SendData(ToIndex, UserIndex, PrepareMessageSetInvisible(.Char.CharIndex, True))
+
+            End If
+        
+214         If .NroMascotas > 0 Then Call WarpMascotas(UserIndex)
+    
+216         If MapInfo(Map).zone = "DUNGEON" Or MapData(Map, X, Y).trigger >= 9 Then
+
+218             If .flags.Montado > 0 Then
+220                 Call DoMontar(UserIndex, ObjData(.Invent.MonturaObjIndex), .Invent.MonturaSlot)
+                End If
+
             End If
     
         End With
-            
-        
+
         Exit Sub
 
-WarpFamiliar_Err:
-114     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.WarpFamiliar", Erl)
-116     Resume Next
+WarpUserChar_Err:
+222     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.WarpUserChar", Erl)
+
+
         
 End Sub
+
 
 Sub Cerrar_Usuario(ByVal UserIndex As Integer)
 
@@ -2022,17 +2410,25 @@ Sub Cerrar_Usuario(ByVal UserIndex As Integer)
 104             .Counters.Saliendo = True
 106             .Counters.Salir = IntervaloCerrarConexion
             
-144             If .flags.Traveling = 1 Then
-146                 Call WriteConsoleMsg(UserIndex, "Se ha cancelado el viaje a casa", FontTypeNames.FONTTYPE_INFO)
-148                 .flags.Traveling = 0
-150                 .Counters.goHome = 0
+108             If .flags.Traveling = 1 Then
+110                 Call WriteConsoleMsg(UserIndex, "Se ha cancelado el viaje a casa", e_FontTypeNames.FONTTYPE_INFO)
+112                 .flags.Traveling = 0
+114                 .Counters.goHome = 0
                 End If
+                
+                If .flags.invisible + .flags.Oculto > 0 Then
+                    .flags.invisible = 0
+                    .flags.Oculto = 0
+                    Call SendData(SendTarget.ToPCArea, userindex, PrepareMessageSetInvisible(.Char.charindex, False))
+                    Call WriteConsoleMsg(userindex, "Has vuelto a ser visible", e_FontTypeNames.FONTTYPE_INFO)
+                End If
+                
             
-152             Call WriteLocaleMsg(UserIndex, "203", FontTypeNames.FONTTYPE_INFO, .Counters.Salir)
+116             Call WriteLocaleMsg(UserIndex, "203", e_FontTypeNames.FONTTYPE_INFO, .Counters.Salir)
             
-154             If EsGM(UserIndex) Or MapInfo(.Pos.Map).Seguro = 1 Then
-156                 Call WriteDisconnect(UserIndex)
-158                 Call CloseSocket(UserIndex)
+118             If EsGM(UserIndex) Or MapInfo(.Pos.Map).Seguro = 1 Then
+120                 Call WriteDisconnect(UserIndex)
+122                 Call CloseSocket(UserIndex)
                 End If
 
             End If
@@ -2042,8 +2438,8 @@ Sub Cerrar_Usuario(ByVal UserIndex As Integer)
         Exit Sub
 
 Cerrar_Usuario_Err:
-160     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.Cerrar_Usuario", Erl)
-162     Resume Next
+124     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.Cerrar_Usuario", Erl)
+
 
 End Sub
 
@@ -2058,31 +2454,31 @@ Public Sub CancelExit(ByVal UserIndex As Integer)
         
 
         '***************************************************
-        'Author: Juan Mart√≠n Sotuyo Dodero (Maraxus)
+        'Author: Juan MartÌn Sotuyo Dodero (Maraxus)
         'Last Modification: 04/02/08
         '
         '***************************************************
-100     If UserList(UserIndex).Counters.Saliendo And UserList(UserIndex).ConnID <> -1 Then
+100     If UserList(UserIndex).Counters.Saliendo And UserList(UserIndex).ConnIDValida Then
 
             ' Is the user still connected?
 102         If UserList(UserIndex).ConnIDValida Then
 104             UserList(UserIndex).Counters.Saliendo = False
 106             UserList(UserIndex).Counters.Salir = 0
-108             Call WriteConsoleMsg(UserIndex, "/salir cancelado.", FontTypeNames.FONTTYPE_WARNING)
+108             Call WriteConsoleMsg(UserIndex, "/salir cancelado.", e_FontTypeNames.FONTTYPE_WARNING)
             Else
 
                 'Simply reset
-110             If UserList(UserIndex).flags.Privilegios = PlayerType.user And MapInfo(UserList(UserIndex).Pos.Map).Seguro = 0 Then
+110             If UserList(UserIndex).flags.Privilegios = e_PlayerType.user And MapInfo(UserList(UserIndex).Pos.Map).Seguro = 0 Then
 112                 UserList(UserIndex).Counters.Salir = IntervaloCerrarConexion
                 Else
-114                 Call WriteConsoleMsg(UserIndex, "Gracias por jugar Argentum20.", FontTypeNames.FONTTYPE_INFO)
+114                 Call WriteConsoleMsg(UserIndex, "Gracias por jugar Argentum20.", e_FontTypeNames.FONTTYPE_INFO)
 116                 Call WriteDisconnect(UserIndex)
                 
 118                 Call CloseSocket(UserIndex)
 
                 End If
             
-                'UserList(UserIndex).Counters.Salir = IIf((UserList(UserIndex).flags.Privilegios And PlayerType.User) And MapInfo(UserList(UserIndex).Pos.Map).Seguro = 0, IntervaloCerrarConexion, 0)
+                'UserList(UserIndex).Counters.Salir = IIf((UserList(UserIndex).flags.Privilegios And e_PlayerType.User) And MapInfo(UserList(UserIndex).Pos.Map).Seguro = 0, IntervaloCerrarConexion, 0)
             End If
 
         End If
@@ -2091,112 +2487,7 @@ Public Sub CancelExit(ByVal UserIndex As Integer)
         Exit Sub
 
 CancelExit_Err:
-120     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.CancelExit", Erl)
-122     Resume Next
-        
-End Sub
-
-'CambiarNick: Cambia el Nick de un slot.
-'
-'UserIndex: Quien ejecut√≥ la orden
-'UserIndexDestino: SLot del usuario destino, a quien cambiarle el nick
-'NuevoNick: Nuevo nick de UserIndexDestino
-Public Sub CambiarNick(ByVal UserIndex As Integer, ByVal UserIndexDestino As Integer, ByVal NuevoNick As String)
-        
-        On Error GoTo CambiarNick_Err
-        
-
-        Dim ViejoNick       As String
-
-        Dim ViejoCharBackup As String
-
-100     If UserList(UserIndexDestino).flags.UserLogged = False Then Exit Sub
-102     ViejoNick = UserList(UserIndexDestino).name
-
-104     If FileExist(CharPath & ViejoNick & ".chr", vbNormal) Then
-            'hace un backup del char
-106         ViejoCharBackup = CharPath & ViejoNick & ".chr.old-"
-108         Name CharPath & ViejoNick & ".chr" As ViejoCharBackup
-
-        End If
-
-        
-        Exit Sub
-
-CambiarNick_Err:
-110     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.CambiarNick", Erl)
-112     Resume Next
-        
-End Sub
-
-Sub SendUserStatsTxtOFF(ByVal sendIndex As Integer, ByVal nombre As String)
-        
-        On Error GoTo SendUserStatsTxtOFF_Err
-        
-
-100     If FileExist(CharPath & nombre & ".chr", vbArchive) = False Then
-102         Call WriteConsoleMsg(sendIndex, "Pj Inexistente", FontTypeNames.FONTTYPE_INFO)
-        Else
-104         Call WriteConsoleMsg(sendIndex, "Estadisticas de: " & nombre, FontTypeNames.FONTTYPE_INFO)
-106         Call WriteConsoleMsg(sendIndex, "Nivel: " & GetVar(CharPath & nombre & ".chr", "stats", "elv") & "  EXP: " & GetVar(CharPath & nombre & ".chr", "stats", "Exp") & "/" & GetVar(CharPath & nombre & ".chr", "stats", "elu"), FontTypeNames.FONTTYPE_INFO)
-108         Call WriteConsoleMsg(sendIndex, "Vitalidad: " & GetVar(CharPath & nombre & ".chr", "stats", "minsta") & "/" & GetVar(CharPath & nombre & ".chr", "stats", "maxSta"), FontTypeNames.FONTTYPE_INFO)
-110         Call WriteConsoleMsg(sendIndex, "Salud: " & GetVar(CharPath & nombre & ".chr", "stats", "MinHP") & "/" & GetVar(CharPath & nombre & ".chr", "Stats", "MaxHP") & "  Mana: " & GetVar(CharPath & nombre & ".chr", "Stats", "MinMAN") & "/" & GetVar(CharPath & nombre & ".chr", "Stats", "MaxMAN"), FontTypeNames.FONTTYPE_INFO)
-    
-112         Call WriteConsoleMsg(sendIndex, "Menor Golpe/Mayor Golpe: " & GetVar(CharPath & nombre & ".chr", "stats", "MaxHIT"), FontTypeNames.FONTTYPE_INFO)
-    
-114         Call WriteConsoleMsg(sendIndex, "Oro: " & GetVar(CharPath & nombre & ".chr", "stats", "GLD"), FontTypeNames.FONTTYPE_INFO)
-116         Call WriteConsoleMsg(sendIndex, "Veces Que Murio: " & GetVar(CharPath & nombre & ".chr", "Flags", "VecesQueMoriste"), FontTypeNames.FONTTYPE_INFO)
-            #If ConUpTime Then
-
-                Dim TempSecs As Long
-
-                Dim TempStr  As String
-
-118             TempSecs = GetVar(CharPath & nombre & ".chr", "INIT", "UpTime")
-120             TempStr = (TempSecs \ 86400) & " Dias, " & ((TempSecs Mod 86400) \ 3600) & " Horas, " & ((TempSecs Mod 86400) Mod 3600) \ 60 & " Minutos, " & (((TempSecs Mod 86400) Mod 3600) Mod 60) & " Segundos."
-122             Call WriteConsoleMsg(sendIndex, "Tiempo Logeado: " & TempStr, FontTypeNames.FONTTYPE_INFO)
-            #End If
-
-        End If
-
-        
-        Exit Sub
-
-SendUserStatsTxtOFF_Err:
-124     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.SendUserStatsTxtOFF", Erl)
-126     Resume Next
-        
-End Sub
-
-Sub SendUserOROTxtFromChar(ByVal sendIndex As Integer, ByVal CharName As String)
-        
-        On Error GoTo SendUserOROTxtFromChar_Err
-    
-        
-
-        
-
-        Dim j        As Integer
-
-        Dim CharFile As String, Tmp As String
-
-        Dim ObjInd   As Long, ObjCant As Long
-
-100     CharFile = CharPath & CharName & ".chr"
-
-102     If FileExist(CharFile, vbNormal) Then
-104         Call WriteConsoleMsg(sendIndex, CharName, FontTypeNames.FONTTYPE_INFO)
-106         Call WriteConsoleMsg(sendIndex, " Tiene " & GetVar(CharFile, "STATS", "BANCO") & " en el banco.", FontTypeNames.FONTTYPE_INFO)
-        Else
-108         Call WriteConsoleMsg(sendIndex, "Usuario inexistente: " & CharName, FontTypeNames.FONTTYPE_INFO)
-
-        End If
-
-        
-        Exit Sub
-
-SendUserOROTxtFromChar_Err:
-110     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.SendUserOROTxtFromChar", Erl)
+120     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.CancelExit", Erl)
 
         
 End Sub
@@ -2212,25 +2503,29 @@ Sub VolverCriminal(ByVal UserIndex As Integer)
     'Nacho: Actualiza el tag al cliente
     '**************************************************************
         
-    With UserList(UserIndex)
+100 With UserList(UserIndex)
         
-100     If MapData(.Pos.Map, .Pos.X, .Pos.Y).trigger = 6 Then Exit Sub
+102     If MapData(.Pos.Map, .Pos.X, .Pos.Y).trigger = 6 Then Exit Sub
 
-102     If .flags.Privilegios And (PlayerType.user Or PlayerType.Consejero) Then
+104     If .flags.Privilegios And (e_PlayerType.user Or e_PlayerType.Consejero) Then
    
-104         If .Faccion.ArmadaReal = 1 Then Call ExpulsarFaccionReal(UserIndex)
+106         If .Faccion.ArmadaReal = 1 Then
+                ' WyroX: NUNCA deberÌa pasar, pero dejo un log por si las...
+                Call TraceError(111, "Un personaje de la Armada Real atacÛ un ciudadano.", "UsUaRiOs.VolverCriminal")
+                'Call ExpulsarFaccionReal(UserIndex)
+            End If
 
         End If
 
-106     If .Faccion.FuerzasCaos = 1 Then Exit Sub
+108     If .Faccion.FuerzasCaos = 1 Then Exit Sub
 
-108     .Faccion.Status = 0
+110     .Faccion.Status = 0
         
-        If MapInfo(.Pos.Map).NoPKs And Not EsGM(UserIndex) And MapInfo(.Pos.Map).Salida.Map <> 0 Then
-            Call WriteConsoleMsg(UserIndex, "En este mapa no se admiten criminales.", FontTypeNames.FONTTYPE_INFO)
-            Call WarpUserChar(UserIndex, MapInfo(.Pos.Map).Salida.Map, MapInfo(.Pos.Map).Salida.X, MapInfo(.Pos.Map).Salida.Y, True)
+112     If MapInfo(.Pos.Map).NoPKs And Not EsGM(UserIndex) And MapInfo(.Pos.Map).Salida.Map <> 0 Then
+114         Call WriteConsoleMsg(UserIndex, "En este mapa no se admiten criminales.", e_FontTypeNames.FONTTYPE_INFO)
+116         Call WarpUserChar(UserIndex, MapInfo(.Pos.Map).Salida.Map, MapInfo(.Pos.Map).Salida.X, MapInfo(.Pos.Map).Salida.Y, True)
         Else
-            Call RefreshCharStatus(UserIndex)
+118         Call RefreshCharStatus(UserIndex)
         End If
 
     End With
@@ -2238,8 +2533,8 @@ Sub VolverCriminal(ByVal UserIndex As Integer)
     Exit Sub
 
 VolverCriminal_Err:
-112     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.VolverCriminal", Erl)
-114     Resume Next
+120     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.VolverCriminal", Erl)
+
         
 End Sub
 
@@ -2252,26 +2547,29 @@ Sub VolverCiudadano(ByVal UserIndex As Integer)
         
     On Error GoTo VolverCiudadano_Err
         
-    With UserList(UserIndex)
+100 With UserList(UserIndex)
 
-100     If MapData(.Pos.Map, .Pos.X, .Pos.Y).trigger = 6 Then Exit Sub
+102     If MapData(.Pos.Map, .Pos.X, .Pos.Y).trigger = 6 Then Exit Sub
 
-102     .Faccion.Status = 1
+104     .Faccion.Status = 1
 
-        If MapInfo(.Pos.Map).NoCiudadanos And Not EsGM(UserIndex) And MapInfo(.Pos.Map).Salida.Map <> 0 Then
-            Call WriteConsoleMsg(UserIndex, "En este mapa no se admiten ciudadanos.", FontTypeNames.FONTTYPE_INFO)
-            Call WarpUserChar(UserIndex, MapInfo(.Pos.Map).Salida.Map, MapInfo(.Pos.Map).Salida.X, MapInfo(.Pos.Map).Salida.Y, True)
+106     If MapInfo(.Pos.Map).NoCiudadanos And Not EsGM(UserIndex) And MapInfo(.Pos.Map).Salida.Map <> 0 Then
+108         Call WriteConsoleMsg(UserIndex, "En este mapa no se admiten ciudadanos.", e_FontTypeNames.FONTTYPE_INFO)
+110         Call WarpUserChar(UserIndex, MapInfo(.Pos.Map).Salida.Map, MapInfo(.Pos.Map).Salida.X, MapInfo(.Pos.Map).Salida.Y, True)
         Else
-            Call RefreshCharStatus(UserIndex)
+112         Call RefreshCharStatus(UserIndex)
         End If
+
+        Call WriteSafeModeOn(UserIndex)
+        .flags.Seguro = True
 
     End With
         
     Exit Sub
 
 VolverCiudadano_Err:
-106     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.VolverCiudadano", Erl)
-108     Resume Next
+114     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.VolverCiudadano", Erl)
+
         
 End Sub
 
@@ -2296,8 +2594,8 @@ Public Function getMaxInventorySlots(ByVal UserIndex As Integer) As Byte
         Exit Function
 
 getMaxInventorySlots_Err:
-106     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.getMaxInventorySlots", Erl)
-108     Resume Next
+106     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.getMaxInventorySlots", Erl)
+
         
 End Function
 
@@ -2319,9 +2617,11 @@ Private Sub WarpMascotas(ByVal UserIndex As Integer)
 
         Dim petType          As Integer
 
-        Dim canWarp          As Boolean
+        Dim ZonaSegura       As Boolean
+        
+        Dim PermiteMascotas  As Boolean
 
-        Dim index            As Integer
+        Dim Index            As Integer
 
         Dim iMinHP           As Integer
         
@@ -2331,24 +2631,25 @@ Private Sub WarpMascotas(ByVal UserIndex As Integer)
         Dim ElementalQuitado As Boolean
         Dim SpawnInvalido    As Boolean
 
-100     canWarp = MapInfo(UserList(UserIndex).Pos.Map).Seguro = 0
+100     ZonaSegura = MapInfo(UserList(UserIndex).Pos.Map).Seguro = 1
+        PermiteMascotas = MapInfo(UserList(UserIndex).Pos.Map).NoMascotas = False
 
 102     For i = 1 To MAXMASCOTAS
-104         index = UserList(UserIndex).MascotasIndex(i)
+104         Index = UserList(UserIndex).MascotasIndex(i)
         
-106         If index > 0 Then
-108             iMinHP = NpcList(index).Stats.MinHp
-110             PetTiempoDeVida = NpcList(index).Contadores.TiempoExistencia
+106         If Index > 0 Then
+108             iMinHP = NpcList(Index).Stats.MinHp
+110             PetTiempoDeVida = NpcList(Index).Contadores.TiempoExistencia
             
-112             NpcList(index).MaestroUser = 0
+112             NpcList(Index).MaestroUser = 0
             
-114             Call QuitarNPC(index)
+114             Call QuitarNPC(Index)
 
 116             If PetTiempoDeVida > 0 Then
-118                 Call QuitarMascota(UserIndex, index)
+118                 Call QuitarMascota(UserIndex, Index)
 120                 ElementalQuitado = True
 
-122             ElseIf Not canWarp Then
+122             ElseIf ZonaSegura Or Not PermiteMascotas Then
 124                 UserList(UserIndex).MascotasIndex(i) = 0
 126                 MascotaQuitada = True
                 End If
@@ -2360,49 +2661,54 @@ Private Sub WarpMascotas(ByVal UserIndex As Integer)
         
 132         petType = UserList(UserIndex).MascotasType(i)
         
-134         If petType > 0 And canWarp And UserList(UserIndex).flags.MascotasGuardadas = 0 And PetTiempoDeVida = 0 Then
+134         If petType > 0 And Not ZonaSegura And PermiteMascotas And UserList(UserIndex).flags.MascotasGuardadas = 0 And PetTiempoDeVida = 0 Then
         
-                Dim SpawnPos As WorldPos
+                Dim SpawnPos As t_WorldPos
         
 136             SpawnPos.Map = UserList(UserIndex).Pos.Map
 138             SpawnPos.X = UserList(UserIndex).Pos.X + RandomNumber(-3, 3)
 140             SpawnPos.Y = UserList(UserIndex).Pos.Y + RandomNumber(-3, 3)
         
-142             index = SpawnNpc(petType, SpawnPos, False, False, False, UserIndex)
+142             Index = SpawnNpc(petType, SpawnPos, False, False, False, UserIndex)
             
                 'Controlamos que se sumoneo OK - should never happen. Continue to allow removal of other pets if not alone
                 ' Exception: Pets don't spawn in water if they can't swim
-144             If index > 0 Then
-146                 UserList(UserIndex).MascotasIndex(i) = index
+144             If Index > 0 Then
+146                 UserList(UserIndex).MascotasIndex(i) = Index
 
                     ' Nos aseguramos de que conserve el hp, si estaba danado
-148                 If iMinHP Then NpcList(index).Stats.MinHp = iMinHP
+148                 If iMinHP Then NpcList(Index).Stats.MinHp = iMinHP
 
-152                 Call FollowAmo(index)
+150                 Call FollowAmo(Index)
             
                 Else
-154                 SpawnInvalido = True
+152                 SpawnInvalido = True
                 End If
 
             End If
 
-156     Next i
+154     Next i
 
-158     If Not canWarp And MascotaQuitada Then
-160         Call WriteConsoleMsg(UserIndex, "No se permiten mascotas en zona segura. Estas te esperar√°n afuera.", FontTypeNames.FONTTYPE_INFO)
+156     If MascotaQuitada Then
+            If ZonaSegura Then
+158             Call WriteConsoleMsg(userindex, "No se permiten mascotas en zona segura. Estas te esperar·n afuera.", e_FontTypeNames.FONTTYPE_INFO)
+            
+            ElseIf Not PermiteMascotas Then
+                Call WriteConsoleMsg(userindex, "Una fuerza superior impide que tus mascotas entren en este mapa. Estas te esperar·n afuera.", e_FontTypeNames.FONTTYPE_INFO)
+            End If
 
-162     ElseIf SpawnInvalido Then
-164         Call WriteConsoleMsg(UserIndex, "Tus mascotas no pueden transitar este mapa.", FontTypeNames.FONTTYPE_INFO)
+160     ElseIf SpawnInvalido Then
+162         Call WriteConsoleMsg(UserIndex, "Tus mascotas no pueden transitar este mapa.", e_FontTypeNames.FONTTYPE_INFO)
 
-166     ElseIf ElementalQuitado Then
-168         Call WriteConsoleMsg(UserIndex, "Pierdes el control de tus mascotas invocadas.", FontTypeNames.FONTTYPE_INFO)
+164     ElseIf ElementalQuitado Then
+166         Call WriteConsoleMsg(UserIndex, "Pierdes el control de tus mascotas invocadas.", e_FontTypeNames.FONTTYPE_INFO)
         End If
 
         
         Exit Sub
 
 WarpMascotas_Err:
-170     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.WarpMascotas", Erl)
+168     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.WarpMascotas", Erl)
 
         
 End Sub
@@ -2415,7 +2721,7 @@ Function TieneArmaduraCazador(ByVal UserIndex As Integer) As Boolean
 
 100     If UserList(UserIndex).Invent.ArmourEqpObjIndex > 0 Then
         
-102         If ObjData(UserList(UserIndex).Invent.ArmourEqpObjIndex).Subtipo = 3 Then ' Aguante hardcodear n√∫meros :D
+102         If ObjData(UserList(userindex).Invent.ArmourEqpObjIndex).Subtipo = 3 Then ' Aguante hardcodear n˙meros :D
 104             TieneArmaduraCazador = True
             End If
         
@@ -2425,7 +2731,7 @@ Function TieneArmaduraCazador(ByVal UserIndex As Integer) As Boolean
         Exit Function
 
 TieneArmaduraCazador_Err:
-106     Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.TieneArmaduraCazador", Erl)
+106     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.TieneArmaduraCazador", Erl)
 
         
 End Function
@@ -2440,7 +2746,7 @@ Public Sub SetModoConsulta(ByVal UserIndex As Integer)
         Dim sndNick As String
 
 100     With UserList(UserIndex)
-102         sndNick = .name
+102         sndNick = .Name
     
 104         If .flags.EnConsulta Then
 106             sndNick = sndNick & " [CONSULTA]"
@@ -2460,47 +2766,195 @@ Public Sub SetModoConsulta(ByVal UserIndex As Integer)
 End Sub
 
 ' Autor: WyroX - 20/01/2021
-' Intenta moverlo hacia un "costado" seg√∫n el heading indicado.
-' Si no hay un lugar v√°lido a los lados, lo mueve a la posici√≥n v√°lida m√°s cercana.
-Sub MoveUserToSide(ByVal UserIndex As Integer, ByVal Heading As eHeading)
+' Intenta moverlo hacia un "costado" seg˙n el heading indicado.
+' Si no hay un lugar v·lido a los lados, lo mueve a la posiciÛn v·lida m·s cercana.
+Sub MoveUserToSide(ByVal UserIndex As Integer, ByVal Heading As e_Heading)
 
-    On Error GoTo Handler
+        On Error GoTo Handler
 
-    With UserList(UserIndex)
+100     With UserList(UserIndex)
 
-        ' Elegimos un lado al azar
-        Dim R As Integer
-        R = RandomNumber(0, 1) * 2 - 1 ' -1 o 1
+            ' Elegimos un lado al azar
+            Dim R As Integer
+102         R = RandomNumber(0, 1) * 2 - 1 ' -1 o 1
 
-        ' Roto el heading original hacia ese lado
-        Heading = RotateHeading(Heading, R)
+            ' Roto el heading original hacia ese lado
+104         Heading = Rotate_Heading(Heading, R)
 
-        ' Intento moverlo para ese lado
-        If MoveUserChar(UserIndex, Heading) Then
-            ' Le aviso al usuario que fue movido
-            Call WriteForceCharMove(UserIndex, Heading)
-            Exit Sub
-        End If
+            ' Intento moverlo para ese lado
+106         If MoveUserChar(UserIndex, Heading) Then
+                ' Le aviso al usuario que fue movido
+108             Call WriteForceCharMove(UserIndex, Heading)
+                Exit Sub
+            End If
         
-        ' Si fall√≥, intento moverlo para el lado opuesto
-        Heading = InvertHeading(Heading)
-        If MoveUserChar(UserIndex, Heading) Then
-            ' Le aviso al usuario que fue movido
-            Call WriteForceCharMove(UserIndex, Heading)
-            Exit Sub
-        End If
+            ' Si fallÛ, intento moverlo para el lado opuesto
+110         Heading = InvertHeading(Heading)
+112         If MoveUserChar(UserIndex, Heading) Then
+                ' Le aviso al usuario que fue movido
+114             Call WriteForceCharMove(UserIndex, Heading)
+                Exit Sub
+            End If
         
-        ' Si ambos fallan, entonces lo dejo en la posici√≥n v√°lida m√°s cercana
-        Dim NuevaPos As WorldPos
-        Call ClosestLegalPos(.Pos, NuevaPos, .flags.Navegando, .flags.Navegando = 0)
-        Call WarpUserChar(UserIndex, NuevaPos.Map, NuevaPos.X, NuevaPos.Y)
+            ' Si ambos fallan, entonces lo dejo en la posiciÛn v·lida m·s cercana
+            Dim NuevaPos As t_WorldPos
+116         Call ClosestLegalPos(.Pos, NuevaPos, .flags.Navegando, .flags.Navegando = 0)
+118         Call WarpUserChar(UserIndex, NuevaPos.Map, NuevaPos.X, NuevaPos.Y)
 
-    End With
+        End With
 
-    Exit Sub
+        Exit Sub
     
 Handler:
-    Call RegistrarError(Err.Number, Err.Description, "UsUaRiOs.MoveUserToSide", Erl)
-    Resume Next
+120     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.MoveUserToSide", Erl)
+
 End Sub
+
+' Autor: WyroX - 02/03/2021
+' Quita par·lisis, veneno, invisibilidad, estupidez, mimetismo, deja de descansar, de meditar y de ocultarse; y quita otros estados obsoletos (por si acaso)
+Public Sub LimpiarEstadosAlterados(ByVal UserIndex As Integer)
+
+        On Error GoTo Handler
+    
+100     With UserList(UserIndex)
+
+            '<<<< Envenenamiento >>>>
+102         .flags.Envenenado = 0
+        
+            '<<<< Paralisis >>>>
+104         If .flags.Paralizado = 1 Then
+106             .flags.Paralizado = 0
+108             Call WriteParalizeOK(UserIndex)
+            End If
+                
+            '<<<< Inmovilizado >>>>
+110         If .flags.Inmovilizado = 1 Then
+112             .flags.Inmovilizado = 0
+114             Call WriteInmovilizaOK(UserIndex)
+            End If
+                
+            '<<< Estupidez >>>
+116         If .flags.Estupidez = 1 Then
+118             .flags.Estupidez = 0
+120             Call WriteDumbNoMore(UserIndex)
+            End If
+                
+            '<<<< Descansando >>>>
+122         If .flags.Descansar Then
+124             .flags.Descansar = False
+126             Call WriteRestOK(UserIndex)
+            End If
+                
+            '<<<< Meditando >>>>
+128         If .flags.Meditando Then
+130             .flags.Meditando = False
+132             .Char.FX = 0
+134             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageMeditateToggle(.Char.CharIndex, 0))
+            End If
+        
+            '<<<< Invisible >>>>
+136         If (.flags.invisible = 1 Or .flags.Oculto = 1) And .flags.AdminInvisible = 0 Then
+138             .flags.Oculto = 0
+                .Counters.TiempoOcultar = 1
+140             .flags.invisible = 0
+142             .Counters.TiempoOculto = 0
+144             .Counters.Invisibilidad = 0
+146             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageSetInvisible(.Char.CharIndex, False))
+            End If
+        
+            '<<<< Mimetismo >>>>
+148         If .flags.Mimetizado > 0 Then
+        
+150             If .flags.Navegando Then
+            
+152                 If .flags.Muerto = 0 Then
+154                     .Char.Body = ObjData(UserList(UserIndex).Invent.BarcoObjIndex).Ropaje
+                    Else
+156                     .Char.Body = iFragataFantasmal
+                    End If
+
+158                 .Char.ShieldAnim = NingunEscudo
+160                 .Char.WeaponAnim = NingunArma
+162                 .Char.CascoAnim = NingunCasco
+                
+                Else
+            
+164                 .Char.Body = .CharMimetizado.Body
+166                 .Char.Head = .CharMimetizado.Head
+168                 .Char.CascoAnim = .CharMimetizado.CascoAnim
+170                 .Char.ShieldAnim = .CharMimetizado.ShieldAnim
+172                 .Char.WeaponAnim = .CharMimetizado.WeaponAnim
+                
+                End If
+            
+174             .Counters.Mimetismo = 0
+176             .flags.Mimetizado = e_EstadoMimetismo.Desactivado
+            End If
+        
+            '<<<< Estados obsoletos >>>>
+180         .flags.Incinerado = 0
+        
+        End With
+    
+        Exit Sub
+    
+Handler:
+182     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.LimpiarEstadosAlterados", Erl)
+
+
+End Sub
+
+Public Sub DevolverPosAnterior(ByVal UserIndex As Integer)
+
+100     With UserList(UserIndex).flags
+102         Call WarpToLegalPos(UserIndex, .LastPos.Map, .LastPos.X, .LastPos.Y, True)
+        End With
+
+End Sub
+
+Public Function ActualizarVelocidadDeUsuario(ByVal UserIndex As Integer) As Single
+        On Error GoTo ActualizarVelocidadDeUsuario_Err
+    
+        Dim velocidad As Single, modificadorItem As Single, modificadorHechizo As Single
+    
+100     velocidad = VelocidadNormal
+102     modificadorItem = 1
+104     modificadorHechizo = 1
+    
+106     With UserList(UserIndex)
+108         If .flags.Muerto = 1 Then
+110             velocidad = VelocidadMuerto
+112             GoTo UpdateSpeed ' Los muertos no tienen modificadores de velocidad
+            End If
+        
+            ' El traje para nadar es considerado barco, de subtipo = 0
+114         If (.flags.Navegando + .flags.Nadando > 0) And (.Invent.BarcoObjIndex > 0) Then
+116             modificadorItem = ObjData(.Invent.BarcoObjIndex).velocidad
+            End If
+        
+118         If (.flags.Montado = 1) And (.Invent.MonturaObjIndex > 0) Then
+120             modificadorItem = ObjData(.Invent.MonturaObjIndex).velocidad
+            End If
+        
+            ' Algun hechizo le afecto la velocidad
+122         If .flags.VelocidadHechizada > 0 Then
+124             modificadorHechizo = .flags.VelocidadHechizada
+            End If
+        
+126         velocidad = VelocidadNormal * modificadorItem * modificadorHechizo
+        
+UpdateSpeed:
+128         .Char.speeding = velocidad
+        
+130         Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageSpeedingACT(.Char.CharIndex, .Char.speeding))
+132         Call WriteVelocidadToggle(UserIndex)
+     
+        End With
+
+        Exit Function
+    
+ActualizarVelocidadDeUsuario_Err:
+134     Call TraceError(Err.Number, Err.Description, "UsUaRiOs.CalcularVelocidad_Err", Erl)
+
+End Function
 

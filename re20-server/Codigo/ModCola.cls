@@ -12,7 +12,7 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 'Argentum Online 0.11.6
-'Copyright (C) 2002 MÃ¡rquez Pablo Ignacio
+'Copyright (C) 2002 Márquez Pablo Ignacio
 '
 'This program is free software; you can redistribute it and/or modify
 'it under the terms of the Affero General Public License;
@@ -34,10 +34,10 @@ Attribute VB_Exposed = False
 'You can contact me at:
 'morgolock@speedy.com.ar
 'www.geocities.com/gmorgolock
-'Calle 3 nÃºmero 983 piso 7 dto A
+'Calle 3 número 983 piso 7 dto A
 'La Plata - Pcia, Buenos Aires - Republica Argentina
-'CÃ³digo Postal 1900
-'Pablo Ignacio MÃ¡rquez
+'Código Postal 1900
+'Pablo Ignacio Márquez
 
 Option Explicit
 '                    Metodos publicos
@@ -79,7 +79,7 @@ Public Sub Reset()
         Exit Sub
 
 Reset_Err:
-106     Call RegistrarError(Err.Number, Err.description, "cCola.Reset", Erl)
+106     Call TraceError(Err.Number, Err.Description, "cCola.Reset", Erl)
 
         
 End Sub
@@ -94,8 +94,8 @@ Public Property Get Longitud() As Integer
         Exit Property
 
 Longitud_Err:
-102     Call RegistrarError(Err.Number, Err.description, "cCola.Longitud", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "cCola.Longitud", Erl)
+104
         
 End Property
 
@@ -109,8 +109,8 @@ Private Function IndexValido(ByVal i As Integer) As Boolean
         Exit Function
 
 IndexValido_Err:
-102     Call RegistrarError(Err.Number, Err.description, "cCola.IndexValido", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "cCola.IndexValido", Erl)
+104
         
 End Function
 
@@ -124,12 +124,12 @@ Private Sub Class_Initialize()
         Exit Sub
 
 Class_Initialize_Err:
-102     Call RegistrarError(Err.Number, Err.description, "cCola.Class_Initialize", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "cCola.Class_Initialize", Erl)
+104
         
 End Sub
 
-Public Function VerElemento(ByVal index As Integer) As String
+Public Function VerElemento(ByVal Index As Integer) As String
         
         On Error GoTo VerElemento_Err
     
@@ -137,11 +137,11 @@ Public Function VerElemento(ByVal index As Integer) As String
 
         
 
-100     If IndexValido(index) Then
+100     If IndexValido(Index) Then
             'Pablo
             'VerElemento = UCase$(Cola.Item(index))
             '/Pablo
-102         VerElemento = Cola(index)
+102         VerElemento = Cola(Index)
         Else
 104         VerElemento = 0
 
@@ -151,7 +151,7 @@ Public Function VerElemento(ByVal index As Integer) As String
         Exit Function
 
 VerElemento_Err:
-106     Call RegistrarError(Err.Number, Err.description, "cCola.VerElemento", Erl)
+106     Call TraceError(Err.Number, Err.Description, "cCola.VerElemento", Erl)
 
         
 End Function
@@ -165,13 +165,13 @@ Public Sub Push(ByVal nombre As String, ByVal Consulta As String, ByVal TipoDeCo
         
 
         'Mete elemento en la cola
-100     Call Cola.Add(nombre & "Ã˜" & Consulta & "Ã˜" & TipoDeConsulta)
+100     Call Cola.Add(nombre & "Ø" & Consulta & "Ø" & TipoDeConsulta)
 
         
         Exit Sub
 
 Push_Err:
-102     Call RegistrarError(Err.Number, Err.description, "cCola.Push", Erl)
+102     Call TraceError(Err.Number, Err.Description, "cCola.Push", Erl)
 
         
 End Sub
@@ -197,7 +197,7 @@ Public Function Pop() As String
         Exit Function
 
 Pop_Err:
-108     Call RegistrarError(Err.Number, Err.description, "cCola.Pop", Erl)
+108     Call TraceError(Err.Number, Err.Description, "cCola.Pop", Erl)
 
         
 End Function
@@ -205,12 +205,6 @@ End Function
 Public Function PopByVal() As String
         
         On Error GoTo PopByVal_Err
-    
-        
-
-        
-
-        'Call LogTarea("PopByVal SOS")
 
         'Quita elemento de la cola
 100     If Cola.Count > 0 Then
@@ -224,7 +218,7 @@ Public Function PopByVal() As String
         Exit Function
 
 PopByVal_Err:
-106     Call RegistrarError(Err.Number, Err.description, "cCola.PopByVal", Erl)
+106     Call TraceError(Err.Number, Err.Description, "cCola.PopByVal", Erl)
 
         
 End Function
@@ -246,11 +240,7 @@ Public Function Existe(ByVal nombre As String) As Boolean
 100     NombreEnMayusculas = UCase$(nombre)
  
 102     For i = 1 To Me.Longitud
-            'Pablo
-104         V = mid$(Me.VerElemento(i), 10, Len(Me.VerElemento(i)))
-
-            '/Pablo
-            'V = Me.VerElemento(i)
+104         V = UCase$(ReadField(1, Me.VerElemento(i), Asc("Ø")))
 106         If V = NombreEnMayusculas Then
 108             Existe = True
                 Exit Function
@@ -264,7 +254,7 @@ Public Function Existe(ByVal nombre As String) As Boolean
         Exit Function
 
 Existe_Err:
-112     Call RegistrarError(Err.Number, Err.description, "cCola.Existe", Erl)
+112     Call TraceError(Err.Number, Err.Description, "cCola.Existe", Erl)
 
         
 End Function
@@ -303,12 +293,12 @@ Public Sub Quitar(ByVal nombre As String)
         Exit Sub
 
 Quitar_Err:
-110     Call RegistrarError(Err.Number, Err.description, "cCola.Quitar", Erl)
+110     Call TraceError(Err.Number, Err.Description, "cCola.Quitar", Erl)
 
         
 End Sub
 
-Public Sub QuitarIndex(ByVal index As Integer)
+Public Sub QuitarIndex(ByVal Index As Integer)
         
         On Error GoTo QuitarIndex_Err
     
@@ -316,29 +306,29 @@ Public Sub QuitarIndex(ByVal index As Integer)
 
         
 
-100     If IndexValido(index) Then Call Cola.Remove(index)
+100     If IndexValido(Index) Then Call Cola.Remove(Index)
 
         
         Exit Sub
 
 QuitarIndex_Err:
-102     Call RegistrarError(Err.Number, Err.description, "cCola.QuitarIndex", Erl)
+102     Call TraceError(Err.Number, Err.Description, "cCola.QuitarIndex", Erl)
 
         
 End Sub
 
 Private Sub Class_Terminate()
-    'Destruimos el objeto Cola
+        'Destruimos el objeto Cola
         
-    On Error GoTo Class_Terminate_Err
+        On Error GoTo Class_Terminate_Err
         
-    Set Cola = Nothing
+100     Set Cola = Nothing
 
         
-    Exit Sub
+        Exit Sub
 
 Class_Terminate_Err:
-    Call RegistrarError(Err.Number, Err.description, "cCola.Class_Terminate", Erl)
-    Resume Next
+102     Call TraceError(Err.Number, Err.Description, "cCola.Class_Terminate", Erl)
+104
         
 End Sub

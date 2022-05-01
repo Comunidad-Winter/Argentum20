@@ -19,7 +19,7 @@ Public Sub HandleIncomingAPIData(ByRef data As String)
     ' Parseamos el JSON que recibimo.
     Dim response As Object: Set response = mod_JSON.parse(data)
     
-    ' Esta es la acciÃ³n que la API nos pide ejecutar.
+    ' Esta es la acción que la API nos pide ejecutar.
     Dim Command As String: Command = response.Item("header").Item("action")
     
     Select Case Command

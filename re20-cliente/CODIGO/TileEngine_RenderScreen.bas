@@ -9,6 +9,7 @@ Public map_letter_grh_next   As Long
 Public map_letter_a          As Single
 Public map_letter_fadestatus As Byte
 
+
 Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal PixelOffsetX As Integer, ByVal PixelOffsetY As Integer, ByVal HalfTileWidth As Integer, ByVal HalfTileHeight As Integer)
     
     On Error GoTo RenderScreen_Err
@@ -17,7 +18,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
     '**************************************************************
     ' Author: Aaron Perkins
     ' Last Modify Date: 23/11/2020
-    ' Modified by: Juan MartÃ­n Sotuyo Dodero (Maraxus)
+    ' Modified by: Juan Martín Sotuyo Dodero (Maraxus)
     ' Last modified by: Alexis Caraballo (WyroX)
     ' Renders everything to the viewport
     '**************************************************************
@@ -51,6 +52,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
     Dim DeltaTime                   As Long
 
     Dim TempColor(3)        As RGBA
+    Dim ColorBarraPesca(3)  As RGBA
 
     ' Tiles that are in range
     MinX = center_x - HalfTileWidth
@@ -125,6 +127,12 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
         MaxBufferedY = YMaxMapSize
     End If
     
+    If UpdateLights Then
+        Call RestaurarLuz
+        Call MapUpdateGlobalLightRender
+        UpdateLights = False
+    End If
+    
     Call SpriteBatch.BeginPrecalculated(StartX, StartY)
 
     ' *********************************
@@ -137,7 +145,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
                 ' Layer 1 *********************************
                 Call Draw_Grh_Precalculated(.Graphic(1), .light_value, (.Blocked And FLAG_AGUA) <> 0, (.Blocked And FLAG_LAVA) <> 0, x, y, MinX, MaxX, MinY, MaxY)
                 '******************************************
-          
+                
             End With
 
         Next x
@@ -157,23 +165,74 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
         For x = MinBufferedX To MaxBufferedX
 
             With MapData(x, y)
-
+                
                 ' Layer 2 *********************************
-                If .Graphic(2).GrhIndex <> 0 Then
+                If .Graphic(2).grhIndex <> 0 Then
                     Call Draw_Grh(.Graphic(2), ScreenX, ScreenY, 1, 1, .light_value, , x, y)
                 End If
                 '******************************************
+            
+            End With
+
+            ScreenX = ScreenX + TilePixelWidth
+        Next x
+
+        ScreenY = ScreenY + TilePixelHeight
+    Next y
+    
+ 
+    
+    
+    Dim grhSpellArea As grh
+    grhSpellArea.GrhIndex = 20058
+    
+    Dim temp_color(3) As RGBA
+    
+    Call SetRGBA(temp_color(0), 255, 20, 25, 255)
+    Call SetRGBA(temp_color(1), 0, 255, 25, 255)
+    Call SetRGBA(temp_color(2), 55, 255, 55, 255)
+    Call SetRGBA(temp_color(3), 145, 70, 70, 255)
+    
+   ' Call SetRGBA(MapData(15, 15).light_value(0), 255, 20, 20)
+    'size 96x96 - mitad = 48
+    If casteaArea And MouseX > 0 And MouseY > 0 And frmMain.MousePointer = 2 Then
+        Call Draw_Grh(grhSpellArea, MouseX - 48, MouseY - 48, 0, 1, temp_color, True, , , 70)
+    End If
+    
+     ScreenY = StartBufferedY
+
+    For y = MinBufferedY To MaxBufferedY
+        ScreenX = StartBufferedX
+
+        For x = MinBufferedX To MaxBufferedX
+
+            With MapData(x, y)
                 
                 ' Objects *********************************
-                If .ObjGrh.GrhIndex <> 0 Then
-                    Select Case ObjData(.OBJInfo.OBJIndex).ObjType
-                    
-                        Case eObjType.otArboles, eObjType.otPuertas, eObjType.otTeleport, eObjType.otCarteles, eObjType.OtPozos, eObjType.otYacimiento, eObjType.OtCorreo
+                If .ObjGrh.grhIndex <> 0 Then
+                    Select Case ObjData(.OBJInfo.ObjIndex).ObjType
+                        Case eObjType.otArboles, eObjType.otPuertas, eObjType.otTeleport, eObjType.otCarteles, eObjType.OtPozos, eObjType.otYacimiento, eObjType.OtCorreo, eObjType.otFragua, eObjType.OtDecoraciones
+                            Call Draw_Grh(.ObjGrh, ScreenX, ScreenY, 1, 1, .light_value)
 
                         Case Else
                             ' Objetos en el suelo (items, decorativos, etc)
-                            Call Draw_Grh(.ObjGrh, ScreenX, ScreenY, 1, 1, .light_value, , x, y)
-                    
+                            
+                             If ((.Blocked And FLAG_AGUA) <> 0) And .Graphic(2).GrhIndex = 0 Then
+                             
+                                object_angle = (object_angle + (timerElapsedTime * 0.002))
+                                
+                                .light_value(1).A = 85
+                                .light_value(3).A = 85
+                                
+                                Call Draw_Grh_ItemInWater(.ObjGrh, ScreenX, ScreenY, False, False, .light_value, False, , , (object_angle + x * 45 + y * 90))
+                                
+                                .light_value(1).A = 255
+                                .light_value(3).A = 255
+                                .light_value(0).A = 255
+                                .light_value(2).A = 255
+                            Else
+                                Call Draw_Grh(.ObjGrh, ScreenX, ScreenY, 1, 1, .light_value)
+                            End If
                     End Select
                 End If
                 '******************************************
@@ -257,34 +316,77 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
 
             With MapData(x, y)
                 ' Objects *********************************
-                If .ObjGrh.GrhIndex <> 0 Then
-                    Select Case ObjData(.OBJInfo.OBJIndex).ObjType
-                    
-                        Case eObjType.otPuertas, eObjType.otTeleport, eObjType.otCarteles, eObjType.OtPozos, eObjType.otYacimiento, eObjType.OtCorreo
-                            ' Objetos grandes (menos Ã¡rboles)
-                            Call Draw_Grh(.ObjGrh, ScreenX, ScreenY, 1, 1, .light_value, , x, y)
+                If .ObjGrh.grhIndex <> 0 Then
+                           
+                    Select Case ObjData(.OBJInfo.ObjIndex).ObjType
+                         
+                        Case eObjType.otArboles
+                          
+                            Call Draw_Sombra(.ObjGrh, ScreenX, ScreenY, 1, 1, False, x, y)
+
+                            ' Debajo del arbol
+                            If Abs(UserPos.x - x) < 3 And (Abs(UserPos.y - y)) < 8 And (Abs(UserPos.y) < y) Then
+    
+                                If .ArbolAlphaTimer <= 0 Then
+                                    .ArbolAlphaTimer = lastMove
+                                End If
+    
+                                DeltaTime = FrameTime - .ArbolAlphaTimer
+    
+                                Call Copy_RGBAList_WithAlpha(TempColor, .light_value, IIf(DeltaTime > ARBOL_ALPHA_TIME, ARBOL_MIN_ALPHA, 255 - DeltaTime / ARBOL_ALPHA_TIME * (255 - ARBOL_MIN_ALPHA)))
+                                Call Draw_Grh(.ObjGrh, ScreenX, ScreenY, 1, 1, TempColor, False, x, y)
+    
+                            Else    ' Lejos del arbol
+                                If .ArbolAlphaTimer = 0 Then
+                                    Call Draw_Grh(.ObjGrh, ScreenX, ScreenY, 1, 1, .light_value, False, x, y)
+    
+                                Else
+                                    If .ArbolAlphaTimer > 0 Then
+                                        .ArbolAlphaTimer = -lastMove
+                                    End If
+    
+                                    DeltaTime = FrameTime + .ArbolAlphaTimer
+    
+                                    If DeltaTime > ARBOL_ALPHA_TIME Then
+                                        .ArbolAlphaTimer = 0
+                                        Call Draw_Grh(.ObjGrh, ScreenX, ScreenY, 1, 1, .light_value, False, x, y)
+                                    Else
+                                        Call Copy_RGBAList_WithAlpha(TempColor, .light_value, ARBOL_MIN_ALPHA + DeltaTime * (255 - ARBOL_MIN_ALPHA) / ARBOL_ALPHA_TIME)
+                                        Call Draw_Grh(.ObjGrh, ScreenX, ScreenY, 1, 1, TempColor, False, x, y)
+                                    End If
+                                End If
+    
+                            End If
+                        
+                        Case eObjType.otPuertas, eObjType.otTeleport, eObjType.otCarteles, eObjType.OtPozos, eObjType.otYacimiento, eObjType.OtCorreo, eObjType.otYunque, eObjType.otFragua, eObjType.OtDecoraciones
+                            ' Objetos grandes (menos árboles)
+                            Call Draw_Grh(.ObjGrh, ScreenX, ScreenY, 1, 1, .light_value, False, x, y)
+                            
+                        'Case Else
+                        '    Call Draw_Grh(.ObjGrh, ScreenX, ScreenY, 1, 1, .light_value, False, x, y)
                     
                     End Select
                 End If
                 '******************************************
-    
+                
                 'Layer 3 **********************************
-                If .Graphic(3).GrhIndex <> 0 Then
+                If .Graphic(3).grhIndex <> 0 Then
 
                     If (.Blocked And FLAG_ARBOL) <> 0 Then
-
-                        Call Draw_Sombra(.Graphic(3), ScreenX, ScreenY, 1, 1, False, x, y)
+                        
+                        
+                       ' Call Draw_Sombra(.Graphic(3), ScreenX, ScreenY, 1, 1, False, x, y)
 
                         ' Debajo del arbol
-                        If Abs(UserPos.x - x) < 3 And (Abs(UserPos.y - y)) < 8 And (Abs(UserPos.y) < y) Then
+                        If Abs(UserPos.x - x) <= 3 And (Abs(UserPos.y - y)) < 8 And (Abs(UserPos.y) < y) Then
 
                             If .ArbolAlphaTimer <= 0 Then
-                                .ArbolAlphaTimer = LastMove
+                                .ArbolAlphaTimer = lastMove
                             End If
 
                             DeltaTime = FrameTime - .ArbolAlphaTimer
 
-                            Call Copy_RGBAList_WithAlpha(TempColor, .light_value, IIf(DeltaTime > ARBOL_ALPHA_TIME, ARBOL_MIN_ALPHA, 255 - DeltaTime * (255 - ARBOL_MIN_ALPHA) / ARBOL_ALPHA_TIME))
+                            Call Copy_RGBAList_WithAlpha(TempColor, .light_value, IIf(DeltaTime > ARBOL_ALPHA_TIME, ARBOL_MIN_ALPHA, 255 - DeltaTime / ARBOL_ALPHA_TIME * (255 - ARBOL_MIN_ALPHA)))
                             Call Draw_Grh(.Graphic(3), ScreenX, ScreenY, 1, 1, TempColor, False, x, y)
 
                         Else    ' Lejos del arbol
@@ -293,7 +395,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
 
                             Else
                                 If .ArbolAlphaTimer > 0 Then
-                                    .ArbolAlphaTimer = -LastMove
+                                    .ArbolAlphaTimer = -lastMove
                                 End If
 
                                 DeltaTime = FrameTime + .ArbolAlphaTimer
@@ -310,7 +412,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
                         End If
 
                     Else
-                        If AgregarSombra(.Graphic(3).GrhIndex) Then
+                        If AgregarSombra(.Graphic(3).grhIndex) Then
                             Call Draw_Sombra(.Graphic(3), ScreenX, ScreenY, 1, 1, False, x, y)
                         End If
 
@@ -328,7 +430,23 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
         ScreenY = ScreenY + TilePixelHeight
     Next y
     
-    
+    If InfoItemsEnRender And tX And tY Then
+        With MapData(tX, tY)
+            If .OBJInfo.ObjIndex Then
+                If Not ObjData(.OBJInfo.ObjIndex).Agarrable Then
+                    Dim Text As String, Amount As String
+                    If .OBJInfo.Amount > 1000 Then
+                        Amount = Round(.OBJInfo.Amount * 0.001, 1) & "K"
+                    Else
+                        Amount = .OBJInfo.Amount
+                    End If
+                    Text = ObjData(.OBJInfo.ObjIndex).Name & " (" & Amount & ")"
+                    Call Engine_Text_Render(Text, MouseX + 15, MouseY, COLOR_WHITE, , , , 160)
+                End If
+            End If
+        End With
+    End If
+
     ' *********************************
     ' Particles loop
     ScreenY = StartBufferedY
@@ -357,7 +475,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
     If HayLayer4 Then
 
         ' Actualizo techos
-        Dim Trigger As Integer
+        Dim Trigger As eTrigger
         For Trigger = LBound(RoofsLight) To UBound(RoofsLight)
 
             ' Si estoy bajo este techo
@@ -365,14 +483,14 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
             
                 If RoofsLight(Trigger) > 0 Then
                     ' Reduzco el alpha
-                    RoofsLight(Trigger) = RoofsLight(Trigger) - timerTicksPerFrame * 12
+                    RoofsLight(Trigger) = RoofsLight(Trigger) - timerTicksPerFrame * 48
                     If RoofsLight(Trigger) < 0 Then RoofsLight(Trigger) = 0
                 End If
 
             ElseIf RoofsLight(Trigger) < 255 Then
             
                 ' Aumento el alpha
-                RoofsLight(Trigger) = RoofsLight(Trigger) + timerTicksPerFrame * 12
+                RoofsLight(Trigger) = RoofsLight(Trigger) + timerTicksPerFrame * 48
                 If RoofsLight(Trigger) > 255 Then RoofsLight(Trigger) = 255
             
             End If
@@ -388,17 +506,15 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
             
                 With MapData(x, y)
                     ' Layer 4 - roofs *******************************
-                    If .Graphic(4).GrhIndex Then
+                    If .Graphic(4).grhIndex Then
 
-                        If HayTecho(x, y) Then
-                            Call Copy_RGBAList_WithAlpha(TempColor, .light_value, RoofsLight(.Trigger))
+                        Trigger = NearRoof(x, y)
 
+                        If Trigger Then
+                            Call Copy_RGBAList_WithAlpha(TempColor, .light_value, RoofsLight(Trigger))
                             Call Draw_Grh(.Graphic(4), ScreenX, ScreenY, 1, 1, TempColor, , x, y)
-                            
                         Else
-
                             Call Draw_Grh(.Graphic(4), ScreenX, ScreenY, 1, 1, .light_value, , x, y)
-    
                         End If
     
                     End If
@@ -414,6 +530,27 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
     End If
     
     
+    
+    
+    If TieneAntorcha Then
+    
+        Dim randX As Double, randY As Double
+        
+        If GetTickCount - (10 * Rnd + 50) >= DeltaAntorcha Then
+            randX = RandomNumber(-8, 0)
+            randY = RandomNumber(-8, 0)
+            
+            DeltaAntorcha = GetTickCount
+        End If
+    Call Draw_GrhIndex(63333, randX, randY)
+    
+    End If
+    
+       
+       
+        
+    
+    
     ' *********************************
     ' FXs and dialogs loop
     ScreenY = StartBufferedY
@@ -425,7 +562,6 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
             
             With MapData(x, y)
 
-                Dim i As Long
 
                 ' Dialogs *******************************
                 If MapData(x, y).charindex <> 0 Then
@@ -440,6 +576,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
                 '******************************************
 
                 ' Render text value *******************************
+                Dim i As Long
                 If UBound(.DialogEffects) > 0 Then
                     For i = 1 To UBound(.DialogEffects)
                         With .DialogEffects(i)
@@ -456,7 +593,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
                                         Call RGBAList(TempColor, .Color.r, .Color.G, .Color.B, .Color.A)
                                     End If
                             
-                                    Engine_Text_Render_Efect 0, .Text, ScreenX + 16 - Int(Engine_Text_Width(.Text, False) * 0.5) + .Offset.x, ScreenY - Engine_Text_Height(.Text, False) + .Offset.y - DialogTime * 0.025, TempColor, 1, False
+                                    Engine_Text_Render_Efect 0, .Text, ScreenX + 16 - Int(Engine_Text_Width(.Text, False) * 0.5) + .offset.x, ScreenY - Engine_Text_Height(.Text, False) + .offset.y - DialogTime * 0.025, TempColor, 1, False
                     
                                 End If
                             End If
@@ -475,10 +612,10 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
 
                             If FxData(.FxList(i).FxIndex).IsPNG = 1 Then
                             
-                                Call Draw_GrhFX(.FxList(i), ScreenX + FxData(.FxList(i).FxIndex).offsetX, ScreenY + FxData(.FxList(i).FxIndex).offsetY + 20, 1, 1, TempColor(), False)
+                                Call Draw_GrhFX(.FxList(i), ScreenX + FxData(.FxList(i).FxIndex).OffsetX, ScreenY + FxData(.FxList(i).FxIndex).OffsetY + 20, 1, 1, TempColor(), False)
 
                             Else
-                                Call Draw_GrhFX(.FxList(i), ScreenX + FxData(.FxList(i).FxIndex).offsetX, ScreenY + FxData(.FxList(i).FxIndex).offsetY + 20, 1, 1, TempColor(), True)
+                                Call Draw_GrhFX(.FxList(i), ScreenX + FxData(.FxList(i).FxIndex).OffsetX, ScreenY + FxData(.FxList(i).FxIndex).OffsetY + 20, 1, 1, TempColor(), True)
 
                             End If
 
@@ -542,6 +679,17 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
     End If
     
     Call Effect_Render_All
+  
+    
+    If InvasionActual Then
+        
+        Call Engine_Draw_Box(190, 550, 356, 36, RGBA_From_Comp(0, 0, 0, 200))
+        Call Engine_Draw_Box(193, 553, 3.5 * InvasionPorcentajeVida, 30, RGBA_From_Comp(20, 196, 255, 200))
+        
+        Call Engine_Draw_Box(340, 586, 54, 9, RGBA_From_Comp(0, 0, 0, 200))
+        Call Engine_Draw_Box(342, 588, 0.5 * InvasionPorcentajeTiempo, 5, RGBA_From_Comp(220, 200, 0, 200))
+        
+    End If
 
     If Pregunta Then
         
@@ -571,12 +719,59 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
     End If
 
     Call RenderScreen_NombreMapa
-
+   '   Dim grhTest As grh
+   '   Dim testColor As ARGB
+      
+   ' InitGrh grhTest, 12774
+   '  Call Draw_Grh(grhTest, 370, 600, 1, 1, TempColor, False, x, y)
+    
+    'HarThaoS y el peroncho(Ford Lers)
+    If PescandoEspecial Then
+        Call RGBAList(ColorBarraPesca, 255, 255, 255)
+        Dim grh As grh
+        grh.GrhIndex = GRH_BARRA_PESCA
+        Call Draw_Grh(grh, 239, 550, 0, 0, ColorBarraPesca())
+        grh.GrhIndex = GRH_CURSOR_PESCA
+        Call Draw_Grh(grh, 271 + PosicionBarra, 558, 0, 0, ColorBarraPesca())
+        Debug.Print PescandoEspecial
+        For i = 1 To MAX_INTENTOS
+            If intentosPesca(i) = 1 Then
+                grh.GrhIndex = GRH_CIRCULO_VERDE
+                Call Draw_Grh(grh, 394 + (i * 10), 573, 0, 0, ColorBarraPesca())
+            ElseIf intentosPesca(i) = 2 Then
+                grh.GrhIndex = GRH_CIRCULO_ROJO
+                Call Draw_Grh(grh, 394 + (i * 10), 573, 0, 0, ColorBarraPesca())
+            End If
+        Next i
+                
+        If PosicionBarra <= 0 Then
+            DireccionBarra = 1
+            PuedeIntentar = True
+        ElseIf PosicionBarra > 199 Then
+            DireccionBarra = -1
+            PuedeIntentar = True
+        End If
+        If PosicionBarra < 0 Then
+            PosicionBarra = 0
+        ElseIf PosicionBarra > 199 Then
+            PosicionBarra = 199
+        End If
+        '90 - 111 es incluido (saca el pecesito)
+        PosicionBarra = PosicionBarra + (DireccionBarra * VelocidadBarra * timerElapsedTime * 0.2)
+        
+        
+        If (GetTickCount() - startTimePezEspecial) >= 20000 Then
+            PescandoEspecial = False
+            Call AddtoRichTextBox(frmMain.RecTxt, "El pez ha roto tu linea de pesca.", 255, 0, 0, 1, 0)
+            Call WriteRomperCania
+        End If
+        
+    End If
     
     Exit Sub
 
 RenderScreen_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_RenderScreen.RenderScreen", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_RenderScreen.RenderScreen", Erl)
     Resume Next
     
 End Sub
@@ -608,7 +803,7 @@ Private Sub RenderScreen_NombreMapa()
                 map_letter_a = 0
                  
                 If map_letter_grh_next > 0 Then
-                    map_letter_grh.GrhIndex = map_letter_grh_next
+                    map_letter_grh.grhIndex = map_letter_grh_next
                     map_letter_fadestatus = 1
                     map_letter_grh_next = 0
 
@@ -635,11 +830,8 @@ Private Sub RenderScreen_NombreMapa()
     Exit Sub
 
 RenderScreen_NombreMapa_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_RenderScreen.RenderScreen_NombreMapa", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_RenderScreen.RenderScreen_NombreMapa", Erl)
     Resume Next
     
 End Sub
-
-
-
 

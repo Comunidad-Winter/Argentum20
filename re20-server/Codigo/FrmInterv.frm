@@ -315,7 +315,7 @@ Begin VB.Form FrmInterv
       Top             =   0
       Width           =   7455
       Begin VB.Frame Frame9 
-         Caption         =   "ConexiÃ³n"
+         Caption         =   "Conexión"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   8.25
@@ -703,7 +703,7 @@ Begin VB.Form FrmInterv
             Width           =   840
          End
          Begin VB.Label Label22 
-            Caption         =   "IncineraciÃ³n"
+            Caption         =   "Incineración"
             Height          =   255
             Left            =   2160
             TabIndex        =   56
@@ -780,7 +780,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 'Argentum Online 0.11.6
-'Copyright (C) 2002 MÃ¡rquez Pablo Ignacio
+'Copyright (C) 2002 Márquez Pablo Ignacio
 '
 'This program is free software; you can redistribute it and/or modify
 'it under the terms of the Affero General Public License;
@@ -802,10 +802,10 @@ Attribute VB_Exposed = False
 'You can contact me at:
 'morgolock@speedy.com.ar
 'www.geocities.com/gmorgolock
-'Calle 3 nÃºmero 983 piso 7 dto A
+'Calle 3 número 983 piso 7 dto A
 'La Plata - Pcia, Buenos Aires - Republica Argentina
-'CÃ³digo Postal 1900
-'Pablo Ignacio MÃ¡rquez
+'Código Postal 1900
+'Pablo Ignacio Márquez
 
 Option Explicit
 
@@ -814,7 +814,7 @@ Public Sub AplicarIntervalos()
         On Error GoTo AplicarIntervalos_Err
         
 
-        'Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿ Intervalos del main loop Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?Â¿
+        '¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿ Intervalos del main loop ¿?¿?¿?¿?¿?¿?¿?¿?¿
 100     SanaIntervaloSinDescansar = val(txtSanaIntervaloSinDescansar.Text)
 102     StaminaIntervaloSinDescansar = val(txtStaminaIntervaloSinDescansar.Text)
 104     SanaIntervaloDescansar = val(txtSanaIntervaloDescansar.Text)
@@ -838,37 +838,31 @@ Public Sub AplicarIntervalos()
         '///////////////// TIMERS \\\\\\\\\\\\\\\\\\\
 
 138     IntervaloUserPuedeCastear = val(txtIntervaloLanzaHechizo.Text)
-140     frmMain.npcataca.Interval = val(txtNPCPuedeAtacar.Text)
-142     frmMain.TIMER_AI.Interval = val(txtAI.Text)
-144     IntervaloTrabajarExtraer = val(txtTrabajoExtraer.Text)
-146     IntervaloTrabajarConstruir = val(txtTrabajoConstruir.Text)
-148     IntervaloUserPuedeAtacar = val(txtPuedeAtacar.Text)
+140     frmMain.TIMER_AI.Interval = val(txtAI.Text)
+142     IntervaloTrabajarExtraer = val(txtTrabajoExtraer.Text)
+144     IntervaloTrabajarConstruir = val(txtTrabajoConstruir.Text)
+146     IntervaloUserPuedeAtacar = val(txtPuedeAtacar.Text)
         'frmMain.tLluvia.Interval = val(txtIntervaloPerdidaStaminaLluvia.Text)
 
         
         Exit Sub
 
 AplicarIntervalos_Err:
-150     Call RegistrarError(Err.Number, Err.description, "FrmInterv.AplicarIntervalos", Erl)
-152     Resume Next
+148     Call TraceError(Err.Number, Err.Description, "FrmInterv.AplicarIntervalos", Erl)
+150
         
 End Sub
 
 Private Sub Command1_Click()
         
         On Error GoTo Command1_Click_Err
-    
-        
-
-        
 
 100     Call AplicarIntervalos
-
-        
+     
         Exit Sub
 
 Command1_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "FrmInterv.Command1_Click", Erl)
+102     Call TraceError(Err.Number, Err.Description, "FrmInterv.Command1_Click", Erl)
 
         
 End Sub
@@ -900,19 +894,19 @@ Private Sub Command2_Click()
 
 136     Call WriteVar(IniPath & "intervalo.ini", "INTERVALOS", "IntervaloLanzaHechizo", CStr(IntervaloUserPuedeCastear))
 138     Call WriteVar(IniPath & "intervalo.ini", "INTERVALOS", "IntervaloNpcAI", frmMain.TIMER_AI.Interval)
-140     Call WriteVar(IniPath & "intervalo.ini", "INTERVALOS", "IntervaloNpcPuedeAtacar", frmMain.npcataca.Interval)
-142     Call WriteVar(IniPath & "intervalo.ini", "INTERVALOS", "IntervaloTrabajarExtraer", CStr(IntervaloTrabajarExtraer))
-144     Call WriteVar(IniPath & "intervalo.ini", "INTERVALOS", "IntervaloTrabajarConstruir", CStr(IntervaloTrabajarConstruir))
-146     Call WriteVar(IniPath & "intervalo.ini", "INTERVALOS", "IntervaloUserPuedeAtacar", CStr(IntervaloUserPuedeAtacar))
+140     Call WriteVar(IniPath & "intervalo.ini", "INTERVALOS", "IntervaloTrabajarExtraer", CStr(IntervaloTrabajarExtraer))
+142     Call WriteVar(IniPath & "intervalo.ini", "INTERVALOS", "IntervaloTrabajarConstruir", CStr(IntervaloTrabajarConstruir))
+144     Call WriteVar(IniPath & "intervalo.ini", "INTERVALOS", "IntervaloUserPuedeAtacar", CStr(IntervaloUserPuedeAtacar))
         'Call WriteVar(IniPath & "intervalo.ini", "INTERVALOS", "IntervaloPerdidaStaminaLluvia", frmMain.tLluvia.Interval)
 
-148     MsgBox "Los intervalos se han guardado sin problemas"
+146     MsgBox "Los intervalos se han guardado sin problemas"
 
         Exit Sub
 Err:
-150     MsgBox "Error al intentar grabar los intervalos"
+148     MsgBox "Error al intentar grabar los intervalos"
 
 End Sub
+
 
 Private Sub ok_Click()
         
@@ -924,7 +918,8 @@ Private Sub ok_Click()
         Exit Sub
 
 ok_Click_Err:
-102     Call RegistrarError(Err.Number, Err.description, "FrmInterv.ok_Click", Erl)
-104     Resume Next
+102     Call TraceError(Err.Number, Err.Description, "FrmInterv.ok_Click", Erl)
+104
         
 End Sub
+

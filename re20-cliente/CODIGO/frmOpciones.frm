@@ -1,12 +1,13 @@
 VERSION 5.00
+Object = "{48E59290-9880-11CF-9754-00AA00C00908}#1.0#0"; "MSINET.OCX"
 Begin VB.Form frmOpciones 
    Appearance      =   0  'Flat
    BackColor       =   &H80000005&
    BorderStyle     =   0  'None
-   ClientHeight    =   7575
+   ClientHeight    =   7365
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   8025
+   ClientWidth     =   7980
    ControlBox      =   0   'False
    FillColor       =   &H00C0C0C0&
    BeginProperty Font 
@@ -22,10 +23,17 @@ Begin VB.Form frmOpciones
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   7575
-   ScaleWidth      =   8025
+   ScaleHeight     =   7365
+   ScaleWidth      =   7980
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  'CenterOwner
+   Begin InetCtlsObjects.Inet Inet1 
+      Left            =   7320
+      Top             =   6600
+      _ExtentX        =   1005
+      _ExtentY        =   1005
+      _Version        =   393216
+   End
    Begin VB.HScrollBar Alpha 
       Height          =   315
       LargeChange     =   60
@@ -122,6 +130,60 @@ Begin VB.Form frmOpciones
       Top             =   10440
       Width           =   1335
    End
+   Begin VB.PictureBox PanelVideo 
+      BorderStyle     =   0  'None
+      Height          =   4965
+      Left            =   240
+      ScaleHeight     =   331
+      ScaleMode       =   3  'Pixel
+      ScaleWidth      =   504
+      TabIndex        =   14
+      Top             =   1800
+      Visible         =   0   'False
+      Width           =   7560
+      Begin VB.Image num_comp_inv 
+         Height          =   255
+         Left            =   270
+         Top             =   3090
+         Width           =   255
+      End
+      Begin VB.Image chkItemsEnRender 
+         Height          =   255
+         Left            =   270
+         Top             =   2715
+         Width           =   255
+      End
+      Begin VB.Image Fullscreen 
+         Height          =   255
+         Left            =   270
+         Top             =   2310
+         Width           =   255
+      End
+      Begin VB.Image Respiracion 
+         Height          =   255
+         Left            =   270
+         Top             =   1905
+         Width           =   255
+      End
+      Begin VB.Image VSync 
+         Height          =   255
+         Left            =   270
+         Top             =   1500
+         Width           =   255
+      End
+      Begin VB.Image Check5 
+         Height          =   255
+         Left            =   270
+         Top             =   1095
+         Width           =   255
+      End
+      Begin VB.Image Check6 
+         Height          =   255
+         Left            =   270
+         Top             =   690
+         Width           =   255
+      End
+   End
    Begin VB.PictureBox PanelJugabilidad 
       BorderStyle     =   0  'None
       Height          =   4845
@@ -175,12 +237,6 @@ Begin VB.Form frmOpciones
          Top             =   645
          Width           =   255
       End
-      Begin VB.Image ind_lectura 
-         Height          =   255
-         Left            =   270
-         Top             =   1455
-         Width           =   255
-      End
    End
    Begin VB.PictureBox PanelAudio 
       BorderStyle     =   0  'None
@@ -190,7 +246,7 @@ Begin VB.Form frmOpciones
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   504
       TabIndex        =   15
-      Top             =   1680
+      Top             =   1800
       Visible         =   0   'False
       Width           =   7560
       Begin VB.HScrollBar HScroll1 
@@ -258,30 +314,6 @@ Begin VB.Form frmOpciones
          Index           =   1
          Left            =   255
          Top             =   1095
-         Width           =   255
-      End
-   End
-   Begin VB.PictureBox PanelVideo 
-      BorderStyle     =   0  'None
-      Height          =   4845
-      Left            =   240
-      ScaleHeight     =   323
-      ScaleMode       =   3  'Pixel
-      ScaleWidth      =   504
-      TabIndex        =   14
-      Top             =   1800
-      Visible         =   0   'False
-      Width           =   7560
-      Begin VB.Image Check5 
-         Height          =   255
-         Left            =   270
-         Top             =   1095
-         Width           =   255
-      End
-      Begin VB.Image Check6 
-         Height          =   255
-         Left            =   270
-         Top             =   690
          Width           =   255
       End
    End
@@ -426,15 +458,15 @@ Const MOUSE_MOVE    As Long = &HF012&
 
 Private Declare Function ReleaseCapture Lib "user32" () As Long
 
-Private Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Long) As Long
+Private Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Long) As Long
 
-' funci√≥n Api para aplicar la transparencia a la ventana
-Private Declare Function SetLayeredWindowAttributes Lib "user32" (ByVal hWnd As Long, ByVal crKey As Long, ByVal bAlpha As Byte, ByVal dwFlags As Long) As Long
+' funciÛn Api para aplicar la transparencia a la ventana
+Private Declare Function SetLayeredWindowAttributes Lib "user32" (ByVal hwnd As Long, ByVal crKey As Long, ByVal bAlpha As Byte, ByVal dwFlags As Long) As Long
 
 ' Funciones api para los estilos de la ventana
-Private Declare Function GetWindowLong Lib "user32" Alias "GetWindowLongA" (ByVal hWnd As Long, ByVal nIndex As Long) As Long
+Private Declare Function GetWindowLong Lib "user32" Alias "GetWindowLongA" (ByVal hwnd As Long, ByVal nIndex As Long) As Long
 
-Private Declare Function SetWindowLong Lib "user32" Alias "SetWindowLongA" (ByVal hWnd As Long, ByVal nIndex As Long, ByVal dwNewLong As Long) As Long
+Private Declare Function SetWindowLong Lib "user32" Alias "SetWindowLongA" (ByVal hwnd As Long, ByVal nIndex As Long, ByVal dwNewLong As Long) As Long
 
 'constantes
 Private Const GWL_EXSTYLE = (-20)
@@ -443,7 +475,7 @@ Private Const LWA_ALPHA = &H2
 
 Private Const WS_EX_LAYERED = &H80000
 
-Private Declare Function SetWindowPos Lib "user32" (ByVal hWnd As Long, ByVal hWndInsertAfter As Long, ByVal x As Long, ByVal y As Long, ByVal cx As Long, ByVal cy As Long, ByVal wFlags As Long) As Long
+Private Declare Function SetWindowPos Lib "user32" (ByVal hwnd As Long, ByVal hWndInsertAfter As Long, ByVal x As Long, ByVal y As Long, ByVal cx As Long, ByVal cy As Long, ByVal wFlags As Long) As Long
 
 Private Const HWND_TOPMOST = -1
 
@@ -453,7 +485,7 @@ Private Const SWP_NOMOVE = &H2
 
 Private Const SWP_NOSIZE = &H1
 
-Public Function Is_Transparent(ByVal hWnd As Long) As Boolean
+Public Function Is_Transparent(ByVal hwnd As Long) As Boolean
     
     On Error GoTo Is_Transparent_Err
     
@@ -462,7 +494,7 @@ Public Function Is_Transparent(ByVal hWnd As Long) As Boolean
   
     Dim msg As Long
   
-    msg = GetWindowLong(hWnd, GWL_EXSTYLE)
+    msg = GetWindowLong(hwnd, GWL_EXSTYLE)
          
     If (msg And WS_EX_LAYERED) = WS_EX_LAYERED Then
         Is_Transparent = True
@@ -480,13 +512,13 @@ Public Function Is_Transparent(ByVal hWnd As Long) As Boolean
     Exit Function
 
 Is_Transparent_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Is_Transparent", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Is_Transparent", Erl)
     Resume Next
     
 End Function
   
-'Funci√≥n que aplica la transparencia, se le pasa el hwnd del form y un valor de 0 a 255
-Public Function Aplicar_Transparencia(ByVal hWnd As Long, Valor As Integer) As Long
+'FunciÛn que aplica la transparencia, se le pasa el hwnd del form y un valor de 0 a 255
+Public Function Aplicar_Transparencia(ByVal hwnd As Long, Valor As Integer) As Long
     
     On Error GoTo Aplicar_Transparencia_Err
     
@@ -498,13 +530,13 @@ Public Function Aplicar_Transparencia(ByVal hWnd As Long, Valor As Integer) As L
     If Valor < 0 Or Valor > 255 Then
         Aplicar_Transparencia = 1
     Else
-        msg = GetWindowLong(hWnd, GWL_EXSTYLE)
+        msg = GetWindowLong(hwnd, GWL_EXSTYLE)
         msg = msg Or WS_EX_LAYERED
      
-        SetWindowLong hWnd, GWL_EXSTYLE, msg
+        SetWindowLong hwnd, GWL_EXSTYLE, msg
      
         'Establece la transparencia
-        SetLayeredWindowAttributes hWnd, 0, Valor, LWA_ALPHA
+        SetLayeredWindowAttributes hwnd, 0, Valor, LWA_ALPHA
   
         Aplicar_Transparencia = 0
   
@@ -519,7 +551,7 @@ Public Function Aplicar_Transparencia(ByVal hWnd As Long, Valor As Integer) As L
     Exit Function
 
 Aplicar_Transparencia_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Aplicar_Transparencia", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Aplicar_Transparencia", Erl)
     Resume Next
     
 End Function
@@ -534,7 +566,7 @@ Private Sub Alpha_Change()
     Exit Sub
 
 Alpha_Change_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Alpha_Change", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Alpha_Change", Erl)
     Resume Next
     
 End Sub
@@ -611,32 +643,6 @@ Private Sub cbBloqueoHechizos_Click()
 
 End Sub
 
-Private Sub Check1_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
-    
-    On Error GoTo Check1_MouseUp_Err
-    
-
-    If OcultarMacrosAlCastear = 1 Then
-        OcultarMacrosAlCastear = 0
-    Else
-        OcultarMacrosAlCastear = 1
-    End If
-        
-    If OcultarMacrosAlCastear = 0 Then
-        Check1.Picture = Nothing
-    Else
-        Check1.Picture = LoadInterface("check-amarillo.bmp")
-    End If
-        
-    
-    Exit Sub
-
-Check1_MouseUp_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Check1_MouseUp", Erl)
-    Resume Next
-    
-End Sub
-
 Private Sub Check4_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
     
     On Error GoTo Check4_MouseUp_Err
@@ -659,7 +665,7 @@ Private Sub Check4_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
     Exit Sub
 
 Check4_MouseUp_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Check4_MouseUp", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Check4_MouseUp", Erl)
     Resume Next
     
 End Sub
@@ -687,7 +693,7 @@ Private Sub Check5_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
     Exit Sub
 
 Check5_MouseUp_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Check5_MouseUp", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Check5_MouseUp", Erl)
     Resume Next
     
 End Sub
@@ -695,30 +701,22 @@ End Sub
 Private Sub Check2_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
     
     On Error GoTo Check2_MouseUp_Err
-    
+    CursoresGraficos = Not CursoresGraficos
 
-    If CursoresGraficos = 1 Then
-        Call WriteVar(App.Path & "\..\Recursos\OUTPUT\" & "Configuracion.ini", "OPCIONES", "CursoresGraficos", 0)
-        MsgBox "Para que los cambios en esta opci√≥n sean reflejados, deber√° reiniciar el cliente.", vbQuestion, "Argentum20 - Advertencia" 'hay que poner 20 aniversario
-    Else
-        CursoresGraficos = 1
-        Call FormParser.Parse_Form(Me)
-        Call WriteVar(App.Path & "\..\Recursos\OUTPUT\" & "Configuracion.ini", "OPCIONES", "CursoresGraficos", 1)
-    
-    End If
-
-    If CursoresGraficos = 0 Then
-        Check2.Picture = Nothing
-    Else
+    If CursoresGraficos Then
         Check2.Picture = LoadInterface("check-amarillo.bmp")
-
+        Call WriteVar(App.Path & "\..\Recursos\OUTPUT\" & "Configuracion.ini", "VIDEO", "CursoresGraficos", 1)
+    Else
+        Check2.Picture = Nothing
+        Call WriteVar(App.Path & "\..\Recursos\OUTPUT\" & "Configuracion.ini", "VIDEO", "CursoresGraficos", 0)
     End If
-
     
+    MsgBox "Para que los cambios en esta opciÛn sean reflejados, deber· reiniciar el cliente.", vbQuestion, "Argentum20 - Advertencia" 'hay que poner 20 aniversario
+
     Exit Sub
 
 Check2_MouseUp_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Check2_MouseUp", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Check2_MouseUp", Erl)
     Resume Next
     
 End Sub
@@ -749,9 +747,18 @@ Private Sub chkInvertir_MouseUp(Button As Integer, Shift As Integer, x As Single
     Exit Sub
 
 chkInvertir_MouseUp_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.chkInvertir_MouseUp", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.chkInvertir_MouseUp", Erl)
     Resume Next
     
+End Sub
+
+Private Sub chkItemsEnRender_Click()
+    InfoItemsEnRender = Not InfoItemsEnRender
+    If InfoItemsEnRender Then
+        chkItemsEnRender.Picture = LoadInterface("check-amarillo.bmp")
+    Else
+        chkItemsEnRender.Picture = Nothing
+    End If
 End Sub
 
 Private Sub chkO_MouseUp(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -850,7 +857,7 @@ Private Sub chkO_MouseUp(Index As Integer, Button As Integer, Shift As Integer, 
     Exit Sub
 
 chkO_MouseUp_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.chkO_MouseUp", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.chkO_MouseUp", Erl)
     Resume Next
     
 End Sub
@@ -865,7 +872,7 @@ Private Sub cmdayuda_Click()
     Exit Sub
 
 cmdayuda_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.cmdayuda_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.cmdayuda_Click", Erl)
     Resume Next
     
 End Sub
@@ -885,7 +892,7 @@ Private Sub cmdayuda_MouseMove(Button As Integer, Shift As Integer, x As Single,
     Exit Sub
 
 cmdayuda_MouseMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.cmdayuda_MouseMove", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.cmdayuda_MouseMove", Erl)
     Resume Next
     
 End Sub
@@ -908,7 +915,7 @@ Private Sub Command1_MouseMove(Button As Integer, Shift As Integer, x As Single,
     Exit Sub
 
 Command1_MouseMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Command1_MouseMove", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Command1_MouseMove", Erl)
     Resume Next
     
 End Sub
@@ -933,7 +940,7 @@ Private Sub cmdCerrar_MouseMove(Button As Integer, Shift As Integer, x As Single
     Exit Sub
 
 cmdCerrar_MouseMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.cmdCerrar_MouseMove", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.cmdCerrar_MouseMove", Erl)
     Resume Next
     
 End Sub
@@ -956,7 +963,7 @@ Private Sub cmdChangePassword_MouseMove(Button As Integer, Shift As Integer, x A
     Exit Sub
 
 cmdChangePassword_MouseMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.cmdChangePassword_MouseMove", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.cmdChangePassword_MouseMove", Erl)
     Resume Next
     
 End Sub
@@ -965,13 +972,13 @@ Private Sub cmdWeb_Click()
     
     On Error GoTo cmdWeb_Click_Err
     
-    ShellExecute Me.hWnd, "open", "https://ao20.com.ar/", "", "", 0
+    ShellExecute Me.hwnd, "open", "https://ao20.com.ar/", "", "", 0
 
     
     Exit Sub
 
 cmdWeb_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.cmdWeb_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.cmdWeb_Click", Erl)
     Resume Next
     
 End Sub
@@ -986,7 +993,7 @@ Private Sub Command5_Click()
     Exit Sub
 
 Command5_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Command5_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Command5_Click", Erl)
     Resume Next
     
 End Sub
@@ -995,13 +1002,13 @@ Private Sub discord_Click()
     
     On Error GoTo discord_Click_Err
     
-    ShellExecute Me.hWnd, "open", "https://discord.gg/e3juVbF", "", "", 0
+    ShellExecute Me.hwnd, "open", "https://discord.gg/e3juVbF", "", "", 0
 
     
     Exit Sub
 
 discord_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.discord_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.discord_Click", Erl)
     Resume Next
     
 End Sub
@@ -1010,13 +1017,13 @@ Private Sub facebook_Click()
     
     On Error GoTo facebook_Click_Err
     
-    ShellExecute Me.hWnd, "open", "https://ao20.com.ar/", "", "", 0
+    ShellExecute Me.hwnd, "open", "https://ao20.com.ar/", "", "", 0
 
     
     Exit Sub
 
 facebook_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.facebook_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.facebook_Click", Erl)
     Resume Next
     
 End Sub
@@ -1025,7 +1032,7 @@ Private Sub Form_Load()
     
     On Error GoTo Form_Load_Err
     
-    Call Aplicar_Transparencia(Me.hWnd, 240)
+    Call Aplicar_Transparencia(Me.hwnd, 240)
     Call FormParser.Parse_Form(Me)
     Me.Picture = LoadInterface("configuracion-vacio.bmp")
     
@@ -1040,7 +1047,7 @@ Private Sub Form_Load()
     Exit Sub
 
 Form_Load_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Form_Load", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Form_Load", Erl)
     Resume Next
     
 End Sub
@@ -1058,26 +1065,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
     Exit Sub
 
 Form_KeyPress_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Form_KeyPress", Erl)
-    Resume Next
-    
-End Sub
-
-Private Sub MoverForm()
-    
-    On Error GoTo moverForm_Err
-    
-
-    Dim res As Long
-
-    ReleaseCapture
-    res = SendMessage(Me.hWnd, WM_SYSCOMMAND, MOUSE_MOVE, 0)
-
-    
-    Exit Sub
-
-moverForm_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.moverForm", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Form_KeyPress", Erl)
     Resume Next
     
 End Sub
@@ -1116,7 +1104,7 @@ Private Sub Check6_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
     Exit Sub
 
 Check6_MouseUp_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Check6_MouseUp", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Check6_MouseUp", Erl)
     Resume Next
     
 End Sub
@@ -1144,7 +1132,7 @@ Private Sub Check9_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
     Exit Sub
 
 Check9_MouseUp_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Check9_MouseUp", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Check9_MouseUp", Erl)
     Resume Next
     
 End Sub
@@ -1161,7 +1149,7 @@ Private Sub Command2_Click()
     Exit Sub
 
 Command2_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Command2_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Command2_Click", Erl)
     Resume Next
     
 End Sub
@@ -1178,7 +1166,7 @@ Private Sub Command3_Click()
     Exit Sub
 
 Command3_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Command3_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Command3_Click", Erl)
     Resume Next
     
 End Sub
@@ -1186,8 +1174,8 @@ End Sub
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
     
     On Error GoTo Form_MouseMove_Err
-    
-    MoverForm
+
+    MoverForm Me.hwnd
     cmdayuda = Nothing
     cmdayuda.Tag = "0"
     discord = Nothing
@@ -1220,7 +1208,7 @@ Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y A
     Exit Sub
 
 Form_MouseMove_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Form_MouseMove", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Form_MouseMove", Erl)
     Resume Next
     
 End Sub
@@ -1237,7 +1225,7 @@ Private Sub cmdcerrar_Click()
     Exit Sub
 
 cmdcerrar_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.cmdcerrar_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.cmdcerrar_Click", Erl)
     Resume Next
     
 End Sub
@@ -1246,13 +1234,12 @@ Private Sub cmdChangePassword_Click()
     
     On Error GoTo cmdChangePassword_Click_Err
     
-    Call frmNewPassword.Show(vbModeless, Me)
-
+    Call ShellExecute(0, "open", "http://ao20.com.ar/recuperar", 0, 0, 1)
     
     Exit Sub
 
 cmdChangePassword_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.cmdChangePassword_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.cmdChangePassword_Click", Erl)
     Resume Next
     
 End Sub
@@ -1267,7 +1254,7 @@ Private Sub Command1_Click()
     Exit Sub
 
 Command1_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Command1_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Command1_Click", Erl)
     Resume Next
     
 End Sub
@@ -1290,12 +1277,24 @@ Public Sub Init()
         Check5.Picture = LoadInterface("check-amarillo.bmp")
 
     End If
+    
+    If InfoItemsEnRender Then
+        chkItemsEnRender.Picture = LoadInterface("check-amarillo.bmp")
+    Else
+        chkItemsEnRender.Picture = Nothing
+    End If
 
     If CursoresGraficos = 0 Then
         Check2.Picture = Nothing
     Else
         Check2.Picture = LoadInterface("check-amarillo.bmp")
 
+    End If
+    
+    If PantallaCompleta Then
+        Fullscreen.Picture = LoadInterface("check-amarillo.bmp")
+    Else
+        Fullscreen.Picture = Nothing
     End If
 
     If PermitirMoverse = 0 Then
@@ -1319,12 +1318,17 @@ Public Sub Init()
 
     End If
     
-    
-    If MostrarEscribiendo = 0 Then
-        ind_lectura.Picture = Nothing
-    Else
-        ind_lectura.Picture = LoadInterface("check-amarillo.bmp")
 
+    If NumerosCompletosInventario = 0 Then
+        num_comp_inv.Picture = Nothing
+    Else
+        num_comp_inv.Picture = LoadInterface("check-amarillo.bmp")
+    End If
+    
+    If MostrarRespiracion Then
+        Respiracion.Picture = LoadInterface("check-amarillo.bmp")
+    Else
+        Respiracion.Picture = Nothing
     End If
     
     If AmbientalActivated = 0 Then
@@ -1354,12 +1358,11 @@ Public Sub Init()
         Check6.Picture = LoadInterface("check-amarillo.bmp")
 
     End If
-    
-    If OcultarMacrosAlCastear = 0 Then
-        Check1.Picture = Nothing
-    Else
-        Check1.Picture = LoadInterface("check-amarillo.bmp")
 
+    If VSyncActivado Then
+        VSync.Picture = LoadInterface("check-amarillo.bmp")
+    Else
+        VSync.Picture = Nothing
     End If
     
     scrVolume.Value = VolFX
@@ -1373,7 +1376,6 @@ Public Sub Init()
     Call cbBloqueoHechizos.AddItem("Bloqueo al lanzar")
     Call cbBloqueoHechizos.AddItem("Sin bloqueo")
     cbBloqueoHechizos.ListIndex = ModoHechizos
-    
     scrSens.Value = SensibilidadMouse
     
     Me.Show vbModeless, frmMain
@@ -1382,9 +1384,21 @@ Public Sub Init()
     Exit Sub
 
 Init_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.Init", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.Init", Erl)
     Resume Next
     
+End Sub
+
+Private Sub Fullscreen_Click()
+   PantallaCompleta = Not PantallaCompleta
+
+    If PantallaCompleta Then
+        Fullscreen.Picture = LoadInterface("check-amarillo.bmp")
+        Call SetResolution
+    Else
+        Fullscreen.Picture = Nothing
+        Call ResetResolution
+    End If
 End Sub
 
 Private Sub HScroll1_Change()
@@ -1398,41 +1412,47 @@ Private Sub HScroll1_Change()
     Exit Sub
 
 HScroll1_Change_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.HScroll1_Change", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.HScroll1_Change", Erl)
     Resume Next
     
 End Sub
 
-Private Sub ind_lectura_Click()
-    If MostrarEscribiendo = 1 Then
-        MostrarEscribiendo = 0
-    Else
-        MostrarEscribiendo = 1
 
-    End If
-
-    If MostrarEscribiendo = 0 Then
-        ind_lectura.Picture = Nothing
-    Else
-        ind_lectura.Picture = LoadInterface("check-amarillo.bmp")
-
-    End If
-
-End Sub
 
 Private Sub instagram_Click()
     
     On Error GoTo instagram_Click_Err
     
-    ShellExecute Me.hWnd, "open", "https://ao20.com.ar/", "", "", 0
+    ShellExecute Me.hwnd, "open", "https://ao20.com.ar/", "", "", 0
 
     
     Exit Sub
 
 instagram_Click_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.instagram_Click", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.instagram_Click", Erl)
     Resume Next
     
+End Sub
+
+
+Private Sub num_comp_inv_Click()
+    If NumerosCompletosInventario = 0 Then
+        NumerosCompletosInventario = 1
+        num_comp_inv.Picture = LoadInterface("check-amarillo.bmp")
+    Else
+        NumerosCompletosInventario = 0
+        num_comp_inv.Picture = Nothing
+    End If
+End Sub
+
+Private Sub Respiracion_Click()
+    MostrarRespiracion = Not MostrarRespiracion
+
+    If MostrarRespiracion Then
+        Respiracion.Picture = LoadInterface("check-amarillo.bmp")
+    Else
+        Respiracion.Picture = Nothing
+    End If
 End Sub
 
 Private Sub scrMidi_Change()
@@ -1451,7 +1471,7 @@ Private Sub scrMidi_Change()
     Exit Sub
 
 scrMidi_Change_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.scrMidi_Change", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.scrMidi_Change", Erl)
     Resume Next
     
 End Sub
@@ -1469,7 +1489,7 @@ Private Sub scrSens_Change()
     Exit Sub
 
 scrSens_Change_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.scrSens_Change", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.scrSens_Change", Erl)
     Resume Next
     
 End Sub
@@ -1485,8 +1505,21 @@ Private Sub scrVolume_Change()
     Exit Sub
 
 scrVolume_Change_Err:
-    Call RegistrarError(Err.number, Err.Description, "frmOpciones.scrVolume_Change", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "frmOpciones.scrVolume_Change", Erl)
     Resume Next
     
 End Sub
 
+Private Sub VSync_Click()
+    VSyncActivado = Not VSyncActivado
+    Call engine.Engine_Init
+    prgRun = True
+    pausa = False
+    QueRender = 0
+    
+    If VSyncActivado Then
+        VSync.Picture = LoadInterface("check-amarillo.bmp")
+    Else
+        VSync.Picture = Nothing
+    End If
+End Sub

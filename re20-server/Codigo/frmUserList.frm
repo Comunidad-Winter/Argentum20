@@ -94,7 +94,7 @@ Private Sub Command1_Click()
 106     List1.Clear
 
 108     For LoopC = 1 To MaxUsers
-110         List1.AddItem Format(LoopC, "000") & " " & IIf(UserList(LoopC).flags.UserLogged, UserList(LoopC).name, "")
+110         List1.AddItem Format$(LoopC, "000") & " " & IIf(UserList(LoopC).flags.UserLogged, UserList(LoopC).name, "")
 112         List1.ItemData(List1.NewIndex) = LoopC
 114     Next LoopC
 
@@ -102,8 +102,8 @@ Private Sub Command1_Click()
         Exit Sub
 
 Command1_Click_Err:
-116     Call RegistrarError(Err.Number, Err.description, "frmUserList.Command1_Click", Erl)
-118     Resume Next
+116     Call TraceError(Err.Number, Err.Description, "frmUserList.Command1_Click", Erl)
+118
         
 End Sub
 
@@ -116,7 +116,7 @@ Private Sub Command2_Click()
 
 100     For LoopC = 1 To MaxUsers
 
-102         If UserList(LoopC).ConnID <> -1 And Not UserList(LoopC).flags.UserLogged Then
+102         If UserList(LoopC).ConnIDValida And Not UserList(LoopC).flags.UserLogged Then
 104             Call CloseSocket(LoopC)
 
             End If
@@ -127,8 +127,8 @@ Private Sub Command2_Click()
         Exit Sub
 
 Command2_Click_Err:
-108     Call RegistrarError(Err.Number, Err.description, "frmUserList.Command2_Click", Erl)
-110     Resume Next
+108     Call TraceError(Err.Number, Err.Description, "frmUserList.Command2_Click", Erl)
+110
         
 End Sub
 
@@ -147,7 +147,6 @@ Private Sub List1_Click()
 106             With UserList(UserIndex)
 108                 Text1.Text = "UserLogged: " & .flags.UserLogged & vbCrLf
 110                 Text1.Text = Text1.Text & "IdleCount: " & .Counters.IdleCount & vbCrLf
-112                 Text1.Text = Text1.Text & "ConnId: " & .ConnID & vbCrLf
 114                 Text1.Text = Text1.Text & "ConnIDValida: " & .ConnIDValida & vbCrLf
 
                 End With
@@ -160,7 +159,7 @@ Private Sub List1_Click()
         Exit Sub
 
 List1_Click_Err:
-116     Call RegistrarError(Err.Number, Err.description, "frmUserList.List1_Click", Erl)
-118     Resume Next
+116     Call TraceError(Err.Number, Err.Description, "frmUserList.List1_Click", Erl)
+118
         
 End Sub

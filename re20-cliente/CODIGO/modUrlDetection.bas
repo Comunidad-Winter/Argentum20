@@ -102,16 +102,15 @@ Public Function WndProc(ByVal hwnd As Long, ByVal uMsg As Long, ByVal wParam As 
             Select Case eLink.msg
 
                 Case WM_LBUTTONDOWN
-                    eText.chrg.cpMin = eLink.chrg.cpMin
-                    eText.chrg.cpMax = eLink.chrg.cpMax
-                    eText.lpstrText = Space$(1024)
-                    
-                    lLen = SendMessage(hWndRTB, EM_GETTEXTRANGE, 0, eText)
-                    
-                    sText = Left$(eText.lpstrText, lLen)
-                    
-                    Call ShellExecute(hWndParent, vbNullString, sText, vbNullString, vbNullString, SW_SHOW)
-
+                        eText.chrg.cpMin = eLink.chrg.cpMin
+                        eText.chrg.cpMax = eLink.chrg.cpMax
+                        eText.lpstrText = Space$(1024)
+                        
+                        lLen = SendMessage(hWndRTB, EM_GETTEXTRANGE, 0, eText)
+                        
+                        sText = Left$(eText.lpstrText, lLen)
+                        
+                        Call ShellExecute(hWndParent, vbNullString, sText, vbNullString, vbNullString, SW_SHOW)
             End Select
 
         End If

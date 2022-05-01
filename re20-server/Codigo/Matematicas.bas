@@ -1,6 +1,14 @@
 Attribute VB_Name = "Matematicas"
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
 'Argentum Online 0.11.6
-'Copyright (C) 2002 MÃ¡rquez Pablo Ignacio
+'Copyright (C) 2002 Márquez Pablo Ignacio
 '
 'This program is free software; you can redistribute it and/or modify
 'it under the terms of the Affero General Public License;
@@ -22,78 +30,58 @@ Attribute VB_Name = "Matematicas"
 'You can contact me at:
 'morgolock@speedy.com.ar
 'www.geocities.com/gmorgolock
-'Calle 3 nÃºmero 983 piso 7 dto A
+'Calle 3 número 983 piso 7 dto A
 'La Plata - Pcia, Buenos Aires - Republica Argentina
-'CÃ³digo Postal 1900
-'Pablo Ignacio MÃ¡rquez
-
+'Código Postal 1900
+'Pablo Ignacio Márquez
 Option Explicit
-
+Function max(ByVal a As Double, ByVal b As Double) As Double
+        On Error GoTo max_Err
+100     If a > b Then
+102         max = a
+        Else
+104         max = b
+        End If
+        Exit Function
+max_Err:
+106     Call TraceError(Err.Number, Err.Description, "General.max", Erl)
+End Function
+Function Min(ByVal a As Double, ByVal b As Double) As Double
+        On Error GoTo min_Err
+100     If a < b Then
+102         Min = a
+        Else
+104         Min = b
+        End If
+        Exit Function
+min_Err:
+106     Call TraceError(Err.Number, Err.Description, "General.min", Erl)
+End Function
 Public Function Porcentaje(ByVal Total As Double, ByVal Porc As Double) As Double
-        
         On Error GoTo Porcentaje_Err
-        
 100     Porcentaje = (Total * Porc) / 100
-
-        
         Exit Function
-
 Porcentaje_Err:
-102     Call RegistrarError(Err.Number, Err.description, "Matematicas.Porcentaje", Erl)
-104     Resume Next
-        
+102     Call TraceError(Err.Number, Err.Description, "Matematicas.Porcentaje", Erl)
 End Function
-
-Function Distancia(ByRef wp1 As WorldPos, ByRef wp2 As WorldPos) As Long
-        'Encuentra la distancia entre dos WorldPos
-        
+Function Distancia(ByRef wp1 As t_WorldPos, ByRef wp2 As t_WorldPos) As Long
         On Error GoTo Distancia_Err
-        
-100     Distancia = Abs(wp1.X - wp2.X) + Abs(wp1.Y - wp2.Y) + (Abs(wp1.Map - wp2.Map) * 100)
-
-        
+100     Distancia = Abs(wp1.X - wp2.X) + Abs(wp1.Y - wp2.Y) + (Abs(wp1.Map - wp2.Map) * 100&)
         Exit Function
-
 Distancia_Err:
-102     Call RegistrarError(Err.Number, Err.description, "Matematicas.Distancia", Erl)
-104     Resume Next
-        
+102     Call TraceError(Err.Number, Err.Description, "Matematicas.Distancia", Erl)
 End Function
-
-Function Distance(X1 As Variant, Y1 As Variant, X2 As Variant, Y2 As Variant) As Double
-        
+Function Distance(ByVal X1 As Long, ByVal Y1 As Long, ByVal X2 As Long, ByVal Y2 As Long) As Double
         On Error GoTo Distance_Err
-        
-
-        'Encuentra la distancia entre dos puntos
-
 100     Distance = Sqr(((Y1 - Y2) ^ 2 + (X1 - X2) ^ 2))
-
-        
         Exit Function
-
 Distance_Err:
-102     Call RegistrarError(Err.Number, Err.description, "Matematicas.Distance", Erl)
-104     Resume Next
-        
+102     Call TraceError(Err.Number, Err.Description, "Matematicas.Distance", Erl)
 End Function
-
 Public Function RandomNumber(ByVal LowerBound As Long, ByVal UpperBound As Long) As Long
-        '**************************************************************
-        'Author: Juan MartÃ­n Sotuyo Dodero
-        'Last Modify Date: 3/06/2006
-        'Generates a random number in the range given - recoded to use longs and work properly with ranges
-        '**************************************************************
-        
         On Error GoTo RandomNumber_Err
-        
 100     RandomNumber = Fix(Rnd * (UpperBound - LowerBound + 1)) + LowerBound
-
-        
         Exit Function
-
 RandomNumber_Err:
-102     Call RegistrarError(Err.Number, Err.description, "Matematicas.RandomNumber", Erl)
-104     Resume Next
-        
+102     Call TraceError(Err.Number, Err.Description, "Matematicas.RandomNumber", Erl)
 End Function

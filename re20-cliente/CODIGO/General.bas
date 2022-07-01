@@ -15,7 +15,7 @@ End Type
 'Item type
 Private Type tItem
 
-    ObjIndex As Integer
+    OBJIndex As Integer
     Amount As Integer
 
 End Type
@@ -34,7 +34,7 @@ Private Type grh
     GrhIndex As Long
     framecounter As Single
     speed As Single
-    Started As Long
+    started As Long
     alpha_blend As Boolean
     Angle As Single
 
@@ -59,10 +59,6 @@ End Type
 Private Declare Sub InitCommonControls Lib "comctl32" ()
 
 Public bFogata As Boolean
-
-Public servers_login_connections(1 To 2) As String
-
-Public Const MAX_LOGIN_SERVER As Long = 2
 
 'Very percise counter 64bit system counter
 Public Declare Function QueryPerformanceCounter Lib "kernel32" (lpPerformanceCount As Currency) As Long
@@ -97,7 +93,7 @@ Private Const SIF_TRACKPOS = &H10
 Private Const SIF_ALL = (SIF_RANGE Or SIF_PAGE Or SIF_POS Or SIF_TRACKPOS)
 Private tSI As SCROLLINFO
 
-Public Declare Function GetScrollInfo Lib "user32" (ByVal hwnd As Long, ByVal n As Long, ByRef lpScrollInfo As SCROLLINFO) As Long
+Public Declare Function GetScrollInfo Lib "user32" (ByVal hwnd As Long, ByVal N As Long, ByRef lpScrollInfo As SCROLLINFO) As Long
 
 Public Declare Function GetScrollPos Lib "user32" (ByVal hwnd As Long, ByVal nBar As Long) As Long
 
@@ -1044,7 +1040,7 @@ Function FileExist(ByVal File As String, ByVal FileType As VbFileAttribute) As B
     
     On Error GoTo FileExist_Err
     
-    FileExist = (dir$(File, FileType) <> "")
+    FileExist = (Dir$(File, FileType) <> "")
 
     
     Exit Function
@@ -1104,7 +1100,7 @@ Sub Main()
 
     ' Security
     CheckMD5 = GetMd5
-    SessionOpened = False
+
     ' Leer contraseña de recursos
     Call CheckResources
 
@@ -1137,23 +1133,10 @@ Sub Main()
         End If
 
     End If
-    
-    'Agrego conexiones disponibles
-    servers_login_connections(1) = "45.235.99.71:4004"
-    servers_login_connections(2) = "138.99.6.141:4007"
-    
-    '45.235.99.71:4004
-    IPServers(1) = "45.235.99.71:7667:Minehost:" & get_logging_server()
-    
-    Debug.Print IPServers(1)
-    #If DEBUGGING = 1 Then
-        IPServers(2) = "45.235.98.31:11813:MinehostStaging:45.235.98.31:11814"
-        IPServers(3) = "127.0.0.1:7667:Localhost:localhost:4000"
-        IPServers(4) = "186.152.115.146:7667:Martin:localhost:4000"
-    #End If
 
-    Call ComprobarEstado
-    Call CargarLst
+    'Iniciamos el IP y puerto
+    IPdelServidor = "127.0.0.1"
+    PuertoDelServidor = 7667
     
     Call InicializarNombres
     
@@ -1207,19 +1190,6 @@ Main_Err:
     
 End Sub
 
-Public Function get_logging_server() As String
-    Dim value As Long
-    Dim k As Integer
-    For k = 1 To 100
-        Value = RandomNumber(1, 100)
-    Next k
-    If Value <= 50 Then
-        get_logging_server = servers_login_connections(1)
-    Else
-        get_logging_server = servers_login_connections(2)
-    End If
-End Function
-
 Public Function randomMap() As Integer
     Select Case RandomNumber(1, 8)
         Case 1 ' ulla 45-43
@@ -1241,14 +1211,14 @@ Public Function randomMap() As Integer
     End Select
 End Function
 
-Sub WriteVar(ByVal File As String, ByVal Main As String, ByVal Var As String, ByVal value As String)
+Sub WriteVar(ByVal File As String, ByVal Main As String, ByVal Var As String, ByVal Value As String)
     '*****************************************************************
     'Writes a var to a text file
     '*****************************************************************
     
     On Error GoTo WriteVar_Err
     
-    writeprivateprofilestring Main, Var, value, File
+    writeprivateprofilestring Main, Var, Value, File
 
     
     Exit Sub
@@ -1664,31 +1634,6 @@ General_Field_Count_Err:
     
 End Function
 
-Public Sub InitServersList()
-    
-    On Error GoTo InitServersList_Err
-    
-    ReDim ServersLst(1 To UBound(IPServers)) As tServerInfo
-
-    Dim i As Integer
-    For i = 1 To UBound(IPServers)
-        ServersLst(i).IP = General_Field_Read(1, IPServers(i), ":")
-        ServersLst(i).puerto = Val(General_Field_Read(2, IPServers(i), ":"))
-        ServersLst(i).desc = General_Field_Read(3, IPServers(i), ":")
-        ServersLst(i).IpLogin = General_Field_Read(4, IPServers(i), ":")
-        ServersLst(i).puertoLogin = General_Field_Read(5, IPServers(i), ":")
-    Next i
-
-    CurServer = 1
-
-    
-    Exit Sub
-
-InitServersList_Err:
-    Call RegistrarError(Err.Number, Err.Description, "Mod_General.InitServersList", Erl)
-    Resume Next
-    
-End Sub
 
 Public Function General_Get_Elapsed_Time() As Single
     
@@ -1833,12 +1778,12 @@ ErrHandler:
 
 End Function
 
-Public Function Tilde(ByRef data As String) As String
+Public Function Tilde(ByRef Data As String) As String
     
     On Error GoTo Tilde_Err
     
 
-    Tilde = UCase$(data)
+    Tilde = UCase$(Data)
  
     Tilde = Replace$(Tilde, "Á", "A")
     Tilde = Replace$(Tilde, "É", "E")
@@ -1937,24 +1882,24 @@ End Function
 
 Public Sub CheckResources()
 
-    Dim data(1 To 200) As Byte
+    Dim Data(1 To 200) As Byte
     
     Dim handle As Integer
     handle = FreeFile
 
     Open App.Path & "/../Recursos/OUTPUT/AO.bin" For Binary Access Read As #handle
     
-    Get #handle, , data
+    Get #handle, , Data
     
     Close #handle
     
     Dim length As Integer
-    length = data(UBound(data)) + data(UBound(data) - 1) * 256
+    length = Data(UBound(Data)) + Data(UBound(Data) - 1) * 256
 
     Dim i As Integer
     
     For i = 1 To length
-        ResourcesPassword = ResourcesPassword & Chr(data(i * 3 - 1) Xor 37)
+        ResourcesPassword = ResourcesPassword & Chr(Data(i * 3 - 1) Xor 37)
     Next
 
 End Sub

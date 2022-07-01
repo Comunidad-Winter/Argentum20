@@ -19,21 +19,21 @@ Public Function PuedoQuitarFoco() As Boolean
     Exit Function
 
 PuedoQuitarFoco_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_TCP.PuedoQuitarFoco", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_TCP.PuedoQuitarFoco", Erl)
     Resume Next
     
 End Function
 
 Sub LoginOrConnect(ByVal Modo As E_MODO)
+    
     EstadoLogin = Modo
     
-    If Auth_state = e_state.AccountLogged Then
-        'Call modNetwork.Connect(IPdelServidor, PuertoDelServidor)
-        Call Login
+    If (Not modNetwork.IsConnected) Then
+        Call modNetwork.Connect(IPdelServidor, PuertoDelServidor)
     Else
-        Call connectToLoginServer
+        Call Login
     End If
-  
+
 End Sub
 
 Sub Login()
@@ -47,14 +47,19 @@ Sub Login()
         
         Case E_MODO.CrearNuevoPj
             Call WriteLoginNewChar
-                        
         
+        Case E_MODO.IngresandoConCuenta
+            Call WriteLoginAccount
+        
+        Case E_MODO.CreandoCuenta
+            Call WriteCreateAccount
+            
     End Select
 
     Exit Sub
 
 Login_Err:
-    Call RegistrarError(Err.number, Err.Description, "Mod_TCP.Login", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "Mod_TCP.Login", Erl)
     Resume Next
     
 End Sub

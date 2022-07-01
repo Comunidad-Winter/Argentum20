@@ -79,7 +79,7 @@ Private Enum ServerPacketID
     UpdateHP                ' ASH
     UpdateGold              ' ASG
     UpdateExp               ' ASE 30
-    ChangeMap               ' CM
+    changeMap               ' CM
     PosUpdate               ' PU
     NPCHitUser              ' N2
     UserHitNPC              ' U2
@@ -90,7 +90,7 @@ Private Enum ServerPacketID
     ConsoleMsg              ' || - Beware!! its the same as above, but it was properly splitted
     GuildChat               ' |+   40
     ShowMessageBox          ' !!
-    mostrarcuenta
+    MostrarCuenta
     CharacterCreate         ' CC
     CharacterRemove         ' BP
     CharacterMove           ' MP, +, * and _ '
@@ -153,7 +153,7 @@ Private Enum ServerPacketID
     FYA
     CerrarleCliente
     Contadores
-    ShowPapiro
+    ShowPapiro              ' SWP
     
     'GM messages
     SpawnListt               ' SPL
@@ -166,7 +166,7 @@ Private Enum ServerPacketID
     ParticleFXToFloor
     ParticleFXWithDestino
     ParticleFXWithDestinoXY
-    hora
+    Hora
     Light
     AuraToChar
     SpeedToChar
@@ -226,13 +226,14 @@ Private Enum ServerPacketID
     UpdateBankGld
     PelearConPezEspecial
     Privilegios
-    ShopInit
-    UpdateShopClienteCredits
-    SensuiRetrasado
+    
+    AccountCharacterList
+    
     [PacketCount]
 End Enum
 
 Public Enum ClientPacketID
+
     LoginExistingChar       'OLOGIN
     LoginNewChar            'NLOGIN
     Talk                    ';
@@ -261,13 +262,12 @@ Public Enum ClientPacketID
     UseSpellMacro           'UMH
     UseItem                 'USA
     CraftBlacksmith         'CNS
-    '--------------------
     CraftCarpenter          'CNC
     WorkLeftClick           'WLC
     CreateNewGuild          'CIG
     SpellInfo               'INFS
     EquipItem               'EQUI
-    ChangeHeading           'CHEA
+    Change_Heading           'CHEA
     ModifySkills            'SKSE
     Train                   'ENTR
     CommerceBuy             'COMP
@@ -372,7 +372,7 @@ Public Enum ClientPacketID
     OnlineMap               '/ONLINEMAP
     Forgive                 '/PERDON
     Kick                    '/ECHAR
-    Execute                 '/EJECUTAR
+    ExecuteCmd              '/EJECUTAR
     BanChar                 '/BAN
     UnbanChar               '/UNBAN
     NPCFollow               '/SEGUIR
@@ -418,7 +418,7 @@ Public Enum ClientPacketID
     ForceMIDIAll            '/FORCEMIDI
     ForceWAVEAll            '/FORCEWAV
     RemovePunishment        '/BORRARPENA
-    TileBlockedToggle       '/BLOQ
+    Tile_BlockedToggle       '/BLOQ
     KillNPCNoRespawn        '/MATA
     KillAllNearbyNPCs       '/MASSKILL
     LastIP                  '/LASTIP
@@ -436,7 +436,7 @@ Public Enum ClientPacketID
     ResetFactions           '/RAJAR
     RemoveCharFromGuild     '/RAJARCLAN
     AlterName               '/ANAME
-    DoBackUp                '/DOBACKUP
+    DoBackUpCmd             '/DOBACKUP
     ShowGuildMessages       '/SHOWCMSG
     ChangeMapInfoPK         '/MODMAPINFO PK
     ChangeMapInfoBackup     '/MODMAPINFO BACKUP
@@ -460,11 +460,11 @@ Public Enum ClientPacketID
     CheckSlot               '/SLOT
     
     'Nuevas Ladder
-    SetSpeed                '/SPEED
+    SetSpeed
     GlobalMessage           '/CONSOLA
     GlobalOnOff
     UseKey
-    Day
+    Daycmd
     SetTime
     DonateGold              '/DONAR
     Promedio                '/PROMEDIO
@@ -520,7 +520,7 @@ Public Enum ClientPacketID
     QuestDetailsRequest
     QuestAbandon
     SeguroClan
-    Home                    '/HOGAR
+    home                    '/HOGAR
     Consulta                '/CONSULTA
     GetMapInfo              '/MAPINFO
     FinEvento
@@ -538,14 +538,18 @@ Public Enum ClientPacketID
     CloseCrafting
     MoveCraftItem
     PetLeaveAll
-    ResetChar              '/RESET NICK
-    ResetearPersonaje
+    ResetChar               '/RESET NICK
+    resetearPersonaje
     DeleteItem
     FinalizarPescaEspecial
     RomperCania
     UseItemU
     RepeatMacro
-    BuyShopItem
+    
+    CreateAccount
+    LoginAccount
+    DeleteCharacter
+    
     [PacketCount]
 End Enum
 
@@ -625,7 +629,7 @@ On Error GoTo HandleIncomingData_Err
             Call HandleUpdateGold
         Case ServerPacketID.UpdateExp
             Call HandleUpdateExp
-        Case ServerPacketID.ChangeMap
+        Case ServerPacketID.changeMap
             Call HandleChangeMap
         Case ServerPacketID.PosUpdate
             Call HandlePosUpdate
@@ -647,7 +651,7 @@ On Error GoTo HandleIncomingData_Err
             Call HandleGuildChat
         Case ServerPacketID.ShowMessageBox
             Call HandleShowMessageBox
-        Case ServerPacketID.mostrarcuenta
+        Case ServerPacketID.MostrarCuenta
             Call HandleMostrarCuenta
         Case ServerPacketID.CharacterCreate
             Call HandleCharacterCreate
@@ -795,7 +799,7 @@ On Error GoTo HandleIncomingData_Err
             Call HandleParticleFXWithDestino
         Case ServerPacketID.ParticleFXWithDestinoXY
             Call HandleParticleFXWithDestinoXY
-        Case ServerPacketID.hora
+        Case ServerPacketID.Hora
             Call HandleHora
         Case ServerPacketID.Light
             Call HandleLight
@@ -913,12 +917,8 @@ On Error GoTo HandleIncomingData_Err
             Call HandlePelearConPezEspecial
         Case ServerPacketID.Privilegios
             Call HandlePrivilegios
-        Case ServerPacketID.ShopInit
-            Call HandleShopInit
-        Case ServerPacketID.UpdateShopClienteCredits
-            Call HandleUpdateShopClienteCredits
-        Case ServerPacketID.SensuiRetrasado
-            Call HandleSensuiRetrasado
+        Case ServerPacketID.AccountCharacterList
+            Call HandleAccountCharacterList
         Case Else
             Err.Raise &HDEADBEEF, "Invalid Message"
     End Select
@@ -1156,7 +1156,7 @@ Private Sub HandleMacroTrabajoToggle()
         UserMacro.Intervalo = IntervaloTrabajoConstruir
         UserMacro.Activado = True
         UserMacro.cantidad = 999
-        UserMacro.tipo = 6
+        UserMacro.TIPO = 6
         
         TargetXMacro = tX
         TargetYMacro = tY
@@ -1197,10 +1197,9 @@ Public Sub HandleDisconnect()
     Call modNetwork.Disconnect
     
     'Hide main form
-    'FrmCuenta.Visible = True
-    
-    frmConnect.Visible = True
-    QueRender = 2
+
+    frmConnect.Visible = False
+    QueRender = 1
 
     Call Graficos_Particulas.Particle_Group_Remove_All
     Call Graficos_Particulas.Engine_Select_Particle_Set(203)
@@ -1387,17 +1386,15 @@ Public Sub HandleDisconnect()
     
     For Each Frm In Forms
 
-        If Frm.name <> frmMain.name And Frm.name <> frmConnect.name And Frm.name <> frmMensaje.name Then
+        If Frm.Name <> frmMain.Name And Frm.Name <> frmConnect.Name And Frm.Name <> frmMensaje.Name Then
             Unload Frm
 
         End If
 
     Next
     
-    If Not FullLogout Then
-        'Si no es un deslogueo completo, envío nuevamente la lista de Pjs.
-        Call connectToLoginServer
-    End If
+    frmConnect.Show
+    FrmLogear.Show , frmConnect
     
     Exit Sub
 HandleDisconnect_Err:
@@ -1477,7 +1474,7 @@ Private Sub HandleCommerceInit()
     For i = 1 To MAX_INVENTORY_SLOTS
 
         With frmMain.Inventario
-            Call frmComerciar.InvComUsu.SetItem(i, .ObjIndex(i), .Amount(i), .Equipped(i), .GrhIndex(i), .ObjType(i), .MaxHit(i), .MinHit(i), .Def(i), .Valor(i), .ItemName(i), .PuedeUsar(i))
+            Call frmComerciar.InvComUsu.SetItem(i, .OBJIndex(i), .Amount(i), .Equipped(i), .GrhIndex(i), .ObjType(i), .MaxHit(i), .MinHit(i), .Def(i), .Valor(i), .ItemName(i), .PuedeUsar(i))
 
         End With
 
@@ -1515,7 +1512,7 @@ Private Sub HandleBankInit()
     For i = 1 To MAX_INVENTORY_SLOTS
 
         With frmMain.Inventario
-            Call frmBancoObj.InvBankUsu.SetItem(i, .ObjIndex(i), .Amount(i), .Equipped(i), .GrhIndex(i), .ObjType(i), .MaxHit(i), .MinHit(i), .Def(i), .Valor(i), .ItemName(i), .PuedeUsar(i))
+            Call frmBancoObj.InvBankUsu.SetItem(i, .OBJIndex(i), .Amount(i), .Equipped(i), .GrhIndex(i), .ObjType(i), .MaxHit(i), .MinHit(i), .Def(i), .Valor(i), .ItemName(i), .PuedeUsar(i))
 
         End With
 
@@ -1548,8 +1545,8 @@ Private Sub HandleGoliath()
 
     Dim UserInvBove As Byte
     
-    UserBoveOro = Reader.ReadInt32()
-    UserInvBove = Reader.ReadInt8()
+    UserBoveOro = Reader.ReadInt()
+    UserInvBove = Reader.ReadInt()
     Call frmGoliath.ParseBancoInfo(UserBoveOro, UserInvBove)
     
     Exit Sub
@@ -1620,7 +1617,7 @@ Private Sub HandleUserCommerceInit()
     With frmMain.Inventario
 
         For i = 1 To MAX_INVENTORY_SLOTS
-            frmComerciarUsu.InvUser.SetItem i, .ObjIndex(i), .Amount(i), .Equipped(i), .GrhIndex(i), .ObjType(i), 0, 0, 0, 0, .ItemName(i), 0
+            frmComerciarUsu.InvUser.SetItem i, .OBJIndex(i), .Amount(i), .Equipped(i), .GrhIndex(i), .ObjType(i), 0, 0, 0, 0, .ItemName(i), 0
         Next i
 
     End With
@@ -1696,7 +1693,7 @@ Private Sub HandleShowBlacksmithForm()
         For i = 0 To UBound(CascosHerrero())
 
             If CascosHerrero(i).Index = 0 Then Exit For
-            Call frmHerrero.lstArmas.AddItem(ObjData(CascosHerrero(i).Index).name)
+            Call frmHerrero.lstArmas.AddItem(ObjData(CascosHerrero(i).Index).Name)
         Next i
 
         frmHerrero.Command3.Picture = LoadInterface("boton-casco-over.bmp")
@@ -1819,7 +1816,7 @@ Private Sub HandleShowSastreForm()
         For i = 1 To UBound(SastreRopas())
 
             If SastreRopas(i).Index = 0 Then Exit For
-            FrmSastre.lstArmas.AddItem (ObjData(SastreRopas(i).Index).name)
+            FrmSastre.lstArmas.AddItem (ObjData(SastreRopas(i).Index).Name)
         Next i
     
         FrmSastre.Command1.Picture = LoadInterface("sastreria_vestimentahover.bmp")
@@ -1927,7 +1924,7 @@ Private Sub HandleCharSwing()
 
         End If
         
-        Call Sound.Sound_Play(2, False, Sound.Calculate_Volume(.Pos.X, .Pos.Y), Sound.Calculate_Pan(.Pos.X, .Pos.Y)) ' Swing
+        Call Sound.Sound_Play(2, False, Sound.Calculate_Volume(.Pos.x, .Pos.y), Sound.Calculate_Pan(.Pos.x, .Pos.y)) ' Swing
         
         ' If ShowFX And .Invisible = False Then Call SetCharacterFx(charindex, 90, 0)
          
@@ -2048,18 +2045,18 @@ Private Sub HandleIntervals()
     
     On Error GoTo HandleIntervals_Err
 
-    IntervaloArco = Reader.ReadInt32()
-    IntervaloCaminar = Reader.ReadInt32()
-    IntervaloGolpe = Reader.ReadInt32()
-    IntervaloGolpeMagia = Reader.ReadInt32()
-    IntervaloMagia = Reader.ReadInt32()
-    IntervaloMagiaGolpe = Reader.ReadInt32()
-    IntervaloGolpeUsar = Reader.ReadInt32()
-    IntervaloTrabajoExtraer = Reader.ReadInt32()
-    IntervaloTrabajoConstruir = Reader.ReadInt32()
-    IntervaloUsarU = Reader.ReadInt32()
-    IntervaloUsarClic = Reader.ReadInt32()
-    IntervaloTirar = Reader.ReadInt32()
+    IntervaloArco = Reader.ReadInt()
+    IntervaloCaminar = Reader.ReadInt()
+    IntervaloGolpe = Reader.ReadInt()
+    IntervaloGolpeMagia = Reader.ReadInt()
+    IntervaloMagia = Reader.ReadInt()
+    IntervaloMagiaGolpe = Reader.ReadInt()
+    IntervaloGolpeUsar = Reader.ReadInt()
+    IntervaloTrabajoExtraer = Reader.ReadInt()
+    IntervaloTrabajoConstruir = Reader.ReadInt()
+    IntervaloUsarU = Reader.ReadInt()
+    IntervaloUsarClic = Reader.ReadInt()
+    IntervaloTirar = Reader.ReadInt()
     
     'Set the intervals of timers
     Call MainTimer.SetInterval(TimersIndex.Attack, IntervaloGolpe)
@@ -2104,7 +2101,7 @@ Private Sub HandleUpdateUserKey()
     Slot = Reader.ReadInt
     Llave = Reader.ReadInt
 
-    Call FrmKeyInv.InvKeys.SetItem(Slot, Llave, 1, 0, ObjData(Llave).GrhIndex, eObjType.otLlaves, 0, 0, 0, 0, ObjData(Llave).name, 0)
+    Call FrmKeyInv.InvKeys.SetItem(Slot, Llave, 1, 0, ObjData(Llave).GrhIndex, eObjType.otLlaves, 0, 0, 0, 0, ObjData(Llave).Name, 0)
     
     Exit Sub
 
@@ -2341,8 +2338,8 @@ Private Sub HandleUpdateGold()
     '***************************************************
 
     'Get data and update form
-    UserGLD = Reader.ReadInt32()
-    OroPorNivel = Reader.ReadInt32()
+    UserGLD = Reader.ReadInt()
+    OroPorNivel = Reader.ReadInt()
     
     frmMain.GldLbl.Caption = PonerPuntos(UserGLD)
     
@@ -2375,7 +2372,7 @@ Private Sub HandleUpdateExp()
     '***************************************************
 
     'Get data and update form
-    UserExp = Reader.ReadInt32()
+    UserExp = Reader.ReadInt()
 
     If UserPasarNivel > 0 Then
         frmMain.EXPBAR.Width = UserExp / UserPasarNivel * 235
@@ -2440,25 +2437,25 @@ Private Sub HandlePosUpdate()
     '***************************************************
 
     'Remove char from old position
-    If MapData(UserPos.X, UserPos.Y).charindex = UserCharIndex Then
-        MapData(UserPos.X, UserPos.Y).charindex = 0
+    If MapData(UserPos.x, UserPos.y).charindex = UserCharIndex Then
+        MapData(UserPos.x, UserPos.y).charindex = 0
 
     End If
     
     'Set new pos
-    UserPos.X = Reader.ReadInt8()
-    UserPos.Y = Reader.ReadInt8()
+    UserPos.x = Reader.ReadInt()
+    UserPos.y = Reader.ReadInt()
 
     'Set char
-    MapData(UserPos.X, UserPos.Y).charindex = UserCharIndex
+    MapData(UserPos.x, UserPos.y).charindex = UserCharIndex
     charlist(UserCharIndex).Pos = UserPos
         
     'Are we under a roof?
-    bTecho = HayTecho(UserPos.X, UserPos.Y)
+    bTecho = HayTecho(UserPos.x, UserPos.y)
                 
     'Update pos label and minimap
-    frmMain.Coord.Caption = UserMap & "-" & UserPos.X & "-" & UserPos.Y
-    Call frmMain.SetMinimapPosition(0, UserPos.X, UserPos.Y)
+    frmMain.Coord.Caption = UserMap & "-" & UserPos.x & "-" & UserPos.y
+    Call frmMain.SetMinimapPosition(0, UserPos.x, UserPos.y)
     
     If MapDat.Seguro = 1 Then
         frmMain.Coord.ForeColor = RGB(0, 170, 0)
@@ -2490,7 +2487,7 @@ Private Sub HandleNPCHitUser()
     '***************************************************
     Dim Lugar As Byte, DañoStr As String
     
-    Lugar = Reader.ReadInt8()
+    Lugar = Reader.ReadInt()
 
     DañoStr = PonerPuntos(Reader.ReadInt)
 
@@ -2536,7 +2533,7 @@ Private Sub HandleUserHitNPC()
     'Last Modification: 05/17/06
     '
     '***************************************************
-    Call AddtoRichTextBox(frmMain.RecTxt, MENSAJE_GOLPE_CRIATURA_1 & PonerPuntos(Reader.ReadInt32()) & MENSAJE_2, 255, 0, 0, True, False, False)
+    Call AddtoRichTextBox(frmMain.RecTxt, MENSAJE_GOLPE_CRIATURA_1 & PonerPuntos(Reader.ReadInt()) & MENSAJE_2, 255, 0, 0, True, False, False)
     
     Exit Sub
 
@@ -2594,7 +2591,7 @@ Private Sub HandleUserHittedByUser()
     attacker = Left$(charlist(intt).nombre, Pos - 2)
     
     Dim Lugar As Byte
-    Lugar = Reader.ReadInt8
+    Lugar = Reader.ReadInt
     
     Dim DañoStr As String
     DañoStr = PonerPuntos(Reader.ReadInt())
@@ -2657,7 +2654,7 @@ Private Sub HandleUserHittedUser()
     victim = Left$(charlist(intt).nombre, Pos - 2)
     
     Dim Lugar As Byte
-    Lugar = Reader.ReadInt8()
+    Lugar = Reader.ReadInt()
     
     Dim DañoStr As String
     DañoStr = PonerPuntos(Reader.ReadInt())
@@ -2712,7 +2709,7 @@ Private Sub HandleChatOverHead()
 
     Dim G          As Byte
 
-    Dim b          As Byte
+    Dim B          As Byte
 
     Dim colortexto As Long
 
@@ -2722,11 +2719,11 @@ Private Sub HandleChatOverHead()
     chat = Reader.ReadString8()
     charindex = Reader.ReadInt()
     
-    r = Reader.ReadInt8()
-    G = Reader.ReadInt8()
-    b = Reader.ReadInt8()
+    r = Reader.ReadInt()
+    G = Reader.ReadInt()
+    B = Reader.ReadInt()
     
-    colortexto = vbColor_2_Long(Reader.ReadInt32())
+    colortexto = vbColor_2_Long(Reader.ReadInt())
     EsSpell = Reader.ReadBool()
 
     'Optimizacion de protocolo por Ladder
@@ -2784,7 +2781,7 @@ Private Sub HandleChatOverHead()
          
         If CopiarDialogoAConsola = 1 And copiar Then
     
-            Call WriteChatOverHeadInConsole(charindex, chat, r, G, b)
+            Call WriteChatOverHeadInConsole(charindex, chat, r, G, B)
 
         End If
 
@@ -2812,7 +2809,7 @@ Private Sub HandleTextOverChar()
     chat = Reader.ReadString8()
     charindex = Reader.ReadInt()
     
-    Color = Reader.ReadInt32()
+    Color = Reader.ReadInt()
     
     Call SetCharacterDialogFx(charindex, chat, RGBA_From_vbColor(Color))
 
@@ -2831,18 +2828,18 @@ Private Sub HandleTextOverTile()
     
     Dim Text  As String
 
-    Dim X     As Integer, Y As Integer
+    Dim x     As Integer, y As Integer
 
     Dim Color As Long
     
     Text = Reader.ReadString8()
-    X = Reader.ReadInt()
-    Y = Reader.ReadInt()
-    Color = Reader.ReadInt32()
+    x = Reader.ReadInt()
+    y = Reader.ReadInt()
+    Color = Reader.ReadInt()
     
-    If InMapBounds(X, Y) Then
+    If InMapBounds(x, y) Then
     
-        With MapData(X, Y)
+        With MapData(x, y)
             Dim Index As Integer
             
             If UBound(.DialogEffects) = 0 Then
@@ -2872,8 +2869,8 @@ Private Sub HandleTextOverTile()
                 .Color = RGBA_From_vbColor(Color)
                 .Start = FrameTime
                 .Text = Text
-                .offset.X = 0
-                .offset.Y = 0
+                .offset.x = 0
+                .offset.y = 0
             
             End With
 
@@ -2902,24 +2899,24 @@ Private Sub HandleTextCharDrop()
     
     Text = Reader.ReadString8()
     charindex = Reader.ReadInt()
-    Color = Reader.ReadInt32()
+    Color = Reader.ReadInt()
     
     If charindex = 0 Then Exit Sub
 
-    Dim X As Integer, Y As Integer, OffsetX As Integer, OffsetY As Integer
+    Dim x As Integer, y As Integer, OffsetX As Integer, OffsetY As Integer
     
     With charlist(charindex)
-        X = .Pos.X
-        Y = .Pos.Y
+        x = .Pos.x
+        y = .Pos.y
         
-        OffsetX = .MoveOffsetX + .Body.HeadOffset.X
-        OffsetY = .MoveOffsetY + .Body.HeadOffset.Y
+        OffsetX = .MoveOffsetX + .Body.HeadOffset.x
+        OffsetY = .MoveOffsetY + .Body.HeadOffset.y
 
     End With
     
-    If InMapBounds(X, Y) Then
+    If InMapBounds(x, y) Then
     
-        With MapData(X, Y)
+        With MapData(x, y)
             Dim Index As Integer
             
             If UBound(.DialogEffects) = 0 Then
@@ -2949,8 +2946,8 @@ Private Sub HandleTextCharDrop()
                 .Color = RGBA_From_vbColor(Color)
                 .Start = FrameTime
                 .Text = Text
-                .offset.X = OffsetX
-                .offset.Y = OffsetY
+                .offset.x = OffsetX
+                .offset.y = OffsetY
             
             End With
 
@@ -2985,7 +2982,7 @@ Private Sub HandleConsoleMessage()
     Dim str       As String
     Dim r         As Byte
     Dim G         As Byte
-    Dim b         As Byte
+    Dim B         As Byte
     Dim QueEs     As String
     Dim NpcName   As String
     Dim objname   As String
@@ -2994,7 +2991,7 @@ Private Sub HandleConsoleMessage()
     Dim Valor     As String
 
     chat = Reader.ReadString8()
-    FontIndex = Reader.ReadInt8()
+    FontIndex = Reader.ReadInt()
     
     If ChatGlobal = 0 And FontIndex = FontTypeNames.FONTTYPE_GLOBAL Then Exit Sub
 
@@ -3003,11 +3000,11 @@ Private Sub HandleConsoleMessage()
     Select Case QueEs
 
         Case "NPCNAME"
-            NpcName = NpcData(ReadField(2, chat, Asc("*"))).name
+            NpcName = NpcData(ReadField(2, chat, Asc("*"))).Name
             chat = NpcName & ReadField(3, chat, Asc("*"))
 
         Case "O" 'OBJETO
-            objname = ObjData(ReadField(2, chat, Asc("*"))).name
+            objname = ObjData(ReadField(2, chat, Asc("*"))).Name
             chat = objname & ReadField(3, chat, Asc("*"))
 
         Case "HECINF"
@@ -3070,13 +3067,13 @@ Private Sub HandleConsoleMessage()
         str = ReadField(4, chat, 126)
 
         If Val(str) > 255 Then
-            b = 255
+            B = 255
         Else
-            b = Val(str)
+            B = Val(str)
 
         End If
             
-        Call AddtoRichTextBox(frmMain.RecTxt, Left$(chat, InStr(1, chat, "~") - 1), r, G, b, Val(ReadField(5, chat, 126)) <> 0, Val(ReadField(6, chat, 126)) <> 0)
+        Call AddtoRichTextBox(frmMain.RecTxt, Left$(chat, InStr(1, chat, "~") - 1), r, G, B, Val(ReadField(5, chat, 126)) <> 0, Val(ReadField(6, chat, 126)) <> 0)
     
     Else
 
@@ -3118,7 +3115,7 @@ Private Sub HandleLocaleMsg()
 
     Dim G         As Byte
 
-    Dim b         As Byte
+    Dim B         As Byte
 
     Dim QueEs     As String
 
@@ -3136,7 +3133,7 @@ Private Sub HandleLocaleMsg()
 
     id = Reader.ReadInt()
     chat = Reader.ReadString8()
-    FontIndex = Reader.ReadInt8()
+    FontIndex = Reader.ReadInt()
 
     chat = Locale_Parse_ServerMessage(id, chat)
     
@@ -3162,13 +3159,13 @@ Private Sub HandleLocaleMsg()
         str = ReadField(4, chat, 126)
 
         If Val(str) > 255 Then
-            b = 255
+            B = 255
         Else
-            b = Val(str)
+            B = Val(str)
 
         End If
             
-        Call AddtoRichTextBox(frmMain.RecTxt, Left$(chat, InStr(1, chat, "~") - 1), r, G, b, Val(ReadField(5, chat, 126)) <> 0, Val(ReadField(6, chat, 126)) <> 0)
+        Call AddtoRichTextBox(frmMain.RecTxt, Left$(chat, InStr(1, chat, "~") - 1), r, G, B, Val(ReadField(5, chat, 126)) <> 0, Val(ReadField(6, chat, 126)) <> 0)
     Else
 
         With FontTypes(FontIndex)
@@ -3210,13 +3207,13 @@ Private Sub HandleGuildChat()
 
     Dim G    As Byte
 
-    Dim b    As Byte
+    Dim B    As Byte
 
     Dim tmp  As Integer
 
     Dim Cont As Integer
     
-    status = Reader.ReadInt8()
+    status = Reader.ReadInt()
     chat = Reader.ReadString8()
     
     If Not DialogosClanes.Activo Then
@@ -3242,12 +3239,12 @@ Private Sub HandleGuildChat()
             str = ReadField(4, chat, 126)
     
             If Val(str) > 255 Then
-                b = 255
+                B = 255
             Else
-                b = Val(str)
+                B = Val(str)
             End If
                 
-            Call AddtoRichTextBox(frmMain.RecTxt, Left$(chat, InStr(1, chat, "~") - 1), r, G, b, Val(ReadField(5, chat, 126)) <> 0, Val(ReadField(6, chat, 126)) <> 0)
+            Call AddtoRichTextBox(frmMain.RecTxt, Left$(chat, InStr(1, chat, "~") - 1), r, G, B, Val(ReadField(5, chat, 126)) <> 0, Val(ReadField(6, chat, 126)) <> 0)
         Else
             With FontTypes(FontTypeNames.FONTTYPE_GUILDMSG)
                 Call AddtoRichTextBox(frmMain.RecTxt, chat, .red, .green, .blue, .bold, .italic)
@@ -3426,11 +3423,11 @@ Private Sub HandleUserCharIndexInServer()
     UserPos = charlist(UserCharIndex).Pos
     
     'Are we under a roof?
-    bTecho = HayTecho(UserPos.X, UserPos.Y)
+    bTecho = HayTecho(UserPos.x, UserPos.y)
     
     lastMove = FrameTime
     
-    frmMain.Coord.Caption = UserMap & "-" & UserPos.X & "-" & UserPos.Y
+    frmMain.Coord.Caption = UserMap & "-" & UserPos.x & "-" & UserPos.y
     
     If MapDat.Seguro = 1 Then
         frmMain.Coord.ForeColor = RGB(0, 170, 0)
@@ -3438,7 +3435,7 @@ Private Sub HandleUserCharIndexInServer()
         frmMain.Coord.ForeColor = RGB(170, 0, 0)
     End If
     
-    Call frmMain.SetMinimapPosition(0, UserPos.X, UserPos.Y)
+    Call frmMain.SetMinimapPosition(0, UserPos.x, UserPos.y)
     
     If frmMapaGrande.Visible Then
         Call frmMapaGrande.ActualizarPosicionMapa
@@ -3473,9 +3470,9 @@ Private Sub HandleCharacterCreate()
 
     Dim Heading       As E_Heading
 
-    Dim X             As Byte
+    Dim x             As Byte
 
-    Dim Y             As Byte
+    Dim y             As Byte
 
     Dim weapon        As Integer
 
@@ -3497,9 +3494,9 @@ Private Sub HandleCharacterCreate()
   
     Body = Reader.ReadInt()
     Head = Reader.ReadInt()
-    Heading = Reader.ReadInt8()
-    X = Reader.ReadInt8()
-    Y = Reader.ReadInt8()
+    Heading = Reader.ReadInt()
+    x = Reader.ReadInt()
+    y = Reader.ReadInt()
     weapon = Reader.ReadInt()
     shield = Reader.ReadInt()
     helmet = Reader.ReadInt()
@@ -3530,10 +3527,10 @@ Private Sub HandleCharacterCreate()
         .nombre = Left$(NombreYClan, Pos - 2)
         .clan = mid$(NombreYClan, Pos)
         
-        .status = Reader.ReadInt8()
+        .status = Reader.ReadInt()
         
-        privs = Reader.ReadInt8()
-        ParticulaFx = Reader.ReadInt8()
+        privs = Reader.ReadInt()
+        ParticulaFx = Reader.ReadInt()
         .Head_Aura = Reader.ReadString8()
         .Arma_Aura = Reader.ReadString8()
         .Body_Aura = Reader.ReadString8()
@@ -3544,35 +3541,35 @@ Private Sub HandleCharacterCreate()
         .Speeding = Reader.ReadReal32()
         
         Dim FlagNpc As Byte
-        FlagNpc = Reader.ReadInt8()
+        FlagNpc = Reader.ReadInt()
         
         .EsNpc = FlagNpc > 0
         .EsMascota = FlagNpc = 2
         
-        .appear = Reader.ReadInt8()
+        .appear = Reader.ReadInt()
         appear = .appear
         .group_index = Reader.ReadInt()
         .clan_index = Reader.ReadInt()
-        .clan_nivel = Reader.ReadInt8()
-        .UserMinHp = Reader.ReadInt32()
-        .UserMaxHp = Reader.ReadInt32()
-        .UserMinMAN = Reader.ReadInt32()
-        .UserMaxMAN = Reader.ReadInt32()
-        .simbolo = Reader.ReadInt8()
+        .clan_nivel = Reader.ReadInt()
+        .UserMinHp = Reader.ReadInt()
+        .UserMaxHp = Reader.ReadInt()
+        .UserMinMAN = Reader.ReadInt()
+        .UserMaxMAN = Reader.ReadInt()
+        .simbolo = Reader.ReadInt()
          Dim flags As Byte
         
-        flags = Reader.ReadInt8()
+        flags = Reader.ReadInt()
         
                 
         .Idle = flags And &O1
         
         .Navegando = flags And &O2
-        .tipoUsuario = Reader.ReadInt8()
+        .tipoUsuario = Reader.ReadInt()
         
-        If (.Pos.X <> 0 And .Pos.Y <> 0) Then
-            If MapData(.Pos.X, .Pos.Y).charindex = charindex Then
+        If (.Pos.x <> 0 And .Pos.y <> 0) Then
+            If MapData(.Pos.x, .Pos.y).charindex = charindex Then
                 'Erase the old character from map
-                MapData(charlist(charindex).Pos.X, charlist(charindex).Pos.Y).charindex = 0
+                MapData(charlist(charindex).Pos.x, charlist(charindex).Pos.y).charindex = 0
 
             End If
 
@@ -3607,7 +3604,7 @@ Private Sub HandleCharacterCreate()
         .Muerto = (Body = CASPER_BODY_IDLE)
         '.AlphaPJ = 255
     
-        Call MakeChar(charindex, Body, Head, Heading, X, Y, weapon, shield, helmet, ParticulaFx, appear)
+        Call MakeChar(charindex, Body, Head, Heading, x, y, weapon, shield, helmet, ParticulaFx, appear)
         
         If .Idle Or .Navegando Then
             'Start animation
@@ -3678,12 +3675,12 @@ Private Sub HandleCharacterMove()
     '***************************************************
     
     Dim charindex As Integer
-    Dim X         As Byte
-    Dim Y         As Byte
+    Dim x         As Byte
+    Dim y         As Byte
     
     charindex = Reader.ReadInt()
-    X = Reader.ReadInt8()
-    Y = Reader.ReadInt8()
+    x = Reader.ReadInt()
+    y = Reader.ReadInt()
     
     With charlist(charindex)
         
@@ -3695,7 +3692,7 @@ Private Sub HandleCharacterMove()
 
     End With
     
-    Call Char_Move_by_Pos(charindex, X, Y)
+    Call Char_Move_by_Pos(charindex, x, y)
     
     Call RefreshAllChars
     
@@ -3715,7 +3712,7 @@ Private Sub HandleForceCharMove()
     On Error GoTo HandleForceCharMove_Err
     
     Dim Direccion As Byte
-    Direccion = Reader.ReadInt8()
+    Direccion = Reader.ReadInt()
     
     Moviendose = True
     
@@ -3724,9 +3721,9 @@ Private Sub HandleForceCharMove()
     Call Char_Move_by_Head(UserCharIndex, Direccion)
     Call MoveScreen(Direccion)
     
-    Call frmMain.SetMinimapPosition(0, UserPos.X, UserPos.Y)
+    Call frmMain.SetMinimapPosition(0, UserPos.x, UserPos.y)
     
-    frmMain.Coord.Caption = UserMap & "-" & UserPos.X & "-" & UserPos.Y
+    frmMain.Coord.Caption = UserMap & "-" & UserPos.x & "-" & UserPos.y
     
     If MapDat.Seguro = 1 Then
         frmMain.Coord.ForeColor = RGB(0, 170, 0)
@@ -3789,7 +3786,7 @@ Private Sub HandleCharacterChange()
 
         .Muerto = (.iBody = CASPER_BODY_IDLE)
         
-        .Heading = Reader.ReadInt8()
+        .Heading = Reader.ReadInt()
         
         TempInt = Reader.ReadInt()
 
@@ -3809,7 +3806,7 @@ Private Sub HandleCharacterChange()
             .Casco = CascoAnimData(TempInt)
         End If
                 
-        If .Body.HeadOffset.Y = -26 Then
+        If .Body.HeadOffset.y = -26 Then
             .EsEnano = True
         Else
             .EsEnano = False
@@ -3828,7 +3825,7 @@ Private Sub HandleCharacterChange()
         
         Dim flags As Byte
         
-        flags = Reader.ReadInt8()
+        flags = Reader.ReadInt()
         
         .Idle = flags And &O1
         
@@ -3863,11 +3860,11 @@ Private Sub HandleObjectCreate()
     '
     '***************************************************
     
-    Dim X        As Byte
+    Dim x        As Byte
 
-    Dim Y        As Byte
+    Dim y        As Byte
 
-    Dim ObjIndex As Integer
+    Dim OBJIndex As Integer
     
     Dim Amount   As Integer
 
@@ -3877,39 +3874,39 @@ Private Sub HandleObjectCreate()
 
     Dim id       As Long
     
-    X = Reader.ReadInt8()
-    Y = Reader.ReadInt8()
+    x = Reader.ReadInt()
+    y = Reader.ReadInt()
     
-    ObjIndex = Reader.ReadInt()
+    OBJIndex = Reader.ReadInt()
     
     Amount = Reader.ReadInt
     
-    MapData(X, Y).ObjGrh.GrhIndex = ObjData(ObjIndex).GrhIndex
+    MapData(x, y).ObjGrh.GrhIndex = ObjData(OBJIndex).GrhIndex
     
-    MapData(X, Y).OBJInfo.ObjIndex = ObjIndex
+    MapData(x, y).OBJInfo.OBJIndex = OBJIndex
     
-    MapData(X, Y).OBJInfo.Amount = Amount
+    MapData(x, y).OBJInfo.Amount = Amount
     
-    Call InitGrh(MapData(X, Y).ObjGrh, MapData(X, Y).ObjGrh.GrhIndex)
+    Call InitGrh(MapData(x, y).ObjGrh, MapData(x, y).ObjGrh.GrhIndex)
     
-    If ObjData(ObjIndex).CreaLuz <> "" Then
-        Call Long_2_RGBA(Color, Val(ReadField(2, ObjData(ObjIndex).CreaLuz, Asc(":"))))
-        Rango = Val(ReadField(1, ObjData(ObjIndex).CreaLuz, Asc(":")))
-        MapData(X, Y).luz.Color = Color
-        MapData(X, Y).luz.Rango = Rango
+    If ObjData(OBJIndex).CreaLuz <> "" Then
+        Call Long_2_RGBA(Color, Val(ReadField(2, ObjData(OBJIndex).CreaLuz, Asc(":"))))
+        Rango = Val(ReadField(1, ObjData(OBJIndex).CreaLuz, Asc(":")))
+        MapData(x, y).luz.Color = Color
+        MapData(x, y).luz.Rango = Rango
         
         If Rango < 100 Then
-            id = X & Y
-            LucesCuadradas.Light_Create X, Y, Color, Rango, id
+            id = x & y
+            LucesCuadradas.Light_Create x, y, Color, Rango, id
         Else
-            LucesRedondas.Create_Light_To_Map X, Y, Color, Rango - 99
+            LucesRedondas.Create_Light_To_Map x, y, Color, Rango - 99
         End If
         
     End If
         
-    If ObjData(ObjIndex).CreaParticulaPiso <> 0 Then
-        MapData(X, Y).particle_group = 0
-        General_Particle_Create ObjData(ObjIndex).CreaParticulaPiso, X, Y, -1
+    If ObjData(OBJIndex).CreaParticulaPiso <> 0 Then
+        MapData(x, y).particle_group = 0
+        General_Particle_Create ObjData(OBJIndex).CreaParticulaPiso, x, y, -1
 
     End If
     
@@ -3930,17 +3927,17 @@ Private Sub HandleFxPiso()
     '30/5/10
     '***************************************************
     
-    Dim X  As Byte
+    Dim x  As Byte
 
-    Dim Y  As Byte
+    Dim y  As Byte
 
     Dim fX As Byte
 
-    X = Reader.ReadInt8()
-    Y = Reader.ReadInt8()
+    x = Reader.ReadInt()
+    y = Reader.ReadInt()
     fX = Reader.ReadInt()
     
-    Call SetMapFx(X, Y, fX, 0)
+    Call SetMapFx(x, y, fX, 0)
     
     Exit Sub
 
@@ -3963,29 +3960,29 @@ Private Sub HandleObjectDelete()
     '
     '***************************************************
     
-    Dim X  As Byte
+    Dim x  As Byte
 
-    Dim Y  As Byte
+    Dim y  As Byte
 
     Dim id As Long
     
-    X = Reader.ReadInt8()
-    Y = Reader.ReadInt8()
+    x = Reader.ReadInt()
+    y = Reader.ReadInt()
     
-    If ObjData(MapData(X, Y).OBJInfo.ObjIndex).CreaLuz <> "" Then
-        id = LucesCuadradas.Light_Find(X & Y)
+    If ObjData(MapData(x, y).OBJInfo.OBJIndex).CreaLuz <> "" Then
+        id = LucesCuadradas.Light_Find(x & y)
         LucesCuadradas.Light_Remove id
-        MapData(X, Y).luz.Color = COLOR_EMPTY
-        MapData(X, Y).luz.Rango = 0
+        MapData(x, y).luz.Color = COLOR_EMPTY
+        MapData(x, y).luz.Rango = 0
        ' LucesCuadradas.Light_Render_All
 
     End If
     
-    MapData(X, Y).ObjGrh.GrhIndex = 0
-    MapData(X, Y).OBJInfo.ObjIndex = 0
+    MapData(x, y).ObjGrh.GrhIndex = 0
+    MapData(x, y).OBJInfo.OBJIndex = 0
     
-    If ObjData(MapData(X, Y).OBJInfo.ObjIndex).CreaParticulaPiso <> 0 Then
-        Graficos_Particulas.Particle_Group_Remove (MapData(X, Y).particle_group)
+    If ObjData(MapData(x, y).OBJInfo.OBJIndex).CreaParticulaPiso <> 0 Then
+        Graficos_Particulas.Particle_Group_Remove (MapData(x, y).particle_group)
 
     End If
     
@@ -4010,14 +4007,14 @@ Private Sub HandleBlockPosition()
     '
     '***************************************************
     
-    Dim X As Byte, Y As Byte, b As Byte
+    Dim x As Byte, y As Byte, B As Byte
     
-    X = Reader.ReadInt8()
-    Y = Reader.ReadInt8()
-    b = Reader.ReadInt8()
+    x = Reader.ReadInt()
+    y = Reader.ReadInt()
+    B = Reader.ReadInt()
 
-    MapData(X, Y).Blocked = MapData(X, Y).Blocked And Not eBlock.ALL_SIDES
-    MapData(X, Y).Blocked = MapData(X, Y).Blocked Or b
+    MapData(x, y).Blocked = MapData(x, y).Blocked And Not eBlock.ALL_SIDES
+    MapData(x, y).Blocked = MapData(x, y).Blocked Or B
     
     Exit Sub
 
@@ -4040,7 +4037,7 @@ Private Sub HandlePlayMIDI()
     '
     '***************************************************
     
-    Call Reader.ReadInt8   ' File
+    Call Reader.ReadInt   ' File
     Call Reader.ReadInt  ' Loop
     
     Exit Sub
@@ -4071,9 +4068,9 @@ Private Sub HandlePlayWave()
     Dim cancelLastWave As Byte
     
     wave = Reader.ReadInt()
-    srcX = Reader.ReadInt8()
-    srcY = Reader.ReadInt8()
-    cancelLastWave = Reader.ReadInt8()
+    srcX = Reader.ReadInt()
+    srcY = Reader.ReadInt()
+    cancelLastWave = Reader.ReadInt()
     
     If wave = 400 And MapDat.niebla = 0 Then Exit Sub
     If wave = 401 And MapDat.niebla = 0 Then Exit Sub
@@ -4125,26 +4122,26 @@ Private Sub HandlePosLLamadaDeClan()
     Dim srcY As Byte
     
     map = Reader.ReadInt()
-    srcX = Reader.ReadInt8()
-    srcY = Reader.ReadInt8()
+    srcX = Reader.ReadInt()
+    srcY = Reader.ReadInt()
 
     Dim idmap As Integer
 
     LLamadaDeclanMapa = map
     idmap = ObtenerIdMapaDeLlamadaDeClan(map)
 
-    Dim X As Long
+    Dim x As Long
 
-    Dim Y As Long
+    Dim y As Long
     
-    X = (idmap - 1) Mod 14
-    Y = Int((idmap - 1) / 14)
+    x = (idmap - 1) Mod 14
+    y = Int((idmap - 1) / 14)
 
     'frmMapaGrande.lblAllies.Top = Y * 32
     'frmMapaGrande.lblAllies.Left = X * 32
 
-    frmMapaGrande.llamadadeclan.Top = Y * 32 + (srcX / 4.5)
-    frmMapaGrande.llamadadeclan.Left = X * 32 + (srcY / 4.5)
+    frmMapaGrande.llamadadeclan.Top = y * 32 + (srcX / 4.5)
+    frmMapaGrande.llamadadeclan.Left = x * 32 + (srcY / 4.5)
 
     frmMapaGrande.llamadadeclan.Visible = True
 
@@ -4152,8 +4149,8 @@ Private Sub HandlePosLLamadaDeClan()
 
     frmMapaGrande.Shape2.Visible = True
 
-    frmMapaGrande.Shape2.Top = Y * 32
-    frmMapaGrande.Shape2.Left = X * 32
+    frmMapaGrande.Shape2.Top = y * 32
+    frmMapaGrande.Shape2.Left = x * 32
 
     LLamadaDeclanX = srcX
     LLamadaDeclanY = srcY
@@ -4181,8 +4178,8 @@ Private Sub HandleCharUpdateHP()
     Dim maxhp     As Long
     
     charindex = Reader.ReadInt()
-    minhp = Reader.ReadInt32()
-    maxhp = Reader.ReadInt32()
+    minhp = Reader.ReadInt()
+    maxhp = Reader.ReadInt()
 
     charlist(charindex).UserMinHp = minhp
     charlist(charindex).UserMaxHp = maxhp
@@ -4206,8 +4203,8 @@ Private Sub HandleCharUpdateMAN()
     Dim maxman     As Long
     
     charindex = Reader.ReadInt()
-    minman = Reader.ReadInt32()
-    maxman = Reader.ReadInt32()
+    minman = Reader.ReadInt()
+    maxman = Reader.ReadInt()
 
     charlist(charindex).UserMinMAN = minman
     charlist(charindex).UserMaxMAN = maxman
@@ -4352,14 +4349,14 @@ Private Sub HandleAreaChanged()
     '
     '***************************************************
     
-    Dim X As Byte
+    Dim x As Byte
 
-    Dim Y As Byte
+    Dim y As Byte
     
-    X = Reader.ReadInt8()
-    Y = Reader.ReadInt8()
+    x = Reader.ReadInt()
+    y = Reader.ReadInt()
         
-    Call CambioDeArea(X, Y)
+    Call CambioDeArea(x, y)
     
     Exit Sub
 
@@ -4405,7 +4402,7 @@ Private Sub HandleRainToggle()
     
     On Error GoTo HandleRainToggle_Err
     
-    If Not InMapBounds(UserPos.X, UserPos.Y) Then Exit Sub
+    If Not InMapBounds(UserPos.x, UserPos.y) Then Exit Sub
             
     If bRain Then
         If MapDat.LLUVIA Then
@@ -4502,12 +4499,12 @@ Private Sub HandleUpdateUserStats()
     UserMinMAN = Reader.ReadInt()
     UserMaxSTA = Reader.ReadInt()
     UserMinSTA = Reader.ReadInt()
-    UserGLD = Reader.ReadInt32()
-    OroPorNivel = Reader.ReadInt32()
-    UserLvl = Reader.ReadInt8()
-    UserPasarNivel = Reader.ReadInt32()
-    UserExp = Reader.ReadInt32()
-    UserClase = Reader.ReadInt8()
+    UserGLD = Reader.ReadInt()
+    OroPorNivel = Reader.ReadInt()
+    UserLvl = Reader.ReadInt()
+    UserPasarNivel = Reader.ReadInt()
+    UserExp = Reader.ReadInt()
+    UserClase = Reader.ReadInt()
     
     If UserPasarNivel > 0 Then
         frmMain.lblPorcLvl.Caption = Round(UserExp * (100 / UserPasarNivel), 2) & "%"
@@ -4603,9 +4600,9 @@ Private Sub HandleWorkRequestTarget()
 
     Dim UsingSkillREcibido As Byte
     
-    UsingSkillREcibido = Reader.ReadInt8()
+    UsingSkillREcibido = Reader.ReadInt()
     casteaArea = Reader.ReadBool()
-    RadioHechizoArea = Reader.ReadInt8()
+    RadioHechizoArea = Reader.ReadInt()
     'RadioHechizoArea = RadioHechizoArea / 2
 
     If UsingSkillREcibido = 0 Then
@@ -4680,8 +4677,8 @@ Private Sub HandleChangeInventorySlot()
     On Error GoTo ErrHandler
     
     Dim Slot        As Byte
-    Dim ObjIndex    As Integer
-    Dim name        As String
+    Dim OBJIndex    As Integer
+    Dim Name        As String
     Dim Amount      As Integer
     Dim Equipped    As Boolean
     Dim GrhIndex    As Long
@@ -4693,20 +4690,20 @@ Private Sub HandleChangeInventorySlot()
     Dim Value       As Single
     Dim podrausarlo As Byte
 
-    Slot = Reader.ReadInt8()
-    ObjIndex = Reader.ReadInt()
+    Slot = Reader.ReadInt()
+    OBJIndex = Reader.ReadInt()
     Amount = Reader.ReadInt()
     Equipped = Reader.ReadBool()
     Value = Reader.ReadReal32()
-    podrausarlo = Reader.ReadInt8()
+    podrausarlo = Reader.ReadInt()
 
-    name = ObjData(ObjIndex).name
-    GrhIndex = ObjData(ObjIndex).GrhIndex
-    ObjType = ObjData(ObjIndex).ObjType
-    MaxHit = ObjData(ObjIndex).MaxHit
-    MinHit = ObjData(ObjIndex).MinHit
-    MaxDef = ObjData(ObjIndex).MaxDef
-    MinDef = ObjData(ObjIndex).MinDef
+    Name = ObjData(OBJIndex).Name
+    GrhIndex = ObjData(OBJIndex).GrhIndex
+    ObjType = ObjData(OBJIndex).ObjType
+    MaxHit = ObjData(OBJIndex).MaxHit
+    MinHit = ObjData(OBJIndex).MinHit
+    MaxDef = ObjData(OBJIndex).MaxDef
+    MinDef = ObjData(OBJIndex).MinDef
 
     If Equipped Then
 
@@ -4758,19 +4755,19 @@ Private Sub HandleChangeInventorySlot()
 
     End If
 
-    Call frmMain.Inventario.SetItem(Slot, ObjIndex, Amount, Equipped, GrhIndex, ObjType, MaxHit, MinHit, MinDef, Value, name, podrausarlo)
+    Call frmMain.Inventario.SetItem(Slot, OBJIndex, Amount, Equipped, GrhIndex, ObjType, MaxHit, MinHit, MinDef, Value, Name, podrausarlo)
 
     If frmComerciar.Visible Then
-        Call frmComerciar.InvComUsu.SetItem(Slot, ObjIndex, Amount, Equipped, GrhIndex, ObjType, MaxHit, MinHit, MinDef, Value, name, podrausarlo)
+        Call frmComerciar.InvComUsu.SetItem(Slot, OBJIndex, Amount, Equipped, GrhIndex, ObjType, MaxHit, MinHit, MinDef, Value, Name, podrausarlo)
 
     ElseIf frmBancoObj.Visible Then
-        Call frmBancoObj.InvBankUsu.SetItem(Slot, ObjIndex, Amount, Equipped, GrhIndex, ObjType, MaxHit, MinHit, MinDef, Value, name, podrausarlo)
+        Call frmBancoObj.InvBankUsu.SetItem(Slot, OBJIndex, Amount, Equipped, GrhIndex, ObjType, MaxHit, MinHit, MinDef, Value, Name, podrausarlo)
         
     ElseIf frmBancoCuenta.Visible Then
-        Call frmBancoCuenta.InvBankUsuCuenta.SetItem(Slot, ObjIndex, Amount, Equipped, GrhIndex, ObjType, MaxHit, MinHit, MinDef, Value, name, podrausarlo)
+        Call frmBancoCuenta.InvBankUsuCuenta.SetItem(Slot, OBJIndex, Amount, Equipped, GrhIndex, ObjType, MaxHit, MinHit, MinDef, Value, Name, podrausarlo)
     
     ElseIf frmCrafteo.Visible Then
-        Call frmCrafteo.InvCraftUser.SetItem(Slot, ObjIndex, Amount, Equipped, GrhIndex, ObjType, MaxHit, MinHit, MinDef, Value, name, podrausarlo)
+        Call frmCrafteo.InvCraftUser.SetItem(Slot, OBJIndex, Amount, Equipped, GrhIndex, ObjType, MaxHit, MinHit, MinDef, Value, Name, podrausarlo)
     End If
 
     Exit Sub
@@ -4794,7 +4791,7 @@ Private Sub HandleInventoryUnlockSlots()
     
     Dim i As Integer
     
-    UserInvUnlocked = Reader.ReadInt8
+    UserInvUnlocked = Reader.ReadInt
     
     For i = 1 To UserInvUnlocked
     
@@ -4827,22 +4824,22 @@ Private Sub HandleChangeBankSlot()
     Dim BankSlot As Inventory
     
     With BankSlot
-        Slot = Reader.ReadInt8()
-        .ObjIndex = Reader.ReadInt()
+        Slot = Reader.ReadInt()
+        .OBJIndex = Reader.ReadInt()
         .Amount = Reader.ReadInt()
-        .Valor = Reader.ReadInt32()
-        .PuedeUsar = Reader.ReadInt8()
+        .Valor = Reader.ReadInt()
+        .PuedeUsar = Reader.ReadInt()
         
-        If .ObjIndex > 0 Then
-            .name = ObjData(.ObjIndex).name
-            .GrhIndex = ObjData(.ObjIndex).GrhIndex
-            .ObjType = ObjData(.ObjIndex).ObjType
-            .MaxHit = ObjData(.ObjIndex).MaxHit
-            .MinHit = ObjData(.ObjIndex).MinHit
-            .Def = ObjData(.ObjIndex).MaxDef
+        If .OBJIndex > 0 Then
+            .Name = ObjData(.OBJIndex).Name
+            .GrhIndex = ObjData(.OBJIndex).GrhIndex
+            .ObjType = ObjData(.OBJIndex).ObjType
+            .MaxHit = ObjData(.OBJIndex).MaxHit
+            .MinHit = ObjData(.OBJIndex).MinHit
+            .Def = ObjData(.OBJIndex).MaxDef
         End If
         
-        Call frmBancoObj.InvBoveda.SetItem(Slot, .ObjIndex, .Amount, .Equipped, .GrhIndex, .ObjType, .MaxHit, .MinHit, .Def, .Valor, .name, .PuedeUsar)
+        Call frmBancoObj.InvBoveda.SetItem(Slot, .OBJIndex, .Amount, .Equipped, .GrhIndex, .ObjType, .MaxHit, .MinHit, .Def, .Valor, .Name, .PuedeUsar)
 
     End With
     
@@ -4874,10 +4871,10 @@ Private Sub HandleChangeSpellSlot()
 
     Dim cooldown As Integer
 
-    Slot = Reader.ReadInt8()
+    Slot = Reader.ReadInt()
     
     UserHechizos(Slot) = Reader.ReadInt()
-    Index = Reader.ReadInt8()
+    Index = Reader.ReadInt()
 
     If Index < 254 Then
     
@@ -4926,7 +4923,7 @@ Private Sub HandleAtributes()
     Dim i As Long
     
     For i = 1 To NUMATRIBUTES
-        UserAtributos(i) = Reader.ReadInt8()
+        UserAtributos(i) = Reader.ReadInt()
     Next i
     
     'Show them in character creation
@@ -5033,12 +5030,12 @@ Private Sub HandleBlacksmithArmors()
         DefensasHerrero(i).Index = Reader.ReadInt()
     Next i
         
-    Dim a      As Byte
+    Dim A      As Byte
     Dim e      As Byte
     Dim c      As Byte
     Dim tmpObj As ObjDatas
 
-    a = 0
+    A = 0
     e = 0
     c = 0
     
@@ -5050,11 +5047,11 @@ Private Sub HandleBlacksmithArmors()
         
         If tmpObj.ObjType = 3 Then
            
-            ArmadurasHerrero(a).Index = DefensasHerrero(i).Index
-            ArmadurasHerrero(a).LHierro = DefensasHerrero(i).LHierro
-            ArmadurasHerrero(a).LPlata = DefensasHerrero(i).LPlata
-            ArmadurasHerrero(a).LOro = DefensasHerrero(i).LOro
-            a = a + 1
+            ArmadurasHerrero(A).Index = DefensasHerrero(i).Index
+            ArmadurasHerrero(A).LHierro = DefensasHerrero(i).LHierro
+            ArmadurasHerrero(A).LPlata = DefensasHerrero(i).LPlata
+            ArmadurasHerrero(A).LOro = DefensasHerrero(i).LOro
+            A = A + 1
 
         End If
         
@@ -5109,14 +5106,14 @@ Private Sub HandleCarpenterObjects()
 
     Dim tmp   As String
     
-    count = Reader.ReadInt8()
+    count = Reader.ReadInt()
     
     Call frmCarp.lstArmas.Clear
     
     For i = 1 To count
         ObjCarpintero(i) = Reader.ReadInt()
         
-        Call frmCarp.lstArmas.AddItem(ObjData(ObjCarpintero(i)).name)
+        Call frmCarp.lstArmas.AddItem(ObjData(ObjCarpintero(i)).Name)
     Next i
     
     For i = i To UBound(ObjCarpintero())
@@ -5228,7 +5225,7 @@ Private Sub HandleAlquimiaObjects()
     
     For i = 1 To count
         Obj = Reader.ReadInt()
-        tmp = ObjData(Obj).name        'Get the object's name
+        tmp = ObjData(Obj).Name        'Get the object's name
 
         ObjAlquimista(i) = Obj
         Call frmAlqui.lstArmas.AddItem(tmp)
@@ -5388,23 +5385,23 @@ Private Sub HandleChangeNPCInventorySlot()
     On Error GoTo ErrHandler
     
     Dim Slot As Byte
-    Slot = Reader.ReadInt8()
+    Slot = Reader.ReadInt()
     
     Dim SlotInv As NpCinV
 
     With SlotInv
-        .ObjIndex = Reader.ReadInt()
-        .name = ObjData(.ObjIndex).name
+        .OBJIndex = Reader.ReadInt()
+        .Name = ObjData(.OBJIndex).Name
         .Amount = Reader.ReadInt()
         .Valor = Reader.ReadReal32()
-        .GrhIndex = ObjData(.ObjIndex).GrhIndex
-        .ObjType = ObjData(.ObjIndex).ObjType
-        .MaxHit = ObjData(.ObjIndex).MaxHit
-        .MinHit = ObjData(.ObjIndex).MinHit
-        .Def = ObjData(.ObjIndex).MaxDef
-        .PuedeUsar = Reader.ReadInt8()
+        .GrhIndex = ObjData(.OBJIndex).GrhIndex
+        .ObjType = ObjData(.OBJIndex).ObjType
+        .MaxHit = ObjData(.OBJIndex).MaxHit
+        .MinHit = ObjData(.OBJIndex).MinHit
+        .Def = ObjData(.OBJIndex).MaxDef
+        .PuedeUsar = Reader.ReadInt()
         
-        Call frmComerciar.InvComNpc.SetItem(Slot, .ObjIndex, .Amount, 0, .GrhIndex, .ObjType, .MaxHit, .MinHit, .Def, .Valor, .name, .PuedeUsar)
+        Call frmComerciar.InvComNpc.SetItem(Slot, .OBJIndex, .Amount, 0, .GrhIndex, .ObjType, .MaxHit, .MinHit, .Def, .Valor, .Name, .PuedeUsar)
         
     End With
     
@@ -5432,10 +5429,10 @@ Private Sub HandleUpdateHungerAndThirst()
     '
     '***************************************************
     
-    UserMaxAGU = Reader.ReadInt8()
-    UserMinAGU = Reader.ReadInt8()
-    UserMaxHAM = Reader.ReadInt8()
-    UserMinHAM = Reader.ReadInt8()
+    UserMaxAGU = Reader.ReadInt()
+    UserMinAGU = Reader.ReadInt()
+    UserMaxHAM = Reader.ReadInt()
+    UserMinHAM = Reader.ReadInt()
     frmMain.AGUAsp.Width = UserMinAGU / UserMaxAGU * 32
     frmMain.COMIDAsp.Width = UserMinHAM / UserMaxHAM * 32
     frmMain.AGUbar.Caption = UserMinAGU '& " / " & UserMaxAGU
@@ -5460,8 +5457,8 @@ Private Sub HandleHora()
     
     On Error GoTo HandleHora_Err
 
-    HoraMundo = GetTickCount() - Reader.ReadInt32()
-    DuracionDia = Reader.ReadInt32()
+    HoraMundo = GetTickCount() - Reader.ReadInt()
+    DuracionDia = Reader.ReadInt()
     
     If Not Connected Then
         Call RevisarHoraMundo(True)
@@ -5504,8 +5501,8 @@ Private Sub HandleFYA()
     '
     '***************************************************
     
-    UserAtributos(eAtributos.Fuerza) = Reader.ReadInt8()
-    UserAtributos(eAtributos.Agilidad) = Reader.ReadInt8()
+    UserAtributos(eAtributos.Fuerza) = Reader.ReadInt()
+    UserAtributos(eAtributos.Agilidad) = Reader.ReadInt()
     
     DrogaCounter = Reader.ReadInt()
     
@@ -5559,7 +5556,7 @@ Private Sub HandleUpdateNPCSimbolo()
     
     NpcIndex = Reader.ReadInt()
     
-    simbolo = Reader.ReadInt8()
+    simbolo = Reader.ReadInt()
 
     charlist(NpcIndex).simbolo = simbolo
     
@@ -5643,16 +5640,16 @@ Private Sub HandleFlashScreen()
     '***************************************************
     Dim Color As Long, duracion As Long, ignorar As Boolean
     
-    Color = Reader.ReadInt32()
-    duracion = Reader.ReadInt32()
+    Color = Reader.ReadInt()
+    duracion = Reader.ReadInt()
     ignorar = Reader.ReadBool()
     
-    Dim r, G, b As Byte
+    Dim r, G, B As Byte
 
-    b = (Color And 16711680) / 65536
+    B = (Color And 16711680) / 65536
     G = (Color And 65280) / 256
     r = Color And 255
-    Color = D3DColorARGB(255, r, G, b)
+    Color = D3DColorARGB(255, r, G, B)
 
     If Not MapDat.niebla = 1 And Not ignorar Then
         'Debug.Print "trueno cancelado"
@@ -5676,16 +5673,16 @@ Private Sub HandleMiniStats()
     On Error GoTo HandleMiniStats_Err
     
     With UserEstadisticas
-        .CiudadanosMatados = Reader.ReadInt32()
-        .CriminalesMatados = Reader.ReadInt32()
-        .Alineacion = Reader.ReadInt8()
+        .CiudadanosMatados = Reader.ReadInt()
+        .CriminalesMatados = Reader.ReadInt()
+        .Alineacion = Reader.ReadInt()
         
         .NpcsMatados = Reader.ReadInt()
-        .Clase = ListaClases(Reader.ReadInt8())
-        .PenaCarcel = Reader.ReadInt32()
-        .VecesQueMoriste = Reader.ReadInt32()
-        .Genero = Reader.ReadInt8()
-        .PuntosPesca = Reader.ReadInt32()
+        .Clase = ListaClases(Reader.ReadInt())
+        .PenaCarcel = Reader.ReadInt()
+        .VecesQueMoriste = Reader.ReadInt()
+        .Genero = Reader.ReadInt()
+        .PuntosPesca = Reader.ReadInt()
 
         If .Genero = 1 Then
             .Genero = "Hombre"
@@ -5694,7 +5691,7 @@ Private Sub HandleMiniStats()
 
         End If
 
-        .Raza = Reader.ReadInt8()
+        .Raza = Reader.ReadInt()
         .Raza = ListaRazas(.Raza)
     End With
     
@@ -5939,13 +5936,13 @@ Private Sub HandleSendSkills()
     Dim i As Long
     
     For i = 1 To NUMSKILLS
-        UserSkills(i) = Reader.ReadInt8()
+        UserSkills(i) = Reader.ReadInt()
         'frmEstadisticas.skills(i).Caption = SkillsNames(i)
     Next i
 
     If LlegaronSkills Then
         Alocados = SkillPoints
-        frmEstadisticas.puntos.Caption = SkillPoints
+        frmEstadisticas.Puntos.Caption = SkillPoints
         frmEstadisticas.Iniciar_Labels
         frmEstadisticas.Picture = LoadInterface("ventanaskills.bmp")
         frmEstadisticas.Show , frmMain
@@ -6053,7 +6050,7 @@ Private Sub HandleGuildNews()
         'Debug.Print guildList(i)
     Next i
     
-    ClanNivel = Reader.ReadInt8()
+    ClanNivel = Reader.ReadInt()
     expacu = Reader.ReadInt()
     ExpNe = Reader.ReadInt()
      
@@ -6232,19 +6229,19 @@ Private Sub HandleCharacterInfo()
 
         End If
     
-        If Reader.ReadInt8() = 1 Then
+        If Reader.ReadInt() = 1 Then
             .Genero.Caption = "Genero: Hombre"
         Else
             .Genero.Caption = "Genero: Mujer"
         End If
             
         .nombre.Caption = "Nombre: " & Reader.ReadString8()
-        .Raza.Caption = "Raza: " & ListaRazas(Reader.ReadInt8())
-        .Clase.Caption = "Clase: " & ListaClases(Reader.ReadInt8())
+        .Raza.Caption = "Raza: " & ListaRazas(Reader.ReadInt())
+        .Clase.Caption = "Clase: " & ListaClases(Reader.ReadInt())
 
-        .nivel.Caption = "Nivel: " & Reader.ReadInt8()
-        .oro.Caption = "Oro: " & Reader.ReadInt32()
-        .Banco.Caption = "Banco: " & Reader.ReadInt32()
+        .nivel.Caption = "Nivel: " & Reader.ReadInt()
+        .oro.Caption = "Oro: " & Reader.ReadInt()
+        .Banco.Caption = "Banco: " & Reader.ReadInt()
     
         .txtPeticiones.Text = Reader.ReadString8()
         .guildactual.Caption = "Clan: " & Reader.ReadString8()
@@ -6264,8 +6261,8 @@ Private Sub HandleCharacterInfo()
     
         End If
             
-        .ciudadanos.Caption = "Ciudadanos asesinados: " & CStr(Reader.ReadInt32())
-        .Criminales.Caption = "Criminales asesinados: " & CStr(Reader.ReadInt32())
+        .ciudadanos.Caption = "Ciudadanos asesinados: " & CStr(Reader.ReadInt())
+        .Criminales.Caption = "Criminales asesinados: " & CStr(Reader.ReadInt())
     
         Call .Show(vbModeless, frmMain)
     
@@ -6351,7 +6348,7 @@ Private Sub HandleGuildLeaderInfo()
 
         Dim nivel  As Byte
          
-        nivel = Reader.ReadInt8()
+        nivel = Reader.ReadInt()
         .nivel = "Nivel: " & nivel
         
         expacu = Reader.ReadInt()
@@ -6435,7 +6432,7 @@ Private Sub HandleGuildDetails()
         .lblAlineacion.Caption = "Alineación: " & Reader.ReadString8()
         
         .desc.Text = Reader.ReadString8()
-        .nivel.Caption = "Nivel de clan: " & Reader.ReadInt8()
+        .nivel.Caption = "Nivel de clan: " & Reader.ReadInt()
 
     End With
     
@@ -6562,24 +6559,24 @@ Private Sub HandleChangeUserTradeSlot()
     Dim nombreItem As String
     Dim cantidad   As Integer
     Dim grhItem    As Long
-    Dim ObjIndex   As Integer
+    Dim OBJIndex   As Integer
 
     If miOferta Then
         Dim OroAEnviar As Long
-        OroAEnviar = Reader.ReadInt32
+        OroAEnviar = Reader.ReadInt
         frmComerciarUsu.lblOroMiOferta.Caption = PonerPuntos(OroAEnviar)
         frmComerciarUsu.lblMyGold.Caption = PonerPuntos(UserGLD - OroAEnviar)
 
         For i = 1 To 6
 
             With OtroInventario(i)
-                ObjIndex = Reader.ReadInt
+                OBJIndex = Reader.ReadInt
                 nombreItem = Reader.ReadString8
-                grhItem = Reader.ReadInt32
-                cantidad = Reader.ReadInt32
+                grhItem = Reader.ReadInt
+                cantidad = Reader.ReadInt
 
                 If cantidad > 0 Then
-                    Call frmComerciarUsu.InvUserSell.SetItem(i, ObjIndex, cantidad, 0, grhItem, 0, 0, 0, 0, 0, nombreItem, 0)
+                    Call frmComerciarUsu.InvUserSell.SetItem(i, OBJIndex, cantidad, 0, grhItem, 0, 0, 0, 0, 0, nombreItem, 0)
 
                 End If
 
@@ -6589,19 +6586,19 @@ Private Sub HandleChangeUserTradeSlot()
         
         Call frmComerciarUsu.InvUserSell.ReDraw
     Else
-        frmComerciarUsu.lblOro.Caption = PonerPuntos(Reader.ReadInt32)
+        frmComerciarUsu.lblOro.Caption = PonerPuntos(Reader.ReadInt)
 
         ' frmComerciarUsu.List2.Clear
         For i = 1 To 6
             
             With OtroInventario(i)
-                ObjIndex = Reader.ReadInt
+                OBJIndex = Reader.ReadInt
                 nombreItem = Reader.ReadString8
-                grhItem = Reader.ReadInt32
-                cantidad = Reader.ReadInt32
+                grhItem = Reader.ReadInt
+                cantidad = Reader.ReadInt
 
                 If cantidad > 0 Then
-                    Call frmComerciarUsu.InvOtherSell.SetItem(i, ObjIndex, cantidad, 0, grhItem, 0, 0, 0, 0, 0, nombreItem, 0)
+                    Call frmComerciarUsu.InvOtherSell.SetItem(i, OBJIndex, cantidad, 0, grhItem, 0, 0, 0, 0, 0, nombreItem, 0)
 
                 End If
 
@@ -6872,10 +6869,10 @@ Private Sub HandlePong()
     '
     '***************************************************
     
-    Dim Time As Long
-    Time = Reader.ReadInt32()
+    Dim time As Long
+    time = Reader.ReadInt()
 
-    PingRender = GetTickCount() - Time
+    PingRender = GetTickCount() - time
 
     Exit Sub
 
@@ -6907,7 +6904,7 @@ Private Sub HandleUpdateTagAndStatus()
     Dim group_index As Integer
     
     charindex = Reader.ReadInt()
-    status = Reader.ReadInt8()
+    status = Reader.ReadInt()
     NombreYClan = Reader.ReadString8()
         
     Dim Pos As Integer
@@ -6965,40 +6962,40 @@ Private Sub HandleParticleFXToFloor()
     '
     '***************************************************
     
-    Dim X              As Byte
+    Dim x              As Byte
 
-    Dim Y              As Byte
+    Dim y              As Byte
 
     Dim ParticulaIndex As Byte
 
-    Dim Time           As Long
+    Dim time           As Long
 
     Dim Borrar         As Boolean
      
-    X = Reader.ReadInt8()
-    Y = Reader.ReadInt8()
+    x = Reader.ReadInt()
+    y = Reader.ReadInt()
     ParticulaIndex = Reader.ReadInt()
-    Time = Reader.ReadInt32()
+    time = Reader.ReadInt()
 
-    If Time = 1 Then
-        Time = -1
+    If time = 1 Then
+        time = -1
 
     End If
     
-    If Time = 0 Then
+    If time = 0 Then
         Borrar = True
 
     End If
 
     If Borrar Then
-        Graficos_Particulas.Particle_Group_Remove (MapData(X, Y).particle_group)
+        Graficos_Particulas.Particle_Group_Remove (MapData(x, y).particle_group)
     Else
 
-        If MapData(X, Y).particle_group = 0 Then
-            MapData(X, Y).particle_group = 0
-            General_Particle_Create ParticulaIndex, X, Y, Time
+        If MapData(x, y).particle_group = 0 Then
+            MapData(x, y).particle_group = 0
+            General_Particle_Create ParticulaIndex, x, y, time
         Else
-            Call General_Char_Particle_Create(ParticulaIndex, MapData(X, Y).charindex, Time)
+            Call General_Char_Particle_Create(ParticulaIndex, MapData(x, y).charindex, time)
 
         End If
 
@@ -7022,9 +7019,9 @@ Private Sub HandleLightToFloor()
     '
     '***************************************************
     
-    Dim X           As Byte
+    Dim x           As Byte
 
-    Dim Y           As Byte
+    Dim y           As Byte
 
     Dim Color       As Long
     
@@ -7032,10 +7029,10 @@ Private Sub HandleLightToFloor()
 
     Dim Rango       As Byte
      
-    X = Reader.ReadInt8()
-    Y = Reader.ReadInt8()
-    Color = Reader.ReadInt32()
-    Rango = Reader.ReadInt8()
+    x = Reader.ReadInt()
+    y = Reader.ReadInt()
+    Color = Reader.ReadInt()
+    Rango = Reader.ReadInt()
     
     Call Long_2_RGBA(color_value, Color)
 
@@ -7045,29 +7042,29 @@ Private Sub HandleLightToFloor()
 
     If Color = 0 Then
    
-        If MapData(X, Y).luz.Rango > 100 Then
-            LucesRedondas.Delete_Light_To_Map X, Y
+        If MapData(x, y).luz.Rango > 100 Then
+            LucesRedondas.Delete_Light_To_Map x, y
             Exit Sub
         Else
-            id = LucesCuadradas.Light_Find(X & Y)
+            id = LucesCuadradas.Light_Find(x & y)
             LucesCuadradas.Light_Remove id
-            MapData(X, Y).luz.Color = COLOR_EMPTY
-            MapData(X, Y).luz.Rango = 0
+            MapData(x, y).luz.Color = COLOR_EMPTY
+            MapData(x, y).luz.Rango = 0
             Exit Sub
 
         End If
 
     End If
     
-    MapData(X, Y).luz.Color = color_value
-    MapData(X, Y).luz.Rango = Rango
+    MapData(x, y).luz.Color = color_value
+    MapData(x, y).luz.Rango = Rango
     
     If Rango < 100 Then
-        id = X & Y
-        LucesCuadradas.Light_Create X, Y, color_value, Rango, id
+        id = x & y
+        LucesCuadradas.Light_Create x, y, color_value, Rango, id
     Else
 
-        LucesRedondas.Create_Light_To_Map X, Y, color_value, Rango - 99
+        LucesRedondas.Create_Light_To_Map x, y, color_value, Rango - 99
     End If
     
     Exit Sub
@@ -7092,16 +7089,16 @@ Private Sub HandleParticleFX()
 
     Dim ParticulaIndex As Integer
 
-    Dim Time           As Long
+    Dim time           As Long
 
     Dim Remove         As Boolean
     Dim grh            As Long
      
     charindex = Reader.ReadInt()
     ParticulaIndex = Reader.ReadInt()
-    Time = Reader.ReadInt32()
+    time = Reader.ReadInt()
     Remove = Reader.ReadBool()
-    grh = Reader.ReadInt32()
+    grh = Reader.ReadInt()
     
     If Remove Then
         Call Char_Particle_Group_Remove(charindex, ParticulaIndex)
@@ -7109,11 +7106,11 @@ Private Sub HandleParticleFX()
     
     Else
         charlist(charindex).Particula = ParticulaIndex
-        charlist(charindex).ParticulaTime = Time
+        charlist(charindex).ParticulaTime = time
         If grh > 0 Then
-            Call General_Char_Particle_Create(ParticulaIndex, charindex, Time, grh)
+            Call General_Char_Particle_Create(ParticulaIndex, charindex, time, grh)
         Else
-            Call General_Char_Particle_Create(ParticulaIndex, charindex, Time)
+            Call General_Char_Particle_Create(ParticulaIndex, charindex, time)
         End If
 
     End If
@@ -7144,7 +7141,7 @@ Private Sub HandleParticleFXWithDestino()
 
     Dim ParticulaFinal As Integer
 
-    Dim Time           As Long
+    Dim time           As Long
 
     Dim wav            As Integer
 
@@ -7155,13 +7152,13 @@ Private Sub HandleParticleFXWithDestino()
     ParticulaViaje = Reader.ReadInt()
     ParticulaFinal = Reader.ReadInt()
 
-    Time = Reader.ReadInt32()
+    time = Reader.ReadInt()
     wav = Reader.ReadInt()
     fX = Reader.ReadInt()
 
     Engine_spell_Particle_Set (ParticulaViaje)
 
-    Call Effect_Begin(ParticulaViaje, 9, Get_Pixelx_Of_Char(Emisor), Get_PixelY_Of_Char(Emisor), ParticulaFinal, Time, receptor, Emisor, wav, fX)
+    Call Effect_Begin(ParticulaViaje, 9, Get_Pixelx_Of_Char(Emisor), Get_PixelY_Of_Char(Emisor), ParticulaFinal, time, receptor, Emisor, wav, fX)
 
     ' charlist(charindex).Particula = ParticulaIndex
     ' charlist(charindex).ParticulaTime = time
@@ -7192,32 +7189,32 @@ Private Sub HandleParticleFXWithDestinoXY()
 
     Dim ParticulaFinal As Integer
 
-    Dim Time           As Long
+    Dim time           As Long
 
     Dim wav            As Integer
 
     Dim fX             As Integer
 
-    Dim X              As Byte
+    Dim x              As Byte
 
-    Dim Y              As Byte
+    Dim y              As Byte
      
     Emisor = Reader.ReadInt()
     ParticulaViaje = Reader.ReadInt()
     ParticulaFinal = Reader.ReadInt()
 
-    Time = Reader.ReadInt32()
+    time = Reader.ReadInt()
     wav = Reader.ReadInt()
     fX = Reader.ReadInt()
     
-    X = Reader.ReadInt8()
-    Y = Reader.ReadInt8()
+    x = Reader.ReadInt()
+    y = Reader.ReadInt()
     
     ' Debug.Print "RECIBI FX= " & fX
 
     Engine_spell_Particle_Set (ParticulaViaje)
 
-    Call Effect_BeginXY(ParticulaViaje, 9, Get_Pixelx_Of_Char(Emisor), Get_PixelY_Of_Char(Emisor), X, Y, ParticulaFinal, Time, Emisor, wav, fX)
+    Call Effect_BeginXY(ParticulaViaje, 9, Get_Pixelx_Of_Char(Emisor), Get_PixelY_Of_Char(Emisor), x, y, ParticulaFinal, time, Emisor, wav, fX)
 
     ' charlist(charindex).Particula = ParticulaIndex
     ' charlist(charindex).ParticulaTime = time
@@ -7248,25 +7245,25 @@ Private Sub HandleAuraToChar()
 
     Dim Remove         As Boolean
 
-    Dim tipo           As Byte
+    Dim TIPO           As Byte
      
     charindex = Reader.ReadInt()
     ParticulaIndex = Reader.ReadString8()
 
     Remove = Reader.ReadBool()
-    tipo = Reader.ReadInt8()
+    TIPO = Reader.ReadInt()
     
-    If tipo = 1 Then
+    If TIPO = 1 Then
         charlist(charindex).Arma_Aura = ParticulaIndex
-    ElseIf tipo = 2 Then
+    ElseIf TIPO = 2 Then
         charlist(charindex).Body_Aura = ParticulaIndex
-    ElseIf tipo = 3 Then
+    ElseIf TIPO = 3 Then
         charlist(charindex).Escudo_Aura = ParticulaIndex
-    ElseIf tipo = 4 Then
+    ElseIf TIPO = 4 Then
         charlist(charindex).Head_Aura = ParticulaIndex
-    ElseIf tipo = 5 Then
+    ElseIf TIPO = 5 Then
         charlist(charindex).Otra_Aura = ParticulaIndex
-    ElseIf tipo = 6 Then
+    ElseIf TIPO = 6 Then
         charlist(charindex).DM_Aura = ParticulaIndex
     Else
         charlist(charindex).RM_Aura = ParticulaIndex
@@ -7318,7 +7315,7 @@ Private Sub HandleNieveToggle()
     
     On Error GoTo HandleNieveToggle_Err
     
-    If Not InMapBounds(UserPos.X, UserPos.Y) Then Exit Sub
+    If Not InMapBounds(UserPos.x, UserPos.y) Then Exit Sub
             
     If MapDat.NIEVE Then
         Engine_MeteoParticle_Set (Particula_Nieve)
@@ -7345,7 +7342,7 @@ Private Sub HandleNieblaToggle()
     
     On Error GoTo HandleNieblaToggle_Err
     
-    MaxAlphaNiebla = Reader.ReadInt8()
+    MaxAlphaNiebla = Reader.ReadInt()
             
     bNiebla = Not bNiebla
     frmMain.TimerNiebla.Enabled = True
@@ -7368,8 +7365,8 @@ Private Sub HandleBindKeys()
     'Pablo Mercavides
     '***************************************************
     
-    ChatCombate = Reader.ReadInt8()
-    ChatGlobal = Reader.ReadInt8()
+    ChatCombate = Reader.ReadInt()
+    ChatGlobal = Reader.ReadInt()
 
     If ChatCombate = 1 Then
         frmMain.CombateIcon.Picture = LoadInterface("infoapretado.bmp")
@@ -7409,7 +7406,7 @@ Private Sub HandleBarFx()
     
     charindex = Reader.ReadInt()
     BarTime = Reader.ReadInt()
-    BarAccion = Reader.ReadInt8()
+    BarAccion = Reader.ReadInt()
     
     charlist(charindex).BarTime = 0
     charlist(charindex).BarAccion = BarAccion
@@ -7446,7 +7443,7 @@ Private Sub HandleQuestDetails()
     
     Dim cantidadobj    As Integer
 
-    Dim ObjIndex       As Integer
+    Dim OBJIndex       As Integer
     
     Dim AmountHave     As Integer
     
@@ -7468,7 +7465,7 @@ Private Sub HandleQuestDetails()
     FrmQuests.objetolbl.Caption = ""
     
         'Nos fijamos si se trata de una quest empezada, para poder leer los NPCs que se han matado.
-        QuestEmpezada = IIf(Reader.ReadInt8, True, False)
+        QuestEmpezada = IIf(Reader.ReadInt, True, False)
         
         If Not QuestEmpezada Then
         
@@ -7478,7 +7475,7 @@ Private Sub HandleQuestDetails()
            
             'tmpStr = "Mision: " & .ReadString8 & vbCrLf
             
-            LevelRequerido = Reader.ReadInt8
+            LevelRequerido = Reader.ReadInt
             QuestRequerida = Reader.ReadInt
            
             If QuestRequerida <> 0 Then
@@ -7490,7 +7487,7 @@ Private Sub HandleQuestDetails()
                 Call AddtoRichTextBox(FrmQuestInfo.Text1, QuestList(QuestIndex).desc & vbCrLf & vbCrLf & "Requisitos" & vbCrLf & "Nivel requerido: " & LevelRequerido & vbCrLf, 128, 128, 128)
             End If
            
-            tmpByte = Reader.ReadInt8
+            tmpByte = Reader.ReadInt
 
             If tmpByte Then 'Hay NPCs
                 If tmpByte > 5 Then
@@ -7512,7 +7509,7 @@ Private Sub HandleQuestDetails()
                        
                         Dim subelemento As ListItem
 
-                        Set subelemento = FrmQuestInfo.ListView1.ListItems.Add(, , NpcData(NpcIndex).name)
+                        Set subelemento = FrmQuestInfo.ListView1.ListItems.Add(, , NpcData(NpcIndex).Name)
                        
                         subelemento.SubItems(1) = cantidadnpc
                         subelemento.SubItems(2) = NpcIndex
@@ -7524,42 +7521,42 @@ Private Sub HandleQuestDetails()
 
             End If
            
-            tmpByte = Reader.ReadInt8
+            tmpByte = Reader.ReadInt
 
             If tmpByte Then 'Hay OBJs
 
                 For i = 1 To tmpByte
                
                     cantidadobj = Reader.ReadInt
-                    ObjIndex = Reader.ReadInt
+                    OBJIndex = Reader.ReadInt
                     
                     AmountHave = Reader.ReadInt
                    
-                    Set subelemento = FrmQuestInfo.ListView1.ListItems.Add(, , ObjData(ObjIndex).name)
+                    Set subelemento = FrmQuestInfo.ListView1.ListItems.Add(, , ObjData(OBJIndex).Name)
                     subelemento.SubItems(1) = AmountHave & "/" & cantidadobj
-                    subelemento.SubItems(2) = ObjIndex
+                    subelemento.SubItems(2) = OBJIndex
                     subelemento.SubItems(3) = 1
                 Next i
 
             End If
     
             tmpStr = tmpStr & vbCrLf & "RECOMPENSAS" & vbCrLf
-            'tmpStr = tmpStr & "*) Oro: " & .ReadInt32 & " monedas de oro." & vbCrLf
-            'tmpStr = tmpStr & "*) Experiencia: " & .ReadInt32 & " puntos de experiencia." & vbCrLf
+            'tmpStr = tmpStr & "*) Oro: " & .ReadInt & " monedas de oro." & vbCrLf
+            'tmpStr = tmpStr & "*) Experiencia: " & .ReadInt & " puntos de experiencia." & vbCrLf
            
             Set subelemento = FrmQuestInfo.ListView2.ListItems.Add(, , "Oro")
 
-            subelemento.SubItems(1) = BeautifyBigNumber(Reader.ReadInt32)
+            subelemento.SubItems(1) = BeautifyBigNumber(Reader.ReadInt)
             subelemento.SubItems(2) = 12
             subelemento.SubItems(3) = 0
 
             Set subelemento = FrmQuestInfo.ListView2.ListItems.Add(, , "Experiencia")
 
-            subelemento.SubItems(1) = BeautifyBigNumber(Reader.ReadInt32)
+            subelemento.SubItems(1) = BeautifyBigNumber(Reader.ReadInt)
             subelemento.SubItems(2) = 608
             subelemento.SubItems(3) = 1
            
-            tmpByte = Reader.ReadInt8
+            tmpByte = Reader.ReadInt
 
             If tmpByte Then
 
@@ -7573,7 +7570,7 @@ Private Sub HandleQuestDetails()
                     cantidadobjs = Reader.ReadInt
                     obindex = Reader.ReadInt
                    
-                    Set subelemento = FrmQuestInfo.ListView2.ListItems.Add(, , ObjData(obindex).name)
+                    Set subelemento = FrmQuestInfo.ListView2.ListItems.Add(, , ObjData(obindex).Name)
                        
                     subelemento.SubItems(1) = cantidadobjs
                     subelemento.SubItems(2) = obindex
@@ -7590,7 +7587,7 @@ Private Sub HandleQuestDetails()
         
             FrmQuests.titulo.Caption = QuestList(QuestIndex).nombre
            
-            LevelRequerido = Reader.ReadInt8
+            LevelRequerido = Reader.ReadInt
             QuestRequerida = Reader.ReadInt
            
             FrmQuests.detalle.Text = QuestList(QuestIndex).desc & vbCrLf & vbCrLf & "Requisitos" & vbCrLf & "Nivel requerido: " & LevelRequerido & vbCrLf
@@ -7603,7 +7600,7 @@ Private Sub HandleQuestDetails()
            
             tmpStr = tmpStr & vbCrLf & "OBJETIVOS" & vbCrLf
            
-            tmpByte = Reader.ReadInt8
+            tmpByte = Reader.ReadInt
 
             If tmpByte Then 'Hay NPCs
 
@@ -7615,7 +7612,7 @@ Private Sub HandleQuestDetails()
                
                     matados = Reader.ReadInt
                                      
-                    Set subelemento = FrmQuests.ListView1.ListItems.Add(, , NpcData(NpcIndex).name)
+                    Set subelemento = FrmQuests.ListView1.ListItems.Add(, , NpcData(NpcIndex).Name)
                        
                     Dim cantok As Integer
 
@@ -7636,20 +7633,20 @@ Private Sub HandleQuestDetails()
 
             End If
            
-            tmpByte = Reader.ReadInt8
+            tmpByte = Reader.ReadInt
 
             If tmpByte Then 'Hay OBJs
 
                 For i = 1 To tmpByte
                
                     cantidadobj = Reader.ReadInt
-                    ObjIndex = Reader.ReadInt
+                    OBJIndex = Reader.ReadInt
                     
                     AmountHave = Reader.ReadInt
                    
-                    Set subelemento = FrmQuests.ListView1.ListItems.Add(, , ObjData(ObjIndex).name)
+                    Set subelemento = FrmQuests.ListView1.ListItems.Add(, , ObjData(OBJIndex).Name)
                     subelemento.SubItems(1) = AmountHave & "/" & cantidadobj
-                    subelemento.SubItems(2) = ObjIndex
+                    subelemento.SubItems(2) = OBJIndex
                     subelemento.SubItems(3) = 1
                 Next i
 
@@ -7659,7 +7656,7 @@ Private Sub HandleQuestDetails()
 
             Dim tmplong As Long
            
-            tmplong = Reader.ReadInt32
+            tmplong = Reader.ReadInt
            
             If tmplong <> 0 Then
                 Set subelemento = FrmQuests.ListView2.ListItems.Add(, , "Oro")
@@ -7669,7 +7666,7 @@ Private Sub HandleQuestDetails()
 
             End If
             
-            tmplong = Reader.ReadInt32
+            tmplong = Reader.ReadInt
            
             If tmplong <> 0 Then
                 Set subelemento = FrmQuests.ListView2.ListItems.Add(, , "Experiencia")
@@ -7680,7 +7677,7 @@ Private Sub HandleQuestDetails()
 
             End If
            
-            tmpByte = Reader.ReadInt8
+            tmpByte = Reader.ReadInt
 
             If tmpByte Then
 
@@ -7688,7 +7685,7 @@ Private Sub HandleQuestDetails()
                     cantidadobjs = Reader.ReadInt
                     obindex = Reader.ReadInt
                    
-                    Set subelemento = FrmQuests.ListView2.ListItems.Add(, , ObjData(obindex).name)
+                    Set subelemento = FrmQuests.ListView2.ListItems.Add(, , ObjData(obindex).Name)
                        
                     subelemento.SubItems(1) = cantidadobjs
                     subelemento.SubItems(2) = obindex
@@ -7739,7 +7736,7 @@ Public Sub HandleQuestListSend()
     Dim tmpStr  As String
      
     'Leemos la cantidad de quests que tiene el usuario
-    tmpByte = Reader.ReadInt8
+    tmpByte = Reader.ReadInt
     
     'Limpiamos el ListBox y el TextBox del formulario
     FrmQuests.lstQuests.Clear
@@ -7793,7 +7790,7 @@ Public Sub HandleNpcQuestListSend()
     Dim cantidadnpc    As Integer
     Dim NpcIndex       As Integer
     Dim cantidadobj    As Integer
-    Dim ObjIndex       As Integer
+    Dim OBJIndex       As Integer
     Dim QuestIndex     As Integer
     Dim estado         As Byte
     Dim LevelRequerido As Byte
@@ -7805,7 +7802,7 @@ Public Sub HandleNpcQuestListSend()
     FrmQuestInfo.ListView2.ListItems.Clear
     FrmQuestInfo.ListView1.ListItems.Clear
 
-        CantidadQuest = Reader.ReadInt8
+        CantidadQuest = Reader.ReadInt
             
         For j = 1 To CantidadQuest
         
@@ -7813,10 +7810,10 @@ Public Sub HandleNpcQuestListSend()
             
             FrmQuestInfo.titulo.Caption = QuestList(QuestIndex).nombre
                               
-            QuestList(QuestIndex).RequiredLevel = Reader.ReadInt8
+            QuestList(QuestIndex).RequiredLevel = Reader.ReadInt
             QuestList(QuestIndex).RequiredQuest = Reader.ReadInt
             
-            tmpByte = Reader.ReadInt8
+            tmpByte = Reader.ReadInt
     
             If tmpByte Then 'Hay NPCs
             
@@ -7841,7 +7838,7 @@ Public Sub HandleNpcQuestListSend()
 
             End If
                
-            tmpByte = Reader.ReadInt8
+            tmpByte = Reader.ReadInt
     
             If tmpByte Then 'Hay OBJs
                 ReDim QuestList(QuestIndex).RequiredOBJ(1 To tmpByte)
@@ -7849,7 +7846,7 @@ Public Sub HandleNpcQuestListSend()
                 For i = 1 To tmpByte
                    
                     QuestList(QuestIndex).RequiredOBJ(i).Amount = Reader.ReadInt
-                    QuestList(QuestIndex).RequiredOBJ(i).ObjIndex = Reader.ReadInt
+                    QuestList(QuestIndex).RequiredOBJ(i).OBJIndex = Reader.ReadInt
 
                 Next i
 
@@ -7858,10 +7855,10 @@ Public Sub HandleNpcQuestListSend()
     
             End If
                
-            QuestList(QuestIndex).RewardGLD = Reader.ReadInt32
-            QuestList(QuestIndex).RewardEXP = Reader.ReadInt32
+            QuestList(QuestIndex).RewardGLD = Reader.ReadInt
+            QuestList(QuestIndex).RewardEXP = Reader.ReadInt
 
-            tmpByte = Reader.ReadInt8
+            tmpByte = Reader.ReadInt
     
             If tmpByte Then
                 
@@ -7870,7 +7867,7 @@ Public Sub HandleNpcQuestListSend()
                 For i = 1 To tmpByte
                                               
                     QuestList(QuestIndex).RewardOBJ(i).Amount = Reader.ReadInt
-                    QuestList(QuestIndex).RewardOBJ(i).ObjIndex = Reader.ReadInt
+                    QuestList(QuestIndex).RewardOBJ(i).OBJIndex = Reader.ReadInt
                
                 Next i
 
@@ -7879,7 +7876,7 @@ Public Sub HandleNpcQuestListSend()
     
             End If
                 
-            estado = Reader.ReadInt8
+            estado = Reader.ReadInt
             Repetible = QuestList(QuestIndex).Repetible = 1
             
             Set subelemento = FrmQuestInfo.ListViewQuest.ListItems.Add(, , QuestList(QuestIndex).nombre & IIf(Repetible, " (R)", ""))
@@ -7969,7 +7966,7 @@ Private Sub HandleDatosGrupo()
     EnGrupo = Reader.ReadBool()
     
     If EnGrupo Then
-        CantMiembros = Reader.ReadInt8()
+        CantMiembros = Reader.ReadInt()
 
         For i = 1 To CantMiembros
             FrmGrupo.lstGrupo.AddItem (Reader.ReadString8)
@@ -7997,22 +7994,22 @@ Private Sub HandleUbicacion()
     On Error GoTo HandleUbicacion_Err
     
     Dim miembro As Byte
-    Dim X       As Byte
-    Dim Y       As Byte
+    Dim x       As Byte
+    Dim y       As Byte
     Dim map     As Integer
     
-    miembro = Reader.ReadInt8()
-    X = Reader.ReadInt8()
-    Y = Reader.ReadInt8()
+    miembro = Reader.ReadInt()
+    x = Reader.ReadInt()
+    y = Reader.ReadInt()
     map = Reader.ReadInt()
     
-    If X = 0 Then
+    If x = 0 Then
         frmMain.personaje(miembro).Visible = False
     Else
 
         If UserMap = map Then
             frmMain.personaje(miembro).Visible = True
-            Call frmMain.SetMinimapPosition(miembro, X, Y)
+            Call frmMain.SetMinimapPosition(miembro, x, y)
 
         End If
 
@@ -8037,7 +8034,7 @@ Private Sub HandleViajarForm()
 
     FrmViajes.List1.Clear
     
-    DestCant = Reader.ReadInt8()
+    DestCant = Reader.ReadInt()
         
     ReDim Destinos(1 To DestCant) As Tdestino
         
@@ -8053,7 +8050,7 @@ Private Sub HandleViajarForm()
         
     Call Establecer_Borde(FrmViajes.List1, FrmViajes, COLOR_AZUL, 0, 0)
          
-    ViajarInterface = Reader.ReadInt8()
+    ViajarInterface = Reader.ReadInt()
         
     FrmViajes.Picture = LoadInterface("viajes" & ViajarInterface & ".bmp")
         
@@ -8100,9 +8097,9 @@ End Sub
 
 Private Sub HandleInvasionInfo()
 
-    InvasionActual = Reader.ReadInt8
-    InvasionPorcentajeVida = Reader.ReadInt8
-    InvasionPorcentajeTiempo = Reader.ReadInt8
+    InvasionActual = Reader.ReadInt
+    InvasionPorcentajeVida = Reader.ReadInt
+    InvasionPorcentajeTiempo = Reader.ReadInt
     
     frmMain.Evento.Enabled = False
     frmMain.Evento.Interval = 0
@@ -8150,18 +8147,18 @@ End Sub
 
 Private Sub HandleOpenCrafting()
 
-    Dim tipo As Byte
-    tipo = Reader.ReadInt8
+    Dim TIPO As Byte
+    TIPO = Reader.ReadInt
 
-    frmCrafteo.Picture = LoadInterface(TipoCrafteo(tipo).Ventana)
-    frmCrafteo.InventoryGrhIndex = TipoCrafteo(tipo).Inventario
-    frmCrafteo.TipoGrhIndex = TipoCrafteo(tipo).Icono
+    frmCrafteo.Picture = LoadInterface(TipoCrafteo(TIPO).Ventana)
+    frmCrafteo.InventoryGrhIndex = TipoCrafteo(TIPO).Inventario
+    frmCrafteo.TipoGrhIndex = TipoCrafteo(TIPO).Icono
     
     Dim i As Long
     'Fill our inventory list
     For i = 1 To MAX_INVENTORY_SLOTS
         With frmMain.Inventario
-            Call frmCrafteo.InvCraftUser.SetItem(i, .ObjIndex(i), .Amount(i), .Equipped(i), .GrhIndex(i), .ObjType(i), .MaxHit(i), .MinHit(i), .Def(i), .Valor(i), .ItemName(i), .PuedeUsar(i))
+            Call frmCrafteo.InvCraftUser.SetItem(i, .OBJIndex(i), .Amount(i), .Equipped(i), .GrhIndex(i), .ObjType(i), .MaxHit(i), .MinHit(i), .Def(i), .Valor(i), .ItemName(i), .PuedeUsar(i))
         End With
     Next i
     
@@ -8180,13 +8177,13 @@ Private Sub HandleOpenCrafting()
 End Sub
 
 Private Sub HandleCraftingItem()
-    Dim Slot As Byte, ObjIndex As Integer
-    Slot = Reader.ReadInt8
-    ObjIndex = Reader.ReadInt
+    Dim Slot As Byte, OBJIndex As Integer
+    Slot = Reader.ReadInt
+    OBJIndex = Reader.ReadInt
     
-    If ObjIndex <> 0 Then
-        With ObjData(ObjIndex)
-            Call frmCrafteo.InvCraftItems.SetItem(Slot, ObjIndex, 1, 0, .GrhIndex, .ObjType, 0, 0, 0, .Valor, .name, 0)
+    If OBJIndex <> 0 Then
+        With ObjData(OBJIndex)
+            Call frmCrafteo.InvCraftItems.SetItem(Slot, OBJIndex, 1, 0, .GrhIndex, .ObjType, 0, 0, 0, .Valor, .Name, 0)
         End With
     Else
         Call frmCrafteo.InvCraftItems.ClearSlot(Slot)
@@ -8195,14 +8192,14 @@ Private Sub HandleCraftingItem()
 End Sub
 
 Private Sub HandleCraftingCatalyst()
-    Dim ObjIndex As Integer, Amount As Integer, Porcentaje As Byte
-    ObjIndex = Reader.ReadInt
+    Dim OBJIndex As Integer, Amount As Integer, Porcentaje As Byte
+    OBJIndex = Reader.ReadInt
     Amount = Reader.ReadInt
-    Porcentaje = Reader.ReadInt8
+    Porcentaje = Reader.ReadInt
     
-    If ObjIndex <> 0 Then
-        With ObjData(ObjIndex)
-            Call frmCrafteo.InvCraftCatalyst.SetItem(1, ObjIndex, Amount, 0, .GrhIndex, .ObjType, 0, 0, 0, .Valor, .name, 0)
+    If OBJIndex <> 0 Then
+        With ObjData(OBJIndex)
+            Call frmCrafteo.InvCraftCatalyst.SetItem(1, OBJIndex, Amount, 0, .GrhIndex, .ObjType, 0, 0, 0, .Valor, .Name, 0)
         End With
     Else
         Call frmCrafteo.InvCraftCatalyst.ClearSlot(1)
@@ -8213,14 +8210,14 @@ Private Sub HandleCraftingCatalyst()
 End Sub
 
 Private Sub HandleCraftingResult()
-    Dim ObjIndex As Integer
-    ObjIndex = Reader.ReadInt
+    Dim OBJIndex As Integer
+    OBJIndex = Reader.ReadInt
 
-    If ObjIndex > 0 Then
+    If OBJIndex > 0 Then
         Dim Porcentaje As Byte, Precio As Long
-        Porcentaje = Reader.ReadInt8
-        Precio = Reader.ReadInt32
-        Call frmCrafteo.SetResult(ObjData(ObjIndex).GrhIndex, Porcentaje, Precio)
+        Porcentaje = Reader.ReadInt
+        Precio = Reader.ReadInt
+        Call frmCrafteo.SetResult(ObjData(OBJIndex).GrhIndex, Porcentaje, Precio)
     Else
         Call frmCrafteo.SetResult(0, 0, 0)
     End If
@@ -8263,7 +8260,7 @@ Public Sub HandleUpdateBankGld()
     
     Dim UserBoveOro As Long
         
-    UserBoveOro = Reader.ReadInt32
+    UserBoveOro = Reader.ReadInt
     
     Call frmGoliath.UpdateBankGld(UserBoveOro)
     Exit Sub
@@ -8315,37 +8312,135 @@ ErrHandler:
     Call RegistrarError(Err.Number, Err.Description, "Protocol.HandlePrivilegios", Erl)
 End Sub
 
-Public Sub HandleShopInit()
+Public Sub HandleAccountCharacterList()
+
+    CantidadDePersonajesEnCuenta = Reader.ReadInt
+
+    Dim ii As Byte
+     'name, head_id, class_id, body_id, pos_map, pos_x, pos_y, level, status, helmet_id, shield_id, weapon_id, guild_index, is_dead, is_sailing
+    For ii = 1 To MAX_PERSONAJES_EN_CUENTA
+        Pjs(ii).nombre = ""
+        Pjs(ii).Head = 0 ' si is_sailing o muerto, cabeza en 0
+        Pjs(ii).Clase = 0
+        Pjs(ii).Body = 0
+        Pjs(ii).Mapa = 0
+        Pjs(ii).PosX = 0
+        Pjs(ii).PosY = 0
+        Pjs(ii).nivel = 0
+        Pjs(ii).Criminal = 0
+        Pjs(ii).Casco = 0
+        Pjs(ii).Escudo = 0
+        Pjs(ii).Arma = 0
+        Pjs(ii).ClanName = ""
+        Pjs(ii).NameMapa = ""
+    Next ii
     
-    Dim cant_obj_shop As Long, i As Long
+    For ii = 1 To min(CantidadDePersonajesEnCuenta, MAX_PERSONAJES_EN_CUENTA)
+        Pjs(ii).nombre = Reader.ReadString8
+        Pjs(ii).Body = Reader.ReadInt
+        Pjs(ii).Head = Reader.ReadInt
+        Pjs(ii).Clase = Reader.ReadInt
+        Pjs(ii).Mapa = Reader.ReadInt
+        Pjs(ii).PosX = Reader.ReadInt
+        Pjs(ii).PosY = Reader.ReadInt
+        Pjs(ii).nivel = Reader.ReadInt
+        Pjs(ii).Criminal = Reader.ReadInt
+        Pjs(ii).Casco = Reader.ReadInt
+        Pjs(ii).Escudo = Reader.ReadInt
+        Pjs(ii).Arma = Reader.ReadInt
+        Pjs(ii).ClanName = "" ' "<" & "pepito" & ">"
+
+    Next ii
     
-    cant_obj_shop = Reader.ReadInt
-    
-    credits_shopAO20 = Reader.ReadInt32
-    frmShopAO20.lblCredits.Caption = credits_shopAO20
-    
-    ReDim ObjShop(1 To cant_obj_shop) As ObjDatas
-    
-    For i = 1 To cant_obj_shop
-        ObjShop(i).objNum = Reader.ReadInt32
-        ObjShop(i).Valor = Reader.ReadInt32
-        ObjShop(i).name = Reader.ReadString8
-         
-        Call frmShopAO20.lstItemShopFilter.AddItem(ObjShop(i).name & " (Valor: " & ObjShop(i).Valor & ")", i - 1)
+    Dim i As Long
+    For i = 1 To min(CantidadDePersonajesEnCuenta, MAX_PERSONAJES_EN_CUENTA)
+        Select Case Pjs(i).Criminal
+            Case 0 'Criminal
+                Call SetRGBA(Pjs(i).LetraColor, ColoresPJ(50).r, ColoresPJ(50).G, ColoresPJ(50).B)
+                Pjs(i).priv = 0
+            Case 1 'Ciudadano
+                Call SetRGBA(Pjs(i).LetraColor, ColoresPJ(49).r, ColoresPJ(49).G, ColoresPJ(49).B)
+                Pjs(i).priv = 0
+            Case 2 'Caos
+                Call SetRGBA(Pjs(i).LetraColor, ColoresPJ(6).r, ColoresPJ(6).G, ColoresPJ(6).B)
+                Pjs(i).priv = 0
+            Case 3 'Armada
+                Call SetRGBA(Pjs(i).LetraColor, ColoresPJ(8).r, ColoresPJ(8).G, ColoresPJ(8).B)
+                Pjs(i).priv = 0
+            Case Else
+        End Select
     Next i
     
-    frmShopAO20.Show , frmMain
-End Sub
-
-Public Sub HandleUpdateShopClienteCredits()
-    credits_shopAO20 = Reader.ReadInt32
-    frmShopAO20.lblCredits.Caption = credits_shopAO20
-End Sub
-
-Public Sub HandleSensuiRetrasado()
-    EscribeRetrasadoSensui = True
-    frmMain.timerRetrasadoSensui.Enabled = True
     
+    AlphaRenderCuenta = MAX_ALPHA_RENDER_CUENTA
+   
+    If CantidadDePersonajesEnCuenta > 0 Then
+        PJSeleccionado = 1
+        LastPJSeleccionado = 1
+        
+        If Pjs(1).Mapa <> 0 Then
+            Call SwitchMap(Pjs(1).Mapa)
+            RenderCuenta_PosX = Pjs(1).PosX
+            RenderCuenta_PosY = Pjs(1).PosY
+        End If
+    End If
+     
+    ' FrmCuenta.Show
+    AlphaNiebla = 30
+
+    frmConnect.Visible = True
+    QueRender = 2
+    
+    'UserMap = 323
+    
+    'Call SwitchMap(UserMap)
+    
+    SugerenciaAMostrar = RandomNumber(1, NumSug)
+        
+    ' LogeoAlgunaVez = True
+    Call Sound.Sound_Play(192)
+    
+    Call Sound.Sound_Stop(SND_LLUVIAIN)
+    '  Sound.NextMusic = 2
+    '  Sound.Fading = 350
+      
+    Call Graficos_Particulas.Particle_Group_Remove_All
+    Call Graficos_Particulas.Engine_Select_Particle_Set(203)
+    ParticleLluviaDorada = Graficos_Particulas.General_Particle_Create(208, -1, -1)
+                
+    If frmNewAccount.Visible Then
+        Unload frmNewAccount
+    End If
+    
+    If FrmLogear.Visible Then
+        Unload FrmLogear
+
+        'Unload frmConnect
+    End If
+    
+    If frmMain.Visible Then
+        '  frmMain.Visible = False
+        
+        UserParalizado = False
+        UserInmovilizado = False
+        UserStopped = False
+        
+        InvasionActual = 0
+        frmMain.Evento.Enabled = False
+     
+        'BUG CLONES
+
+        For i = 1 To LastChar
+            Call EraseChar(i)
+        Next i
+        
+        frmMain.personaje(1).Visible = False
+        frmMain.personaje(2).Visible = False
+        frmMain.personaje(3).Visible = False
+        frmMain.personaje(4).Visible = False
+        frmMain.personaje(5).Visible = False
+
+    End If
 End Sub
 
 Public Sub HandleObjQuestListSend()
@@ -8364,7 +8459,7 @@ Public Sub HandleObjQuestListSend()
     Dim cantidadnpc    As Integer
     Dim NpcIndex       As Integer
     Dim cantidadobj    As Integer
-    Dim ObjIndex       As Integer
+    Dim OBJIndex       As Integer
     Dim QuestIndex     As Integer
     Dim estado         As Byte
     Dim LevelRequerido As Byte
@@ -8381,11 +8476,11 @@ Public Sub HandleObjQuestListSend()
 
     FrmQuestInfo.titulo.Caption = QuestList(QuestIndex).nombre
 
-    QuestList(QuestIndex).RequiredLevel = Reader.ReadInt8
+    QuestList(QuestIndex).RequiredLevel = Reader.ReadInt
     QuestList(QuestIndex).RequiredQuest = Reader.ReadInt
 
 
-    tmpByte = Reader.ReadInt8
+    tmpByte = Reader.ReadInt
 
     If tmpByte Then 'Hay NPCs
 
@@ -8410,7 +8505,7 @@ Public Sub HandleObjQuestListSend()
 
     End If
 
-    tmpByte = Reader.ReadInt8
+    tmpByte = Reader.ReadInt
 
     If tmpByte Then 'Hay OBJs
         ReDim QuestList(QuestIndex).RequiredOBJ(1 To tmpByte)
@@ -8418,7 +8513,7 @@ Public Sub HandleObjQuestListSend()
         For i = 1 To tmpByte
 
             QuestList(QuestIndex).RequiredOBJ(i).Amount = Reader.ReadInt
-            QuestList(QuestIndex).RequiredOBJ(i).ObjIndex = Reader.ReadInt
+            QuestList(QuestIndex).RequiredOBJ(i).OBJIndex = Reader.ReadInt
 
         Next i
 
@@ -8427,10 +8522,10 @@ Public Sub HandleObjQuestListSend()
 
     End If
 
-    QuestList(QuestIndex).RewardGLD = Reader.ReadInt32
-    QuestList(QuestIndex).RewardEXP = Reader.ReadInt32
+    QuestList(QuestIndex).RewardGLD = Reader.ReadInt
+    QuestList(QuestIndex).RewardEXP = Reader.ReadInt
 
-    tmpByte = Reader.ReadInt8
+    tmpByte = Reader.ReadInt
 
     If tmpByte Then
 
@@ -8439,7 +8534,7 @@ Public Sub HandleObjQuestListSend()
         For i = 1 To tmpByte
 
             QuestList(QuestIndex).RewardOBJ(i).Amount = Reader.ReadInt
-            QuestList(QuestIndex).RewardOBJ(i).ObjIndex = Reader.ReadInt
+            QuestList(QuestIndex).RewardOBJ(i).OBJIndex = Reader.ReadInt
 
         Next i
 
@@ -8448,7 +8543,7 @@ Public Sub HandleObjQuestListSend()
 
     End If
 
-    estado = Reader.ReadInt8
+    estado = Reader.ReadInt
     Repetible = QuestList(QuestIndex).Repetible = 1
 
     Set subelemento = FrmQuestInfo.ListViewQuest.ListItems.Add(, , QuestList(QuestIndex).nombre & IIf(Repetible, " (R)", ""))

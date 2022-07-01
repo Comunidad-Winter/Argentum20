@@ -1,12 +1,5 @@
 Attribute VB_Name = "mod_JSON"
-'********************* COPYRIGHT NOTICE*********************
-' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
-' www.ao20.com.ar
-' All rights reserved.
-' Refer to licence for conditions of use.
-' This copyright notice must always be left intact.
-'****************** END OF COPYRIGHT NOTICE*****************
-'
+
 ' VBJSONDeserializer is a VB6 adaptation of the VB-JSON project @
 ' Fuente: https://www.codeproject.com/Articles/720368/VB-JSON-Parser-Improved-Performance
 
@@ -16,7 +9,7 @@ Option Explicit
 
 ' DECLARACIONES API
 Private Declare Function GetLocaleInfo Lib "kernel32.dll" Alias "GetLocaleInfoA" (ByVal Locale As Long, ByVal LCType As Long, ByVal lpLCData As String, ByVal cchData As Long) As Long
-Private Declare Function GetUserDefaultLCID% Lib "kernel32" ()
+Private Declare Function GetUserDefaultLCID% Lib "Kernel32" ()
 
 ' CONSTANTES LOCALE API
 Public Const LOCALE_SDECIMAL = &HE
@@ -808,7 +801,7 @@ StringToJSON_Err:
         
 End Function
 
-Public Function RStoJSON(rs As ADODB.Recordset) As String
+Public Function RStoJSON(RS As ADODB.Recordset) As String
 
         On Error GoTo ErrHandler
 
@@ -819,25 +812,25 @@ Public Function RStoJSON(rs As ADODB.Recordset) As String
 
 100     lRecCnt = 0
 
-102     If rs.State = adStateClosed Then
+102     If RS.State = adStateClosed Then
 104         RStoJSON = "null"
         Else
 
-106         If rs.EOF Or rs.BOF Then
+106         If RS.EOF Or RS.BOF Then
 108             RStoJSON = "null"
             
             Else
 
-110             Do While Not rs.EOF And Not rs.BOF
+110             Do While Not RS.EOF And Not RS.BOF
 112                 lRecCnt = lRecCnt + 1
 114                 sFlds = vbNullString
 
-116                 For Each fld In rs.Fields
-118                     sFlds = (sFlds & IIf(sFlds <> "", ",", "") & """" & fld.Name & """:""" & toUnicode(fld.Value & "") & """")
+116                 For Each fld In RS.Fields
+118                     sFlds = (sFlds & IIf(sFlds <> "", ",", "") & """" & fld.name & """:""" & toUnicode(fld.Value & "") & """")
                     Next 'fld
 
 120                 Call sRecs.Append(IIf((Trim$(sRecs.ToString) <> ""), "," & vbNewLine, "") & "{" & sFlds & "}")
-122                 Call rs.MoveNext
+122                 Call RS.MoveNext
                 Loop
             
 124             RStoJSON = ("( {""Records"": [" & vbNewLine & sRecs.ToString & vbNewLine & "], " & """RecordCount"":""" & lRecCnt & """ } )")

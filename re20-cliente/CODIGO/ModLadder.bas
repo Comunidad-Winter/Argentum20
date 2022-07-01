@@ -7,7 +7,7 @@ Public Const DegreeToRadian As Single = 0.01745329251994 'Pi / 180
 Public Const RadianToDegree As Single = 57.2958279087977 '180 / Pi
 
 'Nueva seguridad
-Public Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" (destination As Any, source As Any, ByVal Length As Long)
+Public Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" (destination As Any, source As Any, ByVal length As Long)
 Private Declare Function GetAsyncKeyState Lib "user32" (ByVal vKey As Long) As Integer
 'get mac adress
 
@@ -579,7 +579,7 @@ Public Sub LogError(desc As String)
 
     nfile = FreeFile ' obtenemos un canal
     Open App.Path & "\errores.log" For Append Shared As #nfile
-    Print #nfile, Date & "-" & Time & ":" & desc
+    Print #nfile, Date & "-" & time & ":" & desc
     Close #nfile
 
     Exit Sub
@@ -1632,7 +1632,7 @@ Public Function General_Var_Get(ByVal File As String, ByVal Main As String, ByVa
     'Last Modify Date: 10/07/2002
     'Get a var to from a text file
     '*****************************************************************
-    Dim L        As Long
+    Dim l        As Long
 
     Dim Char     As String
 
@@ -1667,30 +1667,30 @@ Public Sub DibujarMiniMapa()
     If ListNPCMapData(UserMap, 1).NPCNumber > 0 Then
         Dim i As Long
         For i = 1 To MAX_QUESTNPCS_VISIBLE
-            Dim posX As Long
-            Dim posY As Long
+            Dim PosX As Long
+            Dim PosY As Long
             
-            PosX = (ListNPCMapData(UserMap, i).Position.X - HalfWindowTileWidth - 2) * (100 / (100 - 2 * HalfWindowTileWidth - 4)) - 2
+            PosX = (ListNPCMapData(UserMap, i).Position.x - HalfWindowTileWidth - 2) * (100 / (100 - 2 * HalfWindowTileWidth - 4)) - 2
             PosY = (ListNPCMapData(UserMap, i).Position.y - HalfWindowTileHeight - 1) * (100 / (100 - 2 * HalfWindowTileHeight - 2)) - 1
             
             
-            Dim color As Long
+            Dim Color As Long
             
             Select Case ListNPCMapData(UserMap, i).State
                 Case 1
-                    color = RGB(0, 198, 254)
+                    Color = RGB(0, 198, 254)
                 Case 2
-                    color = RGB(255, 201, 14)
+                    Color = RGB(255, 201, 14)
                     Case Else
                     Color = RGB(255, 201, 14)
             End Select
             
             
             
-            Call SetPixel(frmMain.MiniMap.hdc, PosX + 1, PosY, color)
-            Call SetPixel(frmMain.MiniMap.hdc, PosX, PosY + 1, color)
-            Call SetPixel(frmMain.MiniMap.hdc, PosX + 1, PosY + 1, color)
-            Call SetPixel(frmMain.MiniMap.hdc, PosX, PosY, color)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX + 1, PosY, Color)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX, PosY + 1, Color)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX + 1, PosY + 1, Color)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX, PosY, Color)
             
             Call SetPixel(frmMain.MiniMap.hdc, PosX, PosY - 1, &H808080)
             Call SetPixel(frmMain.MiniMap.hdc, PosX + 1, PosY - 1, &H808080)
@@ -1970,33 +1970,6 @@ ResetearUserMacro_Err:
     
 End Sub
 
-Public Sub CargarLst()
-    
-    On Error GoTo CargarLst_Err
-    
-
-    Dim i As Integer
-
-    FrmLogear.lstServers.Clear
-
-    For i = 1 To UBound(ServersLst)
-        FrmLogear.lstServers.AddItem ServersLst(i).desc
-    Next i
-    
-#If DEBUGGING = 1 Then
-    FrmLogear.lstServers.ListIndex = Val(ServerIndex)
-#Else
-    FrmLogear.lstServers.ListIndex = 0
-#End If
-
-    
-    Exit Sub
-
-CargarLst_Err:
-    Call RegistrarError(Err.Number, Err.Description, "ModLadder.CargarLst", Erl)
-    Resume Next
-    
-End Sub
 
 Public Sub CrearFantasma(ByVal charindex As Integer)
     
@@ -2044,23 +2017,6 @@ CompletarAccionBarra_Err:
     
 End Sub
 
-Public Sub ComprobarEstado()
-    
-    On Error GoTo ComprobarEstado_Err
-    
-
-    Call InitServersList
-
-    Call CargarLst
-
-    
-    Exit Sub
-
-ComprobarEstado_Err:
-    Call RegistrarError(Err.Number, Err.Description, "ModLadder.ComprobarEstado", Erl)
-    Resume Next
-    
-End Sub
 
 Public Function General_Distance_Get(ByVal x1 As Integer, ByVal y1 As Integer, ByVal x2 As Integer, ByVal y2 As Integer) As Integer
     

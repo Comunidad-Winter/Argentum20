@@ -197,7 +197,7 @@ Public iplst    As String
 
 Private Type t_Position
 
-    X As Integer
+    x As Integer
     y As Integer
 
 End Type
@@ -867,7 +867,7 @@ Sub CargarDatosMapa(ByVal map As Integer)
 
                             Dim subelemento As ListItem
 
-                            Set subelemento = frmMapaGrande.ListView1.ListItems.Add(, , NpcData(c).Name)
+                            Set subelemento = frmMapaGrande.ListView1.ListItems.Add(, , NpcData(c).name)
 
                             subelemento.SubItems(1) = NpcWorlds(c)
                             subelemento.SubItems(2) = c
@@ -1290,7 +1290,7 @@ Public Sub CargarParticulas()
     
     'fill StreamData array with info from Particles.ini
     For loopc = 1 To ParticulasTotales
-        StreamData(loopc).Name = General_Var_Get(StreamFile, Val(loopc), "Name")
+        StreamData(loopc).name = General_Var_Get(StreamFile, Val(loopc), "Name")
         StreamData(loopc).NumOfParticles = General_Var_Get(StreamFile, Val(loopc), "NumOfParticles")
         StreamData(loopc).x1 = General_Var_Get(StreamFile, Val(loopc), "X1")
         StreamData(loopc).y1 = General_Var_Get(StreamFile, Val(loopc), "Y1")
@@ -1338,7 +1338,7 @@ Public Sub CargarParticulas()
             TempSet = General_Var_Get(StreamFile, Val(loopc), "ColorSet" & ColorSet)
             StreamData(loopc).colortint(ColorSet - 1).r = General_Field_Read(1, TempSet, ",")
             StreamData(loopc).colortint(ColorSet - 1).G = General_Field_Read(2, TempSet, ",")
-            StreamData(loopc).colortint(ColorSet - 1).B = General_Field_Read(3, TempSet, ",")
+            StreamData(loopc).colortint(ColorSet - 1).b = General_Field_Read(3, TempSet, ",")
         Next ColorSet
         
     Next loopc
@@ -1436,7 +1436,7 @@ Public Sub CargarParticulasBinary()
             TempSet = General_Var_Get(StreamFile, Val(loopc), "ColorSet" & ColorSet)
             StreamData(loopc).colortint(ColorSet - 1).r = General_Field_Read(1, TempSet, ",")
             StreamData(loopc).colortint(ColorSet - 1).G = General_Field_Read(2, TempSet, ",")
-            StreamData(loopc).colortint(ColorSet - 1).B = General_Field_Read(3, TempSet, ",")
+            StreamData(loopc).colortint(ColorSet - 1).b = General_Field_Read(3, TempSet, ",")
         Next ColorSet
         
     Next loopc
@@ -1507,7 +1507,7 @@ Public Sub CargarIndicesOBJ()
     For Obj = 1 To NumOBJs
         DoEvents
         ObjData(Obj).GrhIndex = Val(Leer.GetValue("OBJ" & Obj, "grhindex"))
-        ObjData(Obj).Name = Leer.GetValue("OBJ" & Obj, "Name")
+        ObjData(Obj).name = Leer.GetValue("OBJ" & Obj, "Name")
         ObjData(Obj).MinDef = Val(Leer.GetValue("OBJ" & Obj, "MinDef"))
         ObjData(Obj).MaxDef = Val(Leer.GetValue("OBJ" & Obj, "MaxDef"))
         ObjData(Obj).MinHit = Val(Leer.GetValue("OBJ" & Obj, "MinHit"))
@@ -1537,7 +1537,7 @@ Public Sub CargarIndicesOBJ()
         ObjData(Obj).Llave = Val(Leer.GetValue("OBJ" & Obj, "Llave"))
             
         If Val(Leer.GetValue("OBJ" & Obj, "NFT")) = 1 Then
-            ObjShop(i).Name = Leer.GetValue("OBJ" & Obj, "Name")
+            ObjShop(i).name = Leer.GetValue("OBJ" & Obj, "Name")
             ObjShop(i).Valor = Val(Leer.GetValue("OBJ" & Obj, "Valor"))
             ObjShop(i).objNum = Obj
             ReDim Preserve ObjShop(1 To (UBound(ObjShop) + 1)) As ObjDatas
@@ -1552,10 +1552,10 @@ Public Sub CargarIndicesOBJ()
     For Npc = 1 To NumNpcs
         DoEvents
         
-        NpcData(Npc).Name = Leer.GetValue("npc" & Npc, "Name")
+        NpcData(Npc).name = Leer.GetValue("npc" & Npc, "Name")
 
-        If NpcData(Npc).Name = "" Then
-            NpcData(Npc).Name = "Vacío"
+        If NpcData(Npc).name = "" Then
+            NpcData(Npc).name = "Vacío"
 
         End If
 
@@ -1609,7 +1609,7 @@ Public Sub CargarIndicesOBJ()
     
     For Hechizo = 1 To 350
         DoEvents
-        NameMaps(Hechizo).Name = Leer.GetValue("NameMapa", "Mapa" & Hechizo)
+        NameMaps(Hechizo).name = Leer.GetValue("NameMapa", "Mapa" & Hechizo)
         NameMaps(Hechizo).desc = Leer.GetValue("NameMapa", "Mapa" & Hechizo & "Desc")
     Next Hechizo
     
@@ -2651,20 +2651,20 @@ Sub CargarColores()
     For i = 0 To 47 '49 y 50 reservados para ciudadano y criminal
         ColoresPJ(i).r = CByte(GetVar(archivoC, CStr(i), "R"))
         ColoresPJ(i).G = CByte(GetVar(archivoC, CStr(i), "G"))
-        ColoresPJ(i).B = CByte(GetVar(archivoC, CStr(i), "B"))
+        ColoresPJ(i).b = CByte(GetVar(archivoC, CStr(i), "B"))
     Next i
     
     ColoresPJ(50).r = CByte(GetVar(archivoC, "CR", "R"))
     ColoresPJ(50).G = CByte(GetVar(archivoC, "CR", "G"))
-    ColoresPJ(50).B = CByte(GetVar(archivoC, "CR", "B"))
+    ColoresPJ(50).b = CByte(GetVar(archivoC, "CR", "B"))
     
     ColoresPJ(49).r = CByte(GetVar(archivoC, "CI", "R"))
     ColoresPJ(49).G = CByte(GetVar(archivoC, "CI", "G"))
-    ColoresPJ(49).B = CByte(GetVar(archivoC, "CI", "B"))
+    ColoresPJ(49).b = CByte(GetVar(archivoC, "CI", "B"))
     
     ColoresPJ(48).r = CByte(GetVar(archivoC, "NE", "R"))
     ColoresPJ(48).G = CByte(GetVar(archivoC, "NE", "G"))
-    ColoresPJ(48).B = CByte(GetVar(archivoC, "NE", "B"))
+    ColoresPJ(48).b = CByte(GetVar(archivoC, "NE", "B"))
     
     #If Compresion = 1 Then
         Delete_File Windows_Temp_Dir & "colores.dat"
@@ -2875,7 +2875,7 @@ End Sub
 
 Sub LoadFonts()
     If LoadFont("Cardo.ttf") Then
-        frmMain.NombrePJ.font.Name = "Cardo"
+        frmMain.NombrePJ.font.name = "Cardo"
     End If
 
     If LoadFont("Alegreya Sans AO.ttf") Then
@@ -2883,10 +2883,10 @@ Sub LoadFonts()
         Dim Middle As Integer
     
         For Each CurControl In frmMain.Controls
-            If CurControl.Name <> "NombrePJ" Then
+            If CurControl.name <> "NombrePJ" Then
                 Select Case TypeName(CurControl)
                     Case "Label"
-                        CurControl.font.Name = "Alegreya Sans AO"
+                        CurControl.font.name = "Alegreya Sans AO"
 
                         ' Centrar texto verticalmente
                         If Not CurControl.AutoSize Then
@@ -2896,46 +2896,19 @@ Sub LoadFonts()
                         End If
                         
                     Case "RichTextBox", "ListBox"
-                        CurControl.font.Name = "Alegreya Sans AO"
+                        CurControl.font.name = "Alegreya Sans AO"
                 End Select
             End If
         Next
 
         Call SelLineSpacing(frmMain.RecTxt, 5, 22)
     End If
-    
-    Dim arr() As Byte
-    
-    ReDim arr(1 To 16) As Byte
-    
-    arr(1) = 1
-    arr(2) = 62
-    arr(3) = 7
-    arr(4) = 2
-    arr(5) = 56
-    arr(6) = 22
-    arr(7) = 9
-    arr(8) = 21
-    arr(9) = 52
-    arr(10) = 23
-    arr(11) = 28
-    arr(12) = 19
-    arr(13) = 38
-    arr(14) = 22
-    arr(15) = 11
-    arr(16) = 64
-    MapInfoEspeciales = estaInmovilizado(arr)
-    
-    #If DEBUGGING = 1 Then
-        Debug.Print MapInfoEspeciales
-    #Else
-    
-    #End If
+
 End Sub
 
-Function LoadFont(Name As String) As Boolean
+Function LoadFont(name As String) As Boolean
     Static YaMostreError As Boolean
-    LoadFont = AddFontResourceEx(App.Path & "\..\Recursos\OUTPUT\" & Name, FR_PRIVATE, 0&) <> 0
+    LoadFont = AddFontResourceEx(App.Path & "\..\Recursos\OUTPUT\" & name, FR_PRIVATE, 0&) <> 0
 
     If Not YaMostreError And Not LoadFont Then
         Call MsgBox("No se pudieron cargar algunas fuentes, reinstale el juego para repararlas.", vbOKOnly, "Error al cargar - Argentum20")
@@ -2954,7 +2927,7 @@ Public Sub CargarNPCsMapData()
     ReDim ListNPCMapData(1 To NumMaps, 1 To MAX_QUESTNPCS_VISIBLE) As t_QuestNPCMapData
     
     Do While Not EOF(fh)
-        Dim Map As Integer
+        Dim map As Integer
         Get fh, , map
         
         If map > 0 Then

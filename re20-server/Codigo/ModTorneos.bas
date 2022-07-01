@@ -1,12 +1,5 @@
 Attribute VB_Name = "ModTorneos"
-'********************* COPYRIGHT NOTICE*********************
-' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
-' www.ao20.com.ar
-' All rights reserved.
-' Refer to licence for conditions of use.
-' This copyright notice must always be left intact.
-'****************** END OF COPYRIGHT NOTICE*****************
-'
+
 Public Type t_Torneo
 
     HayTorneoaActivo As Boolean
@@ -84,7 +77,7 @@ IniciarTorneo_Err:
         
 End Sub
 
-Public Sub ParticiparTorneo(ByVal UserIndex As Integer)
+Public Sub ParticiparTorneo(ByVal userindex As Integer)
         
         On Error GoTo ParticiparTorneo_Err
         
@@ -92,12 +85,12 @@ Public Sub ParticiparTorneo(ByVal UserIndex As Integer)
         Dim IndexVacio As Byte
     
 100     IndexVacio = BuscarIndexFreeTorneo
-102     Torneo.IndexParticipantes(IndexVacio) = UserIndex
+102     Torneo.IndexParticipantes(IndexVacio) = userindex
     
 104     Torneo.Participantes = Torneo.Participantes + 1
-106     UserList(UserIndex).flags.EnTorneo = True
+106     UserList(userindex).flags.EnTorneo = True
     
-108     Call WriteConsoleMsg(UserIndex, "¡Ya estas anotado! Solo debes aguardar hasta que seas enviado a la sala de espera.", e_FontTypeNames.FONTTYPE_INFOIAO)
+108     Call WriteConsoleMsg(userindex, "¡Ya estas anotado! Solo debes aguardar hasta que seas enviado a la sala de espera.", e_FontTypeNames.FONTTYPE_INFOIAO)
     
         
         Exit Sub
@@ -175,7 +168,7 @@ Public Sub ComenzarTorneoOk()
 
 100     For i = 1 To Torneo.Participantes
     
-102         nombres = nombres & UserList(Torneo.IndexParticipantes(i)).Name & ", "
+102         nombres = nombres & UserList(Torneo.IndexParticipantes(i)).name & ", "
 104         X = Torneo.X
 106         Y = Torneo.Y
 108         Call FindLegalPos(Torneo.IndexParticipantes(i), Torneo.Mapa, X, Y)

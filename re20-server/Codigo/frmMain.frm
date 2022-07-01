@@ -906,16 +906,16 @@ Private Sub TimerGuardarUsuarios_Timer()
 On Error GoTo Handler
     
     ' Guardar usuarios (solo si pasó el tiempo mínimo para guardar)
-    Dim UserIndex As Integer, UserGuardados As Integer
+    Dim userindex As Integer, UserGuardados As Integer
 
-    For UserIndex = 1 To LastUser
+    For userindex = 1 To LastUser
     
-        With UserList(UserIndex)
+        With UserList(userindex)
 
             If .flags.UserLogged Then
                 If GetTickCount - .Counters.LastSave > IntervaloGuardarUsuarios Then
                 
-                    Call SaveUser(UserIndex)
+                    Call SaveUser(userindex)
                     
                     UserGuardados = UserGuardados + 1
                     
@@ -948,7 +948,7 @@ Private Sub Minuto_Timer()
 
     Dim i                   As Integer
 
-    Dim Num                 As Long
+    Dim num                 As Long
 
     MinsRunning = MinsRunning + 1
 
@@ -1012,7 +1012,7 @@ Private Sub CMDDUMP_Click()
         Dim i As Integer
 
 100     For i = 1 To MaxUsers
-102         Call LogCriticEvent(i & ") ConnIDValida: " & UserList(i).ConnIDValida & " Name: " & UserList(i).Name & " UserLogged: " & UserList(i).flags.UserLogged)
+102         Call LogCriticEvent(i & ") ConnIDValida: " & UserList(i).ConnIDValida & " Name: " & UserList(i).name & " UserLogged: " & UserList(i).flags.UserLogged)
 104     Next i
 
 106     Call LogCriticEvent("Lastuser: " & LastUser & " NextOpenUser: " & NextOpenUser)
@@ -1082,7 +1082,6 @@ Private Sub Command11_Click()
         
 100     Call LoadSini
         Call LoadMD5
-133     Call LoadPrivateKey
         
         Exit Sub
 
@@ -1240,7 +1239,7 @@ Private Sub EstadoTimer_Timer()
 
         If Baneos(i).FechaLiberacion <= Now Then
             Call SendData(SendTarget.ToAdmins, 0, PrepareMessageConsoleMsg("Servidor » Se ha concluido la sentencia de ban para " & Baneos(i).name & ".", e_FontTypeNames.FONTTYPE_SERVER))
-            Call UnBan(Baneos(i).Name)
+            Call UnBan(Baneos(i).name)
             Call Baneos.Remove(i)
             Call SaveBans
         End If
@@ -1357,7 +1356,7 @@ Evento_Timer_Err:
         
 End Sub
 
-Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, y As Single)
         
         On Error GoTo Form_MouseMove_Err
    
@@ -1462,7 +1461,7 @@ Private Sub GameTimer_Timer()
 
             If .flags.UserLogged Then
                 
-                Call DoTileEvents(iUserIndex, .Pos.Map, .Pos.X, .Pos.Y)
+                Call DoTileEvents(iUserIndex, .Pos.map, .Pos.X, .Pos.y)
 
                 If .flags.Muerto = 0 Then
                     
@@ -1636,11 +1635,11 @@ Private Sub mnuSystray_Click()
         
 
         Dim i   As Integer
-        Dim S   As String
+        Dim s   As String
         Dim nid As NOTIFYICONDATA
 
-100     S = "ARGENTUM-ONLINE"
-102     nid = setNOTIFYICONDATA(frmMain.hwnd, vbNull, NIF_MESSAGE Or NIF_ICON Or NIF_TIP, WM_MOUSEMOVE, frmMain.Icon, S)
+100     s = "ARGENTUM-ONLINE"
+102     nid = setNOTIFYICONDATA(frmMain.hwnd, vbNull, NIF_MESSAGE Or NIF_ICON Or NIF_TIP, WM_MOUSEMOVE, frmMain.Icon, s)
 104     i = Shell_NotifyIconA(NIM_ADD, nid)
     
 106     If WindowState <> vbMinimized Then WindowState = vbMinimized
@@ -1736,7 +1735,7 @@ Private Sub TIMER_AI_Timer()
     Dim Mapa     As Integer
     
     Dim X        As Integer
-    Dim Y        As Integer
+    Dim y        As Integer
 
     'Barrin 29/9/03
     If Not haciendoBK And Not EnPausa Then
@@ -1754,14 +1753,14 @@ Private Sub TIMER_AI_Timer()
                             .Contadores.UltimoAtaque = .Contadores.UltimoAtaque - 1
                             
                             If .Contadores.UltimoAtaque <= 0 Then
-                                Call SendData(SendTarget.ToNPCArea, NpcIndex, PrepareMessageTextOverChar(.Stats.MaxHp - .Stats.MinHp, .Char.CharIndex, vbGreen))
+                                Call SendData(SendTarget.ToNPCArea, NpcIndex, PrepareMessageTextOverChar(.Stats.MaxHp - .Stats.MinHp, .Char.charindex, vbGreen))
                                 .Stats.MinHp = .Stats.MaxHp
                             End If
                         End If
 
                     Else
                         'Usamos AI si hay algun user en el mapa
-                        Mapa = .Pos.Map
+                        Mapa = .Pos.map
                         
                         If .flags.Paralizado > 0 Then Call EfectoParalisisNpc(NpcIndex)
                         If .flags.Inmovilizado > 0 Then Call EfectoInmovilizadoNpc(NpcIndex)
@@ -1792,8 +1791,8 @@ Private Sub TIMER_AI_Timer()
 
 ErrorHandler:
     Call TraceError(Err.Number, Err.Description & vbNewLine & _
-                                    "NPC: " & NpcList(NpcIndex).Name & _
-                                    " en la posicion: " & NpcList(NpcIndex).Pos.Map & "-" & NpcList(NpcIndex).Pos.X & "-" & NpcList(NpcIndex).Pos.Y, "frmMain.Timer_AI", Erl)
+                                    "NPC: " & NpcList(NpcIndex).name & _
+                                    " en la posicion: " & NpcList(NpcIndex).Pos.map & "-" & NpcList(NpcIndex).Pos.X & "-" & NpcList(NpcIndex).Pos.y, "frmMain.Timer_AI", Erl)
     Call MuereNpc(NpcIndex, 0)
 
 End Sub
@@ -1926,7 +1925,7 @@ Private Sub TimerRespawn_Timer()
                 RespawnList(NpcIndex).flags.NPCActive = False
 
                 If RespawnList(NpcIndex).InformarRespawn = 1 Then
-                    Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg(RespawnList(NpcIndex).Name & " ha vuelto a este mundo.", e_FontTypeNames.FONTTYPE_EXP))
+                    Call SendData(SendTarget.ToAll, 0, PrepareMessageConsoleMsg(RespawnList(NpcIndex).name & " ha vuelto a este mundo.", e_FontTypeNames.FONTTYPE_EXP))
                     Call SendData(SendTarget.ToAll, 0, PrepareMessagePlayWave(257, NO_3D_SOUND, NO_3D_SOUND)) 'Para evento de respwan
                         
                     'Call SendData(SendTarget.ToAll, 0, PrepareMessagePlayWave(246, NO_3D_SOUND, NO_3D_SOUND)) 'Para evento de respwan
@@ -1944,8 +1943,8 @@ Private Sub TimerRespawn_Timer()
 
 ErrorHandler:
     Call TraceError(Err.Number, Err.Description & vbNewLine & _
-                                    "NPC: " & NpcList(NpcIndex).Name & _
-                                    " en la posicion: " & NpcList(NpcIndex).Pos.Map & "-" & NpcList(NpcIndex).Pos.X & "-" & NpcList(NpcIndex).Pos.Y, "frmMain.TimerRespawn_Timer", Erl)
+                                    "NPC: " & NpcList(NpcIndex).name & _
+                                    " en la posicion: " & NpcList(NpcIndex).Pos.map & "-" & NpcList(NpcIndex).Pos.X & "-" & NpcList(NpcIndex).Pos.y, "frmMain.TimerRespawn_Timer", Erl)
     Call MuereNpc(NpcIndex, 0)
 
 End Sub
@@ -1969,7 +1968,7 @@ Private Sub tPiqueteC_Timer()
     For i = 1 To LastUser
 
         If UserList(i).flags.UserLogged Then
-            If MapData(UserList(i).Pos.Map, UserList(i).Pos.X, UserList(i).Pos.Y).trigger = e_Trigger.ANTIPIQUETE Then
+            If MapData(UserList(i).Pos.map, UserList(i).Pos.X, UserList(i).Pos.y).trigger = e_Trigger.ANTIPIQUETE Then
                 UserList(i).Counters.PiqueteC = UserList(i).Counters.PiqueteC + 1
                 'Call WriteConsoleMsg(i, "Estï¿½s obstruyendo la via pï¿½blica, muï¿½vete o serï¿½s encarcelado!!!", e_FontTypeNames.FONTTYPE_INFO)
                 
@@ -1994,7 +1993,7 @@ Private Sub tPiqueteC_Timer()
             End If
 
             If segundos >= 18 Then
-                If segundos >= 18 Then UserList(i).Counters.Pasos = 0
+                If segundos >= 18 Then UserList(i).Counters.pasos = 0
 
             End If
 

@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "richtx32.ocx"
+Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "RICHTX32.OCX"
 Begin VB.Form frmMain 
    Appearance      =   0  'Flat
    AutoRedraw      =   -1  'True
@@ -431,7 +431,6 @@ Begin VB.Form frmMain
       _Version        =   393217
       BackColor       =   0
       BorderStyle     =   0
-      Enabled         =   -1  'True
       HideSelection   =   0   'False
       ReadOnly        =   -1  'True
       ScrollBars      =   2
@@ -1537,7 +1536,7 @@ btnInvisible_Click_Err:
 End Sub
 
 
-Private Sub LoadButtons()
+Private Sub loadButtons()
 
     Set cBotonEliminarItem = New clsGraphicalButton
                                                 
@@ -3651,22 +3650,22 @@ Private Sub picInv_MouseMove(Button As Integer, Shift As Integer, x As Single, y
     
         ObjLbl.Visible = True
         
-        Select Case ObjData(Inventario.ObjIndex(Slot)).ObjType
+        Select Case ObjData(Inventario.OBJIndex(Slot)).ObjType
 
             Case eObjType.otWeapon
-                ObjLbl = Inventario.ItemName(Slot) & " (" & Inventario.Amount(Slot) & ")" & vbCrLf & "Daño: " & ObjData(Inventario.ObjIndex(Slot)).MinHit & "/" & ObjData(Inventario.ObjIndex(Slot)).MaxHit
+                ObjLbl = Inventario.ItemName(Slot) & " (" & Inventario.Amount(Slot) & ")" & vbCrLf & "Daño: " & ObjData(Inventario.OBJIndex(Slot)).MinHit & "/" & ObjData(Inventario.OBJIndex(Slot)).MaxHit
 
             Case eObjType.otArmadura
-                ObjLbl = Inventario.ItemName(Slot) & " (" & Inventario.Amount(Slot) & ")" & vbCrLf & "Defensa: " & ObjData(Inventario.ObjIndex(Slot)).MinDef & "/" & ObjData(Inventario.ObjIndex(Slot)).MaxDef
+                ObjLbl = Inventario.ItemName(Slot) & " (" & Inventario.Amount(Slot) & ")" & vbCrLf & "Defensa: " & ObjData(Inventario.OBJIndex(Slot)).MinDef & "/" & ObjData(Inventario.OBJIndex(Slot)).MaxDef
 
             Case eObjType.otCASCO
-                ObjLbl = Inventario.ItemName(Slot) & " (" & Inventario.Amount(Slot) & ")" & vbCrLf & "Defensa: " & ObjData(Inventario.ObjIndex(Slot)).MinDef & "/" & ObjData(Inventario.ObjIndex(Slot)).MaxDef
+                ObjLbl = Inventario.ItemName(Slot) & " (" & Inventario.Amount(Slot) & ")" & vbCrLf & "Defensa: " & ObjData(Inventario.OBJIndex(Slot)).MinDef & "/" & ObjData(Inventario.OBJIndex(Slot)).MaxDef
 
             Case eObjType.otESCUDO
-                ObjLbl = Inventario.ItemName(Slot) & " (" & Inventario.Amount(Slot) & ")" & vbCrLf & "Defensa: " & ObjData(Inventario.ObjIndex(Slot)).MinDef & "/" & ObjData(Inventario.ObjIndex(Slot)).MaxDef
+                ObjLbl = Inventario.ItemName(Slot) & " (" & Inventario.Amount(Slot) & ")" & vbCrLf & "Defensa: " & ObjData(Inventario.OBJIndex(Slot)).MinDef & "/" & ObjData(Inventario.OBJIndex(Slot)).MaxDef
 
             Case Else
-                ObjLbl = Inventario.ItemName(Slot) & " (" & Inventario.Amount(Slot) & ")" & vbCrLf & ObjData(Inventario.ObjIndex(Slot)).Texto
+                ObjLbl = Inventario.ItemName(Slot) & " (" & Inventario.Amount(Slot) & ")" & vbCrLf & ObjData(Inventario.OBJIndex(Slot)).Texto
 
         End Select
         
@@ -4639,7 +4638,7 @@ Private Sub Form_Load()
     MenuNivel = 1
     Me.Caption = "Argentum20" 'hay que poner 20 aniversario
     
-    LoadButtons
+    loadButtons
     
     Exit Sub
 
@@ -4850,7 +4849,7 @@ Private Sub picInv_DblClick()
     ' Hacemos acción del doble clic correspondiente
     Dim ObjType As Byte
 
-    ObjType = ObjData(Inventario.ObjIndex(Inventario.SelectedItem)).ObjType
+    ObjType = ObjData(Inventario.OBJIndex(Inventario.SelectedItem)).ObjType
 
     Select Case ObjType
 
@@ -4861,7 +4860,7 @@ Private Sub picInv_DblClick()
             
         Case eObjType.otWeapon
 
-            If ObjData(Inventario.ObjIndex(Inventario.SelectedItem)).proyectil = 1 And Inventario.Equipped(Inventario.SelectedItem) Then
+            If ObjData(Inventario.OBJIndex(Inventario.SelectedItem)).proyectil = 1 And Inventario.Equipped(Inventario.SelectedItem) Then
                 Call WriteUseItem(Inventario.SelectedItem)
             Else
                 If Not Inventario.Equipped(Inventario.SelectedItem) Then
@@ -5133,14 +5132,9 @@ Public Sub OnClientDisconnect(ByVal Error As Long)
                  
             Dim mForm As Form
             For Each mForm In Forms
-                Select Case mForm.Name
-                    Case frmConnect.Name, frmCrearPersonaje.Name, frmMensaje.Name
-                    Case Else
-                        Unload mForm
-                End Select
+                Unload mForm
             Next
             
-            Call ComprobarEstado
             Call General_Set_Connect
         Else
             If frmConnect.Visible Then

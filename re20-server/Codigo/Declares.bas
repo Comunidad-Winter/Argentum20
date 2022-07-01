@@ -1,12 +1,5 @@
 Attribute VB_Name = "Declaraciones"
-'********************* COPYRIGHT NOTICE*********************
-' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
-' www.ao20.com.ar
-' All rights reserved.
-' Refer to licence for conditions of use.
-' This copyright notice must always be left intact.
-'****************** END OF COPYRIGHT NOTICE*****************
-'
+
 'Argentum Online 0.11.6
 'Copyright (C) 2002 Márquez Pablo Ignacio
 '
@@ -928,7 +921,6 @@ Public Type t_Hechizo
     '    ItemIndex As Byte
     
     Mimetiza As Byte
-    Sensui As Byte
     
     MinSkill As Integer
     ManaRequerido As Integer
@@ -1202,7 +1194,7 @@ Public Type t_ObjData
 
     TipoRuna As Byte
 
-    Name As String 'Nombre del obj
+    name As String 'Nombre del obj
     
     OBJType As e_OBJType 'Tipo enum que determina cuales son las caract del obj
     
@@ -1431,10 +1423,6 @@ Public Type t_BancoInventario
     NroItems As Integer
 
 End Type
-
-Public Const patron_tier_aventurero As Long = 6057393
-Public Const patron_tier_heroe As Long = 6057394
-Public Const patron_tier_leyenda As Long = 6057395
 
 Public Enum e_TipoUsuario
     tNormal = 0
@@ -1737,7 +1725,7 @@ Public Type t_UserCounters
     PiqueteC As Long
     Pena As Long
     SendMapCounter As t_WorldPos
-    Pasos As Integer
+    pasos As Integer
     '[Gonzalo]
     Saliendo As Boolean
     Salir As Integer
@@ -1867,7 +1855,7 @@ End Type
 'Tipo de los Usuarios
 Public Type t_User
 
-    Name As String
+    name As String
     Cuenta As String
     
     ID As Long
@@ -2084,7 +2072,7 @@ Public Type t_NpcPathFindingInfo
 End Type
 
 Public Type t_Caminata
-    Offset As t_Position
+    offset As t_Position
     Espera As Long
 End Type
 
@@ -2124,7 +2112,7 @@ Public Type t_Npc
     DropQuest() As t_QuestObj
     
     InformarRespawn As Byte
-    Name As String
+    name As String
     SubName As String
     Char As t_Char 'Define como se vera
     Desc As String
@@ -2235,7 +2223,7 @@ Public Type t_MapBlock
 
     Blocked As Byte
     Graphic(1 To 4) As Long
-    UserIndex As Integer
+    userindex As Integer
     NpcIndex As Integer
     Particula As Byte
     TimeParticula As Integer
@@ -2469,9 +2457,9 @@ Public Libertad                           As t_WorldPos
 Public Ayuda                              As New cCola
 
 
-Public Declare Function writeprivateprofilestring Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpString As String, ByVal lpfilename As String) As Long
+Public Declare Function writeprivateprofilestring Lib "Kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpString As String, ByVal lpfilename As String) As Long
 
-Public Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpdefault As String, ByVal lpreturnedstring As String, ByVal nSize As Long, ByVal lpfilename As String) As Long
+Public Declare Function GetPrivateProfileString Lib "Kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpdefault As String, ByVal lpreturnedstring As String, ByVal nSize As Long, ByVal lpfilename As String) As Long
 
 Public Declare Sub ZeroMemory Lib "kernel32.dll" Alias "RtlZeroMemory" (ByRef destination As Any, ByVal Length As Long)
 

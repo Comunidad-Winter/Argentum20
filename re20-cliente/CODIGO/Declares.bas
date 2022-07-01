@@ -294,7 +294,7 @@ Public EntradaX                    As Byte
 
 Public EntradaY                    As Byte
 
-Public Declare Function SetPixel Lib "gdi32" (ByVal hdc As Long, ByVal X As Long, ByVal Y As Long, ByVal crColor As Long) As Long
+Public Declare Function SetPixel Lib "gdi32" (ByVal hdc As Long, ByVal x As Long, ByVal y As Long, ByVal crColor As Long) As Long
 
 Public MouseX                 As Long
 
@@ -331,25 +331,6 @@ Public Const Particula_Lluvia As Long = 58
 Public Const Particula_Nieve  As Long = 57
 Public VolMusicFadding        As Integer
 
-#If DEBUGGING = 1 Then
-    Public IPServers(1 To 4) As String
-#Else
-    Public IPServers(1) As String
-#End If
-
-Public Type tServerInfo
-
-    IP As String
-    puerto As Integer
-    desc As String
-    estado As Boolean
-    IpLogin As String
-    puertoLogin As Integer
-
-End Type
-
-Public ServersLst()   As tServerInfo
-
 Public EngineStats    As Boolean
 
 Public DeleteUser     As String
@@ -376,16 +357,16 @@ Public Type RGB
 
     r As Long
     G As Long
-    b As Long
+    B As Long
 
 End Type
 
 Public Type ARGB
 
-    a As Single
+    A As Single
     r As Long
     G As Long
-    b As Long
+    B As Long
 
 End Type
 
@@ -502,7 +483,7 @@ Public Type tColor
 
     r As Byte
     G As Byte
-    b As Byte
+    B As Byte
 
 End Type
 
@@ -914,8 +895,8 @@ Public Const MENSAJE_NENE                          As String = "Cantidad de NPCs
 'Inventario
 Type Inventory
 
-    ObjIndex As Integer
-    name As String
+    OBJIndex As Integer
+    Name As String
     GrhIndex As Long
     '[Alejo]: tipo de datos ahora es Long
     Amount As Long
@@ -933,7 +914,7 @@ End Type
 Type MakeObj
 
     GrhIndex As Long ' Indice del grafico que representa el obj
-    name As String
+    Name As String
     MinDef As Integer
     MaxDef As Integer
     MinHit As Integer
@@ -944,8 +925,8 @@ End Type
 
 Type NpCinV
 
-    ObjIndex As Integer
-    name As String
+    OBJIndex As Integer
+    Name As String
     GrhIndex As Long
     Amount As Integer
     Valor As Single

@@ -1,11 +1,5 @@
 Attribute VB_Name = "TCP"
-'********************* COPYRIGHT NOTICE*********************
-' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
-' www.ao20.com.ar
-' All rights reserved.
-' Refer to licence for conditions of use.
-' This copyright notice must always be left intact.
-'****************** END OF COPYRIGHT NOTICE*****************
+
 '
 'Argentum Online 0.11.6
 'Copyright (C) 2002 Márquez Pablo Ignacio
@@ -37,7 +31,7 @@ Attribute VB_Name = "TCP"
 
 Option Explicit
 
-Sub DarCuerpo(ByVal UserIndex As Integer)
+Sub DarCuerpo(ByVal userindex As Integer)
         
         On Error GoTo DarCuerpo_Err
         
@@ -53,8 +47,8 @@ Sub DarCuerpo(ByVal UserIndex As Integer)
 
         Dim UserGenero As Byte
 
-100     UserGenero = UserList(UserIndex).genero
-102     UserRaza = UserList(UserIndex).raza
+100     UserGenero = UserList(userindex).genero
+102     UserRaza = UserList(userindex).raza
 
 104     Select Case UserGenero
 
@@ -108,7 +102,7 @@ Sub DarCuerpo(ByVal UserIndex As Integer)
 
         End Select
 
-156     UserList(UserIndex).Char.Body = NewBody
+156     UserList(userindex).Char.Body = NewBody
 
         
         Exit Sub
@@ -119,12 +113,12 @@ DarCuerpo_Err:
         
 End Sub
 
-Sub RellenarInventario(ByVal UserIndex As String)
+Sub RellenarInventario(ByVal userindex As String)
         
         On Error GoTo RellenarInventario_Err
         
 
-100     With UserList(UserIndex)
+100     With UserList(userindex)
         
             Dim NumItems As Integer
 
@@ -247,7 +241,7 @@ Sub RellenarInventario(ByVal UserIndex As String)
             End If
             
             .Invent.Object(NumItems).Equipped = 0
-            Call EquiparInvItem(UserIndex, NumItems)
+            Call EquiparInvItem(userindex, NumItems)
                         
 232         .Invent.Object(NumItems).amount = 1
 234         .Invent.Object(NumItems).Equipped = 1
@@ -411,7 +405,7 @@ NombrePermitido_Err:
         
 End Function
 
-Function Validate_Skills(ByVal UserIndex As Integer) As Boolean
+Function Validate_Skills(ByVal userindex As Integer) As Boolean
         
         On Error GoTo Validate_Skills_Err
         
@@ -420,10 +414,10 @@ Function Validate_Skills(ByVal UserIndex As Integer) As Boolean
 
 100     For LoopC = 1 To NUMSKILLS
 
-102         If UserList(UserIndex).Stats.UserSkills(LoopC) < 0 Then
+102         If UserList(userindex).Stats.UserSkills(LoopC) < 0 Then
                 Exit Function
 
-104             If UserList(UserIndex).Stats.UserSkills(LoopC) > 100 Then UserList(UserIndex).Stats.UserSkills(LoopC) = 100
+104             If UserList(userindex).Stats.UserSkills(LoopC) > 100 Then UserList(userindex).Stats.UserSkills(LoopC) = 100
 
             End If
 
@@ -440,7 +434,7 @@ Validate_Skills_Err:
         
 End Function
 
-Function ConnectNewUser(ByVal UserIndex As Integer, ByRef name As String, ByVal UserRaza As e_Raza, ByVal UserSexo As e_Genero, ByVal UserClase As e_Class, ByVal Head As Integer, ByRef UserCuenta As String, ByVal Hogar As e_Ciudad) As Boolean
+Function ConnectNewUser(ByVal userindex As Integer, ByRef name As String, ByVal UserRaza As e_Raza, ByVal UserSexo As e_Genero, ByVal UserClase As e_Class, ByVal Head As Integer, ByVal Hogar As e_Ciudad) As Boolean
         '*************************************************
         'Author: Unknown
         'Last modified: 20/4/2007
@@ -454,21 +448,21 @@ Function ConnectNewUser(ByVal UserIndex As Integer, ByRef name As String, ByVal 
         
         On Error GoTo ConnectNewUser_Err
         
-100     With UserList(UserIndex)
+100     With UserList(userindex)
         
             Dim LoopC As Long
         
 102         If .flags.UserLogged Then
 104             Call LogSecurity("El usuario " & .name & " ha intentado crear a " & name & " desde la IP " & .IP)
-106             Call CloseSocketSL(UserIndex)
-108             Call Cerrar_Usuario(UserIndex)
+106             Call CloseSocketSL(userindex)
+108             Call Cerrar_Usuario(userindex)
                 Exit Function
             End If
             
             ' Nombre válido
             If Not ValidarNombre(name) Then
                 Call LogSecurity("ValidarNombre failed in ConnectNewUser for " & name & " desde la IP " & .IP)
-                Call CloseSocketSL(UserIndex)
+                Call CloseSocketSL(userindex)
                 Exit Function
             End If
             
@@ -479,7 +473,7 @@ Function ConnectNewUser(ByVal UserIndex As Integer, ByRef name As String, ByVal 
     
             '¿Existe el personaje?
 116         If PersonajeExiste(name) Then
-118             Call WriteShowMessageBox(UserIndex, "Ya existe el personaje.")
+118             Call WriteShowMessageBox(userindex, "Ya existe el personaje.")
                 Exit Function
             End If
             
@@ -531,7 +525,7 @@ Function ConnectNewUser(ByVal UserIndex As Integer, ByRef name As String, ByVal 
         
 162         .Char.Heading = e_Heading.SOUTH
         
-164         Call DarCuerpo(UserIndex) 'Ladder REVISAR
+164         Call DarCuerpo(userindex) 'Ladder REVISAR
         
 166         .OrigChar = .Char
     
@@ -572,7 +566,7 @@ Function ConnectNewUser(ByVal UserIndex As Integer, ByRef name As String, ByVal 
 212         .Stats.Exp = 0
 214         .Stats.ELV = 1
         
-216         Call RellenarInventario(UserIndex)
+216         Call RellenarInventario(userindex)
     
             #If ConUpTime Then
 218             .LogOnTime = Now
@@ -580,7 +574,7 @@ Function ConnectNewUser(ByVal UserIndex As Integer, ByRef name As String, ByVal 
             #End If
         
             'Valores Default de facciones al Activar nuevo usuario
-222         Call ResetFacciones(UserIndex)
+222         Call ResetFacciones(userindex)
         
 224         .Faccion.Status = 1
         
@@ -590,43 +584,31 @@ Function ConnectNewUser(ByVal UserIndex As Integer, ByRef name As String, ByVal 
             Dim DungeonNewbieCoords(1 To 3) As t_WorldPos
             
 234         With DungeonNewbieCoords(1)
-236             .map = 37: .X = 76: .y = 82
+236             .Map = 37: .X = 76: .Y = 82
             End With
             
 238         With DungeonNewbieCoords(2)
-240             .map = 264: .X = 54: .y = 70
+240             .Map = 264: .X = 54: .Y = 70
             End With
             
 242         With DungeonNewbieCoords(3)
-244             .map = 168: .X = 50: .y = 70
+244             .Map = 168: .X = 50: .Y = 70
             End With
-            
-            #If UNIT_TEST = 1 Then
-                DungeonNewbieCoords(1).map = 1
-                DungeonNewbieCoords(1).Y = 20
-                DungeonNewbieCoords(1).X = 20
-                DungeonNewbieCoords(2).map = 1
-                DungeonNewbieCoords(2).Y = 20
-                DungeonNewbieCoords(2).X = 20
-                DungeonNewbieCoords(3).map = 1
-                DungeonNewbieCoords(3).Y = 20
-                DungeonNewbieCoords(3).X = 20
-            #End If
-            
+
             Dim RandomPosIndex As Byte
 246         RandomPosIndex = RandomNumber(LBound(DungeonNewbieCoords), UBound(DungeonNewbieCoords))
 
-248         .Pos.map = DungeonNewbieCoords(RandomPosIndex).map
+248         .Pos.Map = DungeonNewbieCoords(RandomPosIndex).Map
 250         .Pos.X = DungeonNewbieCoords(RandomPosIndex).X
-252         .Pos.y = DungeonNewbieCoords(RandomPosIndex).y
+252         .Pos.Y = DungeonNewbieCoords(RandomPosIndex).Y
         
 254         UltimoChar = UCase$(name)
         
-256         Call SaveNewUser(UserIndex)
+256         Call SaveNewUser(userindex)
     
 258         ConnectNewUser = True
     
-260         Call ConnectUser(UserIndex, name, UserCuenta, False)
+260         Call ConnectUser(userindex, name, False)
 
         End With
         
@@ -638,11 +620,11 @@ ConnectNewUser_Err:
         
 End Function
 
-Sub CloseSocket(ByVal UserIndex As Integer)
+Sub CloseSocket(ByVal userindex As Integer)
 
     On Error GoTo ErrHandler
 
-102     If UserIndex = LastUser Then
+102     If userindex = LastUser Then
 
 104         Do Until UserList(LastUser).flags.UserLogged
 106             LastUser = LastUser - 1
@@ -651,23 +633,23 @@ Sub CloseSocket(ByVal UserIndex As Integer)
 
         End If
     
-110     With UserList(UserIndex)
+110     With UserList(userindex)
     
             'Call SecurityIp.IpRestarConexion(api_inetaddr(.ip))
 
-112         If .ConnIDValida Then Call CloseSocketSL(UserIndex)
+112         If .ConnIDValida Then Call CloseSocketSL(userindex)
     
             'Es el mismo user al que está revisando el centinela??
             'IMPORTANTE!!! hacerlo antes de resetear así todavía sabemos el nombre del user
             ' y lo podemos loguear
-114         If Centinela.RevisandoUserIndex = UserIndex Then Call modCentinela.CentinelaUserLogout
+114         If Centinela.RevisandoUserIndex = userindex Then Call modCentinela.CentinelaUserLogout
     
             'mato los comercios seguros
 116         If .ComUsu.DestUsu > 0 Then
         
 118             If UserList(.ComUsu.DestUsu).flags.UserLogged Then
             
-120                 If UserList(.ComUsu.DestUsu).ComUsu.DestUsu = UserIndex Then
+120                 If UserList(.ComUsu.DestUsu).ComUsu.DestUsu = userindex Then
                 
 122                     Call WriteConsoleMsg(.ComUsu.DestUsu, "Comercio cancelado por el otro usuario", e_FontTypeNames.FONTTYPE_TALK)
 124                     Call FinComerciarUsu(.ComUsu.DestUsu)
@@ -679,12 +661,12 @@ Sub CloseSocket(ByVal UserIndex As Integer)
             End If
     
 128         If .flags.UserLogged Then
-130             Call CloseUser(UserIndex)
+130             Call CloseUser(userindex)
         
 132             If NumUsers > 0 Then NumUsers = NumUsers - 1
         
             Else
-136             Call ResetUserSlot(UserIndex)
+136             Call ResetUserSlot(userindex)
     
             End If
     
@@ -697,8 +679,8 @@ Sub CloseSocket(ByVal UserIndex As Integer)
 
 ErrHandler:
 
-144     UserList(UserIndex).ConnIDValida = False
-146     Call ResetUserSlot(UserIndex)
+144     UserList(userindex).ConnIDValida = False
+146     Call ResetUserSlot(userindex)
 
 148     Call TraceError(Err.Number, Err.Description, "TCP.CloseSocket", Erl)
 
@@ -706,14 +688,14 @@ ErrHandler:
 End Sub
 
 '[Alejo-21-5]: Cierra un socket sin limpiar el slot
-Sub CloseSocketSL(ByVal UserIndex As Integer)
+Sub CloseSocketSL(ByVal userindex As Integer)
         
         On Error GoTo CloseSocketSL_Err
 
-100     If UserList(UserIndex).ConnIDValida Then
-102         Call modNetwork.Kick(UserIndex)
+100     If UserList(userindex).ConnIDValida Then
+102         Call modNetwork.Kick(userindex)
 
-106         UserList(UserIndex).ConnIDValida = False
+106         UserList(userindex).ConnIDValida = False
         End If
         
         Exit Sub
@@ -729,19 +711,19 @@ Function EstaPCarea(Index As Integer, Index2 As Integer) As Boolean
         On Error GoTo EstaPCarea_Err
         
 
-        Dim X As Integer, y As Integer
+        Dim X As Integer, Y As Integer
 
-100     For y = UserList(Index).Pos.y - MinYBorder + 1 To UserList(Index).Pos.y + MinYBorder - 1
+100     For Y = UserList(Index).Pos.Y - MinYBorder + 1 To UserList(Index).Pos.Y + MinYBorder - 1
 102         For X = UserList(Index).Pos.X - MinXBorder + 1 To UserList(Index).Pos.X + MinXBorder - 1
 
-104             If MapData(UserList(Index).Pos.map, X, y).UserIndex = Index2 Then
+104             If MapData(UserList(Index).Pos.Map, X, Y).userindex = Index2 Then
 106                 EstaPCarea = True
                     Exit Function
 
                 End If
         
 108         Next X
-110     Next y
+110     Next Y
 
 112     EstaPCarea = False
 
@@ -754,18 +736,18 @@ EstaPCarea_Err:
         
 End Function
 
-Function HayPCarea(ByVal map As Integer, ByVal X As Integer, ByVal y As Integer) As Boolean
+Function HayPCarea(ByVal Map As Integer, ByVal X As Integer, ByVal Y As Integer) As Boolean
         
         On Error GoTo HayPCarea_Err
         
 
         Dim tX As Integer, tY As Integer
 
-100     For tY = y - MinYBorder + 1 To y + MinYBorder - 1
+100     For tY = Y - MinYBorder + 1 To Y + MinYBorder - 1
 102         For tX = X - MinXBorder + 1 To X + MinXBorder - 1
 
-104             If InMapBounds(map, tX, tY) Then
-106                 If MapData(map, tX, tY).UserIndex > 0 Then
+104             If InMapBounds(Map, tX, tY) Then
+106                 If MapData(Map, tX, tY).userindex > 0 Then
 108                     HayPCarea = True
                         Exit Function
 
@@ -792,19 +774,19 @@ Function HayOBJarea(Pos As t_WorldPos, ObjIndex As Integer) As Boolean
         On Error GoTo HayOBJarea_Err
         
 
-        Dim X As Integer, y As Integer
+        Dim X As Integer, Y As Integer
 
-100     For y = Pos.y - MinYBorder + 1 To Pos.y + MinYBorder - 1
+100     For Y = Pos.Y - MinYBorder + 1 To Pos.Y + MinYBorder - 1
 102         For X = Pos.X - MinXBorder + 1 To Pos.X + MinXBorder - 1
 
-104             If MapData(Pos.map, X, y).ObjInfo.ObjIndex = ObjIndex Then
+104             If MapData(Pos.Map, X, Y).ObjInfo.ObjIndex = ObjIndex Then
 106                 HayOBJarea = True
                     Exit Function
 
                 End If
         
 108         Next X
-110     Next y
+110     Next Y
 
 112     HayOBJarea = False
 
@@ -817,12 +799,12 @@ HayOBJarea_Err:
         
 End Function
 
-Function ValidateChr(ByVal UserIndex As Integer) As Boolean
+Function ValidateChr(ByVal userindex As Integer) As Boolean
         
         On Error GoTo ValidateChr_Err
         
 
-100     ValidateChr = UserList(UserIndex).Char.Body <> 0 And Validate_Skills(UserIndex)
+100     ValidateChr = UserList(userindex).Char.Body <> 0 And Validate_Skills(userindex)
 
         
         Exit Function
@@ -833,7 +815,7 @@ ValidateChr_Err:
         
 End Function
 
-Function EntrarCuenta(ByVal UserIndex As Integer, ByVal CuentaEmail As String, ByVal MD5 As String) As Boolean
+Function EntrarCuenta(ByVal userindex As Integer, ByVal CuentaEmail As String, ByVal md5 As String) As Boolean
         
         On Error GoTo EntrarCuenta_Err
         
@@ -851,15 +833,15 @@ Function EntrarCuenta(ByVal UserIndex As Integer, ByVal CuentaEmail As String, B
 110         Next adminIdx
             
 112         If Not laCuentaEsDeAdmin Then
-114             Call WriteShowMessageBox(UserIndex, "El servidor se encuentra habilitado solo para administradores por el momento.")
+114             Call WriteShowMessageBox(userindex, "El servidor se encuentra habilitado solo para administradores por el momento.")
                 Exit Function
             End If
 
         End If
 
         #If DEBUGGING = 0 Then
-124         If LCase$(Md5Cliente) <> LCase$(MD5) Then
-126             Call WriteShowMessageBox(UserIndex, "Error al comprobar el cliente del juego, por favor reinstale y vuelva a intentar.")
+124         If LCase$(Md5Cliente) <> LCase$(md5) Then
+126             Call WriteShowMessageBox(userindex, "Error al comprobar el cliente del juego, por favor reinstale y vuelva a intentar.")
                 Exit Function
             End If
         #End If
@@ -868,9 +850,7 @@ Function EntrarCuenta(ByVal UserIndex As Integer, ByVal CuentaEmail As String, B
 130         Call WriteShowMessageBox(userindex, "Email inválido.")
             Exit Function
         End If
-    
-132     EntrarCuenta = EnterAccountDatabase(UserIndex, CuentaEmail)
-        
+
         Exit Function
 
 EntrarCuenta_Err:
@@ -880,24 +860,22 @@ EntrarCuenta_Err:
         
 End Function
 
-Sub ConnectUser(ByVal UserIndex As Integer, _
+Sub ConnectUser(ByVal userindex As Integer, _
                 ByRef name As String, _
-                ByRef UserCuenta As String, _
                 Optional ByVal NewUser As Boolean = False)
 
         On Error GoTo ErrHandler
 
-100     With UserList(UserIndex)
+100     With UserList(userindex)
 
 105         If Not ConnectUser_Check(userindex, name) Then Exit Sub
         
-110         Call ConnectUser_Prepare(UserIndex, name, UserCuenta)
+110         Call ConnectUser_Prepare(userindex, name)
         
             ' Cargamos el personaje
-            
-115        ' If Not NewUser Then Call LoadUser(UserIndex)
-Call LoadUser(UserIndex)
-120         Call ConnectUser_Complete(UserIndex, name, UserCuenta)
+115         If Not NewUser Then Call LoadUser(userindex)
+
+120         Call ConnectUser_Complete(userindex, name)
         End With
 
         Exit Sub
@@ -905,11 +883,11 @@ Call LoadUser(UserIndex)
 ErrHandler:
 125     Call TraceError(Err.Number, Err.Description, "TCP.ConnectUser", Erl)
 130     Call WriteShowMessageBox(userindex, "El personaje contiene un error. Comuníquese con un miembro del staff.")
-135     Call CloseSocket(UserIndex)
+135     Call CloseSocket(userindex)
 
 End Sub
 
-Sub SendMOTD(ByVal UserIndex As Integer)
+Sub SendMOTD(ByVal userindex As Integer)
         
         On Error GoTo SendMOTD_Err
         
@@ -917,7 +895,7 @@ Sub SendMOTD(ByVal UserIndex As Integer)
         Dim j As Long
 
 100     For j = 1 To MaxLines
-102         Call WriteConsoleMsg(UserIndex, MOTD(j).texto, e_FontTypeNames.FONTTYPE_EXP)
+102         Call WriteConsoleMsg(userindex, MOTD(j).texto, e_FontTypeNames.FONTTYPE_EXP)
 104     Next j
     
         
@@ -929,7 +907,7 @@ SendMOTD_Err:
         
 End Sub
 
-Sub ResetFacciones(ByVal UserIndex As Integer)
+Sub ResetFacciones(ByVal userindex As Integer)
         
         On Error GoTo ResetFacciones_Err
         
@@ -941,7 +919,7 @@ Sub ResetFacciones(ByVal UserIndex As Integer)
         '03/15/2006 Maraxus - Uso de With para mayor performance y claridad.
         '23/01/2007 Pablo (ToxicWaste) - Agrego NivelIngreso, MatadosIngreso y NextRecompensa.
         '*************************************************
-100     With UserList(UserIndex).Faccion
+100     With UserList(userindex).Faccion
 102         .ArmadaReal = 0
 104         .ciudadanosMatados = 0
 106         .CriminalesMatados = 0
@@ -969,7 +947,7 @@ ResetFacciones_Err:
         
 End Sub
 
-Sub ResetContadores(ByVal UserIndex As Integer)
+Sub ResetContadores(ByVal userindex As Integer)
         
         On Error GoTo ResetContadores_Err
         
@@ -981,7 +959,7 @@ Sub ResetContadores(ByVal UserIndex As Integer)
         '03/15/2006 Maraxus - Uso de With para mayor performance y claridad.
         '05/20/2007 Integer - Agregue todas las variables que faltaban.
         '*************************************************
-100     With UserList(UserIndex).Counters
+100     With UserList(userindex).Counters
 102         .AGUACounter = 0
 104         .AttackCounter = 0
 106         .Ceguera = 0
@@ -993,7 +971,7 @@ Sub ResetContadores(ByVal UserIndex As Integer)
 118         .Invisibilidad = 0
 120         .Paralisis = 0
 122         .Inmovilizado = 0
-124         .Pasos = 0
+124         .pasos = 0
 126         .Pena = 0
 128         .PiqueteC = 0
 130         .STACounter = 0
@@ -1043,7 +1021,7 @@ ResetContadores_Err:
         
 End Sub
 
-Sub ResetCharInfo(ByVal UserIndex As Integer)
+Sub ResetCharInfo(ByVal userindex As Integer)
         '*************************************************
         'Author: Unknown
         'Last modified: 03/15/2006
@@ -1054,7 +1032,7 @@ Sub ResetCharInfo(ByVal UserIndex As Integer)
         On Error GoTo ResetCharInfo_Err
         
 
-100     With UserList(UserIndex).Char
+100     With UserList(userindex).Char
 102         .Body = 0
 104         .CascoAnim = 0
 106         .CharIndex = 0
@@ -1086,7 +1064,7 @@ ResetCharInfo_Err:
         
 End Sub
 
-Sub ResetBasicUserInfo(ByVal UserIndex As Integer)
+Sub ResetBasicUserInfo(ByVal userindex As Integer)
         
         On Error GoTo ResetBasicUserInfo_Err
         
@@ -1100,16 +1078,16 @@ Sub ResetBasicUserInfo(ByVal UserIndex As Integer)
         '*************************************************
         Dim LoopC As Integer
 
-100     With UserList(UserIndex)
+100     With UserList(userindex)
 102         .name = vbNullString
 104         .Cuenta = vbNullString
 106         .ID = -1
 108         .AccountID = -1
 110         .Desc = vbNullString
 112         .DescRM = vbNullString
-114         .Pos.map = 0
+114         .Pos.Map = 0
 116         .Pos.X = 0
-118         .Pos.y = 0
+118         .Pos.Y = 0
 120         .IP = vbNullString
 122         .clase = 0
 124         .Email = vbNullString
@@ -1157,23 +1135,23 @@ ResetBasicUserInfo_Err:
         
 End Sub
 
-Sub ResetGuildInfo(ByVal UserIndex As Integer)
+Sub ResetGuildInfo(ByVal userindex As Integer)
         
         On Error GoTo ResetGuildInfo_Err
         
 
-100     If UserList(UserIndex).EscucheClan > 0 Then
-102         Call modGuilds.GMDejaDeEscucharClan(UserIndex, UserList(UserIndex).EscucheClan)
-104         UserList(UserIndex).EscucheClan = 0
+100     If UserList(userindex).EscucheClan > 0 Then
+102         Call modGuilds.GMDejaDeEscucharClan(userindex, UserList(userindex).EscucheClan)
+104         UserList(userindex).EscucheClan = 0
 
         End If
 
-106     If UserList(UserIndex).GuildIndex > 0 Then
-108         Call modGuilds.m_DesconectarMiembroDelClan(UserIndex, UserList(UserIndex).GuildIndex)
+106     If UserList(userindex).GuildIndex > 0 Then
+108         Call modGuilds.m_DesconectarMiembroDelClan(userindex, UserList(userindex).GuildIndex)
 
         End If
 
-110     UserList(UserIndex).GuildIndex = 0
+110     UserList(userindex).GuildIndex = 0
     
         
         Exit Sub
@@ -1184,13 +1162,13 @@ ResetGuildInfo_Err:
         
 End Sub
 
-Sub ResetPacketRateData(ByVal UserIndex As Integer)
+Sub ResetPacketRateData(ByVal userindex As Integer)
 
         On Error GoTo ResetPacketRateData_Err
 
         Dim i As Long
         
-        With UserList(UserIndex)
+        With UserList(userindex)
         
             For i = 1 To MAX_PACKET_COUNTERS
                 .MacroIterations(i) = 0
@@ -1207,7 +1185,7 @@ ResetPacketRateData_Err:
 
 End Sub
 
-Sub ResetUserFlags(ByVal UserIndex As Integer)
+Sub ResetUserFlags(ByVal userindex As Integer)
         '*************************************************
         'Author: Unknown
         'Last modified: 03/29/2006
@@ -1219,7 +1197,7 @@ Sub ResetUserFlags(ByVal UserIndex As Integer)
         On Error GoTo ResetUserFlags_Err
         
 
-100     With UserList(UserIndex).flags
+100     With UserList(userindex).flags
 102         .LevelBackup = 0
 104         .Comerciando = False
 106         .Ban = 0
@@ -1321,8 +1299,8 @@ Sub ResetUserFlags(ByVal UserIndex As Integer)
 270         .EnReto = False
 272         .SolicitudReto.estado = e_SolicitudRetoEstado.Libre
 274         .AceptoReto = 0
-276         .LastPos.map = 0
-278         .ReturnPos.map = 0
+276         .LastPos.Map = 0
+278         .ReturnPos.Map = 0
             
 280         .Crafteando = 0
 
@@ -1337,14 +1315,14 @@ ResetUserFlags_Err:
         
 End Sub
 
-Sub ResetAccionesPendientes(ByVal UserIndex As Integer)
+Sub ResetAccionesPendientes(ByVal userindex As Integer)
         
         On Error GoTo ResetAccionesPendientes_Err
         
 
         '*************************************************
         '*************************************************
-100     With UserList(UserIndex).Accion
+100     With UserList(userindex).Accion
 102         .AccionPendiente = False
 104         .HechizoPendiente = 0
 106         .RunaObj = 0
@@ -1363,7 +1341,7 @@ ResetAccionesPendientes_Err:
         
 End Sub
 
-Sub ResetUserSpells(ByVal UserIndex As Integer)
+Sub ResetUserSpells(ByVal userindex As Integer)
         
         On Error GoTo ResetUserSpells_Err
         
@@ -1371,7 +1349,7 @@ Sub ResetUserSpells(ByVal UserIndex As Integer)
         Dim LoopC As Long
 
 100     For LoopC = 1 To MAXUSERHECHIZOS
-102         UserList(UserIndex).Stats.UserHechizos(LoopC) = 0
+102         UserList(userindex).Stats.UserHechizos(LoopC) = 0
             ' UserList(UserIndex).Stats.UserHechizosInterval(LoopC) = 0
 104     Next LoopC
 
@@ -1384,7 +1362,7 @@ ResetUserSpells_Err:
         
 End Sub
 
-Sub ResetUserSkills(ByVal UserIndex As Integer)
+Sub ResetUserSkills(ByVal userindex As Integer)
         
         On Error GoTo ResetUserSkills_Err
         
@@ -1392,7 +1370,7 @@ Sub ResetUserSkills(ByVal UserIndex As Integer)
         Dim LoopC As Long
 
 100     For LoopC = 1 To NUMSKILLS
-102         UserList(UserIndex).Stats.UserSkills(LoopC) = 0
+102         UserList(userindex).Stats.UserSkills(LoopC) = 0
 104     Next LoopC
 
         
@@ -1404,7 +1382,7 @@ ResetUserSkills_Err:
         
 End Sub
 
-Sub ResetUserBanco(ByVal UserIndex As Integer)
+Sub ResetUserBanco(ByVal userindex As Integer)
         
         On Error GoTo ResetUserBanco_Err
         
@@ -1412,12 +1390,12 @@ Sub ResetUserBanco(ByVal UserIndex As Integer)
         Dim LoopC As Long
     
 100     For LoopC = 1 To MAX_BANCOINVENTORY_SLOTS
-102         UserList(UserIndex).BancoInvent.Object(LoopC).amount = 0
-104         UserList(UserIndex).BancoInvent.Object(LoopC).Equipped = 0
-106         UserList(UserIndex).BancoInvent.Object(LoopC).ObjIndex = 0
+102         UserList(userindex).BancoInvent.Object(LoopC).amount = 0
+104         UserList(userindex).BancoInvent.Object(LoopC).Equipped = 0
+106         UserList(userindex).BancoInvent.Object(LoopC).ObjIndex = 0
 108     Next LoopC
     
-110     UserList(UserIndex).BancoInvent.NroItems = 0
+110     UserList(userindex).BancoInvent.NroItems = 0
 
         
         Exit Sub
@@ -1428,12 +1406,12 @@ ResetUserBanco_Err:
         
 End Sub
 
-Sub ResetUserKeys(ByVal UserIndex As Integer)
+Sub ResetUserKeys(ByVal userindex As Integer)
         
         On Error GoTo ResetUserKeys_Err
     
         
-100     With UserList(UserIndex)
+100     With UserList(userindex)
             Dim i As Integer
         
 102         For i = 1 To MAXKEYS
@@ -1449,16 +1427,16 @@ ResetUserKeys_Err:
         
 End Sub
 
-Public Sub LimpiarComercioSeguro(ByVal UserIndex As Integer)
+Public Sub LimpiarComercioSeguro(ByVal userindex As Integer)
         
         On Error GoTo LimpiarComercioSeguro_Err
         
 
-100     With UserList(UserIndex).ComUsu
+100     With UserList(userindex).ComUsu
 
 102         If .DestUsu > 0 Then
 104             Call FinComerciarUsu(.DestUsu)
-106             Call FinComerciarUsu(UserIndex)
+106             Call FinComerciarUsu(userindex)
 
             End If
 
@@ -1473,52 +1451,52 @@ LimpiarComercioSeguro_Err:
         
 End Sub
 
-Sub ResetUserSlot(ByVal UserIndex As Integer)
+Sub ResetUserSlot(ByVal userindex As Integer)
         
         On Error GoTo ResetUserSlot_Err
         
 
-100     UserList(UserIndex).ConnIDValida = False
+100     UserList(userindex).ConnIDValida = False
 
-104     If UserList(UserIndex).Grupo.Lider = UserIndex Then
-106         Call FinalizarGrupo(UserIndex)
-
-        End If
-
-108     If UserList(UserIndex).Grupo.EnGrupo Then
-110         Call SalirDeGrupoForzado(UserIndex)
+104     If UserList(userindex).Grupo.Lider = userindex Then
+106         Call FinalizarGrupo(userindex)
 
         End If
 
-112     UserList(UserIndex).Grupo.CantidadMiembros = 0
-114     UserList(UserIndex).Grupo.EnGrupo = False
-116     UserList(UserIndex).Grupo.Lider = 0
-118     UserList(UserIndex).Grupo.PropuestaDe = 0
-120     UserList(UserIndex).Grupo.Miembros(6) = 0
-122     UserList(UserIndex).Grupo.Miembros(1) = 0
-124     UserList(UserIndex).Grupo.Miembros(2) = 0
-126     UserList(UserIndex).Grupo.Miembros(3) = 0
-128     UserList(UserIndex).Grupo.Miembros(4) = 0
-130     UserList(UserIndex).Grupo.Miembros(5) = 0
+108     If UserList(userindex).Grupo.EnGrupo Then
+110         Call SalirDeGrupoForzado(userindex)
 
-132     Call ResetQuestStats(UserIndex)
-134     Call ResetGuildInfo(UserIndex)
-136     Call LimpiarComercioSeguro(UserIndex)
-138     Call ResetFacciones(UserIndex)
-140     Call ResetContadores(UserIndex)
-141     Call ResetPacketRateData(UserIndex)
-142     Call ResetCharInfo(UserIndex)
-144     Call ResetBasicUserInfo(UserIndex)
-146     Call ResetUserFlags(UserIndex)
-148     Call ResetAccionesPendientes(UserIndex)
-152     Call LimpiarInventario(UserIndex)
-154     Call ResetUserSpells(UserIndex)
+        End If
+
+112     UserList(userindex).Grupo.CantidadMiembros = 0
+114     UserList(userindex).Grupo.EnGrupo = False
+116     UserList(userindex).Grupo.Lider = 0
+118     UserList(userindex).Grupo.PropuestaDe = 0
+120     UserList(userindex).Grupo.Miembros(6) = 0
+122     UserList(userindex).Grupo.Miembros(1) = 0
+124     UserList(userindex).Grupo.Miembros(2) = 0
+126     UserList(userindex).Grupo.Miembros(3) = 0
+128     UserList(userindex).Grupo.Miembros(4) = 0
+130     UserList(userindex).Grupo.Miembros(5) = 0
+
+132     Call ResetQuestStats(userindex)
+134     Call ResetGuildInfo(userindex)
+136     Call LimpiarComercioSeguro(userindex)
+138     Call ResetFacciones(userindex)
+140     Call ResetContadores(userindex)
+141     Call ResetPacketRateData(userindex)
+142     Call ResetCharInfo(userindex)
+144     Call ResetBasicUserInfo(userindex)
+146     Call ResetUserFlags(userindex)
+148     Call ResetAccionesPendientes(userindex)
+152     Call LimpiarInventario(userindex)
+154     Call ResetUserSpells(userindex)
         'Call ResetUserPets(UserIndex)
-156     Call ResetUserBanco(UserIndex)
-158     Call ResetUserSkills(UserIndex)
-160     Call ResetUserKeys(UserIndex)
+156     Call ResetUserBanco(userindex)
+158     Call ResetUserSkills(userindex)
+160     Call ResetUserKeys(userindex)
 
-162     With UserList(UserIndex).ComUsu
+162     With UserList(userindex).ComUsu
 164         .Acepto = False
 166         .cant = 0
 168         .DestNick = vbNullString
@@ -1536,16 +1514,16 @@ ResetUserSlot_Err:
         
 End Sub
 
-Sub ClearAndSaveUser(ByVal UserIndex As Integer)
+Sub ClearAndSaveUser(ByVal userindex As Integer)
 
     On Error GoTo ErrHandler
     
     Dim errordesc As String
-    Dim map As Integer
+    Dim Map As Integer
     Dim aN  As Integer
     Dim i   As Integer
 
-100 With UserList(UserIndex)
+100 With UserList(userindex)
 102         errordesc = "ERROR AL SETEAR NPC"
         
 104         aN = .flags.AtacadoPorNpc
@@ -1572,16 +1550,16 @@ Sub ClearAndSaveUser(ByVal UserIndex As Integer)
 128         errordesc = "ERROR AL DESMONTAR"
     
 130         If .flags.Montado > 0 Then
-132             Call DoMontar(UserIndex, ObjData(.Invent.MonturaObjIndex), .Invent.MonturaSlot)
+132             Call DoMontar(userindex, ObjData(.Invent.MonturaObjIndex), .Invent.MonturaSlot)
             End If
             
 134         errordesc = "ERROR AL CANCELAR SOLICITUD DE RETO"
             
 136         If .flags.EnReto Then
-138             Call AbandonarReto(UserIndex, True)
+138             Call AbandonarReto(userindex, True)
 
 140         ElseIf .flags.SolicitudReto.estado <> e_SolicitudRetoEstado.Libre Then
-142             Call CancelarSolicitudReto(UserIndex, .name & " se ha desconectado.")
+142             Call CancelarSolicitudReto(userindex, .name & " se ha desconectado.")
             
 144         ElseIf .flags.AceptoReto > 0 Then
 146             Call CancelarSolicitudReto(.flags.AceptoReto, .name & " se ha desconectado.")
@@ -1602,7 +1580,7 @@ Sub ClearAndSaveUser(ByVal UserIndex As Integer)
             
 166         errordesc = "ERROR AL LIMPIAR INVENTARIO DE CRAFTEO"
 168         If .flags.Crafteando <> 0 Then
-170             Call ReturnCraftingItems(UserIndex)
+170             Call ReturnCraftingItems(userindex)
             End If
         
 172         errordesc = "ERROR AL ENVIAR PARTICULA"
@@ -1610,13 +1588,13 @@ Sub ClearAndSaveUser(ByVal UserIndex As Integer)
 174         .Char.FX = 0
 176         .Char.loops = 0
 178         .Char.ParticulaFx = 0
-180         Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageParticleFX(.Char.CharIndex, 0, 0, True))
-182         Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageCreateFX(.Char.CharIndex, 0, 0))
+180         Call SendData(SendTarget.ToPCArea, userindex, PrepareMessageParticleFX(.Char.CharIndex, 0, 0, True))
+182         Call SendData(SendTarget.ToPCArea, userindex, PrepareMessageCreateFX(.Char.CharIndex, 0, 0))
 
 186         errordesc = "ERROR AL ENVIAR INVI"
         
             'Le devolvemos el body y head originales
-188         If .flags.AdminInvisible = 1 Then Call DoAdminInvisible(UserIndex)
+188         If .flags.AdminInvisible = 1 Then Call DoAdminInvisible(userindex)
         
 190         errordesc = "ERROR AL CANCELAR SUBASTA"
     
@@ -1628,7 +1606,7 @@ Sub ClearAndSaveUser(ByVal UserIndex As Integer)
 196         errordesc = "ERROR AL BORRAR INDEX DE TORNEO"
     
 198         If .flags.EnTorneo = True Then
-200             Call BorrarIndexInTorneo(UserIndex)
+200             Call BorrarIndexInTorneo(userindex)
 202             .flags.EnTorneo = False
     
             End If
@@ -1640,7 +1618,7 @@ Sub ClearAndSaveUser(ByVal UserIndex As Integer)
         
 204         errordesc = "ERROR AL GRABAR PJ"
 
-206         Call SaveUser(UserIndex, True)
+206         Call SaveUser(userindex, True)
 
     End With
     
@@ -1653,34 +1631,34 @@ ErrHandler:
 
 End Sub
 
-Sub CloseUser(ByVal UserIndex As Integer)
+Sub CloseUser(ByVal userindex As Integer)
 
         On Error GoTo ErrHandler
     
         Dim errordesc As String
-        Dim map As Integer
+        Dim Map As Integer
         Dim aN  As Integer
         Dim i   As Integer
         
-100     With UserList(UserIndex)
+100     With UserList(userindex)
             
-102         map = .Pos.map
+102         Map = .Pos.Map
         
 104         If Not .flags.YaGuardo Then
-106             Call ClearAndSaveUser(UserIndex)
+106             Call ClearAndSaveUser(userindex)
             End If
 
 108         errordesc = "ERROR AL DESCONTAR USER DE MAPA"
     
-110         If MapInfo(map).NumUsers > 0 Then
-112             Call SendData(SendTarget.ToPCAreaButIndex, UserIndex, PrepareMessageRemoveCharDialog(.Char.CharIndex))
+110         If MapInfo(Map).NumUsers > 0 Then
+112             Call SendData(SendTarget.ToPCAreaButIndex, userindex, PrepareMessageRemoveCharDialog(.Char.CharIndex))
     
             End If
     
 114         errordesc = "ERROR AL ERASEUSERCHAR"
         
             'Borrar el personaje
-116         Call EraseUserChar(UserIndex, True)
+116         Call EraseUserChar(userindex, True)
         
 118         errordesc = "ERROR AL BORRAR MASCOTAS"
         
@@ -1695,9 +1673,9 @@ Sub CloseUser(ByVal UserIndex As Integer)
 128         errordesc = "ERROR Update Map Users"
         
             'Update Map Users
-130         MapInfo(map).NumUsers = MapInfo(map).NumUsers - 1
+130         MapInfo(Map).NumUsers = MapInfo(Map).NumUsers - 1
         
-132         If MapInfo(map).NumUsers < 0 Then MapInfo(map).NumUsers = 0
+132         If MapInfo(Map).NumUsers < 0 Then MapInfo(Map).NumUsers = 0
     
             ' Si el usuario habia dejado un msg en la gm's queue lo borramos
             'If Ayuda.Existe(.Name) Then Call Ayuda.Quitar(.Name)
@@ -1712,7 +1690,7 @@ Sub CloseUser(ByVal UserIndex As Integer)
 
             .Counters.Saliendo = False
         
-142         Call ResetUserSlot(UserIndex)
+142         Call ResetUserSlot(userindex)
 
         End With
     
@@ -1852,11 +1830,11 @@ Function ContarUsuariosMismaCuenta(ByVal AccountID As Long) As Integer
 
 End Function
 
-Sub VaciarInventario(ByVal UserIndex As Integer)
+Sub VaciarInventario(ByVal userindex As Integer)
 
     Dim i As Long
 
-    With UserList(UserIndex)
+    With UserList(userindex)
         For i = 1 To MAX_INVENTORY_SLOTS
             .Invent.Object(i).amount = 0
             .Invent.Object(i).Equipped = 0

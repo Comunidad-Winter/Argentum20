@@ -68,10 +68,7 @@ Private Sub btnAceptar_Click()
     Me.txtDeleteCharCode.Text = Trim(Me.txtDeleteCharCode.Text)
 
     If Me.txtDeleteCharCode.Text <> "" Then
-        ModAuth.LoginOperation = e_operation.ConfirmDeleteChar
-        Call connectToLoginServer
-        delete_char_validate_code = frmDeleteChar.txtDeleteCharCode.Text
-        Unload Me
+        'TODO
     Else
         Call MsgBox("El código ingresado es inválido.")
     End If

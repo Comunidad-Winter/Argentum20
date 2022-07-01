@@ -1,12 +1,5 @@
 Attribute VB_Name = "ModAreas"
-'********************* COPYRIGHT NOTICE*********************
-' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
-' www.ao20.com.ar
-' All rights reserved.
-' Refer to licence for conditions of use.
-' This copyright notice must always be left intact.
-'****************** END OF COPYRIGHT NOTICE*****************
-'
+
 Option Explicit
  
 '>>>>>>AREAS>>>>>AREAS>>>>>>>>AREAS>>>>>>>AREAS>>>>>>>>>>
@@ -145,7 +138,7 @@ AreasOptimizacion_Err:
         
 End Sub
  
-Public Sub CheckUpdateNeededUser(ByVal UserIndex As Integer, ByVal Head As Byte, ByVal appear As Byte)
+Public Sub CheckUpdateNeededUser(ByVal userindex As Integer, ByVal Head As Byte, ByVal appear As Byte)
         
         On Error GoTo CheckUpdateNeededUser_Err
         
@@ -155,13 +148,13 @@ Public Sub CheckUpdateNeededUser(ByVal UserIndex As Integer, ByVal Head As Byte,
         'Last Modify Date: Unknow
         'Es la función clave del sistema de areas... Es llamada al mover un user
         '**************************************************************
-100     If UserList(UserIndex).AreasInfo.AreaID = AreasInfo(UserList(UserIndex).Pos.X, UserList(UserIndex).Pos.Y) Then Exit Sub
+100     If UserList(userindex).AreasInfo.AreaID = AreasInfo(UserList(userindex).Pos.X, UserList(userindex).Pos.Y) Then Exit Sub
     
         Dim MinX    As Long, MaxX As Long, MinY As Long, MaxY As Long, X As Long, Y As Long
 
         Dim TempInt As Long, Map As Long
 
-102     With UserList(UserIndex)
+102     With UserList(userindex)
 104         MinX = .AreasInfo.MinX
 106         MinY = .AreasInfo.MinY
         
@@ -211,43 +204,43 @@ Public Sub CheckUpdateNeededUser(ByVal UserIndex As Integer, ByVal Head As Byte,
 174         If MaxY > 100 Then MaxY = 100
 176         If MaxX > 100 Then MaxX = 100
        
-178         Map = UserList(UserIndex).Pos.Map
+178         Map = UserList(userindex).Pos.Map
        
             'Esto es para ke el cliente elimine lo "fuera de area..."
-180         Call WriteAreaChanged(UserIndex)
+180         Call WriteAreaChanged(userindex)
        
             'Actualizamos!!!
 182         For X = MinX To MaxX
 184             For Y = MinY To MaxY
                
                     '<<< User >>>
-186                 If MapData(Map, X, Y).UserIndex Then
+186                 If MapData(Map, X, Y).userindex Then
                    
-188                     TempInt = MapData(Map, X, Y).UserIndex
+188                     TempInt = MapData(Map, X, Y).userindex
                    
-190                     If UserIndex <> TempInt Then
+190                     If userindex <> TempInt Then
                         
-192                         If (UserList(UserIndex).flags.AdminInvisible = 0 Or EsGM(TempInt)) And (UserList(TempInt).flags.Muerto = 0 Or UserList(TempInt).GuildIndex = UserList(UserIndex).GuildIndex) Or (UserList(UserIndex).flags.Muerto = 1 And UserList(TempInt).flags.Muerto = 1) Then
-194                             Call MakeUserChar(False, TempInt, UserIndex, .Pos.Map, .Pos.X, .Pos.Y, 0)
+192                         If (UserList(userindex).flags.AdminInvisible = 0 Or EsGM(TempInt)) And (UserList(TempInt).flags.Muerto = 0 Or UserList(TempInt).GuildIndex = UserList(userindex).GuildIndex) Or (UserList(userindex).flags.Muerto = 1 And UserList(TempInt).flags.Muerto = 1) Then
+194                             Call MakeUserChar(False, TempInt, userindex, .Pos.Map, .Pos.X, .Pos.Y, 0)
                             
-196                             If UserList(UserIndex).flags.invisible Or UserList(UserIndex).flags.Oculto Then
-198                                 Call WriteSetInvisible(TempInt, UserList(UserIndex).Char.CharIndex, True)
+196                             If UserList(userindex).flags.invisible Or UserList(userindex).flags.Oculto Then
+198                                 Call WriteSetInvisible(TempInt, UserList(userindex).Char.CharIndex, True)
                                 End If
                             
                             End If
                             
-200                         If (UserList(TempInt).flags.AdminInvisible = 0 Or EsGM(UserIndex)) And (UserList(UserIndex).flags.Muerto = 0 Or UserList(TempInt).GuildIndex = UserList(UserIndex).GuildIndex) Or (UserList(UserIndex).flags.Muerto = 1 And UserList(TempInt).flags.Muerto = 1) Then
-202                             Call MakeUserChar(False, UserIndex, TempInt, Map, X, Y, appear)
+200                         If (UserList(TempInt).flags.AdminInvisible = 0 Or EsGM(userindex)) And (UserList(userindex).flags.Muerto = 0 Or UserList(TempInt).GuildIndex = UserList(userindex).GuildIndex) Or (UserList(userindex).flags.Muerto = 1 And UserList(TempInt).flags.Muerto = 1) Then
+202                             Call MakeUserChar(False, userindex, TempInt, Map, X, Y, appear)
                             
                                 'Si el user estaba invisible le avisamos al nuevo cliente de eso
 204                             If UserList(TempInt).flags.invisible Or UserList(TempInt).flags.Oculto Then
-206                                 Call WriteSetInvisible(UserIndex, UserList(TempInt).Char.CharIndex, True)
+206                                 Call WriteSetInvisible(userindex, UserList(TempInt).Char.CharIndex, True)
                                 End If
 
                             End If
 
 208                     ElseIf Head = USER_NUEVO Then
-210                         Call MakeUserChar(False, UserIndex, UserIndex, Map, X, Y, appear)
+210                         Call MakeUserChar(False, userindex, userindex, Map, X, Y, appear)
 
                         End If
 
@@ -255,7 +248,7 @@ Public Sub CheckUpdateNeededUser(ByVal UserIndex As Integer, ByVal Head As Byte,
                
                     '<<< Npc >>>
 212                 If MapData(Map, X, Y).NpcIndex Then
-214                     Call MakeNPCChar(False, UserIndex, MapData(Map, X, Y).NpcIndex, Map, X, Y)
+214                     Call MakeNPCChar(False, userindex, MapData(Map, X, Y).NpcIndex, Map, X, Y)
 
                     End If
                  
@@ -264,10 +257,10 @@ Public Sub CheckUpdateNeededUser(ByVal UserIndex As Integer, ByVal Head As Byte,
 218                     TempInt = MapData(Map, X, Y).ObjInfo.ObjIndex
 
 220                     If Not EsObjetoFijo(ObjData(TempInt).OBJType) Then
-222                         Call WriteObjectCreate(UserIndex, TempInt, MapData(Map, X, Y).ObjInfo.amount, X, Y)
+222                         Call WriteObjectCreate(userindex, TempInt, MapData(Map, X, Y).ObjInfo.amount, X, Y)
                        
 224                         If ObjData(TempInt).OBJType = e_OBJType.otPuertas And InMapBounds(Map, X, Y) Then
-226                             Call MostrarBloqueosPuerta(False, UserIndex, X, Y)
+226                             Call MostrarBloqueosPuerta(False, userindex, X, Y)
                             End If
 
                         End If
@@ -276,7 +269,7 @@ Public Sub CheckUpdateNeededUser(ByVal UserIndex As Integer, ByVal Head As Byte,
 
                     ' Bloqueo GM
 228                 If (MapData(Map, X, Y).Blocked And e_Block.GM) <> 0 Then
-230                     Call Bloquear(False, UserIndex, X, Y, e_Block.ALL_SIDES)
+230                     Call Bloquear(False, userindex, X, Y, e_Block.ALL_SIDES)
                     End If
 
                     ' If MapData(Map, x, y).Particula > 0 Then
@@ -389,7 +382,7 @@ Public Sub CheckUpdateNeededNpc(ByVal NpcIndex As Integer, ByVal Head As Byte)
 184             For X = MinX To MaxX
 186                 For Y = MinY To MaxY
 
-188                     If MapData(.Pos.Map, X, Y).UserIndex Then Call MakeNPCChar(False, MapData(.Pos.Map, X, Y).UserIndex, NpcIndex, .Pos.Map, .Pos.X, .Pos.Y)
+188                     If MapData(.Pos.Map, X, Y).userindex Then Call MakeNPCChar(False, MapData(.Pos.Map, X, Y).userindex, NpcIndex, .Pos.Map, .Pos.X, .Pos.Y)
 
 190                 Next Y
 192             Next X
@@ -418,7 +411,7 @@ CheckUpdateNeededNpc_Err:
         
 End Sub
  
-Public Sub QuitarUser(ByVal UserIndex As Integer, ByVal Map As Integer)
+Public Sub QuitarUser(ByVal userindex As Integer, ByVal Map As Integer)
         
         On Error GoTo QuitarUser_Err
         
@@ -435,7 +428,7 @@ Public Sub QuitarUser(ByVal UserIndex As Integer, ByVal Map As Integer)
         'Search for the user
 100     For LoopC = 1 To ConnGroups(Map).CountEntrys
 
-102         If ConnGroups(Map).UserEntrys(LoopC) = UserIndex Then Exit For
+102         If ConnGroups(Map).UserEntrys(LoopC) = userindex Then Exit For
 104     Next LoopC
    
         'Char not found
@@ -464,7 +457,7 @@ QuitarUser_Err:
         
 End Sub
  
-Public Sub AgregarUser(ByVal UserIndex As Integer, ByVal Map As Integer, Optional ByVal appear As Byte = 0)
+Public Sub AgregarUser(ByVal userindex As Integer, ByVal Map As Integer, Optional ByVal appear As Byte = 0)
         
         On Error GoTo AgregarUser_Err
         
@@ -489,7 +482,7 @@ Public Sub AgregarUser(ByVal UserIndex As Integer, ByVal Map As Integer, Optiona
         'Prevent adding repeated users
 104     For i = 1 To ConnGroups(Map).CountEntrys
 
-106         If ConnGroups(Map).UserEntrys(i) = UserIndex Then
+106         If ConnGroups(Map).UserEntrys(i) = userindex Then
 108             EsNuevo = False
                 Exit For
 
@@ -507,19 +500,19 @@ Public Sub AgregarUser(ByVal UserIndex As Integer, ByVal Map As Integer, Optiona
 
             End If
        
-122         ConnGroups(Map).UserEntrys(TempVal) = UserIndex
+122         ConnGroups(Map).UserEntrys(TempVal) = userindex
 
         End If
    
         'Update user
-124     UserList(UserIndex).AreasInfo.AreaID = 0
+124     UserList(userindex).AreasInfo.AreaID = 0
    
-126     UserList(UserIndex).AreasInfo.AreaPerteneceX = 0
-128     UserList(UserIndex).AreasInfo.AreaPerteneceY = 0
-130     UserList(UserIndex).AreasInfo.AreaReciveX = 0
-132     UserList(UserIndex).AreasInfo.AreaReciveY = 0
+126     UserList(userindex).AreasInfo.AreaPerteneceX = 0
+128     UserList(userindex).AreasInfo.AreaPerteneceY = 0
+130     UserList(userindex).AreasInfo.AreaReciveX = 0
+132     UserList(userindex).AreasInfo.AreaReciveY = 0
    
-134     Call CheckUpdateNeededUser(UserIndex, USER_NUEVO, appear)
+134     Call CheckUpdateNeededUser(userindex, USER_NUEVO, appear)
 
         
         Exit Sub

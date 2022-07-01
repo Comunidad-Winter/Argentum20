@@ -1,12 +1,5 @@
 Attribute VB_Name = "AI"
-'********************* COPYRIGHT NOTICE*********************
-' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
-' www.ao20.com.ar
-' All rights reserved.
-' Refer to licence for conditions of use.
-' This copyright notice must always be left intact.
-'****************** END OF COPYRIGHT NOTICE*****************
-'
+
 Option Explicit
 
 ' WyroX: Hardcodeada de la vida...
@@ -62,7 +55,7 @@ Public Sub NpcAI(ByVal NpcIndex As Integer)
 
 ErrorHandler:
     
-136     Call LogError("NPC.AI " & NpcList(NpcIndex).Name & " " & NpcList(NpcIndex).MaestroNPC & " mapa:" & NpcList(NpcIndex).Pos.Map & " x:" & NpcList(NpcIndex).Pos.X & " y:" & NpcList(NpcIndex).Pos.Y & " Mov:" & NpcList(NpcIndex).Movement & " TargU:" & NpcList(NpcIndex).Target & " TargN:" & NpcList(NpcIndex).TargetNPC)
+136     Call LogError("NPC.AI " & NpcList(NpcIndex).name & " " & NpcList(NpcIndex).MaestroNPC & " mapa:" & NpcList(NpcIndex).Pos.Map & " x:" & NpcList(NpcIndex).Pos.X & " y:" & NpcList(NpcIndex).Pos.Y & " Mov:" & NpcList(NpcIndex).Movement & " TargU:" & NpcList(NpcIndex).Target & " TargN:" & NpcList(NpcIndex).TargetNPC)
 
 138     Dim MiNPC As t_Npc: MiNPC = NpcList(NpcIndex)
     
@@ -75,7 +68,7 @@ Private Sub PerseguirUsuarioCercano(ByVal NpcIndex As Integer)
         On Error GoTo ErrorHandler
 
         Dim i            As Long
-        Dim UserIndex    As Integer
+        Dim userindex    As Integer
         Dim UserIndexFront As Integer
         Dim npcEraPasivo As Boolean
         Dim agresor      As Integer
@@ -97,7 +90,7 @@ Private Sub PerseguirUsuarioCercano(ByVal NpcIndex As Integer)
 114           agresor = NameIndex(.flags.AttackedBy)
             End If
             
-            If UserIndex > 0 And UserIndexFront > 0 Then
+            If userindex > 0 And UserIndexFront > 0 Then
             
                 If NPCHasAUserInFront(NpcIndex, UserIndexFront) And EsEnemigo(NpcIndex, UserIndexFront) Then
                     enemigoAtacableMasCercano = UserIndexFront
@@ -107,19 +100,19 @@ Private Sub PerseguirUsuarioCercano(ByVal NpcIndex As Integer)
             Else
                 ' Busco algun objetivo en el area.
 116             For i = 1 To ModAreas.ConnGroups(.Pos.Map).CountEntrys
-118                 UserIndex = ModAreas.ConnGroups(.Pos.Map).UserEntrys(i)
+118                 userindex = ModAreas.ConnGroups(.Pos.Map).UserEntrys(i)
     
-120                 If EsObjetivoValido(NpcIndex, UserIndex) Then
+120                 If EsObjetivoValido(NpcIndex, userindex) Then
                         ' Busco el mas cercano, sea atacable o no.
-122                     If Distancia(UserList(UserIndex).Pos, .Pos) < minDistancia And Not (UserList(UserIndex).flags.invisible > 0 Or UserList(UserIndex).flags.Oculto) Then
-124                         enemigoCercano = UserIndex
-126                         minDistancia = Distancia(UserList(UserIndex).Pos, .Pos)
+122                     If Distancia(UserList(userindex).Pos, .Pos) < minDistancia And Not (UserList(userindex).flags.invisible > 0 Or UserList(userindex).flags.Oculto) Then
+124                         enemigoCercano = userindex
+126                         minDistancia = Distancia(UserList(userindex).Pos, .Pos)
                         End If
                         
                         ' Busco el mas cercano que sea atacable.
-128                     If (UsuarioAtacableConMagia(UserIndex) Or UsuarioAtacableConMelee(NpcIndex, UserIndex)) And Distancia(UserList(UserIndex).Pos, .Pos) < minDistanciaAtacable Then
-130                         enemigoAtacableMasCercano = UserIndex
-132                         minDistanciaAtacable = Distancia(UserList(UserIndex).Pos, .Pos)
+128                     If (UsuarioAtacableConMagia(userindex) Or UsuarioAtacableConMelee(NpcIndex, userindex)) And Distancia(UserList(userindex).Pos, .Pos) < minDistanciaAtacable Then
+130                         enemigoAtacableMasCercano = userindex
+132                         minDistanciaAtacable = Distancia(UserList(userindex).Pos, .Pos)
                         End If
     
                     End If
@@ -328,11 +321,11 @@ With NpcList(NpcIndex)
 End With
 End Function
 
-Public Function NPCHasAUserInFront(ByVal NpcIndex As Integer, ByRef UserIndex As Integer) As Boolean
+Public Function NPCHasAUserInFront(ByVal NpcIndex As Integer, ByRef userindex As Integer) As Boolean
     On Error Resume Next
     Dim NextPosNPC As t_WorldPos
     
-    If UserList(UserIndex).flags.Muerto = 1 Then
+    If UserList(userindex).flags.Muerto = 1 Then
         NPCHasAUserInFront = False
         Exit Function
     End If
@@ -340,8 +333,8 @@ Public Function NPCHasAUserInFront(ByVal NpcIndex As Integer, ByRef UserIndex As
     
     
     NextPosNPC = ComputeNextHeadingPos(NpcIndex)
-    UserIndex = MapData(NextPosNPC.Map, NextPosNPC.X, NextPosNPC.Y).UserIndex
-    NPCHasAUserInFront = (UserIndex > 0)
+    userindex = MapData(NextPosNPC.Map, NextPosNPC.X, NextPosNPC.Y).userindex
+    NPCHasAUserInFront = (userindex > 0)
 End Function
 
 
@@ -384,7 +377,7 @@ Private Sub AI_AtacarUsuarioObjetivo(ByVal AtackerNpcIndex As Integer)
                 
                 Dim UserIndexFront As Integer
                 NextPosNPC = ComputeNextHeadingPos(AtackerNpcIndex)
-                UserIndexFront = MapData(NextPosNPC.Map, NextPosNPC.X, NextPosNPC.Y).UserIndex
+                UserIndexFront = MapData(NextPosNPC.Map, NextPosNPC.X, NextPosNPC.Y).userindex
                 AtacaAlDelFrente = (UserIndexFront > 0)
                 
                 If AtacaAlDelFrente And Not .flags.Paralizado = 1 Then
@@ -641,8 +634,8 @@ Private Sub HacerCaminata(ByVal NpcIndex As Integer)
 100     With NpcList(NpcIndex)
     
 102         Destino.Map = .Pos.Map
-104         Destino.X = .Orig.X + .Caminata(.CaminataActual).Offset.X
-106         Destino.Y = .Orig.Y + .Caminata(.CaminataActual).Offset.Y
+104         Destino.X = .Orig.X + .Caminata(.CaminataActual).offset.X
+106         Destino.Y = .Orig.Y + .Caminata(.CaminataActual).offset.Y
 
             ' Si todavi�a no llego al destino
 108         If .Pos.X <> Destino.X Or .Pos.Y <> Destino.Y Then
@@ -661,7 +654,7 @@ Private Sub HacerCaminata(ByVal NpcIndex As Integer)
                 End If
             
                 ' Si hay un user
-122             MoveChar = MapData(NextTile.Map, NextTile.X, NextTile.Y).UserIndex
+122             MoveChar = MapData(NextTile.Map, NextTile.X, NextTile.Y).userindex
 124             If MoveChar Then
                     ' Si no esta muerto o es admin invisible (porque a esos los atraviesa)
 126                 If UserList(MoveChar).flags.AdminInvisible = 0 Or UserList(MoveChar).flags.Muerto = 0 Then
@@ -888,39 +881,39 @@ End Sub
 '                                       HELPERS
 ' ---------------------------------------------------------------------------------------------------
 
-Private Function EsObjetivoValido(ByVal NpcIndex As Integer, ByVal UserIndex As Integer) As Boolean
-100     If UserIndex = 0 Then Exit Function
+Private Function EsObjetivoValido(ByVal NpcIndex As Integer, ByVal userindex As Integer) As Boolean
+100     If userindex = 0 Then Exit Function
 
         ' Esta condicion debe ejecutarse independiemente de el modo de busqueda.
 102     EsObjetivoValido = ( _
-          EnRangoVision(NpcIndex, UserIndex) And _
-          EsEnemigo(NpcIndex, UserIndex) And _
-          UserList(UserIndex).flags.Muerto = 0 And _
-          UserList(UserIndex).flags.EnConsulta = 0 And _
-          Not EsGM(UserIndex))
+          EnRangoVision(NpcIndex, userindex) And _
+          EsEnemigo(NpcIndex, userindex) And _
+          UserList(userindex).flags.Muerto = 0 And _
+          UserList(userindex).flags.EnConsulta = 0 And _
+          Not EsGM(userindex))
 
 End Function
 
-Private Function EsEnemigo(ByVal NpcIndex As Integer, ByVal UserIndex As Integer) As Boolean
+Private Function EsEnemigo(ByVal NpcIndex As Integer, ByVal userindex As Integer) As Boolean
 
         On Error GoTo EsEnemigo_Err
 
 
-100     If NpcIndex = 0 Or UserIndex = 0 Then Exit Function
+100     If NpcIndex = 0 Or userindex = 0 Then Exit Function
 
 102     With NpcList(NpcIndex)
 
 104         If .flags.AttackedBy <> vbNullString Then
-106             EsEnemigo = (UserIndex = NameIndex(.flags.AttackedBy))
+106             EsEnemigo = (userindex = NameIndex(.flags.AttackedBy))
 108             If EsEnemigo Then Exit Function
             End If
 
 110         Select Case .flags.AIAlineacion
                 Case e_Alineacion.Real
-112                 EsEnemigo = (Status(UserIndex) Mod 2) <> 1
+112                 EsEnemigo = (Status(userindex) Mod 2) <> 1
 
 114             Case e_Alineacion.Caos
-116                 EsEnemigo = (Status(UserIndex) Mod 2) <> 0
+116                 EsEnemigo = (Status(userindex) Mod 2) <> 0
 
 118             Case e_Alineacion.ninguna
 120                 EsEnemigo = True
@@ -938,7 +931,7 @@ EsEnemigo_Err:
 
 End Function
 
-Private Function EnRangoVision(ByVal NpcIndex As Integer, ByVal UserIndex As Integer) As Boolean
+Private Function EnRangoVision(ByVal NpcIndex As Integer, ByVal userindex As Integer) As Boolean
 
         On Error GoTo EnRangoVision_Err
 
@@ -947,12 +940,12 @@ Private Function EnRangoVision(ByVal NpcIndex As Integer, ByVal UserIndex As Int
         Dim Limite_X As Byte, Limite_Y As Byte
 
         ' Si alguno es cero, devolve false
-100     If NpcIndex = 0 Or UserIndex = 0 Then Exit Function
+100     If NpcIndex = 0 Or userindex = 0 Then Exit Function
 
 102     Limite_X = IIf(NpcList(NpcIndex).Distancia <> 0, NpcList(NpcIndex).Distancia, RANGO_VISION_X)
 104     Limite_Y = IIf(NpcList(NpcIndex).Distancia <> 0, NpcList(NpcIndex).Distancia, RANGO_VISION_Y)
 
-106     userPos = UserList(UserIndex).Pos
+106     userPos = UserList(userindex).Pos
 108     NpcPos = NpcList(NpcIndex).Pos
 
 110     EnRangoVision = ( _

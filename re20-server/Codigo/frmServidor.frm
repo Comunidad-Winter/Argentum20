@@ -665,7 +665,6 @@ Private Sub Command16_Click()
         
 100     Call LoadSini
         Call LoadMD5
-        Call LoadPrivateKey
 
         
         Exit Sub
@@ -953,7 +952,6 @@ Private Sub Command5_Click()
 
 128     Call LoadSini
         Call LoadMD5
-129     Call LoadPrivateKey
 130     Call LoadIntervalos
 132     Call CargarBackUp
 134     Call LoadOBJData

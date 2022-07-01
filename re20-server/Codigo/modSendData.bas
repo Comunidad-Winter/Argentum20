@@ -1,12 +1,5 @@
 Attribute VB_Name = "modSendData"
-'********************* COPYRIGHT NOTICE*********************
-' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
-' www.ao20.com.ar
-' All rights reserved.
-' Refer to licence for conditions of use.
-' This copyright notice must always be left intact.
-'****************** END OF COPYRIGHT NOTICE*****************
-'
+
 '**************************************************************
 ' SendData.bas - Has all methods to send data to different user groups.
 ' Makes use of the modAreas module.
@@ -309,7 +302,7 @@ SendData_Err:
         End If
 End Sub
 
-Private Sub SendToUserArea(ByVal UserIndex As Integer, ByVal Buffer As Network.Writer)
+Private Sub SendToUserArea(ByVal userindex As Integer, ByVal Buffer As Network.Writer)
         
         On Error GoTo SendToUserArea_Err
         
@@ -325,11 +318,11 @@ Private Sub SendToUserArea(ByVal UserIndex As Integer, ByVal Buffer As Network.W
         Dim AreaX     As Integer
         Dim AreaY     As Integer
         
-100     If UserIndex = 0 Then Exit Sub
+100     If userindex = 0 Then Exit Sub
         
-102     Map = UserList(UserIndex).Pos.Map
-104     AreaX = UserList(UserIndex).AreasInfo.AreaPerteneceX
-106     AreaY = UserList(UserIndex).AreasInfo.AreaPerteneceY
+102     Map = UserList(userindex).Pos.Map
+104     AreaX = UserList(userindex).AreasInfo.AreaPerteneceX
+106     AreaY = UserList(userindex).AreasInfo.AreaPerteneceY
     
 108     If Not MapaValido(Map) Then Exit Sub
     
@@ -360,7 +353,7 @@ SendToUserArea_Err:
         
 End Sub
 
-Private Sub SendToUsersMuertosArea(ByVal UserIndex As Integer, ByVal Buffer As Network.Writer)
+Private Sub SendToUsersMuertosArea(ByVal userindex As Integer, ByVal Buffer As Network.Writer)
         
         On Error GoTo SendToUserArea_Err
         
@@ -376,11 +369,11 @@ Private Sub SendToUsersMuertosArea(ByVal UserIndex As Integer, ByVal Buffer As N
         Dim AreaX     As Integer
         Dim AreaY     As Integer
         
-100     If UserIndex = 0 Then Exit Sub
+100     If userindex = 0 Then Exit Sub
         
-102     Map = UserList(UserIndex).Pos.Map
-104     AreaX = UserList(UserIndex).AreasInfo.AreaPerteneceX
-106     AreaY = UserList(UserIndex).AreasInfo.AreaPerteneceY
+102     Map = UserList(userindex).Pos.Map
+104     AreaX = UserList(userindex).AreasInfo.AreaPerteneceX
+106     AreaY = UserList(userindex).AreasInfo.AreaPerteneceY
         
 108     If Not MapaValido(Map) Then Exit Sub
     
@@ -413,7 +406,7 @@ SendToUserArea_Err:
         
 End Sub
 
-Private Sub SendToSuperioresArea(ByVal UserIndex As Integer, ByVal Buffer As Network.Writer)
+Private Sub SendToSuperioresArea(ByVal userindex As Integer, ByVal Buffer As Network.Writer)
         
         On Error GoTo SendToUserAreaButindex_Err
 
@@ -429,11 +422,11 @@ Private Sub SendToSuperioresArea(ByVal UserIndex As Integer, ByVal Buffer As Net
         Dim AreaX     As Integer
         Dim AreaY     As Integer
         
-100     If UserIndex = 0 Then Exit Sub
+100     If userindex = 0 Then Exit Sub
         
-102     Map = UserList(UserIndex).Pos.Map
-104     AreaX = UserList(UserIndex).AreasInfo.AreaPerteneceX
-106     AreaY = UserList(UserIndex).AreasInfo.AreaPerteneceY
+102     Map = UserList(userindex).Pos.Map
+104     AreaX = UserList(userindex).AreasInfo.AreaPerteneceX
+106     AreaY = UserList(userindex).AreasInfo.AreaPerteneceY
 
 108     If Not MapaValido(Map) Then Exit Sub
     
@@ -449,7 +442,7 @@ Private Sub SendToSuperioresArea(ByVal UserIndex As Integer, ByVal Buffer As Net
 
 122                 If UserList(tempIndex).ConnIDValida Then
                 
-124                     If CompararPrivilegiosUser(UserIndex, tempIndex) < 0 Then
+124                     If CompararPrivilegiosUser(userindex, tempIndex) < 0 Then
 126                         Call modNetwork.Send(tempIndex, Buffer)
                         End If
 
@@ -470,7 +463,7 @@ SendToUserAreaButindex_Err:
         
 End Sub
 
-Private Sub SendToUserAreaButindex(ByVal UserIndex As Integer, ByVal Buffer As Network.Writer)
+Private Sub SendToUserAreaButindex(ByVal userindex As Integer, ByVal Buffer As Network.Writer)
         
         On Error GoTo SendToUserAreaButindex_Err
         
@@ -487,11 +480,11 @@ Private Sub SendToUserAreaButindex(ByVal UserIndex As Integer, ByVal Buffer As N
         Dim AreaX     As Integer
         Dim AreaY     As Integer
         
-100     If UserIndex = 0 Then Exit Sub
+100     If userindex = 0 Then Exit Sub
         
-102     Map = UserList(UserIndex).Pos.Map
-104     AreaX = UserList(UserIndex).AreasInfo.AreaPerteneceX
-106     AreaY = UserList(UserIndex).AreasInfo.AreaPerteneceY
+102     Map = UserList(userindex).Pos.Map
+104     AreaX = UserList(userindex).AreasInfo.AreaPerteneceX
+106     AreaY = UserList(userindex).AreasInfo.AreaPerteneceY
 
 
 108     If Not MapaValido(Map) Then Exit Sub
@@ -505,7 +498,7 @@ Private Sub SendToUserAreaButindex(ByVal UserIndex As Integer, ByVal Buffer As N
 118             TempInt = UserList(tempIndex).AreasInfo.AreaReciveY And AreaY
 
 120             If TempInt Then
-122                 If tempIndex <> UserIndex Then
+122                 If tempIndex <> userindex Then
 124                     If UserList(tempIndex).ConnIDValida Then
 126                         Call modNetwork.Send(tempIndex, Buffer)
 
@@ -528,7 +521,7 @@ SendToUserAreaButindex_Err:
         
 End Sub
 
-Private Sub SendToAdminAreaButIndex(ByVal UserIndex As Integer, ByVal Buffer As Network.Writer)
+Private Sub SendToAdminAreaButIndex(ByVal userindex As Integer, ByVal Buffer As Network.Writer)
         
         On Error GoTo SendToUserAreaButindex_Err
         
@@ -545,11 +538,11 @@ Private Sub SendToAdminAreaButIndex(ByVal UserIndex As Integer, ByVal Buffer As 
         Dim AreaX     As Integer
         Dim AreaY     As Integer
         
-100     If UserIndex = 0 Then Exit Sub
+100     If userindex = 0 Then Exit Sub
         
-102     Map = UserList(UserIndex).Pos.Map
-104     AreaX = UserList(UserIndex).AreasInfo.AreaPerteneceX
-106     AreaY = UserList(UserIndex).AreasInfo.AreaPerteneceY
+102     Map = UserList(userindex).Pos.Map
+104     AreaX = UserList(userindex).AreasInfo.AreaPerteneceX
+106     AreaY = UserList(userindex).AreasInfo.AreaPerteneceY
         'sndData = sndData & ENDC
 
 108     If Not MapaValido(Map) Then Exit Sub
@@ -564,7 +557,7 @@ Private Sub SendToAdminAreaButIndex(ByVal UserIndex As Integer, ByVal Buffer As 
 
 120             If TempInt Then
 
-122                 If tempIndex <> UserIndex And EsGM(tempIndex) Then
+122                 If tempIndex <> userindex And EsGM(tempIndex) Then
 
 124                     If UserList(tempIndex).ConnIDValida Then
 126                         Call modNetwork.Send(tempIndex, Buffer)
@@ -588,7 +581,7 @@ SendToUserAreaButindex_Err:
         
 End Sub
 
-Private Sub SendToUserAreaButGMs(ByVal UserIndex As Integer, ByVal Buffer As Network.Writer)
+Private Sub SendToUserAreaButGMs(ByVal userindex As Integer, ByVal Buffer As Network.Writer)
         
         On Error GoTo SendToUserAreaButindex_Err
         
@@ -607,11 +600,11 @@ Private Sub SendToUserAreaButGMs(ByVal UserIndex As Integer, ByVal Buffer As Net
         Dim AreaX     As Integer
         Dim AreaY     As Integer
         
-100     If UserIndex = 0 Then Exit Sub
+100     If userindex = 0 Then Exit Sub
         
-102     Map = UserList(UserIndex).Pos.Map
-104     AreaX = UserList(UserIndex).AreasInfo.AreaPerteneceX
-106     AreaY = UserList(UserIndex).AreasInfo.AreaPerteneceY
+102     Map = UserList(userindex).Pos.Map
+104     AreaX = UserList(userindex).AreasInfo.AreaPerteneceX
+106     AreaY = UserList(userindex).AreasInfo.AreaPerteneceY
 
 108     If Not MapaValido(Map) Then Exit Sub
     
@@ -650,7 +643,7 @@ SendToUserAreaButindex_Err:
         
 End Sub
 
-Private Sub SendToDeadUserArea(ByVal UserIndex As Integer, ByVal Buffer As Network.Writer)
+Private Sub SendToDeadUserArea(ByVal userindex As Integer, ByVal Buffer As Network.Writer)
         
         On Error GoTo SendToDeadUserArea_Err
         
@@ -665,11 +658,11 @@ Private Sub SendToDeadUserArea(ByVal UserIndex As Integer, ByVal Buffer As Netwo
         Dim AreaX     As Integer
         Dim AreaY     As Integer
         
-100     If UserIndex = 0 Then Exit Sub
+100     If userindex = 0 Then Exit Sub
         
-102     Map = UserList(UserIndex).Pos.Map
-104     AreaX = UserList(UserIndex).AreasInfo.AreaPerteneceX
-106     AreaY = UserList(UserIndex).AreasInfo.AreaPerteneceY
+102     Map = UserList(userindex).Pos.Map
+104     AreaX = UserList(userindex).AreasInfo.AreaPerteneceX
+106     AreaY = UserList(userindex).AreasInfo.AreaPerteneceY
     
 108     If Not MapaValido(Map) Then Exit Sub
     
@@ -700,7 +693,7 @@ SendToDeadUserArea_Err:
         
 End Sub
 
-Private Sub SendToUserGuildArea(ByVal UserIndex As Integer, ByVal Buffer As Network.Writer)
+Private Sub SendToUserGuildArea(ByVal userindex As Integer, ByVal Buffer As Network.Writer)
         
         On Error GoTo SendToUserGuildArea_Err
         
@@ -716,22 +709,22 @@ Private Sub SendToUserGuildArea(ByVal UserIndex As Integer, ByVal Buffer As Netw
         Dim AreaX     As Integer
         Dim AreaY     As Integer
         
-100     If UserIndex = 0 Then Exit Sub
+100     If userindex = 0 Then Exit Sub
         
-102     Map = UserList(UserIndex).Pos.Map
-104     AreaX = UserList(UserIndex).AreasInfo.AreaPerteneceX
-106     AreaY = UserList(UserIndex).AreasInfo.AreaPerteneceY
+102     Map = UserList(userindex).Pos.Map
+104     AreaX = UserList(userindex).AreasInfo.AreaPerteneceX
+106     AreaY = UserList(userindex).AreasInfo.AreaPerteneceY
     
 108     If Not MapaValido(Map) Then Exit Sub
     
-110     If UserList(UserIndex).GuildIndex = 0 Then Exit Sub
+110     If UserList(userindex).GuildIndex = 0 Then Exit Sub
     
 112     For LoopC = 1 To ConnGroups(Map).CountEntrys
 114         tempIndex = ConnGroups(Map).UserEntrys(LoopC)
         
 116         If UserList(tempIndex).AreasInfo.AreaReciveX And AreaX Then  'Esta en el area?
 118             If UserList(tempIndex).AreasInfo.AreaReciveY And AreaY Then
-120                 If UserList(tempIndex).ConnIDValida And UserList(tempIndex).GuildIndex = UserList(UserIndex).GuildIndex Then
+120                 If UserList(tempIndex).ConnIDValida And UserList(tempIndex).GuildIndex = UserList(userindex).GuildIndex Then
 122                     Call modNetwork.Send(tempIndex, Buffer)
 
                     End If
@@ -751,7 +744,7 @@ SendToUserGuildArea_Err:
         
 End Sub
 
-Private Sub SendToAdminsButConsejerosArea(ByVal UserIndex As Integer, ByVal Buffer As Network.Writer)
+Private Sub SendToAdminsButConsejerosArea(ByVal userindex As Integer, ByVal Buffer As Network.Writer)
         
         On Error GoTo SendToAdminsButConsejerosArea_Err
         
@@ -767,11 +760,11 @@ Private Sub SendToAdminsButConsejerosArea(ByVal UserIndex As Integer, ByVal Buff
         Dim AreaX     As Integer
         Dim AreaY     As Integer
         
-100     If UserIndex = 0 Then Exit Sub
+100     If userindex = 0 Then Exit Sub
         
-102     Map = UserList(UserIndex).Pos.Map
-104     AreaX = UserList(UserIndex).AreasInfo.AreaPerteneceX
-106     AreaY = UserList(UserIndex).AreasInfo.AreaPerteneceY
+102     Map = UserList(userindex).Pos.Map
+104     AreaX = UserList(userindex).AreasInfo.AreaPerteneceX
+106     AreaY = UserList(userindex).AreasInfo.AreaPerteneceY
     
 108     If Not MapaValido(Map) Then Exit Sub
     
@@ -935,7 +928,7 @@ SendToMap_Err:
         
 End Sub
 
-Private Sub SendToMapButIndex(ByVal UserIndex As Integer, ByVal Buffer As Network.Writer)
+Private Sub SendToMapButIndex(ByVal userindex As Integer, ByVal Buffer As Network.Writer)
         
         On Error GoTo SendToMapButIndex_Err
         
@@ -949,16 +942,16 @@ Private Sub SendToMapButIndex(ByVal UserIndex As Integer, ByVal Buffer As Networ
         Dim Map       As Integer
         Dim tempIndex As Integer
         
-100     If UserIndex = 0 Then Exit Sub
+100     If userindex = 0 Then Exit Sub
         
-102     Map = UserList(UserIndex).Pos.Map
+102     Map = UserList(userindex).Pos.Map
     
 104     If Not MapaValido(Map) Then Exit Sub
 
 106     For LoopC = 1 To ConnGroups(Map).CountEntrys
 108         tempIndex = ConnGroups(Map).UserEntrys(LoopC)
         
-110         If tempIndex <> UserIndex And UserList(tempIndex).ConnIDValida Then
+110         If tempIndex <> userindex And UserList(tempIndex).ConnIDValida Then
 112             Call modNetwork.Send(tempIndex, Buffer)
 
             End If

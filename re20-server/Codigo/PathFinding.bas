@@ -1,11 +1,5 @@
 Attribute VB_Name = "PathFinding"
-'********************* COPYRIGHT NOTICE*********************
-' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
-' www.ao20.com.ar
-' All rights reserved.
-' Refer to licence for conditions of use.
-' This copyright notice must always be left intact.
-'****************** END OF COPYRIGHT NOTICE*****************
+
 '
 'Argentum Online 0.11.6
 'Copyright (C) 2002 Márquez Pablo Ignacio
@@ -113,7 +107,7 @@ Private ClosestDistance As Single
 Private Const MAXINT As Integer = 32767
 
 ' WyroX: Usada para mover memoria... VB6 es un desastre en cuanto a contenedores dinámicos
-Private Declare Sub MoveMemory Lib "kernel32" Alias "RtlMoveMemory" (pDest As Any, pSource As Any, ByVal Length As Long)
+Private Declare Sub MoveMemory Lib "Kernel32" Alias "RtlMoveMemory" (pDest As Any, pSource As Any, ByVal Length As Long)
 
 Public Sub InitPathFinding()
         
@@ -188,7 +182,7 @@ Private Function IsWalkable(ByVal NpcIndex As Integer, ByVal X As Integer, ByVal
 2        If .NpcIndex Then Exit Function
         
         ' Usuario
-3        If .UserIndex And .UserIndex <> NpcList(NpcIndex).Target Then Exit Function
+3        If .userindex And .userindex <> NpcList(NpcIndex).Target Then Exit Function
 
         ' Traslado
 4        If .TileExit.Map Then Exit Function
@@ -309,13 +303,13 @@ Public Function SeekPath(ByVal NpcIndex As Integer, Optional ByVal Closest As Bo
         Dim Heading As e_Heading, Vertex As t_Position
         Dim MaxDistance As Integer, Index As Integer
         Dim MinTotalDistance As Integer, BestVertexIndex As Integer
-        Dim UserIndex As Integer 'no es necesario
+        Dim userindex As Integer 'no es necesario
         Dim pasos As Long
         
         pasos = 0
         'Ya estamos en la posición.
-        If UserIndex > 0 Then
-            If NPCHasAUserInFront(NpcIndex, UserIndex) Then
+        If userindex > 0 Then
+            If NPCHasAUserInFront(NpcIndex, userindex) Then
                 SeekPath = False
                 Exit Function
             End If

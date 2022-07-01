@@ -14,6 +14,49 @@ Public Sub Clear()
 100     Call Writer.Clear
 End Sub
 
+Public Sub WriteCreateAccount()
+        '<EhHeader>
+        On Error GoTo WriteCreateAccount_Err
+        
+        '</EhHeader>
+100     Call Writer.WriteInt(ClientPacketID.CreateAccount)
+
+104     Call Writer.WriteString8(CuentaEmail)
+        Call Writer.WriteString8(CuentaPassword)
+
+120     Call modNetwork.Send(Writer)
+        '<EhFooter>
+        Exit Sub
+
+WriteCreateAccount_Err:
+        Call Writer.Clear
+        Call RegistrarError(Err.Number, Err.Description, "Argentum20.Protocol_Writes.WriteCreateAccount", Erl)
+        '</EhFooter>
+End Sub
+
+Public Sub WriteLoginAccount()
+        '<EhHeader>
+        On Error GoTo WriteLoginAccount_Err
+        
+        '</EhHeader>
+100     Call Writer.WriteInt(ClientPacketID.LoginAccount)
+
+104     Call Writer.WriteString8(CuentaEmail)
+        Call Writer.WriteString8(CuentaPassword)
+
+120     Call modNetwork.Send(Writer)
+        '<EhFooter>
+        Exit Sub
+
+WriteLoginAccount_Err:
+        Call Writer.Clear
+        Call RegistrarError(Err.Number, Err.Description, "Argentum20.Protocol_Writes.WriteLoginAccount", Erl)
+        '</EhFooter>
+End Sub
+
+Public Sub WriteDeleteCharacter()
+
+End Sub
 ''
 ' Writes the "LoginExistingChar" message to the outgoing data buffer.
 '
@@ -24,17 +67,8 @@ Public Sub WriteLoginExistingChar()
         
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.LoginExistingChar)
-102     Call Writer.WriteString8(encrypted_session_token)
 
-
-        Dim encrypted_username_b64 As String
-        encrypted_username_b64 = AO20CryptoSysWrapper.Encrypt(cnvHexStrFromBytes(public_key), username)
-        
-104     Call Writer.WriteString8(encrypted_username_b64)
-106     Call Writer.WriteInt8(App.Major)
-108     Call Writer.WriteInt8(App.Minor)
-110     Call Writer.WriteInt8(App.Revision)
-118     Call Writer.WriteString8(CheckMD5)
+104     Call Writer.WriteString8(username)
             
 120     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -54,22 +88,14 @@ Public Sub WriteLoginNewChar()
         '<EhHeader>
         On Error GoTo WriteLoginNewChar_Err
         '</EhHeader>
-        
-        Dim encrypted_username_b64 As String
-        encrypted_username_b64 = AO20CryptoSysWrapper.Encrypt(cnvHexStrFromBytes(public_key), username)
-        
+
 100     Call Writer.WriteInt(ClientPacketID.LoginNewChar)
-102     Call Writer.WriteString8(encrypted_session_token)
-104     Call Writer.WriteString8(encrypted_username_b64)
-106     Call Writer.WriteInt8(App.Major)
-108     Call Writer.WriteInt8(App.Minor)
-110     Call Writer.WriteInt8(App.Revision)
-128     Call Writer.WriteString8(CheckMD5)
-114     Call Writer.WriteInt8(UserRaza)
-116     Call Writer.WriteInt8(UserSexo)
-118     Call Writer.WriteInt8(UserClase)
+104     Call Writer.WriteString8(username)
+114     Call Writer.WriteInt(UserRaza)
+116     Call Writer.WriteInt(UserSexo)
+118     Call Writer.WriteInt(UserClase)
 120     Call Writer.WriteInt(MiCabeza)
-122     Call Writer.WriteInt8(UserHogar)
+122     Call Writer.WriteInt(UserHogar)
     
 130     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -93,7 +119,7 @@ Public Sub WriteTalk(ByVal chat As String)
 100     Call Writer.WriteInt(ClientPacketID.Talk)
 102     Call Writer.WriteString8(chat)
         packetCounters.TS_Talk = packetCounters.TS_Talk + 1
-        Call Writer.WriteInt32(packetCounters.TS_Talk)
+        Call Writer.WriteInt(packetCounters.TS_Talk)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -161,9 +187,9 @@ Public Sub WriteWalk(ByVal Heading As E_Heading)
         On Error GoTo WriteWalk_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.Walk)
-102     Call Writer.WriteInt8(Heading)
+102     Call Writer.WriteInt(Heading)
         packetCounters.TS_Walk = packetCounters.TS_Walk + 1
-        Call Writer.WriteInt32(packetCounters.TS_Walk)
+        Call Writer.WriteInt(packetCounters.TS_Walk)
         
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -205,7 +231,7 @@ Public Sub WriteAttack()
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.Attack)
         packetCounters.TS_Attack = packetCounters.TS_Attack + 1
-        Call Writer.WriteInt32(packetCounters.TS_Attack)
+        Call Writer.WriteInt(packetCounters.TS_Attack)
     
 102     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -538,10 +564,10 @@ Public Sub WriteDrop(ByVal Slot As Byte, ByVal Amount As Long)
         On Error GoTo WriteDrop_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.Drop)
-102     Call Writer.WriteInt8(Slot)
-104     Call Writer.WriteInt32(Amount)
+102     Call Writer.WriteInt(Slot)
+104     Call Writer.WriteInt(Amount)
         packetCounters.TS_Drop = packetCounters.TS_Drop + 1
-        Call Writer.WriteInt32(packetCounters.TS_Drop)
+        Call Writer.WriteInt(packetCounters.TS_Drop)
     
 106     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -566,9 +592,9 @@ Public Sub WriteCastSpell(ByVal Slot As Byte)
        ' Dim packet_crc As Long
         
 100     Call Writer.WriteInt(ClientPacketID.CastSpell)
-102     Call Writer.WriteInt8(Slot)
+102     Call Writer.WriteInt(Slot)
         packetCounters.TS_CastSpell = packetCounters.TS_CastSpell + 1
-        Call Writer.WriteInt32(packetCounters.TS_CastSpell)
+        Call Writer.WriteInt(packetCounters.TS_CastSpell)
         
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -649,7 +675,7 @@ Public Sub WriteEcharDeGrupo(ByVal indice As Byte)
         On Error GoTo WriteEcharDeGrupo_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.HecharDeGrupo)
-102     Call Writer.WriteInt8(indice)
+102     Call Writer.WriteInt(indice)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -667,16 +693,16 @@ End Sub
 ' @param    x Tile coord in the x-axis in which the user clicked.
 ' @param    y Tile coord in the y-axis in which the user clicked.
 ' @remarks  The data is not actually sent until the buffer is properly flushed.
-Public Sub WriteLeftClick(ByVal X As Byte, ByVal Y As Byte)
+Public Sub WriteLeftClick(ByVal x As Byte, ByVal y As Byte)
         '<EhHeader>
         On Error GoTo WriteLeftClick_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.LeftClick)
-102     Call Writer.WriteInt8(X)
-104     Call Writer.WriteInt8(Y)
+102     Call Writer.WriteInt(x)
+104     Call Writer.WriteInt(y)
         packetCounters.TS_LeftClick = packetCounters.TS_LeftClick + 1
         'Debug.Print packetCounters.TS_LeftClick
-        Call Writer.WriteInt32(packetCounters.TS_LeftClick)
+        Call Writer.WriteInt(packetCounters.TS_LeftClick)
     
 106     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -694,14 +720,14 @@ End Sub
 ' @param    x Tile coord in the x-axis in which the user clicked.
 ' @param    y Tile coord in the y-axis in which the user clicked.
 ' @remarks  The data is not actually sent until the buffer is properly flushed.
-Public Sub WriteDoubleClick(ByVal X As Byte, ByVal Y As Byte)
+Public Sub WriteDoubleClick(ByVal x As Byte, ByVal y As Byte)
         '<EhHeader>
         On Error GoTo WriteDoubleClick_Err
         '</EhHeader>
         
 100     Call Writer.WriteInt(ClientPacketID.DoubleClick)
-102     Call Writer.WriteInt8(X)
-104     Call Writer.WriteInt8(Y)
+102     Call Writer.WriteInt(x)
+104     Call Writer.WriteInt(y)
     
 106     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -723,9 +749,9 @@ Public Sub WriteWork(ByVal Skill As eSkill)
         On Error GoTo WriteWork_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.Work)
-102     Call Writer.WriteInt8(Skill)
+102     Call Writer.WriteInt(Skill)
         packetCounters.TS_Work = packetCounters.TS_Work + 1
-        Call Writer.WriteInt32(packetCounters.TS_Work)
+        Call Writer.WriteInt(packetCounters.TS_Work)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -774,10 +800,10 @@ Public Sub WriteUseItem(ByVal Slot As Byte)
         On Error GoTo WriteUseItem_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.UseItem)
-102     Call Writer.WriteInt8(Slot)
+102     Call Writer.WriteInt(Slot)
         
         packetCounters.TS_UseItem = packetCounters.TS_UseItem + 1
-        Call Writer.WriteInt32(packetCounters.TS_UseItem)
+        Call Writer.WriteInt(packetCounters.TS_UseItem)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -805,10 +831,10 @@ Public Sub WriteUseItemU(ByVal Slot As Byte)
         On Error GoTo WriteUseItemU_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.UseItemU)
-102     Call Writer.WriteInt8(Slot)
+102     Call Writer.WriteInt(Slot)
         
         packetCounters.TS_UseItemU = packetCounters.TS_UseItemU + 1
-        Call Writer.WriteInt32(packetCounters.TS_UseItemU)
+        Call Writer.WriteInt(packetCounters.TS_UseItemU)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -836,26 +862,6 @@ Public Sub WriteRepeatMacro()
 WriteRepeatMacro_Err:
         Call Writer.Clear
         Call RegistrarError(Err.Number, Err.Description, "Argentum20.Protocol_Writes.WriteRepeatMacro", Erl)
-        '</EhFooter>
-End Sub
-''
-' Writes the "UseItem" message to the outgoing data buffer.
-'
-' @param    slot Invetory slot where the item to use is.
-' @remarks  The data is not actually sent until the buffer is properly flushed.
-Public Sub writeBuyShopItem(ByVal objNum As Long)
-        
-        On Error GoTo writeBuyShopItem_Err
-        '</EhHeader>
-100     Call Writer.WriteInt(ClientPacketID.BuyShopItem)
-        Call Writer.WriteInt32(objNum)
-104     Call modNetwork.Send(Writer)
-        '<EhFooter>
-        Exit Sub
-
-writeBuyShopItem_Err:
-        Call Writer.Clear
-        Call RegistrarError(Err.Number, Err.Description, "Argentum20.Protocol_Writes.writeBuyShopItem", Erl)
         '</EhFooter>
 End Sub
 
@@ -944,17 +950,17 @@ End Sub
 ' @param    y Tile coord in the y-axis in which the user clicked.
 ' @param    skill The skill which the user attempts to use.
 ' @remarks  The data is not actually sent until the buffer is properly flushed.
-Public Sub WriteWorkLeftClick(ByVal X As Byte, ByVal Y As Byte, ByVal Skill As eSkill)
+Public Sub WriteWorkLeftClick(ByVal x As Byte, ByVal y As Byte, ByVal Skill As eSkill)
         '<EhHeader>
         On Error GoTo WriteWorkLeftClick_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.WorkLeftClick)
-102     Call Writer.WriteInt8(X)
-104     Call Writer.WriteInt8(Y)
-106     Call Writer.WriteInt8(Skill)
+102     Call Writer.WriteInt(x)
+104     Call Writer.WriteInt(y)
+106     Call Writer.WriteInt(Skill)
 
         packetCounters.TS_WorkLeftClick = packetCounters.TS_WorkLeftClick + 1
-        Call Writer.WriteInt32(packetCounters.TS_WorkLeftClick)
+        Call Writer.WriteInt(packetCounters.TS_WorkLeftClick)
     
 108     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -975,15 +981,15 @@ End Sub
 ' @param    codex   Array of all rules of the guild.
 ' @remarks  The data is not actually sent until the buffer is properly flushed.
 Public Sub WriteCreateNewGuild(ByVal desc As String, _
-                               ByVal name As String, _
+                               ByVal Name As String, _
                                ByVal Alineacion As Byte)
         '<EhHeader>
         On Error GoTo WriteCreateNewGuild_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.CreateNewGuild)
 102     Call Writer.WriteString8(desc)
-104     Call Writer.WriteString8(name)
-106     Call Writer.WriteInt8(Alineacion)
+104     Call Writer.WriteString8(Name)
+106     Call Writer.WriteInt(Alineacion)
     
 108     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -1005,7 +1011,7 @@ Public Sub WriteSpellInfo(ByVal Slot As Byte)
         On Error GoTo WriteSpellInfo_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.SpellInfo)
-102     Call Writer.WriteInt8(Slot)
+102     Call Writer.WriteInt(Slot)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -1027,9 +1033,9 @@ Public Sub WriteEquipItem(ByVal Slot As Byte)
         On Error GoTo WriteEquipItem_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.EquipItem)
-102     Call Writer.WriteInt8(Slot)
+102     Call Writer.WriteInt(Slot)
         packetCounters.TS_EquipItem = packetCounters.TS_EquipItem + 1
-        Call Writer.WriteInt32(packetCounters.TS_EquipItem)
+        Call Writer.WriteInt(packetCounters.TS_EquipItem)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -1050,10 +1056,10 @@ Public Sub WriteChangeHeading(ByVal Heading As E_Heading)
         '<EhHeader>
         On Error GoTo WriteChangeHeading_Err
         '</EhHeader>
-100     Call Writer.WriteInt(ClientPacketID.ChangeHeading)
-102     Call Writer.WriteInt8(Heading)
+100     Call Writer.WriteInt(ClientPacketID.Change_Heading)
+102     Call Writer.WriteInt(Heading)
         packetCounters.TS_ChangeHeading = packetCounters.TS_ChangeHeading + 1
-        Call Writer.WriteInt32(packetCounters.TS_ChangeHeading)
+        Call Writer.WriteInt(packetCounters.TS_ChangeHeading)
     
     
 104     Call modNetwork.Send(Writer)
@@ -1080,7 +1086,7 @@ Public Sub WriteModifySkills(ByRef skillEdt() As Byte)
         Dim i As Long
     
 102     For i = 1 To NUMSKILLS
-104         Call Writer.WriteInt8(skillEdt(i))
+104         Call Writer.WriteInt(skillEdt(i))
 106     Next i
     
 108     Call modNetwork.Send(Writer)
@@ -1104,7 +1110,7 @@ Public Sub WriteTrain(ByVal creature As Byte)
         On Error GoTo WriteTrain_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.Train)
-102     Call Writer.WriteInt8(creature)
+102     Call Writer.WriteInt(creature)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -1127,7 +1133,7 @@ Public Sub WriteCommerceBuy(ByVal Slot As Byte, ByVal Amount As Integer)
         On Error GoTo WriteCommerceBuy_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.CommerceBuy)
-102     Call Writer.WriteInt8(Slot)
+102     Call Writer.WriteInt(Slot)
 104     Call Writer.WriteInt(Amount)
     
 106     Call modNetwork.Send(Writer)
@@ -1145,7 +1151,7 @@ Public Sub WriteUseKey(ByVal Slot As Byte)
         On Error GoTo WriteUseKey_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.UseKey)
-102     Call Writer.WriteInt8(Slot)
+102     Call Writer.WriteInt(Slot)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -1170,9 +1176,9 @@ Public Sub WriteBankExtractItem(ByVal Slot As Byte, _
         On Error GoTo WriteBankExtractItem_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.BankExtractItem)
-102     Call Writer.WriteInt8(Slot)
+102     Call Writer.WriteInt(Slot)
 104     Call Writer.WriteInt(Amount)
-106     Call Writer.WriteInt8(slotdestino)
+106     Call Writer.WriteInt(slotdestino)
     
 108     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -1195,7 +1201,7 @@ Public Sub WriteCommerceSell(ByVal Slot As Byte, ByVal Amount As Integer)
         On Error GoTo WriteCommerceSell_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.CommerceSell)
-102     Call Writer.WriteInt8(Slot)
+102     Call Writer.WriteInt(Slot)
 104     Call Writer.WriteInt(Amount)
     
 106     Call modNetwork.Send(Writer)
@@ -1221,9 +1227,9 @@ Public Sub WriteBankDeposit(ByVal Slot As Byte, _
         On Error GoTo WriteBankDeposit_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.BankDeposit)
-102     Call Writer.WriteInt8(Slot)
+102     Call Writer.WriteInt(Slot)
 104     Call Writer.WriteInt(Amount)
-106     Call Writer.WriteInt8(slotdestino)
+106     Call Writer.WriteInt(slotdestino)
     
 108     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -1271,7 +1277,7 @@ Public Sub WriteMoveSpell(ByVal upwards As Boolean, ByVal Slot As Byte)
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.MoveSpell)
 102     Call Writer.WriteBool(upwards)
-104     Call Writer.WriteInt8(Slot)
+104     Call Writer.WriteInt(Slot)
     
 106     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -1317,8 +1323,8 @@ Public Sub WriteUserCommerceOffer(ByVal Slot As Byte, ByVal Amount As Long)
         On Error GoTo WriteUserCommerceOffer_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.UserCommerceOffer)
-102     Call Writer.WriteInt8(Slot)
-104     Call Writer.WriteInt32(Amount)
+102     Call Writer.WriteInt(Slot)
+104     Call Writer.WriteInt(Amount)
     
 106     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -2121,7 +2127,7 @@ End Sub
 '
 ' @remarks  The data is not actually sent until the buffer is properly flushed.
 Public Sub WriteGiveItem(username As String, _
-                         ByVal ObjIndex As Integer, _
+                         ByVal OBJIndex As Integer, _
                          ByVal cantidad As Integer, _
                          Motivo As String)
         '<EhHeader>
@@ -2129,7 +2135,7 @@ Public Sub WriteGiveItem(username As String, _
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.GiveItem)
 102     Call Writer.WriteString8(username)
-104     Call Writer.WriteInt(ObjIndex)
+104     Call Writer.WriteInt(OBJIndex)
 106     Call Writer.WriteInt(cantidad)
 108     Call Writer.WriteString8(Motivo)
     
@@ -2296,7 +2302,7 @@ Public Sub WriteGuildMessage(ByVal Message As String)
 100     Call Writer.WriteInt(ClientPacketID.GuildMessage)
 102     Call Writer.WriteString8(Message)
         packetCounters.TS_GuildMessage = packetCounters.TS_GuildMessage + 1
-        Call Writer.WriteInt32(packetCounters.TS_GuildMessage)
+        Call Writer.WriteInt(packetCounters.TS_GuildMessage)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -2514,7 +2520,7 @@ Public Sub WriteBankExtractGold(ByVal Amount As Long)
         On Error GoTo WriteBankExtractGold_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.BankExtractGold)
-102     Call Writer.WriteInt32(Amount)
+102     Call Writer.WriteInt(Amount)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -2536,7 +2542,7 @@ Public Sub WriteBankDepositGold(ByVal Amount As Long)
         On Error GoTo WriteBankDepositGold_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.BankDepositGold)
-102     Call Writer.WriteInt32(Amount)
+102     Call Writer.WriteInt(Amount)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -2553,7 +2559,7 @@ Public Sub WriteTransFerGold(ByVal Amount As Long, ByVal destino As String)
         On Error GoTo WriteTransFerGold_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.TransFerGold)
-102     Call Writer.WriteInt32(Amount)
+102     Call Writer.WriteInt(Amount)
 104     Call Writer.WriteString8(destino)
     Call modNetwork.Send(Writer)
     
@@ -2571,8 +2577,8 @@ Public Sub WriteItemMove(ByVal SlotActual As Byte, ByVal SlotNuevo As Byte)
         On Error GoTo WriteItemMove_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.Moveitem)
-102     Call Writer.WriteInt8(SlotActual)
-104     Call Writer.WriteInt8(SlotNuevo)
+102     Call Writer.WriteInt(SlotActual)
+104     Call Writer.WriteInt(SlotNuevo)
     
 106     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -2589,8 +2595,8 @@ Public Sub WriteBovedaItemMove(ByVal SlotActual As Byte, ByVal SlotNuevo As Byte
         On Error GoTo WriteBovedaItemMove_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.BovedaMoveItem)
-102     Call Writer.WriteInt8(SlotActual)
-104     Call Writer.WriteInt8(SlotNuevo)
+102     Call Writer.WriteInt(SlotActual)
+104     Call Writer.WriteInt(SlotNuevo)
     
 106     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -2628,12 +2634,12 @@ End Sub
 '
 ' @param    message The message to s the denounce.
 ' @remarks  The data is not actually sent until the buffer is properly flushed.
-Public Sub WriteDenounce(name As String)
+Public Sub WriteDenounce(Name As String)
         '<EhHeader>
         On Error GoTo WriteDenounce_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.Denounce)
-102     Call Writer.WriteString8(name)
+102     Call Writer.WriteString8(Name)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -2705,8 +2711,8 @@ Public Sub WriteMacroPos()
         On Error GoTo WriteMacroPos_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.MacroPossent)
-102     Call Writer.WriteInt8(ChatCombate)
-104     Call Writer.WriteInt8(ChatGlobal)
+102     Call Writer.WriteInt(ChatCombate)
+104     Call Writer.WriteInt(ChatGlobal)
     
 106     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -2999,16 +3005,16 @@ End Sub
 ' @remarks  The data is not actually sent until the buffer is properly flushed.
 Public Sub WriteWarpChar(ByVal username As String, _
                          ByVal map As Integer, _
-                         ByVal X As Byte, _
-                         ByVal Y As Byte)
+                         ByVal x As Byte, _
+                         ByVal y As Byte)
         '<EhHeader>
         On Error GoTo WriteWarpChar_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.WarpChar)
 102     Call Writer.WriteString8(username)
 104     Call Writer.WriteInt(map)
-106     Call Writer.WriteInt8(X)
-108     Call Writer.WriteInt8(Y)
+106     Call Writer.WriteInt(x)
+108     Call Writer.WriteInt(y)
     
 110     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -3048,7 +3054,7 @@ Public Sub WriteCuentaRegresiva(ByVal Second As Byte)
         On Error GoTo WriteCuentaRegresiva_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.CuentaRegresiva)
-102     Call Writer.WriteInt8(Second)
+102     Call Writer.WriteInt(Second)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -3249,14 +3255,14 @@ End Sub
 ' @param    reason The reason for which to send him to jail.
 ' @param    time The time (in minutes) the user will have to spend there.
 ' @remarks  The data is not actually sent until the buffer is properly flushed.
-Public Sub WriteJail(ByVal username As String, ByVal reason As String, ByVal Time As Byte)
+Public Sub WriteJail(ByVal username As String, ByVal reason As String, ByVal time As Byte)
         '<EhHeader>
         On Error GoTo WriteJail_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.Jail)
 102     Call Writer.WriteString8(username)
 104     Call Writer.WriteString8(reason)
-106     Call Writer.WriteInt8(Time)
+106     Call Writer.WriteInt(time)
     
 108     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -3268,16 +3274,16 @@ WriteJail_Err:
         '</EhFooter>
 End Sub
 
-Public Sub WriteCrearEvento(ByVal tipo As Byte, _
+Public Sub WriteCrearEvento(ByVal TIPO As Byte, _
                             ByVal duracion As Byte, _
                             ByVal multiplicacion As Byte)
         '<EhHeader>
         On Error GoTo WriteCrearEvento_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.CrearEvento)
-102     Call Writer.WriteInt8(tipo)
-104     Call Writer.WriteInt8(duracion)
-106     Call Writer.WriteInt8(multiplicacion)
+102     Call Writer.WriteInt(TIPO)
+104     Call Writer.WriteInt(duracion)
+106     Call Writer.WriteInt(multiplicacion)
     
 108     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -3368,7 +3374,7 @@ Public Sub WriteEditChar(ByVal username As String, _
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.EditChar)
 102     Call Writer.WriteString8(username)
-104     Call Writer.WriteInt8(editOption)
+104     Call Writer.WriteInt(editOption)
 106     Call Writer.WriteString8(arg1)
 108     Call Writer.WriteString8(arg2)
     
@@ -3602,7 +3608,7 @@ Public Sub WriteDonateGold(ByVal oro As Long)
         On Error GoTo WriteDonateGold_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.DonateGold)
-102     Call Writer.WriteInt32(oro)
+102     Call Writer.WriteInt(oro)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -3645,7 +3651,7 @@ Public Sub WriteExecute(ByVal username As String)
         '<EhHeader>
         On Error GoTo WriteExecute_Err
         '</EhHeader>
-100     Call Writer.WriteInt(ClientPacketID.Execute)
+100     Call Writer.WriteInt(ClientPacketID.ExecuteCmd)
 102     Call Writer.WriteString8(username)
     
 104     Call modNetwork.Send(Writer)
@@ -3743,7 +3749,7 @@ Public Sub WriteBanTemporal(ByVal username As String, _
 100     Call Writer.WriteInt(ClientPacketID.BanTemporal)
 102     Call Writer.WriteString8(username)
 104     Call Writer.WriteString8(reason)
-106     Call Writer.WriteInt8(dias)
+106     Call Writer.WriteInt(dias)
     
 108     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -3962,7 +3968,7 @@ Public Sub WriteIPToNick(ByRef IP() As Byte)
 102     Call Writer.WriteInt(ClientPacketID.IPToNick)
 
 104     For i = LBound(IP()) To UBound(IP())
-106         Call Writer.WriteInt8(IP(i))
+106         Call Writer.WriteInt(IP(i))
 108     Next i
 
 110     Call modNetwork.Send(Writer)
@@ -4005,16 +4011,16 @@ End Sub
 ' @param    y The position in the y axis to which the teleport will lead.
 ' @remarks  The data is not actually sent until the buffer is properly flushed.
 Public Sub WriteTeleportCreate(ByVal map As Integer, _
-                               ByVal X As Byte, _
-                               ByVal Y As Byte, _
+                               ByVal x As Byte, _
+                               ByVal y As Byte, _
                                ByVal Motivo As String)
         '<EhHeader>
         On Error GoTo WriteTeleportCreate_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.TeleportCreate)
 102     Call Writer.WriteInt(map)
-104     Call Writer.WriteInt8(X)
-106     Call Writer.WriteInt8(Y)
+104     Call Writer.WriteInt(x)
+106     Call Writer.WriteInt(y)
 108     Call Writer.WriteString8(Motivo)
     
 110     Call modNetwork.Send(Writer)
@@ -4100,7 +4106,7 @@ Public Sub WriteForceMIDIToMap(ByVal midiID As Byte, ByVal map As Integer)
         On Error GoTo WriteForceMIDIToMap_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.ForceMIDIToMap)
-102     Call Writer.WriteInt8(midiID)
+102     Call Writer.WriteInt(midiID)
 104     Call Writer.WriteInt(map)
     
 106     Call modNetwork.Send(Writer)
@@ -4123,16 +4129,16 @@ End Sub
 ' @remarks  The data is not actually sent until the buffer is properly flushed.
 Public Sub WriteForceWAVEToMap(ByVal waveID As Byte, _
                                ByVal map As Integer, _
-                               ByVal X As Byte, _
-                               ByVal Y As Byte)
+                               ByVal x As Byte, _
+                               ByVal y As Byte)
         '<EhHeader>
         On Error GoTo WriteForceWAVEToMap_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.ForceWAVEToMap)
-102     Call Writer.WriteInt8(waveID)
+102     Call Writer.WriteInt(waveID)
 104     Call Writer.WriteInt(map)
-106     Call Writer.WriteInt8(X)
-108     Call Writer.WriteInt8(Y)
+106     Call Writer.WriteInt(x)
+108     Call Writer.WriteInt(y)
     
 110     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -4414,7 +4420,7 @@ Public Sub WriteSetTrigger(ByVal Trigger As eTrigger)
         On Error GoTo WriteSetTrigger_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.SetTrigger)
-102     Call Writer.WriteInt8(Trigger)
+102     Call Writer.WriteInt(Trigger)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -4552,7 +4558,7 @@ Public Sub WriteUnbanIP(ByRef IP() As Byte)
 102     Call Writer.WriteInt(ClientPacketID.UnBanIp)
 
 104     For i = LBound(IP()) To UBound(IP())
-106         Call Writer.WriteInt8(IP(i))
+106         Call Writer.WriteInt(IP(i))
 108     Next i
 
 110     Call modNetwork.Send(Writer)
@@ -4662,7 +4668,7 @@ Public Sub WriteForceMIDIAll(ByVal midiID As Byte)
         On Error GoTo WriteForceMIDIAll_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.ForceMIDIAll)
-102     Call Writer.WriteInt8(midiID)
+102     Call Writer.WriteInt(midiID)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -4684,7 +4690,7 @@ Public Sub WriteForceWAVEAll(ByVal waveID As Byte)
         On Error GoTo WriteForceWAVEAll_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.ForceWAVEAll)
-102     Call Writer.WriteInt8(waveID)
+102     Call Writer.WriteInt(waveID)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -4710,7 +4716,7 @@ Public Sub WriteRemovePunishment(ByVal username As String, _
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.RemovePunishment)
 102     Call Writer.WriteString8(username)
-104     Call Writer.WriteInt8(punishment)
+104     Call Writer.WriteInt(punishment)
 106     Call Writer.WriteString8(NewText)
     
 108     Call modNetwork.Send(Writer)
@@ -4731,7 +4737,7 @@ Public Sub WriteTileBlockedToggle()
         '<EhHeader>
         On Error GoTo WriteTileBlockedToggle_Err
         '</EhHeader>
-100     Call Writer.WriteInt(ClientPacketID.TileBlockedToggle)
+100     Call Writer.WriteInt(ClientPacketID.Tile_BlockedToggle)
     
 102     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -4924,7 +4930,7 @@ Public Sub WriteImperialArmour(ByVal armourIndex As Byte, ByVal objectIndex As I
         On Error GoTo WriteImperialArmour_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.ImperialArmour)
-102     Call Writer.WriteInt8(armourIndex)
+102     Call Writer.WriteInt(armourIndex)
 104     Call Writer.WriteInt(objectIndex)
     
 106     Call modNetwork.Send(Writer)
@@ -4948,7 +4954,7 @@ Public Sub WriteChaosArmour(ByVal armourIndex As Byte, ByVal objectIndex As Inte
         On Error GoTo WriteChaosArmour_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.ChaosArmour)
-102     Call Writer.WriteInt8(armourIndex)
+102     Call Writer.WriteInt(armourIndex)
 104     Call Writer.WriteInt(objectIndex)
     
 106     Call modNetwork.Send(Writer)
@@ -5118,7 +5124,7 @@ Public Sub WriteDoBackup()
         '<EhHeader>
         On Error GoTo WriteDoBackup_Err
         '</EhHeader>
-100     Call Writer.WriteInt(ClientPacketID.DoBackUp)
+100     Call Writer.WriteInt(ClientPacketID.DoBackUpCmd)
     
 102     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -5413,7 +5419,7 @@ Public Sub WriteDay()
         '<EhHeader>
         On Error GoTo WriteDay_Err
         '</EhHeader>
-100     Call Writer.WriteInt(ClientPacketID.Day)
+100     Call Writer.WriteInt(ClientPacketID.Daycmd)
     
 102     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -5425,12 +5431,12 @@ WriteDay_Err:
         '</EhFooter>
 End Sub
 
-Public Sub WriteSetTime(ByVal Time As Long)
+Public Sub WriteSetTime(ByVal time As Long)
         '<EhHeader>
         On Error GoTo WriteSetTime_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.SetTime)
-102     Call Writer.WriteInt32(Time)
+102     Call Writer.WriteInt(time)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -5549,14 +5555,14 @@ End Sub
 ' @param    g The green component of the new chat color.
 ' @param    b The blue component of the new chat color.
 ' @remarks  The data is not actually sent until the buffer is properly flushed.
-Public Sub WriteChatColor(ByVal r As Byte, ByVal G As Byte, ByVal b As Byte)
+Public Sub WriteChatColor(ByVal r As Byte, ByVal G As Byte, ByVal B As Byte)
         '<EhHeader>
         On Error GoTo WriteChatColor_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.ChatColor)
-102     Call Writer.WriteInt8(r)
-104     Call Writer.WriteInt8(G)
-106     Call Writer.WriteInt8(b)
+102     Call Writer.WriteInt(r)
+104     Call Writer.WriteInt(G)
+106     Call Writer.WriteInt(B)
     
 108     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -5600,7 +5606,7 @@ Public Sub WriteCheckSlot(ByVal username As String, ByVal Slot As Byte)
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.CheckSlot)
 102     Call Writer.WriteString8(username)
-104     Call Writer.WriteInt8(Slot)
+104     Call Writer.WriteInt(Slot)
     
 106     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -5621,7 +5627,7 @@ Public Sub WritePing()
         On Error GoTo WritePing_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.Ping)
-102     Call Writer.WriteInt32(GetTickCount())
+102     Call Writer.WriteInt(GetTickCount())
     
         ' Avoid computing errors due to frame rate
     
@@ -5660,7 +5666,7 @@ Public Sub WriteQuestionGM(ByVal Consulta As String, ByVal TipoDeConsulta As Str
 102     Call Writer.WriteString8(Consulta)
 104     Call Writer.WriteString8(TipoDeConsulta)
         packetCounters.TS_QuestionGM = packetCounters.TS_QuestionGM + 1
-        Call Writer.WriteInt32(packetCounters.TS_QuestionGM)
+        Call Writer.WriteInt(packetCounters.TS_QuestionGM)
     
 106     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -5677,7 +5683,7 @@ Public Sub WriteOfertaInicial(ByVal Oferta As Long)
         On Error GoTo WriteOfertaInicial_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.OfertaInicial)
-102     Call Writer.WriteInt32(Oferta)
+102     Call Writer.WriteInt(Oferta)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -5694,7 +5700,7 @@ Public Sub WriteOferta(ByVal OfertaDeSubasta As Long)
         On Error GoTo WriteOferta_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.OfertaDeSubasta)
-102     Call Writer.WriteInt32(OfertaDeSubasta)
+102     Call Writer.WriteInt(OfertaDeSubasta)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -5809,7 +5815,7 @@ Public Sub WriteQuestDetailsRequest(ByVal QuestSlot As Byte)
         On Error GoTo WriteQuestDetailsRequest_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.QuestDetailsRequest)
-102     Call Writer.WriteInt8(QuestSlot)
+102     Call Writer.WriteInt(QuestSlot)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -5826,7 +5832,7 @@ Public Sub WriteQuestAccept(ByVal ListInd As Byte)
         On Error GoTo WriteQuestAccept_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.QuestAccept)
-102     Call Writer.WriteInt8(ListInd)
+102     Call Writer.WriteInt(ListInd)
         
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -5860,7 +5866,7 @@ Public Sub WriteQuestAbandon(ByVal QuestSlot As Byte)
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.QuestAbandon)
         'Escribe el Slot de Quest.
-102     Call Writer.WriteInt8(QuestSlot)
+102     Call Writer.WriteInt(QuestSlot)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -5894,8 +5900,8 @@ Public Sub WriteCompletarViaje(ByVal destino As Byte, ByVal costo As Long)
         On Error GoTo WriteCompletarViaje_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.CompletarViaje)
-102     Call Writer.WriteInt8(destino)
-104     Call Writer.WriteInt32(costo)
+102     Call Writer.WriteInt(destino)
+104     Call Writer.WriteInt(costo)
     
 106     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -5924,34 +5930,34 @@ Public Sub WriteCreaerTorneo(ByVal nivelminimo As Byte, _
                              ByVal Ladron As Byte, _
                              ByVal Bandido As Byte, _
                              ByVal map As Integer, _
-                             ByVal X As Byte, _
-                             ByVal Y As Byte, _
-                             ByVal name As String, _
+                             ByVal x As Byte, _
+                             ByVal y As Byte, _
+                             ByVal Name As String, _
                              ByVal reglas As String)
         '<EhHeader>
         On Error GoTo WriteCreaerTorneo_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.CrearTorneo)
-102     Call Writer.WriteInt8(nivelminimo)
-104     Call Writer.WriteInt8(nivelmaximo)
-106     Call Writer.WriteInt8(cupos)
-108     Call Writer.WriteInt32(costo)
-110     Call Writer.WriteInt8(mago)
-112     Call Writer.WriteInt8(clerico)
-114     Call Writer.WriteInt8(guerrero)
-116     Call Writer.WriteInt8(asesino)
-118     Call Writer.WriteInt8(bardo)
-120     Call Writer.WriteInt8(druido)
-122     Call Writer.WriteInt8(paladin)
-124     Call Writer.WriteInt8(cazador)
-126     Call Writer.WriteInt8(Trabajador)
-128     Call Writer.WriteInt8(Pirata)
-130     Call Writer.WriteInt8(Ladron)
-132     Call Writer.WriteInt8(Bandido)
+102     Call Writer.WriteInt(nivelminimo)
+104     Call Writer.WriteInt(nivelmaximo)
+106     Call Writer.WriteInt(cupos)
+108     Call Writer.WriteInt(costo)
+110     Call Writer.WriteInt(mago)
+112     Call Writer.WriteInt(clerico)
+114     Call Writer.WriteInt(guerrero)
+116     Call Writer.WriteInt(asesino)
+118     Call Writer.WriteInt(bardo)
+120     Call Writer.WriteInt(druido)
+122     Call Writer.WriteInt(paladin)
+124     Call Writer.WriteInt(cazador)
+126     Call Writer.WriteInt(Trabajador)
+128     Call Writer.WriteInt(Pirata)
+130     Call Writer.WriteInt(Ladron)
+132     Call Writer.WriteInt(Bandido)
 134     Call Writer.WriteInt(map)
-136     Call Writer.WriteInt8(X)
-138     Call Writer.WriteInt8(Y)
-140     Call Writer.WriteString8(name)
+136     Call Writer.WriteInt(x)
+138     Call Writer.WriteInt(y)
+140     Call Writer.WriteString8(Name)
 142     Call Writer.WriteString8(reglas)
     
 144     Call modNetwork.Send(Writer)
@@ -5996,12 +6002,12 @@ WriteCancelarTorneo_Err:
         '</EhFooter>
 End Sub
 
-Public Sub WriteBusquedaTesoro(ByVal tipo As Byte)
+Public Sub WriteBusquedaTesoro(ByVal TIPO As Byte)
         '<EhHeader>
         On Error GoTo WriteBusquedaTesoro_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.BusquedaTesoro)
-102     Call Writer.WriteInt8(tipo)
+102     Call Writer.WriteInt(TIPO)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -6020,7 +6026,7 @@ Public Sub WriteHome()
         '<EhHeader>
         On Error GoTo WriteHome_Err
         '</EhHeader>
-100     Call Writer.WriteInt(ClientPacketID.Home)
+100     Call Writer.WriteInt(ClientPacketID.home)
     
 102     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -6036,12 +6042,12 @@ End Sub
 ' Writes the "Consulta" message to the outgoing data buffer.
 '
 ' @remarks  The data is not actually sent until the buffer is properly flushed.
-Public Sub WriteConsulta(Optional ByVal nick As String = vbNullString)
+Public Sub WriteConsulta(Optional ByVal Nick As String = vbNullString)
         '<EhHeader>
         On Error GoTo WriteConsulta_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.Consulta)
-102     Call Writer.WriteString8(nick)
+102     Call Writer.WriteString8(Nick)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -6060,9 +6066,9 @@ Public Sub WriteCuentaExtractItem(ByVal Slot As Byte, _
         On Error GoTo WriteCuentaExtractItem_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.CuentaExtractItem)
-102     Call Writer.WriteInt8(Slot)
+102     Call Writer.WriteInt(Slot)
 104     Call Writer.WriteInt(Amount)
-106     Call Writer.WriteInt8(slotdestino)
+106     Call Writer.WriteInt(slotdestino)
     
 108     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -6081,9 +6087,9 @@ Public Sub WriteCuentaDeposit(ByVal Slot As Byte, _
         On Error GoTo WriteCuentaDeposit_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.CuentaDeposit)
-102     Call Writer.WriteInt8(Slot)
+102     Call Writer.WriteInt(Slot)
 104     Call Writer.WriteInt(Amount)
-106     Call Writer.WriteInt8(slotdestino)
+106     Call Writer.WriteInt(slotdestino)
     
 108     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -6104,7 +6110,7 @@ Public Sub WriteDuel(Players As String, _
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.Duel)
 102     Call Writer.WriteString8(Players)
-104     Call Writer.WriteInt32(Apuesta)
+104     Call Writer.WriteInt(Apuesta)
 106     Call Writer.WriteInt(PocionesRojas)
 108     Call Writer.WriteBool(CaenItems)
     
@@ -6201,13 +6207,13 @@ WriteCommerceSendChatMessage_Err:
         '</EhFooter>
 End Sub
 
-Public Sub WriteLogMacroClickHechizo(ByVal tipo As Byte, Optional ByVal clicks As Long = 1)
+Public Sub WriteLogMacroClickHechizo(ByVal TIPO As Byte, Optional ByVal clicks As Long = 1)
         '<EhHeader>
         On Error GoTo WriteLogMacroClickHechizo_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.LogMacroClickHechizo)
-101     Call Writer.WriteInt8(tipo)
-103     Call Writer.WriteInt32(clicks)
+101     Call Writer.WriteInt(TIPO)
+103     Call Writer.WriteInt(clicks)
     
 102     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -6240,7 +6246,7 @@ Public Sub WriteCompletarAccion(ByVal Accion As Byte)
         On Error GoTo WriteCompletarAccion_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.CompletarAccion)
-102     Call Writer.WriteInt8(Accion)
+102     Call Writer.WriteInt(Accion)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -6273,8 +6279,8 @@ Public Sub WriteAddItemCrafting(ByVal SlotInv As Byte, ByVal SlotCraft As Byte)
         On Error GoTo WriteAddItemCrafting_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.AddItemCrafting)
-102     Call Writer.WriteInt8(SlotInv)
-104     Call Writer.WriteInt8(SlotCraft)
+102     Call Writer.WriteInt(SlotInv)
+104     Call Writer.WriteInt(SlotCraft)
     
 106     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -6291,8 +6297,8 @@ Public Sub WriteRemoveItemCrafting(ByVal SlotCraft As Byte, ByVal SlotInv As Byt
         On Error GoTo WriteRemoveItemCrafting_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.RemoveItemCrafting)
-102     Call Writer.WriteInt8(SlotCraft)
-104     Call Writer.WriteInt8(SlotInv)
+102     Call Writer.WriteInt(SlotCraft)
+104     Call Writer.WriteInt(SlotInv)
     
 106     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -6309,7 +6315,7 @@ Public Sub WriteAddCatalyst(ByVal SlotInv As Byte)
         On Error GoTo WriteAddCatalyst_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.AddCatalyst)
-102     Call Writer.WriteInt8(SlotInv)
+102     Call Writer.WriteInt(SlotInv)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -6326,7 +6332,7 @@ Public Sub WriteRemoveCatalyst(ByVal SlotInv As Byte)
         On Error GoTo WriteRemoveCatalyst_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.RemoveCatalyst)
-102     Call Writer.WriteInt8(SlotInv)
+102     Call Writer.WriteInt(SlotInv)
     
 104     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -6359,8 +6365,8 @@ Public Sub WriteMoveCraftItem(ByVal Drag As Byte, ByVal Drop As Byte)
         On Error GoTo WriteMoveCraftItem_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.MoveCraftItem)
-102     Call Writer.WriteInt8(Drag)
-104     Call Writer.WriteInt8(Drop)
+102     Call Writer.WriteInt(Drag)
+104     Call Writer.WriteInt(Drop)
     
 106     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -6406,11 +6412,11 @@ End Sub
 
 
 
-Public Sub WriteResetChar(ByVal nick As String)
+Public Sub WriteResetChar(ByVal Nick As String)
     On Error GoTo WriteResetChar_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.ResetChar)
-        Call Writer.WriteString8(nick)
+        Call Writer.WriteString8(Nick)
     
 102     Call modNetwork.Send(Writer)
         '<EhFooter>
@@ -6424,7 +6430,7 @@ End Sub
 Public Sub WriteResetearPersonaje()
          On Error GoTo WriteResetearPersonaje_Err
 
-100     Call Writer.WriteInt(ClientPacketID.ResetearPersonaje)
+100     Call Writer.WriteInt(ClientPacketID.resetearPersonaje)
 
 102     Call modNetwork.Send(Writer)
         Exit Sub
@@ -6438,7 +6444,7 @@ Public Sub WriteDeleteItem(ByVal Slot As Byte)
      On Error GoTo WriteDeleteItem_Err
         '</EhHeader>
 100     Call Writer.WriteInt(ClientPacketID.DeleteItem)
-        Call Writer.WriteInt8(Slot)
+        Call Writer.WriteInt(Slot)
 
 102     Call modNetwork.Send(Writer)
         '<EhFooter>

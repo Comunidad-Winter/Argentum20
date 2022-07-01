@@ -1,19 +1,12 @@
 Attribute VB_Name = "Database"
-'********************* COPYRIGHT NOTICE*********************
-' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
-' www.ao20.com.ar
-' All rights reserved.
-' Refer to licence for conditions of use.
-' This copyright notice must always be left intact.
-'****************** END OF COPYRIGHT NOTICE*****************
-'
+
 
 'Argentum Online Libre
 'Database connection module
 'Obtained from GS-Zone
 'Adapted and modified by Juan Andres Dalmasso (CHOTS)
 'September 2018
-'Rewrited for Argentum20 by Alexis Caraballo (WyroX)
+'Rewrited for Argentum20 by Wolftein
 'October 2020
 
 Option Explicit
@@ -248,7 +241,7 @@ Private Function CreateParameter(ByVal Value As Variant, ByVal Direction As ADOD
     Select Case VarType(Value)
         Case VbVarType.vbString
             CreateParameter.Type = adBSTR
-            CreateParameter.Size = Len(Value)
+            CreateParameter.size = Len(Value)
             CreateParameter.Value = CStr(Value)
         Case VbVarType.vbDecimal
             CreateParameter.Type = adInteger
@@ -274,20 +267,20 @@ Private Function CreateParameter(ByVal Value As Variant, ByVal Direction As ADOD
     End Select
 End Function
 
-Public Sub SaveNewUserDatabase(ByVal UserIndex As Integer)
+Public Sub SaveNewUserDatabase(ByVal userindex As Integer)
         On Error GoTo ErrorHandler
         Dim LoopC As Long
         Dim ParamC As Integer
         Dim Params() As Variant
     
-102     With UserList(UserIndex)
+102     With UserList(userindex)
         
             Dim i As Integer
             i = 0
 104         ReDim Params(0 To 44)
 
             '  ************ Basic user data *******************
-106         Params(PostInc(i)) = .Name
+106         Params(PostInc(i)) = .name
 108         Params(PostInc(i)) = .AccountID
 110         Params(PostInc(i)) = .Stats.ELV
 112         Params(PostInc(i)) = .Stats.Exp
@@ -425,7 +418,7 @@ Public Sub SaveNewUserDatabase(ByVal UserIndex As Integer)
 
 ErrorHandler:
     
-322     Call LogDatabaseError("Error en SaveNewUserDatabase. UserName: " & UserList(UserIndex).Name & ". " & Err.Number & " - " & Err.Description)
+322     Call LogDatabaseError("Error en SaveNewUserDatabase. UserName: " & UserList(userindex).name & ". " & Err.Number & " - " & Err.Description)
 
 End Sub
 
@@ -440,7 +433,7 @@ Public Sub SaveUserDatabase(ByVal userindex As Integer)
 100     Call Builder.Clear
 
         'Basic user data
-102     With UserList(UserIndex)
+102     With UserList(userindex)
             
             
             
@@ -450,7 +443,7 @@ Public Sub SaveUserDatabase(ByVal userindex As Integer)
 
             Dim i As Integer
         
-106         Params(PostInc(i)) = .Name
+106         Params(PostInc(i)) = .name
 108         Params(PostInc(i)) = .Stats.ELV
 110         Params(PostInc(i)) = .Stats.Exp
 112         Params(PostInc(i)) = .genero
@@ -733,25 +726,25 @@ Public Sub SaveUserDatabase(ByVal userindex As Integer)
         Exit Sub
 
 ErrorHandler:
-636     Call LogDatabaseError("Error en SaveUserDatabase. UserName: " & UserList(UserIndex).Name & ". " & Err.Number & " - " & Err.Description)
+636     Call LogDatabaseError("Error en SaveUserDatabase. UserName: " & UserList(userindex).name & ". " & Err.Number & " - " & Err.Description)
 
 End Sub
 
-Sub LoadUserDatabase(ByVal UserIndex As Integer)
+Sub LoadUserDatabase(ByVal userindex As Integer)
         Dim counter As Long
             
         On Error GoTo ErrorHandler
 
         'Basic user data
-100     With UserList(UserIndex)
+100     With UserList(userindex)
             
             Dim RS As ADODB.Recordset
-            Set RS = Query(QUERY_LOAD_MAINPJ, .Name)
+            Set RS = Query(QUERY_LOAD_MAINPJ, .name)
 
 104         If RS Is Nothing Then Exit Sub
             
-            If (CLng(RS!account_id) <> UserList(UserIndex).AccountID) Then
-                Call CloseSocket(UserIndex)
+            If (CLng(RS!account_id) <> UserList(userindex).AccountID) Then
+                Call CloseSocket(userindex)
                 Exit Sub
             End If
             
@@ -764,21 +757,15 @@ Sub LoadUserDatabase(ByVal UserIndex As Integer)
                 If LenB(BanNick) = 0 Then BanNick = "*Error en la base de datos*"
                 If LenB(BaneoMotivo) = 0 Then BaneoMotivo = "*No se registra el motivo del baneo.*"
             
-                Call WriteShowMessageBox(UserIndex, "Se te ha prohibido la entrada al juego debido a " & BaneoMotivo & ". Esta decisión fue tomada por " & BanNick & ".")
+                Call WriteShowMessageBox(userindex, "Se te ha prohibido la entrada al juego debido a " & BaneoMotivo & ". Esta decisión fue tomada por " & BanNick & ".")
             
-                Call CloseSocket(UserIndex)
+                Call CloseSocket(userindex)
                 Exit Sub
             End If
             
-            
-            Dim user_credits As Long
-            
-            user_credits = RS!credits
-            
-            
             'Start setting data
 106         .ID = RS!ID
-108         .Name = RS!Name
+108         .name = RS!name
 110         .Stats.ELV = RS!level
 112         .Stats.Exp = RS!Exp
 114         .genero = RS!genre_id
@@ -825,7 +812,7 @@ Sub LoadUserDatabase(ByVal UserIndex As Integer)
 198         .Stats.MaxHit = RS!max_hit
 200         .Stats.NPCsMuertos = RS!killed_npcs
 202         .Stats.UsuariosMatados = RS!killed_users
-203         .Stats.PuntosPesca = rs!puntos_pesca
+203         .Stats.PuntosPesca = RS!puntos_pesca
 204         .Stats.InventLevel = RS!invent_level
 206         .Stats.ELO = RS!ELO
 208         .flags.Desnudo = RS!is_naked
@@ -931,7 +918,7 @@ Sub LoadUserDatabase(ByVal UserIndex As Integer)
 352                     .ObjIndex = RS!item_id
                 
 354                     If .ObjIndex <> 0 Then
-356                         If LenB(ObjData(.ObjIndex).Name) Then
+356                         If LenB(ObjData(.ObjIndex).name) Then
                                 counter = counter + 1
                                 
 358                             .amount = RS!amount
@@ -964,7 +951,7 @@ Sub LoadUserDatabase(ByVal UserIndex As Integer)
 376                     .ObjIndex = RS!item_id
                 
 378                     If .ObjIndex <> 0 Then
-380                         If LenB(ObjData(.ObjIndex).Name) Then
+380                         If LenB(ObjData(.ObjIndex).name) Then
                                 counter = counter + 1
                                 
 382                             .amount = RS!amount
@@ -1078,31 +1065,7 @@ Sub LoadUserDatabase(ByVal UserIndex As Integer)
                 Wend
 
             End If
-            UpdateDBIpsValues UserIndex
-            
-474         Set RS = Query("Select is_active_patron, credits, offline_patron_credits from account where id = ?;", .accountId)
-
-            .Stats.Creditos = CLng(RS!offline_patron_credits) + user_credits
-            
-            Call Execute("update account set offline_patron_credits = 0 where id = ?;", .AccountID)
-            Call Execute("Update user set credits = ? where id = ?;", .Stats.Creditos, .ID)
-            If (.Stats.Creditos > 0) Then
-                Call LogCreditosPatreon(.name & " | " & .Email & " | Logged with " & .Stats.Creditos)
-            End If
-            
-476         If RS Is Nothing Then Exit Sub
-            
-            Dim tipo_usuario_db As Long
-            tipo_usuario_db = RS!is_active_patron
-            
-            Select Case tipo_usuario_db
-                Case patron_tier_aventurero
-                    .Stats.tipoUsuario = e_TipoUsuario.tAventurero
-                Case patron_tier_heroe
-                    .Stats.tipoUsuario = e_TipoUsuario.tHeroe
-                Case patron_tier_leyenda
-                    .Stats.tipoUsuario = e_TipoUsuario.tLeyenda
-            End Select
+            UpdateDBIpsValues userindex
             
         End With
         
@@ -1110,11 +1073,11 @@ Sub LoadUserDatabase(ByVal UserIndex As Integer)
         Exit Sub
 
 ErrorHandler:
-478     Call LogDatabaseError("Error en LoadUserDatabase: " & UserList(UserIndex).name & ". " & Err.Number & " - " & Err.Description & ". Línea: " & Erl)
+478     Call LogDatabaseError("Error en LoadUserDatabase: " & UserList(userindex).name & ". " & Err.Number & " - " & Err.Description & ". Línea: " & Erl)
 
 End Sub
-Public Function UpdateDBIpsValues(ByVal UserIndex As Integer)
-    With UserList(UserIndex)
+Public Function UpdateDBIpsValues(ByVal userindex As Integer)
+    With UserList(userindex)
         Dim ipStr As String
         'ipStr = GetDBValue("account", "last_ip", "id", .AccountID)
         
@@ -1128,49 +1091,49 @@ Public Function UpdateDBIpsValues(ByVal UserIndex As Integer)
         
         'Obtenemos la variable
 104     ipStr = RS.Fields(0).Value
-        Dim count As Long
+        Dim Count As Long
         Dim i As Long
         For i = 1 To Len(ipStr)
             If mid$(ipStr, i, 1) = ";" Then
-                count = count + 1
+                Count = Count + 1
             End If
         Next i
         
         'Si ya tengo alguna ip guardada
-        If count > 0 And count < 5 Then
+        If Count > 0 And Count < 5 Then
             
-            ReDim ip_list(0 To (count - 1)) As String
-            count = count + 1
-            ReDim ip_list_new(0 To (count - 1)) As String
+            ReDim ip_list(0 To (Count - 1)) As String
+            Count = Count + 1
+            ReDim ip_list_new(0 To (Count - 1)) As String
             
             ip_list = Split(ipStr, ";")
             
-            For i = 0 To (count - 1)
+            For i = 0 To (Count - 1)
                 If .IP = ip_list(i) Then Exit Function
             Next i
             
-            For i = 0 To (count - 1)
+            For i = 0 To (Count - 1)
                 ip_list_new(i) = ip_list(i)
             Next i
             
-            ip_list_new(count - 1) = .IP
+            ip_list_new(Count - 1) = .IP
             
-        ElseIf count >= 5 Then
+        ElseIf Count >= 5 Then
         
-            ReDim ip_list(0 To (count - 1)) As String
-            ReDim ip_list_new(0 To (count - 1)) As String
+            ReDim ip_list(0 To (Count - 1)) As String
+            ReDim ip_list_new(0 To (Count - 1)) As String
             
             ip_list = Split(ipStr, ";")
             
-            For i = 0 To (count - 1)
+            For i = 0 To (Count - 1)
                 If .IP = ip_list(i) Then Exit Function
             Next i
             
-            For i = 1 To (count - 1)
+            For i = 1 To (Count - 1)
                 ip_list_new(i - 1) = ip_list(i)
             Next i
             
-            ip_list_new(count - 1) = .IP
+            ip_list_new(Count - 1) = .IP
             
         Else
             Call Execute("update account set last_ip = ? where id = ?", .IP & ";", .AccountID)
@@ -1179,7 +1142,7 @@ Public Function UpdateDBIpsValues(ByVal UserIndex As Integer)
         
     
         ipStr = ""
-        For i = 0 To (count - 1)
+        For i = 0 To (Count - 1)
             ipStr = ipStr & ip_list_new(i) & ";"
         Next i
         
@@ -1194,7 +1157,7 @@ Public Function GetDBValue(Tabla As String, ColumnaGet As String, ColumnaTest As
         On Error GoTo ErrorHandler
     
 100     Dim RS As ADODB.Recordset
-        Set rs = Query("SELECT " & ColumnaGet & " FROM " & Tabla & " WHERE LOWER(" & ColumnaTest & ") = ?;", ValueTest)
+        Set RS = Query("SELECT " & ColumnaGet & " FROM " & Tabla & " WHERE LOWER(" & ColumnaTest & ") = ?;", ValueTest)
 
         'Revisamos si recibio un resultado
 102     If RS Is Nothing Then Exit Function
@@ -1253,11 +1216,11 @@ SetUserValueByID_Err:
 102     Call TraceError(Err.Number, Err.Description, "modDatabase.SetUserValueByID", Erl)
 End Sub
 
-Public Function BANCheckDatabase(Name As String) As Boolean
+Public Function BANCheckDatabase(name As String) As Boolean
         
         On Error GoTo BANCheckDatabase_Err
         
-100     BANCheckDatabase = CBool(GetUserValue(LCase$(Name), "is_banned"))
+100     BANCheckDatabase = CBool(GetUserValue(LCase$(name), "is_banned"))
   
         Exit Function
 
@@ -1265,11 +1228,11 @@ BANCheckDatabase_Err:
 102     Call TraceError(Err.Number, Err.Description, "modDatabase.BANCheckDatabase", Erl)
 End Function
 
-Public Function GetUserStatusDatabase(Name As String) As Integer
+Public Function GetUserStatusDatabase(name As String) As Integer
         
         On Error GoTo GetUserStatusDatabase_Err
         
-100     GetUserStatusDatabase = GetUserValue(LCase$(Name), "status")
+100     GetUserStatusDatabase = GetUserValue(LCase$(name), "status")
 
         
         Exit Function
@@ -1280,14 +1243,14 @@ GetUserStatusDatabase_Err:
         
 End Function
 
-Public Function GetAccountIDDatabase(Name As String) As Long
+Public Function GetAccountIDDatabase(name As String) As Long
         
         On Error GoTo GetAccountIDDatabase_Err
         
 
         Dim Temp As Variant
 
-100     Temp = GetUserValue(LCase$(Name), "account_id")
+100     Temp = GetUserValue(LCase$(name), "account_id")
     
 102     If VBA.IsEmpty(Temp) Then
 104         GetAccountIDDatabase = -1
@@ -1337,7 +1300,7 @@ Public Function GetPersonajesCuentaDatabase(ByVal AccountID As Long, Personaje()
         Dim i As Integer
         If GetPersonajesCuentaDatabase = 0 Then Exit Function
 108     For i = 1 To GetPersonajesCuentaDatabase
-110         Personaje(i).nombre = RS!Name
+110         Personaje(i).nombre = RS!name
 112         Personaje(i).Cabeza = RS!head_id
 114         Personaje(i).clase = RS!class_id
 116         Personaje(i).cuerpo = RS!body_id
@@ -1637,7 +1600,7 @@ ErrorHandler:
 
 End Function
 
-Public Sub SendUserPunishmentsDatabase(ByVal UserIndex As Integer, ByVal UserName As String)
+Public Sub SendUserPunishmentsDatabase(ByVal userindex As Integer, ByVal UserName As String)
 
         '***************************************************
         'Author: Juan Andres Dalmasso (CHOTS)
@@ -1653,7 +1616,7 @@ Public Sub SendUserPunishmentsDatabase(ByVal UserIndex As Integer, ByVal UserNam
 104     If Not RS.RecordCount = 0 Then
 
 108         While Not RS.EOF
-110             Call WriteConsoleMsg(UserIndex, RS!Number & " - " & RS!Reason, e_FontTypeNames.FONTTYPE_INFO)
+110             Call WriteConsoleMsg(userindex, RS!Number & " - " & RS!Reason, e_FontTypeNames.FONTTYPE_INFO)
             
 112             RS.MoveNext
             Wend
@@ -1814,7 +1777,7 @@ ErrorHandler:
 
 End Sub
 
-Public Sub SendCharacterInfoDatabase(ByVal UserIndex As Integer, ByVal UserName As String)
+Public Sub SendCharacterInfoDatabase(ByVal userindex As Integer, ByVal UserName As String)
 
         '***************************************************
         'Author: Juan Andres Dalmasso (CHOTS)
@@ -1832,7 +1795,7 @@ Public Sub SendCharacterInfoDatabase(ByVal UserIndex As Integer, ByVal UserName 
 100     Set RS = Query("SELECT race_id, class_id, genre_id, level, gold, bank_gold, guild_requests_history, guild_index, guild_member_history, pertenece_real, pertenece_caos, ciudadanos_matados, criminales_matados FROM user WHERE UPPER(name) = ?;", UCase$(UserName))
 
 102     If RS Is Nothing Then
-104         Call WriteConsoleMsg(UserIndex, "Pj Inexistente", e_FontTypeNames.FONTTYPE_INFO)
+104         Call WriteConsoleMsg(userindex, "Pj Inexistente", e_FontTypeNames.FONTTYPE_INFO)
             Exit Sub
 
         End If
@@ -1855,38 +1818,13 @@ Public Sub SendCharacterInfoDatabase(ByVal UserIndex As Integer, ByVal UserName 
 
         End If
 
-120     Call WriteCharacterInfo(UserIndex, UserName, RS!race_id, RS!class_id, RS!genre_id, RS!level, RS!gold, RS!bank_gold, SanitizeNullValue(RS!guild_requests_history, vbNullString), gName, Miembro, RS!pertenece_real, RS!pertenece_caos, RS!ciudadanos_matados, RS!criminales_matados)
+120     Call WriteCharacterInfo(userindex, UserName, RS!race_id, RS!class_id, RS!genre_id, RS!level, RS!gold, RS!bank_gold, SanitizeNullValue(RS!guild_requests_history, vbNullString), gName, Miembro, RS!pertenece_real, RS!pertenece_caos, RS!ciudadanos_matados, RS!criminales_matados)
 
         Exit Sub
 ErrorHandler:
 122     Call LogDatabaseError("Error in SendCharacterInfoDatabase: " & UserName & ". " & Err.Number & " - " & Err.Description)
 
 End Sub
-
-Public Function EnterAccountDatabase(ByVal UserIndex As Integer, ByVal CuentaEmail As String) As Boolean
-
-        On Error GoTo ErrorHandler
-    
-        Dim RS As ADODB.Recordset
-100     Set RS = Query("SELECT id from account WHERE email = ?", UCase$(CuentaEmail))
-    
-102     If Connection.State = adStateClosed Then
-104         Call WriteShowMessageBox(UserIndex, "Ha ocurrido un error interno en el servidor. ¡Estamos tratando de resolverlo!")
-            Exit Function
-        End If
-    
-122     UserList(UserIndex).AccountID = RS!ID
-124     UserList(UserIndex).Cuenta = CuentaEmail
-        UserList(UserIndex).Email = CuentaEmail
-    
-128     EnterAccountDatabase = True
-    
-        Exit Function
-
-ErrorHandler:
-130     Call LogDatabaseError("Error in EnterAccountDatabase. UserCuenta: " & CuentaEmail & ". " & Err.Number & " - " & Err.Description)
-
-End Function
 
 Public Function PersonajePerteneceID(ByVal UserName As String, ByVal AccountID As Long) As Boolean
     
@@ -1955,8 +1893,8 @@ SanitizeNullValue_Err:
         
 End Function
 
-Public Sub SetMessageInfoDatabase(ByVal Name As String, ByVal Message As String)
-    Call Execute("update user set message_info = concat(message_info, ?) where upper(name) = ?;", Message, UCase$(Name))
+Public Sub SetMessageInfoDatabase(ByVal name As String, ByVal Message As String)
+    Call Execute("update user set message_info = concat(message_info, ?) where upper(name) = ?;", Message, UCase$(name))
 End Sub
 
 Public Sub ChangeNameDatabase(ByVal CurName As String, ByVal NewName As String)

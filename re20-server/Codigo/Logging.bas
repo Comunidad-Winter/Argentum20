@@ -1,5 +1,12 @@
 Attribute VB_Name = "Logging"
-
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
 Option Explicit
 
 
@@ -58,7 +65,7 @@ End Sub
 Sub LogBan(ByVal BannedIndex As Integer, ByVal userindex As Integer, ByVal Motivo As String)
 On Error GoTo ErrHandler
         Dim s As String
-        s = UserList(BannedIndex).name & " BannedBy " & UserList(userindex).name & " Reason " & Motivo
+        s = UserList(BannedIndex).name & " BannedBy " & UserList(UserIndex).name & " Reason " & Motivo
         Call LogThis(type_log.e_LogBan, "[Bans] " & s, vbLogEventTypeInformation)
         Exit Sub
 ErrHandler:
@@ -163,7 +170,7 @@ On Error GoTo ErrHandler
         Exit Sub
 ErrHandler:
 End Sub
-Public Sub LogGM(name As String, Desc As String)
+Public Sub LogGM(name As String, desc As String)
 On Error GoTo ErrHandler
         Call LogThis(type_log.e_LogGM, "[" & name & "] " & Desc, vbLogEventTypeInformation)
         Exit Sub

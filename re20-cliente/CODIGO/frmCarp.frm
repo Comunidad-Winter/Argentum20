@@ -222,9 +222,9 @@ Private Sub LoadButtons()
     Set cBotonMenos = New clsGraphicalButton
 
 
-    Call cBotonAceptar.Initialize(cmdAceptar, "boton-aceptar-ES-default.bmp", _
-                                                "boton-aceptar-ES-over.bmp", _
-                                                "boton-aceptar-ES-off.bmp", Me)
+    Call cBotonAceptar.Initialize(cmdAceptar, "boton-aceptar-default.bmp", _
+                                                "boton-aceptar-over.bmp", _
+                                                "boton-aceptar-off.bmp", Me)
     
     Call cBotonConstruir.Initialize(cmdConstruir, "boton-construir-default.bmp", _
                                                 "boton-construir-over.bmp", _
@@ -270,26 +270,11 @@ Private Sub cmdConstruir_Click()
     'Si el indice seleccionado es -1 es xq no seleccionamos un item de la lista.
     If lstArmas.ListIndex = -1 Then Exit Sub
 
-    If cantidad > 1 Then
-    
-        UserMacro.cantidad = cantidad
-        UserMacro.TIPO = 2
-        UserMacro.Index = ObjCarpintero(lstArmas.ListIndex + 1)
-        
+    If cantidad > 0 Then
+        Call WriteCraftCarpenter(ObjCarpintero(lstArmas.ListIndex + 1), CLng(cantidad))
         Call AddtoRichTextBox(frmMain.RecTxt, "Comienzas a trabajar.", 2, 51, 223, 1, 1)
-        
-        UserMacro.Activado = True
-        frmMain.MacroLadder.Interval = IntervaloTrabajoConstruir
-        frmMain.MacroLadder.Enabled = True
-    
     Else
-    
-        Call WriteCraftCarpenter(ObjCarpintero(lstArmas.ListIndex + 1))
-
-        If frmMain.macrotrabajo.Enabled Then
-            MacroBltIndex = ObjCarpintero(lstArmas.ListIndex + 1)
-        End If
-    
+        Call AddtoRichTextBox(frmMain.RecTxt, "La cantidad debe ser mayor a 0.", 2, 51, 223, 1, 1)
     End If
 
     Unload Me

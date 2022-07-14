@@ -10,6 +10,8 @@ Public map_letter_a          As Single
 Public map_letter_fadestatus As Byte
 
 
+
+
 Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal PixelOffsetX As Integer, ByVal PixelOffsetY As Integer, ByVal HalfTileWidth As Integer, ByVal HalfTileHeight As Integer)
     
     On Error GoTo RenderScreen_Err
@@ -78,14 +80,14 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
     If PixelOffsetX > 0 Then
         MinX = MinX - 1
     Else
-        MaxX = MaxX + 1
+        MaxX = MaxX + 10
     End If
     
     If PixelOffsetY > 0 Then
         MinY = MinY - 1
     
     Else
-        MaxY = MaxY + 1
+        MaxY = MaxY + 5
     End If
     
     ' Map border checks
@@ -137,6 +139,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
 
     ' *********************************
     ' Layer 1 loop
+    
     For y = MinY To MaxY
         For x = MinX To MaxX
             
@@ -167,7 +170,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
             With MapData(x, y)
                 
                 ' Layer 2 *********************************
-                If .Graphic(2).grhIndex <> 0 Then
+                If .Graphic(2).GrhIndex <> 0 Then
                     Call Draw_Grh(.Graphic(2), ScreenX, ScreenY, 1, 1, .light_value, , x, y)
                 End If
                 '******************************************
@@ -209,7 +212,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
             With MapData(x, y)
                 
                 ' Objects *********************************
-                If .ObjGrh.grhIndex <> 0 Then
+                If .ObjGrh.GrhIndex <> 0 Then
                     Select Case ObjData(.OBJInfo.ObjIndex).ObjType
                         Case eObjType.otArboles, eObjType.otPuertas, eObjType.otTeleport, eObjType.otCarteles, eObjType.OtPozos, eObjType.otYacimiento, eObjType.OtCorreo, eObjType.otFragua, eObjType.OtDecoraciones
                             Call Draw_Grh(.ObjGrh, ScreenX, ScreenY, 1, 1, .light_value)
@@ -316,7 +319,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
 
             With MapData(x, y)
                 ' Objects *********************************
-                If .ObjGrh.grhIndex <> 0 Then
+                If .ObjGrh.GrhIndex <> 0 Then
                            
                     Select Case ObjData(.OBJInfo.ObjIndex).ObjType
                          
@@ -370,7 +373,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
                 '******************************************
                 
                 'Layer 3 **********************************
-                If .Graphic(3).grhIndex <> 0 Then
+                If .Graphic(3).GrhIndex <> 0 Then
 
                     If (.Blocked And FLAG_ARBOL) <> 0 Then
                         
@@ -412,7 +415,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
                         End If
 
                     Else
-                        If AgregarSombra(.Graphic(3).grhIndex) Then
+                        If AgregarSombra(.Graphic(3).GrhIndex) Then
                             Call Draw_Sombra(.Graphic(3), ScreenX, ScreenY, 1, 1, False, x, y)
                         End If
 
@@ -440,7 +443,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
                     Else
                         Amount = .OBJInfo.Amount
                     End If
-                    Text = ObjData(.OBJInfo.ObjIndex).Name & " (" & Amount & ")"
+                    Text = ObjData(.OBJInfo.ObjIndex).name & " (" & Amount & ")"
                     Call Engine_Text_Render(Text, MouseX + 15, MouseY, COLOR_WHITE, , , , 160)
                 End If
             End If
@@ -506,7 +509,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
             
                 With MapData(x, y)
                     ' Layer 4 - roofs *******************************
-                    If .Graphic(4).grhIndex Then
+                    If .Graphic(4).GrhIndex Then
 
                         Trigger = NearRoof(x, y)
 
@@ -606,7 +609,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
                 If .FxCount > 0 Then
                     For i = 1 To .FxCount
 
-                        If .FxList(i).FxIndex > 0 And .FxList(i).Started <> 0 Then
+                        If .FxList(i).FxIndex > 0 And .FxList(i).started <> 0 Then
     
                             Call RGBAList(TempColor, 255, 255, 255, 220)
 
@@ -621,11 +624,11 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
 
                         End If
 
-                        If .FxList(i).Started = 0 Then .FxList(i).FxIndex = 0
+                        If .FxList(i).started = 0 Then .FxList(i).FxIndex = 0
 
                     Next i
 
-                    If .FxList(.FxCount).Started = 0 Then .FxCount = .FxCount - 1
+                    If .FxList(.FxCount).started = 0 Then .FxCount = .FxCount - 1
 
                 End If
                 '******************************************
@@ -719,13 +722,6 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
     End If
 
     Call RenderScreen_NombreMapa
-   '   Dim grhTest As grh
-   '   Dim testColor As ARGB
-      
-   ' InitGrh grhTest, 12774
-   '  Call Draw_Grh(grhTest, 370, 600, 1, 1, TempColor, False, x, y)
-    
-    'HarThaoS y el peroncho(Ford Lers)
     If PescandoEspecial Then
         Call RGBAList(ColorBarraPesca, 255, 255, 255)
         Dim grh As grh
@@ -768,6 +764,7 @@ Sub RenderScreen(ByVal center_x As Integer, ByVal center_y As Integer, ByVal Pix
         
     End If
     
+    If cartel_visible Then Call RenderScreen_Cartel
     Exit Sub
 
 RenderScreen_Err:
@@ -803,7 +800,7 @@ Private Sub RenderScreen_NombreMapa()
                 map_letter_a = 0
                  
                 If map_letter_grh_next > 0 Then
-                    map_letter_grh.grhIndex = map_letter_grh_next
+                    map_letter_grh.GrhIndex = map_letter_grh_next
                     map_letter_fadestatus = 1
                     map_letter_grh_next = 0
 

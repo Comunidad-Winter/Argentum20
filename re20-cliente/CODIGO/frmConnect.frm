@@ -1,4 +1,6 @@
 VERSION 5.00
+Object = "{48E59290-9880-11CF-9754-00AA00C00908}#1.0#0"; "MSINET.ocx"
+Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
 Begin VB.Form frmConnect 
    Appearance      =   0  'Flat
    BackColor       =   &H00000000&
@@ -29,6 +31,22 @@ Begin VB.Form frmConnect
    ScaleWidth      =   1024
    StartUpPosition =   2  'CenterScreen
    Visible         =   0   'False
+   Begin MSWinsockLib.Winsock AuthSocket 
+      Left            =   120
+      Top             =   120
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   393216
+      RemoteHost      =   "45.235.99.71"
+      RemotePort      =   4004
+   End
+   Begin InetCtlsObjects.Inet Inet1 
+      Left            =   12600
+      Top             =   5880
+      _ExtentX        =   1005
+      _ExtentY        =   1005
+      _Version        =   393216
+   End
    Begin VB.PictureBox render 
       Appearance      =   0  'Flat
       BackColor       =   &H00000000&
@@ -97,6 +115,50 @@ Option Explicit
 
 Private Char As Byte
 
+
+Private Sub AuthSocket_Connect()
+    If Not SessionOpened Then
+        Call OpenSessionRequest
+        Select Case LoginOperation
+            Case e_operation.Authenticate
+                Auth_state = e_state.RequestAccountLogin
+            Case e_operation.SignUp
+                Auth_state = e_state.RequestSignUp
+            Case e_operation.ValidateAccount
+                Auth_state = e_state.RequestValidateAccount
+            Case e_operation.ForgotPassword
+                Auth_state = e_state.RequestForgotPassword
+            Case e_operation.ResetPassword
+                Auth_state = e_state.RequestResetPassword
+            Case e_operation.DeleteChar
+                Auth_state = e_state.RequestDeleteChar
+            Case e_operation.ConfirmDeleteChar
+                Auth_state = e_state.ConfirmDeleteChar
+            Case e_operation.RequestVerificationCode
+                Auth_state = e_state.RequestVerificationCode
+        End Select
+    End If
+    
+End Sub
+
+Private Sub AuthSocket_DataArrival(ByVal bytesTotal As Long)
+    ModAuth.AuthSocket_DataArrival bytesTotal
+End Sub
+
+Private Sub AuthSocket_Error(ByVal Number As Integer, Description As String, ByVal Scode As Long, ByVal Source As String, ByVal HelpFile As String, ByVal HelpContext As Long, CancelDisplay As Boolean)
+    Call TextoAlAsistente("Servidor Offline, intente nuevamente.")
+    Dim i As Long
+    
+    If Split(servers_login_connections(1), ":")(0) = IPdelServidorLogin Then
+        IPdelServidorLogin = Split(servers_login_connections(2), ":")(0)
+        PuertoDelServidorLogin = Split(servers_login_connections(2), ":")(1)
+    Else
+        IPdelServidorLogin = Split(servers_login_connections(1), ":")(0)
+        PuertoDelServidorLogin = Split(servers_login_connections(1), ":")(1)
+    End If
+    
+End Sub
+
 Private Sub Form_Activate()
     
     On Error GoTo Form_Activate_Err
@@ -162,6 +224,8 @@ Form_Load_Err:
     Resume Next
     
 End Sub
+
+
 
 
 Private Sub render_DblClick()
@@ -365,10 +429,10 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
                 Dim k As Object
 
                 
-                username = frmConnect.txtNombre.Text
+                UserName = frmConnect.txtNombre.Text
                 
                 Dim Error As String
-                If Not ValidarNombre(username, Error) Then
+                If Not ValidarNombre(UserName, Error) Then
                     frmMensaje.msg.Caption = Error
                     frmMensaje.Show , Me
                     Exit Sub
@@ -387,8 +451,11 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
                     If Connected Then
                         frmMain.ShowFPS.Enabled = True
                     End If
-          
-                    Call Protocol_Writes.WriteLoginNewChar
+                    
+                    'Call modNetwork.Connect(IPdelServidor, PuertoDelServidor)
+                    'TODO: Mostrar ventana de creación de personaje
+                    EstadoLogin = E_MODO.CrearNuevoPj
+                    Call modNetwork.Connect(IPdelServidor, PuertoDelServidor)
                 End If
                 
 
@@ -504,6 +571,9 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
                     Dim tmp As String
 
                     If MsgBox("¿Esta seguro que desea borrar el personaje " & DeleteUser & " de la cuenta?", vbYesNo + vbQuestion, "Borrar personaje") = vbYes Then
+                        
+                        ModAuth.LoginOperation = e_operation.DeleteChar
+                        Call connectToLoginServer
                         frmDeleteChar.Show , frmConnect
                         
                         'If tmp = CuentaPassword Then
@@ -521,7 +591,10 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
                     End If
 
                 Case 3
+                    Debug.Print "Vuelvo al login, debería borrar el token"
+                    Auth_state = e_state.Idle
                     'Call ModAuth.LogOutRequest
+                    Call ComprobarEstado
 
                     If Musica Then
 
@@ -648,13 +721,15 @@ Private Sub LogearPersonaje(ByVal Nick As String)
     
     On Error GoTo LogearPersonaje_Err
     
-    username = Nick
+    UserName = Nick
 
     If Connected Then
         frmMain.ShowFPS.Enabled = True
     End If
     
-    Call Protocol_Writes.WriteLoginExistingChar
+    Call modNetwork.Connect(IPdelServidor, PuertoDelServidor)
+    ModAuth.LoginOperation = e_operation.Authenticate
+    Call LoginOrConnect(E_MODO.Normal)
     
     Exit Sub
 

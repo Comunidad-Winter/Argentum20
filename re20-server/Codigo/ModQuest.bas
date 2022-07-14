@@ -1,5 +1,12 @@
 Attribute VB_Name = "ModQuest"
-
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
 'This program is free software; you can redistribute it and/or modify
 'it under the terms of the Affero General Public License;
 'either version 1 of the License, or any later version.
@@ -20,7 +27,7 @@ Option Explicit
 'Constantes de las quests
 Public Const MAXUSERQUESTS As Integer = 5     'Maxima cantidad de quests que puede tener un usuario al mismo tiempo.
 
-Public Function TieneQuest(ByVal userindex As Integer, ByVal QuestNumber As Integer) As Byte
+Public Function TieneQuest(ByVal UserIndex As Integer, ByVal QuestNumber As Integer) As Byte
         
         On Error GoTo TieneQuest_Err
         
@@ -33,7 +40,7 @@ Public Function TieneQuest(ByVal userindex As Integer, ByVal QuestNumber As Inte
  
 100     For i = 1 To MAXUSERQUESTS
 
-102         If UserList(userindex).QuestStats.Quests(i).QuestIndex = QuestNumber Then
+102         If UserList(UserIndex).QuestStats.Quests(i).QuestIndex = QuestNumber Then
 104             TieneQuest = i
                 Exit Function
 
@@ -52,7 +59,7 @@ TieneQuest_Err:
         
 End Function
  
-Public Function FreeQuestSlot(ByVal userindex As Integer) As Byte
+Public Function FreeQuestSlot(ByVal UserIndex As Integer) As Byte
         
         On Error GoTo FreeQuestSlot_Err
         
@@ -65,7 +72,7 @@ Public Function FreeQuestSlot(ByVal userindex As Integer) As Byte
  
 100     For i = 1 To MAXUSERQUESTS
 
-102         If UserList(userindex).QuestStats.Quests(i).QuestIndex = 0 Then
+102         If UserList(UserIndex).QuestStats.Quests(i).QuestIndex = 0 Then
 104             FreeQuestSlot = i
                 Exit Function
 
@@ -84,7 +91,7 @@ FreeQuestSlot_Err:
         
 End Function
  
-Public Sub FinishQuest(ByVal userindex As Integer, ByVal QuestIndex As Integer, ByVal QuestSlot As Byte)
+Public Sub FinishQuest(ByVal UserIndex As Integer, ByVal QuestIndex As Integer, ByVal QuestSlot As Byte)
         
         On Error GoTo FinishQuest_Err
         
@@ -101,7 +108,7 @@ Public Sub FinishQuest(ByVal userindex As Integer, ByVal QuestIndex As Integer, 
         
 
  
-100     NpcIndex = UserList(userindex).flags.TargetNPC
+100     NpcIndex = UserList(UserIndex).flags.TargetNPC
     
 102     With QuestList(QuestIndex)
 
@@ -110,8 +117,8 @@ Public Sub FinishQuest(ByVal userindex As Integer, ByVal QuestIndex As Integer, 
 
 106             For i = 1 To .RequiredOBJs
 
-108                 If TieneObjetos(.RequiredOBJ(i).ObjIndex, .RequiredOBJ(i).amount, userindex) = False Then
-110                     Call WriteChatOverHead(userindex, "No has conseguido todos los objetos que te he pedido.", NpcList(NpcIndex).Char.CharIndex, vbYellow)
+108                 If TieneObjetos(.RequiredOBJ(i).ObjIndex, .RequiredOBJ(i).amount, UserIndex) = False Then
+110                     Call WriteChatOverHead(UserIndex, "No has conseguido todos los objetos que te he pedido.", NpcList(NpcIndex).Char.CharIndex, vbYellow)
                     
                         Exit Sub
 
@@ -126,8 +133,8 @@ Public Sub FinishQuest(ByVal userindex As Integer, ByVal QuestIndex As Integer, 
 
 116             For i = 1 To .RequiredNPCs
 
-118                 If .RequiredNPC(i).amount > UserList(userindex).QuestStats.Quests(QuestSlot).NPCsKilled(i) Then
-120                     Call WriteChatOverHead(userindex, "No has matado todas las criaturas que te he pedido.", NpcList(NpcIndex).Char.CharIndex, vbYellow)
+118                 If .RequiredNPC(i).amount > UserList(UserIndex).QuestStats.Quests(QuestSlot).NPCsKilled(i) Then
+120                     Call WriteChatOverHead(UserIndex, "No has matado todas las criaturas que te he pedido.", NpcList(NpcIndex).Char.CharIndex, vbYellow)
                         Exit Sub
 
                     End If
@@ -141,8 +148,8 @@ Public Sub FinishQuest(ByVal userindex As Integer, ByVal QuestIndex As Integer, 
 
 126              For i = 1 To .RequiredTargetNPCs
     
-128                  If .RequiredTargetNPC(i).amount > UserList(userindex).QuestStats.Quests(QuestSlot).NPCsTarget(i) Then
-130                      Call WriteChatOverHead(userindex, "No has visitado al npc que te pedi.", NpcList(NpcIndex).Char.CharIndex, vbYellow)
+128                  If .RequiredTargetNPC(i).amount > UserList(UserIndex).QuestStats.Quests(QuestSlot).NPCsTarget(i) Then
+130                      Call WriteChatOverHead(UserIndex, "No has visitado al npc que te pedi.", NpcList(NpcIndex).Char.CharIndex, vbYellow)
                         Exit Sub
     
                         End If
@@ -155,14 +162,14 @@ Public Sub FinishQuest(ByVal userindex As Integer, ByVal QuestIndex As Integer, 
 134         If .RewardOBJs > 0 Then
 
                 'Buscamos la cantidad de slots de inventario libres.
-136             For i = 1 To UserList(userindex).CurrentInventorySlots
+136             For i = 1 To UserList(UserIndex).CurrentInventorySlots
 
-138                 If UserList(userindex).Invent.Object(i).ObjIndex = 0 Then InvSlotsLibres = InvSlotsLibres + 1
+138                 If UserList(UserIndex).Invent.Object(i).ObjIndex = 0 Then InvSlotsLibres = InvSlotsLibres + 1
 140             Next i
             
                 'Nos fijamos si entra
 142             If InvSlotsLibres < .RewardOBJs Then
-144                 Call WriteChatOverHead(userindex, "No tienes suficiente espacio en el inventario para recibir la recompensa. Vuelve cuando hayas hecho mas espacio.", NpcList(NpcIndex).Char.CharIndex, vbYellow)
+144                 Call WriteChatOverHead(UserIndex, "No tienes suficiente espacio en el inventario para recibir la recompensa. Vuelve cuando hayas hecho mas espacio.", NpcList(NpcIndex).Char.CharIndex, vbYellow)
                     Exit Sub
 
                 End If
@@ -170,27 +177,27 @@ Public Sub FinishQuest(ByVal userindex As Integer, ByVal QuestIndex As Integer, 
             End If
     
             'A esta altura ya cumplio los objetivos, entonces se le entregan las recompensas.
-146         Call WriteChatOverHead(userindex, "QUESTFIN*" & QuestIndex, NpcList(NpcIndex).Char.CharIndex, vbYellow)
+146         Call WriteChatOverHead(UserIndex, "QUESTFIN*" & QuestIndex, NpcList(NpcIndex).Char.CharIndex, vbYellow)
         
 
             'Si la quest pedia objetos, se los saca al personaje.
 148         If .RequiredOBJs Then
 
 150             For i = 1 To .RequiredOBJs
-152                 Call QuitarObjetos(.RequiredOBJ(i).ObjIndex, .RequiredOBJ(i).amount, userindex)
+152                 Call QuitarObjetos(.RequiredOBJ(i).ObjIndex, .RequiredOBJ(i).amount, UserIndex)
 154             Next i
 
             End If
         
             'Se entrega la experiencia.
 156         If .RewardEXP Then
-158             If UserList(userindex).Stats.ELV < STAT_MAXELV Then
-160                 UserList(userindex).Stats.Exp = UserList(userindex).Stats.Exp + (.RewardEXP * ExpMult)
-162                 Call WriteUpdateExp(userindex)
-164                 Call CheckUserLevel(userindex)
-166                 Call WriteLocaleMsg(userindex, "140", e_FontTypeNames.FONTTYPE_EXP, (.RewardEXP * ExpMult))
+158             If UserList(UserIndex).Stats.ELV < STAT_MAXELV Then
+160                 UserList(UserIndex).Stats.Exp = UserList(UserIndex).Stats.Exp + (.RewardEXP * ExpMult)
+162                 Call WriteUpdateExp(UserIndex)
+164                 Call CheckUserLevel(UserIndex)
+166                 Call WriteLocaleMsg(UserIndex, "140", e_FontTypeNames.FONTTYPE_EXP, (.RewardEXP * ExpMult))
                 Else
-168                 Call WriteConsoleMsg(userindex, "No se te ha dado experiencia porque eres nivel máximo.", e_FontTypeNames.FONTTYPE_INFO)
+168                 Call WriteConsoleMsg(UserIndex, "No se te ha dado experiencia porque eres nivel máximo.", e_FontTypeNames.FONTTYPE_INFO)
 
                 End If
 
@@ -202,12 +209,12 @@ Public Sub FinishQuest(ByVal userindex As Integer, ByVal QuestIndex As Integer, 
                 GiveGLD = (.RewardGLD * OroMult)
                 
                 If GiveGLD < 100000 Then
-172                 UserList(userindex).Stats.GLD = UserList(userindex).Stats.GLD + GiveGLD
-174                 Call WriteConsoleMsg(userindex, "Has ganado " & PonerPuntos(GiveGLD) & " monedas de oro como recompensa.", e_FontTypeNames.FONTTYPE_INFOIAO)
-176                 Call WriteUpdateGold(userindex)
+172                 UserList(UserIndex).Stats.GLD = UserList(UserIndex).Stats.GLD + GiveGLD
+174                 Call WriteConsoleMsg(UserIndex, "Has ganado " & PonerPuntos(GiveGLD) & " monedas de oro como recompensa.", e_FontTypeNames.FONTTYPE_INFOIAO)
+176                 Call WriteUpdateGold(UserIndex)
                 Else
-                    UserList(userindex).Stats.Banco = UserList(userindex).Stats.Banco + GiveGLD
-                    Call WriteConsoleMsg(userindex, "Has ganado " & PonerPuntos(GiveGLD) & " monedas de oro como recompensa. La recompensa ha sido depositada en su cuenta del Banco Goliath.", e_FontTypeNames.FONTTYPE_INFOIAO)
+                    UserList(UserIndex).Stats.Banco = UserList(UserIndex).Stats.Banco + GiveGLD
+                    Call WriteConsoleMsg(UserIndex, "Has ganado " & PonerPuntos(GiveGLD) & " monedas de oro como recompensa. La recompensa ha sido depositada en su cuenta del Banco Goliath.", e_FontTypeNames.FONTTYPE_INFOIAO)
                 End If
 
             End If
@@ -218,8 +225,8 @@ Public Sub FinishQuest(ByVal userindex As Integer, ByVal QuestIndex As Integer, 
 180             For i = 1 To .RewardOBJs
 
 182                 If .RewardOBJ(i).amount Then
-184                     Call MeterItemEnInventario(userindex, .RewardOBJ(i))
-186                     Call WriteConsoleMsg(userindex, "Has recibido " & QuestList(QuestIndex).RewardOBJ(i).amount & " " & ObjData(QuestList(QuestIndex).RewardOBJ(i).ObjIndex).name & " como recompensa.", e_FontTypeNames.FONTTYPE_INFOIAO)
+184                     Call MeterItemEnInventario(UserIndex, .RewardOBJ(i))
+186                     Call WriteConsoleMsg(UserIndex, "Has recibido " & QuestList(QuestIndex).RewardOBJ(i).amount & " " & ObjData(QuestList(QuestIndex).RewardOBJ(i).ObjIndex).Name & " como recompensa.", e_FontTypeNames.FONTTYPE_INFOIAO)
 
                     End If
 
@@ -229,21 +236,21 @@ Public Sub FinishQuest(ByVal userindex As Integer, ByVal QuestIndex As Integer, 
         
     
             'Actualizamos el personaje
-190         Call UpdateUserInv(True, userindex, 0)
+190         Call UpdateUserInv(True, UserIndex, 0)
     
             'Limpiamos el slot de quest.
-192         Call CleanQuestSlot(userindex, QuestSlot)
+192         Call CleanQuestSlot(UserIndex, QuestSlot)
         
             'Ordenamos las quests
-194         Call ArrangeUserQuests(userindex)
+194         Call ArrangeUserQuests(UserIndex)
 
             'Se agrega que el usuario ya hizo esta quest. - WyroX: La agrego aunque sea repetible, para llevar el control
-198         Call AddDoneQuest(userindex, QuestIndex)
+198         Call AddDoneQuest(UserIndex, QuestIndex)
 
 200         If .Repetible = 0 Then
-                Call WriteUpdateNPCSimbolo(userindex, NpcIndex, 2)
+                Call WriteUpdateNPCSimbolo(UserIndex, NpcIndex, 2)
             Else
-                Call WriteUpdateNPCSimbolo(userindex, NpcIndex, 1)
+                Call WriteUpdateNPCSimbolo(UserIndex, NpcIndex, 1)
             End If
             
         End With
@@ -257,7 +264,7 @@ FinishQuest_Err:
         
 End Sub
  
-Public Sub AddDoneQuest(ByVal userindex As Integer, ByVal QuestIndex As Integer)
+Public Sub AddDoneQuest(ByVal UserIndex As Integer, ByVal QuestIndex As Integer)
         
         On Error GoTo AddDoneQuest_Err
         
@@ -266,7 +273,7 @@ Public Sub AddDoneQuest(ByVal userindex As Integer, ByVal QuestIndex As Integer)
         'Agrega la quest QuestIndex a la lista de quests hechas.
         'Last modified: 28/01/2010 by Amraphen
         '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-100     With UserList(userindex).QuestStats
+100     With UserList(UserIndex).QuestStats
 102         .NumQuestsDone = .NumQuestsDone + 1
 104         ReDim Preserve .QuestsDone(1 To .NumQuestsDone)
 106         .QuestsDone(.NumQuestsDone) = QuestIndex
@@ -282,7 +289,7 @@ AddDoneQuest_Err:
         
 End Sub
  
-Public Function UserDoneQuest(ByVal userindex As Integer, ByVal QuestIndex As Integer) As Boolean
+Public Function UserDoneQuest(ByVal UserIndex As Integer, ByVal QuestIndex As Integer) As Boolean
         
         On Error GoTo UserDoneQuest_Err
         
@@ -299,7 +306,7 @@ Public Function UserDoneQuest(ByVal userindex As Integer, ByVal QuestIndex As In
             
             
 
-104     With UserList(userindex).QuestStats
+104     With UserList(UserIndex).QuestStats
 
 106         If .NumQuestsDone Then
 
@@ -328,7 +335,7 @@ UserDoneQuest_Err:
         
 End Function
  
-Public Sub CleanQuestSlot(ByVal userindex As Integer, ByVal QuestSlot As Integer)
+Public Sub CleanQuestSlot(ByVal UserIndex As Integer, ByVal QuestSlot As Integer)
         
         On Error GoTo CleanQuestSlot_Err
         
@@ -339,7 +346,7 @@ Public Sub CleanQuestSlot(ByVal userindex As Integer, ByVal QuestSlot As Integer
         '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
         Dim i As Integer
  
-100     With UserList(userindex).QuestStats.Quests(QuestSlot)
+100     With UserList(UserIndex).QuestStats.Quests(QuestSlot)
 
 102         If .QuestIndex Then
 
@@ -363,7 +370,7 @@ Public Sub CleanQuestSlot(ByVal userindex As Integer, ByVal QuestSlot As Integer
 
 132         .QuestIndex = 0
             
-            UserList(userindex).flags.ModificoQuests = True
+            UserList(UserIndex).flags.ModificoQuests = True
         End With
 
         
@@ -375,7 +382,7 @@ CleanQuestSlot_Err:
         
 End Sub
  
-Public Sub ResetQuestStats(ByVal userindex As Integer)
+Public Sub ResetQuestStats(ByVal UserIndex As Integer)
         
         On Error GoTo ResetQuestStats_Err
         
@@ -387,10 +394,10 @@ Public Sub ResetQuestStats(ByVal userindex As Integer)
         Dim i As Integer
  
 100     For i = 1 To MAXUSERQUESTS
-102         Call CleanQuestSlot(userindex, i)
+102         Call CleanQuestSlot(UserIndex, i)
 104     Next i
     
-106     With UserList(userindex).QuestStats
+106     With UserList(UserIndex).QuestStats
 108         .NumQuestsDone = 0
 110         Erase .QuestsDone
 
@@ -532,7 +539,7 @@ ErrorHandler:
 
 End Sub
  
-Public Sub ArrangeUserQuests(ByVal userindex As Integer)
+Public Sub ArrangeUserQuests(ByVal UserIndex As Integer)
         
         On Error GoTo ArrangeUserQuests_Err
         
@@ -545,7 +552,7 @@ Public Sub ArrangeUserQuests(ByVal userindex As Integer)
 
         Dim j As Integer
  
-100     With UserList(userindex).QuestStats
+100     With UserList(UserIndex).QuestStats
 
 102         For i = 1 To MAXUSERQUESTS - 1
 
@@ -555,7 +562,7 @@ Public Sub ArrangeUserQuests(ByVal userindex As Integer)
 
 108                     If .Quests(j).QuestIndex Then
 110                         .Quests(i) = .Quests(j)
-112                         Call CleanQuestSlot(userindex, j)
+112                         Call CleanQuestSlot(UserIndex, j)
                             Exit For
 
                         End If
@@ -577,7 +584,7 @@ ArrangeUserQuests_Err:
         
 End Sub
  
-Public Sub EnviarQuest(ByVal userindex As Integer)
+Public Sub EnviarQuest(ByVal UserIndex As Integer)
         
         On Error GoTo EnviarQuest_Err
         
@@ -590,20 +597,20 @@ Public Sub EnviarQuest(ByVal userindex As Integer)
 
         Dim tmpByte  As Byte
  
-100     NpcIndex = UserList(userindex).flags.TargetNPC
+100     NpcIndex = UserList(UserIndex).flags.TargetNPC
     
 102     If NpcIndex = 0 Then Exit Sub
     
         'Esta el personaje en la distancia correcta?
-104     If Distancia(UserList(userindex).Pos, NpcList(NpcIndex).Pos) > 5 Then
-106         Call WriteConsoleMsg(userindex, "Estas demasiado lejos.", e_FontTypeNames.FONTTYPE_INFO)
+104     If Distancia(UserList(UserIndex).Pos, NpcList(NpcIndex).Pos) > 5 Then
+106         Call WriteConsoleMsg(UserIndex, "Estas demasiado lejos.", e_FontTypeNames.FONTTYPE_INFO)
             Exit Sub
 
         End If
     
         'El NPC hace quests?
 108     If NpcList(NpcIndex).NumQuest = 0 Then
-110         Call WriteChatOverHead(userindex, "No tengo ninguna misión para ti.", NpcList(NpcIndex).Char.CharIndex, vbYellow)
+110         Call WriteChatOverHead(UserIndex, "No tengo ninguna misión para ti.", NpcList(NpcIndex).Char.CharIndex, vbYellow)
             Exit Sub
         End If
             
@@ -617,11 +624,11 @@ Public Sub EnviarQuest(ByVal userindex As Integer)
         
             For i = 1 To UBound(QuestList)
                 If QuestList(i).TalkTo > 0 And QuestList(i).TalkTo = NpcList(NpcIndex).Numero Then
-                    tmpByte = TieneQuest(userindex, i)
+                    tmpByte = TieneQuest(UserIndex, i)
                     If tmpByte > 0 Then
                         For j = 1 To MAXUSERQUESTS
-                             If FinishQuestCheck(userindex, i, tmpByte) Then
-121                             Call FinishQuest(userindex, i, tmpByte)
+                             If FinishQuestCheck(UserIndex, i, tmpByte) Then
+121                             Call FinishQuest(UserIndex, i, tmpByte)
                                 Exit Sub
                             End If
                         Next j
@@ -629,19 +636,19 @@ Public Sub EnviarQuest(ByVal userindex As Integer)
                 End If
             Next i
 112     For q = 1 To NpcList(NpcIndex).NumQuest
-114         tmpByte = TieneQuest(userindex, NpcList(NpcIndex).QuestNumber(q))
+114         tmpByte = TieneQuest(UserIndex, NpcList(NpcIndex).QuestNumber(q))
         
 116         If tmpByte Then
                 'El usuario esta haciendo la quest, entonces va a hablar con el NPC para recibir la recompensa.
-118             If FinishQuestCheck(userindex, NpcList(NpcIndex).QuestNumber(q), tmpByte) Then
-120                 Call FinishQuest(userindex, NpcList(NpcIndex).QuestNumber(q), tmpByte)
+118             If FinishQuestCheck(UserIndex, NpcList(NpcIndex).QuestNumber(q), tmpByte) Then
+120                 Call FinishQuest(UserIndex, NpcList(NpcIndex).QuestNumber(q), tmpByte)
                     Exit Sub
                 End If
             End If
         
 122     Next q
       
-124   Call WriteNpcQuestListSend(userindex, NpcIndex)
+124   Call WriteNpcQuestListSend(UserIndex, NpcIndex)
 
         
         Exit Sub
@@ -652,7 +659,7 @@ EnviarQuest_Err:
         
 End Sub
 
-Public Function FinishQuestCheck(ByVal userindex As Integer, ByVal QuestIndex As Integer, ByVal QuestSlot As Byte) As Boolean
+Public Function FinishQuestCheck(ByVal UserIndex As Integer, ByVal QuestIndex As Integer, ByVal QuestSlot As Byte) As Boolean
         '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
         'Funcion para chequear si finalizo una quest
         'Ladder
@@ -666,7 +673,7 @@ Public Function FinishQuestCheck(ByVal userindex As Integer, ByVal QuestIndex As
 
         Dim NpcIndex       As Integer
  
-100     NpcIndex = UserList(userindex).flags.TargetNPC
+100     NpcIndex = UserList(UserIndex).flags.TargetNPC
     
 102     With QuestList(QuestIndex)
 
@@ -675,7 +682,7 @@ Public Function FinishQuestCheck(ByVal userindex As Integer, ByVal QuestIndex As
 
 106             For i = 1 To .RequiredOBJs
 
-108                 If TieneObjetos(.RequiredOBJ(i).ObjIndex, .RequiredOBJ(i).amount, userindex) = False Then
+108                 If TieneObjetos(.RequiredOBJ(i).ObjIndex, .RequiredOBJ(i).amount, UserIndex) = False Then
 110                     FinishQuestCheck = False
                     
                         Exit Function
@@ -691,7 +698,7 @@ Public Function FinishQuestCheck(ByVal userindex As Integer, ByVal QuestIndex As
 
 116             For i = 1 To .RequiredNPCs
 
-118                 If .RequiredNPC(i).amount > UserList(userindex).QuestStats.Quests(QuestSlot).NPCsKilled(i) Then
+118                 If .RequiredNPC(i).amount > UserList(UserIndex).QuestStats.Quests(QuestSlot).NPCsKilled(i) Then
 120                     FinishQuestCheck = False
                         Exit Function
 
@@ -706,7 +713,7 @@ Public Function FinishQuestCheck(ByVal userindex As Integer, ByVal QuestIndex As
 
 126          For i = 1 To .RequiredTargetNPCs
 
-128              If .RequiredTargetNPC(i).amount > UserList(userindex).QuestStats.Quests(QuestSlot).NPCsTarget(i) Then
+128              If .RequiredTargetNPC(i).amount > UserList(UserIndex).QuestStats.Quests(QuestSlot).NPCsTarget(i) Then
 130                  FinishQuestCheck = False
                         Exit Function
 
@@ -717,7 +724,11 @@ Public Function FinishQuestCheck(ByVal userindex As Integer, ByVal QuestIndex As
             End If
             
         End With
-
+        
+        If QuestIndex = 142 Then
+            Call Execute("update user set quest_belthor = 1 where id = ?;", UserList(UserIndex).ID)
+        End If
+        
 134     FinishQuestCheck = True
 
         
@@ -729,7 +740,7 @@ FinishQuestCheck_Err:
 
 End Function
 
-Function FaltanItemsQuest(ByVal userindex As Integer, ByVal QuestIndex As Integer, ByVal ObjIndex As Integer) As Boolean
+Function FaltanItemsQuest(ByVal UserIndex As Integer, ByVal QuestIndex As Integer, ByVal ObjIndex As Integer) As Boolean
 
         On Error GoTo Handler
 
@@ -746,7 +757,7 @@ Function FaltanItemsQuest(ByVal userindex As Integer, ByVal QuestIndex As Intege
 106                 If ObjIndex = .RequiredOBJ(i).ObjIndex Then
 
                         ' Devolvemos si ya tiene todos los que la quest pide
-108                     FaltanItemsQuest = Not TieneObjetos(ObjIndex, .RequiredOBJ(i).amount, userindex)
+108                     FaltanItemsQuest = Not TieneObjetos(ObjIndex, .RequiredOBJ(i).amount, UserIndex)
                         Exit Function
 
                     End If

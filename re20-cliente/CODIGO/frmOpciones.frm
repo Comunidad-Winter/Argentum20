@@ -130,60 +130,6 @@ Begin VB.Form frmOpciones
       Top             =   10440
       Width           =   1335
    End
-   Begin VB.PictureBox PanelVideo 
-      BorderStyle     =   0  'None
-      Height          =   4965
-      Left            =   240
-      ScaleHeight     =   331
-      ScaleMode       =   3  'Pixel
-      ScaleWidth      =   504
-      TabIndex        =   14
-      Top             =   1800
-      Visible         =   0   'False
-      Width           =   7560
-      Begin VB.Image num_comp_inv 
-         Height          =   255
-         Left            =   270
-         Top             =   3090
-         Width           =   255
-      End
-      Begin VB.Image chkItemsEnRender 
-         Height          =   255
-         Left            =   270
-         Top             =   2715
-         Width           =   255
-      End
-      Begin VB.Image Fullscreen 
-         Height          =   255
-         Left            =   270
-         Top             =   2310
-         Width           =   255
-      End
-      Begin VB.Image Respiracion 
-         Height          =   255
-         Left            =   270
-         Top             =   1905
-         Width           =   255
-      End
-      Begin VB.Image VSync 
-         Height          =   255
-         Left            =   270
-         Top             =   1500
-         Width           =   255
-      End
-      Begin VB.Image Check5 
-         Height          =   255
-         Left            =   270
-         Top             =   1095
-         Width           =   255
-      End
-      Begin VB.Image Check6 
-         Height          =   255
-         Left            =   270
-         Top             =   690
-         Width           =   255
-      End
-   End
    Begin VB.PictureBox PanelJugabilidad 
       BorderStyle     =   0  'None
       Height          =   4845
@@ -194,6 +140,36 @@ Begin VB.Form frmOpciones
       TabIndex        =   12
       Top             =   1800
       Width           =   7560
+      Begin VB.ComboBox cbTutorial 
+         Height          =   315
+         ItemData        =   "frmOpciones.frx":0152
+         Left            =   4800
+         List            =   "frmOpciones.frx":015C
+         Style           =   2  'Dropdown List
+         TabIndex        =   25
+         Top             =   3960
+         Width           =   1695
+      End
+      Begin VB.ComboBox cbRenderNpcs 
+         Height          =   315
+         ItemData        =   "frmOpciones.frx":0176
+         Left            =   1200
+         List            =   "frmOpciones.frx":0180
+         Style           =   2  'Dropdown List
+         TabIndex        =   23
+         Top             =   4290
+         Width           =   1695
+      End
+      Begin VB.ComboBox cbLenguaje 
+         Height          =   315
+         ItemData        =   "frmOpciones.frx":0198
+         Left            =   1200
+         List            =   "frmOpciones.frx":01A2
+         Style           =   2  'Dropdown List
+         TabIndex        =   21
+         Top             =   3930
+         Width           =   1695
+      End
       Begin VB.HScrollBar scrSens 
          Height          =   315
          LargeChange     =   5
@@ -212,6 +188,35 @@ Begin VB.Form frmOpciones
          TabIndex        =   13
          Top             =   1080
          Width           =   3375
+      End
+      Begin VB.Label Label2 
+         Caption         =   "Tutorial"
+         Height          =   495
+         Left            =   4800
+         TabIndex        =   26
+         Top             =   3720
+         Width           =   1335
+      End
+      Begin VB.Label Label3 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Texto NPCs"
+         ForeColor       =   &H8000000B&
+         Height          =   375
+         Left            =   240
+         TabIndex        =   24
+         Top             =   4320
+         Width           =   1095
+      End
+      Begin VB.Label lblIdioma 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Idioma"
+         ForeColor       =   &H8000000B&
+         Height          =   195
+         Left            =   300
+         TabIndex        =   20
+         Top             =   3960
+         Width           =   480
       End
       Begin VB.Image Check2 
          Height          =   255
@@ -316,6 +321,75 @@ Begin VB.Form frmOpciones
          Top             =   1095
          Width           =   255
       End
+   End
+   Begin VB.PictureBox PanelVideo 
+      BorderStyle     =   0  'None
+      Height          =   4965
+      Left            =   240
+      ScaleHeight     =   331
+      ScaleMode       =   3  'Pixel
+      ScaleWidth      =   504
+      TabIndex        =   14
+      Top             =   1800
+      Visible         =   0   'False
+      Width           =   7560
+      Begin VB.ComboBox cboLuces 
+         Height          =   315
+         ItemData        =   "frmOpciones.frx":01B8
+         Left            =   240
+         List            =   "frmOpciones.frx":01C5
+         TabIndex        =   22
+         Top             =   3720
+         Width           =   2175
+      End
+      Begin VB.Image num_comp_inv 
+         Height          =   255
+         Left            =   270
+         Top             =   3090
+         Width           =   255
+      End
+      Begin VB.Image chkItemsEnRender 
+         Height          =   255
+         Left            =   270
+         Top             =   2715
+         Width           =   255
+      End
+      Begin VB.Image Fullscreen 
+         Height          =   255
+         Left            =   270
+         Top             =   2310
+         Width           =   255
+      End
+      Begin VB.Image Respiracion 
+         Height          =   255
+         Left            =   270
+         Top             =   1905
+         Width           =   255
+      End
+      Begin VB.Image VSync 
+         Height          =   255
+         Left            =   270
+         Top             =   1500
+         Width           =   255
+      End
+      Begin VB.Image Check5 
+         Height          =   255
+         Left            =   270
+         Top             =   1095
+         Width           =   255
+      End
+      Begin VB.Image Check6 
+         Height          =   255
+         Left            =   270
+         Top             =   690
+         Width           =   255
+      End
+   End
+   Begin VB.Image Image1 
+      Height          =   255
+      Left            =   0
+      Top             =   0
+      Width           =   255
    End
    Begin VB.Image BtnSolapa 
       Height          =   420
@@ -632,7 +706,7 @@ Private Sub SetSolapa(Index As Integer, ByVal Tag As String)
         Case "2": estado = "default"
     End Select
     
-    BtnSolapa(Index).Picture = LoadInterface("boton-" & Name & "-es-" & estado & ".bmp")
+    BtnSolapa(Index).Picture = LoadInterface("boton-" & name & "-" & estado & ".bmp")
     BtnSolapa(Index).Tag = Tag
 
 End Sub
@@ -642,6 +716,64 @@ Private Sub cbBloqueoHechizos_Click()
     ModoHechizos = cbBloqueoHechizos.ListIndex
 
 End Sub
+
+
+Private Sub cbLenguaje_Click()
+
+    Dim message As String, title As String
+       
+    If cbLenguaje.ListIndex + 1 <> language Then
+       
+        Select Case cbLenguaje.ListIndex
+        
+            Case 0
+                message = "Para que los cambios surjan efecto deberá volver a abrir el cliente."
+                title = "Cambiar Idioma"
+            
+            Case 1
+                message = "You must restart the game to apply the changes."
+                title = "Change language"
+            
+        
+        End Select
+        
+        If MsgBox(message, vbYesNo, title) = vbYes Then
+            Call WriteVar(App.Path & "\..\Recursos\OUTPUT\Configuracion.ini", "OPCIONES", "Localization", cbLenguaje.ListIndex + 1)
+        End If
+    End If
+    
+End Sub
+
+Private Sub cboLuces_Click()
+
+    Call WriteVar(App.Path & "\..\Recursos\OUTPUT\Configuracion.ini", "VIDEO", "LuzGlobal", cboLuces.ListIndex)
+    selected_light = cboLuces.ListIndex
+End Sub
+
+
+
+Private Sub cbTutorial_Click()
+    If cbTutorial.ListIndex <> MostrarTutorial Then
+        MostrarTutorial = cbTutorial.ListIndex
+        If MostrarTutorial Then
+            Dim i As Long
+            
+            For i = 1 To UBound(tutorial)
+                Call WriteVar(App.Path & "\..\Recursos\OUTPUT\Configuracion.ini", "TUTORIAL" & i, "Activo", 1)
+                tutorial(i).Activo = 1
+            Next i
+        End If
+        Call WriteVar(App.Path & "\..\Recursos\OUTPUT\Configuracion.ini", "INITTUTORIAL", "MostrarTutorial", cbTutorial.ListIndex)
+    End If
+End Sub
+Private Sub cbRenderNpcs_Click()
+           
+    If cbRenderNpcs.ListIndex <> npcs_en_render Then
+        npcs_en_render = cbRenderNpcs.ListIndex
+        Call WriteVar(App.Path & "\..\Recursos\OUTPUT\Configuracion.ini", "OPCIONES", "NpcsEnRender", cbRenderNpcs.ListIndex)
+    End If
+End Sub
+
 
 Private Sub Check4_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
     
@@ -1039,10 +1171,17 @@ Private Sub Form_Load()
     PanelJugabilidad.Picture = LoadInterface("configuracion-jugabilidad.bmp")
     PanelVideo.Picture = LoadInterface("configuracion-video.bmp")
     PanelAudio.Picture = LoadInterface("configuracion-audio.bmp")
+    
+    
+    selected_light = GetVar(App.Path & "\..\Recursos\OUTPUT\Configuracion.ini", "VIDEO", "LuzGlobal")
+    
+    If LenB(selected_light) = 0 Then selected_light = 0
+    
+    cboLuces.ListIndex = selected_light
 
-    BtnSolapa(0).Picture = LoadInterface("boton-jugabilidad-es-default.bmp")
-    BtnSolapa(1).Picture = LoadInterface("boton-video-es-off.bmp")
-    BtnSolapa(2).Picture = LoadInterface("boton-audio-es-off.bmp")
+    BtnSolapa(0).Picture = LoadInterface("boton-jugabilidad-default.bmp")
+    BtnSolapa(1).Picture = LoadInterface("boton-video-off.bmp")
+    BtnSolapa(2).Picture = LoadInterface("boton-audio-off.bmp")
 
     Exit Sub
 
@@ -1516,6 +1655,7 @@ Private Sub VSync_Click()
     prgRun = True
     pausa = False
     QueRender = 0
+     FramesPerSecCounter = 60
     
     If VSyncActivado Then
         VSync.Picture = LoadInterface("check-amarillo.bmp")

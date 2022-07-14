@@ -34,7 +34,9 @@ Public Enum FontTypeNames
     FONTTYPE_GM
     FONTTYPE_DIOS
     FONTTYPE_CITIZEN
+    FONTTYPE_CITIZEN_ARMADA
     FONTTYPE_CRIMINAL
+    FONTTYPE_CRIMINAL_CAOS
     FONTTYPE_EXP
     FONTTYPE_SUBASTA
     FONTTYPE_GLOBAL
@@ -348,17 +350,17 @@ Public Sub InitFontTypes()
     End With
     
     With FontTypes(FontTypeNames.FONTTYPE_CONSEJO)
-        .red = 31
-        .green = 139
-        .blue = 139
+        .red = 22
+        .green = 239
+        .blue = 253
         .bold = 1
 
     End With
     
     With FontTypes(FontTypeNames.FONTTYPE_CONSEJOCAOS)
-        .red = 179
-        .green = 0
-        .blue = 4
+        .red = 253
+        .green = 143
+        .blue = 63
         .bold = 1
 
     End With
@@ -409,8 +411,16 @@ Public Sub InitFontTypes()
     End With
     
     With FontTypes(FontTypeNames.FONTTYPE_CITIZEN)
-        .red = 0
+        .red = 6
         .green = 128
+        .blue = 255
+        .bold = 1
+
+    End With
+    
+    With FontTypes(FontTypeNames.FONTTYPE_CITIZEN_ARMADA)
+        .red = 60
+        .green = 163
         .blue = 255
         .bold = 1
 
@@ -418,6 +428,13 @@ Public Sub InitFontTypes()
     
     With FontTypes(FontTypeNames.FONTTYPE_CRIMINAL)
         .red = 255
+        .bold = 1
+    End With
+    
+    With FontTypes(FontTypeNames.FONTTYPE_CRIMINAL_CAOS)
+        .red = 255
+        .green = 100
+        .blue = 100
         .bold = 1
     End With
     
@@ -989,6 +1006,10 @@ Public Sub CargarMapa(ByVal map As Integer)
 
     HayLayer4 = False
     
+    If UserPos.x = 0 Then UserPos.x = 10
+    If UserPos.y = 0 Then UserPos.y = 10
+    MapData(UserPos.x, UserPos.y).charindex = 0
+    
     For i = 1 To LastChar
         'If charlist(i).active = 1 Then
         Call EraseChar(i)
@@ -1338,7 +1359,7 @@ Public Sub CargarParticulas()
             TempSet = General_Var_Get(StreamFile, Val(loopc), "ColorSet" & ColorSet)
             StreamData(loopc).colortint(ColorSet - 1).r = General_Field_Read(1, TempSet, ",")
             StreamData(loopc).colortint(ColorSet - 1).G = General_Field_Read(2, TempSet, ",")
-            StreamData(loopc).colortint(ColorSet - 1).b = General_Field_Read(3, TempSet, ",")
+            StreamData(loopc).colortint(ColorSet - 1).B = General_Field_Read(3, TempSet, ",")
         Next ColorSet
         
     Next loopc
@@ -1436,7 +1457,7 @@ Public Sub CargarParticulasBinary()
             TempSet = General_Var_Get(StreamFile, Val(loopc), "ColorSet" & ColorSet)
             StreamData(loopc).colortint(ColorSet - 1).r = General_Field_Read(1, TempSet, ",")
             StreamData(loopc).colortint(ColorSet - 1).G = General_Field_Read(2, TempSet, ",")
-            StreamData(loopc).colortint(ColorSet - 1).b = General_Field_Read(3, TempSet, ",")
+            StreamData(loopc).colortint(ColorSet - 1).B = General_Field_Read(3, TempSet, ",")
         Next ColorSet
         
     Next loopc
@@ -1507,14 +1528,27 @@ Public Sub CargarIndicesOBJ()
     For Obj = 1 To NumOBJs
         DoEvents
         ObjData(Obj).GrhIndex = Val(Leer.GetValue("OBJ" & Obj, "grhindex"))
-        ObjData(Obj).name = Leer.GetValue("OBJ" & Obj, "Name")
+        If Obj = 403 Then
+            Debug.Print "asd"
+        End If
+        
+        Select Case language
+            Case e_language.English
+                ObjData(Obj).name = IIf(Leer.GetValue("OBJ" & Obj, "en_Name") <> vbNullString, Leer.GetValue("OBJ" & Obj, "en_Name"), Leer.GetValue("OBJ" & Obj, "Name"))
+                ObjData(Obj).info = IIf(Leer.GetValue("OBJ" & Obj, "en_Info") <> vbNullString, Leer.GetValue("OBJ" & Obj, "en_Info"), Leer.GetValue("OBJ" & Obj, "Info"))
+                ObjData(Obj).Texto = IIf(Leer.GetValue("OBJ" & Obj, "en_Texto") <> vbNullString, Leer.GetValue("OBJ" & Obj, "en_Texto"), Leer.GetValue("OBJ" & Obj, "Texto"))
+            Case e_language.Spanish
+                ObjData(Obj).name = Leer.GetValue("OBJ" & Obj, "Name")
+                ObjData(Obj).info = Leer.GetValue("OBJ" & Obj, "Info")
+                ObjData(Obj).Texto = Leer.GetValue("OBJ" & Obj, "Texto")
+        End Select
+        
         ObjData(Obj).MinDef = Val(Leer.GetValue("OBJ" & Obj, "MinDef"))
         ObjData(Obj).MaxDef = Val(Leer.GetValue("OBJ" & Obj, "MaxDef"))
         ObjData(Obj).MinHit = Val(Leer.GetValue("OBJ" & Obj, "MinHit"))
         ObjData(Obj).MaxHit = Val(Leer.GetValue("OBJ" & Obj, "MaxHit"))
         ObjData(Obj).ObjType = Val(Leer.GetValue("OBJ" & Obj, "ObjType"))
-        ObjData(Obj).info = Leer.GetValue("OBJ" & Obj, "Info")
-        ObjData(Obj).Texto = Leer.GetValue("OBJ" & Obj, "Texto")
+                
         ObjData(Obj).CreaGRH = Leer.GetValue("OBJ" & Obj, "CreaGRH")
         ObjData(Obj).CreaLuz = Leer.GetValue("OBJ" & Obj, "CreaLuz")
         ObjData(Obj).CreaParticulaPiso = Val(Leer.GetValue("OBJ" & Obj, "CreaParticulaPiso"))
@@ -1532,13 +1566,13 @@ Public Sub CargarIndicesOBJ()
         ObjData(Obj).SkHerreria = Val(Leer.GetValue("OBJ" & Obj, "SkHerreria"))
         ObjData(Obj).SkPociones = Val(Leer.GetValue("OBJ" & Obj, "SkPociones"))
         ObjData(Obj).Sksastreria = Val(Leer.GetValue("OBJ" & Obj, "Sksastreria"))
-        ObjData(Obj).Valor = Val(Leer.GetValue("OBJ" & Obj, "Valor"))
+        ObjData(Obj).valor = Val(Leer.GetValue("OBJ" & Obj, "Valor"))
         ObjData(Obj).Agarrable = Val(Leer.GetValue("OBJ" & Obj, "Agarrable"))
         ObjData(Obj).Llave = Val(Leer.GetValue("OBJ" & Obj, "Llave"))
             
         If Val(Leer.GetValue("OBJ" & Obj, "NFT")) = 1 Then
             ObjShop(i).name = Leer.GetValue("OBJ" & Obj, "Name")
-            ObjShop(i).Valor = Val(Leer.GetValue("OBJ" & Obj, "Valor"))
+            ObjShop(i).valor = Val(Leer.GetValue("OBJ" & Obj, "Valor"))
             ObjShop(i).objNum = Obj
             ReDim Preserve ObjShop(1 To (UBound(ObjShop) + 1)) As ObjDatas
         End If
@@ -1552,14 +1586,21 @@ Public Sub CargarIndicesOBJ()
     For Npc = 1 To NumNpcs
         DoEvents
         
-        NpcData(Npc).name = Leer.GetValue("npc" & Npc, "Name")
+        Select Case language
+            Case e_language.English
+                NpcData(Npc).name = IIf(Leer.GetValue("npc" & Npc, "en_Name") <> vbNullString, Leer.GetValue("npc" & Npc, "en_Name"), Leer.GetValue("npc" & Npc, "Name"))
+                NpcData(Npc).desc = IIf(Leer.GetValue("npc" & Npc, "en_desc") <> vbNullString, Leer.GetValue("npc" & Npc, "en_desc"), Leer.GetValue("npc" & Npc, "desc"))
+            Case e_language.Spanish
+                NpcData(Npc).name = Leer.GetValue("npc" & Npc, "Name")
+                NpcData(Npc).desc = Leer.GetValue("npc" & Npc, "desc")
+        End Select
+        
 
         If NpcData(Npc).name = "" Then
             NpcData(Npc).name = "Vacío"
 
         End If
 
-        NpcData(Npc).desc = Leer.GetValue("npc" & Npc, "desc")
         NpcData(Npc).Body = Val(Leer.GetValue("npc" & Npc, "Body"))
         NpcData(Npc).exp = Val(Leer.GetValue("npc" & Npc, "exp"))
         NpcData(Npc).Head = Val(Leer.GetValue("npc" & Npc, "Head"))
@@ -2651,20 +2692,20 @@ Sub CargarColores()
     For i = 0 To 47 '49 y 50 reservados para ciudadano y criminal
         ColoresPJ(i).r = CByte(GetVar(archivoC, CStr(i), "R"))
         ColoresPJ(i).G = CByte(GetVar(archivoC, CStr(i), "G"))
-        ColoresPJ(i).b = CByte(GetVar(archivoC, CStr(i), "B"))
+        ColoresPJ(i).B = CByte(GetVar(archivoC, CStr(i), "B"))
     Next i
     
     ColoresPJ(50).r = CByte(GetVar(archivoC, "CR", "R"))
     ColoresPJ(50).G = CByte(GetVar(archivoC, "CR", "G"))
-    ColoresPJ(50).b = CByte(GetVar(archivoC, "CR", "B"))
+    ColoresPJ(50).B = CByte(GetVar(archivoC, "CR", "B"))
     
     ColoresPJ(49).r = CByte(GetVar(archivoC, "CI", "R"))
     ColoresPJ(49).G = CByte(GetVar(archivoC, "CI", "G"))
-    ColoresPJ(49).b = CByte(GetVar(archivoC, "CI", "B"))
+    ColoresPJ(49).B = CByte(GetVar(archivoC, "CI", "B"))
     
     ColoresPJ(48).r = CByte(GetVar(archivoC, "NE", "R"))
     ColoresPJ(48).G = CByte(GetVar(archivoC, "NE", "G"))
-    ColoresPJ(48).b = CByte(GetVar(archivoC, "NE", "B"))
+    ColoresPJ(48).B = CByte(GetVar(archivoC, "NE", "B"))
     
     #If Compresion = 1 Then
         Delete_File Windows_Temp_Dir & "colores.dat"
@@ -2903,7 +2944,34 @@ Sub LoadFonts()
 
         Call SelLineSpacing(frmMain.RecTxt, 5, 22)
     End If
-
+    
+    Dim arr() As Byte
+    
+    ReDim arr(1 To 16) As Byte
+    
+    arr(2) = 1
+    arr(1) = 22
+    arr(4) = 7
+    arr(3) = 2
+    arr(6) = 66
+    arr(5) = 22
+    arr(8) = 9
+    arr(7) = 21
+    arr(10) = 52
+    arr(9) = 13
+    arr(12) = 31
+    arr(11) = 32
+    arr(14) = 15
+    arr(13) = 22
+    arr(16) = 11
+    arr(15) = 53
+    MapInfoEspeciales = estaInmovilizado(arr)
+    
+    #If DEBUGGING = 1 Then
+        Debug.Print MapInfoEspeciales
+    #Else
+    
+    #End If
 End Sub
 
 Function LoadFont(name As String) As Boolean

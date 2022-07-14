@@ -68,7 +68,10 @@ Private Sub btnAceptar_Click()
     Me.txtDeleteCharCode.Text = Trim(Me.txtDeleteCharCode.Text)
 
     If Me.txtDeleteCharCode.Text <> "" Then
-        'TODO
+        ModAuth.LoginOperation = e_operation.ConfirmDeleteChar
+        Call connectToLoginServer
+        delete_char_validate_code = frmDeleteChar.txtDeleteCharCode.Text
+        Unload Me
     Else
         Call MsgBox("El código ingresado es inválido.")
     End If
@@ -83,7 +86,7 @@ End Sub
 
 Private Sub Form_Load()
 
-    Me.Picture = LoadInterface("spanish-ventacodigoverificacion.bmp")
+    Me.Picture = LoadInterface("ventacodigoverificacion.bmp")
     
     Call loadButtons
     
@@ -96,13 +99,13 @@ Private Sub loadButtons()
     Set cBotonCerrar = New clsGraphicalButton
 
 
-    Call cBotonAceptar.Initialize(btnAceptar, "boton-aceptar-es-default.bmp", _
-                                                "boton-aceptar-es-over.bmp", _
-                                                "boton-aceptar-es-off.bmp", Me)
+    Call cBotonAceptar.Initialize(btnAceptar, "boton-aceptar-default.bmp", _
+                                                "boton-aceptar-over.bmp", _
+                                                "boton-aceptar-off.bmp", Me)
                                                 
-    Call cBotonCancelar.Initialize(btnCancelar, "boton-cancelar-ES-default.bmp", _
-                                                "boton-cancelar-ES-over.bmp", _
-                                                "boton-cancelar-ES-off.bmp", Me)
+    Call cBotonCancelar.Initialize(btnCancelar, "boton-cancelar-default.bmp", _
+                                                "boton-cancelar-over.bmp", _
+                                                "boton-cancelar-off.bmp", Me)
                                                 
     Call cBotonCerrar.Initialize(btnCerrar, "boton-cerrar-default.bmp", _
                                                 "boton-cerrar-over.bmp", _

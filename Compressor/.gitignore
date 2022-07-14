@@ -1,0 +1,17 @@
+cuentas/*
+Logs/*
+Charfile/*
+*.log
+Foros/*
+WorldBackup/*
+Guilds/*
+Codigo/*.log
+.DS_Store
+*.vbw
+*.csi
+*.OBJ
+*.lvw
+*.csi
+bkNpcs.dat
+Compressor.exe
+Guilds/guildsinfo.inf

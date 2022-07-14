@@ -1,5 +1,12 @@
 Attribute VB_Name = "Hogar"
-
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
 Option Explicit
 
 'Cantidad de Ciudades
@@ -7,7 +14,7 @@ Public Const NUMCIUDADES    As Byte = 6
 
 Public Ciudades(1 To NUMCIUDADES)         As t_WorldPos
 
-Public Sub goHome(ByVal userindex As Integer)
+Public Sub goHome(ByVal UserIndex As Integer)
         '***************************************************
         'Author: Budi
         'Last Modification: 01/06/2010
@@ -16,18 +23,18 @@ Public Sub goHome(ByVal userindex As Integer)
         
         On Error GoTo goHome_Err
         
-100     With UserList(userindex)
+100     With UserList(UserIndex)
 
 102         If .flags.Muerto = 1 Then
 
-104             If EsGM(userindex) Then
+104             If EsGM(UserIndex) Then
 106                 .Counters.TimerBarra = 5
                 Else
 108                 .Counters.TimerBarra = 210
                 End If
-110             Call SendData(SendTarget.ToPCArea, userindex, PrepareMessageParticleFX(.Char.CharIndex, e_ParticulasIndex.Runa, .Counters.TimerBarra * 100, False))
-112             Call SendData(SendTarget.ToPCArea, userindex, PrepareMessageBarFx(.Char.CharIndex, .Counters.TimerBarra, e_AccionBarra.Hogar))
-                Call WriteConsoleMsg(userindex, "Volverás a tu hogar en " & .Counters.TimerBarra & " segundos.", e_FontTypeNames.FONTTYPE_New_Gris)
+110             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageParticleFX(.Char.CharIndex, e_ParticulasIndex.Runa, .Counters.TimerBarra * 100, False))
+112             Call SendData(SendTarget.ToPCArea, UserIndex, PrepareMessageBarFx(.Char.CharIndex, .Counters.TimerBarra, e_AccionBarra.Hogar))
+                Call WriteConsoleMsg(UserIndex, "Volverás a tu hogar en " & .Counters.TimerBarra & " segundos.", e_FontTypeNames.FONTTYPE_New_Gris)
                     
 114             .Accion.Particula = e_ParticulasIndex.Runa
 116             .Accion.AccionPendiente = True
@@ -35,7 +42,7 @@ Public Sub goHome(ByVal userindex As Integer)
             
             Else
         
-120             Call WriteConsoleMsg(userindex, "Debes estar muerto para poder utilizar este comando.", e_FontTypeNames.FONTTYPE_FIGHT)
+120             Call WriteConsoleMsg(UserIndex, "Debes estar muerto para poder utilizar este comando.", e_FontTypeNames.FONTTYPE_FIGHT)
 
             End If
         
@@ -57,7 +64,7 @@ End Sub
 ' @param UserIndex  El index del usuario a ser afectado por el /hogar
 '
 
-Public Sub TravelingEffect(ByVal userindex As Integer)
+Public Sub TravelingEffect(ByVal UserIndex As Integer)
         '******************************************************
         'Author: ZaMa
         'Last Update: 01/06/2010 (ZaMa)
@@ -68,8 +75,8 @@ Public Sub TravelingEffect(ByVal userindex As Integer)
         
 
         ' Si ya paso el tiempo de penalizacion
-100     If IntervaloGoHome(userindex) Then
-102         Call HomeArrival(userindex)
+100     If IntervaloGoHome(UserIndex) Then
+102         Call HomeArrival(UserIndex)
         End If
 
         
@@ -82,7 +89,7 @@ TravelingEffect_Err:
 End Sub
 
 
-Public Sub HomeArrival(ByVal userindex As Integer)
+Public Sub HomeArrival(ByVal UserIndex As Integer)
         '**************************************************************
         'Author: ZaMa
         'Last Modify by: ZaMa
@@ -98,7 +105,7 @@ Public Sub HomeArrival(ByVal userindex As Integer)
         Dim tY   As Integer
         Dim tMap As Integer
 
-100     With UserList(userindex)
+100     With UserList(UserIndex)
 
             'Antes de que el pj llegue a la ciudad, lo hacemos dejar de navegar para que no se buguee.
 102         If .flags.Navegando = 1 Then
@@ -110,7 +117,7 @@ Public Sub HomeArrival(ByVal userindex As Integer)
             
 114             .flags.Navegando = 0
             
-116             Call WriteNavigateToggle(userindex)
+116             Call WriteNavigateToggle(UserIndex)
 
                 'Le sacamos el navegando, pero no le mostramos a los demas porque va a ser sumoneado hasta ulla.
             End If
@@ -119,10 +126,10 @@ Public Sub HomeArrival(ByVal userindex As Integer)
 120         tY = Ciudades(.Hogar).Y
 122         tMap = Ciudades(.Hogar).Map
         
-124         Call FindLegalPos(userindex, tMap, CByte(tX), CByte(tY))
-126         Call WarpUserChar(userindex, tMap, tX, tY, True)
+124         Call FindLegalPos(UserIndex, tMap, CByte(tX), CByte(tY))
+126         Call WarpUserChar(UserIndex, tMap, tX, tY, True)
         
-128         Call WriteConsoleMsg(userindex, "Has regresado a tu ciudad de origen.", e_FontTypeNames.FONTTYPE_WARNING)
+128         Call WriteConsoleMsg(UserIndex, "Has regresado a tu ciudad de origen.", e_FontTypeNames.FONTTYPE_WARNING)
         
 130         .flags.Traveling = 0
 132         .Counters.goHome = 0
@@ -138,7 +145,7 @@ HomeArrival_Err:
         
 End Sub
 
-Public Function IntervaloGoHome(ByVal userindex As Integer, _
+Public Function IntervaloGoHome(ByVal UserIndex As Integer, _
                                 Optional ByVal TimeInterval As Long, _
                                 Optional ByVal Actualizar As Boolean = False) As Boolean
         
@@ -156,7 +163,7 @@ Public Function IntervaloGoHome(ByVal userindex As Integer, _
         Dim TActual As Long
 100         TActual = GetTickCount()
     
-102     With UserList(userindex)
+102     With UserList(UserIndex)
 
             ' Inicializa el timer
 104         If Actualizar Then

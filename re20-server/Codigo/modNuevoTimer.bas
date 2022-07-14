@@ -1,5 +1,12 @@
 Attribute VB_Name = "modNuevoTimer"
-
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
 'Argentum Online 0.11.6
 'Copyright (C) 2002 Márquez Pablo Ignacio
 '
@@ -37,7 +44,7 @@ Option Explicit
 '
 
 ' CASTING DE HECHIZOS
-Public Function IntervaloPermiteLanzarSpell(ByVal userindex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
+Public Function IntervaloPermiteLanzarSpell(ByVal UserIndex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
         
         On Error GoTo IntervaloPermiteLanzarSpell_Err
         
@@ -46,11 +53,11 @@ Public Function IntervaloPermiteLanzarSpell(ByVal userindex As Integer, Optional
 
 100     TActual = GetTickCount()
 
-102     If TActual - UserList(userindex).Counters.TimerLanzarSpell >= UserList(userindex).Intervals.Magia Then
+102     If TActual - UserList(UserIndex).Counters.TimerLanzarSpell >= UserList(UserIndex).Intervals.Magia Then
 104         If Actualizar Then
-106             UserList(userindex).Counters.TimerLanzarSpell = TActual
+106             UserList(UserIndex).Counters.TimerLanzarSpell = TActual
                 ' Actualizo spell-attack
-108             UserList(userindex).Counters.TimerMagiaGolpe = TActual
+108             UserList(UserIndex).Counters.TimerMagiaGolpe = TActual
 
             End If
 
@@ -69,7 +76,7 @@ IntervaloPermiteLanzarSpell_Err:
         
 End Function
 
-Public Function IntervaloPermiteAtacar(ByVal userindex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
+Public Function IntervaloPermiteAtacar(ByVal UserIndex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
         
         On Error GoTo IntervaloPermiteAtacar_Err
         
@@ -78,13 +85,13 @@ Public Function IntervaloPermiteAtacar(ByVal userindex As Integer, Optional ByVa
 
 100     TActual = GetTickCount()
 
-102     If TActual - UserList(userindex).Counters.TimerPuedeAtacar >= UserList(userindex).Intervals.Golpe Then
+102     If TActual - UserList(UserIndex).Counters.TimerPuedeAtacar >= UserList(UserIndex).Intervals.Golpe Then
 104         If Actualizar Then
-106             UserList(userindex).Counters.TimerPuedeAtacar = TActual
+106             UserList(UserIndex).Counters.TimerPuedeAtacar = TActual
                 ' Actualizo attack-spell
-108             UserList(userindex).Counters.TimerGolpeMagia = TActual
+108             UserList(UserIndex).Counters.TimerGolpeMagia = TActual
                 ' Actualizo attack-use
-110             UserList(userindex).Counters.TimerGolpeUsar = TActual
+110             UserList(UserIndex).Counters.TimerGolpeUsar = TActual
 
             End If
 
@@ -103,7 +110,7 @@ IntervaloPermiteAtacar_Err:
         
 End Function
 
-Public Function IntervaloPermiteTirar(ByVal userindex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
+Public Function IntervaloPermiteTirar(ByVal UserIndex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
         
         On Error GoTo IntervaloPermiteTirar_Err
         
@@ -112,9 +119,9 @@ Public Function IntervaloPermiteTirar(ByVal userindex As Integer, Optional ByVal
     
 100     TActual = GetTickCount()
     
-102     If TActual - UserList(userindex).Counters.TimerTirar >= IntervaloTirar Then
+102     If TActual - UserList(UserIndex).Counters.TimerTirar >= IntervaloTirar Then
 104         If Actualizar Then
-106             UserList(userindex).Counters.TimerTirar = TActual
+106             UserList(UserIndex).Counters.TimerTirar = TActual
 
             End If
 
@@ -133,7 +140,7 @@ IntervaloPermiteTirar_Err:
         
 End Function
 
-Public Function IntervaloPermiteMagiaGolpe(ByVal userindex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
+Public Function IntervaloPermiteMagiaGolpe(ByVal UserIndex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
         
         On Error GoTo IntervaloPermiteMagiaGolpe_Err
         
@@ -142,9 +149,9 @@ Public Function IntervaloPermiteMagiaGolpe(ByVal userindex As Integer, Optional 
 
 100     TActual = GetTickCount()
     
-102     If TActual - UserList(userindex).Counters.TimerLanzarSpell >= UserList(userindex).Intervals.MagiaGolpe Then
+102     If TActual - UserList(UserIndex).Counters.TimerLanzarSpell >= UserList(UserIndex).Intervals.MagiaGolpe Then
 104         If Actualizar Then
-106             UserList(userindex).Counters.TimerMagiaGolpe = TActual
+106             UserList(UserIndex).Counters.TimerMagiaGolpe = TActual
 
             End If
 
@@ -163,7 +170,7 @@ IntervaloPermiteMagiaGolpe_Err:
         
 End Function
 
-Public Function IntervaloPermiteGolpeMagia(ByVal userindex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
+Public Function IntervaloPermiteGolpeMagia(ByVal UserIndex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
         
         On Error GoTo IntervaloPermiteGolpeMagia_Err
         
@@ -172,9 +179,9 @@ Public Function IntervaloPermiteGolpeMagia(ByVal userindex As Integer, Optional 
 
 100     TActual = GetTickCount()
     
-102     If TActual - UserList(userindex).Counters.TimerGolpeMagia >= UserList(userindex).Intervals.GolpeMagia Then
+102     If TActual - UserList(UserIndex).Counters.TimerGolpeMagia >= UserList(UserIndex).Intervals.GolpeMagia Then
 104         If Actualizar Then
-106             UserList(userindex).Counters.TimerGolpeMagia = TActual
+106             UserList(UserIndex).Counters.TimerGolpeMagia = TActual
 
             End If
 
@@ -193,7 +200,7 @@ IntervaloPermiteGolpeMagia_Err:
         
 End Function
 
-Public Function IntervaloPermiteGolpeUsar(ByVal userindex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
+Public Function IntervaloPermiteGolpeUsar(ByVal UserIndex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
         
         On Error GoTo IntervaloPermiteGolpeUsar_Err
         
@@ -202,9 +209,9 @@ Public Function IntervaloPermiteGolpeUsar(ByVal userindex As Integer, Optional B
 
 100     TActual = GetTickCount()
     
-102     If TActual - UserList(userindex).Counters.TimerGolpeUsar >= UserList(userindex).Intervals.GolpeUsar Then
+102     If TActual - UserList(UserIndex).Counters.TimerGolpeUsar >= UserList(UserIndex).Intervals.GolpeUsar Then
 104         If Actualizar Then
-106             UserList(userindex).Counters.TimerGolpeUsar = TActual
+106             UserList(UserIndex).Counters.TimerGolpeUsar = TActual
 
             End If
 
@@ -224,7 +231,7 @@ IntervaloPermiteGolpeUsar_Err:
 End Function
 
 ' TRABAJO
-Public Function IntervaloPermiteTrabajarExtraer(ByVal userindex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
+Public Function IntervaloPermiteTrabajarExtraer(ByVal UserIndex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
         
         On Error GoTo IntervaloPermiteTrabajar_Err
         
@@ -233,8 +240,8 @@ Public Function IntervaloPermiteTrabajarExtraer(ByVal userindex As Integer, Opti
 
 100     TActual = GetTickCount()
 
-102     If TActual - UserList(userindex).Counters.TimerPuedeTrabajar >= UserList(userindex).Intervals.TrabajarExtraer Then
-104         If Actualizar Then UserList(userindex).Counters.TimerPuedeTrabajar = TActual
+102     If TActual - UserList(UserIndex).Counters.TimerPuedeTrabajar >= UserList(UserIndex).Intervals.TrabajarExtraer Then
+104         If Actualizar Then UserList(UserIndex).Counters.TimerPuedeTrabajar = TActual
 106         IntervaloPermiteTrabajarExtraer = True
         Else
 108         IntervaloPermiteTrabajarExtraer = False
@@ -250,7 +257,7 @@ IntervaloPermiteTrabajar_Err:
         
 End Function
 
-Public Function IntervaloPermiteTrabajarConstruir(ByVal userindex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
+Public Function IntervaloPermiteTrabajarConstruir(ByVal UserIndex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
         
         On Error GoTo IntervaloPermiteTrabajar_Err
         
@@ -259,8 +266,8 @@ Public Function IntervaloPermiteTrabajarConstruir(ByVal userindex As Integer, Op
 
 100     TActual = GetTickCount()
 
-102     If TActual - UserList(userindex).Counters.TimerPuedeTrabajar >= UserList(userindex).Intervals.TrabajarConstruir Then
-104         If Actualizar Then UserList(userindex).Counters.TimerPuedeTrabajar = TActual
+102     If TActual - UserList(UserIndex).Counters.TimerPuedeTrabajar >= UserList(UserIndex).Intervals.TrabajarConstruir Then
+104         If Actualizar Then UserList(UserIndex).Counters.TimerPuedeTrabajar = TActual
 106         IntervaloPermiteTrabajarConstruir = True
         Else
 108         IntervaloPermiteTrabajarConstruir = False
@@ -277,7 +284,7 @@ IntervaloPermiteTrabajar_Err:
 End Function
 
 ' USAR OBJETOS CON U
-Public Function IntervaloPermiteUsar(ByVal userindex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
+Public Function IntervaloPermiteUsar(ByVal UserIndex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
         
         On Error GoTo IntervaloPermiteUsar_Err
         
@@ -286,8 +293,8 @@ Public Function IntervaloPermiteUsar(ByVal userindex As Integer, Optional ByVal 
 
 100     TActual = GetTickCount()
 
-102     If TActual - UserList(userindex).Counters.TimerUsar >= UserList(userindex).Intervals.UsarU Then
-104         If Actualizar Then UserList(userindex).Counters.TimerUsar = TActual
+102     If TActual - UserList(UserIndex).Counters.TimerUsar >= UserList(UserIndex).Intervals.UsarU Then
+104         If Actualizar Then UserList(UserIndex).Counters.TimerUsar = TActual
 106         IntervaloPermiteUsar = True
         Else
 108         IntervaloPermiteUsar = False
@@ -303,7 +310,7 @@ IntervaloPermiteUsar_Err:
         
 End Function
 ' USAR OBJETOS CON CLICK
-Public Function IntervaloPermiteUsarClick(ByVal userindex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
+Public Function IntervaloPermiteUsarClick(ByVal UserIndex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
 '**
 'Author: Unknown
 'Last Modification: 25/01/2010 (ZaMa)
@@ -313,9 +320,9 @@ Public Function IntervaloPermiteUsarClick(ByVal userindex As Integer, Optional B
     Dim TActual As Long
     TActual = GetTickCount() And &H7FFFFFFF
 
-    If TActual - UserList(userindex).Counters.TimerUsarClick >= UserList(userindex).Intervals.UsarClic Then
+    If TActual - UserList(UserIndex).Counters.TimerUsarClick >= UserList(UserIndex).Intervals.UsarClic Then
         If Actualizar Then
-            UserList(userindex).Counters.TimerUsarClick = TActual
+            UserList(UserIndex).Counters.TimerUsarClick = TActual
         End If
         IntervaloPermiteUsarClick = True
     Else
@@ -323,7 +330,7 @@ Public Function IntervaloPermiteUsarClick(ByVal userindex As Integer, Optional B
     End If
 
 End Function
-Public Function IntervaloPermiteUsarArcos(ByVal userindex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
+Public Function IntervaloPermiteUsarArcos(ByVal UserIndex As Integer, Optional ByVal Actualizar As Boolean = True) As Boolean
         
         On Error GoTo IntervaloPermiteUsarArcos_Err
         
@@ -332,12 +339,12 @@ Public Function IntervaloPermiteUsarArcos(ByVal userindex As Integer, Optional B
     
 100     TActual = GetTickCount()
     
-102     If TActual - UserList(userindex).Counters.TimerPuedeUsarArco >= UserList(userindex).Intervals.Arco Then
+102     If TActual - UserList(UserIndex).Counters.TimerPuedeUsarArco >= UserList(UserIndex).Intervals.Arco Then
 104         If Actualizar Then
-106             UserList(userindex).Counters.TimerPuedeUsarArco = TActual
+106             UserList(UserIndex).Counters.TimerPuedeUsarArco = TActual
                 ' Tambien actualizo los otros
-108             UserList(userindex).Counters.TimerPuedeAtacar = TActual
-110             UserList(userindex).Counters.TimerLanzarSpell = TActual
+108             UserList(UserIndex).Counters.TimerPuedeAtacar = TActual
+110             UserList(UserIndex).Counters.TimerLanzarSpell = TActual
 
             End If
 
@@ -356,7 +363,7 @@ IntervaloPermiteUsarArcos_Err:
         
 End Function
 
-Public Function IntervaloPermiteCaminar(ByVal userindex As Integer) As Boolean
+Public Function IntervaloPermiteCaminar(ByVal UserIndex As Integer) As Boolean
         
         On Error GoTo IntervaloPermiteCaminar_Err
         
@@ -365,10 +372,10 @@ Public Function IntervaloPermiteCaminar(ByVal userindex As Integer) As Boolean
     
 100     TActual = GetTickCount()
     
-102     If TActual - UserList(userindex).Counters.TimerCaminar >= UserList(userindex).Intervals.Caminar Then
+102     If TActual - UserList(UserIndex).Counters.TimerCaminar >= UserList(UserIndex).Intervals.Caminar Then
         
             '  Call AddtoRichTextBox(frmMain.RecTxt, "Usar OK.", 255, 0, 0, True, False, False)
-104         UserList(userindex).Counters.TimerCaminar = TActual
+104         UserList(UserIndex).Counters.TimerCaminar = TActual
 106         IntervaloPermiteCaminar = True
         Else
 108         IntervaloPermiteCaminar = False

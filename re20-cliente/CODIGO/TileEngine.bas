@@ -40,6 +40,7 @@ Public Const MAX_INTENTOS As Byte = 5
 Public intentosPesca(1 To MAX_INTENTOS) As Byte
 Public PuedeIntentar As Boolean
 Public PescandoEspecial As Boolean
+Public MostrarTutorial As Boolean
 Public Const BarWidth As Long = 199
 Public PosicionBarra As Single
 Public ContadorIntentosPescaEspecial_Acertados As Long
@@ -297,6 +298,9 @@ Public Type Char
     clan_index As Integer
     clan_nivel As Byte
     tipoUsuario As eTipoUsuario
+    teamCaptura As Byte
+    banderaIndex As Byte
+    AnimAtaque1 As Integer
 
 End Type
 
@@ -394,6 +398,7 @@ Public CurMap                  As Integer 'Mapa actual
 Public userIndex               As Integer
 
 Public UserMoving              As Boolean
+Public CharindexSeguido        As Integer
 Public UserBody                As Integer
 Public UserHead                As Integer
 Public UserPos                 As Position 'Posicion
@@ -554,8 +559,6 @@ Public Sub Init_TileEngine()
 
     ReDim MapData(XMinMapSize To XMaxMapSize, YMinMapSize To YMaxMapSize) As MapBlock
     
-    UserPos.x = 50
-    UserPos.y = 50
     
     MinXBorder = XMinMapSize + (frmMain.renderer.ScaleWidth \ 64)
     MaxXBorder = XMaxMapSize - (frmMain.renderer.ScaleWidth \ 64)
@@ -703,7 +706,7 @@ Sub DoPasosFx(ByVal charindex As Integer)
 
         With charlist(charindex)
 
-            If Not .Muerto And EstaPCarea(charindex) And .priv <= charlist(UserCharIndex).priv Then
+            If Not .Muerto And EstaPCarea(charindex) And .priv <= charlist(UserCharIndex).priv And charlist(UserCharIndex).Muerto = False Then
                 If .Speeding > 1.3 Then
                    
                     Call Sound.Sound_Play(Pasos(CONST_CABALLO).wav(1), , Sound.Calculate_Volume(.Pos.x, .Pos.y), Sound.Calculate_Pan(.Pos.x, .Pos.y))
@@ -731,7 +734,7 @@ Sub DoPasosFx(ByVal charindex As Integer)
 
     Else
 
-        If FxNavega Then
+        If FxNavega And charlist(UserCharIndex).Muerto = False Then
             Call Sound.Sound_Play(SND_NAVEGANDO)
 
             '  Call Audio.PlayWave(SND_NAVEGANDO, charlist(charindex).Pos.x, charlist(charindex).Pos.y)

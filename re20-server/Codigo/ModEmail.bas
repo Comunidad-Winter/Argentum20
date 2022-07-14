@@ -1,5 +1,12 @@
 Attribute VB_Name = "ModCuentas"
-
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
 Option Explicit
 
 Public Function GetUserGuildIndex(ByVal UserName As String) As Integer
@@ -27,23 +34,23 @@ GetUserGuildIndex_Err:
 
 End Function
 
-Public Function ObtenerCriminal(ByVal name As String) As Byte
+Public Function ObtenerCriminal(ByVal Name As String) As Byte
 
         On Error GoTo ErrorHandler
     
         Dim Criminal As Byte
 
-102     Criminal = GetUserStatusDatabase(name)
+102     Criminal = GetUserStatusDatabase(Name)
 
-106     If EsRolesMaster(name) Then
+106     If EsRolesMaster(Name) Then
 108         Criminal = 3
-110     ElseIf EsConsejero(name) Then
+110     ElseIf EsConsejero(Name) Then
 112         Criminal = 4
-114     ElseIf EsSemiDios(name) Then
+114     ElseIf EsSemiDios(Name) Then
 116         Criminal = 5
-118     ElseIf EsDios(name) Then
+118     ElseIf EsDios(Name) Then
 120         Criminal = 6
-122     ElseIf EsAdmin(name) Then
+122     ElseIf EsAdmin(Name) Then
 124         Criminal = 7
         End If
 

@@ -433,8 +433,7 @@ Public Sub ParseUserCommand(ByVal RawCommand As String)
                 End If
                
             Case "/PENAS"
-                Exit Sub
-                'Call WritePunishments(ArgumentosRaw)
+                Call WritePunishments(ArgumentosRaw)
 
             
             Case "/APOSTAR"
@@ -666,6 +665,31 @@ Public Sub ParseUserCommand(ByVal RawCommand As String)
 
                 End If
                 
+            
+            Case "/EVENTOCAPTURA"
+                If notNullArguments Then
+                    If CantidadArgumentos >= 4 Then
+                        If ValidNumber(ArgumentosAll(0), eNumber_Types.ent_Long) And ValidNumber(ArgumentosAll(1), eNumber_Types.ent_Long) And ValidNumber(ArgumentosAll(2), eNumber_Types.ent_Long) And ValidNumber(ArgumentosAll(3), eNumber_Types.ent_Long) Then
+                            Call WriteIniciarCaptura(ArgumentosAll(0), ArgumentosAll(1), ArgumentosAll(2), ArgumentosAll(3))
+                        Else
+                            'No es numerico
+                            Call ShowConsoleMsg("Valor incorrecto. Utilice /EVENTOCAPTURA PARTICIPANTES CANTIDAD_RONDAS NIVEL_MINIMO PRECIO.")
+                        End If
+
+                    End If
+                Else
+                    'Avisar que falta el parametro
+                    Call ShowConsoleMsg("Faltan parámetros. Utilice /EVENTOCAPTURA PARTICIPANTES CANTIDAD_RONDAS NIVEL_MINIMO PRECIO.")
+                End If
+                
+            
+             Case "/PARTICIPARCAPTURA"
+                Call WriteParticiparCaptura
+            
+             Case "/CANCELARCAPTURA"
+                Call WriteCancelarCaptura
+                
+            
             Case "/SILENCIAR"
                 If notNullArguments Then
                     tmpArr = Split(ArgumentosRaw, "@", 2)
@@ -1048,6 +1072,25 @@ Public Sub ParseUserCommand(ByVal RawCommand As String)
 
                 End If
                 
+            Case "/SEGUIRMOUSE"
+
+                If notNullArguments Then
+                    Call WriteSeguirMouse(ArgumentosRaw)
+                Else
+                    'Avisar que falta el parametro
+                    Call ShowConsoleMsg("Faltan parámetros. Utilice /seguirmouse NICKNAME.")
+
+                End If
+                
+            Case "/PERDONFACCION"
+
+                If notNullArguments Then
+                    Call WritePerdonFaccion(ArgumentosRaw)
+                Else
+                    'Avisar que falta el parametro
+                    Call ShowConsoleMsg("Faltan parámetros. Utilice /PERDONFACCION NICKNAME.")
+                End If
+                
             Case "/ONLINEGM"
                 Call WriteOnlineGM
                 
@@ -1257,12 +1300,12 @@ Public Sub ParseUserCommand(ByVal RawCommand As String)
                 
                     tempStr = Split(ArgumentosRaw, "@")
                     
-                    If notNullArguments And CantidadArgumentos > 3 And tempStr(1) <> vbNullString Then
-                        If ValidNumber(ArgumentosAll(0), eNumber_Types.ent_Integer) And ValidNumber(ArgumentosAll(1), eNumber_Types.ent_Byte) And ValidNumber(ArgumentosAll(2), eNumber_Types.ent_Byte) Then
-                            Call WriteTeleportCreate(ArgumentosAll(0), ArgumentosAll(1), ArgumentosAll(2), tempStr(1))
+                    If notNullArguments And CantidadArgumentos > 4 And tempStr(1) <> vbNullString Then
+                        If ValidNumber(ArgumentosAll(0), eNumber_Types.ent_Integer) And ValidNumber(ArgumentosAll(1), eNumber_Types.ent_Byte) And ValidNumber(ArgumentosAll(2), eNumber_Types.ent_Byte) And ValidNumber(ArgumentosAll(3), eNumber_Types.ent_Byte) Then
+                            Call WriteTeleportCreate(ArgumentosAll(0), ArgumentosAll(1), ArgumentosAll(2), ArgumentosAll(3), tempStr(1))
                         Else
                             'No es numerico
-                            Call ShowConsoleMsg("Valor incorrecto. Utilice /ct MAPA X Y @MOTIVO.")
+                            Call ShowConsoleMsg("Valor incorrecto. Utilice /ct MAPA X Y RADIO @MOTIVO. Si no requiere radio mande /CT MAPA X Y 0 @MOTIVO")
     
                         End If
     
@@ -1379,27 +1422,7 @@ Public Sub ParseUserCommand(ByVal RawCommand As String)
                     Call ShowConsoleMsg("Escriba un mensaje.")
 
                 End If
-                
-            Case "/CIUMSG"
-
-                If notNullArguments Then
-                    Call WriteCitizenMessage(ArgumentosRaw)
-                Else
-                    'Avisar que falta el parametro
-                    Call ShowConsoleMsg("Escriba un mensaje.")
-
-                End If
-            
-            Case "/CRIMSG"
-
-                If notNullArguments Then
-                    Call WriteCriminalMessage(ArgumentosRaw)
-                Else
-                    'Avisar que falta el parametro
-                    Call ShowConsoleMsg("Escriba un mensaje.")
-
-                End If
-            
+           
             Case "/TALKAS"
 
                 If notNullArguments Then
@@ -1998,10 +2021,7 @@ Public Sub ParseUserCommand(ByVal RawCommand As String)
             
             Case "/IGNORADO"
                 Call WriteIgnored
-            
-            Case "/PING"
-                Call WritePing
-                
+                            
             Case "/CONSOLA"
             
                 'Ojo, no usar notNullArguments porque se usa el string Vacío para borrar cartel.

@@ -1,0 +1,5 @@
+[History]
+1=#P0#=mb	#P1#=Main	#P2#=Argentum20/Mod_General/Main	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20220714153459	#P7#=0	#P8#=58	.
+2=#P0#=mb	#P1#=cnvHexStrFromBytes	#P2#=Argentum20/basCryptoSys/cnvHexStrFromBytes	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20220714152938	#P7#=0	#P8#=9	.
+3=#P0#=mb	#P1#=RegistrarError	#P2#=Argentum20/Application/RegistrarError	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20220714152444	#P7#=0	#P8#=62	.
+4=#P0#=mb	#P1#=LoadInterface	#P2#=Argentum20/Mod_General/LoadInterface	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20220714151101	#P7#=0	#P8#=25	.

@@ -5,6 +5,11 @@ Attribute VB_Name = "Mod_General"
 
 Option Explicit
 
+Private Declare Function SetDllDirectory Lib "kernel32" Alias "SetDllDirectoryA" (ByVal Path As String) As Long
+Private Declare Function svb_init_steam Lib "steam_vb.dll" (ByVal appid As Long) As Long
+Private Declare Sub svb_run_callbacks Lib "steam_vb.dll" ()
+Private Declare Function svb_retlong Lib "steam_vb.dll" (ByVal Number As Long) As Long
+
 Private Type Position
 
     x As Integer
@@ -15,7 +20,7 @@ End Type
 'Item type
 Private Type tItem
 
-    OBJIndex As Integer
+    ObjIndex As Integer
     Amount As Integer
 
 End Type
@@ -59,6 +64,10 @@ End Type
 Private Declare Sub InitCommonControls Lib "comctl32" ()
 
 Public bFogata As Boolean
+
+Public servers_login_connections(1 To 2) As String
+
+Public Const MAX_LOGIN_SERVER As Long = 2
 
 'Very percise counter 64bit system counter
 Public Declare Function QueryPerformanceCounter Lib "kernel32" (lpPerformanceCount As Currency) As Long
@@ -619,22 +628,20 @@ Sub SetConnected()
     On Error GoTo SetConnected_Err
     
     Connected = True
+    frmMain.shapexy.Left = 1200
+    frmMain.shapexy.Top = 1200
+    frmMain.shapexy.BackColor = RGB(170, 0, 0)
     
-    'Unload the connect form
-    'FrmCuenta.Visible = False
-
+    Seguido = False
+    CharindexSeguido = 0
+    OffsetLimitScreen = 32
+    
     frmMain.NombrePJ.Caption = username
 
     AlphaNiebla = 0
 
     'Vaciamos la cola de movimiento
     Call keysMovementPressedQueue.Clear
-
-    If FPSFLAG Then
-        frmMain.Timerping.Enabled = True
-    Else
-        frmMain.Timerping.Enabled = False
-    End If
     
    ' frmMain.UpdateLight.Enabled = True
     frmMain.UpdateDaytime.Enabled = True
@@ -682,6 +689,17 @@ Sub SetConnected()
     frmMain.cerrarcuenta.Enabled = True
 
     engine.FadeInAlpha = 255
+    isLogged = True
+    
+  
+    If newUser Then
+         If MostrarTutorial And tutorial_index <= 0 Then
+            If tutorial(e_tutorialIndex.TUTORIAL_NUEVO_USER).Activo = 1 Then
+                tutorial_index = e_tutorialIndex.TUTORIAL_NUEVO_USER
+                Call mostrarCartel(tutorial(tutorial_index).titulo, tutorial(tutorial_index).textos(1), tutorial(tutorial_index).grh, -1, &H164B8A, , , False, 100, 479, 100, 535, 640, 490, 50, 100)
+            End If
+        End If
+    End If
     
     Exit Sub
 
@@ -749,12 +767,17 @@ Sub MoveTo(ByVal Direccion As E_Heading)
 
             Moviendose = True
             Call MainTimer.Restart(TimersIndex.Walk)
+            
             If PescandoEspecial Then
                 Call AddtoRichTextBox(frmMain.RecTxt, "El pez ha roto tu linea de pesca.", 255, 0, 0, 1, 0)
                 Call WriteRomperCania
                 PescandoEspecial = False
             End If
+           
+            If EstaSiguiendo Then Exit Sub
+            
             Call WriteWalk(Direccion) 'We only walk if we are not meditating or resting
+            
             Call Char_Move_by_Head(UserCharIndex, Direccion)
             Call MoveScreen(Direccion)
         Else
@@ -784,11 +807,7 @@ Sub MoveTo(ByVal Direccion As E_Heading)
     
     frmMain.Coord.Caption = UserMap & "-" & UserPos.x & "-" & UserPos.y
     
-    If MapDat.Seguro = 1 Then
-        frmMain.Coord.ForeColor = RGB(0, 170, 0)
-    Else
-        frmMain.Coord.ForeColor = RGB(170, 0, 0)
-    End If
+
     
     If frmMapaGrande.Visible Then
         Call frmMapaGrande.ActualizarPosicionMapa
@@ -806,7 +825,13 @@ MoveTo_Err:
     Resume Next
     
 End Sub
-
+Public Function EstaSiguiendo() As Boolean
+      If CharindexSeguido > 0 Then
+            'Call AddtoRichTextBox(frmMain.RecTxt, "No puedes moverte mientras estás revisando a un usuario.", 255, 0, 0, 1)
+            EstaSiguiendo = True
+            Exit Function
+        End If
+End Function
 Sub RandomMove()
     '***************************************************
     'Author: Alejandro Santos (AlejoLp)
@@ -882,7 +907,8 @@ Sub Check_Keys()
     Static lastMovement As Long
 
     Dim Direccion As E_Heading
-
+    'Debug.Assert UserCharIndex > 0
+    
     Direccion = charlist(UserCharIndex).Heading
 
     If Not Application.IsAppActive() Then Exit Sub
@@ -1036,11 +1062,11 @@ FieldCount_Err:
     
 End Function
 
-Function FileExist(ByVal File As String, ByVal FileType As VbFileAttribute) As Boolean
+Function FileExist(ByVal file As String, ByVal FileType As VbFileAttribute) As Boolean
     
     On Error GoTo FileExist_Err
     
-    FileExist = (Dir$(File, FileType) <> "")
+    FileExist = (dir$(file, FileType) <> "")
 
     
     Exit Function
@@ -1052,13 +1078,17 @@ FileExist_Err:
 End Function
 
 Sub Main()
-    On Error GoTo Main_Err
 
+    On Error GoTo Main_Err
     Call InitCommonControls
     
  'ReyarB pidió dejar entrar doble cliente (HarThaoS)
     #If DEBUGGING = 0 Then
- 
+        
+        SetDllDirectory App.Path
+        Dim d As Long
+        d = svb_init_steam(1956740)
+        Debug.Print "init steam ret = " & d
         If Not RunningInVB Then
  
             If FindPreviousInstance Then
@@ -1081,18 +1111,9 @@ Sub Main()
     ' Detecta el idioma del sistema y carga las traducciones
     Call SetLanguageApplication
     
-    If FileExist(App.Path & "\..\..\Launcher\LauncherAO20.ex_", vbNormal) Then
-        Call Sleep(2000)
-        Kill App.Path & "\..\..\Launcher\LauncherAO20.exe"
-        Name App.Path & "\..\..\Launcher\LauncherAO20.ex_" As App.Path & "\..\..\Launcher\LauncherAO20.exe"
-        If FileExist(App.Path & "\..\..\Launcher\LauncherAO20.dl_", vbNormal) Then
-            Kill App.Path & "\..\..\Launcher\LauncherAO20.dll"
-            Name App.Path & "\..\..\Launcher\LauncherAO20.dl_" As App.Path & "\..\..\Launcher\LauncherAO20.dll"
-        End If
-        Shell App.Path & "\..\..\Launcher\LauncherAO20.exe"
-        End
-    End If
-    
+    ' Define si lee los npcs de consola
+    Call SetNpcsRenderText
+    Call cargarTutoriales
     'Cursores******
     Set FormParser = New clsCursor
     Call FormParser.Init
@@ -1100,7 +1121,7 @@ Sub Main()
 
     ' Security
     CheckMD5 = GetMd5
-
+    SessionOpened = False
     ' Leer contraseña de recursos
     Call CheckResources
 
@@ -1114,10 +1135,6 @@ Sub Main()
     End If
     
     Call Frmcarga.Show
- 
-    #If DEBUGGING = 0 Then
-        Call frmConnect.AnalizarCliente
-    #End If
 
     If Sonido Then
     
@@ -1133,10 +1150,29 @@ Sub Main()
         End If
 
     End If
+    
+    'Agrego conexiones disponibles
 
-    'Iniciamos el IP y puerto
-    IPdelServidor = "127.0.0.1"
-    PuertoDelServidor = 7667
+    servers_login_connections(1) = "45.235.99.71:4004"
+    servers_login_connections(2) = "138.99.6.141:4007"
+    
+
+    
+    Dim IP As String
+    
+    IP = randomIp()
+    '45.235.99.71:4004
+    IPServers(1) = IP & ":7667:Minehost:" & get_logging_server()
+    
+    Debug.Print IPServers(1)
+    #If DEBUGGING = 1 Then
+        IPServers(2) = "45.235.99.71:11813:MinehostStaging:45.235.98.31:11814"
+        IPServers(3) = "127.0.0.1:7667:Localhost:192.168.0.141:4004"
+        IPServers(4) = "201.212.30.19:7667:Martin:201.212.30.19:4004"
+    #End If
+
+    Call ComprobarEstado
+    Call CargarLst
     
     Call InicializarNombres
     
@@ -1154,7 +1190,7 @@ Sub Main()
         
     'Cargar fuentes
     Call LoadFonts
-
+    
     
     FrameTime = GetTickCount()
     
@@ -1179,6 +1215,8 @@ Sub Main()
     
     Call engine.GetElapsedTime
     
+
+    
     Call Start
  
     
@@ -1189,6 +1227,37 @@ Main_Err:
     Resume Next
     
 End Sub
+Public Function randomIp() As String
+    Dim id As Long
+    id = RandomNumber(1, 3)
+    Select Case id
+        Case 1
+            randomIp = "45.235.98.33"
+            Exit Function
+        Case 2
+            randomIp = "45.235.98.34"
+            Exit Function
+        
+        Case 3
+            randomIp = "45.235.98.35"
+            Exit Function
+    End Select
+End Function
+
+
+Public Function get_logging_server() As String
+    Dim value As Long
+    Dim k As Integer
+    For k = 1 To 100
+        value = RandomNumber(1, 100)
+    Next k
+    If value <= 50 Then
+        get_logging_server = servers_login_connections(1)
+    Else
+        get_logging_server = servers_login_connections(2)
+    End If
+    
+End Function
 
 Public Function randomMap() As Integer
     Select Case RandomNumber(1, 8)
@@ -1211,14 +1280,14 @@ Public Function randomMap() As Integer
     End Select
 End Function
 
-Sub WriteVar(ByVal File As String, ByVal Main As String, ByVal Var As String, ByVal Value As String)
+Sub WriteVar(ByVal file As String, ByVal Main As String, ByVal Var As String, ByVal value As String)
     '*****************************************************************
     'Writes a var to a text file
     '*****************************************************************
     
     On Error GoTo WriteVar_Err
     
-    writeprivateprofilestring Main, Var, Value, File
+    writeprivateprofilestring Main, Var, value, file
 
     
     Exit Sub
@@ -1229,7 +1298,7 @@ WriteVar_Err:
     
 End Sub
 
-Function GetVar(ByVal File As String, ByVal Main As String, ByVal Var As String) As String
+Function GetVar(ByVal file As String, ByVal Main As String, ByVal Var As String) As String
     
     On Error GoTo GetVar_Err
     
@@ -1241,7 +1310,7 @@ Function GetVar(ByVal File As String, ByVal Main As String, ByVal Var As String)
     
     sSpaces = Space$(100) ' This tells the computer how long the longest string can be. If you want, you can change the number 100 to any number you wish
     
-    getprivateprofilestring Main, Var, vbNullString, sSpaces, Len(sSpaces), File
+    getprivateprofilestring Main, Var, vbNullString, sSpaces, Len(sSpaces), file
     
     GetVar = RTrim$(sSpaces)
     GetVar = Left$(GetVar, Len(GetVar) - 1)
@@ -1634,6 +1703,31 @@ General_Field_Count_Err:
     
 End Function
 
+Public Sub InitServersList()
+    
+    On Error GoTo InitServersList_Err
+    
+    ReDim ServersLst(1 To UBound(IPServers)) As tServerInfo
+
+    Dim i As Integer
+    For i = 1 To UBound(IPServers)
+        ServersLst(i).IP = General_Field_Read(1, IPServers(i), ":")
+        ServersLst(i).puerto = Val(General_Field_Read(2, IPServers(i), ":"))
+        ServersLst(i).desc = General_Field_Read(3, IPServers(i), ":")
+        ServersLst(i).IpLogin = General_Field_Read(4, IPServers(i), ":")
+        ServersLst(i).puertoLogin = General_Field_Read(5, IPServers(i), ":")
+    Next i
+
+    CurServer = 1
+
+    
+    Exit Sub
+
+InitServersList_Err:
+    Call RegistrarError(Err.Number, Err.Description, "Mod_General.InitServersList", Erl)
+    Resume Next
+    
+End Sub
 
 Public Function General_Get_Elapsed_Time() As Single
     
@@ -1746,7 +1840,16 @@ End Function
 Public Function LoadInterface(FileName As String) As IPicture
 
 On Error GoTo ErrHandler
-
+    
+    Select Case language
+        Case e_language.English
+            FileName = "en_" & FileName
+        Case e_language.Spanish
+            FileName = "es_" & FileName
+        Case Else
+            FileName = "en_" & FileName
+    End Select
+    
     If FileName <> "" Then
         #If Compresion = 1 Then
             Set LoadInterface = General_Load_Picture_From_Resource_Ex(LCase$(FileName), ResourcesPassword)
@@ -1778,12 +1881,12 @@ ErrHandler:
 
 End Function
 
-Public Function Tilde(ByRef Data As String) As String
+Public Function Tilde(ByRef data As String) As String
     
     On Error GoTo Tilde_Err
     
 
-    Tilde = UCase$(Data)
+    Tilde = UCase$(data)
  
     Tilde = Replace$(Tilde, "Á", "A")
     Tilde = Replace$(Tilde, "É", "E")
@@ -1882,24 +1985,24 @@ End Function
 
 Public Sub CheckResources()
 
-    Dim Data(1 To 200) As Byte
+    Dim data(1 To 200) As Byte
     
     Dim handle As Integer
     handle = FreeFile
 
     Open App.Path & "/../Recursos/OUTPUT/AO.bin" For Binary Access Read As #handle
     
-    Get #handle, , Data
+    Get #handle, , data
     
     Close #handle
     
     Dim length As Integer
-    length = Data(UBound(Data)) + Data(UBound(Data) - 1) * 256
+    length = data(UBound(data)) + data(UBound(data) - 1) * 256
 
     Dim i As Integer
     
     For i = 1 To length
-        ResourcesPassword = ResourcesPassword & Chr(Data(i * 3 - 1) Xor 37)
+        ResourcesPassword = ResourcesPassword & Chr(data(i * 3 - 1) Xor 37)
     Next
 
 End Sub
@@ -1911,12 +2014,12 @@ Function ValidarNombre(nombre As String, Error As String) As Boolean
         Exit Function
     End If
     
-    Dim Temp As String
-    Temp = UCase$(nombre)
+    Dim temp As String
+    temp = UCase$(nombre)
     
     Dim i As Long, Char As Integer, LastChar As Integer
-    For i = 1 To Len(Temp)
-        Char = Asc(mid$(Temp, i, 1))
+    For i = 1 To Len(temp)
+        Char = Asc(mid$(temp, i, 1))
         
         If (Char < 65 Or Char > 90) And Char <> 32 Then
             Error = "Sólo se permites letras y espacios."
@@ -1930,7 +2033,7 @@ Function ValidarNombre(nombre As String, Error As String) As Boolean
         LastChar = Char
     Next
 
-    If Asc(mid$(Temp, 1, 1)) = 32 Or Asc(mid$(Temp, Len(Temp), 1)) = 32 Then
+    If Asc(mid$(temp, 1, 1)) = 32 Or Asc(mid$(temp, Len(temp), 1)) = 32 Then
         Error = "No se permiten espacios al inicio o al final."
         Exit Function
     End If
@@ -2005,3 +2108,23 @@ Public Function isValidEmail(email As String) As Boolean
     twoDots = InStr(At + 2, email, "..", vbTextCompare)
     If At = 0 Or oneDot = 0 Or Not twoDots = 0 Or Right(email, 1) = "." Then isValidEmail = False
 End Function
+
+
+Public Sub SetNpcsRenderText()
+
+    '************************************************************************************.
+    ' Carga el JSON con las traducciones en un objeto para su uso a lo largo del proyecto
+    '************************************************************************************
+    Dim render_text As String
+    render_text = GetVar(App.Path & "\..\Recursos\OUTPUT\Configuracion.ini", "OPCIONES", "NpcsEnRender")
+    
+    ' Si no se especifica el idioma en el archivo de configuracion, se le pregunta si quiere usar castellano
+    ' y escribimos el archivo de configuracion con el idioma seleccionado
+    If LenB(render_text) = 0 Then
+        npcs_en_render = 1
+        Call WriteVar(App.Path & "\..\Recursos\OUTPUT\Configuracion.ini", "OPCIONES", "NpcsEnRender", npcs_en_render)
+    Else
+       npcs_en_render = Val(render_text)
+    End If
+
+End Sub

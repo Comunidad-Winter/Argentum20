@@ -620,7 +620,7 @@ Function CheckData() As Boolean
     Exit Function
 
 CheckData_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmCrearPersonaje.CheckData", Erl)
+    Call RegistrarError(Err.number, Err.Description, "frmCrearPersonaje.CheckData", Erl)
     Resume Next
     
 End Function
@@ -638,7 +638,7 @@ Function RandomNumber(ByVal LowerBound As Variant, ByVal UpperBound As Variant) 
     Exit Function
 
 RandomNumber_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmCrearPersonaje.RandomNumber", Erl)
+    Call RegistrarError(Err.number, Err.Description, "frmCrearPersonaje.RandomNumber", Erl)
     Resume Next
     
 End Function
@@ -653,7 +653,7 @@ Private Sub Form_Activate()
     Exit Sub
 
 Form_Activate_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmCrearPersonaje.Form_Activate", Erl)
+    Call RegistrarError(Err.number, Err.Description, "frmCrearPersonaje.Form_Activate", Erl)
     Resume Next
     
 End Sub
@@ -682,7 +682,7 @@ Private Sub Form_Load()
     Exit Sub
 
 Form_Load_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmCrearPersonaje.Form_Load", Erl)
+    Call RegistrarError(Err.number, Err.Description, "frmCrearPersonaje.Form_Load", Erl)
     Resume Next
     
 End Sub
@@ -795,7 +795,7 @@ Private Sub lstProfesion_Click()
     Exit Sub
 
 lstProfesion_Click_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmCrearPersonaje.lstProfesion_Click", Erl)
+    Call RegistrarError(Err.number, Err.Description, "frmCrearPersonaje.lstProfesion_Click", Erl)
     Resume Next
     
 End Sub
@@ -807,25 +807,25 @@ Private Sub lstRaza_Click()
 
     If lstRaza.ListIndex < 0 Then Exit Sub
     
-    Dim I As Integer
+    Dim i As Integer
 
-    I = lstRaza.ListIndex + 1
+    i = lstRaza.ListIndex + 1
 
     Call DameOpciones
 
     AnimHead = 3
 
-    modfuerza.Caption = IIf(Sgn(ModRaza(I).Fuerza) < 0, "-", "+") & " " & Abs(ModRaza(I).Fuerza)
-    modAgilidad.Caption = IIf(Sgn(ModRaza(I).Agilidad) < 0, "-", "+") & " " & Abs(ModRaza(I).Agilidad)
-    modInteligencia.Caption = IIf(Sgn(ModRaza(I).Inteligencia) < 0, "-", "+") & " " & Abs(ModRaza(I).Inteligencia)
-    modConstitucion.Caption = IIf(Sgn(ModRaza(I).Constitucion) < 0, "-", "+") & " " & Abs(ModRaza(I).Constitucion)
-    modCarisma.Caption = IIf(Sgn(ModRaza(I).Carisma) < 0, "-", "+") & " " & Abs(ModRaza(I).Carisma)
+    modfuerza.Caption = IIf(Sgn(ModRaza(i).Fuerza) < 0, "-", "+") & " " & Abs(ModRaza(i).Fuerza)
+    modAgilidad.Caption = IIf(Sgn(ModRaza(i).Agilidad) < 0, "-", "+") & " " & Abs(ModRaza(i).Agilidad)
+    modInteligencia.Caption = IIf(Sgn(ModRaza(i).Inteligencia) < 0, "-", "+") & " " & Abs(ModRaza(i).Inteligencia)
+    modConstitucion.Caption = IIf(Sgn(ModRaza(i).Constitucion) < 0, "-", "+") & " " & Abs(ModRaza(i).Constitucion)
+    modCarisma.Caption = IIf(Sgn(ModRaza(i).Carisma) < 0, "-", "+") & " " & Abs(ModRaza(i).Carisma)
 
     
     Exit Sub
 
 lstRaza_Click_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmCrearPersonaje.lstRaza_Click", Erl)
+    Call RegistrarError(Err.number, Err.Description, "frmCrearPersonaje.lstRaza_Click", Erl)
     Resume Next
     
 End Sub
@@ -975,8 +975,8 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
 
         If StopCreandoCuenta = True Then Exit Sub
             
-        If Right$(username, 1) = " " Then
-            username = RTrim$(username)
+        If Right$(UserName, 1) = " " Then
+            UserName = RTrim$(UserName)
 
             'MsgBox "Nombre invalido, se han removido los espacios al final del nombre"
         End If
@@ -1002,13 +1002,17 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
 
         'Barrin 3/10/03
         If CheckData() Then
+            UserPassword = CuentaPassword
+            'UserEmail = "noseusa@a.com"
+
             StopCreandoCuenta = True
                 
             If Connected Then
                 frmMain.ShowFPS.Enabled = True
             End If
             
-            Call Protocol_Writes.WriteLoginNewChar
+            Call modNetwork.Connect(IPdelServidor, PuertoDelServidor)
+            Call LoginOrConnect(E_MODO.CrearNuevoPj)
         End If
 
     End If
@@ -1017,7 +1021,7 @@ Private Sub render_MouseUp(Button As Integer, Shift As Integer, x As Single, y A
     Exit Sub
 
 render_MouseUp_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmCrearPersonaje.render_MouseUp", Erl)
+    Call RegistrarError(Err.number, Err.Description, "frmCrearPersonaje.render_MouseUp", Erl)
     Resume Next
     
 End Sub
@@ -1035,7 +1039,7 @@ Private Sub Cabeza_Click()
     Exit Sub
 
 Cabeza_Click_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmCrearPersonaje.Cabeza_Click", Erl)
+    Call RegistrarError(Err.number, Err.Description, "frmCrearPersonaje.Cabeza_Click", Erl)
     Resume Next
     
 End Sub
@@ -1051,7 +1055,7 @@ Private Sub lstGenero_Click()
     Exit Sub
 
 lstGenero_Click_Err:
-    Call RegistrarError(Err.Number, Err.Description, "frmCrearPersonaje.lstGenero_Click", Erl)
+    Call RegistrarError(Err.number, Err.Description, "frmCrearPersonaje.lstGenero_Click", Erl)
     Resume Next
     
 End Sub

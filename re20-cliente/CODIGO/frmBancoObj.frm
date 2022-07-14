@@ -331,13 +331,13 @@ Private Sub LoadButtons()
                                                 "boton-sm-menos-over.bmp", _
                                                 "boton-sm-menos-off.bmp", Me)
                                                 
-    Call cBotonRetirar.Initialize(cmdRetirar, "boton-retirar-ES-default.bmp", _
-                                                "boton-retirar-ES-over.bmp", _
-                                                "boton-retirar-ES-off.bmp", Me)
+    Call cBotonRetirar.Initialize(cmdRetirar, "boton-retirar-default.bmp", _
+                                                "boton-retirar-over.bmp", _
+                                                "boton-retirar-off.bmp", Me)
     
-    Call cBotonDepositar.Initialize(cmdDepositar, "boton-depositar-ES-default.bmp", _
-                                                "boton-depositar-ES-over.bmp", _
-                                                "boton-depositar-ES-off.bmp", Me)
+    Call cBotonDepositar.Initialize(cmdDepositar, "boton-depositar-default.bmp", _
+                                                "boton-depositar-over.bmp", _
+                                                "boton-depositar-off.bmp", Me)
                                                 
     
 End Sub
@@ -432,50 +432,14 @@ interface_Click_Err:
 End Sub
 
 Private Sub interface_DblClick()
-    
+
     On Error GoTo interface_DblClick_Err
-    
 
-    ' Nos aseguramos que lo último que cliqueó fue el inventario
-    If Not InvBankUsu.ClickedInside Then Exit Sub
-    
-    If Not InvBankUsu.IsItemSelected Then Exit Sub
-
-    ' Hacemos acción del doble clic correspondiente
-    Dim ObjType As Byte
-
-    ObjType = ObjData(InvBankUsu.OBJIndex(InvBankUsu.SelectedItem)).ObjType
-    
-    If UserMeditar Then Exit Sub
-    If Not MainTimer.Check(TimersIndex.UseItemWithDblClick) Then Exit Sub
-    
-    Select Case ObjType
-
-        Case eObjType.otArmadura, eObjType.otESCUDO, eObjType.otmagicos, eObjType.otFlechas, eObjType.otCASCO, eObjType.otNudillos, eObjType.otAnillos
-            Call WriteEquipItem(InvBankUsu.SelectedItem)
-            
-        Case eObjType.otWeapon
-
-            If ObjData(InvBankUsu.OBJIndex(InvBankUsu.SelectedItem)).proyectil = 1 And InvBankUsu.Equipped(InvBankUsu.SelectedItem) Then
-                Call WriteUseItem(InvBankUsu.SelectedItem)
-            Else
-                Call WriteEquipItem(InvBankUsu.SelectedItem)
-
-            End If
-            
-        Case eObjType.OtHerramientas
-
-            If InvBankUsu.Equipped(InvBankUsu.SelectedItem) Then
-                Call WriteUseItem(InvBankUsu.SelectedItem)
-            Else
-                Call WriteEquipItem(InvBankUsu.SelectedItem)
-
-            End If
-             
-        Case Else
-            Call WriteUseItem(InvBankUsu.SelectedItem)
-
-    End Select
+    If InvBankUsu.ClickedInside And InvBankUsu.IsItemSelected Then
+        Call WriteBankDeposit(InvBankUsu.SelectedItem, InvBankUsu.Amount(InvBankUsu.SelectedItem), 0)
+    ElseIf InvBoveda.ClickedInside And InvBoveda.IsItemSelected Then
+        Call WriteBankExtractItem(InvBoveda.SelectedItem, InvBoveda.Amount(InvBoveda.SelectedItem), 0)
+    End If
 
     
     Exit Sub

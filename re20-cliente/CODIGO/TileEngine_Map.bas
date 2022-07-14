@@ -57,12 +57,26 @@ Sub SwitchMap(ByVal map As Integer)
     End If
 
     Call NameMapa(map)
+    
+    If MapDat.Seguro = 1 Then
+        frmMain.Coord.ForeColor = RGB(0, 170, 0)
+    Else
+         If MostrarTutorial And tutorial_index <= 0 And isLogged Then
+            If tutorial(e_tutorialIndex.TUTORIAL_ZONA_INSEGURA).Activo = 1 Then
+                tutorial_index = e_tutorialIndex.TUTORIAL_ZONA_INSEGURA
+                'TUTORIAL MAPA INSEGURO
+                Call mostrarCartel(tutorial(tutorial_index).titulo, tutorial(tutorial_index).textos(1), tutorial(tutorial_index).grh, _
+                -1, &H164B8A, , , False, 100, 479, 100, 535, 640, 530, 64, 64)
+            End If
+        End If
+        frmMain.Coord.ForeColor = RGB(170, 0, 0)
+    End If
 
     
     Exit Sub
 
 SwitchMap_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Map.SwitchMap", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Map.SwitchMap", Erl)
     Resume Next
     
 End Sub
@@ -88,7 +102,7 @@ Function HayAgua(ByVal x As Integer, ByVal y As Integer) As Boolean
     Exit Function
 
 HayAgua_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Map.HayAgua", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Map.HayAgua", Erl)
     Resume Next
     
 End Function
@@ -106,7 +120,7 @@ Function HayLava(ByVal x As Integer, ByVal y As Integer) As Boolean
     Exit Function
 
 HayLava_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Map.HayLava", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Map.HayLava", Erl)
     Resume Next
     
 End Function
@@ -131,7 +145,7 @@ Function EsArbol(ByVal GrhIndex As Long) As Boolean
     Exit Function
 
 EsArbol_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Map.EsArbol", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Map.EsArbol", Erl)
     Resume Next
     
 End Function
@@ -146,7 +160,7 @@ Function AgregarSombra(ByVal GrhIndex As Long) As Boolean
     Exit Function
 
 AgregarSombra_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Map.AgregarSombra", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Map.AgregarSombra", Erl)
     Resume Next
     
 End Function
@@ -155,11 +169,11 @@ Public Function EsObjetoFijo(ByVal x As Integer, ByVal y As Integer) As Boolean
     
     On Error GoTo EsObjetoFijo_Err
     
-    Dim OBJIndex As Integer
-    OBJIndex = MapData(x, y).OBJInfo.OBJIndex
+    Dim ObjIndex As Integer
+    ObjIndex = MapData(x, y).OBJInfo.ObjIndex
     
     Dim ObjType As eObjType
-    ObjType = ObjData(OBJIndex).ObjType
+    ObjType = ObjData(ObjIndex).ObjType
     
     EsObjetoFijo = ObjType = eObjType.otForos Or ObjType = eObjType.otCarteles Or ObjType = eObjType.otArboles Or ObjType = eObjType.otYacimiento Or ObjType = eObjType.OtDecoraciones
 
@@ -167,7 +181,7 @@ Public Function EsObjetoFijo(ByVal x As Integer, ByVal y As Integer) As Boolean
     Exit Function
 
 EsObjetoFijo_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Map.EsObjetoFijo", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Map.EsObjetoFijo", Erl)
     Resume Next
     
 End Function
@@ -188,88 +202,12 @@ Public Function Letter_Set(ByVal grh_index As Long, ByVal text_string As String)
     Exit Function
 
 Letter_Set_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Map.Letter_Set", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Map.Letter_Set", Erl)
     Resume Next
     
 End Function
 
-Public Function Map_Letter_Fade_Set(ByVal grh_index As Long, Optional ByVal after_grh As Long = -1) As Boolean
-    
-    On Error GoTo Map_Letter_Fade_Set_Err
-    
 
-    '*****************************************************************
-    'Author: Augusto José Rando
-    '*****************************************************************
-    If grh_index <= 0 Or grh_index = map_letter_grh.GrhIndex Then Exit Function
-        
-    If after_grh = -1 Then
-    
-        map_letter_grh.GrhIndex = grh_index
-        map_letter_fadestatus = 1
-        map_letter_a = 0
-        map_letter_grh_next = 0
-        
-    Else
-        map_letter_grh.GrhIndex = after_grh
-        map_letter_fadestatus = 1
-        map_letter_a = 0
-        map_letter_grh_next = grh_index
-
-    End If
-    
-    Map_Letter_Fade_Set = True
-
-    
-    Exit Function
-
-Map_Letter_Fade_Set_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Map.Map_Letter_Fade_Set", Erl)
-    Resume Next
-    
-End Function
-
-Public Function Map_Letter_UnSet() As Boolean
-    '*****************************************************************
-    'Author: Augusto José Rando
-    '*****************************************************************
-    
-    On Error GoTo Map_Letter_UnSet_Err
-    
-    map_letter_grh.GrhIndex = 0
-    map_letter_fadestatus = 0
-    map_letter_a = 0
-    map_letter_grh_next = 0
-    Map_Letter_UnSet = True
-
-    
-    Exit Function
-
-Map_Letter_UnSet_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Map.Map_Letter_UnSet", Erl)
-    Resume Next
-    
-End Function
-
-Public Function Letter_UnSet() As Boolean
-    '*****************************************************************
-    'Author: Augusto José Rando
-    '*****************************************************************
-    
-    On Error GoTo Letter_UnSet_Err
-    
-    letter_text = vbNullString
-    letter_grh.GrhIndex = 0
-    Letter_UnSet = True
-
-    
-    Exit Function
-
-Letter_UnSet_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Map.Letter_UnSet", Erl)
-    Resume Next
-    
-End Function
 
 Public Sub SetGlobalLight(ByVal base_light As Long)
     
@@ -282,7 +220,7 @@ Public Sub SetGlobalLight(ByVal base_light As Long)
     Exit Sub
 
 SetGlobalLight_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Map.SetGlobalLight", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Map.SetGlobalLight", Erl)
     Resume Next
     
 End Sub
@@ -339,15 +277,14 @@ Public Sub Draw_Sombra(ByRef grh As grh, ByVal x As Integer, ByVal y As Integer,
     CurrentFrame = 1
 
     If animate Then
-        If grh.Started > 0 Then
+        If grh.started > 0 Then
             Dim ElapsedFrames As Long
-            ElapsedFrames = Fix(0.5 * (FrameTime - grh.Started) / grh.speed)
+            ElapsedFrames = Fix(0.5 * (FrameTime - grh.started) / grh.speed)
 
             If grh.Loops = INFINITE_LOOPS Or ElapsedFrames < GrhData(grh.GrhIndex).NumFrames * (grh.Loops + 1) Then
                 CurrentFrame = ElapsedFrames Mod GrhData(grh.GrhIndex).NumFrames + 1
-
             Else
-                grh.Started = 0
+                grh.started = 0
             End If
 
         End If
@@ -371,7 +308,7 @@ Public Sub Draw_Sombra(ByRef grh As grh, ByVal x As Integer, ByVal y As Integer,
     Exit Sub
 
 Draw_Sombra_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Map.Draw_Sombra", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Map.Draw_Sombra", Erl)
     Resume Next
     
 End Sub
@@ -478,7 +415,7 @@ Sub Engine_Weather_UpdateFog()
     Exit Sub
 
 Engine_Weather_UpdateFog_Err:
-    Call RegistrarError(Err.number, Err.Description, "TileEngine_Map.Engine_Weather_UpdateFog", Erl)
+    Call RegistrarError(Err.Number, Err.Description, "TileEngine_Map.Engine_Weather_UpdateFog", Erl)
     Resume Next
     
 End Sub

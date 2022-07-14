@@ -1,5 +1,12 @@
 Attribute VB_Name = "ModSubasta"
-
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
 Public Type t_Subastas
 
     HaySubastaActiva As Boolean
@@ -26,46 +33,46 @@ Public Sub IniciarSubasta(ByVal userindex As Integer)
         On Error GoTo IniciarSubasta_Err
         
 
-100     If UserList(userindex).flags.Subastando = True And Not Subasta.HaySubastaActiva Then
-102         Call WriteChatOverHead(userindex, "Escribe /OFERTAINICIAL (cantidad) para comenzar la subasta. Te quedan: " & UserList(userindex).Counters.TiempoParaSubastar & " segundos... ¡Apurate!", NpcList(UserList(userindex).flags.TargetNPC).Char.CharIndex, vbWhite)
+100     If UserList(UserIndex).flags.Subastando = True And Not Subasta.HaySubastaActiva Then
+102         Call WriteChatOverHead(UserIndex, "Escribe /OFERTAINICIAL (cantidad) para comenzar la subasta. Te quedan: " & UserList(UserIndex).Counters.TiempoParaSubastar & " segundos... ¡Apurate!", NpcList(UserList(UserIndex).flags.TargetNPC).Char.CharIndex, vbWhite)
             Exit Sub
 
         End If
 
 104     If Subasta.HaySubastaActiva = True Then
-106         Call WriteChatOverHead(userindex, "Oye amigo, espera tu turno, estoy subastando en este momento.", NpcList(UserList(userindex).flags.TargetNPC).Char.CharIndex, vbWhite)
+106         Call WriteChatOverHead(UserIndex, "Oye amigo, espera tu turno, estoy subastando en este momento.", NpcList(UserList(UserIndex).flags.TargetNPC).Char.CharIndex, vbWhite)
             Exit Sub
 
         End If
 
-108     If Not MapData(UserList(userindex).Pos.Map, UserList(userindex).Pos.X, UserList(userindex).Pos.Y).ObjInfo.ObjIndex > 0 Then
-110         Call WriteChatOverHead(userindex, "¿Pues Acaso el aire está en venta ahora? ¡Bribón!", NpcList(UserList(userindex).flags.TargetNPC).Char.CharIndex, vbWhite)
-            Exit Sub
-
-        End If
-    
-112     If Not ObjData(MapData(UserList(userindex).Pos.Map, UserList(userindex).Pos.X, UserList(userindex).Pos.Y).ObjInfo.ObjIndex).Subastable = 1 Then
-114         Call WriteChatOverHead(userindex, "Aquí solo subastamos items que sean valiosos. ¡Largate de acá Bribón!", NpcList(UserList(userindex).flags.TargetNPC).Char.CharIndex, vbWhite)
+108     If Not MapData(UserList(UserIndex).Pos.Map, UserList(UserIndex).Pos.X, UserList(UserIndex).Pos.Y).ObjInfo.ObjIndex > 0 Then
+110         Call WriteChatOverHead(UserIndex, "¿Pues Acaso el aire está en venta ahora? ¡Bribón!", NpcList(UserList(UserIndex).flags.TargetNPC).Char.CharIndex, vbWhite)
             Exit Sub
 
         End If
     
-116     If UserList(userindex).flags.Subastando = True Then 'Practicamente imposible que pase... pero por si las dudas
-118         Call WriteChatOverHead(userindex, "Tu ya estas subastando! Esto a quedado logeado.", NpcList(UserList(userindex).flags.TargetNPC).Char.CharIndex, vbRed)
+112     If Not ObjData(MapData(UserList(UserIndex).Pos.Map, UserList(UserIndex).Pos.X, UserList(UserIndex).Pos.Y).ObjInfo.ObjIndex).Subastable = 1 Then
+114         Call WriteChatOverHead(UserIndex, "Aquí solo subastamos items que sean valiosos. ¡Largate de acá Bribón!", NpcList(UserList(UserIndex).flags.TargetNPC).Char.CharIndex, vbWhite)
+            Exit Sub
+
+        End If
+    
+116     If UserList(UserIndex).flags.Subastando = True Then 'Practicamente imposible que pase... pero por si las dudas
+118         Call WriteChatOverHead(UserIndex, "Tu ya estas subastando! Esto a quedado logeado.", NpcList(UserList(UserIndex).flags.TargetNPC).Char.CharIndex, vbRed)
 120         Logear = "El usuario que ya estaba subastando pudo subastar otro item" & Date & " - " & Time
 122         Call LogearEventoDeSubasta(Logear)
             Exit Sub
 
         End If
     
-124     If MapData(UserList(userindex).Pos.Map, UserList(userindex).Pos.X, UserList(userindex).Pos.Y).ObjInfo.ObjIndex > 0 Then
-126         Subasta.ObjSubastado = MapData(UserList(userindex).Pos.Map, UserList(userindex).Pos.X, UserList(userindex).Pos.Y).ObjInfo.ObjIndex
-128         Subasta.ObjSubastadoCantidad = MapData(UserList(userindex).Pos.Map, UserList(userindex).Pos.X, UserList(userindex).Pos.Y).ObjInfo.amount
-130         Subasta.Subastador = UserList(userindex).name
-132         UserList(userindex).Counters.TiempoParaSubastar = 15
-134         Call WriteChatOverHead(userindex, "Escribe /OFERTAINICIAL (cantidad) para comenzar la subasta. ¡Tienes 15 segundos!", NpcList(UserList(userindex).flags.TargetNPC).Char.CharIndex, vbWhite)
-136         Call EraseObj(Subasta.ObjSubastadoCantidad, UserList(userindex).Pos.Map, UserList(userindex).Pos.X, UserList(userindex).Pos.Y)
-138         UserList(userindex).flags.Subastando = True
+124     If MapData(UserList(UserIndex).Pos.Map, UserList(UserIndex).Pos.X, UserList(UserIndex).Pos.Y).ObjInfo.ObjIndex > 0 Then
+126         Subasta.ObjSubastado = MapData(UserList(UserIndex).Pos.Map, UserList(UserIndex).Pos.X, UserList(UserIndex).Pos.Y).ObjInfo.ObjIndex
+128         Subasta.ObjSubastadoCantidad = MapData(UserList(UserIndex).Pos.Map, UserList(UserIndex).Pos.X, UserList(UserIndex).Pos.Y).ObjInfo.amount
+130         Subasta.Subastador = UserList(UserIndex).Name
+132         UserList(UserIndex).Counters.TiempoParaSubastar = 15
+134         Call WriteChatOverHead(UserIndex, "Escribe /OFERTAINICIAL (cantidad) para comenzar la subasta. ¡Tienes 15 segundos!", NpcList(UserList(UserIndex).flags.TargetNPC).Char.CharIndex, vbWhite)
+136         Call EraseObj(Subasta.ObjSubastadoCantidad, UserList(UserIndex).Pos.Map, UserList(UserIndex).Pos.X, UserList(UserIndex).Pos.Y)
+138         UserList(UserIndex).flags.Subastando = True
             Exit Sub
 
         End If
@@ -141,7 +148,7 @@ Public Sub FinalizarSubasta()
 
 144             If Subasta.ObjSubastado < 1 Or Subasta.ObjSubastado > NumObjDatas Then Exit Sub
 
-146             If LenB(ObjData(Subasta.ObjSubastado).name) = 0 Then Exit Sub
+146             If LenB(ObjData(Subasta.ObjSubastado).Name) = 0 Then Exit Sub
 148             Call MakeObj(ObjVendido, PosMap, posX, posY)
 150             Call LogearEventoDeSubasta("La boveda del usuario estaba llena, se tiro en la posicion:" & PosMap & "-" & posX & "-" & posY)
 152             Call WriteVar(FileUser, "INIT", "MENSAJEINFORMACION", "Subastador te ha dejado un mensaje: ¡Has ganado la subasta! Como no tenias espacio ni en tu boveda ni en el correo, tuve que tirarlo en tu ultima posicion.")
@@ -207,7 +214,7 @@ Public Sub ResetearSubasta()
 116     Subasta.TiempoRestanteSubasta = 0
 118     Subasta.MinutosDeSubasta = 0
 120     Subasta.PosibleCancelo = False
-122     Call LogearEventoDeSubasta("Subasta finalizada." & Data & " a las " & Time)
+122     Call LogearEventoDeSubasta("Subasta finalizada." & data & " a las " & Time)
 124     Call LogearEventoDeSubasta("#################################################################################################################################################################################################")
 
         
@@ -272,7 +279,7 @@ Public Sub DevolverItem()
 
 142             If Subasta.ObjSubastado < 1 Or Subasta.ObjSubastado > NumObjDatas Then Exit Sub
 
-144             If LenB(ObjData(Subasta.ObjSubastado).name) = 0 Then Exit Sub
+144             If LenB(ObjData(Subasta.ObjSubastado).Name) = 0 Then Exit Sub
 146             Call MakeObj(ObjVendido, PosMap, posX, posY)
 148             Call LogearEventoDeSubasta("El correo del usuario estaba lleno, se tiro en la posicion:" & PosMap & "-" & posX & "-" & posY)
 150             Call WriteVar(FileUser, "INIT", "MENSAJEINFORMACION", "Subastador te ha dejado un mensaje: Tu subasta fue cancelada por falta de ofertas, como no tenias lugar ni en tu correo ni boveda, tuve que tirarlo en tu ultimo posicion.")
@@ -354,7 +361,7 @@ Public Sub CancelarSubasta()
 
 144                 If Subasta.ObjSubastado < 1 Or Subasta.ObjSubastado > NumObjDatas Then Exit Sub
 
-146                 If LenB(ObjData(Subasta.ObjSubastado).name) = 0 Then Exit Sub
+146                 If LenB(ObjData(Subasta.ObjSubastado).Name) = 0 Then Exit Sub
 148                 Call MakeObj(ObjVendido, PosMap, posX, posY)
 150                 Call LogearEventoDeSubasta("El correo del usuario estaba lleno, se tiro en la posicion:" & PosMap & "-" & posX & "-" & posY)
 152                 Call WriteVar(FileUser, "INIT", "MENSAJEINFORMACION", "Subastador te ha dejado un mensaje: Tu subasta fue cancelada, como no tenias lugar ni en tu correo ni boveda, tuve que tirarlo en tu ultimo posicion.")

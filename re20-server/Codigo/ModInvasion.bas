@@ -1,5 +1,12 @@
 Attribute VB_Name = "ModInvasion"
-
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
 Option Explicit
 
 Type t_SpawnBox
@@ -221,7 +228,7 @@ Sub FinalizarInvasion(ByVal Index As Integer)
             Next
         
             ' Entregamos premios y limpiamos el top
-            Dim userindex As Integer, OroGanado As Long, PremioStr As String
+            Dim UserIndex As Integer, OroGanado As Long, PremioStr As String
     
 138         OroGanado = 50000 * OroMult
 140         PremioStr = "¡La ciudad te entrega " & PonerPuntos(OroGanado) & " monedas de oro por tu ayuda durante la invasión!"
@@ -232,12 +239,12 @@ Sub FinalizarInvasion(ByVal Index As Integer)
 146                 If LenB(.UserName) Then
 148                     If Ganaron And .Score > 0 Then
                             ' Si está conectado
-150                         userindex = NameIndex(.UserName)
-152                         If userindex Then
+150                         UserIndex = NameIndex(.UserName)
+152                         If UserIndex Then
                                 ' Le damos el oro
-154                             Call WriteConsoleMsg(userindex, PremioStr, e_FontTypeNames.FONTTYPE_New_Amarillo_Oscuro)
-156                             UserList(userindex).Stats.GLD = UserList(userindex).Stats.GLD + OroGanado
-158                             Call WriteUpdateGold(userindex)
+154                             Call WriteConsoleMsg(UserIndex, PremioStr, e_FontTypeNames.FONTTYPE_New_Amarillo_Oscuro)
+156                             UserList(UserIndex).Stats.GLD = UserList(UserIndex).Stats.GLD + OroGanado
+158                             Call WriteUpdateGold(UserIndex)
                             End If
                         End If
                     
@@ -261,9 +268,9 @@ Sub FinalizarInvasion(ByVal Index As Integer)
 
 End Sub
 
-Sub InvasionSpawnNPC(ByVal Index As Integer)
+Sub InvasionSpawnNPC(ByVal index As Integer)
 
-100     With Invasiones(Index)
+100     With Invasiones(index)
     
             ' Si ya hay el máximo de NPCs, no spawneamos nada
 102         If .CantNPCs >= .MaxNPCs Then Exit Sub
@@ -309,7 +316,7 @@ Sub InvasionSpawnNPC(ByVal Index As Integer)
 130             Call ChangeNPCChar(.NPCsVivos(i), NpcList(.NPCsVivos(i)).Char.Body, NpcList(.NPCsVivos(i)).Char.Head, Heading)
             
                 ' Guardamos información sobre el spawn
-132             NpcList(.NPCsVivos(i)).flags.InvasionIndex = Index
+132             NpcList(.NPCsVivos(i)).flags.InvasionIndex = index
 134             NpcList(.NPCsVivos(i)).flags.SpawnBox = SpawnBox
 136             NpcList(.NPCsVivos(i)).flags.IndexInInvasion = i
             End If
@@ -318,9 +325,9 @@ Sub InvasionSpawnNPC(ByVal Index As Integer)
 
 End Sub
 
-Public Sub MuereNpcInvasion(ByVal Index As Integer, ByVal NpcIndex As Integer)
+Public Sub MuereNpcInvasion(ByVal index As Integer, ByVal NpcIndex As Integer)
 
-100     With Invasiones(Index)
+100     With Invasiones(index)
     
 102         .NPCsVivos(NpcIndex) = 0
     
@@ -341,9 +348,9 @@ Private Function String2Heading(str As String) As e_Heading
 
 End Function
 
-Public Sub EnviarInfoInvasion(ByVal Index As Integer)
+Public Sub EnviarInfoInvasion(ByVal index As Integer)
 
-100     With Invasiones(Index)
+100     With Invasiones(index)
     
             Dim PorcentajeVida As Byte, PorcentajeTiempo As Byte
         
@@ -356,7 +363,7 @@ Public Sub EnviarInfoInvasion(ByVal Index As Integer)
 108             Mapa = .SpawnBoxes(i).TopLeft.Map
             
 110             For j = 1 To ModAreas.ConnGroups(Mapa).CountEntrys
-112                 Call WriteInvasionInfo(ModAreas.ConnGroups(Mapa).UserEntrys(j), Index, PorcentajeVida, PorcentajeTiempo)
+112                 Call WriteInvasionInfo(ModAreas.ConnGroups(Mapa).UserEntrys(j), index, PorcentajeVida, PorcentajeTiempo)
                 Next
             Next
         
@@ -366,21 +373,21 @@ End Sub
 
 Public Sub HacerDañoMuralla(ByVal Index As Integer, ByVal Daño As Long)
     
-100     With Invasiones(Index)
+100     With Invasiones(index)
     
 102         .VidaMuralla = .VidaMuralla - Daño
         
 104         If .VidaMuralla <= 0 Then
-106             Call FinalizarInvasion(Index)
+106             Call FinalizarInvasion(index)
             End If
     
         End With
     
 End Sub
 
-Public Sub SumarScoreInvasion(ByVal Index As Integer, ByVal userindex As Integer, ByVal Score As Long)
+Public Sub SumarScoreInvasion(ByVal index As Integer, ByVal UserIndex As Integer, ByVal Score As Long)
     
-100     With Invasiones(Index)
+100     With Invasiones(index)
     
             Dim i As Integer
             Dim tmpUser As t_TopInvasion
@@ -391,7 +398,7 @@ Public Sub SumarScoreInvasion(ByVal Index As Integer, ByVal userindex As Integer
                     ' Llegamos a un lugar vacío, entonces no está en el top
                     Exit For
             
-106             ElseIf .Top10Users(i).UserName = UserList(userindex).name Then
+106             ElseIf .Top10Users(i).UserName = UserList(UserIndex).name Then
                     ' Está en el top, así que le sumamos el puntaje
 108                 .Top10Users(i).Score = .Top10Users(i).Score + Score
                 
@@ -432,7 +439,7 @@ Public Sub SumarScoreInvasion(ByVal Index As Integer, ByVal userindex As Integer
             
                 ' Lo colocamos en la posición que le corresponde
 130             With .Top10Users(i + 1)
-132                 .UserName = UserList(userindex).name
+132                 .UserName = UserList(UserIndex).name
 134                 .Score = Score
                 End With
             End If

@@ -1,5 +1,12 @@
 Attribute VB_Name = "Admin"
-
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
 'Argentum Online 0.11.6
 'Copyright (C) 2002 Márquez Pablo Ignacio
 '
@@ -293,20 +300,20 @@ PurgarPenas_Err:
 End Sub
 
 
-Public Sub Encarcelar(ByVal userindex As Integer, ByVal minutos As Long, Optional ByVal GmName As String = vbNullString)
+Public Sub Encarcelar(ByVal UserIndex As Integer, ByVal minutos As Long, Optional ByVal GmName As String = vbNullString)
         
         On Error GoTo Encarcelar_Err
         
-100     If EsGM(userindex) Then Exit Sub
+100     If EsGM(UserIndex) Then Exit Sub
         
-102     UserList(userindex).Counters.Pena = minutos
+102     UserList(UserIndex).Counters.Pena = minutos
         
-104     Call WarpUserChar(userindex, Prision.Map, Prision.X, Prision.Y, True)
+104     Call WarpUserChar(UserIndex, Prision.Map, Prision.X, Prision.Y, True)
         
 106     If LenB(GmName) = 0 Then
-108         Call WriteConsoleMsg(userindex, "Has sido encarcelado, deberas permanecer en la carcel " & minutos & " minutos.", e_FontTypeNames.FONTTYPE_INFO)
+108         Call WriteConsoleMsg(UserIndex, "Has sido encarcelado, deberas permanecer en la carcel " & minutos & " minutos.", e_FontTypeNames.FONTTYPE_INFO)
         Else
-110         Call WriteConsoleMsg(userindex, GmName & " te ha encarcelado, deberas permanecer en la carcel " & minutos & " minutos.", e_FontTypeNames.FONTTYPE_INFO)
+110         Call WriteConsoleMsg(UserIndex, GmName & " te ha encarcelado, deberas permanecer en la carcel " & minutos & " minutos.", e_FontTypeNames.FONTTYPE_INFO)
 
         End If
         
@@ -319,11 +326,11 @@ Encarcelar_Err:
         
 End Sub
 
-Public Function BANCheck(ByVal name As String) As Boolean
+Public Function BANCheck(ByVal Name As String) As Boolean
         
         On Error GoTo BANCheck_Err
 
-102         BANCheck = BANCheckDatabase(name)
+102         BANCheck = BANCheckDatabase(Name)
         
         Exit Function
 
@@ -333,11 +340,11 @@ BANCheck_Err:
         
 End Function
 
-Public Function PersonajeExiste(ByVal name As String) As Boolean
+Public Function PersonajeExiste(ByVal Name As String) As Boolean
         
         On Error GoTo PersonajeExiste_Err
 
-102         PersonajeExiste = GetUserValue(LCase$(name), "COUNT(*)") > 0
+102         PersonajeExiste = GetUserValue(LCase$(Name), "COUNT(*)") > 0
 
         Exit Function
 
@@ -347,15 +354,15 @@ PersonajeExiste_Err:
         
 End Function
 
-Public Function UnBan(ByVal name As String) As Boolean
+Public Function UnBan(ByVal Name As String) As Boolean
         
         On Error GoTo UnBan_Err
 
-102     Call UnBanDatabase(name)
+102     Call UnBanDatabase(Name)
     
         'Remove it from the banned people database
-110     Call WriteVar(App.Path & "\logs\" & "BanDetail.dat", name, "BannedBy", "")
-112     Call WriteVar(App.Path & "\logs\" & "BanDetail.dat", name, "Reason", "")
+110     Call WriteVar(App.Path & "\logs\" & "BanDetail.dat", Name, "BannedBy", "")
+112     Call WriteVar(App.Path & "\logs\" & "BanDetail.dat", Name, "Reason", "")
         
         Exit Function
 
@@ -365,7 +372,7 @@ UnBan_Err:
         
 End Function
 
-Public Function UserDarPrivilegioLevel(ByVal name As String) As e_PlayerType
+Public Function UserDarPrivilegioLevel(ByVal Name As String) As e_PlayerType
         
         On Error GoTo UserDarPrivilegioLevel_Err
         
@@ -374,13 +381,13 @@ Public Function UserDarPrivilegioLevel(ByVal name As String) As e_PlayerType
         'Last Modification: 03/02/07
         'Last Modified By: Juan Martín Sotuyo Dodero (Maraxus)
         '***************************************************
-100     If EsAdmin(name) Then
+100     If EsAdmin(Name) Then
 102         UserDarPrivilegioLevel = e_PlayerType.Admin
-104     ElseIf EsDios(name) Then
+104     ElseIf EsDios(Name) Then
 106         UserDarPrivilegioLevel = e_PlayerType.Dios
-108     ElseIf EsSemiDios(name) Then
+108     ElseIf EsSemiDios(Name) Then
 110         UserDarPrivilegioLevel = e_PlayerType.SemiDios
-112     ElseIf EsConsejero(name) Then
+112     ElseIf EsConsejero(Name) Then
 114         UserDarPrivilegioLevel = e_PlayerType.Consejero
         Else
 116         UserDarPrivilegioLevel = e_PlayerType.user
@@ -404,7 +411,7 @@ Public Sub BanTemporal(ByVal nombre As String, ByVal dias As Integer, Causa As S
         Dim tBan As tBaneo
 100     Set tBan = New tBaneo
 
-102     tBan.name = UCase$(nombre)
+102     tBan.Name = UCase$(nombre)
 104     tBan.FechaLiberacion = (Now + dias)
 106     tBan.Causa = Causa
 108     tBan.Baneador = Baneador
@@ -432,7 +439,7 @@ Sub SaveBans()
 100     Call WriteVar(DatPath & "baneos.dat", "INIT", "NumeroBans", Baneos.Count)
 
 102     For num = 1 To Baneos.Count
-104         Call WriteVar(DatPath & "baneos.dat", "BANEO" & num, "USER", Baneos(num).name)
+104         Call WriteVar(DatPath & "baneos.dat", "BANEO" & num, "USER", Baneos(num).Name)
 106         Call WriteVar(DatPath & "baneos.dat", "BANEO" & num, "FECHA", Baneos(num).FechaLiberacion)
 108         Call WriteVar(DatPath & "baneos.dat", "BANEO" & num, "BANEADOR", Baneos(num).Baneador)
 110         Call WriteVar(DatPath & "baneos.dat", "BANEO" & num, "CAUSA", Baneos(num).Causa)
@@ -453,12 +460,12 @@ Sub SaveBan(num As Integer)
         
 
 100     Call WriteVar(DatPath & "baneos.dat", "INIT", "NumeroBans", Baneos.Count)
-102     Call WriteVar(DatPath & "baneos.dat", "BANEO" & num, "USER", Baneos(num).name)
+102     Call WriteVar(DatPath & "baneos.dat", "BANEO" & num, "USER", Baneos(num).Name)
 104     Call WriteVar(DatPath & "baneos.dat", "BANEO" & num, "FECHA", Baneos(num).FechaLiberacion)
 106     Call WriteVar(DatPath & "baneos.dat", "BANEO" & num, "BANEADOR", Baneos(num).Baneador)
 108     Call WriteVar(DatPath & "baneos.dat", "BANEO" & num, "CAUSA", Baneos(num).Causa)
 
-112     Call SaveBanDatabase(Baneos(num).name, Baneos(num).Causa, Baneos(num).Baneador)
+112     Call SaveBanDatabase(Baneos(Num).Name, Baneos(Num).Causa, Baneos(Num).Baneador)
 
 
         
@@ -488,7 +495,7 @@ Sub LoadBans()
 106             Set tBan = New tBaneo
     
 108             With tBan
-110                 .name = GetVar(DatPath & "baneos.dat", "BANEO" & i, "USER")
+110                 .Name = GetVar(DatPath & "baneos.dat", "BANEO" & i, "USER")
 112                 .FechaLiberacion = GetVar(DatPath & "baneos.dat", "BANEO" & i, "FECHA")
 114                 .Causa = GetVar(DatPath & "baneos.dat", "BANEO" & i, "CAUSA")
 116                 .Baneador = GetVar(DatPath & "baneos.dat", "BANEO" & i, "BANEADOR")

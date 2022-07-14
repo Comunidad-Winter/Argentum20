@@ -1,5 +1,11 @@
 Attribute VB_Name = "SysTray"
-
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
 '
 Option Explicit
 '?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿
@@ -18,14 +24,14 @@ Type CWPSTRUCT
 
     lParam As Long
     wParam As Long
-    Message As Long
-    hwnd As Long
+    message As Long
+    hWnd As Long
 
 End Type
 
 Declare Function CallNextHookEx Lib "user32" (ByVal hHook As Long, ByVal ncode As Long, ByVal wParam As Long, lParam As Any) As Long
-Declare Sub CopyMemory Lib "Kernel32" Alias "RtlMoveMemory" (hpvDest As Any, hpvSource As Any, ByVal cbCopy As Long)
-Declare Function SetForegroundWindow Lib "user32" (ByVal hwnd As Long) As Long
+Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" (hpvDest As Any, hpvSource As Any, ByVal cbCopy As Long)
+Declare Function SetForegroundWindow Lib "user32" (ByVal hWnd As Long) As Long
 Declare Function SetWindowsHookEx Lib "user32" Alias "SetWindowsHookExA" (ByVal idHook As Long, ByVal lpfn As Long, ByVal hmod As Long, ByVal dwThreadId As Long) As Long
 Declare Function UnhookWindowsHookEx Lib "user32" (ByVal hHook As Long) As Long
 
@@ -44,10 +50,10 @@ Public Function AppHook(ByVal idHook As Long, ByVal wParam As Long, ByVal lParam
 
 100     CopyMemory CWP, ByVal lParam, Len(CWP)
 
-102     Select Case CWP.Message
+102     Select Case CWP.message
 
             Case WM_CREATE
-104             SetForegroundWindow CWP.hwnd
+104             SetForegroundWindow CWP.hWnd
 106             AppHook = CallNextHookEx(hHook, idHook, wParam, ByVal lParam)
 108             UnhookWindowsHookEx hHook
 110             hHook = 0

@@ -10,11 +10,12 @@ Public SeguroResuX As Boolean
 
 Public QuePestañaInferior As Byte
 
-
+Public newUser As Boolean
 Public Enum tMacro
     dobleclick = 1
     Coordenadas = 2
     inasistidoPosFija = 3
+    borrarCartel = 4
 End Enum
 
 Public Enum tMacroButton
@@ -22,9 +23,14 @@ Public Enum tMacroButton
     Hechizos = 2
     lista = 3
     Lanzar = 4
+    picInv = 5
 End Enum
 
 Public LastMacroButton As Long
+
+Public LastOpenChatCounter As Long
+Public LastElapsedTimeChat(1 To 6) As Double
+Public StartOpenChatTime As Double
 
 Public TieneAntorcha As Boolean
 Public Enum TipoAntorcha
@@ -54,7 +60,7 @@ Public HayLLamadaDeclan                 As Boolean
 
 Public MapInfoEspeciales                As String
 
-Public LLamadaDeclanMapa                As Byte
+Public LLamadaDeclanMapa                As Integer
 
 Public LLamadaDeclanX                   As Byte
 
@@ -321,15 +327,46 @@ Public VSync_FPS              As Boolean
 Public MostrarOnline          As Boolean
 Public usersOnline            As Integer
 
+Public Enum e_selectedlight
+    hourLight = 0
+    dayLight
+    nightLight
+End Enum
+
+Public selected_light As String
+
 Public global_light           As RGBA
+Public night_light            As RGBA
+Public day_light              As RGBA
 Public map_light              As RGBA
 Public last_light             As RGBA
 Public next_light             As RGBA
 Public light_transition       As Single
 
+Public npcs_en_render As Byte
+
 Public Const Particula_Lluvia As Long = 58
 Public Const Particula_Nieve  As Long = 57
 Public VolMusicFadding        As Integer
+
+#If DEBUGGING = 1 Then
+    Public IPServers(1 To 4) As String
+#Else
+    Public IPServers(1) As String
+#End If
+
+Public Type tServerInfo
+
+    IP As String
+    puerto As Integer
+    desc As String
+    estado As Boolean
+    IpLogin As String
+    puertoLogin As Integer
+
+End Type
+
+Public ServersLst()   As tServerInfo
 
 Public EngineStats    As Boolean
 
@@ -604,6 +641,8 @@ Public Const MAX_SLOTS_CRAFTEO = 5
 
 Public Const LoopAdEternum            As Integer = 999
 
+Public OffsetLimitScreen              As Long
+
 'Direcciones
 Public Enum E_Heading
 
@@ -750,9 +789,6 @@ Public Enum PlayerType
     SemiDios = &H8
     Dios = &H10
     Admin = &H20
-    ChaosCouncil = &H40
-    RoyalCouncil = &H80
-
 End Enum
 
 Public Enum eObjType
@@ -895,14 +931,14 @@ Public Const MENSAJE_NENE                          As String = "Cantidad de NPCs
 'Inventario
 Type Inventory
 
-    OBJIndex As Integer
-    Name As String
+    ObjIndex As Integer
+    name As String
     GrhIndex As Long
     '[Alejo]: tipo de datos ahora es Long
     Amount As Long
     '[/Alejo]
     Equipped As Byte
-    Valor As Single
+    valor As Single
     ObjType As Integer
     Def As Integer
     MaxHit As Integer
@@ -914,7 +950,7 @@ End Type
 Type MakeObj
 
     GrhIndex As Long ' Indice del grafico que representa el obj
-    Name As String
+    name As String
     MinDef As Integer
     MaxDef As Integer
     MinHit As Integer
@@ -925,11 +961,11 @@ End Type
 
 Type NpCinV
 
-    OBJIndex As Integer
-    Name As String
+    ObjIndex As Integer
+    name As String
     GrhIndex As Long
     Amount As Integer
-    Valor As Single
+    valor As Single
     PuedeUsar As Byte
     ObjType As Integer
     Def As Integer
@@ -1123,7 +1159,7 @@ Public flags()                           As Integer
 
 Public Oscuridad                         As Integer
 
-Public logged                            As Boolean
+Public isLogged                            As Boolean
 
 Public UsingSkill                        As Integer
 
@@ -1243,6 +1279,7 @@ Public PuertoDelServidor As String
 
 Public IPdelServidorLogin     As String
 
+
 Public PuertoDelServidorLogin As String
 '
 '********** FUNCIONES API ***********
@@ -1291,3 +1328,14 @@ End Type
 ' Load custom font
 Public Declare Function AddFontResourceEx Lib "gdi32.dll" Alias "AddFontResourceExA" (ByVal lpcstr As String, ByVal dword As Long, ByRef DESIGNVECTOR) As Long
 Public Const FR_PRIVATE As Long = &H10
+
+Public Seguido As Byte
+
+Public Type t_tutorial
+    grh As Long
+    Activo As Byte
+    titulo As String
+    textos() As String
+End Type
+
+Public tutorial() As t_tutorial

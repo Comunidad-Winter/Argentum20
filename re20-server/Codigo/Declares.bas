@@ -1,5 +1,12 @@
 Attribute VB_Name = "Declaraciones"
-
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
 'Argentum Online 0.11.6
 'Copyright (C) 2002 Márquez Pablo Ignacio
 '
@@ -54,6 +61,7 @@ Public Enum tMacro
     dobleclick = 1
     Coordenadas = 2
     inasistidoPosFija = 3
+    borrarCartel = 4
 End Enum
 
 
@@ -62,6 +70,8 @@ Public Enum e_Facciones
     Ciudadano = 1
     Caos = 2
     Armada = 3
+    concilio = 4
+    consejo = 5
 End Enum
 
 Public lstUsuariosDonadores() As String
@@ -218,17 +228,14 @@ Public Type t_LlamadaGM
 
 End Type
 
-Public Enum e_PlayerType
 
+Public Enum e_PlayerType
     user = &H1
     RoleMaster = &H2
     Consejero = &H4
     SemiDios = &H8
     Dios = &H10
     Admin = &H20
-    ChaosCouncil = &H40
-    RoyalCouncil = &H80
-
 End Enum
 
 Public Enum e_Class
@@ -525,6 +532,7 @@ Public Enum e_NPCType
     DummyTarget = 19
     EntregaPesca = 20
     AO20Shop = 21
+    AO20ShopPjs = 22
     
 End Enum
 
@@ -921,6 +929,7 @@ Public Type t_Hechizo
     '    ItemIndex As Byte
     
     Mimetiza As Byte
+    Sensui As Byte
     
     MinSkill As Integer
     ManaRequerido As Integer
@@ -1019,6 +1028,7 @@ Public Type t_CityWorldPos
     ResuX As Byte
     ResuY As Byte
     NecesitaNave As Byte
+    Mapas() As String
 
 End Type
 
@@ -1034,6 +1044,7 @@ End Type
 Public Type t_Char
 
     CharIndex As Integer
+    charindex_bk As Integer
     Head As Integer
     Body As Integer
     
@@ -1053,6 +1064,7 @@ Public Type t_Char
     Otra_Aura As String
     speeding As Single
     BodyIdle As Integer
+    Ataque1 As Integer
     Animation() As Integer
 
 End Type
@@ -1194,7 +1206,7 @@ Public Type t_ObjData
 
     TipoRuna As Byte
 
-    name As String 'Nombre del obj
+    Name As String 'Nombre del obj
     
     OBJType As e_OBJType 'Tipo enum que determina cuales son las caract del obj
     
@@ -1335,6 +1347,8 @@ Public Type t_ObjData
     PielOsoPardo As Integer
     PielOsoPolaR As Integer
     SkMAGOria As Byte
+    
+    Radio As Byte
      
     SkHerreria As Integer
     SkCarpinteria As Integer
@@ -1374,6 +1388,7 @@ Public Type t_ObjData
     QuestId As Integer
     PuntosPesca As Long
     ObjNum As Long
+    ObjDonador As Long
 End Type
 
 '[Pablo ToxicWaste]
@@ -1423,6 +1438,10 @@ Public Type t_BancoInventario
     NroItems As Integer
 
 End Type
+
+Public Const patron_tier_aventurero As Long = 6057393
+Public Const patron_tier_heroe As Long = 6057394
+Public Const patron_tier_leyenda As Long = 6057395
 
 Public Enum e_TipoUsuario
     tNormal = 0
@@ -1504,7 +1523,10 @@ Public Type t_UserFlags
     Nadando As Byte
     PescandoEspecial As Boolean
     QuestOpenByObj As Boolean
-
+    
+    SigueUsuario As Integer
+    GMMeSigue As Integer
+    
     EnTorneo As Boolean
 
     'Ladder
@@ -1677,6 +1699,13 @@ Public Type t_UserFlags
     QuestNumber As Integer
     QuestItemSlot As Integer
     RespondiendoPregunta As Boolean
+    
+    'Captura de bandera
+    jugando_captura As Byte
+    jugando_captura_team As Byte
+    jugando_captura_timer As Integer
+    jugando_captura_muertes As Integer
+    tiene_bandera As Byte
 End Type
 
 Public Enum e_EstadoMimetismo
@@ -1686,6 +1715,11 @@ Public Enum e_EstadoMimetismo
     FormaBicho = 3
 End Enum
 
+Public Type t_ControlHechizos
+    HechizosTotales As Long
+    HechizosCasteados As Long
+End Type
+
 Public Type t_UserCounters
 
     TiempoDeInmunidad As Byte
@@ -1693,10 +1727,10 @@ Public Type t_UserCounters
     LastGmMessage As Long
     CounterGmMessages As Long
     EnCombate As Byte
-    TiempoOcultar As Byte
     TiempoParaSubastar As Byte
     UserHechizosInterval(1 To MAXUSERHECHIZOS) As Long
     
+    controlHechizos As t_ControlHechizos
     
     IdleCount As Integer
     AttackCounter As Integer
@@ -1725,7 +1759,7 @@ Public Type t_UserCounters
     PiqueteC As Long
     Pena As Long
     SendMapCounter As t_WorldPos
-    pasos As Integer
+    Pasos As Integer
     '[Gonzalo]
     Saliendo As Boolean
     Salir As Integer
@@ -1850,12 +1884,15 @@ Public Type t_UserTrabajo
     TargetSkill As e_Skill
     Target_X As Integer
     Target_Y As Integer
+    'Para macro de Carpinteria, Herrería y Sastrería
+    Item As Integer
+    Cantidad As Long
 End Type
 
 'Tipo de los Usuarios
 Public Type t_User
 
-    name As String
+    Name As String
     Cuenta As String
     
     ID As Long
@@ -1882,6 +1919,7 @@ Public Type t_User
     MENSAJEINFORMACION As String
         
     Invent As t_Inventario
+    Invent_bk As t_Inventario
     
     Pos As t_WorldPos
     
@@ -1895,6 +1933,7 @@ Public Type t_User
     Intervals As t_UserIntervals
     
     Stats As t_UserStats
+    Stats_bk As t_UserStats
     flags As t_UserFlags
     Accion As t_AccionPendiente
 
@@ -2041,7 +2080,6 @@ Public Type t_NPCFlags
 
     AtacaUsuarios As Boolean ' Si el NPC puede atacar usuarios
     AtacaNPCs As Boolean     ' Si el NPC puede atacar otros NPC
-
     AIAlineacion As e_Alineacion
 
 End Type
@@ -2072,7 +2110,7 @@ Public Type t_NpcPathFindingInfo
 End Type
 
 Public Type t_Caminata
-    offset As t_Position
+    Offset As t_Position
     Espera As Long
 End Type
 
@@ -2112,7 +2150,7 @@ Public Type t_Npc
     DropQuest() As t_QuestObj
     
     InformarRespawn As Byte
-    name As String
+    Name As String
     SubName As String
     Char As t_Char 'Define como se vera
     Desc As String
@@ -2223,7 +2261,7 @@ Public Type t_MapBlock
 
     Blocked As Byte
     Graphic(1 To 4) As Long
-    userindex As Integer
+    UserIndex As Integer
     NpcIndex As Integer
     Particula As Byte
     TimeParticula As Integer
@@ -2444,9 +2482,13 @@ Public CityUllathorpe                     As t_CityWorldPos
 
 Public CityBanderbill                     As t_CityWorldPos
 
+Public CityArghal                         As t_CityWorldPos
+
+Public CityPenthar                        As t_CityWorldPos
+
 Public CityLindos                         As t_CityWorldPos
 
-Public CityArghal                         As t_CityWorldPos
+Public CityEleusis                        As t_CityWorldPos
 
 Public CityArkhein                        As t_CityWorldPos
 
@@ -2454,12 +2496,14 @@ Public Prision                            As t_WorldPos
 
 Public Libertad                           As t_WorldPos
 
+Public TotalMapasCiudades()               As String
+
 Public Ayuda                              As New cCola
 
 
-Public Declare Function writeprivateprofilestring Lib "Kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpString As String, ByVal lpfilename As String) As Long
+Public Declare Function writeprivateprofilestring Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpString As String, ByVal lpfilename As String) As Long
 
-Public Declare Function GetPrivateProfileString Lib "Kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpdefault As String, ByVal lpreturnedstring As String, ByVal nSize As Long, ByVal lpfilename As String) As Long
+Public Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpdefault As String, ByVal lpreturnedstring As String, ByVal nSize As Long, ByVal lpfilename As String) As Long
 
 Public Declare Sub ZeroMemory Lib "kernel32.dll" Alias "RtlZeroMemory" (ByRef destination As Any, ByVal Length As Long)
 

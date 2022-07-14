@@ -1,5 +1,12 @@
 Attribute VB_Name = "modNetwork"
-
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
 Option Explicit
 
 Private Const TIME_RECV_FREQUENCY As Long = 0  ' In milliseconds
@@ -44,30 +51,35 @@ Public Sub Poll()
     Call Server.Flush
 End Sub
 
-Public Sub Send(ByVal userindex As Long, ByVal Buffer As Network.Writer)
-    Call Server.Send(UserList(userindex).ConnID, False, Buffer)
+Public Sub Send(ByVal UserIndex As Long, ByVal Buffer As Network.Writer)
+    Call Server.Send(UserList(UserIndex).ConnID, False, Buffer)
 End Sub
 
-Public Sub Flush(ByVal userindex As Long)
-    Call Server.Flush(UserList(userindex).ConnID)
+Public Sub Flush(ByVal UserIndex As Long)
+    Call Server.Flush(UserList(UserIndex).ConnID)
 End Sub
 
-Public Sub Kick(ByVal Connection As Long, Optional ByVal Message As String = vbNullString)
-    Dim userindex As Long
-    userindex = Mapping(Connection)
-        
-    If (userindex > 0) Then
-        If (Message <> vbNullString) Then
-            Call Protocol_Writes.WriteErrorMsg(userindex, Message)
-        End If
-        If UserList(userindex).flags.UserLogged Then
-           Call Cerrar_Usuario(userindex)
+Public Sub Kick(ByVal Connection As Long, Optional ByVal message As String = vbNullString)
+On Error GoTo Kick_ErrHandler:
+    If (message <> vbNullString) Then
+        Dim UserIndex As Long
+        UserIndex = Mapping(Connection)
+        If UserIndex > 0 Then
+            Call Protocol_Writes.WriteErrorMsg(UserIndex, message)
+            If UserList(UserIndex).flags.UserLogged Then
+                Call Cerrar_Usuario(UserIndex)
+            End If
+        Else
+            'Agregar SendErrorMsg()
         End If
     End If
-    
         
     Call Server.Flush(Connection)
     Call Server.Kick(Connection, True)
+    
+    Exit Sub
+    
+Kick_ErrHandler:
 End Sub
 
 
@@ -75,6 +87,21 @@ Public Function GetTimeOfNextFlush() As Single
     GetTimeOfNextFlush = max(0, TIME_SEND_FREQUENCY - Time(1))
 End Function
 
+Public Sub close_not_logged_sockets_if_timeout()
+    Dim i As Integer
+    For i = 1 To LastUser
+         With UserList(i)
+                If Not .flags.UserLogged And .ConnID > 0 Then
+                    Dim Ticks As Long, Delta As Long
+                    Ticks = GetTickCount
+                    Delta = Ticks - .Counters.OnConnectTimestamp
+                    If Delta > 3000 Then
+                        Call Kick(.ConnID, ".")
+                    End If
+                End If
+            End With
+    Next i
+End Sub
 Private Sub OnServerConnect(ByVal Connection As Long, ByVal Address As String)
 On Error GoTo OnServerConnect_Err:
   
@@ -112,25 +139,25 @@ End Sub
 Private Sub OnServerClose(ByVal Connection As Long)
 On Error GoTo OnServerClose_Err:
     
-    Dim userindex As Long
-    userindex = Mapping(Connection)
+    Dim UserIndex As Long
+    UserIndex = Mapping(Connection)
 
-    If userindex <= 0 Then Exit Sub
+    If UserIndex <= 0 Then Exit Sub
     'Es el mismo user al que está revisando el centinela??
     'Si estamos acá es porque se cerró la conexión, no es un /salir, y no queremos banearlo....
-    If Centinela.RevisandoUserIndex = userindex Then
+    If Centinela.RevisandoUserIndex = UserIndex Then
         Call modCentinela.CentinelaUserLogout
     End If
     
-    If UserList(userindex).flags.UserLogged Then
-        Call CloseSocketSL(userindex)
-        Call Cerrar_Usuario(userindex)
+    If UserList(UserIndex).flags.UserLogged Then
+        Call CloseSocketSL(UserIndex)
+        Call Cerrar_Usuario(UserIndex)
     Else
-        Call CloseSocket(userindex)
+        Call CloseSocket(UserIndex)
     End If
     
-    UserList(userindex).ConnIDValida = False
-    UserList(userindex).ConnID = 0
+    UserList(UserIndex).ConnIDValida = False
+    UserList(UserIndex).ConnID = 0
     Mapping(Connection) = 0
     
     
@@ -153,10 +180,10 @@ End Sub
 Private Sub OnServerRecv(ByVal Connection As Long, ByVal Message As Network.Reader)
 On Error GoTo OnServerRecv_Err:
     
-    Dim userindex As Long
-    userindex = Mapping(Connection)
+    Dim UserIndex As Long
+    UserIndex = Mapping(Connection)
 
-    Call Protocol.HandleIncomingData(userindex, Message)
+    Call Protocol.HandleIncomingData(UserIndex, message)
     
     Exit Sub
     

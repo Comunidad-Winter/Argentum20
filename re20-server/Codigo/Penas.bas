@@ -1,5 +1,11 @@
 Attribute VB_Name = "Penas"
-
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
 '
 Option Explicit
 
@@ -35,7 +41,7 @@ CargarListaNegraUsuarios_Err:
         Call TraceError(Err.Number, Err.Description, "Penas.CargarListaNegraUsuarios", Erl)
 End Sub
 
-Private Function GlobalChecks(ByVal BannerIndex As Integer, ByRef UserName As String) As Integer
+Private Function GlobalChecks(ByVal BannerIndex As Integer, ByRef username As String) As Integer
         
         On Error GoTo GlobalChecks_Err
 
@@ -107,7 +113,7 @@ Public Sub BanPJ(ByVal BannerIndex As Integer, ByVal UserName As String, ByRef R
         End If
 
         ' Guardamos el estado de baneado en la base de datos.
-110     Call SaveBanDatabase(UserName, Razon, UserList(BannerIndex).name)
+110     Call SaveBanDatabase(UserName, Razon, UserList(BannerIndex).Name)
 
         ' Registramos el baneo en los logs.
 112     Call LogBanFromName(UserName, BannerIndex, Razon)
@@ -180,13 +186,13 @@ Public Sub BanearCuenta(ByVal BannerIndex As Integer, ByVal UserName As String, 
         End If
 
         ' Guardamos el estado de baneado en la base de datos.
-112     Call SaveBanCuentaDatabase(CuentaID, Reason, UserList(BannerIndex).name)
+112     Call SaveBanCuentaDatabase(CuentaID, Reason, UserList(BannerIndex).Name)
 
         ' Le buchoneamos al mundo.
-114     Call SendData(SendTarget.ToAdmins, 0, PrepareMessageConsoleMsg("Servidor » " & UserList(BannerIndex).name & " ha baneado la cuenta de " & UserName & " debido a: " & Reason & ".", e_FontTypeNames.FONTTYPE_SERVER))
+114     Call SendData(SendTarget.ToAdmins, 0, PrepareMessageConsoleMsg("Servidor » " & UserList(BannerIndex).Name & " ha baneado la cuenta de " & UserName & " debido a: " & Reason & ".", e_FontTypeNames.FONTTYPE_SERVER))
 
         ' Registramos el baneo en los logs.
-116     Call LogGM(UserList(BannerIndex).name, "Baneó la cuenta de " & UserName & " por: " & Reason)
+116     Call LogGM(UserList(BannerIndex).Name, "Baneó la cuenta de " & UserName & " por: " & Reason)
 
         ' Echo a todos los logueados en esta cuenta
         Dim i As Long
@@ -246,7 +252,7 @@ Public Sub BanearIP(ByVal BannerIndex As Integer, ByVal UserName As String, ByVa
 102     Call IP_Blacklist.Add(IP, UserName)
 
         ' Registramos el des-baneo en los logs.
-104     Call LogGM(UserList(BannerIndex).name, "Baneó la IP: " & IP & " de " & UserName)
+104     Call LogGM(UserList(BannerIndex).Name, "Baneó la IP: " & IP & " de " & UserName)
 
         Exit Sub
 

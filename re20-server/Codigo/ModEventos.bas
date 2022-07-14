@@ -1,5 +1,12 @@
 Attribute VB_Name = "ModEventos"
-
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
 Public HoraEvento           As Byte
 
 Public TiempoRestanteEvento As Byte
@@ -364,9 +371,9 @@ ForzarEvento_Err:
         
 End Sub
 
-Public Sub IniciarEvento(ByVal Tipo As TipoEvento, ByVal Data As Variant)
+Public Sub IniciarEvento(ByVal Tipo As TipoEvento, ByVal data As Variant)
 100     Select Case Tipo
             Case TipoEvento.Invasion
-102             Call IniciarInvasion(Data)
+102             Call IniciarInvasion(data)
         End Select
 End Sub

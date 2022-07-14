@@ -226,6 +226,14 @@ Private Sub cmdcerrar_Click()
     Unload Me
 End Sub
 
+Private Sub cmdComprar_DblClick()
+    cmdComprar_Click
+End Sub
+
+Private Sub cmdVender_DblClick()
+     cmdVender_Click
+End Sub
+
 Private Sub Form_Load()
     
     On Error GoTo Form_Load_Err
@@ -234,7 +242,7 @@ Private Sub Form_Load()
     cantidad.BackColor = RGB(18, 19, 13)
 
     Me.Picture = LoadInterface("comerciar.bmp")
-    Call LoadButtons
+    Call loadButtons
     Exit Sub
 
 Form_Load_Err:
@@ -243,7 +251,7 @@ Form_Load_Err:
     
 End Sub
 
-Private Sub LoadButtons()
+Private Sub loadButtons()
        
     Set cBotonComprar = New clsGraphicalButton
     Set cBotonVender = New clsGraphicalButton
@@ -252,13 +260,13 @@ Private Sub LoadButtons()
     Set cBotonMenos = New clsGraphicalButton
 
 
-    Call cBotonComprar.Initialize(cmdComprar, "boton-comprar-ES-default.bmp", _
-                                                "boton-comprar-ES-over.bmp", _
-                                                "boton-comprar-ES-off.bmp", Me)
+    Call cBotonComprar.Initialize(cmdComprar, "boton-comprar-default.bmp", _
+                                                "boton-comprar-over.bmp", _
+                                                "boton-comprar-off.bmp", Me)
     
-    Call cBotonVender.Initialize(cmdVender, "boton-vender-ES-default.bmp", _
-                                                "boton-vender-ES-over.bmp", _
-                                                "boton-vender-ES-off.bmp", Me)
+    Call cBotonVender.Initialize(cmdVender, "boton-vender-default.bmp", _
+                                                "boton-vender-over.bmp", _
+                                                "boton-vender-off.bmp", Me)
                                                 
     Call cBotonCerrar.Initialize(cmdCerrar, "boton-cerrar-default.bmp", _
                                                 "boton-cerrar-over.bmp", _
@@ -349,7 +357,7 @@ Private Sub cmdComprar_Click()
  
     LasActionBuy = True
 
-    If UserGLD >= InvComNpc.Valor(InvComNpc.SelectedItem) * Val(cantidad) Then
+    If UserGLD >= InvComNpc.valor(InvComNpc.SelectedItem) * Val(cantidad) Then
         Call WriteCommerceBuy(InvComNpc.SelectedItem, cantidad.Text)
     Else
         AddtoRichTextBox frmMain.RecTxt, "No tenés suficiente oro.", 2, 51, 223, 1, 1
@@ -492,7 +500,7 @@ Private Sub interface_DblClick()
         ' Hacemos acción del doble clic correspondiente
         Dim ObjType As Byte
 
-        ObjType = ObjData(InvComUsu.OBJIndex(InvComUsu.SelectedItem)).ObjType
+        ObjType = ObjData(InvComUsu.ObjIndex(InvComUsu.SelectedItem)).ObjType
         
         If UserMeditar Then Exit Sub
         If Not MainTimer.Check(TimersIndex.UseItemWithDblClick) Then Exit Sub
@@ -504,7 +512,7 @@ Private Sub interface_DblClick()
                 
             Case eObjType.otWeapon
 
-                If ObjData(InvComUsu.OBJIndex(InvComUsu.SelectedItem)).proyectil = 1 And InvComUsu.Equipped(InvComUsu.SelectedItem) Then
+                If ObjData(InvComUsu.ObjIndex(InvComUsu.SelectedItem)).proyectil = 1 And InvComUsu.Equipped(InvComUsu.SelectedItem) Then
                     Call WriteUseItem(InvComUsu.SelectedItem)
                 Else
                     Call WriteEquipItem(InvComUsu.SelectedItem)
@@ -641,7 +649,7 @@ Private Sub InvComNpc_ItemDropped(ByVal Drag As Integer, ByVal Drop As Integer, 
         LasActionBuy = True
 
         ' Si tiene suficiente oro
-        If UserGLD >= InvComNpc.Valor(Drag) * Val(cantidad.Text) Then
+        If UserGLD >= InvComNpc.valor(Drag) * Val(cantidad.Text) Then
             Call WriteCommerceBuy(Drag, Val(cantidad.Text))
         Else
             AddtoRichTextBox frmMain.RecTxt, "No tenés suficiente oro.", 2, 51, 223, 1, 1

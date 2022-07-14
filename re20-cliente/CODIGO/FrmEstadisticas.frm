@@ -1086,9 +1086,9 @@ Private Sub loadButtons()
     Set cBotonCerrar = New clsGraphicalButton
 
 
-    Call cBotonAceptar.Initialize(Image1, "boton-aceptar-es-default.bmp", _
-                                                "boton-aceptar-es-over.bmp", _
-                                                "boton-aceptar-es-off.bmp", Me)
+    Call cBotonAceptar.Initialize(Image1, "boton-aceptar-default.bmp", _
+                                                "boton-aceptar-over.bmp", _
+                                                "boton-aceptar-off.bmp", Me)
                                                 
                                                 
     Call cBotonCerrar.Initialize(imgCerrar, "boton-cerrar-default.bmp", _
@@ -1181,6 +1181,10 @@ Command2_Click_Err:
     Call RegistrarError(Err.number, Err.Description, "frmEstadisticas.Command2_Click", Erl)
     Resume Next
     
+End Sub
+
+Private Sub command1_DblClick(Index As Integer)
+    Command1_Click (Index)
 End Sub
 
 Private Sub Command1_MouseDown(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)

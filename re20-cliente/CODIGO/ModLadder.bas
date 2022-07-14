@@ -7,7 +7,7 @@ Public Const DegreeToRadian As Single = 0.01745329251994 'Pi / 180
 Public Const RadianToDegree As Single = 57.2958279087977 '180 / Pi
 
 'Nueva seguridad
-Public Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" (destination As Any, source As Any, ByVal length As Long)
+Public Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" (destination As Any, source As Any, ByVal Length As Long)
 Private Declare Function GetAsyncKeyState Lib "user32" (ByVal vKey As Long) As Integer
 'get mac adress
 
@@ -579,7 +579,7 @@ Public Sub LogError(desc As String)
 
     nfile = FreeFile ' obtenemos un canal
     Open App.Path & "\errores.log" For Append Shared As #nfile
-    Print #nfile, Date & "-" & time & ":" & desc
+    Print #nfile, Date & "-" & Time & ":" & desc
     Close #nfile
 
     Exit Sub
@@ -1465,27 +1465,33 @@ Public Sub WriteChatOverHeadInConsole(ByVal charindex As Integer, ByVal ChatText
         Select Case .priv
             ' Usuario normal
             Case 0
-
                 If .status = 0 Then ' Criminal
-                    NameRed = ColoresPJ(50).r
-                    NameGreen = ColoresPJ(50).G
-                    NameBlue = ColoresPJ(50).B
+                    NameRed = ColoresPJ(23).r
+                    NameGreen = ColoresPJ(23).G
+                    NameBlue = ColoresPJ(23).B
                 ElseIf .status = 1 Then ' Ciudadano
-                    NameRed = ColoresPJ(49).r
-                    NameGreen = ColoresPJ(49).G
-                    NameBlue = ColoresPJ(49).B
+                    NameRed = ColoresPJ(20).r
+                    NameGreen = ColoresPJ(20).G
+                    NameBlue = ColoresPJ(20).B
                 ElseIf .status = 2 Then ' Caos
-                    NameRed = ColoresPJ(6).r
-                    NameGreen = ColoresPJ(6).G
-                    NameBlue = ColoresPJ(6).B
+                    NameRed = ColoresPJ(24).r
+                    NameGreen = ColoresPJ(24).G
+                    NameBlue = ColoresPJ(24).B
                 ElseIf .status = 3 Then ' Armada
-                    NameRed = ColoresPJ(8).r
-                    NameGreen = ColoresPJ(8).G
-                    NameBlue = ColoresPJ(8).B
-
+                    NameRed = ColoresPJ(21).r
+                    NameGreen = ColoresPJ(21).G
+                    NameBlue = ColoresPJ(21).B
+                ElseIf .status = 4 Then ' Conciclio
+                    NameRed = ColoresPJ(25).r
+                    NameGreen = ColoresPJ(25).G
+                    NameBlue = ColoresPJ(25).B
+                ElseIf .status = 5 Then ' Consejo
+                    NameRed = ColoresPJ(22).r
+                    NameGreen = ColoresPJ(22).G
+                    NameBlue = ColoresPJ(22).B
                 End If
 
-            ' Consejeros, SemiDioses, Dioses y Admin (GM)
+            ' Consejeros, SemiDioses, Dioses y Admin (GM), Concilios y consejos
             Case Else
                 NameRed = ColoresPJ(.priv).r
                 NameGreen = ColoresPJ(.priv).G
@@ -1632,7 +1638,7 @@ Public Function General_Var_Get(ByVal File As String, ByVal Main As String, ByVa
     'Last Modify Date: 10/07/2002
     'Get a var to from a text file
     '*****************************************************************
-    Dim l        As Long
+    Dim L        As Long
 
     Dim Char     As String
 
@@ -1667,30 +1673,30 @@ Public Sub DibujarMiniMapa()
     If ListNPCMapData(UserMap, 1).NPCNumber > 0 Then
         Dim i As Long
         For i = 1 To MAX_QUESTNPCS_VISIBLE
-            Dim PosX As Long
-            Dim PosY As Long
+            Dim posX As Long
+            Dim posY As Long
             
-            PosX = (ListNPCMapData(UserMap, i).Position.x - HalfWindowTileWidth - 2) * (100 / (100 - 2 * HalfWindowTileWidth - 4)) - 2
+            PosX = (ListNPCMapData(UserMap, i).Position.X - HalfWindowTileWidth - 2) * (100 / (100 - 2 * HalfWindowTileWidth - 4)) - 2
             PosY = (ListNPCMapData(UserMap, i).Position.y - HalfWindowTileHeight - 1) * (100 / (100 - 2 * HalfWindowTileHeight - 2)) - 1
             
             
-            Dim Color As Long
+            Dim color As Long
             
             Select Case ListNPCMapData(UserMap, i).State
                 Case 1
-                    Color = RGB(0, 198, 254)
+                    color = RGB(0, 198, 254)
                 Case 2
-                    Color = RGB(255, 201, 14)
+                    color = RGB(255, 201, 14)
                     Case Else
                     Color = RGB(255, 201, 14)
             End Select
             
             
             
-            Call SetPixel(frmMain.MiniMap.hdc, PosX + 1, PosY, Color)
-            Call SetPixel(frmMain.MiniMap.hdc, PosX, PosY + 1, Color)
-            Call SetPixel(frmMain.MiniMap.hdc, PosX + 1, PosY + 1, Color)
-            Call SetPixel(frmMain.MiniMap.hdc, PosX, PosY, Color)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX + 1, PosY, color)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX, PosY + 1, color)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX + 1, PosY + 1, color)
+            Call SetPixel(frmMain.MiniMap.hdc, PosX, PosY, color)
             
             Call SetPixel(frmMain.MiniMap.hdc, PosX, PosY - 1, &H808080)
             Call SetPixel(frmMain.MiniMap.hdc, PosX + 1, PosY - 1, &H808080)
@@ -1970,6 +1976,33 @@ ResetearUserMacro_Err:
     
 End Sub
 
+Public Sub CargarLst()
+    
+    On Error GoTo CargarLst_Err
+    
+
+    Dim i As Integer
+
+    FrmLogear.lstServers.Clear
+
+    For i = 1 To UBound(ServersLst)
+        FrmLogear.lstServers.AddItem ServersLst(i).desc
+    Next i
+    
+#If DEBUGGING = 1 Then
+    FrmLogear.lstServers.ListIndex = Val(ServerIndex)
+#Else
+    FrmLogear.lstServers.ListIndex = 0
+#End If
+
+    
+    Exit Sub
+
+CargarLst_Err:
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.CargarLst", Erl)
+    Resume Next
+    
+End Sub
 
 Public Sub CrearFantasma(ByVal charindex As Integer)
     
@@ -2017,6 +2050,23 @@ CompletarAccionBarra_Err:
     
 End Sub
 
+Public Sub ComprobarEstado()
+    
+    On Error GoTo ComprobarEstado_Err
+    
+
+    Call InitServersList
+
+    Call CargarLst
+
+    
+    Exit Sub
+
+ComprobarEstado_Err:
+    Call RegistrarError(Err.Number, Err.Description, "ModLadder.ComprobarEstado", Erl)
+    Resume Next
+    
+End Sub
 
 Public Function General_Distance_Get(ByVal x1 As Integer, ByVal y1 As Integer, ByVal x2 As Integer, ByVal y2 As Integer) As Integer
     

@@ -3,10 +3,6 @@ Option Explicit
 
 Private Client As Network.Client
 
-Public Function IsConnected() As Boolean
-    IsConnected = Connected
-End Function
-
 Public Sub Connect(ByVal Address As String, ByVal Service As String)
     If (Address = vbNullString Or Service = vbNullString) Then
         Exit Sub
@@ -46,6 +42,11 @@ Private Sub OnClientConnect()
 On Error GoTo OnClientConnect_Err:
 Debug.Print ("Entró OnClientConnect")
 
+If EstadoLogin = E_MODO.CrearNuevoPj Then
+    Call LoginOrConnect(E_MODO.CrearNuevoPj)
+End If
+
+   
     Connected = True
     
     Exit Sub

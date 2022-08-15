@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: CostaAnimIzq2
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: -2782070018728697384, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: 2931714890925320490, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: -5871456006584642852, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: -6924308534802718631, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: -6378335203307658418, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: -3499599765033363552, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: 8805746418393670095, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: -8648604140328181133, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: -6257150974366189628, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: 2596535921618351261, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  m_MinSpeed: 4
+  m_MaxSpeed: 4
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 1
+  m_TileColliderType: 0

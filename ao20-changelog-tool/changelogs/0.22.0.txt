@@ -1,0 +1,10 @@
+- Equipar flecha explosiva y pegar golpe fisico aplica el efecto
+- NPCS Petrificados
+- Mascotas/elementales desaparecen al invocarlas
+- Quitar COMPRAS CON DOBLE CLICK
+- NPCs mágicos no deben pegar golpe físico si estás visible
+- Que el cliente compruebe la versión y te abra el launcher
+- Posición /CONSULTA
+- No se puede reenviar mail de cualquier tipo si ya se envió
+- Crash de página al ir a ruta /recuperar/{códigoRandom}
+- Sistema de Noticias

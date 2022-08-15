@@ -1,0 +1,2290 @@
+fileFormatVersion: 2
+guid: 2316cdd5fbc14524a987b01b82f5023b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1614232458913252800
+    second: humano_running_tunica_cura_0
+  - first:
+      213: 4733250031504766678
+    second: humano_running_tunica_cura_1
+  - first:
+      213: 8262528779624607205
+    second: humano_running_tunica_cura_2
+  - first:
+      213: -1497907029374046359
+    second: humano_running_tunica_cura_3
+  - first:
+      213: 8566927190626440423
+    second: humano_running_tunica_cura_4
+  - first:
+      213: 6130263899427658424
+    second: humano_running_tunica_cura_5
+  - first:
+      213: -1653509069019965924
+    second: humano_running_tunica_cura_6
+  - first:
+      213: 8568214603484177044
+    second: humano_running_tunica_cura_7
+  - first:
+      213: -2863644011250842639
+    second: humano_running_tunica_cura_8
+  - first:
+      213: 7850825874687900901
+    second: humano_running_tunica_cura_9
+  - first:
+      213: 6026311349160452054
+    second: humano_running_tunica_cura_10
+  - first:
+      213: -2298545078020505418
+    second: humano_running_tunica_cura_11
+  - first:
+      213: -6040979154008574197
+    second: humano_running_tunica_cura_12
+  - first:
+      213: -7761680409444659379
+    second: humano_running_tunica_cura_13
+  - first:
+      213: -7494489075081989762
+    second: humano_running_tunica_cura_14
+  - first:
+      213: -4201582600079675842
+    second: humano_running_tunica_cura_15
+  - first:
+      213: -6698702989144908230
+    second: humano_running_tunica_cura_16
+  - first:
+      213: -6400168451989332476
+    second: humano_running_tunica_cura_17
+  - first:
+      213: 7589008884422292470
+    second: humano_running_tunica_cura_18
+  - first:
+      213: 7121053828849166335
+    second: humano_running_tunica_cura_19
+  - first:
+      213: -5801753068432324565
+    second: humano_running_tunica_cura_20
+  - first:
+      213: 5662440332609134793
+    second: humano_running_tunica_cura_21
+  - first:
+      213: 6014462151349127628
+    second: humano_running_tunica_cura_22
+  - first:
+      213: -3344626060651485193
+    second: humano_running_tunica_cura_23
+  - first:
+      213: 1425354467146730678
+    second: humano_running_tunica_cura_24
+  - first:
+      213: 1095778260135009793
+    second: humano_running_tunica_cura_25
+  - first:
+      213: -7108847399795529204
+    second: humano_running_tunica_cura_26
+  - first:
+      213: -8697170759285110368
+    second: humano_running_tunica_cura_27
+  - first:
+      213: -8785609476217162258
+    second: humano_running_tunica_cura_28
+  - first:
+      213: -2274159244070171608
+    second: humano_running_tunica_cura_29
+  - first:
+      213: 8167748596658918323
+    second: humano_running_tunica_cura_30
+  - first:
+      213: 9143790223189226546
+    second: humano_running_tunica_cura_31
+  - first:
+      213: 7299542135119206178
+    second: humano_running_tunica_cura_32
+  - first:
+      213: 1915537697904513821
+    second: humano_running_tunica_cura_33
+  - first:
+      213: 9006099149645565862
+    second: humano_running_tunica_cura_34
+  - first:
+      213: -2951346977743761327
+    second: humano_running_tunica_cura_35
+  - first:
+      213: -6111979963584181090
+    second: humano_running_tunica_cura_36
+  - first:
+      213: 5038261842967739228
+    second: humano_running_tunica_cura_37
+  - first:
+      213: -8245218974615292374
+    second: humano_running_tunica_cura_38
+  - first:
+      213: 1364318169307982566
+    second: humano_running_tunica_cura_39
+  - first:
+      213: -6114130433168690735
+    second: humano_running_tunica_cura_40
+  - first:
+      213: 6874672195539693859
+    second: humano_running_tunica_cura_41
+  - first:
+      213: 170163237519752459
+    second: humano_running_tunica_cura_42
+  - first:
+      213: 5378551423800472900
+    second: humano_running_tunica_cura_43
+  - first:
+      213: -3722136491723055806
+    second: humano_running_tunica_cura_44
+  - first:
+      213: -4974324894498452943
+    second: humano_running_tunica_cura_45
+  - first:
+      213: -8187511754634483791
+    second: humano_running_tunica_cura_46
+  - first:
+      213: 4931613764006950224
+    second: humano_running_tunica_cura_47
+  - first:
+      213: -490907825722240403
+    second: humano_running_tunica_cura_48
+  - first:
+      213: -4458203242224898996
+    second: humano_running_tunica_cura_49
+  - first:
+      213: 3666110699348030139
+    second: humano_running_tunica_cura_50
+  - first:
+      213: -3110551930966169416
+    second: humano_running_tunica_cura_51
+  - first:
+      213: 6408331891158864038
+    second: humano_running_tunica_cura_52
+  - first:
+      213: -815600647432943514
+    second: humano_running_tunica_cura_53
+  - first:
+      213: -3787724983410741398
+    second: humano_running_tunica_cura_54
+  - first:
+      213: 5318626913503256445
+    second: humano_running_tunica_cura_55
+  - first:
+      213: 2419263857447301812
+    second: humano_running_tunica_cura_56
+  - first:
+      213: 3412342019123819119
+    second: humano_running_tunica_cura_57
+  - first:
+      213: -2477682540034515568
+    second: humano_running_tunica_cura_58
+  - first:
+      213: 4940769490794505328
+    second: humano_running_tunica_cura_59
+  - first:
+      213: 4170810540993142001
+    second: humano_running_tunica_cura_60
+  - first:
+      213: 6194489979735657168
+    second: humano_running_tunica_cura_61
+  - first:
+      213: 3306633533611382991
+    second: humano_running_tunica_cura_62
+  - first:
+      213: 6422614785928939078
+    second: humano_running_tunica_cura_63
+  - first:
+      213: 4382633014047135241
+    second: humano_running_tunica_cura_64
+  - first:
+      213: -5754417596846147388
+    second: humano_running_tunica_cura_65
+  - first:
+      213: 4661963290050163718
+    second: humano_running_tunica_cura_66
+  - first:
+      213: 8307630992432833000
+    second: humano_running_tunica_cura_67
+  - first:
+      213: -7727471896595546568
+    second: humano_running_tunica_cura_68
+  - first:
+      213: -6328206856604507811
+    second: humano_running_tunica_cura_69
+  - first:
+      213: 1963071860032867461
+    second: humano_running_tunica_cura_70
+  - first:
+      213: -1690747131486518117
+    second: humano_running_tunica_cura_71
+  - first:
+      213: -5594354660794875242
+    second: humano_running_tunica_cura_72
+  - first:
+      213: 1630774965323833128
+    second: humano_running_tunica_cura_73
+  - first:
+      213: -6066188245361478435
+    second: humano_running_tunica_cura_74
+  - first:
+      213: 4397468227110474917
+    second: humano_running_tunica_cura_75
+  - first:
+      213: -8039858106714666051
+    second: humano_running_tunica_cura_76
+  - first:
+      213: -2546523290657060952
+    second: humano_running_tunica_cura_77
+  - first:
+      213: 4520990130302163090
+    second: humano_running_tunica_cura_78
+  - first:
+      213: 2560577697788105839
+    second: humano_running_tunica_cura_79
+  - first:
+      213: 7821093651559845612
+    second: humano_running_tunica_cura_0
+  - first:
+      213: 5778336249808431757
+    second: humano_running_tunica_cura_1
+  - first:
+      213: -8741838114182951275
+    second: humano_running_tunica_cura_2
+  - first:
+      213: 7584635500284862094
+    second: humano_running_tunica_cura_3
+  - first:
+      213: -5708586577066837285
+    second: humano_running_tunica_cura_4
+  - first:
+      213: 6835276326781344407
+    second: humano_running_tunica_cura_5
+  - first:
+      213: -2466918654513952325
+    second: humano_running_tunica_cura_6
+  - first:
+      213: -8938968421434047024
+    second: humano_running_tunica_cura_7
+  - first:
+      213: -3168414776368925334
+    second: humano_running_tunica_cura_8
+  - first:
+      213: -827516115524434671
+    second: humano_running_tunica_cura_9
+  - first:
+      213: 7627648861768488459
+    second: humano_running_tunica_cura_10
+  - first:
+      213: -498196302444864835
+    second: humano_running_tunica_cura_11
+  - first:
+      213: 3185297157570301687
+    second: humano_running_tunica_cura_12
+  - first:
+      213: -2419055011024630535
+    second: humano_running_tunica_cura_13
+  - first:
+      213: 6226906417108612011
+    second: humano_running_tunica_cura_14
+  - first:
+      213: -1936987320402091965
+    second: humano_running_tunica_cura_15
+  - first:
+      213: 7396898485192150982
+    second: humano_running_tunica_cura_16
+  - first:
+      213: -5622763348922083583
+    second: humano_running_tunica_cura_17
+  - first:
+      213: -207909986802397579
+    second: humano_running_tunica_cura_18
+  - first:
+      213: 227533569902435109
+    second: humano_running_tunica_cura_19
+  - first:
+      213: 4623236548349961620
+    second: humano_running_tunica_cura_20
+  - first:
+      213: 4500475065440214489
+    second: humano_running_tunica_cura_21
+  - first:
+      213: 2590801944178217640
+    second: humano_running_tunica_cura_22
+  - first:
+      213: 2616881421535945352
+    second: humano_running_tunica_cura_23
+  - first:
+      213: 2663901208157168129
+    second: humano_running_tunica_cura_24
+  - first:
+      213: -8240382905708685150
+    second: humano_running_tunica_cura_25
+  - first:
+      213: 1761517440591684132
+    second: humano_running_tunica_cura_26
+  - first:
+      213: -6628908004036060313
+    second: humano_running_tunica_cura_27
+  - first:
+      213: 4046006086347208309
+    second: humano_running_tunica_cura_28
+  - first:
+      213: -9128152680286748493
+    second: humano_running_tunica_cura_29
+  - first:
+      213: -6525123991695686635
+    second: humano_running_tunica_cura_30
+  - first:
+      213: 7910845533668094343
+    second: humano_running_tunica_cura_31
+  - first:
+      213: 2351067908609769515
+    second: humano_running_tunica_cura_32
+  - first:
+      213: 6577530379529459102
+    second: humano_running_tunica_cura_33
+  - first:
+      213: 4921188116656992915
+    second: humano_running_tunica_cura_34
+  - first:
+      213: 645985236846575054
+    second: humano_running_tunica_cura_35
+  - first:
+      213: -8095345794899763257
+    second: humano_running_tunica_cura_36
+  - first:
+      213: -3439744177858029152
+    second: humano_running_tunica_cura_37
+  - first:
+      213: 929941071274798057
+    second: humano_running_tunica_cura_38
+  - first:
+      213: -2588117703949569812
+    second: humano_running_tunica_cura_39
+  - first:
+      213: -3084367888606088361
+    second: humano_running_tunica_cura_40
+  - first:
+      213: 3085973150038710398
+    second: humano_running_tunica_cura_41
+  - first:
+      213: 1764661203312104341
+    second: humano_running_tunica_cura_42
+  - first:
+      213: 7176985516968826045
+    second: humano_running_tunica_cura_43
+  - first:
+      213: -8373009541342600758
+    second: humano_running_tunica_cura_44
+  - first:
+      213: 3293334049471201321
+    second: humano_running_tunica_cura_45
+  - first:
+      213: -2938063175034945121
+    second: humano_running_tunica_cura_46
+  - first:
+      213: 3768554505230277246
+    second: humano_running_tunica_cura_47
+  - first:
+      213: -6577786453665359021
+    second: humano_running_tunica_cura_48
+  - first:
+      213: -4063980338922781839
+    second: humano_running_tunica_cura_49
+  - first:
+      213: -1509585016189080187
+    second: humano_running_tunica_cura_50
+  - first:
+      213: -2091994308300650462
+    second: humano_running_tunica_cura_51
+  - first:
+      213: 4073524100569857569
+    second: humano_running_tunica_cura_52
+  - first:
+      213: 4123659298285876902
+    second: humano_running_tunica_cura_53
+  - first:
+      213: -5564730932526088346
+    second: humano_running_tunica_cura_54
+  - first:
+      213: 8628067707527681026
+    second: humano_running_tunica_cura_55
+  - first:
+      213: -3332389540024766063
+    second: humano_running_tunica_cura_56
+  - first:
+      213: 4214835325802675955
+    second: humano_running_tunica_cura_57
+  - first:
+      213: 7581625157469822517
+    second: humano_running_tunica_cura_58
+  - first:
+      213: -7256569839050493502
+    second: humano_running_tunica_cura_59
+  - first:
+      213: -217555928024884935
+    second: humano_running_tunica_cura_60
+  - first:
+      213: 2682809663458692087
+    second: humano_running_tunica_cura_61
+  - first:
+      213: 7476030410026782182
+    second: humano_running_tunica_cura_62
+  - first:
+      213: 7716257607533805639
+    second: humano_running_tunica_cura_63
+  - first:
+      213: 6225586781166921987
+    second: humano_running_tunica_cura_64
+  - first:
+      213: 647934336693630866
+    second: humano_running_tunica_cura_65
+  - first:
+      213: -3359324698155856716
+    second: humano_running_tunica_cura_66
+  - first:
+      213: 8204845562902977201
+    second: humano_running_tunica_cura_67
+  - first:
+      213: -8415067316444586071
+    second: humano_running_tunica_cura_68
+  - first:
+      213: 4013541252511571120
+    second: humano_running_tunica_cura_69
+  - first:
+      213: 4668948628671943543
+    second: humano_running_tunica_cura_70
+  - first:
+      213: 4324280262129247752
+    second: humano_running_tunica_cura_71
+  - first:
+      213: 5769811796655768851
+    second: humano_running_tunica_cura_72
+  - first:
+      213: -6510067714923233015
+    second: humano_running_tunica_cura_73
+  - first:
+      213: 8215527902851369420
+    second: humano_running_tunica_cura_74
+  - first:
+      213: -4944490720533739216
+    second: humano_running_tunica_cura_75
+  - first:
+      213: 193603488318454009
+    second: humano_running_tunica_cura_76
+  - first:
+      213: 626974027565708071
+    second: humano_running_tunica_cura_77
+  - first:
+      213: 6204265733463745401
+    second: humano_running_tunica_cura_78
+  - first:
+      213: -5524302969761354621
+    second: humano_running_tunica_cura_79
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cee8948fc3b1a8c60800000000000000
+      internalID: 7821093651559845612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8a289a4436c03050800000000000000
+      internalID: 5778336249808431757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59e87282d80cea680800000000000000
+      internalID: -8741838114182951275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8edb496dc9024960800000000000000
+      internalID: 7584635500284862094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bda3e58e0c607c0b0800000000000000
+      internalID: -5708586577066837285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79a5077ba97cbde50800000000000000
+      internalID: 6835276326781344407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb949e3dd8eb3cdd0800000000000000
+      internalID: -2466918654513952325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_7
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d54df5d49762f380800000000000000
+      internalID: -8938968421434047024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_8
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a657e614c878704d0800000000000000
+      internalID: -3168414776368925334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_9
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11541403a721484f0800000000000000
+      internalID: -827516115524434671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b069f1d0a3adad960800000000000000
+      internalID: 7627648861768488459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_11
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dba5c5c3a1d0619f0800000000000000
+      internalID: -498196302444864835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fe0a0d63e2743c20800000000000000
+      internalID: 3185297157570301687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fc8fbfb84acd6ed0800000000000000
+      internalID: -2419055011024630535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_14
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba3fb51156a6a6650800000000000000
+      internalID: 6226906417108612011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_15
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3406ff07b407e15e0800000000000000
+      internalID: -1936987320402091965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_16
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cfc0895bff07a660800000000000000
+      internalID: 7396898485192150982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_17
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 107d96b568ee7f1b0800000000000000
+      internalID: -5622763348922083583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_18
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57e0363f7fa5d1df0800000000000000
+      internalID: -207909986802397579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_19
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52bd288839c582300800000000000000
+      internalID: 227533569902435109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 495a0015529092040800000000000000
+      internalID: 4623236548349961620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_21
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dd111c3a36e47e30800000000000000
+      internalID: 4500475065440214489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_22
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a2522e34a064f320800000000000000
+      internalID: 2590801944178217640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_23
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88228fdb9c7015420800000000000000
+      internalID: 2616881421535945352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_24
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10221fce80418f420800000000000000
+      internalID: 2663901208157168129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_25
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a8580c186744ad80800000000000000
+      internalID: -8240382905708685150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_26
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4226f1087ca227810800000000000000
+      internalID: 1761517440591684132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_27
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76bdfa2ba436104a0800000000000000
+      internalID: -6628908004036060313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_28
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5763bcf491d462830800000000000000
+      internalID: 4046006086347208309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_29
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b08af31089425180800000000000000
+      internalID: -9128152680286748493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51489971d4a1275a0800000000000000
+      internalID: -6525123991695686635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_31
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 781b5437918f8cd60800000000000000
+      internalID: 7910845533668094343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b20818f6ecba0a020800000000000000
+      internalID: 2351067908609769515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_33
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e95913be705184b50800000000000000
+      internalID: 6577530379529459102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_34
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 392b63eb4829b4440800000000000000
+      internalID: 4921188116656992915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_35
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecdf26c762007f800800000000000000
+      internalID: 645985236846575054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_36
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cf1c09f3ed87af80800000000000000
+      internalID: -8095345794899763257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_37
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a9dd8015e29340d0800000000000000
+      internalID: -3439744177858029152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_38
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eb616f2a70d7ec00800000000000000
+      internalID: 929941071274798057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_39
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce0bf2329a8251cd0800000000000000
+      internalID: -2588117703949569812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 753330b3fbf1235d0800000000000000
+      internalID: -3084367888606088361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_41
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e785372da3493da20800000000000000
+      internalID: 3085973150038710398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_42
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 593d45cc3065d7810800000000000000
+      internalID: 1764661203312104341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_43
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db4dc096d46c99360800000000000000
+      internalID: 7176985516968826045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_44
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac1615b2f281dcb80800000000000000
+      internalID: -8373009541342600758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_45
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9200e618ed544bd20800000000000000
+      internalID: 3293334049471201321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_46
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f91c26cdb17e937d0800000000000000
+      internalID: -2938063175034945121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_47
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7ad2f81b589c4430800000000000000
+      internalID: 3768554505230277246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_48
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35b56ec221207b4a0800000000000000
+      internalID: -6577786453665359021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_49
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1730654e967d997c0800000000000000
+      internalID: -4063980338922781839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58d2cc70d60ec0be0800000000000000
+      internalID: -1509585016189080187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_51
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 228c99da24eb7f2e0800000000000000
+      internalID: -2091994308300650462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_52
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12e75764690188830800000000000000
+      internalID: 4073524100569857569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_53
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a6f011a84e2a3930800000000000000
+      internalID: 4123659298285876902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_54
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66f772833ba16c2b0800000000000000
+      internalID: -5564730932526088346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_55
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 204d435dddd0db770800000000000000
+      internalID: 8628067707527681026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_56
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 191b89d7e59f0c1d0800000000000000
+      internalID: -3332389540024766063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_57
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fe7c3dc56a1e7a30800000000000000
+      internalID: 4214835325802675955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_58
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53e572b59e7573960800000000000000
+      internalID: 7581625157469822517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_59
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c1f497ad2c7b4b90800000000000000
+      internalID: -7256569839050493502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 939db4f39061bfcf0800000000000000
+      internalID: -217555928024884935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_61
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fbc07ebc214b3520800000000000000
+      internalID: 2682809663458692087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_62
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ed0aa75c0230c760800000000000000
+      internalID: 7476030410026782182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_63
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 740457c5967a51b60800000000000000
+      internalID: 7716257607533805639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_64
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30962d1613ab56650800000000000000
+      internalID: 6225586781166921987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_65
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 297f668a8dcedf800800000000000000
+      internalID: 647934336693630866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_66
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bc49394cf74161d0800000000000000
+      internalID: -3359324698155856716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_67
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ba95cd71977dd170800000000000000
+      internalID: 8204845562902977201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_68
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9af12525cdca73b80800000000000000
+      internalID: -8415067316444586071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_69
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bc14572186f2b730800000000000000
+      internalID: 4013541252511571120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 773d9866a007bc040800000000000000
+      internalID: 4668948628671943543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_71
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8066275ccfde20c30800000000000000
+      internalID: 4324280262129247752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_72
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3158680624d721050800000000000000
+      internalID: 5769811796655768851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_73
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9010344b7e797a5a0800000000000000
+      internalID: -6510067714923233015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_74
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc904c3991b630270800000000000000
+      internalID: 8215527902851369420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_75
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0390f5ff2e3a16bb0800000000000000
+      internalID: -4944490720533739216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_76
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f87f7cc851dfa200800000000000000
+      internalID: 193603488318454009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_77
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72333746e8573b800800000000000000
+      internalID: 626974027565708071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_78
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9732c3f10daf91650800000000000000
+      internalID: 6204265733463745401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_running_tunica_cura_79
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38c2dbfc7bbb553b0800000000000000
+      internalID: -5524302969761354621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

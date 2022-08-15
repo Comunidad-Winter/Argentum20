@@ -1,0 +1,400 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MainMenu_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: ce04b8004cef60dc193130c9173065bb, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 1
+    m_Localized: Jouer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2
+    m_Localized: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3
+    m_Localized: Fermer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4
+    m_Localized: Nom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5
+    m_Localized: Mot clee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6
+    m_Localized: Error du login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7
+    m_Localized: La compte n'existe pas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8
+    m_Localized: "Le compte est actuellement utilis\xE9 et pas plus d'une connexion
+      par compte n'est autoris\xE9e."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9
+    m_Localized: "Veuillez saisir un mot de passe alphanum\xE9rique comportant au
+      moins six caract\xE8res"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10
+    m_Localized: Veuillez saisir un utilisateur valide.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11
+    m_Localized: "Erreur d'entr\xE9e"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12
+    m_Localized: Prenom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13
+    m_Localized: Le nom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14
+    m_Localized: "Courrier \xE9lectronique"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15
+    m_Localized: Date de naissance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16
+    m_Localized: Lieu de naissance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17
+    m_Localized: Question secrete 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18
+    m_Localized: Question secrete 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19
+    m_Localized: Reponse 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20
+    m_Localized: Reponse 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21
+    m_Localized: Ouvrir compte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22
+    m_Localized: 'Ce n''est pas posible de conecter avec server.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23
+    m_Localized: Erreur de connexion.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24
+    m_Localized: Mobile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25
+    m_Localized: "Erreur de cr\xE9ation de compte."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26
+    m_Localized: "Le compte existe d\xE9j\xE0, veuillez essayer un autre nom d'utilisateur."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27
+    m_Localized: Le mot de passe est trop court.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28
+    m_Localized: Le mot de passe est trop long.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29
+    m_Localized: "Le mot de passe n'est pas alphanum\xE9rique."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30
+    m_Localized: Nom d'utilisateur trop court.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31
+    m_Localized: "A senha \xE9 muito longa."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32
+    m_Localized: "Le nom d'utilisateur n'est pas alphanum\xE9rique."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33
+    m_Localized: "Le mot de passe doit \xEAtre diff\xE9rent du nom d'utilisateur."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34
+    m_Localized: Le nom d'utilisateur ne peut pas commencer par un nombre.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35
+    m_Localized: Le mot de passe doit contenir au moins une lettre majuscule.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36
+    m_Localized: Le mot de passe doit contenir au moins une minuscule.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37
+    m_Localized: Le mot de passe doit comporter au moins deux chiffres.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38
+    m_Localized: Email invalide.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40
+    m_Localized: "Le compte a \xE9t\xE9 cr\xE9\xE9 avec succ\xE8s! Il doit \xEAtre
+      activ\xE9 avant de pouvoir \xEAtre utilis\xE9.\r\nNous vous avons envoy\xE9
+      un e-mail avec un code que vous devez saisir ici pour activer le compte."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41
+    m_Localized: Activer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42
+    m_Localized: Annuler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43
+    m_Localized: Langage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44
+    m_Localized: "Derri\xE8re"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45
+    m_Localized: "Le compte n'a pas encore \xE9t\xE9 activ\xE9, veuillez activer
+      le compte."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46
+    m_Localized: Veuillez saisir un code d'activation valide.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47
+    m_Localized: "Le compte a \xE9t\xE9 activ\xE9 avec succ\xE8s! Il peut d\xE9j\xE0
+      \xEAtre utilis\xE9."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48
+    m_Localized: "Le code d'activation n'est pas valide. Veuillez v\xE9rifier que
+      vous n'avez pas fait d'erreur lors de la saisie."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49
+    m_Localized: Activation de compte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52
+    m_Localized: Confirmation de mot de passe invalide.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53
+    m_Localized: "Remplissez le pr\xE9nom et le nom."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54
+    m_Localized: Vous devez accepter les Termes et Conditions.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55
+    m_Localized: Termes et conditions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64
+    m_Localized: "Veuillez mettre \xE0 jour le client avec la derni\xE8re version.\r\nSi
+      le probl\xE8me persiste, contactez le support technique."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 67
+    m_Localized: Mot de passe incorrect.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71
+    m_Localized: Les emails ne correspondent pas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72
+    m_Localized: Code d'activation incorrect.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68
+    m_Localized: Nom d'utilisateur invalide.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73
+    m_Localized: Enregistrement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 76
+    m_Localized: Confirmer mot de passe.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75
+    m_Localized: Nom d'utilisateur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 74
+    m_Localized: Confirmez votre email
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78
+    m_Localized: Termes et conditions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79
+    m_Localized: "J'ai lu et accept\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80
+    m_Localized: "Cr\xE9er un compte"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81
+    m_Localized: "CR\xC9ER UN COMPTE"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82
+    m_Localized: CHOISISSEZ VOTRE PERSONNAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83
+    m_Localized: Continuer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84
+    m_Localized: "Cr\xE9er un nouveau Personnage"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85
+    m_Localized: "Devenez Premium pour d\xE9bloquer"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86
+    m_Localized: "CR\xC9ER UN NOUVEAU PERSONNAGE"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 87
+    m_Localized: LE NOM DU PERSONNAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88
+    m_Localized: Force
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89
+    m_Localized: Endurance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90
+    m_Localized: "Dext\xE9rit\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91
+    m_Localized: Intelligence
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92
+    m_Localized: Charisme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93
+    m_Localized: Constitution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96
+    m_Localized: Total
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95
+    m_Localized: Mod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94
+    m_Localized: Base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 97
+    m_Localized: STATISTIQUES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 98
+    m_Localized: LE SEXE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99
+    m_Localized: RACE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 100
+    m_Localized: CLASSE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101
+    m_Localized: "VILLE DE D\xC9PART"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103
+    m_Localized: FEMME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102
+    m_Localized: HOMME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104
+    m_Localized: HUMAIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 106
+    m_Localized: NAIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 105
+    m_Localized: ELFE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 107
+    m_Localized: GNOME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 111
+    m_Localized: La chance
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

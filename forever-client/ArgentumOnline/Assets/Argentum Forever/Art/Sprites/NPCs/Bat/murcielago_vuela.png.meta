@@ -1,0 +1,2290 @@
+fileFormatVersion: 2
+guid: b1072f5e9846850498cbb39cf2ad8a52
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2951032181049077544
+    second: murcielago_vuela_0
+  - first:
+      213: -6726813940633495997
+    second: murcielago_vuela_1
+  - first:
+      213: -487451252840432045
+    second: murcielago_vuela_2
+  - first:
+      213: 4177490465091571736
+    second: murcielago_vuela_3
+  - first:
+      213: 234510444493423650
+    second: murcielago_vuela_4
+  - first:
+      213: 5262215826023318179
+    second: murcielago_vuela_5
+  - first:
+      213: -6895720761612557606
+    second: murcielago_vuela_6
+  - first:
+      213: -5669150594170031107
+    second: murcielago_vuela_7
+  - first:
+      213: -2920908934615549023
+    second: murcielago_vuela_8
+  - first:
+      213: 4855989151059750902
+    second: murcielago_vuela_9
+  - first:
+      213: -3223678428724796614
+    second: murcielago_vuela_10
+  - first:
+      213: 1537411155546270371
+    second: murcielago_vuela_11
+  - first:
+      213: -7740507659273978755
+    second: murcielago_vuela_12
+  - first:
+      213: -3158635053566158511
+    second: murcielago_vuela_13
+  - first:
+      213: -360222881527850784
+    second: murcielago_vuela_14
+  - first:
+      213: -4596066542910659204
+    second: murcielago_vuela_15
+  - first:
+      213: -5352576071109656453
+    second: murcielago_vuela_16
+  - first:
+      213: 525710941051140988
+    second: murcielago_vuela_17
+  - first:
+      213: -4119313068837657121
+    second: murcielago_vuela_18
+  - first:
+      213: 4784648633325483258
+    second: murcielago_vuela_19
+  - first:
+      213: -829431018684893053
+    second: murcielago_vuela_20
+  - first:
+      213: -6246200596414408940
+    second: murcielago_vuela_21
+  - first:
+      213: -849262879302148050
+    second: murcielago_vuela_22
+  - first:
+      213: 3457364278001744336
+    second: murcielago_vuela_23
+  - first:
+      213: -4210516195056729078
+    second: murcielago_vuela_24
+  - first:
+      213: -8019641725568607442
+    second: murcielago_vuela_25
+  - first:
+      213: -7760215778309274025
+    second: murcielago_vuela_26
+  - first:
+      213: 2862547860028439659
+    second: murcielago_vuela_27
+  - first:
+      213: -751539680693420343
+    second: murcielago_vuela_28
+  - first:
+      213: -4588687362169082138
+    second: murcielago_vuela_29
+  - first:
+      213: -2600800607607656932
+    second: murcielago_vuela_30
+  - first:
+      213: 6018505940286389333
+    second: murcielago_vuela_31
+  - first:
+      213: 2304232026280973505
+    second: murcielago_vuela_32
+  - first:
+      213: 1336714823634304364
+    second: murcielago_vuela_33
+  - first:
+      213: 4443221170588755340
+    second: murcielago_vuela_34
+  - first:
+      213: 4416437269997372331
+    second: murcielago_vuela_35
+  - first:
+      213: 3414684990377637735
+    second: murcielago_vuela_36
+  - first:
+      213: -7849137713671898691
+    second: murcielago_vuela_37
+  - first:
+      213: 3744290973915582050
+    second: murcielago_vuela_38
+  - first:
+      213: 8924064809453730642
+    second: murcielago_vuela_39
+  - first:
+      213: 7917445452777676050
+    second: murcielago_vuela_40
+  - first:
+      213: -6107876599301287374
+    second: murcielago_vuela_41
+  - first:
+      213: -5651658091616671124
+    second: murcielago_vuela_42
+  - first:
+      213: -972896822702393477
+    second: murcielago_vuela_43
+  - first:
+      213: -474355546153542815
+    second: murcielago_vuela_44
+  - first:
+      213: 4749816530966059848
+    second: murcielago_vuela_45
+  - first:
+      213: 8828724212367887765
+    second: murcielago_vuela_46
+  - first:
+      213: -3405013354127288991
+    second: murcielago_vuela_47
+  - first:
+      213: 6223177804435645947
+    second: murcielago_vuela_48
+  - first:
+      213: 744290598291038108
+    second: murcielago_vuela_49
+  - first:
+      213: -1803715361170123049
+    second: murcielago_vuela_50
+  - first:
+      213: -7493762143306899871
+    second: murcielago_vuela_51
+  - first:
+      213: -4415007469023268940
+    second: murcielago_vuela_52
+  - first:
+      213: 6935227887011695653
+    second: murcielago_vuela_53
+  - first:
+      213: -1854497879215619287
+    second: murcielago_vuela_54
+  - first:
+      213: -333805137668573100
+    second: murcielago_vuela_55
+  - first:
+      213: -8576250062480849559
+    second: murcielago_vuela_56
+  - first:
+      213: 2272509528343927595
+    second: murcielago_vuela_57
+  - first:
+      213: 8362133370413058078
+    second: murcielago_vuela_58
+  - first:
+      213: -492214990148648952
+    second: murcielago_vuela_59
+  - first:
+      213: 4886258906880075255
+    second: murcielago_vuela_60
+  - first:
+      213: -8653298327108848243
+    second: murcielago_vuela_61
+  - first:
+      213: 304184122728081554
+    second: murcielago_vuela_62
+  - first:
+      213: -5079755327158625871
+    second: murcielago_vuela_63
+  - first:
+      213: -9118222567677743614
+    second: murcielago_vuela_64
+  - first:
+      213: 5163030192488944052
+    second: murcielago_vuela_65
+  - first:
+      213: 983781456995036606
+    second: murcielago_vuela_66
+  - first:
+      213: -7622715196999295993
+    second: murcielago_vuela_67
+  - first:
+      213: 589953138827826235
+    second: murcielago_vuela_68
+  - first:
+      213: 7584953977144411077
+    second: murcielago_vuela_69
+  - first:
+      213: -8001590624267374636
+    second: murcielago_vuela_70
+  - first:
+      213: 7114447154384195373
+    second: murcielago_vuela_71
+  - first:
+      213: 8446544060960790400
+    second: murcielago_vuela_72
+  - first:
+      213: -2876264204871786765
+    second: murcielago_vuela_73
+  - first:
+      213: -8522076565813799701
+    second: murcielago_vuela_74
+  - first:
+      213: -568825000975471824
+    second: murcielago_vuela_75
+  - first:
+      213: -757599533482003494
+    second: murcielago_vuela_76
+  - first:
+      213: -4015905042371686819
+    second: murcielago_vuela_77
+  - first:
+      213: -6682941964428614085
+    second: murcielago_vuela_78
+  - first:
+      213: -4325993829589053933
+    second: murcielago_vuela_79
+  - first:
+      213: 8277841452794342196
+    second: murcielago_vuela_0
+  - first:
+      213: 7793410184954380439
+    second: murcielago_vuela_1
+  - first:
+      213: 453662625240926639
+    second: murcielago_vuela_2
+  - first:
+      213: -2000639856313834403
+    second: murcielago_vuela_3
+  - first:
+      213: -6264062201972236868
+    second: murcielago_vuela_4
+  - first:
+      213: 88989380509029098
+    second: murcielago_vuela_5
+  - first:
+      213: 3258128541511855902
+    second: murcielago_vuela_6
+  - first:
+      213: -2567257788468820106
+    second: murcielago_vuela_7
+  - first:
+      213: -3278944851918033948
+    second: murcielago_vuela_8
+  - first:
+      213: -5974282370969902410
+    second: murcielago_vuela_9
+  - first:
+      213: 2798039303729840874
+    second: murcielago_vuela_10
+  - first:
+      213: -1598276031714858666
+    second: murcielago_vuela_11
+  - first:
+      213: -3046692794808443394
+    second: murcielago_vuela_12
+  - first:
+      213: 9189660947290007409
+    second: murcielago_vuela_13
+  - first:
+      213: -7310613299059073706
+    second: murcielago_vuela_14
+  - first:
+      213: 2078851228133709244
+    second: murcielago_vuela_15
+  - first:
+      213: 7978993604420495698
+    second: murcielago_vuela_16
+  - first:
+      213: 8410665991442773117
+    second: murcielago_vuela_17
+  - first:
+      213: 6214367778335864864
+    second: murcielago_vuela_18
+  - first:
+      213: -3343134284832713198
+    second: murcielago_vuela_19
+  - first:
+      213: -3686477005233370101
+    second: murcielago_vuela_20
+  - first:
+      213: 2512865017256625874
+    second: murcielago_vuela_21
+  - first:
+      213: -7486052609068166191
+    second: murcielago_vuela_22
+  - first:
+      213: -6209952880183598401
+    second: murcielago_vuela_23
+  - first:
+      213: -2558947734832796176
+    second: murcielago_vuela_24
+  - first:
+      213: 7691267554403304459
+    second: murcielago_vuela_25
+  - first:
+      213: -5361872676099400413
+    second: murcielago_vuela_26
+  - first:
+      213: -1250531472096198344
+    second: murcielago_vuela_27
+  - first:
+      213: 1656454822103126079
+    second: murcielago_vuela_28
+  - first:
+      213: 4246813271904211600
+    second: murcielago_vuela_29
+  - first:
+      213: -4033868696510454705
+    second: murcielago_vuela_30
+  - first:
+      213: -6800241768415946121
+    second: murcielago_vuela_31
+  - first:
+      213: -2132494977140225962
+    second: murcielago_vuela_32
+  - first:
+      213: -8680427744199770902
+    second: murcielago_vuela_33
+  - first:
+      213: 4873479910471683451
+    second: murcielago_vuela_34
+  - first:
+      213: 7037881286105919887
+    second: murcielago_vuela_35
+  - first:
+      213: 6336185521959725721
+    second: murcielago_vuela_36
+  - first:
+      213: 4379029718815561583
+    second: murcielago_vuela_37
+  - first:
+      213: -3922756861589499746
+    second: murcielago_vuela_38
+  - first:
+      213: 1902550164206803481
+    second: murcielago_vuela_39
+  - first:
+      213: -1507568487023301115
+    second: murcielago_vuela_40
+  - first:
+      213: 1617503971748782188
+    second: murcielago_vuela_41
+  - first:
+      213: -2817705798834816484
+    second: murcielago_vuela_42
+  - first:
+      213: -3865912434665074888
+    second: murcielago_vuela_43
+  - first:
+      213: -1106440560293075828
+    second: murcielago_vuela_44
+  - first:
+      213: -2138136017955019836
+    second: murcielago_vuela_45
+  - first:
+      213: -8201676352237782102
+    second: murcielago_vuela_46
+  - first:
+      213: 2467597261736744649
+    second: murcielago_vuela_47
+  - first:
+      213: -2350565500737519453
+    second: murcielago_vuela_48
+  - first:
+      213: 8719763232375295719
+    second: murcielago_vuela_49
+  - first:
+      213: 7117701616818588216
+    second: murcielago_vuela_50
+  - first:
+      213: -8595751573625345539
+    second: murcielago_vuela_51
+  - first:
+      213: 1596978130763443608
+    second: murcielago_vuela_52
+  - first:
+      213: 238882278576540184
+    second: murcielago_vuela_53
+  - first:
+      213: 4390896174259754692
+    second: murcielago_vuela_54
+  - first:
+      213: 5587914799739289617
+    second: murcielago_vuela_55
+  - first:
+      213: -6565090916990608931
+    second: murcielago_vuela_56
+  - first:
+      213: 2760435514011285919
+    second: murcielago_vuela_57
+  - first:
+      213: -5934232770750776235
+    second: murcielago_vuela_58
+  - first:
+      213: -1870820162818367416
+    second: murcielago_vuela_59
+  - first:
+      213: -1619046525952827505
+    second: murcielago_vuela_60
+  - first:
+      213: -937956480690840320
+    second: murcielago_vuela_61
+  - first:
+      213: -8736498117466491466
+    second: murcielago_vuela_62
+  - first:
+      213: 557257406492295425
+    second: murcielago_vuela_63
+  - first:
+      213: 4858165438124620665
+    second: murcielago_vuela_64
+  - first:
+      213: 348456898444201099
+    second: murcielago_vuela_65
+  - first:
+      213: -8953552466598441266
+    second: murcielago_vuela_66
+  - first:
+      213: 1866454518605009203
+    second: murcielago_vuela_67
+  - first:
+      213: -4441806768589633479
+    second: murcielago_vuela_68
+  - first:
+      213: -3527947575007557086
+    second: murcielago_vuela_69
+  - first:
+      213: -2510099539957041282
+    second: murcielago_vuela_70
+  - first:
+      213: -683574721119508594
+    second: murcielago_vuela_71
+  - first:
+      213: -5805929557071016205
+    second: murcielago_vuela_72
+  - first:
+      213: -3396899856947377701
+    second: murcielago_vuela_73
+  - first:
+      213: 1417787377532836233
+    second: murcielago_vuela_74
+  - first:
+      213: -2942022601389808824
+    second: murcielago_vuela_75
+  - first:
+      213: 3489139221002918925
+    second: murcielago_vuela_76
+  - first:
+      213: 1783772739813377244
+    second: murcielago_vuela_77
+  - first:
+      213: 6466371566489096630
+    second: murcielago_vuela_78
+  - first:
+      213: -3580527017280620935
+    second: murcielago_vuela_79
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: murcielago_vuela_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43b6fc481fcc0e270800000000000000
+      internalID: 8277841452794342196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_1
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7900e1f9541c72c60800000000000000
+      internalID: 7793410184954380439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_2
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa94b5901cbbb4600800000000000000
+      internalID: 453662625240926639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_3
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d54ece886ac4c34e0800000000000000
+      internalID: -2000639856313834403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_4
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbd5e70ad949119a0800000000000000
+      internalID: -6264062201972236868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_5
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae2d50ebe572c3100800000000000000
+      internalID: 88989380509029098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_6
+      rect:
+        serializedVersion: 2
+        x: 2352
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1f206d65a2373d20800000000000000
+      internalID: 3258128541511855902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_7
+      rect:
+        serializedVersion: 2
+        x: 2744
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 677067fa4a44f5cd0800000000000000
+      internalID: -2567257788468820106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_8
+      rect:
+        serializedVersion: 2
+        x: 3136
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eb645f9709de72d0800000000000000
+      internalID: -3278944851918033948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_9
+      rect:
+        serializedVersion: 2
+        x: 3528
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b2e57236d5171da0800000000000000
+      internalID: -5974282370969902410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae2066e0ce1a4d620800000000000000
+      internalID: 2798039303729840874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_11
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6596d9cca68c1d9e0800000000000000
+      internalID: -1598276031714858666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_12
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efd53b19b09f7b5d0800000000000000
+      internalID: -3046692794808443394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_13
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 177208151fb388f70800000000000000
+      internalID: 9189660947290007409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_14
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65d565310fb7b8a90800000000000000
+      internalID: -7310613299059073706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_15
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb55bc18d2099dc10800000000000000
+      internalID: 2078851228133709244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_16
+      rect:
+        serializedVersion: 2
+        x: 2352
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 259e890a8641bbe60800000000000000
+      internalID: 7978993604420495698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_17
+      rect:
+        serializedVersion: 2
+        x: 2744
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d74b7685820b8b470800000000000000
+      internalID: 8410665991442773117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_18
+      rect:
+        serializedVersion: 2
+        x: 3136
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 028b75bb19edd3650800000000000000
+      internalID: 6214367778335864864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_19
+      rect:
+        serializedVersion: 2
+        x: 3528
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 216dd14a41dca91d0800000000000000
+      internalID: -3343134284832713198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0c4b6e02b007dcc0800000000000000
+      internalID: -3686477005233370101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_21
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d646126b6d7fd220800000000000000
+      internalID: 2512865017256625874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_22
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d31b9a90d23c1890800000000000000
+      internalID: -7486052609068166191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_23
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb22eb8d1c0d1d9a0800000000000000
+      internalID: -6209952880183598401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_24
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fd2082d79acc7cd0800000000000000
+      internalID: -2558947734832796176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_25
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0442b4371fdcba60800000000000000
+      internalID: 7691267554403304459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_26
+      rect:
+        serializedVersion: 2
+        x: 2352
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32dd832a53dc695b0800000000000000
+      internalID: -5361872676099400413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_27
+      rect:
+        serializedVersion: 2
+        x: 2744
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8318241704835aee0800000000000000
+      internalID: -1250531472096198344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_28
+      rect:
+        serializedVersion: 2
+        x: 3136
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3090f962e8ecf610800000000000000
+      internalID: 1656454822103126079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_29
+      rect:
+        serializedVersion: 2
+        x: 3528
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 092d3439b26bfea30800000000000000
+      internalID: 4246813271904211600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f442de9fac1d408c0800000000000000
+      internalID: -4033868696510454705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_31
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77a1bce0420b0a1a0800000000000000
+      internalID: -6800241768415946121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_32
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6588042ed1bd762e0800000000000000
+      internalID: -2132494977140225962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_33
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aecf68025fce88780800000000000000
+      internalID: -8680427744199770902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_34
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7dcaa3682412a340800000000000000
+      internalID: 4873479910471683451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_35
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8176bdcdb39ba160800000000000000
+      internalID: 7037881286105919887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_36
+      rect:
+        serializedVersion: 2
+        x: 2352
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99ae1636927aee750800000000000000
+      internalID: 6336185521959725721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_37
+      rect:
+        serializedVersion: 2
+        x: 2744
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6751e2045075cc30800000000000000
+      internalID: 4379029718815561583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_38
+      rect:
+        serializedVersion: 2
+        x: 3136
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e905bb40b619f89c0800000000000000
+      internalID: -3922756861589499746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_39
+      rect:
+        serializedVersion: 2
+        x: 3528
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91a58e05b47376a10800000000000000
+      internalID: 1902550164206803481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50e2760d27a041be0800000000000000
+      internalID: -1507568487023301115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_41
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c60aedada47827610800000000000000
+      internalID: 1617503971748782188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_42
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1a74ea318f75e8d0800000000000000
+      internalID: -2817705798834816484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_43
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83fc5078f15895ac0800000000000000
+      internalID: -3865912434665074888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_44
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c84a5ae2c2225a0f0800000000000000
+      internalID: -1106440560293075828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_45
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c3a258be90d352e0800000000000000
+      internalID: -2138136017955019836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_46
+      rect:
+        serializedVersion: 2
+        x: 2352
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aab352edfcacd2e80800000000000000
+      internalID: -8201676352237782102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_47
+      rect:
+        serializedVersion: 2
+        x: 2744
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c69b8ab2aaae3220800000000000000
+      internalID: 2467597261736744649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_48
+      rect:
+        serializedVersion: 2
+        x: 3136
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a08043812d116fd0800000000000000
+      internalID: -2350565500737519453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_49
+      rect:
+        serializedVersion: 2
+        x: 3528
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eecd37e572d20970800000000000000
+      internalID: 8719763232375295719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83a02b7c8e727c260800000000000000
+      internalID: 7117701616818588216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_51
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df96e8c6c71c5b880800000000000000
+      internalID: -8595751573625345539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_52
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89de836162b992610800000000000000
+      internalID: 1596978130763443608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_53
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81ac0bdaa2ea05300800000000000000
+      internalID: 238882278576540184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_54
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c6df587ec89fec30800000000000000
+      internalID: 4390896174259754692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_55
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 110cb9187e24c8d40800000000000000
+      internalID: 5587914799739289617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_56
+      rect:
+        serializedVersion: 2
+        x: 2352
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd991a6289c14e4a0800000000000000
+      internalID: -6565090916990608931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_57
+      rect:
+        serializedVersion: 2
+        x: 2744
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f99f30e79790f4620800000000000000
+      internalID: 2760435514011285919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_58
+      rect:
+        serializedVersion: 2
+        x: 3136
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55cfae46cbe55ada0800000000000000
+      internalID: -5934232770750776235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_59
+      rect:
+        serializedVersion: 2
+        x: 3528
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 840a29459f28906e0800000000000000
+      internalID: -1870820162818367416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8f50c143cdf789e0800000000000000
+      internalID: -1619046525952827505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_61
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00d95a1ec85bbf2f0800000000000000
+      internalID: -937956480690840320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_62
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b57a870049b1c680800000000000000
+      internalID: -8736498117466491466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_63
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 101cd62a8a6cbb700800000000000000
+      internalID: 557257406492295425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_64
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97b7f7fe9bbab6340800000000000000
+      internalID: 4858165438124620665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_65
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8c0d43f3b7f5d400800000000000000
+      internalID: 348456898444201099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_66
+      rect:
+        serializedVersion: 2
+        x: 2352
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecec39638779eb380800000000000000
+      internalID: -8953552466598441266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_67
+      rect:
+        serializedVersion: 2
+        x: 2744
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 331dfdaee7af6e910800000000000000
+      internalID: 1866454518605009203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_68
+      rect:
+        serializedVersion: 2
+        x: 3136
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9380a4517488b52c0800000000000000
+      internalID: -4441806768589633479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_69
+      rect:
+        serializedVersion: 2
+        x: 3528
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22a49755f563a0fc0800000000000000
+      internalID: -3527947575007557086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e773df974c55a2dd0800000000000000
+      internalID: -2510099539957041282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_71
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e872c32b9647386f0800000000000000
+      internalID: -683574721119508594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_72
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fe47d734d13d6fa0800000000000000
+      internalID: -5805929557071016205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_73
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd98311e399cbd0d0800000000000000
+      internalID: -3396899856947377701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_74
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98990ecab1efca310800000000000000
+      internalID: 1417787377532836233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_75
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8436df21806db27d0800000000000000
+      internalID: -2942022601389808824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_76
+      rect:
+        serializedVersion: 2
+        x: 2352
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0c13cf92a9eb6030800000000000000
+      internalID: 3489139221002918925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_77
+      rect:
+        serializedVersion: 2
+        x: 2744
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd40a942bdb31c810800000000000000
+      internalID: 1783772739813377244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_78
+      rect:
+        serializedVersion: 2
+        x: 3136
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b1d44eedaa2db950800000000000000
+      internalID: 6466371566489096630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_vuela_79
+      rect:
+        serializedVersion: 2
+        x: 3528
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 976bc42f5a96f4ec0800000000000000
+      internalID: -3580527017280620935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

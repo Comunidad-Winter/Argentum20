@@ -1,0 +1,17 @@
+- Manda dos veces el mensaje al cambiar teclas
+- En borde mapa 11 bajan mucho los FPS
+- Al cliquear un usuario muerto, su nombre debería aparecer gris en la consola
+- Enviar solicitud de reto, salir a zona insegura y el otro acepta -> explota
+- Cuando te ocultás siendo PK te ves ciudadano
+- Dibujado en capa 2.
+- Fix mostrar info de items que ya no están en el suelo
+- Ahora se puede tirar oro de 0 a 100000 cualquier cantidad
+- Consejeros no pueden ver posicion en /destrabar
+- Fix drag & drop desaparecía el item
+- Agregar changelog en el launcher
+- GMs no Enlistar ni armada y caos
+- Sacar fundar clan y /telep yo mapa X Y a consejeros
+- Desvanecimiento de techos más rápido
+- Criaturas domadas por GM y Elemental de Viento SI puede atacar a usuarios!
+- La pantalla de inicio ahora rota entre diferentes mapas cada vez que se abre el cliente
+- Ahora al seleccionar tus personajes antes de entrar al juego, de fondo se muestra el mapa en el que está

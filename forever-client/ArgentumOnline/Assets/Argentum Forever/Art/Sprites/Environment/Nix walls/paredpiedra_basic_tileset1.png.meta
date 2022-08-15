@@ -1,0 +1,517 @@
+fileFormatVersion: 2
+guid: 1d01cd88f609b804594deef5ee6a8e8a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3864070701982120640
+    second: paredpiedra_basic_tileset1_0
+  - first:
+      213: 4430758266702697205
+    second: paredpiedra_basic_tileset1_1
+  - first:
+      213: 1284912630335114141
+    second: paredpiedra_basic_tileset1_2
+  - first:
+      213: -7024598101557295056
+    second: paredpiedra_basic_tileset1_3
+  - first:
+      213: -5879326170701900376
+    second: paredpiedra_basic_tileset1_4
+  - first:
+      213: -652025258300225047
+    second: paredpiedra_basic_tileset1_5
+  - first:
+      213: 6892091361885588266
+    second: paredpiedra_basic_tileset1_6
+  - first:
+      213: 3505811338676218101
+    second: paredpiedra_basic_tileset1_7
+  - first:
+      213: -7439992870835025544
+    second: paredpiedra_basic_tileset1_8
+  - first:
+      213: 8905384428318293725
+    second: paredpiedra_basic_tileset1_9
+  - first:
+      213: 1774227682500425189
+    second: paredpiedra_basic_tileset1_10
+  - first:
+      213: -8634516592194059577
+    second: paredpiedra_basic_tileset1_11
+  - first:
+      213: -6948433512619841592
+    second: paredpiedra_basic_tileset1_12
+  - first:
+      213: -2342417752006972092
+    second: paredpiedra_basic_tileset1_13
+  - first:
+      213: 7961474338592987979
+    second: paredpiedra_basic_tileset1_14
+  - first:
+      213: 9053886982306673706
+    second: paredpiedra_basic_tileset1_15
+  - first:
+      213: 1205984555854124654
+    second: paredpiedra_basic_tileset1_16
+  - first:
+      213: -3493625109529984022
+    second: paredpiedra_basic_tileset1_17
+  - first:
+      213: -3858023565503694186
+    second: paredpiedra_basic_tileset1_18
+  - first:
+      213: -3244721432855314974
+    second: paredpiedra_basic_tileset1_19
+  - first:
+      213: 2938084320319456418
+    second: paredpiedra_basic_tileset1_20
+  - first:
+      213: -7336573470592494923
+    second: paredpiedra_basic_tileset1_21
+  - first:
+      213: -3746067812325870216
+    second: paredpiedra_basic_tileset1_22
+  - first:
+      213: -3222561509529048489
+    second: paredpiedra_basic_tileset1_23
+  - first:
+      213: -7354900909106473693
+    second: paredpiedra_basic_tileset1_24
+  - first:
+      213: -5403028186996197537
+    second: paredpiedra_basic_tileset1_25
+  - first:
+      213: 5781771152626418335
+    second: paredpiedra_basic_tileset1_26
+  - first:
+      213: -3428689186155783059
+    second: paredpiedra_basic_tileset1_27
+  - first:
+      213: -8122139323116079279
+    second: paredpiedra_basic_tileset1_28
+  - first:
+      213: -8746801223575893976
+    second: paredpiedra_basic_tileset1_29
+  - first:
+      213: 7910077984643730798
+    second: paredpiedra_basic_tileset1_30
+  - first:
+      213: 3208559014329199627
+    second: paredpiedra_basic_tileset1_31
+  - first:
+      213: 3010469284449831550
+    second: paredpiedra_basic_tileset1_32
+  - first:
+      213: 929416701696114300
+    second: paredpiedra_basic_tileset1_33
+  - first:
+      213: -8559863466314670246
+    second: paredpiedra_basic_tileset1_34
+  - first:
+      213: 5782131563570000880
+    second: paredpiedra_basic_tileset1_35
+  - first:
+      213: -7572095104967811903
+    second: paredpiedra_basic_tileset1_36
+  - first:
+      213: -3933435710517077054
+    second: paredpiedra_basic_tileset1_37
+  - first:
+      213: 3231991864479114507
+    second: paredpiedra_basic_tileset1_38
+  - first:
+      213: -2537780576336163601
+    second: paredpiedra_basic_tileset1_39
+  - first:
+      213: -4068993823665079246
+    second: paredpiedra_basic_tileset1_40
+  - first:
+      213: -6461032144645526990
+    second: paredpiedra_basic_tileset1_41
+  - first:
+      213: -287929995844608727
+    second: paredpiedra_basic_tileset1_42
+  - first:
+      213: 2882636327818530847
+    second: paredpiedra_basic_tileset1_43
+  - first:
+      213: 2943688163096869518
+    second: paredpiedra_basic_tileset1_44
+  - first:
+      213: 1300344232713507381
+    second: paredpiedra_basic_tileset1_45
+  - first:
+      213: 5276655111810719087
+    second: paredpiedra_basic_tileset1_46
+  - first:
+      213: -4199661629966676313
+    second: paredpiedra_basic_tileset1_47
+  - first:
+      213: -2301285355905400778
+    second: paredpiedra_basic_tileset1_48
+  - first:
+      213: -3492615939151946126
+    second: paredpiedra_basic_tileset1_49
+  - first:
+      213: 600535668096341341
+    second: paredpiedra_basic_tileset1_0
+  - first:
+      213: -3017242582788744162
+    second: paredpiedra_basic_tileset1_1
+  - first:
+      213: -7995516187012141092
+    second: paredpiedra_basic_tileset1_2
+  - first:
+      213: 3636329780321472406
+    second: paredpiedra_basic_tileset1_3
+  - first:
+      213: 3680515211015541293
+    second: paredpiedra_basic_tileset1_4
+  - first:
+      213: 7842099105946054984
+    second: paredpiedra_basic_tileset1_5
+  - first:
+      213: -6341889065809122823
+    second: paredpiedra_basic_tileset1_6
+  - first:
+      213: 2929078960255043280
+    second: paredpiedra_basic_tileset1_7
+  - first:
+      213: 5818134016630502595
+    second: paredpiedra_basic_tileset1_8
+  - first:
+      213: -3488787904335211317
+    second: paredpiedra_basic_tileset1_9
+  - first:
+      213: -463300967579634492
+    second: paredpiedra_basic_tileset1_10
+  - first:
+      213: -8385068357781266309
+    second: paredpiedra_basic_tileset1_11
+  - first:
+      213: 7725507710855598071
+    second: paredpiedra_basic_tileset1_12
+  - first:
+      213: -399637391896612102
+    second: paredpiedra_basic_tileset1_13
+  - first:
+      213: -99037556822928473
+    second: paredpiedra_basic_tileset1_14
+  - first:
+      213: 4701175601712650225
+    second: paredpiedra_basic_tileset1_15
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: paredpiedra_basic_tileset1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 256
+        height: 1280
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5595d32208855800800000000000000
+      internalID: 600535668096341341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paredpiedra_basic_tileset1_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 896
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1cd1b36bd99026d0800000000000000
+      internalID: -3017242582788744162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paredpiedra_basic_tileset1_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 384
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 841b25f669bb4dc60800000000000000
+      internalID: 7842099105946054984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paredpiedra_basic_tileset1_7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 259
+        height: 384
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d68211abcd26a820800000000000000
+      internalID: 2929078960255043280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paredpiedra_basic_tileset1_9
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 896
+        height: 384
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc49b69a2e5559fc0800000000000000
+      internalID: -3488787904335211317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paredpiedra_basic_tileset1_10
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 384
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c4325389360299f0800000000000000
+      internalID: -463300967579634492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paredpiedra_basic_tileset1_11
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 512
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b70641d21c042ab80800000000000000
+      internalID: -8385068357781266309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paredpiedra_basic_tileset1_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1280
+        height: 384
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ffc61fd454863b60800000000000000
+      internalID: 7725507710855598071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paredpiedra_basic_tileset1_4
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 512
+        height: 387
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d22d00f8511d31330800000000000000
+      internalID: 3680515211015541293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

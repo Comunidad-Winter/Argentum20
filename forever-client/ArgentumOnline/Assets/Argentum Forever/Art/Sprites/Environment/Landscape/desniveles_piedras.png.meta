@@ -1,0 +1,388 @@
+fileFormatVersion: 2
+guid: be013de0aca8f5f47b1621c3fd5f811d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5208708639832847666
+    second: desniveles_piedras_0
+  - first:
+      213: 9006940014626390628
+    second: desniveles_piedras_1
+  - first:
+      213: 664094108607317172
+    second: desniveles_piedras_2
+  - first:
+      213: 2456973096989569868
+    second: desniveles_piedras_3
+  - first:
+      213: 2147583913711299939
+    second: desniveles_piedras_4
+  - first:
+      213: -8170453111833639022
+    second: desniveles_piedras_5
+  - first:
+      213: 2898163610826684673
+    second: desniveles_piedras_6
+  - first:
+      213: 3920677718261027726
+    second: desniveles_piedras_7
+  - first:
+      213: 5285335809619063434
+    second: desniveles_piedras_8
+  - first:
+      213: 3768503711572791638
+    second: desniveles_piedras_9
+  - first:
+      213: -6961866889862363367
+    second: desniveles_piedras_10
+  - first:
+      213: 4661437684975734548
+    second: desniveles_piedras_11
+  - first:
+      213: -7534293874441605444
+    second: desniveles_piedras_12
+  - first:
+      213: 4957880735271466312
+    second: desniveles_piedras_13
+  - first:
+      213: 5907784401499223660
+    second: desniveles_piedras_14
+  - first:
+      213: 5530686162648389397
+    second: desniveles_piedras_15
+  - first:
+      213: 6507117963803223431
+    second: desniveles_piedras_16
+  - first:
+      213: 6681102920858034508
+    second: desniveles_piedras_17
+  - first:
+      213: -8835169347478704813
+    second: desniveles_piedras_18
+  - first:
+      213: -8479758288765375165
+    second: desniveles_piedras_19
+  - first:
+      213: -6822193858792799712
+    second: desniveles_piedras_20
+  - first:
+      213: -8585687284792716466
+    second: desniveles_piedras_21
+  - first:
+      213: 1884582204897767856
+    second: desniveles_piedras_22
+  - first:
+      213: -1108448924058288981
+    second: desniveles_piedras_23
+  - first:
+      213: 2819636793260311015
+    second: desniveles_piedras_24
+  - first:
+      213: -8131364607761994903
+    second: desniveles_piedras_25
+  - first:
+      213: -4004613091156730368
+    second: desniveles_piedras_26
+  - first:
+      213: 2584257855769109372
+    second: desniveles_piedras_27
+  - first:
+      213: -2791259924140746063
+    second: desniveles_piedras_28
+  - first:
+      213: 2000363928508240629
+    second: desniveles_piedras_29
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: desniveles_piedras_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca4148c613f6b7b0800000000000000
+      internalID: -5208708639832847666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desniveles_piedras_1
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1536
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 462ce05f8341ffc70800000000000000
+      internalID: 9006940014626390628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desniveles_piedras_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b408f0c216573900800000000000000
+      internalID: 664094108607317172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desniveles_piedras_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1792
+        width: 512
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4331cc930ce81220800000000000000
+      internalID: 2456973096989569868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desniveles_piedras_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 384
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36dea1ee030cdcd10800000000000000
+      internalID: 2147583913711299939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desniveles_piedras_5
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 512
+        width: 384
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 297cb270f28bc9e80800000000000000
+      internalID: -8170453111833639022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desniveles_piedras_6
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 109b94ce278583820800000000000000
+      internalID: 2898163610826684673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desniveles_piedras_7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e83dcb3bc9b096630800000000000000
+      internalID: 3920677718261027726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

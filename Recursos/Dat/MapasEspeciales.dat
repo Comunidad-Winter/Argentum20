@@ -17,10 +17,12 @@ Mapa2=273
 Mapa3=165
 
 [MapasEventos]
-Cantidad=6
+Cantidad=8
 Mapa1=300
 Mapa2=200
 Mapa3=272
 Mapa4=273
 Mapa5=326
 Mapa6=165
+Mapa7=294
+Mapa8=295

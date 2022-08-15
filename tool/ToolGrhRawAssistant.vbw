@@ -1,0 +1,7 @@
+Manifest = 0, 0, 0, 0, C
+CImageInfo = 0, 0, 0, 0, C
+frmMain = 50, 50, 1323, 573, Z, 25, 25, 1277, 549, C
+General = 100, 100, 1373, 623, 
+XLibrary = 150, 150, 1423, 673, 
+FilePaths = 0, 0, 0, 0, C
+frmView = 0, 0, 0, 0, C, 225, 225, 1498, 748, C

@@ -1,0 +1,706 @@
+fileFormatVersion: 2
+guid: 2b3e38acc4e44264fbe8bcd2db682ef6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5733676284418610066
+    second: puerta_iglesia_0
+  - first:
+      213: -288484796192391432
+    second: puerta_iglesia_1
+  - first:
+      213: -3842449300819633006
+    second: puerta_iglesia_2
+  - first:
+      213: -9159166701417970062
+    second: puerta_iglesia_3
+  - first:
+      213: -1123562387563848958
+    second: puerta_iglesia_4
+  - first:
+      213: -3105086639360423255
+    second: puerta_iglesia_5
+  - first:
+      213: -3151694544321790400
+    second: puerta_iglesia_6
+  - first:
+      213: -672255987466842552
+    second: puerta_iglesia_7
+  - first:
+      213: 7387384086638794654
+    second: puerta_iglesia_8
+  - first:
+      213: -8097547837965051192
+    second: puerta_iglesia_9
+  - first:
+      213: 297176067249759415
+    second: puerta_iglesia_10
+  - first:
+      213: 2597901872431463629
+    second: puerta_iglesia_11
+  - first:
+      213: -4948888670273841728
+    second: puerta_iglesia_12
+  - first:
+      213: 8456553466770254597
+    second: puerta_iglesia_13
+  - first:
+      213: -8824905700573358935
+    second: puerta_iglesia_14
+  - first:
+      213: -1066823428826429373
+    second: puerta_iglesia_15
+  - first:
+      213: -516364771997941198
+    second: puerta_iglesia_16
+  - first:
+      213: 1413393224486021539
+    second: puerta_iglesia_17
+  - first:
+      213: 4598661681529176989
+    second: puerta_iglesia_18
+  - first:
+      213: 1662013142275057619
+    second: puerta_iglesia_19
+  - first:
+      213: 3488858165300209689
+    second: puerta_iglesia_20
+  - first:
+      213: -799952245574771834
+    second: puerta_iglesia_21
+  - first:
+      213: 7651224801082826504
+    second: puerta_iglesia_22
+  - first:
+      213: -1259541565271308721
+    second: puerta_iglesia_23
+  - first:
+      213: -6612303720042026555
+    second: puerta_iglesia_24
+  - first:
+      213: -2004875823466876301
+    second: puerta_iglesia_25
+  - first:
+      213: -6442657072730212486
+    second: puerta_iglesia_26
+  - first:
+      213: -585615657268877249
+    second: puerta_iglesia_27
+  - first:
+      213: -2265587127758568967
+    second: puerta_iglesia_28
+  - first:
+      213: 7137727177364468355
+    second: puerta_iglesia_29
+  - first:
+      213: -1287712422987841036
+    second: puerta_iglesia_30
+  - first:
+      213: -7316973092274349545
+    second: puerta_iglesia_31
+  - first:
+      213: 7039147761958990365
+    second: puerta_iglesia_32
+  - first:
+      213: 8128272768161246668
+    second: puerta_iglesia_33
+  - first:
+      213: -6985485023732195167
+    second: puerta_iglesia_34
+  - first:
+      213: -6225714426271116355
+    second: puerta_iglesia_35
+  - first:
+      213: 2293625314760464748
+    second: puerta_iglesia_36
+  - first:
+      213: -3502439023082628858
+    second: puerta_iglesia_37
+  - first:
+      213: 4891267152978268846
+    second: puerta_iglesia_38
+  - first:
+      213: 3667020209471559746
+    second: puerta_iglesia_39
+  - first:
+      213: 6657686405150053610
+    second: puerta_iglesia_40
+  - first:
+      213: 6732038914950817191
+    second: puerta_iglesia_41
+  - first:
+      213: 7344814378042402384
+    second: puerta_iglesia_42
+  - first:
+      213: 217650226881515749
+    second: puerta_iglesia_43
+  - first:
+      213: 5412835374515248880
+    second: puerta_iglesia_44
+  - first:
+      213: -547772906389539555
+    second: puerta_iglesia_45
+  - first:
+      213: -4944822062746321131
+    second: puerta_iglesia_46
+  - first:
+      213: -2373994951579979364
+    second: puerta_iglesia_47
+  - first:
+      213: 4235861852404486902
+    second: puerta_iglesia_48
+  - first:
+      213: 3998011661188357014
+    second: puerta_iglesia_49
+  - first:
+      213: 2958323066437715362
+    second: puerta_iglesia_50
+  - first:
+      213: -7619484412914678769
+    second: puerta_iglesia_51
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: puerta_iglesia_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1537
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.81, y: 0.32}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6ca5223cc3ed60b0800000000000000
+      internalID: -5733676284418610066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_1
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1537
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.81, y: 0.32}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fef9d73b981ffbf0800000000000000
+      internalID: -288484796192391432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_2
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1537
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.81, y: 0.32}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29c923518b0ecaac0800000000000000
+      internalID: -3842449300819633006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_3
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1537
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.81, y: 0.32}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2764563996a14e080800000000000000
+      internalID: -9159166701417970062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_4
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1537
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.81, y: 0.32}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20b544e16fd4860f0800000000000000
+      internalID: -1123562387563848958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1025
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.9, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aa4c18272488e4d0800000000000000
+      internalID: -3105086639360423255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1025
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.9, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04eb925a28ee244d0800000000000000
+      internalID: -3151694544321790400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1025
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.9, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84ec8ecbdbaaba6f0800000000000000
+      internalID: -672255987466842552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_8
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1025
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.9, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e979a7fcfa2458660800000000000000
+      internalID: 7387384086638794654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_9
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1025
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.9, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ca5c5ed42bbf9f80800000000000000
+      internalID: -8097547837965051192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 513
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.1, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b46b240f08cf1400800000000000000
+      internalID: 297176067249759415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 513
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.1, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcc799b1df99d0420800000000000000
+      internalID: 2597901872431463629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_12
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 513
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.1, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c55f5789f3025bb0800000000000000
+      internalID: -4948888670273841728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_13
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 513
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.1, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50b60f2c296bb5570800000000000000
+      internalID: 8456553466770254597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_14
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 513
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.1, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a4510d8503a78580800000000000000
+      internalID: -8824905700573358935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.1, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3488cb66eb1e131f0800000000000000
+      internalID: -1066823428826429373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_16
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.1, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2328986c9f085d8f0800000000000000
+      internalID: -516364771997941198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_17
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.1, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a9ee6136a16d9310800000000000000
+      internalID: 1413393224486021539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_18
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.1, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d934fb14f6ab1df30800000000000000
+      internalID: 4598661681529176989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puerta_iglesia_19
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1
+        width: 384
+        height: 512
+      alignment: 9
+      pivot: {x: 0.1, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d7e55da528a01710800000000000000
+      internalID: 1662013142275057619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

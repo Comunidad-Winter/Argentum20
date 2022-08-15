@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24dd25c2676d6ff4c970820f78280dfd, type: 3}
+  m_Name: NewbieClothes
+  m_EditorClassIdentifier: 
+  mID: 3
+  mName: Newbie clothes
+  mDescription: Newbie clothes
+  nBasePrice: 0
+  mWeight: 0
+  mType: 1
+  mAllowedSlots: 00000000
+  mAnimationClips:
+    m_keys:
+    - attack_east
+    - attack_north
+    - attack_northeast
+    - attack_northwest
+    - attack_south
+    - attack_southeast
+    - attack_southwest
+    - attack_west
+    - run_east
+    - run_north
+    - run_northeast
+    - run_northwest
+    - run_south
+    - run_southeast
+    - run_southwest
+    - run_west
+    - stand_east
+    - stand_north
+    - stand_northeast
+    - stand_northwest
+    - stand_south
+    - stand_southeast
+    - stand_southwest
+    - stand_west
+    - walk_east
+    - walk_north
+    - walk_northeast
+    - walk_northwest
+    - walk_south
+    - walk_southeast
+    - walk_southwest
+    - walk_west
+    m_values:
+    - {fileID: 7400000, guid: 499e560179f242642aac8e2510c37f41, type: 2}
+    - {fileID: 7400000, guid: e0c620b81361e0940996d35bbbbb56bb, type: 2}
+    - {fileID: 7400000, guid: ba7592b0ca198f043a17c71ddc9eb408, type: 2}
+    - {fileID: 7400000, guid: 9354fa60a8b0e5f458c45e578847acbe, type: 2}
+    - {fileID: 7400000, guid: 2e6b85eac82620949a7269438328219c, type: 2}
+    - {fileID: 7400000, guid: 0ca8644dcd3d2794096213e026cb25fe, type: 2}
+    - {fileID: 7400000, guid: 832897d34eb398b499b24cc7ad81451c, type: 2}
+    - {fileID: 7400000, guid: 151ea0d842bc7504ebf9b1ff41cce086, type: 2}
+    - {fileID: 7400000, guid: 1c96bc7f1d3bcfc47b7af93d0197ca90, type: 2}
+    - {fileID: 7400000, guid: ae300f90611e1254e9abdd6450b7a0ad, type: 2}
+    - {fileID: 7400000, guid: 145cb68da7008c744bdc7a48f90c9668, type: 2}
+    - {fileID: 7400000, guid: b438301917ba27f478a70f39446a2e9a, type: 2}
+    - {fileID: 7400000, guid: f4fc2b0296db7aa45855139bc4662fc9, type: 2}
+    - {fileID: 7400000, guid: 5219636d1fd719648b173edf12021cac, type: 2}
+    - {fileID: 7400000, guid: cdebd56d614bf4442af865e841c473cd, type: 2}
+    - {fileID: 7400000, guid: fed14fae0108de3408580ea118a62520, type: 2}
+    - {fileID: 7400000, guid: 17c64093acaca784eb53a3b194e98e4b, type: 2}
+    - {fileID: 7400000, guid: ecb3d2c475550c6439b92f9298249434, type: 2}
+    - {fileID: 7400000, guid: 545dc8a1526b3ab4eaeb94473edcf9bf, type: 2}
+    - {fileID: 7400000, guid: 7ad080d1841484149803a634fcedf0ac, type: 2}
+    - {fileID: 7400000, guid: 5585dba687303614ea706b3be5b26feb, type: 2}
+    - {fileID: 7400000, guid: ae1d12fa5fb297c4183a242944a96abb, type: 2}
+    - {fileID: 7400000, guid: 9c8835f3da50177449649c9667f446c9, type: 2}
+    - {fileID: 7400000, guid: 20ad72b700013134c997c17605e944b2, type: 2}
+    - {fileID: 7400000, guid: ef52666b86261894aad435a8e6044ac9, type: 2}
+    - {fileID: 7400000, guid: 9ff4e1bf44735814a94ad1d5815ebdaa, type: 2}
+    - {fileID: 7400000, guid: 32a00e6a1f213014095a60ecf27809ee, type: 2}
+    - {fileID: 7400000, guid: 69ada14d68ba1854f97feb2f2fc71b1f, type: 2}
+    - {fileID: 7400000, guid: b7fd3a37e1389544e8d8025df333c90b, type: 2}
+    - {fileID: 7400000, guid: 3e66c58e7bf9e084ea5d23b94f9af5ea, type: 2}
+    - {fileID: 7400000, guid: f6bbafd6b55f2a745b1e230986aeaf28, type: 2}
+    - {fileID: 7400000, guid: d518574bdbce6a543bd2330a0024df85, type: 2}
+  mInventoryIcon: {fileID: 21300000, guid: baab1c6f49da3bb4a9e2754ea9edadd4, type: 3}

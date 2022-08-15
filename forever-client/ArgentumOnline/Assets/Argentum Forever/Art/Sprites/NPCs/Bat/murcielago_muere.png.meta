@@ -1,0 +1,1210 @@
+fileFormatVersion: 2
+guid: d24a7fa5f2653594897f3c51b5541d98
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9144173084667381663
+    second: murcielago_muere_0
+  - first:
+      213: -4291953713543507879
+    second: murcielago_muere_1
+  - first:
+      213: -1417500641249313355
+    second: murcielago_muere_2
+  - first:
+      213: -7510179036970924634
+    second: murcielago_muere_3
+  - first:
+      213: -2533534522418146711
+    second: murcielago_muere_4
+  - first:
+      213: 6530735325850417465
+    second: murcielago_muere_5
+  - first:
+      213: 2304903554280288192
+    second: murcielago_muere_6
+  - first:
+      213: -5822548816767583399
+    second: murcielago_muere_7
+  - first:
+      213: -7882338334424679073
+    second: murcielago_muere_8
+  - first:
+      213: 3165224398591378746
+    second: murcielago_muere_9
+  - first:
+      213: 3575369324203783473
+    second: murcielago_muere_10
+  - first:
+      213: 5266029865554569220
+    second: murcielago_muere_11
+  - first:
+      213: -7011502071071987345
+    second: murcielago_muere_12
+  - first:
+      213: 1027495693796223639
+    second: murcielago_muere_13
+  - first:
+      213: 1588473457123640593
+    second: murcielago_muere_14
+  - first:
+      213: 5823005318729174470
+    second: murcielago_muere_15
+  - first:
+      213: 8398578203141633961
+    second: murcielago_muere_16
+  - first:
+      213: -2321646060714503889
+    second: murcielago_muere_17
+  - first:
+      213: 259395809348962160
+    second: murcielago_muere_18
+  - first:
+      213: 4201095806899631533
+    second: murcielago_muere_19
+  - first:
+      213: 407632900046426510
+    second: murcielago_muere_20
+  - first:
+      213: 1979546046179759155
+    second: murcielago_muere_21
+  - first:
+      213: -7890071366419674625
+    second: murcielago_muere_22
+  - first:
+      213: 8936831627566817795
+    second: murcielago_muere_23
+  - first:
+      213: 2738170686938310798
+    second: murcielago_muere_24
+  - first:
+      213: 3365304796169735549
+    second: murcielago_muere_25
+  - first:
+      213: 8200812746028731680
+    second: murcielago_muere_26
+  - first:
+      213: -3399553043591157184
+    second: murcielago_muere_27
+  - first:
+      213: -1715882152781857346
+    second: murcielago_muere_28
+  - first:
+      213: -8973700466606746348
+    second: murcielago_muere_29
+  - first:
+      213: 829044293293194096
+    second: murcielago_muere_30
+  - first:
+      213: -442224814680421064
+    second: murcielago_muere_31
+  - first:
+      213: 6124647093183182543
+    second: murcielago_muere_32
+  - first:
+      213: 7898023946300992602
+    second: murcielago_muere_33
+  - first:
+      213: -1864395579644701967
+    second: murcielago_muere_34
+  - first:
+      213: -1170224883756712474
+    second: murcielago_muere_35
+  - first:
+      213: -6758598147163647107
+    second: murcielago_muere_36
+  - first:
+      213: -2987360588300316052
+    second: murcielago_muere_37
+  - first:
+      213: 2100858839582451397
+    second: murcielago_muere_38
+  - first:
+      213: -3774647333072026497
+    second: murcielago_muere_39
+  - first:
+      213: 4826863492995022809
+    second: murcielago_muere_0
+  - first:
+      213: 925257198071129883
+    second: murcielago_muere_1
+  - first:
+      213: 6333486737587356304
+    second: murcielago_muere_2
+  - first:
+      213: -8664435054217015356
+    second: murcielago_muere_3
+  - first:
+      213: -8091952817656957364
+    second: murcielago_muere_4
+  - first:
+      213: 4119707603020779111
+    second: murcielago_muere_5
+  - first:
+      213: 5388916803706379959
+    second: murcielago_muere_6
+  - first:
+      213: 6082642284910778056
+    second: murcielago_muere_7
+  - first:
+      213: -3366743335950766618
+    second: murcielago_muere_8
+  - first:
+      213: 4651334497092973352
+    second: murcielago_muere_9
+  - first:
+      213: -6537050777665778991
+    second: murcielago_muere_10
+  - first:
+      213: -1065153234780210098
+    second: murcielago_muere_11
+  - first:
+      213: -6860836436494184742
+    second: murcielago_muere_12
+  - first:
+      213: -7407707984523813520
+    second: murcielago_muere_13
+  - first:
+      213: -1619610830351396768
+    second: murcielago_muere_14
+  - first:
+      213: 1042131551657648389
+    second: murcielago_muere_15
+  - first:
+      213: 7732547681313799183
+    second: murcielago_muere_16
+  - first:
+      213: -3599400859469242119
+    second: murcielago_muere_17
+  - first:
+      213: -3182982236682553538
+    second: murcielago_muere_18
+  - first:
+      213: 7064699963082273711
+    second: murcielago_muere_19
+  - first:
+      213: -991743354320974319
+    second: murcielago_muere_20
+  - first:
+      213: -1560780346351401414
+    second: murcielago_muere_21
+  - first:
+      213: -1227213038625070246
+    second: murcielago_muere_22
+  - first:
+      213: 6640581341937417612
+    second: murcielago_muere_23
+  - first:
+      213: -6348250285604535904
+    second: murcielago_muere_24
+  - first:
+      213: -7718385598691296175
+    second: murcielago_muere_25
+  - first:
+      213: 7458269525737553564
+    second: murcielago_muere_26
+  - first:
+      213: -1072450395286618396
+    second: murcielago_muere_27
+  - first:
+      213: -2171885856937400746
+    second: murcielago_muere_28
+  - first:
+      213: -8084218081553847403
+    second: murcielago_muere_29
+  - first:
+      213: -414840906854118282
+    second: murcielago_muere_30
+  - first:
+      213: 5994488814118056870
+    second: murcielago_muere_31
+  - first:
+      213: -2381678139791540905
+    second: murcielago_muere_32
+  - first:
+      213: -3409259116694321980
+    second: murcielago_muere_33
+  - first:
+      213: -8968705105001097991
+    second: murcielago_muere_34
+  - first:
+      213: 7814596052093753573
+    second: murcielago_muere_35
+  - first:
+      213: -1735719718015374811
+    second: murcielago_muere_36
+  - first:
+      213: 762358618154089995
+    second: murcielago_muere_37
+  - first:
+      213: -3227933161660325533
+    second: murcielago_muere_38
+  - first:
+      213: -8835186913950987401
+    second: murcielago_muere_39
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: murcielago_muere_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dff447e5c67cf240800000000000000
+      internalID: 4826863492995022809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_1
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1727e8f48c27dc00800000000000000
+      internalID: 925257198071129883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_2
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 092ca8fa1a015e750800000000000000
+      internalID: 6333486737587356304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_3
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cfc3fd693eb1c780800000000000000
+      internalID: -8664435054217015356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_4
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c46f55c09cb93bf80800000000000000
+      internalID: -8091952817656957364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76e8780ec342c2930800000000000000
+      internalID: 4119707603020779111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_6
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7be5d01084749ca40800000000000000
+      internalID: 5388916803706379959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_7
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c690ef4ee2e96450800000000000000
+      internalID: 6082642284910778056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_8
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6edadb216cce641d0800000000000000
+      internalID: -3366743335950766618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_9
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8233fbec41cdc8040800000000000000
+      internalID: 4651334497092973352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1da4a86d3fab745a0800000000000000
+      internalID: -6537050777665778991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_11
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4c3191c6c0d731f0800000000000000
+      internalID: -1065153234780210098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_12
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ade05bc7c9969c0a0800000000000000
+      internalID: -6860836436494184742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_13
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d12a6f5d8823990800000000000000
+      internalID: -7407707984523813520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_14
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0609786e78cf589e0800000000000000
+      internalID: -1619610830351396768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 501e7c1ff15667e00800000000000000
+      internalID: 1042131551657648389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_16
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0cba79b5278f4b60800000000000000
+      internalID: 7732547681313799183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_17
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f0a91f1dfb5c0ec0800000000000000
+      internalID: -3599400859469242119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_18
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3778281586c3d3d0800000000000000
+      internalID: -3182982236682553538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_19
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa3fb30af2bda0260800000000000000
+      internalID: 7064699963082273711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11e08597cae9c32f0800000000000000
+      internalID: -991743354320974319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_21
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a36405b5b8ef65ae0800000000000000
+      internalID: -1560780346351401414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_22
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5366015e3018fee0800000000000000
+      internalID: -1227213038625070246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_23
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8d34441c85182c50800000000000000
+      internalID: 6640581341937417612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_24
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a1054deffb76e7a0800000000000000
+      internalID: -6348250285604535904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15cb3861139c2e490800000000000000
+      internalID: -7718385598691296175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_26
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9e35b83e98118760800000000000000
+      internalID: 7458269525737553564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_27
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eeb6bd2c04ed11f0800000000000000
+      internalID: -1072450395286618396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_28
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6562d8cf159ebd1e0800000000000000
+      internalID: -2171885856937400746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_29
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59b6132ac761fcf80800000000000000
+      internalID: -8084218081553847403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67cc8a4a4603e3af0800000000000000
+      internalID: -414840906854118282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_31
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a33f87f0d3b03350800000000000000
+      internalID: 5994488814118056870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_32
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75d796cb95492fed0800000000000000
+      internalID: -2381678139791540905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_33
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c44c2a75e0efa0d0800000000000000
+      internalID: -3409259116694321980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_34
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f45d29a932c88380800000000000000
+      internalID: -8968705105001097991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e8d734b4b5037c60800000000000000
+      internalID: 7814596052093753573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_36
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52a6d0adc1c79e7e0800000000000000
+      internalID: -1735719718015374811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_37
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0e3882cf11749a00800000000000000
+      internalID: 762358618154089995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_38
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 361688c44e31433d0800000000000000
+      internalID: -3227933161660325533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_muere_39
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77b85c5005c136580800000000000000
+      internalID: -8835186913950987401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

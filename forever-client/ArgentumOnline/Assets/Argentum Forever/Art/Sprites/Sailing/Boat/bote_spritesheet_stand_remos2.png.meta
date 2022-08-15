@@ -1,0 +1,1078 @@
+fileFormatVersion: 2
+guid: e4958769d6e4fdc42b76425842489a17
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5909516580449878974
+    second: bote_spritesheet_stand_remos2_0
+  - first:
+      213: -5910876800561780145
+    second: bote_spritesheet_stand_remos2_1
+  - first:
+      213: 5239371077358960987
+    second: bote_spritesheet_stand_remos2_2
+  - first:
+      213: -804358961615397030
+    second: bote_spritesheet_stand_remos2_3
+  - first:
+      213: 2804421587261516247
+    second: bote_spritesheet_stand_remos2_4
+  - first:
+      213: 7135614011838356756
+    second: bote_spritesheet_stand_remos2_5
+  - first:
+      213: -9163157627124966758
+    second: bote_spritesheet_stand_remos2_6
+  - first:
+      213: 1302324717807952858
+    second: bote_spritesheet_stand_remos2_7
+  - first:
+      213: -7566625225572398326
+    second: bote_spritesheet_stand_remos2_8
+  - first:
+      213: -8979177822926310124
+    second: bote_spritesheet_stand_remos2_9
+  - first:
+      213: 8307408010652024247
+    second: bote_spritesheet_stand_remos2_10
+  - first:
+      213: 3123869772148382986
+    second: bote_spritesheet_stand_remos2_11
+  - first:
+      213: 4578239100517290301
+    second: bote_spritesheet_stand_remos2_12
+  - first:
+      213: -2019565329419758522
+    second: bote_spritesheet_stand_remos2_13
+  - first:
+      213: 3716685303834292682
+    second: bote_spritesheet_stand_remos2_14
+  - first:
+      213: 618294994448175860
+    second: bote_spritesheet_stand_remos2_15
+  - first:
+      213: -1682366024086755990
+    second: bote_spritesheet_stand_remos2_16
+  - first:
+      213: -7905016371800406440
+    second: bote_spritesheet_stand_remos2_17
+  - first:
+      213: 6925746881144596075
+    second: bote_spritesheet_stand_remos2_18
+  - first:
+      213: 5640733029444374557
+    second: bote_spritesheet_stand_remos2_19
+  - first:
+      213: 7462064162537633090
+    second: bote_spritesheet_stand_remos2_20
+  - first:
+      213: 162841635022642385
+    second: bote_spritesheet_stand_remos2_21
+  - first:
+      213: -4561470315343958770
+    second: bote_spritesheet_stand_remos2_22
+  - first:
+      213: 3476288650046424623
+    second: bote_spritesheet_stand_remos2_23
+  - first:
+      213: -3364873483670381837
+    second: bote_spritesheet_stand_remos2_24
+  - first:
+      213: 6798406606034259606
+    second: bote_spritesheet_stand_remos2_25
+  - first:
+      213: 391425035072224873
+    second: bote_spritesheet_stand_remos2_26
+  - first:
+      213: -6904130611420847083
+    second: bote_spritesheet_stand_remos2_27
+  - first:
+      213: 3200081957660945610
+    second: bote_spritesheet_stand_remos2_28
+  - first:
+      213: -7993873048877721553
+    second: bote_spritesheet_stand_remos2_29
+  - first:
+      213: -7063722081929587387
+    second: bote_spritesheet_stand_remos2_30
+  - first:
+      213: 7996781012534052963
+    second: bote_spritesheet_stand_remos2_31
+  - first:
+      213: -8861051338889496188
+    second: bote_spritesheet_stand_remos2_32
+  - first:
+      213: 7783932478964410768
+    second: bote_spritesheet_stand_remos2_33
+  - first:
+      213: -8337288175341712130
+    second: bote_spritesheet_stand_remos2_34
+  - first:
+      213: -1558585867237882591
+    second: bote_spritesheet_stand_remos2_35
+  - first:
+      213: 1955328722384509163
+    second: bote_spritesheet_stand_remos2_36
+  - first:
+      213: -8233340310543289635
+    second: bote_spritesheet_stand_remos2_37
+  - first:
+      213: -168361047024712373
+    second: bote_spritesheet_stand_remos2_38
+  - first:
+      213: -6414532129476084390
+    second: bote_spritesheet_stand_remos2_39
+  - first:
+      213: -3671657814420846510
+    second: bote_spritesheet_stand_remos2_40
+  - first:
+      213: -5994144680593851507
+    second: bote_spritesheet_stand_remos2_41
+  - first:
+      213: -6091791380717428495
+    second: bote_spritesheet_stand_remos2_42
+  - first:
+      213: 1541350109213873947
+    second: bote_spritesheet_stand_remos2_43
+  - first:
+      213: -1100067568012743246
+    second: bote_spritesheet_stand_remos2_44
+  - first:
+      213: 5485403702109902219
+    second: bote_spritesheet_stand_remos2_45
+  - first:
+      213: 1870760721777087948
+    second: bote_spritesheet_stand_remos2_46
+  - first:
+      213: -4362376053406633913
+    second: bote_spritesheet_stand_remos2_47
+  - first:
+      213: 1484116371642971182
+    second: bote_spritesheet_stand_remos2_48
+  - first:
+      213: 6498197855928626709
+    second: bote_spritesheet_stand_remos2_49
+  - first:
+      213: -4420929877022721394
+    second: bote_spritesheet_stand_remos2_50
+  - first:
+      213: 6159423321194145198
+    second: bote_spritesheet_stand_remos2_51
+  - first:
+      213: 2005274994686890413
+    second: bote_spritesheet_stand_remos2_52
+  - first:
+      213: -692951563732138918
+    second: bote_spritesheet_stand_remos2_53
+  - first:
+      213: 1169462166502107334
+    second: bote_spritesheet_stand_remos2_54
+  - first:
+      213: 4408603691123644673
+    second: bote_spritesheet_stand_remos2_55
+  - first:
+      213: -6049110984231535961
+    second: bote_spritesheet_stand_remos2_56
+  - first:
+      213: 7434328937464873338
+    second: bote_spritesheet_stand_remos2_57
+  - first:
+      213: 6962994502007998712
+    second: bote_spritesheet_stand_remos2_58
+  - first:
+      213: -2520372162611251501
+    second: bote_spritesheet_stand_remos2_59
+  - first:
+      213: -4107498264075554265
+    second: bote_spritesheet_stand_remos2_60
+  - first:
+      213: -4560094479736305444
+    second: bote_spritesheet_stand_remos2_61
+  - first:
+      213: -3664892015462433829
+    second: bote_spritesheet_stand_remos2_62
+  - first:
+      213: -2611836961617370829
+    second: bote_spritesheet_stand_remos2_63
+  - first:
+      213: 672589750390662719
+    second: bote_spritesheet_stand_remos2_64
+  - first:
+      213: 1836931195431572681
+    second: bote_spritesheet_stand_remos2_65
+  - first:
+      213: -8286653738554186387
+    second: bote_spritesheet_stand_remos2_66
+  - first:
+      213: 8372272059569393198
+    second: bote_spritesheet_stand_remos2_67
+  - first:
+      213: -9096307307540937917
+    second: bote_spritesheet_stand_remos2_68
+  - first:
+      213: 6159123584910069276
+    second: bote_spritesheet_stand_remos2_69
+  - first:
+      213: -6056584574312543821
+    second: bote_spritesheet_stand_remos2_70
+  - first:
+      213: -8958833683330897282
+    second: bote_spritesheet_stand_remos2_71
+  - first:
+      213: 2206810666375075342
+    second: bote_spritesheet_stand_remos2_72
+  - first:
+      213: -7011206234150954909
+    second: bote_spritesheet_stand_remos2_73
+  - first:
+      213: -8082171288067118854
+    second: bote_spritesheet_stand_remos2_74
+  - first:
+      213: -4993355349311630534
+    second: bote_spritesheet_stand_remos2_75
+  - first:
+      213: 3370815588202655267
+    second: bote_spritesheet_stand_remos2_76
+  - first:
+      213: -6471714585464149331
+    second: bote_spritesheet_stand_remos2_77
+  - first:
+      213: -6872483247289246272
+    second: bote_spritesheet_stand_remos2_78
+  - first:
+      213: 6252926562889915926
+    second: bote_spritesheet_stand_remos2_79
+  - first:
+      213: 3360419853842072100
+    second: bote_spritesheet_stand_remos2_80
+  - first:
+      213: -5224030280250916478
+    second: bote_spritesheet_stand_remos2_81
+  - first:
+      213: 8076432545781163131
+    second: bote_spritesheet_stand_remos2_82
+  - first:
+      213: -6159595122712717631
+    second: bote_spritesheet_stand_remos2_83
+  - first:
+      213: -8340561505988343126
+    second: bote_spritesheet_stand_remos2_84
+  - first:
+      213: -8593098231427748189
+    second: bote_spritesheet_stand_remos2_85
+  - first:
+      213: -231860938636941315
+    second: bote_spritesheet_stand_remos2_86
+  - first:
+      213: -2230846626683916030
+    second: bote_spritesheet_stand_remos2_87
+  - first:
+      213: 4145683491291493444
+    second: bote_spritesheet_stand_remos2_88
+  - first:
+      213: -5449920176473647955
+    second: bote_spritesheet_stand_remos2_89
+  - first:
+      213: 2412493063643960893
+    second: bote_spritesheet_stand_remos2_90
+  - first:
+      213: 7441244763061002507
+    second: bote_spritesheet_stand_remos2_91
+  - first:
+      213: 6865406227328700442
+    second: bote_spritesheet_stand_remos2_92
+  - first:
+      213: -7878937886794578150
+    second: bote_spritesheet_stand_remos2_93
+  - first:
+      213: 5458626710181170193
+    second: bote_spritesheet_stand_remos2_94
+  - first:
+      213: -903525679848172882
+    second: bote_spritesheet_stand_remos2_95
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2688
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb30ffb1502d20250800000000000000
+      internalID: 5909516580449878974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2688
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4aea67fdd858fda0800000000000000
+      internalID: -5910876800561780145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2688
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b51cf684c3cf5b840800000000000000
+      internalID: 5239371077358960987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_3
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2688
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5f130d39c756d4f0800000000000000
+      internalID: -804358961615397030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2304
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d9e82d339e4be620800000000000000
+      internalID: 2804421587261516247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2304
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41ddced332bc60360800000000000000
+      internalID: 7135614011838356756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_6
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2304
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9a1e46cface5d080800000000000000
+      internalID: -9163157627124966758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_7
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2304
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad3672b4e69c21210800000000000000
+      internalID: 1302324717807952858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1920
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0b4f317272fdf690800000000000000
+      internalID: -7566625225572398326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1920
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4157961085d836380800000000000000
+      internalID: -8979177822926310124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_10
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1920
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bdf5273297d94370800000000000000
+      internalID: 8307408010652024247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_11
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1920
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0d1c7db1073a5b20800000000000000
+      internalID: 3123869772148382986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d311323943c298f30800000000000000
+      internalID: 4578239100517290301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_13
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6449d33780019f3e0800000000000000
+      internalID: -2019565329419758522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_14
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac135fc8791549330800000000000000
+      internalID: 3716685303834292682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_15
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f25c768500a49800800000000000000
+      internalID: 618294994448175860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1152
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a656f10c30907a8e0800000000000000
+      internalID: -1682366024086755990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_17
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1152
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 856803f0e7dbb4290800000000000000
+      internalID: -7905016371800406440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_18
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1152
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b66a4ee18123d1060800000000000000
+      internalID: 6925746881144596075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_19
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1152
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1058dcedc8e74e40800000000000000
+      internalID: 5640733029444374557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2457a33f1d39e8760800000000000000
+      internalID: 7462064162537633090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_21
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dc1b22ba97824200800000000000000
+      internalID: 162841635022642385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_22
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0d2f687ae662b0c0800000000000000
+      internalID: -4561470315343958770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_23
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f264dbaeb124e3030800000000000000
+      internalID: 3476288650046424623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fa12bbf4619d41d0800000000000000
+      internalID: -3364873483670381837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_25
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69e4757e9cac85e50800000000000000
+      internalID: 6798406606034259606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_26
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 384
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96ebcabdefe9e6500800000000000000
+      internalID: 391425035072224873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_27
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 384
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5142c5fd9c99f20a0800000000000000
+      internalID: -6904130611420847083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acc6482f599f86c20800000000000000
+      internalID: 3200081957660945610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_29
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f28131eb0de001190800000000000000
+      internalID: -7993873048877721553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_30
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5451182113e98fd90800000000000000
+      internalID: -7063722081929587387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bote_spritesheet_stand_remos2_31
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 512
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3684eae46f54afe60800000000000000
+      internalID: 7996781012534052963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

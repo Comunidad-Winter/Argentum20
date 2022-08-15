@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: CostaAnimDer4
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 137011887379696334, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: 8939597813327679383, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: 5652088207618420415, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: 1249014527299652319, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: 9127946611610238970, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: -5053361730757283447, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: -785299017206115033, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: -437879166221205357, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: 6927791821730308869, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  - {fileID: -8043573556342051753, guid: 12cc32067f983294babcda5ad63eb2a2, type: 3}
+  m_MinSpeed: 4
+  m_MaxSpeed: 4
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 1
+  m_TileColliderType: 0

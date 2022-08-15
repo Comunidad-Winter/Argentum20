@@ -1,0 +1,1210 @@
+fileFormatVersion: 2
+guid: fd3ccb3252cd87f4bafa24f52f1d866b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6915689036229826251
+    second: humano_attack_tunica_cura_0
+  - first:
+      213: 7350626947004570920
+    second: humano_attack_tunica_cura_1
+  - first:
+      213: 3445779468507635374
+    second: humano_attack_tunica_cura_2
+  - first:
+      213: 4828666115233346505
+    second: humano_attack_tunica_cura_3
+  - first:
+      213: 5015615494827277572
+    second: humano_attack_tunica_cura_4
+  - first:
+      213: 5167422793060362214
+    second: humano_attack_tunica_cura_5
+  - first:
+      213: -211217250752259400
+    second: humano_attack_tunica_cura_6
+  - first:
+      213: 3029661890273033565
+    second: humano_attack_tunica_cura_7
+  - first:
+      213: 1846326130973817795
+    second: humano_attack_tunica_cura_8
+  - first:
+      213: -5915732965534209836
+    second: humano_attack_tunica_cura_9
+  - first:
+      213: 5204784256566418482
+    second: humano_attack_tunica_cura_10
+  - first:
+      213: -5823153581505575270
+    second: humano_attack_tunica_cura_11
+  - first:
+      213: -9162798294019300084
+    second: humano_attack_tunica_cura_12
+  - first:
+      213: -6961709702831789279
+    second: humano_attack_tunica_cura_13
+  - first:
+      213: -4587919882150127960
+    second: humano_attack_tunica_cura_14
+  - first:
+      213: 6434149006465836927
+    second: humano_attack_tunica_cura_15
+  - first:
+      213: 4602735613210621478
+    second: humano_attack_tunica_cura_16
+  - first:
+      213: 7684419487663596328
+    second: humano_attack_tunica_cura_17
+  - first:
+      213: 214049860535468668
+    second: humano_attack_tunica_cura_18
+  - first:
+      213: 8215513117909989494
+    second: humano_attack_tunica_cura_19
+  - first:
+      213: 1189787738208925551
+    second: humano_attack_tunica_cura_20
+  - first:
+      213: -260550669717241704
+    second: humano_attack_tunica_cura_21
+  - first:
+      213: 8466059873172213429
+    second: humano_attack_tunica_cura_22
+  - first:
+      213: -8653330937065648511
+    second: humano_attack_tunica_cura_23
+  - first:
+      213: -725269512031121734
+    second: humano_attack_tunica_cura_24
+  - first:
+      213: 9051614885671869183
+    second: humano_attack_tunica_cura_25
+  - first:
+      213: -4199918737373651643
+    second: humano_attack_tunica_cura_26
+  - first:
+      213: -4506031175185405334
+    second: humano_attack_tunica_cura_27
+  - first:
+      213: 7132111462649398501
+    second: humano_attack_tunica_cura_28
+  - first:
+      213: 6597244699448961304
+    second: humano_attack_tunica_cura_29
+  - first:
+      213: 6557119310537159849
+    second: humano_attack_tunica_cura_30
+  - first:
+      213: -6667181842012599931
+    second: humano_attack_tunica_cura_31
+  - first:
+      213: 5067960961711826162
+    second: humano_attack_tunica_cura_32
+  - first:
+      213: -4816634945933187121
+    second: humano_attack_tunica_cura_33
+  - first:
+      213: -5318674228646222954
+    second: humano_attack_tunica_cura_34
+  - first:
+      213: 2027132338956829980
+    second: humano_attack_tunica_cura_35
+  - first:
+      213: 9022599829071325459
+    second: humano_attack_tunica_cura_36
+  - first:
+      213: 1927936565502533951
+    second: humano_attack_tunica_cura_37
+  - first:
+      213: 8064691289389625234
+    second: humano_attack_tunica_cura_38
+  - first:
+      213: -6629279645651353764
+    second: humano_attack_tunica_cura_39
+  - first:
+      213: -7007974838028471802
+    second: humano_attack_tunica_cura_0
+  - first:
+      213: -6989580141913659376
+    second: humano_attack_tunica_cura_1
+  - first:
+      213: -6042828602257423579
+    second: humano_attack_tunica_cura_2
+  - first:
+      213: -8211723155957007186
+    second: humano_attack_tunica_cura_3
+  - first:
+      213: -2254171237417538272
+    second: humano_attack_tunica_cura_4
+  - first:
+      213: -443876777575279523
+    second: humano_attack_tunica_cura_5
+  - first:
+      213: -85372680719696213
+    second: humano_attack_tunica_cura_6
+  - first:
+      213: -4846106815970980769
+    second: humano_attack_tunica_cura_7
+  - first:
+      213: -676575584196604584
+    second: humano_attack_tunica_cura_8
+  - first:
+      213: -6772040404012145104
+    second: humano_attack_tunica_cura_9
+  - first:
+      213: -2393844729809446519
+    second: humano_attack_tunica_cura_10
+  - first:
+      213: -4804102558673314266
+    second: humano_attack_tunica_cura_11
+  - first:
+      213: -5292140430944519126
+    second: humano_attack_tunica_cura_12
+  - first:
+      213: -3982234039316882033
+    second: humano_attack_tunica_cura_13
+  - first:
+      213: -148386285388365685
+    second: humano_attack_tunica_cura_14
+  - first:
+      213: 798955069652489850
+    second: humano_attack_tunica_cura_15
+  - first:
+      213: 2175945946956491049
+    second: humano_attack_tunica_cura_16
+  - first:
+      213: 2997303904605810955
+    second: humano_attack_tunica_cura_17
+  - first:
+      213: -8572952883347007863
+    second: humano_attack_tunica_cura_18
+  - first:
+      213: -3196120707460472770
+    second: humano_attack_tunica_cura_19
+  - first:
+      213: -4221817342157252383
+    second: humano_attack_tunica_cura_20
+  - first:
+      213: -8286078815384214397
+    second: humano_attack_tunica_cura_21
+  - first:
+      213: -7658756156889753152
+    second: humano_attack_tunica_cura_22
+  - first:
+      213: 7567135424101131451
+    second: humano_attack_tunica_cura_23
+  - first:
+      213: -2071269986557685941
+    second: humano_attack_tunica_cura_24
+  - first:
+      213: -5508409430865470016
+    second: humano_attack_tunica_cura_25
+  - first:
+      213: -6262662054115898381
+    second: humano_attack_tunica_cura_26
+  - first:
+      213: 3281848961034161538
+    second: humano_attack_tunica_cura_27
+  - first:
+      213: 4233995207270625547
+    second: humano_attack_tunica_cura_28
+  - first:
+      213: -7357680115196324981
+    second: humano_attack_tunica_cura_29
+  - first:
+      213: 7438782781944153044
+    second: humano_attack_tunica_cura_30
+  - first:
+      213: -8126177514244685180
+    second: humano_attack_tunica_cura_31
+  - first:
+      213: -4394360422707655633
+    second: humano_attack_tunica_cura_32
+  - first:
+      213: 4059037447300325188
+    second: humano_attack_tunica_cura_33
+  - first:
+      213: 2402385759911948752
+    second: humano_attack_tunica_cura_34
+  - first:
+      213: -3379509476878415703
+    second: humano_attack_tunica_cura_35
+  - first:
+      213: 2330461396280547515
+    second: humano_attack_tunica_cura_36
+  - first:
+      213: 4322039512486010403
+    second: humano_attack_tunica_cura_37
+  - first:
+      213: -189496654997177379
+    second: humano_attack_tunica_cura_38
+  - first:
+      213: 6160834253757944403
+    second: humano_attack_tunica_cura_39
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 602ff60c30caebe90800000000000000
+      internalID: -7007974838028471802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 018ac10b4e5000f90800000000000000
+      internalID: -6989580141913659376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52340eb076f832ca0800000000000000
+      internalID: -6042828602257423579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eac35571c491a0e80800000000000000
+      internalID: -8211723155957007186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02d23d2e33397b0e0800000000000000
+      internalID: -2254171237417538272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d54949c2c6807d9f0800000000000000
+      internalID: -443876777575279523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_6
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baefd2ccff1b0def0800000000000000
+      internalID: -85372680719696213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_7
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5c4372d68b2fbcb0800000000000000
+      internalID: -4846106815970980769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_8
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85d424047125c96f0800000000000000
+      internalID: -676575584196604584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0366342e121e402a0800000000000000
+      internalID: -6772040404012145104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9895440c6ea57ced0800000000000000
+      internalID: -2393844729809446519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_11
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62e5bb51d26645db0800000000000000
+      internalID: -4804102558673314266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2cb118215a8e86b0800000000000000
+      internalID: -5292140430944519126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8d5c027d334cb8c0800000000000000
+      internalID: -3982234039316882033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_14
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8003e9a573d0fdf0800000000000000
+      internalID: -148386285388365685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a76522e1765761b00800000000000000
+      internalID: 798955069652489850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 929eac26f43823e10800000000000000
+      internalID: 2175945946956491049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_17
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b01bbe55500989920800000000000000
+      internalID: 2997303904605810955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_18
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 986d0f726c0c60980800000000000000
+      internalID: -8572952883347007863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_19
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e306c8c762915a3d0800000000000000
+      internalID: -3196120707460472770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e81226de771965c0800000000000000
+      internalID: -4221817342157252383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_21
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 384622c083fe10d80800000000000000
+      internalID: -8286078815384214397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_22
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c910476ad1a6b590800000000000000
+      internalID: -7658756156889753152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_23
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb4a2d8639dd30960800000000000000
+      internalID: 7567135424101131451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_24
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4f0d49dbee5143e0800000000000000
+      internalID: -2071269986557685941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cd1ad3bec23e83b0800000000000000
+      internalID: -5508409430865470016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_26
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fb8a14fa0e8619a0800000000000000
+      internalID: -6262662054115898381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_27
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28d0de8fd387b8d20800000000000000
+      internalID: 3281848961034161538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_28
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b017216553c22ca30800000000000000
+      internalID: 4233995207270625547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_29
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8394cafae444e990800000000000000
+      internalID: -7357680115196324981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d3c21f178ddb3760800000000000000
+      internalID: 7438782781944153044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_31
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 482cda9ea940a3f80800000000000000
+      internalID: -8126177514244685180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2c89755a781403c0800000000000000
+      internalID: -4394360422707655633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_33
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44f18587d09945830800000000000000
+      internalID: 4059037447300325188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_34
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d13209ce1df65120800000000000000
+      internalID: 2402385759911948752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a8889349029911d0800000000000000
+      internalID: -3379509476878415703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_36
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb81018ea46775020800000000000000
+      internalID: 2330461396280547515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_37
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e5ee69908fafb30800000000000000
+      internalID: 4322039512486010403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_38
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddbb4c8dbc5ce5df0800000000000000
+      internalID: -189496654997177379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_tunica_cura_39
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3521d4fbc1eaf7550800000000000000
+      internalID: 6160834253757944403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

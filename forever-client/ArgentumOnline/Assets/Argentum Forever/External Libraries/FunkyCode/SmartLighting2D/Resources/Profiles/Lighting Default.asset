@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eccca2c5bd890f54db80a4a8e2a202cc, type: 3}
+  m_Name: Lighting Default
+  m_EditorClassIdentifier: 
+  renderingPipeline: 0
+  renderingMode: 2
+  sortingLayer:
+    Name: IluminacionDin
+    ID: 0
+    Order: 0
+  commonSettings:
+    darknessColor: {r: 0, g: 0, b: 0, a: 0}
+    coreAxis: 0
+    lightingResolution: 0.308
+    hdr: 0
+    drawRooms: 1
+    drawOcclusion: 1
+    drawPenumbra: 1
+    drawSunPenumbra: 1
+    drawAdditiveLights: 1
+    drawHighQualityShadows: 1
+    darknessBuffer: 1
+  dayLightingSettings:
+    drawDayShadows: 1
+    sunDirection: 45
+    shadowDarkness: 0.65
+    sunPenumbra: 0.5
+    layerCount: 1
+  atlasSettings:
+    lightingSpriteAtlas: 1
+    spriteAtlasScale: 0
+    spriteAtlasSize: 0
+    spriteAtlasPreloadFoldersCount: 0
+    spriteAtlasPreloadFolders:
+    - 
+  lightingSourceSettings:
+    fixedLightBufferSize: 1
+    fixedLightTextureSize: 0
+    lightingBufferPreload: 1
+    lightingBufferPreloadCount: 3
+  triangulation: 0
+  disable: 0

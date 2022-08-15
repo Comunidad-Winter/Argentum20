@@ -1,0 +1,1270 @@
+fileFormatVersion: 2
+guid: 6aed0d06f44d5d0499f362879bcae2e0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7844628693435919818
+    second: cementerio_spritesheet_0
+  - first:
+      213: -5713430793699128212
+    second: cementerio_spritesheet_1
+  - first:
+      213: -6904551491502109700
+    second: cementerio_spritesheet_2
+  - first:
+      213: -1185733342559838719
+    second: cementerio_spritesheet_3
+  - first:
+      213: 1686798099021501464
+    second: cementerio_spritesheet_4
+  - first:
+      213: -691607832215777409
+    second: cementerio_spritesheet_5
+  - first:
+      213: -6888721779089813371
+    second: cementerio_spritesheet_6
+  - first:
+      213: -7473796038844571614
+    second: cementerio_spritesheet_7
+  - first:
+      213: -148208752483533378
+    second: cementerio_spritesheet_8
+  - first:
+      213: 8925757783770803417
+    second: cementerio_spritesheet_9
+  - first:
+      213: 3556718651386559252
+    second: cementerio_spritesheet_10
+  - first:
+      213: -4530540327499170382
+    second: cementerio_spritesheet_11
+  - first:
+      213: -5203416597432116537
+    second: cementerio_spritesheet_12
+  - first:
+      213: -7101116911855841755
+    second: cementerio_spritesheet_13
+  - first:
+      213: 6641060906035268964
+    second: cementerio_spritesheet_14
+  - first:
+      213: 4017100305227476496
+    second: cementerio_spritesheet_15
+  - first:
+      213: 2416011205368879089
+    second: cementerio_spritesheet_16
+  - first:
+      213: 1133267787520290175
+    second: cementerio_spritesheet_17
+  - first:
+      213: 2027730976728603801
+    second: cementerio_spritesheet_18
+  - first:
+      213: -5457280734399873533
+    second: cementerio_spritesheet_19
+  - first:
+      213: 2936832253199478050
+    second: cementerio_spritesheet_20
+  - first:
+      213: 6251734815644081269
+    second: cementerio_spritesheet_21
+  - first:
+      213: -7906485151746661213
+    second: cementerio_spritesheet_22
+  - first:
+      213: 3707492847628860444
+    second: cementerio_spritesheet_23
+  - first:
+      213: -3202933466570962771
+    second: cementerio_spritesheet_24
+  - first:
+      213: -3610581862231345240
+    second: cementerio_spritesheet_25
+  - first:
+      213: -3731415747733585698
+    second: cementerio_spritesheet_26
+  - first:
+      213: -7937425586591736373
+    second: cementerio_spritesheet_27
+  - first:
+      213: -2292705680321685884
+    second: cementerio_spritesheet_28
+  - first:
+      213: -3308594338797579446
+    second: cementerio_spritesheet_29
+  - first:
+      213: 6287907737084038399
+    second: cementerio_spritesheet_30
+  - first:
+      213: -8946514596577717963
+    second: cementerio_spritesheet_31
+  - first:
+      213: -6614320315689827461
+    second: cementerio_spritesheet_32
+  - first:
+      213: 7519243790961624729
+    second: cementerio_spritesheet_33
+  - first:
+      213: 5717365726866675925
+    second: cementerio_spritesheet_34
+  - first:
+      213: -8488799392804234915
+    second: cementerio_spritesheet_35
+  - first:
+      213: 4061573204720618409
+    second: cementerio_spritesheet_36
+  - first:
+      213: -8929447459144405348
+    second: cementerio_spritesheet_37
+  - first:
+      213: 8393209261076804415
+    second: cementerio_spritesheet_0
+  - first:
+      213: 1458583711667347325
+    second: cementerio_spritesheet_1
+  - first:
+      213: 7432372147453207022
+    second: cementerio_spritesheet_2
+  - first:
+      213: -2269123576416700813
+    second: cementerio_spritesheet_3
+  - first:
+      213: 4643314012213976739
+    second: cementerio_spritesheet_4
+  - first:
+      213: -4628450133733195537
+    second: cementerio_spritesheet_5
+  - first:
+      213: -5931849385554218660
+    second: cementerio_spritesheet_6
+  - first:
+      213: -8067313742211006194
+    second: cementerio_spritesheet_7
+  - first:
+      213: -6283458301691230876
+    second: cementerio_spritesheet_8
+  - first:
+      213: 2673702618703880209
+    second: cementerio_spritesheet_9
+  - first:
+      213: 106826567416769010
+    second: cementerio_spritesheet_10
+  - first:
+      213: 2920313969204035400
+    second: cementerio_spritesheet_11
+  - first:
+      213: 8567055282726312216
+    second: cementerio_spritesheet_12
+  - first:
+      213: -3623784330571509749
+    second: cementerio_spritesheet_13
+  - first:
+      213: -2008309348376056243
+    second: cementerio_spritesheet_14
+  - first:
+      213: -5998104880586016389
+    second: cementerio_spritesheet_15
+  - first:
+      213: -6381251811135678076
+    second: cementerio_spritesheet_16
+  - first:
+      213: -692010112371078478
+    second: cementerio_spritesheet_17
+  - first:
+      213: -3994303823951540143
+    second: cementerio_spritesheet_18
+  - first:
+      213: 7421837041148320325
+    second: cementerio_spritesheet_19
+  - first:
+      213: 1832900272324216731
+    second: cementerio_spritesheet_20
+  - first:
+      213: 1311732155099530869
+    second: cementerio_spritesheet_21
+  - first:
+      213: 8758896022770435412
+    second: cementerio_spritesheet_22
+  - first:
+      213: -4372584113934155882
+    second: cementerio_spritesheet_23
+  - first:
+      213: 8140459137658685656
+    second: cementerio_spritesheet_24
+  - first:
+      213: -854858834900140663
+    second: cementerio_spritesheet_25
+  - first:
+      213: -8286292192998610202
+    second: cementerio_spritesheet_26
+  - first:
+      213: -5215076120907909093
+    second: cementerio_spritesheet_27
+  - first:
+      213: 1607762711518144064
+    second: cementerio_spritesheet_28
+  - first:
+      213: 2716403800795021293
+    second: cementerio_spritesheet_29
+  - first:
+      213: 236591468176070243
+    second: cementerio_spritesheet_30
+  - first:
+      213: 5139888672930168558
+    second: cementerio_spritesheet_31
+  - first:
+      213: -2420664541902640599
+    second: cementerio_spritesheet_32
+  - first:
+      213: -2198191805503401893
+    second: cementerio_spritesheet_33
+  - first:
+      213: -3791385979146684726
+    second: cementerio_spritesheet_34
+  - first:
+      213: -3125456362247902667
+    second: cementerio_spritesheet_35
+  - first:
+      213: 6698741123917695532
+    second: cementerio_spritesheet_36
+  - first:
+      213: -8605998978477312270
+    second: cementerio_spritesheet_37
+  - first:
+      213: -8934943863347305773
+    second: cementerio_spritesheet_38
+  - first:
+      213: -2149198297376455039
+    second: cementerio_spritesheet_39
+  - first:
+      213: 7713984855856681527
+    second: cementerio_spritesheet_40
+  - first:
+      213: -9095539389533679904
+    second: cementerio_spritesheet_41
+  - first:
+      213: -1618829198825116841
+    second: cementerio_spritesheet_42
+  - first:
+      213: -329030348132104650
+    second: cementerio_spritesheet_38
+  - first:
+      213: 1838624617608993922
+    second: cementerio_spritesheet_39
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: cementerio_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.69691396, y: 0.5451937}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6c09c4d6f0d5b0b0800000000000000
+      internalID: -5713430793699128212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.4967723, y: 0.5000005}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfb8f97100b1e20a0800000000000000
+      internalID: -6904551491502109700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.38056087, y: 0.4160695}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10e5266aecd6b8fe0800000000000000
+      internalID: -1185733342559838719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.40638542, y: 0.4935441}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8141bfb1fe5b86710800000000000000
+      internalID: 1686798099021501464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1792
+        width: 128
+        height: 256
+      alignment: 9
+      pivot: {x: 0.4354391, y: 0.5000005}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7f86e4475ae666f0800000000000000
+      internalID: -691607832215777409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1920
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5064573, y: 0.21592808}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 580dad83a085660a0800000000000000
+      internalID: -6888721779089813371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1792
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.51291275, y: 0.19010353}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 220a2fcb91eb74890800000000000000
+      internalID: -7473796038844571614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebd7d93cce471fdf0800000000000000
+      internalID: -148208752483533378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1536
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dc26d4e969aedb70800000000000000
+      internalID: 8925757783770803417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1664
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.48708725, y: 0.19010353}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41bf6e5e4c00c5130800000000000000
+      internalID: 3556718651386559252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1664
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.48063183, y: 0.18364716}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bd74d273994021c0800000000000000
+      internalID: -4530540327499170382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1664
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.4870882, y: 0.1707344}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cadfab6c20c9c7b0800000000000000
+      internalID: -5203416597432116537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1536
+        width: 128
+        height: 256
+      alignment: 9
+      pivot: {x: 0.391716, y: 0.17126083}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52e4050cac3c37d90800000000000000
+      internalID: -7101116911855841755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46d47fb45b9c92c50800000000000000
+      internalID: 6641060906035268964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1280
+        width: 128
+        height: 256
+      alignment: 9
+      pivot: {x: 0.4608178, y: 0.45102215}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01e6230b17b9fb730800000000000000
+      internalID: 4017100305227476496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.4738779, y: 0.34980202}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f710650465678120800000000000000
+      internalID: 2416011205368879089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1280
+        width: 128
+        height: 384
+      alignment: 9
+      pivot: {x: 0.21919537, y: 0.11906401}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7d2a866c0d2abf00800000000000000
+      internalID: 1133267787520290175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1664
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.49370956, y: 0.40563965}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99cd6f77492f32c10800000000000000
+      internalID: 2027730976728603801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 768
+        height: 512
+      alignment: 9
+      pivot: {x: 0.49566936, y: 0.025800824}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30e33820618d344b0800000000000000
+      internalID: -5457280734399873533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.50629044, y: 0.39934826}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22d6dd0df59b1c820800000000000000
+      internalID: 2936832253199478050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 1664
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57c586411bf92c650800000000000000
+      internalID: 6251734815644081269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 1536
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.51887226, y: 0.39305782}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a46d3415a5864290800000000000000
+      internalID: -7906485151746661213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1664
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1c383e0a19a37330800000000000000
+      internalID: 3707492847628860444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1536
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.55661774, y: 0.39934826}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da8c3d56bf4ec83d0800000000000000
+      internalID: -3202933466570962771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1664
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.4748373, y: 0.39934826}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a77b3d0de2a4edc0800000000000000
+      internalID: -3610581862231345240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 386
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.5037489, y: 0.06711904}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed08a07b529573cc0800000000000000
+      internalID: -3731415747733585698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 128
+        height: 384
+      alignment: 9
+      pivot: {x: 0.4831295, y: 0.063249506}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcd5a18bb7998d190800000000000000
+      internalID: -7937425586591736373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 384
+      alignment: 9
+      pivot: {x: 0.7759444, y: 0.18806295}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 486d7edb45cae20e0800000000000000
+      internalID: -2292705680321685884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 384
+      alignment: 9
+      pivot: {x: 0.21805656, y: 0.16006856}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a431a128af28512d0800000000000000
+      internalID: -3308594338797579446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 512
+      alignment: 9
+      pivot: {x: 0.5028117, y: 0.19633645}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffc0359a5c2234750800000000000000
+      internalID: 6287907737084038399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 256
+      alignment: 9
+      pivot: {x: 0.4891181, y: 0.13545261}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5315325006897d380800000000000000
+      internalID: -8946514596577717963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47823668, y: 0.1300116}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7388a097b63534a0800000000000000
+      internalID: -6614320315689827461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 512
+      alignment: 9
+      pivot: {x: 0.52530503, y: 0.19774228}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99644d3a368b95860800000000000000
+      internalID: 7519243790961624729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 384
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.5, y: 0.08011969}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d891e036d9285f40800000000000000
+      internalID: 5717365726866675925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 384
+        height: 384
+      alignment: 9
+      pivot: {x: 0.5, y: 0.06471954}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d591a568de9b13a80800000000000000
+      internalID: -8488799392804234915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 0
+        width: 128
+        height: 512
+      alignment: 9
+      pivot: {x: 0.13001251, y: 0.045676023}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ab0e908f4b9d5830800000000000000
+      internalID: 4061573204720618409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1280
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9eee2d98da341480800000000000000
+      internalID: -8929447459144405348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 128
+        height: 384
+      alignment: 9
+      pivot: {x: 0.21539116, y: 0.12706566}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d2a02945e3b00480800000000000000
+      internalID: -8934943863347305773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1536
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 186800519838c22e0800000000000000
+      internalID: -2149198297376455039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 768
+        height: 1280
+      alignment: 9
+      pivot: {x: 0.4223877, y: 0.32227486}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acda51beb38bddc60800000000000000
+      internalID: 7844628693435919818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1408
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5317688, y: 0.33586216}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73294102b549d0b60800000000000000
+      internalID: 7713984855856681527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_41
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 1408
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ee854e8d1726c180800000000000000
+      internalID: -9095539389533679904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cementerio_spritesheet_42
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0.37638855}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75baffbab63c889e0800000000000000
+      internalID: -1618829198825116841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,74 @@
+Attribute VB_Name = "SysTray"
+'********************* COPYRIGHT NOTICE*********************
+' Copyright (c) 2021-22 Martin Trionfetti, Pablo Marquez
+' www.ao20.com.ar
+' All rights reserved.
+' Refer to licence for conditions of use.
+' This copyright notice must always be left intact.
+'****************** END OF COPYRIGHT NOTICE*****************
+'
+Option Explicit
+'?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿
+'?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿
+'?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿
+'                       SysTray
+'?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿
+'?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿
+'?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿
+'Para minimizar a la barra de tareas
+'?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿
+'?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿
+'?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿
+
+Type CWPSTRUCT
+
+    lParam As Long
+    wParam As Long
+    message As Long
+    hWnd As Long
+
+End Type
+
+Declare Function CallNextHookEx Lib "user32" (ByVal hHook As Long, ByVal ncode As Long, ByVal wParam As Long, lParam As Any) As Long
+Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" (hpvDest As Any, hpvSource As Any, ByVal cbCopy As Long)
+Declare Function SetForegroundWindow Lib "user32" (ByVal hWnd As Long) As Long
+Declare Function SetWindowsHookEx Lib "user32" Alias "SetWindowsHookExA" (ByVal idHook As Long, ByVal lpfn As Long, ByVal hmod As Long, ByVal dwThreadId As Long) As Long
+Declare Function UnhookWindowsHookEx Lib "user32" (ByVal hHook As Long) As Long
+
+Public Const WH_CALLWNDPROC = 4
+
+Public Const WM_CREATE = &H1
+
+Public hHook As Long
+
+Public Function AppHook(ByVal idHook As Long, ByVal wParam As Long, ByVal lParam As Long) As Long
+        
+        On Error GoTo AppHook_Err
+        
+
+        Dim CWP As CWPSTRUCT
+
+100     CopyMemory CWP, ByVal lParam, Len(CWP)
+
+102     Select Case CWP.message
+
+            Case WM_CREATE
+104             SetForegroundWindow CWP.hWnd
+106             AppHook = CallNextHookEx(hHook, idHook, wParam, ByVal lParam)
+108             UnhookWindowsHookEx hHook
+110             hHook = 0
+                Exit Function
+
+        End Select
+
+112     AppHook = CallNextHookEx(hHook, idHook, wParam, ByVal lParam)
+
+        
+        Exit Function
+
+AppHook_Err:
+114     Call TraceError(Err.Number, Err.Description, "SysTray.AppHook", Erl)
+116
+        
+End Function
+

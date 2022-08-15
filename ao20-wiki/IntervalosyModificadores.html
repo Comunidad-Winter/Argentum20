@@ -1,0 +1,476 @@
+<!--
+title: Intervalos y Modificadores
+description: 
+published: true
+date: 2021-07-15T00:05:31.974Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-06-21T03:57:06.425Z
+-->
+
+<p style="text-align:right;">&nbsp;</p>
+<h1>Modificadores de combate</h1>
+<p style="text-align:right;">&nbsp;</p>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td style="background-color:hsl(210, 75%, 60%);">&nbsp;</td>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;"><strong>Puntería con Armas</strong></td>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;"><strong>Daño con Armas</strong></td>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;"><strong>Puntería con Proyectiles</strong></td>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;"><strong>Daño con Proyectiles</strong></td>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;"><strong>Daño sin Armas</strong></td>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;"><strong>Probabilidad de Apuñalar</strong></td>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;"><strong>Daño Apuñalar</strong></td>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;"><strong>Evasión</strong></td>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;"><strong>Bloquear con Escudo</strong></td>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;"><strong>Resistencia Mágica Natural</strong></td>
+      </tr>
+      <tr>
+        <td>Guerrero</td>
+        <td>1</td>
+        <td>1.1</td>
+        <td>0.8</td>
+        <td>0.9</td>
+        <td>0.4</td>
+        <td>0.10</td>
+        <td>1.1</td>
+        <td>0.7</td>
+        <td>0.95</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Cazador</td>
+        <td>0.8</td>
+        <td>0.85</td>
+        <td>1</td>
+        <td>1.07</td>
+        <td>0.4</td>
+        <td>0.2</td>
+        <td>0.9</td>
+        <td>0.75</td>
+        <td>0.7</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Paladín</td>
+        <td>1</td>
+        <td>0.93</td>
+        <td>0.7</td>
+        <td>0.8</td>
+        <td>0.4</td>
+        <td>0.10</td>
+        <td>1.05</td>
+        <td>0.7</td>
+        <td>0.9</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Bandido</td>
+        <td>1</td>
+        <td>0.85</td>
+        <td>0.9</td>
+        <td>0.8</td>
+        <td>1.1</td>
+        <td>0.2</td>
+        <td>1</td>
+        <td>0.75</td>
+        <td>0.75</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Asesino</td>
+        <td>1</td>
+        <td>0.9</td>
+        <td>0.9</td>
+        <td>0.95</td>
+        <td>0.4</td>
+        <td>0.33</td>
+        <td>1.05</td>
+        <td>0.8</td>
+        <td>0.75</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Pirata</td>
+        <td>1</td>
+        <td>0.95</td>
+        <td>0.9</td>
+        <td>0.97</td>
+        <td>0.8</td>
+        <td>0.2</td>
+        <td>0.7</td>
+        <td>0.77</td>
+        <td>0.75</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Ladrón</td>
+        <td>0.8</td>
+        <td>0.8</td>
+        <td>0.85</td>
+        <td>0.7</td>
+        <td>1</td>
+        <td>0.10</td>
+        <td>0.8</td>
+        <td>0.75</td>
+        <td>0.4</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Clérigo</td>
+        <td>1</td>
+        <td>0.77</td>
+        <td>0.7</td>
+        <td>0.7</td>
+        <td>0.4</td>
+        <td>0.10</td>
+        <td>1.15</td>
+        <td>0.7</td>
+        <td>0.8</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Bardo</td>
+        <td>1</td>
+        <td>0.77</td>
+        <td>0.6</td>
+        <td>0.7</td>
+        <td>0.4</td>
+        <td>0.10</td>
+        <td>1.05</td>
+        <td>0.95</td>
+        <td>0.8</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Mago</td>
+        <td>0.5</td>
+        <td>0.5</td>
+        <td>0.5</td>
+        <td>0.5</td>
+        <td>0.4</td>
+        <td>0.10</td>
+        <td>0.3</td>
+        <td>0.6</td>
+        <td>NO USA</td>
+        <td>5%</td>
+      </tr>
+      <tr>
+        <td>Druida</td>
+        <td>0.65</td>
+        <td>0.7</td>
+        <td>0.6</td>
+        <td>0.6</td>
+        <td>0.4</td>
+        <td>0.10</td>
+        <td>0.9</td>
+        <td>0.75</td>
+        <td>NO USA</td>
+        <td>3%</td>
+      </tr>
+      <tr>
+        <td>Trabajador</td>
+        <td>1</td>
+        <td>0.8</td>
+        <td>0.8</td>
+        <td>0.8</td>
+        <td>0.4</td>
+        <td>0.10</td>
+        <td>0.7</td>
+        <td>0.5</td>
+        <td>0.5</td>
+        <td>0</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>&nbsp;</p>
+<ul>
+  <li>Daño Golpe Crítico (BANDIDO)= 33% mayor al daño base.</li>
+</ul>
+<h1>Promedio de vida</h1>
+<p style="text-align:right;">&nbsp;</p>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;">&nbsp;</td>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;"><strong>Enano</strong></td>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;"><strong>Humano</strong></td>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;"><strong>Elfo/</strong><br><strong>Elfo Oscuro</strong></td>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;"><strong>Gnomo</strong></td>
+      </tr>
+      <tr>
+        <td>Guerrero</td>
+        <td>10.5</td>
+        <td>10</td>
+        <td>9.5</td>
+        <td>9</td>
+      </tr>
+      <tr>
+        <td>Cazador</td>
+        <td>9.5</td>
+        <td>9</td>
+        <td>8.5</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>Paladín</td>
+        <td>9.5</td>
+        <td>9</td>
+        <td>8.5</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>Bandido</td>
+        <td>9</td>
+        <td>8.5</td>
+        <td>8</td>
+        <td>7.5</td>
+      </tr>
+      <tr>
+        <td>Asesino</td>
+        <td>8.5</td>
+        <td>8</td>
+        <td>7.5</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td>Pirata</td>
+        <td>10</td>
+        <td>9.5</td>
+        <td>9</td>
+        <td>8.5</td>
+      </tr>
+      <tr>
+        <td>Ladrón</td>
+        <td>8</td>
+        <td>7.5</td>
+        <td>7</td>
+        <td>6.5</td>
+      </tr>
+      <tr>
+        <td>Clérigo</td>
+        <td>8.5</td>
+        <td>8</td>
+        <td>7.5</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td>Bardo</td>
+        <td>8.5</td>
+        <td>8</td>
+        <td>7.5</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td>Mago</td>
+        <td>7</td>
+        <td>6.5</td>
+        <td>6</td>
+        <td>5.5</td>
+      </tr>
+      <tr>
+        <td>Druida</td>
+        <td>8.5</td>
+        <td>8</td>
+        <td>7.5</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td>Trabajador</td>
+        <td>8.5</td>
+        <td>8</td>
+        <td>7.5</td>
+        <td>7</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p style="text-align:right;">&nbsp;</p>
+<p style="text-align:right;">&nbsp;</p>
+<h1>Mana inicial y Mana al subir de nivel</h1>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td style="background-color:hsl(210, 75%, 60%);">&nbsp;</td>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;"><strong>Inicial</strong></td>
+        <td style="background-color:hsl(210, 75%, 60%);text-align:center;"><strong>Al subir de nivel</strong></td>
+      </tr>
+      <tr>
+        <td>Guerrero</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Cazador</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Paladín</td>
+        <td>2.5</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Bandido</td>
+        <td>2</td>
+        <td>0.666</td>
+      </tr>
+      <tr>
+        <td>Asesino</td>
+        <td>2.5</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Pirata</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Ladrón</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Clérigo</td>
+        <td>3.5</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Bardo</td>
+        <td>2.5</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Mago</td>
+        <td>8.33</td>
+        <td>2.7777778</td>
+      </tr>
+      <tr>
+        <td>Druida</td>
+        <td>2.5</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Trabajador</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<ul>
+  <li>Todo esto se multiplica por la cantidad de puntos en inteligencia que tiene el personaje. Por ejemplo: Druida Elfo tiene 20 puntos en inteligencia lo que te dará 40 puntos de mana al subir cada nivel y 50 puntos de mana iniciales.</li>
+</ul>
+<h1>Golpe al subir de nivel</h1>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td style="background-color:hsl(210, 75%, 60%);">&nbsp;</td>
+        <td style="background-color:hsl(210, 75%, 60%);"><strong>Pre lvl 36</strong></td>
+        <td style="background-color:hsl(210, 75%, 60%);"><strong>Post lvl 36</strong></td>
+      </tr>
+      <tr>
+        <td>Guerrero</td>
+        <td>3</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Cazador</td>
+        <td>3</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Paladín</td>
+        <td>3</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Bandido</td>
+        <td>3</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>Asesino</td>
+        <td>3</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Pirata</td>
+        <td>3</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Ladrón</td>
+        <td>3</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Clérigo</td>
+        <td>3</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>Bardo</td>
+        <td>3</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Mago</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Druida</td>
+        <td>2</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Trabajador</td>
+        <td>3</td>
+        <td>2</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p style="text-align:right;">&nbsp;</p>
+<h1>Intervalos</h1>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td>Lanzar Hechizos</td>
+        <td>1250 ms</td>
+      </tr>
+      <tr>
+        <td>Flecha - Flecha</td>
+        <td>1300 ms</td>
+      </tr>
+      <tr>
+        <td>Golpe - Golpe</td>
+        <td>1300 ms</td>
+      </tr>
+      <tr>
+        <td>Magia - Golpe</td>
+        <td>1000 ms</td>
+      </tr>
+      <tr>
+        <td>Golpe - Magia</td>
+        <td>1000 ms</td>
+      </tr>
+      <tr>
+        <td>Golpe - Usar</td>
+        <td>900 ms</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p style="text-align:right;"><a href="/home">Volver al INDICE</a></p>

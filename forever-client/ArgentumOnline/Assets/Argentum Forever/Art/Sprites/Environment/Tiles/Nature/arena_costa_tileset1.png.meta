@@ -1,0 +1,3646 @@
+fileFormatVersion: 2
+guid: 12cc32067f983294babcda5ad63eb2a2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -338030182840859523
+    second: arena_costa_tileset1_0
+  - first:
+      213: -4780122116671229949
+    second: arena_costa_tileset1_1
+  - first:
+      213: 4557166262030374790
+    second: arena_costa_tileset1_2
+  - first:
+      213: 4103420652910249929
+    second: arena_costa_tileset1_3
+  - first:
+      213: 2296486214128046202
+    second: arena_costa_tileset1_4
+  - first:
+      213: -7209928874744808652
+    second: arena_costa_tileset1_5
+  - first:
+      213: -3738477731286606374
+    second: arena_costa_tileset1_6
+  - first:
+      213: -5933637874568640202
+    second: arena_costa_tileset1_7
+  - first:
+      213: -5550936157444001438
+    second: arena_costa_tileset1_8
+  - first:
+      213: 8293736151724093943
+    second: arena_costa_tileset1_9
+  - first:
+      213: 4434332783492565162
+    second: arena_costa_tileset1_10
+  - first:
+      213: -2915615928925958843
+    second: arena_costa_tileset1_11
+  - first:
+      213: -389408129252641349
+    second: arena_costa_tileset1_12
+  - first:
+      213: 1825331412205996324
+    second: arena_costa_tileset1_13
+  - first:
+      213: -8701215713951103221
+    second: arena_costa_tileset1_14
+  - first:
+      213: -7024107250453474888
+    second: arena_costa_tileset1_15
+  - first:
+      213: -4891590831262941036
+    second: arena_costa_tileset1_16
+  - first:
+      213: 3793846817541577093
+    second: arena_costa_tileset1_17
+  - first:
+      213: 1281459057050026611
+    second: arena_costa_tileset1_18
+  - first:
+      213: 991725768918285250
+    second: arena_costa_tileset1_19
+  - first:
+      213: 5577286862556052159
+    second: arena_costa_tileset1_20
+  - first:
+      213: 3680165783503693468
+    second: arena_costa_tileset1_21
+  - first:
+      213: 574746130084030609
+    second: arena_costa_tileset1_22
+  - first:
+      213: -2778327125652555515
+    second: arena_costa_tileset1_23
+  - first:
+      213: -3804636746965005718
+    second: arena_costa_tileset1_24
+  - first:
+      213: -6842808573736488274
+    second: arena_costa_tileset1_25
+  - first:
+      213: -6534181753099604900
+    second: arena_costa_tileset1_26
+  - first:
+      213: -6060790866349247020
+    second: arena_costa_tileset1_27
+  - first:
+      213: 2554918972061618397
+    second: arena_costa_tileset1_28
+  - first:
+      213: -5708723320587525820
+    second: arena_costa_tileset1_29
+  - first:
+      213: -4205713088247211703
+    second: arena_costa_tileset1_30
+  - first:
+      213: -5271682021975569686
+    second: arena_costa_tileset1_31
+  - first:
+      213: 174449071476540446
+    second: arena_costa_tileset1_32
+  - first:
+      213: 6432273773284628063
+    second: arena_costa_tileset1_33
+  - first:
+      213: -6606647859951883868
+    second: arena_costa_tileset1_34
+  - first:
+      213: -2540761249332084459
+    second: arena_costa_tileset1_35
+  - first:
+      213: 2758366869023250130
+    second: arena_costa_tileset1_36
+  - first:
+      213: -3509592276365929483
+    second: arena_costa_tileset1_37
+  - first:
+      213: 2040917517499559024
+    second: arena_costa_tileset1_38
+  - first:
+      213: -7308011447944960624
+    second: arena_costa_tileset1_39
+  - first:
+      213: 6567137234296163401
+    second: arena_costa_tileset1_40
+  - first:
+      213: -5499733252760086640
+    second: arena_costa_tileset1_41
+  - first:
+      213: -7228017224040427289
+    second: arena_costa_tileset1_42
+  - first:
+      213: -8374971142414565872
+    second: arena_costa_tileset1_43
+  - first:
+      213: 793496407856319059
+    second: arena_costa_tileset1_44
+  - first:
+      213: 826965446665770096
+    second: arena_costa_tileset1_45
+  - first:
+      213: -1040670303541313329
+    second: arena_costa_tileset1_46
+  - first:
+      213: 7442921125502670253
+    second: arena_costa_tileset1_47
+  - first:
+      213: -6591791878552312864
+    second: arena_costa_tileset1_48
+  - first:
+      213: -7563917828295821158
+    second: arena_costa_tileset1_49
+  - first:
+      213: -7642372472821138259
+    second: arena_costa_tileset1_50
+  - first:
+      213: 5587871021591912590
+    second: arena_costa_tileset1_51
+  - first:
+      213: -1010522267161847661
+    second: arena_costa_tileset1_52
+  - first:
+      213: 2954684637682208271
+    second: arena_costa_tileset1_53
+  - first:
+      213: 1814757045677788194
+    second: arena_costa_tileset1_54
+  - first:
+      213: 1381012874047462432
+    second: arena_costa_tileset1_55
+  - first:
+      213: 227359365858344943
+    second: arena_costa_tileset1_56
+  - first:
+      213: -8949365049958027216
+    second: arena_costa_tileset1_57
+  - first:
+      213: -4642038930327056161
+    second: arena_costa_tileset1_58
+  - first:
+      213: -5323403148562014772
+    second: arena_costa_tileset1_59
+  - first:
+      213: 2595502445624032103
+    second: arena_costa_tileset1_0
+  - first:
+      213: -4574089790825974125
+    second: arena_costa_tileset1_1
+  - first:
+      213: 2024844371735726643
+    second: arena_costa_tileset1_2
+  - first:
+      213: 2942488861768509917
+    second: arena_costa_tileset1_3
+  - first:
+      213: 8020094174883045389
+    second: arena_costa_tileset1_4
+  - first:
+      213: -6201095277317441555
+    second: arena_costa_tileset1_5
+  - first:
+      213: -7842714535771151150
+    second: arena_costa_tileset1_6
+  - first:
+      213: 2241128521853904539
+    second: arena_costa_tileset1_7
+  - first:
+      213: -7596314945257326425
+    second: arena_costa_tileset1_8
+  - first:
+      213: 1054858464628996347
+    second: arena_costa_tileset1_9
+  - first:
+      213: -8754950331685731224
+    second: arena_costa_tileset1_10
+  - first:
+      213: -1814929994904996257
+    second: arena_costa_tileset1_11
+  - first:
+      213: -2339964946750938508
+    second: arena_costa_tileset1_12
+  - first:
+      213: 233405458473098845
+    second: arena_costa_tileset1_13
+  - first:
+      213: 1956804649207267265
+    second: arena_costa_tileset1_14
+  - first:
+      213: 7638354203094824577
+    second: arena_costa_tileset1_15
+  - first:
+      213: -5924523203444321222
+    second: arena_costa_tileset1_16
+  - first:
+      213: 4760311308907075383
+    second: arena_costa_tileset1_17
+  - first:
+      213: 2918988522416159128
+    second: arena_costa_tileset1_18
+  - first:
+      213: -4087451304724950316
+    second: arena_costa_tileset1_19
+  - first:
+      213: 739916931049235951
+    second: arena_costa_tileset1_20
+  - first:
+      213: -6233761302813962126
+    second: arena_costa_tileset1_21
+  - first:
+      213: -4271836792460432658
+    second: arena_costa_tileset1_22
+  - first:
+      213: -4998379969196559568
+    second: arena_costa_tileset1_23
+  - first:
+      213: 3225002817235401403
+    second: arena_costa_tileset1_24
+  - first:
+      213: -5843772942500268674
+    second: arena_costa_tileset1_25
+  - first:
+      213: 3515953694590290702
+    second: arena_costa_tileset1_26
+  - first:
+      213: 163361639613746677
+    second: arena_costa_tileset1_27
+  - first:
+      213: -1553314222635450497
+    second: arena_costa_tileset1_28
+  - first:
+      213: -897116318912222519
+    second: arena_costa_tileset1_29
+  - first:
+      213: 9133569654125198770
+    second: arena_costa_tileset1_30
+  - first:
+      213: 1605753281816923760
+    second: arena_costa_tileset1_31
+  - first:
+      213: 8766555270502285628
+    second: arena_costa_tileset1_32
+  - first:
+      213: -4212462540414052842
+    second: arena_costa_tileset1_33
+  - first:
+      213: -6260055076163221697
+    second: arena_costa_tileset1_34
+  - first:
+      213: 5633040990533776740
+    second: arena_costa_tileset1_35
+  - first:
+      213: -1128841393988219905
+    second: arena_costa_tileset1_36
+  - first:
+      213: 6254474123860755979
+    second: arena_costa_tileset1_37
+  - first:
+      213: -5292535647292252511
+    second: arena_costa_tileset1_38
+  - first:
+      213: -4164251552836743483
+    second: arena_costa_tileset1_39
+  - first:
+      213: 1945527009916167602
+    second: arena_costa_tileset1_40
+  - first:
+      213: -6396106062476462623
+    second: arena_costa_tileset1_41
+  - first:
+      213: 6594733589867883778
+    second: arena_costa_tileset1_42
+  - first:
+      213: -8439955872086278397
+    second: arena_costa_tileset1_43
+  - first:
+      213: -1802158090452593325
+    second: arena_costa_tileset1_44
+  - first:
+      213: 3269676503682492678
+    second: arena_costa_tileset1_45
+  - first:
+      213: 3663071958953921434
+    second: arena_costa_tileset1_46
+  - first:
+      213: -824541453646343532
+    second: arena_costa_tileset1_47
+  - first:
+      213: -8390574695065451805
+    second: arena_costa_tileset1_48
+  - first:
+      213: 9043228529989267192
+    second: arena_costa_tileset1_49
+  - first:
+      213: 3678878707150857913
+    second: arena_costa_tileset1_50
+  - first:
+      213: 2402868687220841434
+    second: arena_costa_tileset1_51
+  - first:
+      213: -8380980369068818061
+    second: arena_costa_tileset1_52
+  - first:
+      213: -545107915283478041
+    second: arena_costa_tileset1_53
+  - first:
+      213: 4633721849746832169
+    second: arena_costa_tileset1_54
+  - first:
+      213: -5878672713727056469
+    second: arena_costa_tileset1_55
+  - first:
+      213: 5871169034561527011
+    second: arena_costa_tileset1_56
+  - first:
+      213: 5757532080019229783
+    second: arena_costa_tileset1_57
+  - first:
+      213: -5868080859362564161
+    second: arena_costa_tileset1_58
+  - first:
+      213: -3354662235301077240
+    second: arena_costa_tileset1_59
+  - first:
+      213: 926154682066195579
+    second: arena_costa_tileset1_60
+  - first:
+      213: -2782070018728697384
+    second: arena_costa_tileset1_61
+  - first:
+      213: -4367868103352767890
+    second: arena_costa_tileset1_62
+  - first:
+      213: 2931714890925320490
+    second: arena_costa_tileset1_63
+  - first:
+      213: -7586316375558857491
+    second: arena_costa_tileset1_64
+  - first:
+      213: -5871456006584642852
+    second: arena_costa_tileset1_65
+  - first:
+      213: -228464056473363533
+    second: arena_costa_tileset1_66
+  - first:
+      213: -6924308534802718631
+    second: arena_costa_tileset1_67
+  - first:
+      213: -717472471088012872
+    second: arena_costa_tileset1_68
+  - first:
+      213: -6378335203307658418
+    second: arena_costa_tileset1_69
+  - first:
+      213: -1884424366027963013
+    second: arena_costa_tileset1_70
+  - first:
+      213: 9046120326866500519
+    second: arena_costa_tileset1_71
+  - first:
+      213: -8388907598677294846
+    second: arena_costa_tileset1_72
+  - first:
+      213: -4616859416082302139
+    second: arena_costa_tileset1_73
+  - first:
+      213: -23670631712636289
+    second: arena_costa_tileset1_74
+  - first:
+      213: -1145813185961701626
+    second: arena_costa_tileset1_75
+  - first:
+      213: -5164694178351208237
+    second: arena_costa_tileset1_76
+  - first:
+      213: 4441756743974848514
+    second: arena_costa_tileset1_77
+  - first:
+      213: 2660637829571815949
+    second: arena_costa_tileset1_78
+  - first:
+      213: -1325781224845116521
+    second: arena_costa_tileset1_79
+  - first:
+      213: -5377395077168892330
+    second: arena_costa_tileset1_80
+  - first:
+      213: -3499599765033363552
+    second: arena_costa_tileset1_81
+  - first:
+      213: 366869872654889429
+    second: arena_costa_tileset1_82
+  - first:
+      213: 8805746418393670095
+    second: arena_costa_tileset1_83
+  - first:
+      213: -6623872875255337566
+    second: arena_costa_tileset1_84
+  - first:
+      213: -8648604140328181133
+    second: arena_costa_tileset1_85
+  - first:
+      213: -7341592922180582782
+    second: arena_costa_tileset1_86
+  - first:
+      213: -6257150974366189628
+    second: arena_costa_tileset1_87
+  - first:
+      213: -1800041885707226690
+    second: arena_costa_tileset1_88
+  - first:
+      213: 2596535921618351261
+    second: arena_costa_tileset1_89
+  - first:
+      213: 2953402564961833252
+    second: arena_costa_tileset1_90
+  - first:
+      213: 7002971289667760439
+    second: arena_costa_tileset1_91
+  - first:
+      213: 3315335067381966467
+    second: arena_costa_tileset1_92
+  - first:
+      213: 5886770906528017045
+    second: arena_costa_tileset1_93
+  - first:
+      213: 6505562228074282566
+    second: arena_costa_tileset1_94
+  - first:
+      213: 6123663815119237836
+    second: arena_costa_tileset1_95
+  - first:
+      213: -7588059420620133826
+    second: arena_costa_tileset1_96
+  - first:
+      213: 3128656451044147333
+    second: arena_costa_tileset1_97
+  - first:
+      213: -2027800922074778758
+    second: arena_costa_tileset1_98
+  - first:
+      213: -7780272180205570223
+    second: arena_costa_tileset1_99
+  - first:
+      213: 963444793868732014
+    second: arena_costa_tileset1_100
+  - first:
+      213: -9073972048025313335
+    second: arena_costa_tileset1_101
+  - first:
+      213: -76699298995698349
+    second: arena_costa_tileset1_102
+  - first:
+      213: -1171464078773856827
+    second: arena_costa_tileset1_103
+  - first:
+      213: -3667622440972227773
+    second: arena_costa_tileset1_104
+  - first:
+      213: -9203824287809554684
+    second: arena_costa_tileset1_105
+  - first:
+      213: 5856711133186443603
+    second: arena_costa_tileset1_106
+  - first:
+      213: 3785704991951216909
+    second: arena_costa_tileset1_107
+  - first:
+      213: 6780966759545188270
+    second: arena_costa_tileset1_108
+  - first:
+      213: 579155150087509020
+    second: arena_costa_tileset1_109
+  - first:
+      213: 8754217670653884023
+    second: arena_costa_tileset1_110
+  - first:
+      213: 137011887379696334
+    second: arena_costa_tileset1_111
+  - first:
+      213: 591057795974953428
+    second: arena_costa_tileset1_112
+  - first:
+      213: 8939597813327679383
+    second: arena_costa_tileset1_113
+  - first:
+      213: -5582706886067846844
+    second: arena_costa_tileset1_114
+  - first:
+      213: 5652088207618420415
+    second: arena_costa_tileset1_115
+  - first:
+      213: 1973987341476668372
+    second: arena_costa_tileset1_116
+  - first:
+      213: 1249014527299652319
+    second: arena_costa_tileset1_117
+  - first:
+      213: -3714063565386440844
+    second: arena_costa_tileset1_118
+  - first:
+      213: 9127946611610238970
+    second: arena_costa_tileset1_119
+  - first:
+      213: -9194179742141112978
+    second: arena_costa_tileset1_120
+  - first:
+      213: -4780630771250065832
+    second: arena_costa_tileset1_121
+  - first:
+      213: -6760730475817389737
+    second: arena_costa_tileset1_122
+  - first:
+      213: 1195731457382040965
+    second: arena_costa_tileset1_123
+  - first:
+      213: 1055587251728100910
+    second: arena_costa_tileset1_124
+  - first:
+      213: 8998367379541740325
+    second: arena_costa_tileset1_125
+  - first:
+      213: 6904605761600122285
+    second: arena_costa_tileset1_126
+  - first:
+      213: 7818257254868382511
+    second: arena_costa_tileset1_127
+  - first:
+      213: 2675910748602089789
+    second: arena_costa_tileset1_128
+  - first:
+      213: 857997157956383045
+    second: arena_costa_tileset1_129
+  - first:
+      213: -5657395254847717247
+    second: arena_costa_tileset1_130
+  - first:
+      213: -5053361730757283447
+    second: arena_costa_tileset1_131
+  - first:
+      213: 4721683198405947406
+    second: arena_costa_tileset1_132
+  - first:
+      213: -785299017206115033
+    second: arena_costa_tileset1_133
+  - first:
+      213: 7361043445179993398
+    second: arena_costa_tileset1_134
+  - first:
+      213: -437879166221205357
+    second: arena_costa_tileset1_135
+  - first:
+      213: -7006392963684196359
+    second: arena_costa_tileset1_136
+  - first:
+      213: 6927791821730308869
+    second: arena_costa_tileset1_137
+  - first:
+      213: -6409674968365426172
+    second: arena_costa_tileset1_138
+  - first:
+      213: -8043573556342051753
+    second: arena_costa_tileset1_139
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: arena_costa_tileset1_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1718
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76bf31509b3150420800000000000000
+      internalID: 2595502445624032103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_1
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1718
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 396b31fd1919580c0800000000000000
+      internalID: -4574089790825974125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_2
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 1718
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33ac1ce5a31b91c10800000000000000
+      internalID: 2024844371735726643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_3
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1718
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd96141a702d5d820800000000000000
+      internalID: 2942488861768509917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_4
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1718
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d006517e8291d4f60800000000000000
+      internalID: 8020094174883045389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_5
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 1718
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de7342933b841f9a0800000000000000
+      internalID: -6201095277317441555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_6
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 1718
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d46194aea4192390800000000000000
+      internalID: -7842714535771151150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_7
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 1718
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b96291144861a1f10800000000000000
+      internalID: 2241128521853904539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_8
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 1718
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a832f5edc7749690800000000000000
+      internalID: -7596314945257326425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_9
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1718
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf876884f2c93ae00800000000000000
+      internalID: 1054858464628996347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_10
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1586
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8640fad1f0b208680800000000000000
+      internalID: -8754950331685731224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_11
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1586
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f567c7919c210d6e0800000000000000
+      internalID: -1814929994904996257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_12
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 1586
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4726b025746c68fd0800000000000000
+      internalID: -2339964946750938508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_13
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1586
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5e1de027093d3300800000000000000
+      internalID: 233405458473098845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_14
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1586
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cff4daf577f72b10800000000000000
+      internalID: 1956804649207267265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_15
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 1586
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18634109da2e00a60800000000000000
+      internalID: 7638354203094824577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_16
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 1586
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a345423398dd7cda0800000000000000
+      internalID: -5924523203444321222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_17
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 1586
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7375eab0ae5001240800000000000000
+      internalID: 4760311308907075383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_18
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 1586
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 899be0e7894528820800000000000000
+      internalID: 2918988522416159128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_19
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1586
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d29921d1b47647c0800000000000000
+      internalID: -4087451304724950316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_20
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1454
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe5ac7e4786b44a00800000000000000
+      internalID: 739916931049235951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_21
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1454
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 270923b7f1b3d79a0800000000000000
+      internalID: -6233761302813962126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_22
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 1454
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeaa3f6021367b4c0800000000000000
+      internalID: -4271836792460432658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_23
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1454
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0337c9b86ef22aab0800000000000000
+      internalID: -4998379969196559568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_24
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1454
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bba33f8b9f281cc20800000000000000
+      internalID: 3225002817235401403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_25
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 1454
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e757b3e687fb6eea0800000000000000
+      internalID: -5843772942500268674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_26
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 1454
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0bc6c4c14d2bc030800000000000000
+      internalID: 3515953694590290702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_27
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 1454
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fd4a13bb80644200800000000000000
+      internalID: 163361639613746677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_28
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 1454
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7f704fb1f4817ae0800000000000000
+      internalID: -1553314222635450497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_29
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1454
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cae709067dcc83f0800000000000000
+      internalID: -897116318912222519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_30
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1322
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bd7b6d6535f0ce70800000000000000
+      internalID: 9133569654125198770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_31
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1322
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07e8d972a18c84610800000000000000
+      internalID: 1605753281816923760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_32
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 1322
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c310e12429f09a970800000000000000
+      internalID: 8766555270502285628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_33
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1322
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6161bf853a35a85c0800000000000000
+      internalID: -4212462540414052842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_34
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1322
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3709ee4311df19a0800000000000000
+      internalID: -6260055076163221697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_35
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 1322
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 465fafd8fe49c2e40800000000000000
+      internalID: 5633040990533776740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_36
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 1322
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffb4397abbc8550f0800000000000000
+      internalID: -1128841393988219905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_37
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 1322
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b06c799f31b5cc650800000000000000
+      internalID: 6254474123860755979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_38
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 1322
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ae9d0eaed22d86b0800000000000000
+      internalID: -5292535647292252511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_39
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1322
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ce0ccd964b9536c0800000000000000
+      internalID: -4164251552836743483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_40
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1190
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b52bf6f186effa10800000000000000
+      internalID: 1945527009916167602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_41
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1190
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e53e589c677c37a0800000000000000
+      internalID: -6396106062476462623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_42
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 1190
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20d69647243358b50800000000000000
+      internalID: 6594733589867883778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_43
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1190
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30f3354e9d04fda80800000000000000
+      internalID: -8439955872086278397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_44
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1190
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3551a75d3c27df6e0800000000000000
+      internalID: -1802158090452593325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_45
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 1190
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 609af64e479306d20800000000000000
+      internalID: 3269676503682492678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_46
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 1190
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9b8424f988d5d230800000000000000
+      internalID: 3663071958953921434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_47
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 1190
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49253d0aae3ae84f0800000000000000
+      internalID: -824541453646343532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_48
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 1190
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e20e3f15c0be8b80800000000000000
+      internalID: -8390574695065451805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_49
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1190
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fe20b85f60008d70800000000000000
+      internalID: 9043228529989267192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_50
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1058
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b6a97f41b00e0330800000000000000
+      internalID: 3678878707150857913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_51
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1058
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adb15bf0754b85120800000000000000
+      internalID: 2402868687220841434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_52
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 1058
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 371812832c6c0bb80800000000000000
+      internalID: -8380980369068818061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_53
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1058
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e946493d336f68f0800000000000000
+      internalID: -545107915283478041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_54
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1058
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92b302ac8794e4040800000000000000
+      internalID: 4633721849746832169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_55
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 1058
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba5648b3052ca6ea0800000000000000
+      internalID: -5878672713727056469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_56
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 1058
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ec105151259a7150800000000000000
+      internalID: 5871169034561527011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_57
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 1058
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75c467c0cecd6ef40800000000000000
+      internalID: 5757532080019229783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_58
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 1058
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb7ec608c83609ea0800000000000000
+      internalID: -5868080859362564161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_59
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1058
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80f16738878d171d0800000000000000
+      internalID: -3354662235301077240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_60
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 926
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b74de9fb6cc5adc00800000000000000
+      internalID: 926154682066195579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_61
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 926
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d16969de0a1469d0800000000000000
+      internalID: -2782070018728697384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_62
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 926
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6a26e91a173263c0800000000000000
+      internalID: -4367868103352767890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_63
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 926
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a29a350192b8fa820800000000000000
+      internalID: 2931714890925320490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_64
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 926
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: decd511537df7b690800000000000000
+      internalID: -7586316375558857491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_65
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 926
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd2503dced5648ea0800000000000000
+      internalID: -5871456006584642852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_66
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 926
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bbd5fda62554dcf0800000000000000
+      internalID: -228464056473363533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_67
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 926
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 950e0ebf21ae7ef90800000000000000
+      internalID: -6924308534802718631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_68
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 926
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b16da0c6960b06f0800000000000000
+      internalID: -717472471088012872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_69
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 926
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e436a7c2de99b77a0800000000000000
+      internalID: -6378335203307658418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_70
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 794
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7500d0f50e29d5e0800000000000000
+      internalID: -1884424366027963013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_71
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 794
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ab715642864a8d70800000000000000
+      internalID: 9046120326866500519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_72
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 794
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 201c34f3cfc949b80800000000000000
+      internalID: -8388907598677294846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_73
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 794
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54b3f7e72de9defb0800000000000000
+      internalID: -4616859416082302139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_74
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 794
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f72c8259fa7ebaff0800000000000000
+      internalID: -23670631712636289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_75
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 794
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60f4bc76af04910f0800000000000000
+      internalID: -1145813185961701626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_76
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 794
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d829dd22025358b0800000000000000
+      internalID: -5164694178351208237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_77
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 794
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2080157a93a44ad30800000000000000
+      internalID: 4441756743974848514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_78
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 794
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0a2893620c7ce420800000000000000
+      internalID: 2660637829571815949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_79
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 794
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79b79331001e99de0800000000000000
+      internalID: -1325781224845116521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_80
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 662
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 656f9600ba7af55b0800000000000000
+      internalID: -5377395077168892330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_81
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 662
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a7552d2e8cee6fc0800000000000000
+      internalID: -3499599765033363552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_82
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 662
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d133669432671500800000000000000
+      internalID: 366869872654889429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_83
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 662
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc1e58276bb443a70800000000000000
+      internalID: 8805746418393670095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_84
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 662
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ad6f09f6b64314a0800000000000000
+      internalID: -6623872875255337566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_85
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 662
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37224cc4b5cf9f780800000000000000
+      internalID: -8648604140328181133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_86
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 662
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28287eb722c6d1a90800000000000000
+      internalID: -7341592922180582782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_87
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 662
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c7f9e237522a29a0800000000000000
+      internalID: -6257150974366189628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_88
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 662
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb1b8952177f407e0800000000000000
+      internalID: -1800041885707226690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_89
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 662
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d947a96e9afb80420800000000000000
+      internalID: 2596535921618351261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_90
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 530
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 421174b2cf79cf820800000000000000
+      internalID: 2953402564961833252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_91
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 530
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 731f7ecd84d8f2160800000000000000
+      internalID: 7002971289667760439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_92
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 530
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 386a2baadaf620e20800000000000000
+      internalID: 3315335067381966467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_93
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 530
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59ae4b533f202b150800000000000000
+      internalID: 5886770906528017045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_94
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 530
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64ef094e066684a50800000000000000
+      internalID: 6505562228074282566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_95
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 530
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc278189bcf9bf450800000000000000
+      internalID: 6123663815119237836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_96
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 530
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3a6163092cc1b690800000000000000
+      internalID: -7588059420620133826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_97
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 530
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58088b447783b6b20800000000000000
+      internalID: 3128656451044147333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_98
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 530
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a73f58c1ecdcbd3e0800000000000000
+      internalID: -2027800922074778758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_99
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 530
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1573efa7cabe60490800000000000000
+      internalID: -7780272180205570223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_100
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 398
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e66ce3b7fe7de5d00800000000000000
+      internalID: 963444793868732014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_101
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 398
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cf90af8f76c21280800000000000000
+      internalID: -9073972048025313335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_102
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 398
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35507d8d4628feef0800000000000000
+      internalID: -76699298995698349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_103
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 398
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c5dd8580af1ebfe0800000000000000
+      internalID: -1171464078773856827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_104
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 398
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34b699362dcf91dc0800000000000000
+      internalID: -3667622440972227773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_105
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 398
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 407bffdf292754080800000000000000
+      internalID: -9203824287809554684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_106
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 398
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35947a5deb7374150800000000000000
+      internalID: 5856711133186443603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_107
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 398
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d01eca5f1a6898430800000000000000
+      internalID: 3785704991951216909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_108
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 398
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaf2c683755da1e50800000000000000
+      internalID: 6780966759545188270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_109
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 398
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c14ddce5a82990800800000000000000
+      internalID: 579155150087509020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_110
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 266
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 776b5c1f69a3d7970800000000000000
+      internalID: 8754217670653884023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_111
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 266
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecac54de593c6e100800000000000000
+      internalID: 137011887379696334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_112
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 266
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d9ffc21febd33800800000000000000
+      internalID: 591057795974953428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_113
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 266
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79f4142e8d4df0c70800000000000000
+      internalID: 8939597813327679383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_114
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 266
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4418cc26aad3682b0800000000000000
+      internalID: -5582706886067846844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_115
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 266
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbe254e5740407e40800000000000000
+      internalID: 5652088207618420415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_116
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 266
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d3a5d74703056b10800000000000000
+      internalID: 1973987341476668372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_117
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 266
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fda8ff25814655110800000000000000
+      internalID: 1249014527299652319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_118
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 266
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47f9bef7ddef47cc0800000000000000
+      internalID: -3714063565386440844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_119
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 266
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aff32c1d41bfcae70800000000000000
+      internalID: 9127946611610238970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_120
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 134
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6d1694cc36b76080800000000000000
+      internalID: -9194179742141112978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_121
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 134
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85e865574a9c7adb0800000000000000
+      internalID: -4780630771250065832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_122
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 134
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7513fbeb37f0d22a0800000000000000
+      internalID: -6760730475817389737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_123
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 134
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 585440cdc67189010800000000000000
+      internalID: 1195731457382040965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_124
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 134
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2e2fa0430336ae00800000000000000
+      internalID: 1055587251728100910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_125
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 134
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52b4c00d47f90ec70800000000000000
+      internalID: 8998367379541740325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_126
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 134
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dad6a46ab5612df50800000000000000
+      internalID: 6904605761600122285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_127
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 134
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f23fc07ec87008c60800000000000000
+      internalID: 7818257254868382511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_128
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 134
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d31c315f5aeb22520800000000000000
+      internalID: 2675910748602089789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_129
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 134
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 541f84a8ed738eb00800000000000000
+      internalID: 857997157956383045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_130
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18042d86df4ec71b0800000000000000
+      internalID: -5657395254847717247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_131
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 2
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 981b8ac974aded9b0800000000000000
+      internalID: -5053361730757283447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_132
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 2
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e00bae63ad9c68140800000000000000
+      internalID: 4721683198405947406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_133
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 2
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72557fc54be0a15f0800000000000000
+      internalID: -785299017206115033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_134
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 2
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63dcb2e430ea72660800000000000000
+      internalID: 7361043445179993398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_135
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 2
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39047d2e7375ce9f0800000000000000
+      internalID: -437879166221205357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_136
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 2
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ff9ec298ba44ce90800000000000000
+      internalID: -7006392963684196359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_137
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 2
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5036714f4f5742060800000000000000
+      internalID: 6927791821730308869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_138
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 2
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40a9dd083924c07a0800000000000000
+      internalID: -6409674968365426172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arena_costa_tileset1_139
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 2
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75ca189977c7f5090800000000000000
+      internalID: -8043573556342051753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

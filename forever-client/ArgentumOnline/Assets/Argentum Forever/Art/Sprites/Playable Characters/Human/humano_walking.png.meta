@@ -1,0 +1,2482 @@
+fileFormatVersion: 2
+guid: 64a28f7aabfefc0418b560c7924d6b5c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7191099960244305298
+    second: humano_walking_0
+  - first:
+      213: -3138115134049866414
+    second: humano_walking_1
+  - first:
+      213: -8431864938312317778
+    second: humano_walking_2
+  - first:
+      213: -2514389372256935486
+    second: humano_walking_3
+  - first:
+      213: 7123738554667801755
+    second: humano_walking_4
+  - first:
+      213: -8017396449877167078
+    second: humano_walking_5
+  - first:
+      213: 7362131536316828399
+    second: humano_walking_6
+  - first:
+      213: 4495230975137637633
+    second: humano_walking_7
+  - first:
+      213: 4835106832708704712
+    second: humano_walking_8
+  - first:
+      213: -8833618569366580548
+    second: humano_walking_9
+  - first:
+      213: -4212931678165172077
+    second: humano_walking_10
+  - first:
+      213: -2734579544397082523
+    second: humano_walking_11
+  - first:
+      213: -1254137510226028261
+    second: humano_walking_12
+  - first:
+      213: 1037305507558765575
+    second: humano_walking_13
+  - first:
+      213: 8466484590186939344
+    second: humano_walking_14
+  - first:
+      213: 6001694112938677085
+    second: humano_walking_15
+  - first:
+      213: 4371961063293333076
+    second: humano_walking_16
+  - first:
+      213: 8177398970948623035
+    second: humano_walking_17
+  - first:
+      213: -5979009698150544277
+    second: humano_walking_18
+  - first:
+      213: 725548633825922634
+    second: humano_walking_19
+  - first:
+      213: -8298959835788087162
+    second: humano_walking_20
+  - first:
+      213: -7290240067299724933
+    second: humano_walking_21
+  - first:
+      213: -3810074753425499976
+    second: humano_walking_22
+  - first:
+      213: 4594692028192876172
+    second: humano_walking_23
+  - first:
+      213: 5471411590917649762
+    second: humano_walking_24
+  - first:
+      213: 8483715445357652646
+    second: humano_walking_25
+  - first:
+      213: 2379773169904533679
+    second: humano_walking_26
+  - first:
+      213: -5035689648013431674
+    second: humano_walking_27
+  - first:
+      213: -1991249815818505008
+    second: humano_walking_28
+  - first:
+      213: 5152640121109647653
+    second: humano_walking_29
+  - first:
+      213: 3467299375835600300
+    second: humano_walking_30
+  - first:
+      213: -1292712158093846742
+    second: humano_walking_31
+  - first:
+      213: 6453777659886904337
+    second: humano_walking_32
+  - first:
+      213: 1288760293726781168
+    second: humano_walking_33
+  - first:
+      213: -2785898119111597048
+    second: humano_walking_34
+  - first:
+      213: 3563477207349177722
+    second: humano_walking_35
+  - first:
+      213: -895262313376505074
+    second: humano_walking_36
+  - first:
+      213: -8193750766516586038
+    second: humano_walking_37
+  - first:
+      213: 1653999913160112900
+    second: humano_walking_38
+  - first:
+      213: 6018172170682815282
+    second: humano_walking_39
+  - first:
+      213: -4352586920886819158
+    second: humano_walking_40
+  - first:
+      213: -2572937497262915839
+    second: humano_walking_41
+  - first:
+      213: 6705774516325477386
+    second: humano_walking_42
+  - first:
+      213: -459769427074297835
+    second: humano_walking_43
+  - first:
+      213: 6698421475609194959
+    second: humano_walking_44
+  - first:
+      213: -3959034279247196532
+    second: humano_walking_45
+  - first:
+      213: -2963497730838767137
+    second: humano_walking_46
+  - first:
+      213: -8503072873989430124
+    second: humano_walking_47
+  - first:
+      213: -1513286319991216393
+    second: humano_walking_48
+  - first:
+      213: -5636927557022085861
+    second: humano_walking_49
+  - first:
+      213: -173662900041708561
+    second: humano_walking_50
+  - first:
+      213: -2157277797974807843
+    second: humano_walking_51
+  - first:
+      213: -2639678858494243685
+    second: humano_walking_52
+  - first:
+      213: -1148248929411409832
+    second: humano_walking_53
+  - first:
+      213: 9048390937588071601
+    second: humano_walking_54
+  - first:
+      213: -2976874448630878750
+    second: humano_walking_55
+  - first:
+      213: -3570465797132138165
+    second: humano_walking_56
+  - first:
+      213: -362673428949472862
+    second: humano_walking_57
+  - first:
+      213: 1565165772981425558
+    second: humano_walking_58
+  - first:
+      213: 7865497717397223385
+    second: humano_walking_59
+  - first:
+      213: -8305418118948352227
+    second: humano_walking_60
+  - first:
+      213: 4436356949169726780
+    second: humano_walking_61
+  - first:
+      213: -4775466914917155238
+    second: humano_walking_62
+  - first:
+      213: -4681049236229277624
+    second: humano_walking_63
+  - first:
+      213: 3661247827088519136
+    second: humano_walking_64
+  - first:
+      213: -3132232427934820415
+    second: humano_walking_65
+  - first:
+      213: 36586982222583817
+    second: humano_walking_66
+  - first:
+      213: -4984527953310502406
+    second: humano_walking_67
+  - first:
+      213: -141609910331206656
+    second: humano_walking_68
+  - first:
+      213: 4941635816135558269
+    second: humano_walking_69
+  - first:
+      213: 6677993576897765035
+    second: humano_walking_70
+  - first:
+      213: 6741641425735935069
+    second: humano_walking_71
+  - first:
+      213: 487741721193945296
+    second: humano_walking_72
+  - first:
+      213: -7639355745018428227
+    second: humano_walking_73
+  - first:
+      213: 8590032476329903043
+    second: humano_walking_74
+  - first:
+      213: 8898904872309225351
+    second: humano_walking_75
+  - first:
+      213: 1672962525865246345
+    second: humano_walking_76
+  - first:
+      213: 4925655462919414791
+    second: humano_walking_77
+  - first:
+      213: -7555921355714013096
+    second: humano_walking_78
+  - first:
+      213: 8199411297320637596
+    second: humano_walking_79
+  - first:
+      213: 7665901854106650382
+    second: humano_walking_0
+  - first:
+      213: -7855016284132618229
+    second: humano_walking_1
+  - first:
+      213: 68176022048725348
+    second: humano_walking_2
+  - first:
+      213: 3293701665554240206
+    second: humano_walking_3
+  - first:
+      213: -2485105202837198114
+    second: humano_walking_4
+  - first:
+      213: -2902998460412035758
+    second: humano_walking_5
+  - first:
+      213: -7624517693370876652
+    second: humano_walking_6
+  - first:
+      213: -3292881842580764655
+    second: humano_walking_7
+  - first:
+      213: 7601894196574718668
+    second: humano_walking_10
+  - first:
+      213: -2115199791295651629
+    second: humano_walking_11
+  - first:
+      213: 5848732290723708554
+    second: humano_walking_12
+  - first:
+      213: 37088528671741976
+    second: humano_walking_13
+  - first:
+      213: 4025485050221955668
+    second: humano_walking_14
+  - first:
+      213: 9024709557650490517
+    second: humano_walking_15
+  - first:
+      213: -5511080352222570909
+    second: humano_walking_16
+  - first:
+      213: 4881381227927700083
+    second: humano_walking_17
+  - first:
+      213: -5874802625161717316
+    second: humano_walking_20
+  - first:
+      213: -8902960208010433790
+    second: humano_walking_21
+  - first:
+      213: 3065627279639120626
+    second: humano_walking_22
+  - first:
+      213: 2832693198422864285
+    second: humano_walking_23
+  - first:
+      213: -191099978020993968
+    second: humano_walking_24
+  - first:
+      213: -5089140319445173592
+    second: humano_walking_25
+  - first:
+      213: 3918596728859254845
+    second: humano_walking_26
+  - first:
+      213: -6815054021012347332
+    second: humano_walking_27
+  - first:
+      213: 5433393337893792122
+    second: humano_walking_30
+  - first:
+      213: 6975092976766441052
+    second: humano_walking_31
+  - first:
+      213: 9139184228661702446
+    second: humano_walking_32
+  - first:
+      213: -3374033824204246787
+    second: humano_walking_33
+  - first:
+      213: -1515539242864715742
+    second: humano_walking_34
+  - first:
+      213: -8854178821210469552
+    second: humano_walking_35
+  - first:
+      213: 7573205187581004163
+    second: humano_walking_36
+  - first:
+      213: -5968622429577912106
+    second: humano_walking_37
+  - first:
+      213: 6267702168383939342
+    second: humano_walking_40
+  - first:
+      213: 6091537811277700455
+    second: humano_walking_41
+  - first:
+      213: 1275942104921184965
+    second: humano_walking_42
+  - first:
+      213: -6022315673918323493
+    second: humano_walking_43
+  - first:
+      213: 5376848542887762131
+    second: humano_walking_44
+  - first:
+      213: 4425406490730745289
+    second: humano_walking_45
+  - first:
+      213: 7377559472498953643
+    second: humano_walking_46
+  - first:
+      213: -348005048511346119
+    second: humano_walking_47
+  - first:
+      213: 745234946503603192
+    second: humano_walking_50
+  - first:
+      213: -1447440767564511039
+    second: humano_walking_51
+  - first:
+      213: 7545518187791539705
+    second: humano_walking_52
+  - first:
+      213: 2609396394135657387
+    second: humano_walking_53
+  - first:
+      213: 4229857899877107
+    second: humano_walking_54
+  - first:
+      213: 1434119052087910090
+    second: humano_walking_55
+  - first:
+      213: 4974833171206404778
+    second: humano_walking_56
+  - first:
+      213: -1850390321136105147
+    second: humano_walking_57
+  - first:
+      213: -416382548598308583
+    second: humano_walking_60
+  - first:
+      213: -6997861820661283010
+    second: humano_walking_61
+  - first:
+      213: -2199145029152745833
+    second: humano_walking_62
+  - first:
+      213: 7010413997007141877
+    second: humano_walking_63
+  - first:
+      213: -2932405102023657338
+    second: humano_walking_8
+  - first:
+      213: 7640639779055078778
+    second: humano_walking_9
+  - first:
+      213: 429336962965568242
+    second: humano_walking_18
+  - first:
+      213: -2032448035040098706
+    second: humano_walking_19
+  - first:
+      213: -2241799407015915981
+    second: humano_walking_28
+  - first:
+      213: 5795622059658029997
+    second: humano_walking_29
+  - first:
+      213: 8013817427784560280
+    second: humano_walking_38
+  - first:
+      213: -1605439700417409419
+    second: humano_walking_39
+  - first:
+      213: -577312952569939547
+    second: humano_walking_48
+  - first:
+      213: 989693949942356629
+    second: humano_walking_49
+  - first:
+      213: -1074951005931140478
+    second: humano_walking_58
+  - first:
+      213: 7281892690377148709
+    second: humano_walking_59
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: humano_walking_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e070901ee11c26a60800000000000000
+      internalID: 7665901854106650382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b00dd57ae406df290800000000000000
+      internalID: -7855016284132618229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 469d9681bb532f000800000000000000
+      internalID: 68176022048725348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec2197bc63495bd20800000000000000
+      internalID: 3293701665554240206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: edae9631cf1238dd0800000000000000
+      internalID: -2485105202837198114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25d72afe74a76b7d0800000000000000
+      internalID: -2902998460412035758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41db2f6ed85403690800000000000000
+      internalID: -7624517693370876652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_7
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 118c3ad19655d42d0800000000000000
+      internalID: -3292881842580764655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_10
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: cca80f6ce7a5f7960800000000000000
+      internalID: 7601894196574718668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_11
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d0a7d22ffc45a2e0800000000000000
+      internalID: -2115199791295651629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_12
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8e71fec70fda2150800000000000000
+      internalID: 5848732290723708554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_13
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81898b002d3c38000800000000000000
+      internalID: 37088528671741976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_14
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45a002343556dd730800000000000000
+      internalID: 4025485050221955668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_15
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59484d817853e3d70800000000000000
+      internalID: 9024709557650490517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 366932d5e95b483b0800000000000000
+      internalID: -5511080352222570909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37204e73d562eb340800000000000000
+      internalID: 4881381227927700083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_20
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb914b17322887ea0800000000000000
+      internalID: -5874802625161717316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_21
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20ba9185cd4527480800000000000000
+      internalID: -8902960208010433790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_22
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fa03a8b4cb4b8a20800000000000000
+      internalID: 3065627279639120626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_23
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d91f8a9a47fbf4720800000000000000
+      internalID: 2832693198422864285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 054497d1593195df0800000000000000
+      internalID: -191099978020993968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_25
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aa3a57c7ddbf59b0800000000000000
+      internalID: -5089140319445173592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_26
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d30e9a996f6a16630800000000000000
+      internalID: 3918596728859254845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c362670c9701c61a0800000000000000
+      internalID: -6815054021012347332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_30
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a792226147a476b40800000000000000
+      internalID: 5433393337893792122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_31
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c565c735b128cc060800000000000000
+      internalID: 6975092976766441052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2fab3e62a7e4de70800000000000000
+      internalID: 9139184228661702446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_33
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: df037200d160d21d0800000000000000
+      internalID: -3374033824204246787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_34
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22852e99619b7fae0800000000000000
+      internalID: -1515539242864715742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_35
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05b86f70643af1580800000000000000
+      internalID: -8854178821210469552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_36
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38949e85efd691960800000000000000
+      internalID: 7573205187581004163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_37
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d0649ef5813b2da0800000000000000
+      internalID: -5968622429577912106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0368781ae95bf650800000000000000
+      internalID: 6267702168383939342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_41
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76d51117d5d798450800000000000000
+      internalID: 6091537811277700455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_42
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ca9acd859e05b110800000000000000
+      internalID: 1275942104921184965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_43
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd4c4da5dcf6c6ca0800000000000000
+      internalID: -6022315673918323493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_44
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d8d6e113476e9a40800000000000000
+      internalID: 5376848542887762131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_45
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cdc6baa1c33a6d30800000000000000
+      internalID: 4425406490730745289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_46
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bad4e93904b526660800000000000000
+      internalID: 7377559472498953643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_47
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93a407f8043ab2bf0800000000000000
+      internalID: -348005048511346119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_50
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f3fd844c3b975a00800000000000000
+      internalID: 745234946503603192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_51
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c806ef6a48a9ebe0800000000000000
+      internalID: -1447440767564511039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_52
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fd509d50d017b860800000000000000
+      internalID: 7545518187791539705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_53
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bab14aef130763420800000000000000
+      internalID: 2609396394135657387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_54
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f2929988070f0000800000000000000
+      internalID: 4229857899877107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_55
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: aced159fda307e310800000000000000
+      internalID: 1434119052087910090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaa769259682a0540800000000000000
+      internalID: 4974833171206404778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_57
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5498cd48ec71256e0800000000000000
+      internalID: -1850390321136105147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_60
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91140243746b83af0800000000000000
+      internalID: -416382548598308583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_61
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e37473810c992ee90800000000000000
+      internalID: -6997861820661283010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_62
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 796d8cf5f311b71e0800000000000000
+      internalID: -2199145029152745833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_63
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fb7904336ef94160800000000000000
+      internalID: 7010413997007141877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6883654a8110e47d0800000000000000
+      internalID: -2932405102023657338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7d0c4fa561090a60800000000000000
+      internalID: 7640639779055078778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_18
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2faf18e61bf45f500800000000000000
+      internalID: 429336962965568242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_19
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e668efec74b4bc3e0800000000000000
+      internalID: -2032448035040098706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_28
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33e822f115783e0e0800000000000000
+      internalID: -2241799407015915981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_29
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: daba5568e8f2e6050800000000000000
+      internalID: 5795622059658029997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_38
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89eeee5dd7cc63f60800000000000000
+      internalID: 8013817427784560280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_39
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57e8f44391558b9e0800000000000000
+      internalID: -1605439700417409419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a936d9ade8fcf7f0800000000000000
+      internalID: -577312952569939547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_49
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59adaa267691cbd00800000000000000
+      internalID: 989693949942356629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_58
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28a868461c10511f0800000000000000
+      internalID: -1074951005931140478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_walking_59
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -45}
+        - {x: -12, y: -46}
+        - {x: -16, y: -50}
+        - {x: -16, y: -61}
+        - {x: -13, y: -68}
+        - {x: 9, y: -68}
+        - {x: 16, y: -61}
+        - {x: 16, y: -51}
+        - {x: 9, y: -45}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 529817e12da7e0560800000000000000
+      internalID: 7281892690377148709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

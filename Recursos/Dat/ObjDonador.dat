@@ -6,12 +6,12 @@ Index=1600
 Cant=1
 Valor=12
 
-[OBJ2] 'Pocion mágica de cambio de cara
+[OBJ2] 'Pocion mÃ¡gica de cambio de cara
 Index=1601
 Cant=4
 Valor=10
 
-[OBJ3] 'Pocion mágica de cambio de sexo
+[OBJ3] 'Pocion mÃ¡gica de cambio de sexo
 Index=1602
 Cant=1
 Valor=15
@@ -36,7 +36,7 @@ Index=1606
 Cant=1
 Valor=12
 
-[OBJ8] 'Poción de Sanar
+[OBJ8] 'PociÃ³n de Sanar
 Index=1607
 Cant=1
 Valor=5
@@ -66,7 +66,7 @@ Index=1599
 Cant=1
 Valor=30
 
-[OBJ14] 'Pocion mágica de cambio de cara legendaria
+[OBJ14] 'Pocion mÃ¡gica de cambio de cara legendaria
 Index=205
 Cant=1
 Valor=25
@@ -81,7 +81,7 @@ Index=363
 Cant=1
 Valor=40
 
-[OBJ17] 'Caña de Pesca Dorada
+[OBJ17] 'CaÃ±a de Pesca Dorada
 Index=364
 Cant=1
 Valor=15
@@ -118,7 +118,7 @@ Index=1350
 Cant=1
 Valor=80
 
-[OBJ24] ' Poción de amor
+[OBJ24] ' PociÃ³n de amor
 Index=319
 Cant=1
 Valor=3

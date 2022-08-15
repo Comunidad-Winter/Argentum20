@@ -1,6 +1,6 @@
 'Maneja todos los items que una criatura puede llegar a tirar
 'Se define, primero, un numero X en cada item dependiendo
-'de cuán poderoso es (a mayor poder mayor numero). 
+'de cuÃ¡n poderoso es (a mayor poder mayor numero). 
 'Luego cada criatura puede (o no) tirar el objeto.
 'Probabilidad del 1 al 10. 1 Mas facil, 10 mas dificil.
 
@@ -23,7 +23,7 @@ Prob=5
 Index=976
 Prob=7
 
-[Item5] 'Anillo de Regeneración
+[Item5] 'Anillo de RegeneraciÃ³n
 Index=670
 Prob=2
 
@@ -35,7 +35,7 @@ Prob=2
 Index=707
 Prob=7
 
-[Item8] 'Anillo de Defensa Mágica (+30)
+[Item8] 'Anillo de Defensa MÃ¡gica (+30)
 Index=708
 Prob=4
 
@@ -59,7 +59,7 @@ Prob=3
 Index=737
 Prob=7
 
-[Item14] 'Anillo del Ladrón (+20)
+[Item14] 'Anillo del LadrÃ³n (+20)
 Index=974
 Prob=4
 
@@ -72,7 +72,7 @@ Index=738
 Prob=4
 
 
-[Item17] 'Vara Mágica (+20)
+[Item17] 'Vara MÃ¡gica (+20)
 Index=65
 Prob=5
 
@@ -97,23 +97,23 @@ Prob=6
 Index=1006
 Prob=7
 
-[Item23] 'Orbe Ígnea
+[Item23] 'Orbe Ãgnea
 Index=868
 Prob=8
 
-[Item24] 'Orbe Acuática
+[Item24] 'Orbe AcuÃ¡tica
 Index=869
 Prob=9
 
-[Item25] 'Orbe de la Ponzoña
+[Item25] 'Orbe de la PonzoÃ±a
 Index=57
 Prob=3
 
-[Item26] 'Orbe de Inhibición
+[Item26] 'Orbe de InhibiciÃ³n
 Index=651
 Prob=5
 
-[Item27] 'Báculo de Hechicero (DM +10)
+[Item27] 'BÃ¡culo de Hechicero (DM +10)
 Index=1181
 Prob=5
 

@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24dd25c2676d6ff4c970820f78280dfd, type: 3}
+  m_Name: MonkRobes
+  m_EditorClassIdentifier: 
+  mID: 2
+  mName: Monk robes
+  mDescription: Monk robes
+  nBasePrice: 0
+  mWeight: 0
+  mType: 1
+  mAllowedSlots: 00000000
+  mAnimationClips:
+    m_keys:
+    - attack_east
+    - attack_north
+    - attack_northeast
+    - attack_northwest
+    - attack_south
+    - attack_southeast
+    - attack_southwest
+    - attack_west
+    - run_east
+    - run_north
+    - run_northeast
+    - run_northwest
+    - run_south
+    - run_southeast
+    - run_southwest
+    - run_west
+    - stand_east
+    - stand_north
+    - stand_northeast
+    - stand_northwest
+    - stand_south
+    - stand_southeast
+    - stand_southwest
+    - stand_west
+    - walk_east
+    - walk_north
+    - walk_northeast
+    - walk_northwest
+    - walk_south
+    - walk_southeast
+    - walk_southwest
+    - walk_west
+    m_values:
+    - {fileID: 7400000, guid: 44a841a599cc16e418f08bb9b87a42b7, type: 2}
+    - {fileID: 7400000, guid: 8ecd50fb31f445440be79c6bb9cfac07, type: 2}
+    - {fileID: 7400000, guid: af3cb6961b92c7b4189367fab61ce3ee, type: 2}
+    - {fileID: 7400000, guid: 95790c20809fe2c40bc2367f2a2c6490, type: 2}
+    - {fileID: 7400000, guid: cf9803b3cdfb2744eb52c0f184342935, type: 2}
+    - {fileID: 7400000, guid: 5feb09888990b38429f814cc401cee33, type: 2}
+    - {fileID: 7400000, guid: 944a0cef8bf8b114397ea02ae8c80a74, type: 2}
+    - {fileID: 7400000, guid: 9e97f2c9faa05f548bb6735bae51b654, type: 2}
+    - {fileID: 7400000, guid: fe6bc3cbee730814aa6b8cb6fdc42646, type: 2}
+    - {fileID: 7400000, guid: 91ca7f0314b828946bc1cc6260cea042, type: 2}
+    - {fileID: 7400000, guid: 36e0d8035c40cd948a2ae4da51a57ff2, type: 2}
+    - {fileID: 7400000, guid: c3bab516d17b7ad4894a2867f25d7ad6, type: 2}
+    - {fileID: 7400000, guid: 997fc9ca29287914589cc658b2a421e9, type: 2}
+    - {fileID: 7400000, guid: 9c15c253ed86142408faafde26469958, type: 2}
+    - {fileID: 7400000, guid: 8da7c145e9fc42044a52e0b892da874d, type: 2}
+    - {fileID: 7400000, guid: 7696fc5dbebea6a4286e0928e72bb34b, type: 2}
+    - {fileID: 7400000, guid: c5c52d9f00068644e8923f9a6b40b9a0, type: 2}
+    - {fileID: 7400000, guid: 5eebca4cfcde9da448d9c3d2fca147b2, type: 2}
+    - {fileID: 7400000, guid: 7074a8d4cf9b3a44c9230837a401c3b1, type: 2}
+    - {fileID: 7400000, guid: e01ee4bed948a3a44b7e3f119a7adf89, type: 2}
+    - {fileID: 7400000, guid: 85fba4dc342a52a4c8567d591a575810, type: 2}
+    - {fileID: 7400000, guid: 6d3234aa127745343ae8545408f2761c, type: 2}
+    - {fileID: 7400000, guid: 5832a3e9aadf80d428e1855b5cbdb857, type: 2}
+    - {fileID: 7400000, guid: 2b5e50585b5e45f48aa3d547fb3265c8, type: 2}
+    - {fileID: 7400000, guid: 242fcaecaf0fb8e439cbeade0ddcbb93, type: 2}
+    - {fileID: 7400000, guid: 40e2eb506da21344ea4caa6a6e62bad3, type: 2}
+    - {fileID: 7400000, guid: ec7b5c7410b1e9748a2ceb72ad09af38, type: 2}
+    - {fileID: 7400000, guid: 7366e9a2a65a5504da3e6d9a90f11a42, type: 2}
+    - {fileID: 7400000, guid: 30f757d3ea2dcd0479435d45257f9905, type: 2}
+    - {fileID: 7400000, guid: 5431ddcd43703b246851232000171495, type: 2}
+    - {fileID: 7400000, guid: 132609512fa51fe439af70ae61f9e875, type: 2}
+    - {fileID: 7400000, guid: 83e835775c5e5cc448bd7e09efc8acb9, type: 2}
+  mInventoryIcon: {fileID: 21300000, guid: b5e0d6ee0acf19e44aa01f8b60b0dec1, type: 3}

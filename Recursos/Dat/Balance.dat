@@ -47,13 +47,13 @@ Pirata=1.5
 [MODEVASION]
 Guerrero=1
 Cazador=0.9
-Paladin=0.9
+Paladin=0.85
 Bandido=0.75
 Asesino=1.1
 Pirata=0.85
 Ladron=0.8
-Clerigo=0.75
-Bardo=1.075
+Clerigo=0.8
+Bardo=1.1
 Mago=0.4
 Druida=0.47
 Trabajador=0.75
@@ -74,17 +74,17 @@ Trabajador=0
 
 [MODATAQUEARMAS]
 Guerrero=1.05
-Cazador=0.85
+Cazador=0.8
 Paladin=0.95
-Bandido=0.9
-Asesino=0.95
+Bandido=0.95
+Asesino=0.9
 Pirata=0.9
 Ladron=0.8
-Clerigo=0.9
-Bardo=0.85
+Clerigo=0.85
+Bardo=0.8
 Mago=0.5
 Druida=0.65
-Trabajador=0.75
+Trabajador=0.8
 
 [MODATAQUEPROYECTILES]
 Guerrero=0.85
@@ -104,7 +104,7 @@ Trabajador=0.75
 Guerrero=1.07
 Cazador=0.85
 Paladin=0.95
-Bandido=0.85
+Bandido=0.88
 Asesino=0.9
 Pirata=0.85
 Ladron=0.8
@@ -145,7 +145,7 @@ Trabajador=0.4
 [MODESCUDO]
 Guerrero=1
 Cazador=0.8
-Paladin=0.95
+Paladin=0.85
 Bandido=2
 Asesino=0.8
 Pirata=0.75
@@ -241,7 +241,7 @@ Druida=2
 Trabajador=2
 
 [EXTRA]
-ModDañoGolpeCritico=0.33
+ModDaÃ±oGolpeCritico=0.33
 PorcentajeRecuperoMana=7
 DificultadSubirSkill=10
 ############################################################

@@ -1,0 +1,2290 @@
+fileFormatVersion: 2
+guid: 8f8a72aa7e35a4f4db61c18ac7785a44
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5327484919483013663
+    second: humano_standing_tunica_cura_0
+  - first:
+      213: -5849317126643003484
+    second: humano_standing_tunica_cura_1
+  - first:
+      213: -2168059887745190890
+    second: humano_standing_tunica_cura_2
+  - first:
+      213: -1615601965695085637
+    second: humano_standing_tunica_cura_3
+  - first:
+      213: 8956342198724828647
+    second: humano_standing_tunica_cura_4
+  - first:
+      213: -5703669773983267913
+    second: humano_standing_tunica_cura_5
+  - first:
+      213: 5420758597564091687
+    second: humano_standing_tunica_cura_6
+  - first:
+      213: -9074302315078972090
+    second: humano_standing_tunica_cura_7
+  - first:
+      213: -7937004175511390612
+    second: humano_standing_tunica_cura_8
+  - first:
+      213: -8542781800205886432
+    second: humano_standing_tunica_cura_9
+  - first:
+      213: 388176758241193698
+    second: humano_standing_tunica_cura_10
+  - first:
+      213: 6967558627453975785
+    second: humano_standing_tunica_cura_11
+  - first:
+      213: 2474907241633069296
+    second: humano_standing_tunica_cura_12
+  - first:
+      213: -737267694473190834
+    second: humano_standing_tunica_cura_13
+  - first:
+      213: 2207973910809420763
+    second: humano_standing_tunica_cura_14
+  - first:
+      213: 8319204621472400368
+    second: humano_standing_tunica_cura_15
+  - first:
+      213: -16423644065673104
+    second: humano_standing_tunica_cura_16
+  - first:
+      213: 3667532395701606478
+    second: humano_standing_tunica_cura_17
+  - first:
+      213: 2323327271282893729
+    second: humano_standing_tunica_cura_18
+  - first:
+      213: 7132739492574102794
+    second: humano_standing_tunica_cura_19
+  - first:
+      213: -2145212013864906484
+    second: humano_standing_tunica_cura_20
+  - first:
+      213: -5838238026041923218
+    second: humano_standing_tunica_cura_21
+  - first:
+      213: -8265396070228927272
+    second: humano_standing_tunica_cura_22
+  - first:
+      213: 3623054534149080980
+    second: humano_standing_tunica_cura_23
+  - first:
+      213: 6155947575447535880
+    second: humano_standing_tunica_cura_24
+  - first:
+      213: -393001205657986746
+    second: humano_standing_tunica_cura_25
+  - first:
+      213: 3431292149242134237
+    second: humano_standing_tunica_cura_26
+  - first:
+      213: 7759190701624713970
+    second: humano_standing_tunica_cura_27
+  - first:
+      213: -8342365903895193035
+    second: humano_standing_tunica_cura_28
+  - first:
+      213: -3768715030002737791
+    second: humano_standing_tunica_cura_29
+  - first:
+      213: 2661366270531359152
+    second: humano_standing_tunica_cura_30
+  - first:
+      213: -7010928466999982435
+    second: humano_standing_tunica_cura_31
+  - first:
+      213: -5771729761945349751
+    second: humano_standing_tunica_cura_32
+  - first:
+      213: -3367812197359103391
+    second: humano_standing_tunica_cura_33
+  - first:
+      213: 5261893254518645408
+    second: humano_standing_tunica_cura_34
+  - first:
+      213: -6944193916269455301
+    second: humano_standing_tunica_cura_35
+  - first:
+      213: -7079516134072577478
+    second: humano_standing_tunica_cura_36
+  - first:
+      213: 7541681931795218832
+    second: humano_standing_tunica_cura_37
+  - first:
+      213: -5163374365526831545
+    second: humano_standing_tunica_cura_38
+  - first:
+      213: -1804314051828109553
+    second: humano_standing_tunica_cura_39
+  - first:
+      213: -5025587465578184472
+    second: humano_standing_tunica_cura_40
+  - first:
+      213: -5431615142064648002
+    second: humano_standing_tunica_cura_41
+  - first:
+      213: -6621843954884923790
+    second: humano_standing_tunica_cura_42
+  - first:
+      213: -18738371977438905
+    second: humano_standing_tunica_cura_43
+  - first:
+      213: 9134181461937019293
+    second: humano_standing_tunica_cura_44
+  - first:
+      213: -2936989031705236960
+    second: humano_standing_tunica_cura_45
+  - first:
+      213: 5249022847615135650
+    second: humano_standing_tunica_cura_46
+  - first:
+      213: -1692153671275542345
+    second: humano_standing_tunica_cura_47
+  - first:
+      213: 6299525360653059549
+    second: humano_standing_tunica_cura_48
+  - first:
+      213: 4598498585946321734
+    second: humano_standing_tunica_cura_49
+  - first:
+      213: 3728084986253011697
+    second: humano_standing_tunica_cura_50
+  - first:
+      213: 2143584571793320942
+    second: humano_standing_tunica_cura_51
+  - first:
+      213: 7638523034113577622
+    second: humano_standing_tunica_cura_52
+  - first:
+      213: -5495703788199807885
+    second: humano_standing_tunica_cura_53
+  - first:
+      213: 5874030996401525691
+    second: humano_standing_tunica_cura_54
+  - first:
+      213: 2857975786117493620
+    second: humano_standing_tunica_cura_55
+  - first:
+      213: 5516258837434417879
+    second: humano_standing_tunica_cura_56
+  - first:
+      213: 4969372903776364934
+    second: humano_standing_tunica_cura_57
+  - first:
+      213: 6918125416078541094
+    second: humano_standing_tunica_cura_58
+  - first:
+      213: -851199803553474246
+    second: humano_standing_tunica_cura_59
+  - first:
+      213: 2232521579183371626
+    second: humano_standing_tunica_cura_60
+  - first:
+      213: -4397223182341642847
+    second: humano_standing_tunica_cura_61
+  - first:
+      213: 6928016948809326844
+    second: humano_standing_tunica_cura_62
+  - first:
+      213: -2131832560704719813
+    second: humano_standing_tunica_cura_63
+  - first:
+      213: -6906298660611647403
+    second: humano_standing_tunica_cura_64
+  - first:
+      213: 3417333626789865288
+    second: humano_standing_tunica_cura_65
+  - first:
+      213: -6705320527209693884
+    second: humano_standing_tunica_cura_66
+  - first:
+      213: -1521335893544060187
+    second: humano_standing_tunica_cura_67
+  - first:
+      213: -6051062647456438636
+    second: humano_standing_tunica_cura_68
+  - first:
+      213: -8238287703107575933
+    second: humano_standing_tunica_cura_69
+  - first:
+      213: -7028555063608352681
+    second: humano_standing_tunica_cura_70
+  - first:
+      213: -9109465639389471368
+    second: humano_standing_tunica_cura_71
+  - first:
+      213: -7857654573452872639
+    second: humano_standing_tunica_cura_72
+  - first:
+      213: 2661835410342812205
+    second: humano_standing_tunica_cura_73
+  - first:
+      213: 2020422261449893113
+    second: humano_standing_tunica_cura_74
+  - first:
+      213: 7611797244847291943
+    second: humano_standing_tunica_cura_75
+  - first:
+      213: 6077379443857219651
+    second: humano_standing_tunica_cura_76
+  - first:
+      213: 69802555368993929
+    second: humano_standing_tunica_cura_77
+  - first:
+      213: -1677171075793761635
+    second: humano_standing_tunica_cura_78
+  - first:
+      213: -5878695690398227787
+    second: humano_standing_tunica_cura_79
+  - first:
+      213: 3134667343391803628
+    second: humano_standing_tunica_cura_0
+  - first:
+      213: -8790621174877746004
+    second: humano_standing_tunica_cura_1
+  - first:
+      213: -3869561172476034769
+    second: humano_standing_tunica_cura_2
+  - first:
+      213: -7899481949091175759
+    second: humano_standing_tunica_cura_3
+  - first:
+      213: 4826148128395994469
+    second: humano_standing_tunica_cura_4
+  - first:
+      213: -2758587236201137733
+    second: humano_standing_tunica_cura_5
+  - first:
+      213: -217855958981125818
+    second: humano_standing_tunica_cura_6
+  - first:
+      213: 3181841275072011444
+    second: humano_standing_tunica_cura_7
+  - first:
+      213: -3709265839041301561
+    second: humano_standing_tunica_cura_8
+  - first:
+      213: 2601759622151654338
+    second: humano_standing_tunica_cura_9
+  - first:
+      213: -4603179238908713752
+    second: humano_standing_tunica_cura_10
+  - first:
+      213: 4777264547109676770
+    second: humano_standing_tunica_cura_11
+  - first:
+      213: -8984012072593878489
+    second: humano_standing_tunica_cura_12
+  - first:
+      213: 7811635458495830221
+    second: humano_standing_tunica_cura_13
+  - first:
+      213: 5691125305101803500
+    second: humano_standing_tunica_cura_14
+  - first:
+      213: 4894369620581470589
+    second: humano_standing_tunica_cura_15
+  - first:
+      213: -644271659470938420
+    second: humano_standing_tunica_cura_16
+  - first:
+      213: 1922016159999086268
+    second: humano_standing_tunica_cura_17
+  - first:
+      213: 7430786696668741802
+    second: humano_standing_tunica_cura_18
+  - first:
+      213: -4644088090377302444
+    second: humano_standing_tunica_cura_19
+  - first:
+      213: -3636336003179354749
+    second: humano_standing_tunica_cura_20
+  - first:
+      213: 846311563070707682
+    second: humano_standing_tunica_cura_21
+  - first:
+      213: -7288566938611767331
+    second: humano_standing_tunica_cura_22
+  - first:
+      213: -772978950229314691
+    second: humano_standing_tunica_cura_23
+  - first:
+      213: 6516600114696187823
+    second: humano_standing_tunica_cura_24
+  - first:
+      213: 8681250690095788464
+    second: humano_standing_tunica_cura_25
+  - first:
+      213: 3236904871713559336
+    second: humano_standing_tunica_cura_26
+  - first:
+      213: -6302186447950669547
+    second: humano_standing_tunica_cura_27
+  - first:
+      213: -4327165176131157061
+    second: humano_standing_tunica_cura_28
+  - first:
+      213: 3128637295041046297
+    second: humano_standing_tunica_cura_29
+  - first:
+      213: 4582591595569638692
+    second: humano_standing_tunica_cura_30
+  - first:
+      213: 2073964032579399964
+    second: humano_standing_tunica_cura_31
+  - first:
+      213: 3518846932518642460
+    second: humano_standing_tunica_cura_32
+  - first:
+      213: -734051263718845638
+    second: humano_standing_tunica_cura_33
+  - first:
+      213: 36556035872781411
+    second: humano_standing_tunica_cura_34
+  - first:
+      213: -68977889525519752
+    second: humano_standing_tunica_cura_35
+  - first:
+      213: 3715979404608419696
+    second: humano_standing_tunica_cura_36
+  - first:
+      213: -7248428960460940659
+    second: humano_standing_tunica_cura_37
+  - first:
+      213: 5531522660765152247
+    second: humano_standing_tunica_cura_38
+  - first:
+      213: -6924337889457661480
+    second: humano_standing_tunica_cura_39
+  - first:
+      213: -3775933066255271701
+    second: humano_standing_tunica_cura_40
+  - first:
+      213: 8420461141002198853
+    second: humano_standing_tunica_cura_41
+  - first:
+      213: -7602382874838510509
+    second: humano_standing_tunica_cura_42
+  - first:
+      213: -8831668858687560154
+    second: humano_standing_tunica_cura_43
+  - first:
+      213: -6131449547240580975
+    second: humano_standing_tunica_cura_44
+  - first:
+      213: 3512973440249888420
+    second: humano_standing_tunica_cura_45
+  - first:
+      213: 2502468268507179820
+    second: humano_standing_tunica_cura_46
+  - first:
+      213: -1072106455082017583
+    second: humano_standing_tunica_cura_47
+  - first:
+      213: -5184410449614802237
+    second: humano_standing_tunica_cura_48
+  - first:
+      213: 1136947601178717205
+    second: humano_standing_tunica_cura_49
+  - first:
+      213: -6991829891239893356
+    second: humano_standing_tunica_cura_50
+  - first:
+      213: -6552834957271463665
+    second: humano_standing_tunica_cura_51
+  - first:
+      213: -3820599004656537314
+    second: humano_standing_tunica_cura_52
+  - first:
+      213: 8577056339623404216
+    second: humano_standing_tunica_cura_53
+  - first:
+      213: 4344173095448915954
+    second: humano_standing_tunica_cura_54
+  - first:
+      213: 1192959048881379516
+    second: humano_standing_tunica_cura_55
+  - first:
+      213: 2722502959761458841
+    second: humano_standing_tunica_cura_56
+  - first:
+      213: -8211663318315816009
+    second: humano_standing_tunica_cura_57
+  - first:
+      213: 7928151760091643895
+    second: humano_standing_tunica_cura_58
+  - first:
+      213: -6748049818323329219
+    second: humano_standing_tunica_cura_59
+  - first:
+      213: -939129547913060673
+    second: humano_standing_tunica_cura_60
+  - first:
+      213: -4750916717864341132
+    second: humano_standing_tunica_cura_61
+  - first:
+      213: -3517312055991445278
+    second: humano_standing_tunica_cura_62
+  - first:
+      213: -7455652890263347474
+    second: humano_standing_tunica_cura_63
+  - first:
+      213: -472342809768336162
+    second: humano_standing_tunica_cura_64
+  - first:
+      213: 2226096477849643478
+    second: humano_standing_tunica_cura_65
+  - first:
+      213: -1557987138713978108
+    second: humano_standing_tunica_cura_66
+  - first:
+      213: -2545340656335536420
+    second: humano_standing_tunica_cura_67
+  - first:
+      213: 6747158969555718845
+    second: humano_standing_tunica_cura_68
+  - first:
+      213: 4507700590231166720
+    second: humano_standing_tunica_cura_69
+  - first:
+      213: 4264432528235913268
+    second: humano_standing_tunica_cura_70
+  - first:
+      213: 2634093097467046001
+    second: humano_standing_tunica_cura_71
+  - first:
+      213: -8025082915691198756
+    second: humano_standing_tunica_cura_72
+  - first:
+      213: -2605753289729279499
+    second: humano_standing_tunica_cura_73
+  - first:
+      213: 1030301742834662479
+    second: humano_standing_tunica_cura_74
+  - first:
+      213: 6268118386231577681
+    second: humano_standing_tunica_cura_75
+  - first:
+      213: 3479716564458671389
+    second: humano_standing_tunica_cura_76
+  - first:
+      213: 299484988609260865
+    second: humano_standing_tunica_cura_77
+  - first:
+      213: -8748239398646324105
+    second: humano_standing_tunica_cura_78
+  - first:
+      213: -5625981575870302391
+    second: humano_standing_tunica_cura_79
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce8c2e33753908b20800000000000000
+      internalID: 3134667343391803628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cac826cbd90710680800000000000000
+      internalID: -8790621174877746004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f210ced8d9e8c4ac0800000000000000
+      internalID: -3869561172476034769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b26fc245076f5290800000000000000
+      internalID: -7899481949091175759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 565a57a172ce9f240800000000000000
+      internalID: 4826148128395994469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb9fd48368787b9d0800000000000000
+      internalID: -2758587236201137733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6495ab8d8250afcf0800000000000000
+      internalID: -217855958981125818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_7
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bcd75418cb282c20800000000000000
+      internalID: 3181841275072011444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_8
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c3b3763f5a068cc0800000000000000
+      internalID: -3709265839041301561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_9
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cbcd45779e4b1420800000000000000
+      internalID: 2601759622151654338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e4a463fed83e10c0800000000000000
+      internalID: -4603179238908713752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_11
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e62a886bc04c4240800000000000000
+      internalID: 4777264547109676770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 722983b8e90625380800000000000000
+      internalID: -8984012072593878489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc85d7acf01886c60800000000000000
+      internalID: 7811635458495830221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_14
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cef54d6ef40fafe40800000000000000
+      internalID: 5691125305101803500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_15
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d71d83a0d3b4ce340800000000000000
+      internalID: 4894369620581470589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_16
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cce1266d6561f07f0800000000000000
+      internalID: -644271659470938420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_17
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbe4e45a38f5caa10800000000000000
+      internalID: 1922016159999086268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_18
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa083a071257f1760800000000000000
+      internalID: 7430786696668741802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_19
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45e407bbc72ec8fb0800000000000000
+      internalID: -4644088090377302444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 385e786dba3298dc0800000000000000
+      internalID: -3636336003179354749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_21
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e79226f1e3bebb00800000000000000
+      internalID: 846311563070707682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_22
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd7a36e5cfec9da90800000000000000
+      internalID: -7288566938611767331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_23
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d733abc7db3d545f0800000000000000
+      internalID: -772978950229314691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_24
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faf6cb3274d9f6a50800000000000000
+      internalID: 6516600114696187823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_25
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b13645e18ff97870800000000000000
+      internalID: 8681250690095788464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_26
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 823d73ab4dbcbec20800000000000000
+      internalID: 3236904871713559336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_27
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5199e95e0d22a88a0800000000000000
+      internalID: -6302186447950669547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_28
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb30348d232d2f3c0800000000000000
+      internalID: -4327165176131157061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_29
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 917e5f92b072b6b20800000000000000
+      internalID: 3128637295041046297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42d6e9cc6c2a89f30800000000000000
+      internalID: 4582591595569638692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_31
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c11f4de9c4338cc10800000000000000
+      internalID: 2073964032579399964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c132fb734a475d030800000000000000
+      internalID: 3518846932518642460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_33
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a339c1bc34020d5f0800000000000000
+      internalID: -734051263718845638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_34
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 364f79c558fd18000800000000000000
+      internalID: 36556035872781411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_35
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87aa97599f0fa0ff0800000000000000
+      internalID: -68977889525519752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_36
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0773a54949fc19330800000000000000
+      internalID: 3715979404608419696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_37
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8a5218a348686b90800000000000000
+      internalID: -7248428960460940659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_38
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f33eed7d8ae3cc40800000000000000
+      internalID: 5531522660765152247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_39
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d91912506fc7ef90800000000000000
+      internalID: -6924337889457661480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be8f33ac1e0399bc0800000000000000
+      internalID: -3775933066255271701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_41
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54f9a625bcc7bd470800000000000000
+      internalID: 8420461141002198853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_42
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 354dcb2fd09ee7690800000000000000
+      internalID: -7602382874838510509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_43
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6266c0817fb9f6580800000000000000
+      internalID: -8831668858687560154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_44
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 198de726f17b8eaa0800000000000000
+      internalID: -6131449547240580975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_45
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aef97b3bb690c030800000000000000
+      internalID: 3512973440249888420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_46
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2bae0ea1ad8ab220800000000000000
+      internalID: 2502468268507179820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_47
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dcde6ffbdc1f11f0800000000000000
+      internalID: -1072106455082017583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_48
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c2f2ec0a264d08b0800000000000000
+      internalID: -5184410449614802237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_49
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51c6d78c1df37cf00800000000000000
+      internalID: 1136947601178717205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49620ba12c708fe90800000000000000
+      internalID: -6991829891239893356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_51
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0982142357af05a0800000000000000
+      internalID: -6552834957271463665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_52
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e117c3a92718afac0800000000000000
+      internalID: -3820599004656537314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_53
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b2e3c53c43d70770800000000000000
+      internalID: 8577056339623404216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_54
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ffaa05f96a994c30800000000000000
+      internalID: 4344173095448915954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_55
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb899243fed3e8010800000000000000
+      internalID: 1192959048881379516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_56
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9960888740648c520800000000000000
+      internalID: 2722502959761458841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_57
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bb2ea028bf4a0e80800000000000000
+      internalID: -8211663318315816009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_58
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ff76a94504760e60800000000000000
+      internalID: 7928151760091643895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_59
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3fd234617c1a52a0800000000000000
+      internalID: -6748049818323329219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbe9192e6aa87f2f0800000000000000
+      internalID: -939129547913060673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_61
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4713b32aa6a511eb0800000000000000
+      internalID: -4750916717864341132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_62
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e85e62125fff2fc0800000000000000
+      internalID: -3517312055991445278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_63
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eee1d33b233388890800000000000000
+      internalID: -7455652890263347474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_64
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed46c8397b6e179f0800000000000000
+      internalID: -472342809768336162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_65
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d9e9f5c3fea4ee10800000000000000
+      internalID: 2226096477849643478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_66
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40b7350b3fae06ae0800000000000000
+      internalID: -1557987138713978108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_67
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdeb2caa8222dacd0800000000000000
+      internalID: -2545340656335536420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_68
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db29577b559b2ad50800000000000000
+      internalID: 6747158969555718845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_69
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00f1c82ddc19e8e30800000000000000
+      internalID: 4507700590231166720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4306f1e5ace4e2b30800000000000000
+      internalID: 4264432528235913268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_71
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 178e4d357bd2e8420800000000000000
+      internalID: 2634093097467046001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_72
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd68b2d5b9d21a090800000000000000
+      internalID: -8025082915691198756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_73
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f97169503186dbd0800000000000000
+      internalID: -2605753289729279499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_74
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4c3021f9fd5c4e00800000000000000
+      internalID: 1030301742834662479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_75
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15c8d6d5674dcf650800000000000000
+      internalID: 6268118386231577681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_76
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1d0a9f67cf6a4030800000000000000
+      internalID: 3479716564458671389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_77
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14ded99a20cf72400800000000000000
+      internalID: 299484988609260865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_78
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 774eb99fd92089680800000000000000
+      internalID: -8748239398646324105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_tunica_cura_79
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 947bb51809f7ce1b0800000000000000
+      internalID: -5625981575870302391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

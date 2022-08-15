@@ -1,0 +1,21 @@
+{
+  "name": "ao20-changelog-tool",
+  "version": "1.0.0",
+  "main": "main.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "ini": "^2.0.0",
+    "objects-to-csv": "^1.3.6",
+    "prompt": "^1.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node main.js",
+    "dev": "npx nodemon main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

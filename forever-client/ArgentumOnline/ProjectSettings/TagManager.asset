@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - MsgBox
+  - WorldClient
+  - LoginClient
+  - ChatClient
+  - Human
+  - Barco
+  - Chat
+  - MapEdge
+  - NPC
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Names
+  - Post Processing
+  - Players
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Navegable0
+    uniqueID: 4154931969
+    locked: 0
+  - name: Navegable1
+    uniqueID: 2621947321
+    locked: 0
+  - name: Navegable2
+    uniqueID: 3144377809
+    locked: 0
+  - name: Navegable3
+    uniqueID: 3533970133
+    locked: 0
+  - name: TilemapNivel0
+    uniqueID: 672821197
+    locked: 0
+  - name: TilemapNivel1
+    uniqueID: 66285257
+    locked: 0
+  - name: TilemapNivel2
+    uniqueID: 2773515329
+    locked: 0
+  - name: TilemapNivel3
+    uniqueID: 2491555065
+    locked: 0
+  - name: TilemapNivel4
+    uniqueID: 3438589973
+    locked: 0
+  - name: Desniveles
+    uniqueID: 2125279645
+    locked: 0
+  - name: MurosTrans
+    uniqueID: 171980509
+    locked: 0
+  - name: Muro
+    uniqueID: 713385687
+    locked: 0
+  - name: Decorados
+    uniqueID: 2049532783
+    locked: 0
+  - name: Arboles
+    uniqueID: 735191785
+    locked: 0
+  - name: ParedDung
+    uniqueID: 3883579211
+    locked: 0
+  - name: Navales
+    uniqueID: 3902288205
+    locked: 0
+  - name: Players
+    uniqueID: 275239855
+    locked: 0
+  - name: ParedDungeon2
+    uniqueID: 3341407273
+    locked: 0
+  - name: Sombras
+    uniqueID: 1974829813
+    locked: 0
+  - name: Grilla Limites
+    uniqueID: 3671939143
+    locked: 0
+  - name: Names
+    uniqueID: 4190191567
+    locked: 0
+  - name: UI
+    uniqueID: 2662937111
+    locked: 0
+  - name: IluminacionDin
+    uniqueID: 3805260727
+    locked: 0

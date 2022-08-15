@@ -1,0 +1,334 @@
+fileFormatVersion: 2
+guid: 90c5dd0251d27b54487ca774b61174fd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1830315248719685932
+    second: barco1_spritesheet_stand_E_0
+  - first:
+      213: -7320783161415998249
+    second: barco1_spritesheet_stand_E_1
+  - first:
+      213: 8610187014082166306
+    second: barco1_spritesheet_stand_E_2
+  - first:
+      213: -3003978145864268705
+    second: barco1_spritesheet_stand_E_3
+  - first:
+      213: -6727541341604284327
+    second: barco1_spritesheet_stand_E_4
+  - first:
+      213: 8763120036945887786
+    second: barco1_spritesheet_stand_E_5
+  - first:
+      213: -4405281780775627152
+    second: barco1_spritesheet_stand_E_6
+  - first:
+      213: 6724527618794973074
+    second: barco1_spritesheet_stand_E_7
+  - first:
+      213: -28364680210043302
+    second: barco1_spritesheet_stand_E_8
+  - first:
+      213: -5445174713057571343
+    second: barco1_spritesheet_stand_E_9
+  - first:
+      213: -8465071726237718870
+    second: barco1_spritesheet_stand_E_10
+  - first:
+      213: -4580138567507938015
+    second: barco1_spritesheet_stand_E_11
+  - first:
+      213: 7653518101370298080
+    second: barco1_spritesheet_stand_E_12
+  - first:
+      213: 1517471855264877694
+    second: barco1_spritesheet_stand_E_13
+  - first:
+      213: 560860583271613539
+    second: barco1_spritesheet_stand_E_14
+  - first:
+      213: -5211945007753448753
+    second: barco1_spritesheet_stand_E_15
+  - first:
+      213: 535966519274450104
+    second: barco1_spritesheet_stand_E_16
+  - first:
+      213: -7991426684743862573
+    second: barco1_spritesheet_stand_E_17
+  - first:
+      213: -7245807377517265905
+    second: barco1_spritesheet_stand_E_18
+  - first:
+      213: -3347706368454381268
+    second: barco1_spritesheet_stand_E_19
+  - first:
+      213: -2836523690859523946
+    second: barco1_spritesheet_stand_E_20
+  - first:
+      213: 2725344197023336140
+    second: barco1_spritesheet_stand_E_21
+  - first:
+      213: 5374335413875146911
+    second: barco1_spritesheet_stand_E_22
+  - first:
+      213: 4693888109802773757
+    second: barco1_spritesheet_stand_E_23
+  - first:
+      213: -2043538714516916740
+    second: barco1_spritesheet_stand_E_24
+  - first:
+      213: 7028231809471479377
+    second: barco1_spritesheet_stand_E_25
+  - first:
+      213: -8943569324752605315
+    second: barco1_spritesheet_stand_E_26
+  - first:
+      213: -6411069392232950532
+    second: barco1_spritesheet_stand_E_27
+  - first:
+      213: 1272002564715113167
+    second: barco1_spritesheet_stand_E_28
+  - first:
+      213: 7752281573158120961
+    second: barco1_spritesheet_stand_E_29
+  - first:
+      213: -800063966023512531
+    second: barco1_spritesheet_stand_E_30
+  - first:
+      213: 7440017794136442265
+    second: barco1_spritesheet_stand_E_31
+  - first:
+      213: 4875316023334908235
+    second: barco1_spritesheet_stand_E_32
+  - first:
+      213: 822893431930502573
+    second: barco1_spritesheet_stand_E_33
+  - first:
+      213: -3950908610192494630
+    second: barco1_spritesheet_stand_E_34
+  - first:
+      213: 6065073564176003729
+    second: barco1_spritesheet_stand_E_35
+  - first:
+      213: 6340360707361304893
+    second: barco1_spritesheet_stand_E_1
+  - first:
+      213: -1237968022234696609
+    second: barco1_spritesheet_stand_E_2
+  - first:
+      213: -1002137426724641482
+    second: barco1_spritesheet_stand_E_3
+  - first:
+      213: -5124528904718725551
+    second: barco1_spritesheet_stand_E_0
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: barco1_spritesheet_stand_E_1
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 768
+        height: 768
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d317d1e787c7df750800000000000000
+      internalID: 6340360707361304893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barco1_spritesheet_stand_E_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 768
+        height: 768
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f54786f84aad1dee0800000000000000
+      internalID: -1237968022234696609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barco1_spritesheet_stand_E_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 768
+        height: 768
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63524f7e151b712f0800000000000000
+      internalID: -1002137426724641482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barco1_spritesheet_stand_E_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 768
+        height: 768
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15ec401bc1402e8b0800000000000000
+      internalID: -5124528904718725551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f79b9a97ac863b1418c26e72aa4a10b0, type: 3}
+  m_Name: Apocalipsis
+  m_EditorClassIdentifier: 
+  _name: Apocalipsis
+  _magicWords: "Rahma Na\xF1arak O'al"
+  _description: "Causa da\xF1o a un usuario o NPC"
+  _requiredMana: 1000
+  _requiredStamina: 80
+  _visualEffectPrefab: {fileID: 7966839016517902717, guid: 7ed4b3924b223554c8840b56bb257c3c,
+    type: 3}
+  _validTargets: 02000000
+  _effects:
+    _modifyAttributes:
+    - mModifiedAttribute: 0
+      mType: 0
+      mValue: -200

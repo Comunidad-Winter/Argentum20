@@ -1,0 +1,8 @@
+﻿public enum EffectTargetType
+{
+    ANY,
+    ANY_CHARACTER,
+    OTHER_CHARACTER_ONLY,
+    SELF_CHARACTER_ONLY,
+    EMPTY_TERRAIN_ONLY
+}

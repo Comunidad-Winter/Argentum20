@@ -1,0 +1,2290 @@
+fileFormatVersion: 2
+guid: a94d3993f34b8a44699815be05f52a43
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3173744295102967253
+    second: humano_standing_ropa_basic_0
+  - first:
+      213: -7704377317029998606
+    second: humano_standing_ropa_basic_1
+  - first:
+      213: 6726771446813201927
+    second: humano_standing_ropa_basic_2
+  - first:
+      213: 5238361514034922482
+    second: humano_standing_ropa_basic_3
+  - first:
+      213: 1376985690153032567
+    second: humano_standing_ropa_basic_4
+  - first:
+      213: 1562767218166577609
+    second: humano_standing_ropa_basic_5
+  - first:
+      213: 4045160383898037359
+    second: humano_standing_ropa_basic_6
+  - first:
+      213: -1956136258934740625
+    second: humano_standing_ropa_basic_7
+  - first:
+      213: -1309568165458648428
+    second: humano_standing_ropa_basic_8
+  - first:
+      213: -5202931746577779637
+    second: humano_standing_ropa_basic_9
+  - first:
+      213: -2215056485528092214
+    second: humano_standing_ropa_basic_10
+  - first:
+      213: 8028178476583817696
+    second: humano_standing_ropa_basic_11
+  - first:
+      213: 5262154579443659894
+    second: humano_standing_ropa_basic_12
+  - first:
+      213: 7319358358114939195
+    second: humano_standing_ropa_basic_13
+  - first:
+      213: -7174382708710324045
+    second: humano_standing_ropa_basic_14
+  - first:
+      213: -34478784774394839
+    second: humano_standing_ropa_basic_15
+  - first:
+      213: 6740240840348975256
+    second: humano_standing_ropa_basic_16
+  - first:
+      213: -8507070925075781342
+    second: humano_standing_ropa_basic_17
+  - first:
+      213: -245297429726679180
+    second: humano_standing_ropa_basic_18
+  - first:
+      213: -2259373824763065116
+    second: humano_standing_ropa_basic_19
+  - first:
+      213: 4957029396844906818
+    second: humano_standing_ropa_basic_20
+  - first:
+      213: 1167173494017021946
+    second: humano_standing_ropa_basic_21
+  - first:
+      213: -8950400982937035671
+    second: humano_standing_ropa_basic_22
+  - first:
+      213: -8316002296247620638
+    second: humano_standing_ropa_basic_23
+  - first:
+      213: 1765119076433792391
+    second: humano_standing_ropa_basic_24
+  - first:
+      213: 1787015742446201234
+    second: humano_standing_ropa_basic_25
+  - first:
+      213: 6678878878270055174
+    second: humano_standing_ropa_basic_26
+  - first:
+      213: 5692238861642493431
+    second: humano_standing_ropa_basic_27
+  - first:
+      213: 5740037898376373170
+    second: humano_standing_ropa_basic_28
+  - first:
+      213: 4329814645838233822
+    second: humano_standing_ropa_basic_29
+  - first:
+      213: -5429178952966410549
+    second: humano_standing_ropa_basic_30
+  - first:
+      213: -8904819603582614658
+    second: humano_standing_ropa_basic_31
+  - first:
+      213: 758247417087464621
+    second: humano_standing_ropa_basic_32
+  - first:
+      213: 6250530065914606075
+    second: humano_standing_ropa_basic_33
+  - first:
+      213: 6698827822568526675
+    second: humano_standing_ropa_basic_34
+  - first:
+      213: -8169281248398078303
+    second: humano_standing_ropa_basic_35
+  - first:
+      213: 1184661810436926409
+    second: humano_standing_ropa_basic_36
+  - first:
+      213: -3748209615910533769
+    second: humano_standing_ropa_basic_37
+  - first:
+      213: 7533304586225956684
+    second: humano_standing_ropa_basic_38
+  - first:
+      213: -5986010324706989837
+    second: humano_standing_ropa_basic_39
+  - first:
+      213: 2873757726080125104
+    second: humano_standing_ropa_basic_40
+  - first:
+      213: -5259134420144538853
+    second: humano_standing_ropa_basic_41
+  - first:
+      213: 7823579380113729141
+    second: humano_standing_ropa_basic_42
+  - first:
+      213: 7887500310657520074
+    second: humano_standing_ropa_basic_43
+  - first:
+      213: 6822338715454338184
+    second: humano_standing_ropa_basic_44
+  - first:
+      213: 8538928894241088849
+    second: humano_standing_ropa_basic_45
+  - first:
+      213: -4969088683593492104
+    second: humano_standing_ropa_basic_46
+  - first:
+      213: -8523029699287757867
+    second: humano_standing_ropa_basic_47
+  - first:
+      213: 1032214196364373908
+    second: humano_standing_ropa_basic_48
+  - first:
+      213: 4001475153257153844
+    second: humano_standing_ropa_basic_49
+  - first:
+      213: -6603526280495019104
+    second: humano_standing_ropa_basic_50
+  - first:
+      213: -7655816770359679577
+    second: humano_standing_ropa_basic_51
+  - first:
+      213: 7540820447847802789
+    second: humano_standing_ropa_basic_52
+  - first:
+      213: 7840462203075694130
+    second: humano_standing_ropa_basic_53
+  - first:
+      213: 998284156094020912
+    second: humano_standing_ropa_basic_54
+  - first:
+      213: -3109760277766564845
+    second: humano_standing_ropa_basic_55
+  - first:
+      213: 6912319064946036212
+    second: humano_standing_ropa_basic_56
+  - first:
+      213: 4634057420595965223
+    second: humano_standing_ropa_basic_57
+  - first:
+      213: -7701851601271237795
+    second: humano_standing_ropa_basic_58
+  - first:
+      213: -7555697163862883955
+    second: humano_standing_ropa_basic_59
+  - first:
+      213: -8722837191881458201
+    second: humano_standing_ropa_basic_60
+  - first:
+      213: -1189809104315658312
+    second: humano_standing_ropa_basic_61
+  - first:
+      213: 2284374863011927476
+    second: humano_standing_ropa_basic_62
+  - first:
+      213: 7260097656316818379
+    second: humano_standing_ropa_basic_63
+  - first:
+      213: 3714906159891114276
+    second: humano_standing_ropa_basic_64
+  - first:
+      213: 2222551041961688833
+    second: humano_standing_ropa_basic_65
+  - first:
+      213: 6149425498179412974
+    second: humano_standing_ropa_basic_66
+  - first:
+      213: 4067456343131897318
+    second: humano_standing_ropa_basic_67
+  - first:
+      213: 9036801365332660212
+    second: humano_standing_ropa_basic_68
+  - first:
+      213: -7257974965713850345
+    second: humano_standing_ropa_basic_69
+  - first:
+      213: -1566014755803606125
+    second: humano_standing_ropa_basic_70
+  - first:
+      213: -1838998982001515080
+    second: humano_standing_ropa_basic_71
+  - first:
+      213: 5178951775364309048
+    second: humano_standing_ropa_basic_72
+  - first:
+      213: 7289865605552362422
+    second: humano_standing_ropa_basic_73
+  - first:
+      213: 356184009223311590
+    second: humano_standing_ropa_basic_74
+  - first:
+      213: -8794191787522843334
+    second: humano_standing_ropa_basic_75
+  - first:
+      213: -9040287210104169162
+    second: humano_standing_ropa_basic_76
+  - first:
+      213: -6348944126013403695
+    second: humano_standing_ropa_basic_77
+  - first:
+      213: -3529087189207558415
+    second: humano_standing_ropa_basic_78
+  - first:
+      213: 5415077483954407059
+    second: humano_standing_ropa_basic_79
+  - first:
+      213: 6002774936734799942
+    second: humano_standing_ropa_basic_0
+  - first:
+      213: -1872649236793296819
+    second: humano_standing_ropa_basic_1
+  - first:
+      213: 4566540638919154113
+    second: humano_standing_ropa_basic_2
+  - first:
+      213: -7623269513011685776
+    second: humano_standing_ropa_basic_3
+  - first:
+      213: -3547187307411241254
+    second: humano_standing_ropa_basic_4
+  - first:
+      213: 1904917023758940592
+    second: humano_standing_ropa_basic_5
+  - first:
+      213: -1035048059749801179
+    second: humano_standing_ropa_basic_6
+  - first:
+      213: -4779309250802980060
+    second: humano_standing_ropa_basic_7
+  - first:
+      213: -1870134116642512400
+    second: humano_standing_ropa_basic_8
+  - first:
+      213: -6887165096684665257
+    second: humano_standing_ropa_basic_9
+  - first:
+      213: 2839168855544097369
+    second: humano_standing_ropa_basic_10
+  - first:
+      213: -5736671235095563680
+    second: humano_standing_ropa_basic_11
+  - first:
+      213: 4944021730112642284
+    second: humano_standing_ropa_basic_12
+  - first:
+      213: -455669405940872831
+    second: humano_standing_ropa_basic_13
+  - first:
+      213: -533076433680395184
+    second: humano_standing_ropa_basic_14
+  - first:
+      213: 2211282899051496851
+    second: humano_standing_ropa_basic_15
+  - first:
+      213: -2241837308354956194
+    second: humano_standing_ropa_basic_16
+  - first:
+      213: -8940708705656126198
+    second: humano_standing_ropa_basic_17
+  - first:
+      213: 1650151022045532212
+    second: humano_standing_ropa_basic_18
+  - first:
+      213: -5054651004719865823
+    second: humano_standing_ropa_basic_19
+  - first:
+      213: 5175074508178689255
+    second: humano_standing_ropa_basic_20
+  - first:
+      213: 5550128928989751108
+    second: humano_standing_ropa_basic_21
+  - first:
+      213: -8120153372532403482
+    second: humano_standing_ropa_basic_22
+  - first:
+      213: -5173818120063733526
+    second: humano_standing_ropa_basic_23
+  - first:
+      213: -2056752293267878541
+    second: humano_standing_ropa_basic_24
+  - first:
+      213: 1383135111251158218
+    second: humano_standing_ropa_basic_25
+  - first:
+      213: -841169118822448487
+    second: humano_standing_ropa_basic_26
+  - first:
+      213: -5956957991360621463
+    second: humano_standing_ropa_basic_27
+  - first:
+      213: -4505307956357511393
+    second: humano_standing_ropa_basic_28
+  - first:
+      213: -5626736926717313071
+    second: humano_standing_ropa_basic_29
+  - first:
+      213: 8977956315558317052
+    second: humano_standing_ropa_basic_30
+  - first:
+      213: -6043393714678505733
+    second: humano_standing_ropa_basic_31
+  - first:
+      213: 2210917502209734947
+    second: humano_standing_ropa_basic_32
+  - first:
+      213: 8723020744999200720
+    second: humano_standing_ropa_basic_33
+  - first:
+      213: 163070567583370079
+    second: humano_standing_ropa_basic_34
+  - first:
+      213: -6689475333628071317
+    second: humano_standing_ropa_basic_35
+  - first:
+      213: 7228659671878563183
+    second: humano_standing_ropa_basic_36
+  - first:
+      213: 4165889799917333128
+    second: humano_standing_ropa_basic_37
+  - first:
+      213: 9080619660721061510
+    second: humano_standing_ropa_basic_38
+  - first:
+      213: -90887197834151001
+    second: humano_standing_ropa_basic_39
+  - first:
+      213: 9211922601336893239
+    second: humano_standing_ropa_basic_40
+  - first:
+      213: -7659270326672732050
+    second: humano_standing_ropa_basic_41
+  - first:
+      213: -3851922635680994285
+    second: humano_standing_ropa_basic_42
+  - first:
+      213: 8754361160191456351
+    second: humano_standing_ropa_basic_43
+  - first:
+      213: 2757594504769830631
+    second: humano_standing_ropa_basic_44
+  - first:
+      213: -5340857991179174199
+    second: humano_standing_ropa_basic_45
+  - first:
+      213: -4696719595965380426
+    second: humano_standing_ropa_basic_46
+  - first:
+      213: 883891168997311554
+    second: humano_standing_ropa_basic_47
+  - first:
+      213: 2060607355634367226
+    second: humano_standing_ropa_basic_48
+  - first:
+      213: -1455800520600420243
+    second: humano_standing_ropa_basic_49
+  - first:
+      213: 9032530063945963990
+    second: humano_standing_ropa_basic_50
+  - first:
+      213: 8502319527760099148
+    second: humano_standing_ropa_basic_51
+  - first:
+      213: -3397005871108958221
+    second: humano_standing_ropa_basic_52
+  - first:
+      213: 99296968800196353
+    second: humano_standing_ropa_basic_53
+  - first:
+      213: -8630981404866285279
+    second: humano_standing_ropa_basic_54
+  - first:
+      213: 6796578796885990219
+    second: humano_standing_ropa_basic_55
+  - first:
+      213: -3527718434820686682
+    second: humano_standing_ropa_basic_56
+  - first:
+      213: -6231032320163497812
+    second: humano_standing_ropa_basic_57
+  - first:
+      213: -4708980457624118764
+    second: humano_standing_ropa_basic_58
+  - first:
+      213: 1581108429553708629
+    second: humano_standing_ropa_basic_59
+  - first:
+      213: -5228323698243232608
+    second: humano_standing_ropa_basic_60
+  - first:
+      213: -1286832969994344842
+    second: humano_standing_ropa_basic_61
+  - first:
+      213: 9056914099743667507
+    second: humano_standing_ropa_basic_62
+  - first:
+      213: -7885932212601884572
+    second: humano_standing_ropa_basic_63
+  - first:
+      213: -1544214927669556943
+    second: humano_standing_ropa_basic_64
+  - first:
+      213: -3764938436876615983
+    second: humano_standing_ropa_basic_65
+  - first:
+      213: 2085604910298253130
+    second: humano_standing_ropa_basic_66
+  - first:
+      213: 3782044691746592082
+    second: humano_standing_ropa_basic_67
+  - first:
+      213: 1401366410534642546
+    second: humano_standing_ropa_basic_68
+  - first:
+      213: -8026739584698427777
+    second: humano_standing_ropa_basic_69
+  - first:
+      213: -7805106075016494888
+    second: humano_standing_ropa_basic_70
+  - first:
+      213: 6021238572385679590
+    second: humano_standing_ropa_basic_71
+  - first:
+      213: -5940760765787512444
+    second: humano_standing_ropa_basic_72
+  - first:
+      213: -2723659137852516697
+    second: humano_standing_ropa_basic_73
+  - first:
+      213: 1041013370610831702
+    second: humano_standing_ropa_basic_74
+  - first:
+      213: 8277859055104461918
+    second: humano_standing_ropa_basic_75
+  - first:
+      213: 5278827621686243564
+    second: humano_standing_ropa_basic_76
+  - first:
+      213: -2583272475501536488
+    second: humano_standing_ropa_basic_77
+  - first:
+      213: -5731533256856637027
+    second: humano_standing_ropa_basic_78
+  - first:
+      213: 609951722776612678
+    second: humano_standing_ropa_basic_79
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64812ba30042e4350800000000000000
+      internalID: 6002774936734799942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d48770cd0730306e0800000000000000
+      internalID: -1872649236793296819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c9592b348c9f5f30800000000000000
+      internalID: 4566540638919154113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0769fd984c4b43690800000000000000
+      internalID: -7623269513011685776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad68afd00fbd5cec0800000000000000
+      internalID: -3547187307411241254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b9febfb0ff9f6a10800000000000000
+      internalID: 1904917023758940592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 523e7290645c2a1f0800000000000000
+      internalID: -1035048059749801179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_7
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42b662aee8b7cadb0800000000000000
+      internalID: -4779309250802980060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_8
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f12f27ede2fb06e0800000000000000
+      internalID: -1870134116642512400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_9
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75644a695dfdb60a0800000000000000
+      internalID: -6887165096684665257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95aee041801c66720800000000000000
+      internalID: 2839168855544097369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_11
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0627de6e7ef3360b0800000000000000
+      internalID: -5736671235095563680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cec1d29a191bc9440800000000000000
+      internalID: 4944021730112642284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18981ebe6132da9f0800000000000000
+      internalID: -455669405940872831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_14
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0541954dec12a98f0800000000000000
+      internalID: -533076433680395184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_15
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3954cdfa41e00be10800000000000000
+      internalID: 2211282899051496851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_16
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e54f84788d463e0e0800000000000000
+      internalID: -2241837308354956194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_17
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a05cf175dc83ce380800000000000000
+      internalID: -8940708705656126198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_18
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43095c69c9386e610800000000000000
+      internalID: 1650151022045532212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_19
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 120e91021b54ad9b0800000000000000
+      internalID: -5054651004719865823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ec8b22b8de81d740800000000000000
+      internalID: 5175074508178689255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_21
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 447ad06ead4060d40800000000000000
+      internalID: 5550128928989751108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_22
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e21484b78b6f4f80800000000000000
+      internalID: -8120153372532403482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_23
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae03f15f4d7e238b0800000000000000
+      internalID: -5173818120063733526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_24
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37d4cc8bfa2f473e0800000000000000
+      internalID: -2056752293267878541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_25
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac4ee763e02e13310800000000000000
+      internalID: 1383135111251158218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_26
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9924f84a4219354f0800000000000000
+      internalID: -841169118822448487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_27
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9649607a442a45da0800000000000000
+      internalID: -5956957991360621463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_28
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f17c199a84ee971c0800000000000000
+      internalID: -4505307956357511393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_29
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dff07ea390d9e1b0800000000000000
+      internalID: -5626736926717313071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfb04d5a3bb189c70800000000000000
+      internalID: 8977956315558317052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_31
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfe52ce8f6d812ca0800000000000000
+      internalID: -6043393714678505733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 329b7ea11c1ceae10800000000000000
+      internalID: 2210917502209734947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_33
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d76a0aa6256e0970800000000000000
+      internalID: 8723020744999200720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_34
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5bc02631d7534200800000000000000
+      internalID: 163070567583370079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_35
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b627c5d50a53a23a0800000000000000
+      internalID: -6689475333628071317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_36
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6573882cab515460800000000000000
+      internalID: 7228659671878563183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_37
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88aee7183b630d930800000000000000
+      internalID: 4165889799917333128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_38
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ef4b16877d40e70800000000000000
+      internalID: 9080619660721061510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_39
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7abf67a339a1dbef0800000000000000
+      internalID: -90887197834151001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73fe31f8cc257df70800000000000000
+      internalID: 9211922601336893239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_41
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e605bfbe73ec4b590800000000000000
+      internalID: -7659270326672732050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_42
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31ca2fd65c83b8ac0800000000000000
+      internalID: -3851922635680994285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_43
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5430b4b71dbd7970800000000000000
+      internalID: 8754361160191456351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_44
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eeff5b7791f44620800000000000000
+      internalID: 2757594504769830631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_45
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ce75ff34f571e5b0800000000000000
+      internalID: -5340857991179174199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_46
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b80ed86966e1deb0800000000000000
+      internalID: -4696719595965380426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_47
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 244803cc556344c00800000000000000
+      internalID: 883891168997311554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_48
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afab42ee87fb89c10800000000000000
+      internalID: 2060607355634367226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_49
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6088c1c325fbcbe0800000000000000
+      internalID: -1455800520600420243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d9198c9c3ef95d70800000000000000
+      internalID: 9032530063945963990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_51
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c47f103309e4ef570800000000000000
+      internalID: 8502319527760099148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_52
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f752a888296bd0d0800000000000000
+      internalID: -3397005871108958221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_53
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 107db982116c06100800000000000000
+      internalID: 99296968800196353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_54
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12171f32428983880800000000000000
+      internalID: -8630981404866285279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_55
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4b575ce76c425e50800000000000000
+      internalID: 6796578796885990219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_56
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ac7ae036c60b0fc0800000000000000
+      internalID: -3527718434820686682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_57
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca83da44e1de689a0800000000000000
+      internalID: -6231032320163497812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_58
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41ade09193756aeb0800000000000000
+      internalID: -4708980457624118764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_59
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55eace65db931f510800000000000000
+      internalID: 1581108429553708629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ac947b1c434177b0800000000000000
+      internalID: -5228323698243232608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_61
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 676e9325b30442ee0800000000000000
+      internalID: -1286832969994344842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_62
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 335b27c536f90bd70800000000000000
+      internalID: 9056914099743667507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_63
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 460fd012f6a8f8290800000000000000
+      internalID: -7885932212601884572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_64
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 139866374b8d19ae0800000000000000
+      internalID: -1544214927669556943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_65
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1de31cc607040cbc0800000000000000
+      internalID: -3764938436876615983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_66
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a47432cad9e81fc10800000000000000
+      internalID: 2085604910298253130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_67
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2551538eb958c7430800000000000000
+      internalID: 3782044691746592082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_68
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 273e41c5357a27310800000000000000
+      internalID: 1401366410534642546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_69
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f76db7d00ea4b9090800000000000000
+      internalID: -8026739584698427777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d00664c061bea390800000000000000
+      internalID: -7805106075016494888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_71
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e8bde6649cbf8350800000000000000
+      internalID: 6021238572385679590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_72
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48168ab1f8d2e8da0800000000000000
+      internalID: -5940760765787512444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_73
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a6dd07d17e933ad0800000000000000
+      internalID: -2723659137852516697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_74
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 651d0b1252c627e00800000000000000
+      internalID: 1041013370610831702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_75
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5c8040e3fcd0e270800000000000000
+      internalID: 8277859055104461918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_76
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce0f025e0c9224940800000000000000
+      internalID: 5278827621686243564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_77
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81bdfabce5f562cd0800000000000000
+      internalID: -2583272475501536488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_78
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d91f8beaed08570b0800000000000000
+      internalID: -5731533256856637027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_ropa_basic_79
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64fcc363cdbf67800800000000000000
+      internalID: 609951722776612678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

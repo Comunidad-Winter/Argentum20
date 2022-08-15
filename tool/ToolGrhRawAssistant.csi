@@ -1,0 +1,8 @@
+[History]
+1=#P0#=mb	#P1#=cmdRecargarMoldes_Click	#P2#=GrhRawAssistant/frmMain/cmdRecargarMoldes_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20210608141219	#P7#=0	#P8#=6	.
+2=#P0#=mb	#P1#=LoadOldMolde	#P2#=GrhRawAssistant/General/LoadOldMolde	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20210608134150	#P7#=0	#P8#=17	.
+3=#P0#=mb	#P1#=LoadOldGrhs	#P2#=GrhRawAssistant/General/LoadOldGrhs	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20210608134136	#P7#=0	#P8#=41	.
+4=#P0#=mb	#P1#=cmdRecargarGRHs_Click	#P2#=GrhRawAssistant/frmMain/cmdRecargarGRHs_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20210608134036	#P7#=0	#P8#=1	.
+5=#P0#=mb	#P1#=RefreshImage	#P2#=GrhRawAssistant/General/RefreshImage	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20210608134116	#P7#=0	#P8#=-2	.
+6=#P0#=mb	#P1#=PreviewPic_MouseDown	#P2#=GrhRawAssistant/frmMain/PreviewPic_MouseDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20210608102828	#P7#=0	#P8#=8	.
+7=#P0#=mb	#P1#=PreviewPic_KeyDown	#P2#=GrhRawAssistant/frmMain/PreviewPic_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20210608102749	#P7#=0	#P8#=0	.

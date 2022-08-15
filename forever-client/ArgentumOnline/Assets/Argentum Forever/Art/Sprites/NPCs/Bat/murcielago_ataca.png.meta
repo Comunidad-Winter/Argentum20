@@ -1,0 +1,1720 @@
+fileFormatVersion: 2
+guid: c38e48c43665fea4387ecf1df82be66b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 52240652661909804
+    second: murcielago_ataca_0
+  - first:
+      213: -6882570284415072428
+    second: murcielago_ataca_1
+  - first:
+      213: 6754953939690219056
+    second: murcielago_ataca_2
+  - first:
+      213: -2843391394490990377
+    second: murcielago_ataca_3
+  - first:
+      213: -6373083531606787056
+    second: murcielago_ataca_4
+  - first:
+      213: -463272515948936421
+    second: murcielago_ataca_5
+  - first:
+      213: 5984869672685302360
+    second: murcielago_ataca_6
+  - first:
+      213: -5340714154568203781
+    second: murcielago_ataca_7
+  - first:
+      213: 952900158452400350
+    second: murcielago_ataca_8
+  - first:
+      213: 1266329247848749782
+    second: murcielago_ataca_9
+  - first:
+      213: 5571500351469945919
+    second: murcielago_ataca_10
+  - first:
+      213: -8301902213458970009
+    second: murcielago_ataca_11
+  - first:
+      213: -6528412013243849558
+    second: murcielago_ataca_12
+  - first:
+      213: -6464164227451799582
+    second: murcielago_ataca_13
+  - first:
+      213: -8781419299131182672
+    second: murcielago_ataca_14
+  - first:
+      213: -7186488558757828780
+    second: murcielago_ataca_15
+  - first:
+      213: -7166114429592983942
+    second: murcielago_ataca_16
+  - first:
+      213: -876273602770068910
+    second: murcielago_ataca_17
+  - first:
+      213: 5397161680880814516
+    second: murcielago_ataca_18
+  - first:
+      213: -3236015258740929301
+    second: murcielago_ataca_19
+  - first:
+      213: -3386638756882156133
+    second: murcielago_ataca_20
+  - first:
+      213: 6288392648227653387
+    second: murcielago_ataca_21
+  - first:
+      213: -5207355786599470084
+    second: murcielago_ataca_22
+  - first:
+      213: 7813378616630979415
+    second: murcielago_ataca_23
+  - first:
+      213: 8824219485856153521
+    second: murcielago_ataca_24
+  - first:
+      213: 5532197688468625409
+    second: murcielago_ataca_25
+  - first:
+      213: -4114150796739311980
+    second: murcielago_ataca_26
+  - first:
+      213: -6173657437524579418
+    second: murcielago_ataca_27
+  - first:
+      213: 7991316734768711996
+    second: murcielago_ataca_28
+  - first:
+      213: 2781359643806333833
+    second: murcielago_ataca_29
+  - first:
+      213: 1452378873095571631
+    second: murcielago_ataca_30
+  - first:
+      213: -8980562008865626472
+    second: murcielago_ataca_31
+  - first:
+      213: -1272018955862649420
+    second: murcielago_ataca_32
+  - first:
+      213: 8707111290897925884
+    second: murcielago_ataca_33
+  - first:
+      213: 4789336365555640981
+    second: murcielago_ataca_34
+  - first:
+      213: 8656893860938820641
+    second: murcielago_ataca_35
+  - first:
+      213: 461675194550063515
+    second: murcielago_ataca_36
+  - first:
+      213: 2276876930503941104
+    second: murcielago_ataca_37
+  - first:
+      213: 1303951276345544249
+    second: murcielago_ataca_38
+  - first:
+      213: 6124010537003354698
+    second: murcielago_ataca_39
+  - first:
+      213: 3093622600507416673
+    second: murcielago_ataca_40
+  - first:
+      213: -6238238870536353723
+    second: murcielago_ataca_41
+  - first:
+      213: -4045572902869527310
+    second: murcielago_ataca_42
+  - first:
+      213: 9187897666751323129
+    second: murcielago_ataca_43
+  - first:
+      213: -7935057599618918877
+    second: murcielago_ataca_44
+  - first:
+      213: 5044040040842512957
+    second: murcielago_ataca_45
+  - first:
+      213: 3407770411788255166
+    second: murcielago_ataca_46
+  - first:
+      213: -8478949167162187920
+    second: murcielago_ataca_47
+  - first:
+      213: 359666171061450202
+    second: murcielago_ataca_48
+  - first:
+      213: 7865132592875258458
+    second: murcielago_ataca_49
+  - first:
+      213: 2652595480988091898
+    second: murcielago_ataca_50
+  - first:
+      213: 5561200678975727113
+    second: murcielago_ataca_51
+  - first:
+      213: -6364001452706310568
+    second: murcielago_ataca_52
+  - first:
+      213: 545983451749947437
+    second: murcielago_ataca_53
+  - first:
+      213: -2154385641446410164
+    second: murcielago_ataca_54
+  - first:
+      213: -6221840878296079024
+    second: murcielago_ataca_55
+  - first:
+      213: -852148707946137783
+    second: murcielago_ataca_56
+  - first:
+      213: -4965127408924084864
+    second: murcielago_ataca_57
+  - first:
+      213: 6221500617365810572
+    second: murcielago_ataca_58
+  - first:
+      213: 7553771555985741271
+    second: murcielago_ataca_59
+  - first:
+      213: 6071659935403492833
+    second: murcielago_ataca_60
+  - first:
+      213: -7453016630449720857
+    second: murcielago_ataca_61
+  - first:
+      213: 7071216635936380943
+    second: murcielago_ataca_62
+  - first:
+      213: 2287203263906219944
+    second: murcielago_ataca_63
+  - first:
+      213: 8358894046515925024
+    second: murcielago_ataca_64
+  - first:
+      213: 7129275255353140653
+    second: murcielago_ataca_65
+  - first:
+      213: -4562179047934647236
+    second: murcielago_ataca_66
+  - first:
+      213: 1964997289930924008
+    second: murcielago_ataca_67
+  - first:
+      213: -5923937946421623619
+    second: murcielago_ataca_68
+  - first:
+      213: 6873389599321505239
+    second: murcielago_ataca_69
+  - first:
+      213: 7276422043358703843
+    second: murcielago_ataca_70
+  - first:
+      213: -3749517717454038454
+    second: murcielago_ataca_71
+  - first:
+      213: 2155243146914565108
+    second: murcielago_ataca_72
+  - first:
+      213: -455798138983188584
+    second: murcielago_ataca_0
+  - first:
+      213: 7928997964557341192
+    second: murcielago_ataca_1
+  - first:
+      213: 6654798444241593686
+    second: murcielago_ataca_2
+  - first:
+      213: -2575974200896114830
+    second: murcielago_ataca_3
+  - first:
+      213: 436872635557337559
+    second: murcielago_ataca_4
+  - first:
+      213: 6547651299862470983
+    second: murcielago_ataca_5
+  - first:
+      213: -6789499105457492865
+    second: murcielago_ataca_6
+  - first:
+      213: -3393357150994846152
+    second: murcielago_ataca_7
+  - first:
+      213: 5094861967104329287
+    second: murcielago_ataca_8
+  - first:
+      213: 3377934597848911083
+    second: murcielago_ataca_9
+  - first:
+      213: 3196841786473421934
+    second: murcielago_ataca_10
+  - first:
+      213: 6234416380204017084
+    second: murcielago_ataca_11
+  - first:
+      213: 6748404581276032928
+    second: murcielago_ataca_12
+  - first:
+      213: 9190719648978340438
+    second: murcielago_ataca_13
+  - first:
+      213: 3682965621241386580
+    second: murcielago_ataca_14
+  - first:
+      213: 8059479999424401422
+    second: murcielago_ataca_15
+  - first:
+      213: -1665542983663620758
+    second: murcielago_ataca_16
+  - first:
+      213: -6079019476126853804
+    second: murcielago_ataca_17
+  - first:
+      213: -3578681491556287321
+    second: murcielago_ataca_18
+  - first:
+      213: 830335403166407315
+    second: murcielago_ataca_19
+  - first:
+      213: -6161610601374188683
+    second: murcielago_ataca_20
+  - first:
+      213: -2532429412925586305
+    second: murcielago_ataca_21
+  - first:
+      213: 4623068006196740649
+    second: murcielago_ataca_22
+  - first:
+      213: 5683555362938487700
+    second: murcielago_ataca_23
+  - first:
+      213: -3465365187419341407
+    second: murcielago_ataca_24
+  - first:
+      213: 7386980842321608704
+    second: murcielago_ataca_25
+  - first:
+      213: -862180314771921661
+    second: murcielago_ataca_26
+  - first:
+      213: -1887591530389753594
+    second: murcielago_ataca_27
+  - first:
+      213: -1681077645814003630
+    second: murcielago_ataca_28
+  - first:
+      213: 290428740425172144
+    second: murcielago_ataca_29
+  - first:
+      213: 6674454663542579412
+    second: murcielago_ataca_30
+  - first:
+      213: 7414211827438022947
+    second: murcielago_ataca_31
+  - first:
+      213: 1489673696599996186
+    second: murcielago_ataca_32
+  - first:
+      213: 6199123495173345561
+    second: murcielago_ataca_33
+  - first:
+      213: -9043533833419927229
+    second: murcielago_ataca_34
+  - first:
+      213: 3979094970714282316
+    second: murcielago_ataca_35
+  - first:
+      213: 6055694792361251251
+    second: murcielago_ataca_36
+  - first:
+      213: 4069534254785225373
+    second: murcielago_ataca_37
+  - first:
+      213: -25893096388232105
+    second: murcielago_ataca_38
+  - first:
+      213: 3014780851853974028
+    second: murcielago_ataca_39
+  - first:
+      213: 3118667247694172280
+    second: murcielago_ataca_73
+  - first:
+      213: -5446425532979892019
+    second: murcielago_ataca_74
+  - first:
+      213: -5611034581871860903
+    second: murcielago_ataca_75
+  - first:
+      213: -1754180484921418749
+    second: murcielago_ataca_76
+  - first:
+      213: 3302224192156206730
+    second: murcielago_ataca_77
+  - first:
+      213: 6221097423518632455
+    second: murcielago_ataca_78
+  - first:
+      213: -7778936519848165653
+    second: murcielago_ataca_79
+  - first:
+      213: 6733291783589107557
+    second: murcielago_ataca_80
+  - first:
+      213: -2160483386651283821
+    second: murcielago_ataca_81
+  - first:
+      213: -5545722550063833127
+    second: murcielago_ataca_82
+  - first:
+      213: -3752453187943533457
+    second: murcielago_ataca_83
+  - first:
+      213: -2099835415690360119
+    second: murcielago_ataca_84
+  - first:
+      213: 8330438687840279772
+    second: murcielago_ataca_85
+  - first:
+      213: 6516473719465203664
+    second: murcielago_ataca_86
+  - first:
+      213: 6987165814330499145
+    second: murcielago_ataca_87
+  - first:
+      213: 597052387846756447
+    second: murcielago_ataca_88
+  - first:
+      213: -3472995032093878874
+    second: murcielago_ataca_89
+  - first:
+      213: 5700868665249092282
+    second: murcielago_ataca_90
+  - first:
+      213: -3260878645673960557
+    second: murcielago_ataca_91
+  - first:
+      213: -2778599956602106077
+    second: murcielago_ataca_92
+  - first:
+      213: -5552288695273208725
+    second: murcielago_ataca_93
+  - first:
+      213: -5344838665885212333
+    second: murcielago_ataca_94
+  - first:
+      213: 7565824782754507204
+    second: murcielago_ataca_95
+  - first:
+      213: 8808746570323201805
+    second: murcielago_ataca_96
+  - first:
+      213: -3873891496531974226
+    second: murcielago_ataca_97
+  - first:
+      213: 7356689343533459540
+    second: murcielago_ataca_98
+  - first:
+      213: -145715009020507525
+    second: murcielago_ataca_99
+  - first:
+      213: -2064582241332859381
+    second: murcielago_ataca_100
+  - first:
+      213: 5025166439525261522
+    second: murcielago_ataca_101
+  - first:
+      213: -3189888432224092955
+    second: murcielago_ataca_102
+  - first:
+      213: 5663887282516685098
+    second: murcielago_ataca_103
+  - first:
+      213: -5604766017472778103
+    second: murcielago_ataca_104
+  - first:
+      213: 5805968631959336318
+    second: murcielago_ataca_105
+  - first:
+      213: 127653885608724685
+    second: murcielago_ataca_106
+  - first:
+      213: 7930326931121799775
+    second: murcielago_ataca_107
+  - first:
+      213: 7403232498860008901
+    second: murcielago_ataca_108
+  - first:
+      213: -5146580898217864544
+    second: murcielago_ataca_109
+  - first:
+      213: -6460282760826591914
+    second: murcielago_ataca_110
+  - first:
+      213: 8365413075792476188
+    second: murcielago_ataca_111
+  - first:
+      213: 8660019982149478485
+    second: murcielago_ataca_112
+  - first:
+      213: 378765190957758931
+    second: murcielago_ataca_113
+  - first:
+      213: 4904624482209862018
+    second: murcielago_ataca_114
+  - first:
+      213: 5155609737528978982
+    second: murcielago_ataca_115
+  - first:
+      213: 3996619689119457327
+    second: murcielago_ataca_116
+  - first:
+      213: 8754614310880914089
+    second: murcielago_ataca_117
+  - first:
+      213: 4290341578440657705
+    second: murcielago_ataca_118
+  - first:
+      213: -4730535968272771975
+    second: murcielago_ataca_119
+  - first:
+      213: 2649697739632413607
+    second: murcielago_ataca_120
+  - first:
+      213: 1179142260345389846
+    second: murcielago_ataca_121
+  - first:
+      213: -6953583209194025312
+    second: murcielago_ataca_122
+  - first:
+      213: 2349122172864419449
+    second: murcielago_ataca_123
+  - first:
+      213: 4272760040890123030
+    second: murcielago_ataca_124
+  - first:
+      213: 4856700803328316824
+    second: murcielago_ataca_125
+  - first:
+      213: -721451877254544342
+    second: murcielago_ataca_126
+  - first:
+      213: 3498666250178600111
+    second: murcielago_ataca_127
+  - first:
+      213: 4679449306795662853
+    second: murcielago_ataca_128
+  - first:
+      213: -6862454793552757261
+    second: murcielago_ataca_129
+  - first:
+      213: 7406381986856692607
+    second: murcielago_ataca_130
+  - first:
+      213: -8301873886155667104
+    second: murcielago_ataca_131
+  - first:
+      213: 64703185464921019
+    second: murcielago_ataca_132
+  - first:
+      213: -8784549137790305112
+    second: murcielago_ataca_133
+  - first:
+      213: 5687006183562729315
+    second: murcielago_ataca_134
+  - first:
+      213: 2571969993585351355
+    second: murcielago_ataca_135
+  - first:
+      213: 8052538064831638260
+    second: murcielago_ataca_136
+  - first:
+      213: -4315300571981785783
+    second: murcielago_ataca_137
+  - first:
+      213: -5128044432261646177
+    second: murcielago_ataca_138
+  - first:
+      213: 2711529067355105233
+    second: murcielago_ataca_139
+  - first:
+      213: 7140041534037302719
+    second: murcielago_ataca_140
+  - first:
+      213: 8969618229628267314
+    second: murcielago_ataca_141
+  - first:
+      213: -5844698330891743414
+    second: murcielago_ataca_142
+  - first:
+      213: -7979536932484847192
+    second: murcielago_ataca_143
+  - first:
+      213: -2618409211158148329
+    second: murcielago_ataca_144
+  - first:
+      213: 7951135304877522362
+    second: murcielago_ataca_145
+  - first:
+      213: -7487402889317257866
+    second: murcielago_ataca_146
+  - first:
+      213: 2980100898823636431
+    second: murcielago_ataca_147
+  - first:
+      213: 8892654689981243374
+    second: murcielago_ataca_148
+  - first:
+      213: -7430206472525495610
+    second: murcielago_ataca_149
+  - first:
+      213: -6199119026512229424
+    second: murcielago_ataca_150
+  - first:
+      213: -6556993499035997352
+    second: murcielago_ataca_151
+  - first:
+      213: -6139408225149939227
+    second: murcielago_ataca_152
+  - first:
+      213: -3498050801084750941
+    second: murcielago_ataca_153
+  - first:
+      213: -4327019968387988405
+    second: murcielago_ataca_154
+  - first:
+      213: -6130150377994864662
+    second: murcielago_ataca_155
+  - first:
+      213: -4286674283423986701
+    second: murcielago_ataca_156
+  - first:
+      213: 3890329786245756183
+    second: murcielago_ataca_157
+  - first:
+      213: -8594085521531840744
+    second: murcielago_ataca_158
+  - first:
+      213: 5989731606119249079
+    second: murcielago_ataca_159
+  - first:
+      213: -2842052751623707805
+    second: murcielago_ataca_160
+  - first:
+      213: 3012759341916040160
+    second: murcielago_ataca_161
+  - first:
+      213: 1440961058324660280
+    second: murcielago_ataca_162
+  - first:
+      213: 5554277352811338507
+    second: murcielago_ataca_163
+  - first:
+      213: 8548000406783241736
+    second: murcielago_ataca_164
+  - first:
+      213: 5376078064656961250
+    second: murcielago_ataca_165
+  - first:
+      213: -4485925239628902007
+    second: murcielago_ataca_166
+  - first:
+      213: 8670110664324123904
+    second: murcielago_ataca_167
+  - first:
+      213: -275393654130116662
+    second: murcielago_ataca_168
+  - first:
+      213: -2773951005712755912
+    second: murcielago_ataca_169
+  - first:
+      213: 3917426265819444286
+    second: murcielago_ataca_170
+  - first:
+      213: 6070761262616148048
+    second: murcielago_ataca_171
+  - first:
+      213: -417736221340427477
+    second: murcielago_ataca_172
+  - first:
+      213: -846542359087627221
+    second: murcielago_ataca_173
+  - first:
+      213: 55112932326770389
+    second: murcielago_ataca_174
+  - first:
+      213: 8230799117968172764
+    second: murcielago_ataca_175
+  - first:
+      213: -5219290968862412816
+    second: murcielago_ataca_176
+  - first:
+      213: 2339231019755468874
+    second: murcielago_ataca_177
+  - first:
+      213: -7472757709580611305
+    second: murcielago_ataca_178
+  - first:
+      213: -4050338125721701298
+    second: murcielago_ataca_179
+  - first:
+      213: -8104396968297767710
+    second: murcielago_ataca_180
+  - first:
+      213: -7648448568394704153
+    second: murcielago_ataca_181
+  - first:
+      213: -5474289813875169849
+    second: murcielago_ataca_182
+  - first:
+      213: -4507064955497880000
+    second: murcielago_ataca_183
+  - first:
+      213: 5733326004593391824
+    second: murcielago_ataca_184
+  - first:
+      213: -4069337617167070420
+    second: murcielago_ataca_185
+  - first:
+      213: -7892273198983864488
+    second: murcielago_ataca_186
+  - first:
+      213: 5820675295639930996
+    second: murcielago_ataca_187
+  - first:
+      213: -498994873438701220
+    second: murcielago_ataca_188
+  - first:
+      213: -5327106020671869706
+    second: murcielago_ataca_189
+  - first:
+      213: 1514847237002691141
+    second: murcielago_ataca_190
+  - first:
+      213: -9135440394830490361
+    second: murcielago_ataca_191
+  - first:
+      213: 2453907372462297351
+    second: murcielago_ataca_192
+  - first:
+      213: -5346963299615992239
+    second: murcielago_ataca_193
+  - first:
+      213: 7772143899322054223
+    second: murcielago_ataca_194
+  - first:
+      213: -2132650500901677651
+    second: murcielago_ataca_195
+  - first:
+      213: 5018490896702132451
+    second: murcielago_ataca_196
+  - first:
+      213: -8603828049535107011
+    second: murcielago_ataca_197
+  - first:
+      213: 8191858199258481222
+    second: murcielago_ataca_198
+  - first:
+      213: 754831878103538503
+    second: murcielago_ataca_199
+  - first:
+      213: -3964333014007055967
+    second: murcielago_ataca_200
+  - first:
+      213: 5267671891743566196
+    second: murcielago_ataca_201
+  - first:
+      213: -2841810192757724301
+    second: murcielago_ataca_202
+  - first:
+      213: 1420660075648923374
+    second: murcielago_ataca_203
+  - first:
+      213: 3379584452467796566
+    second: murcielago_ataca_204
+  - first:
+      213: 2405715067730110920
+    second: murcielago_ataca_205
+  - first:
+      213: 242405845045258019
+    second: murcielago_ataca_206
+  - first:
+      213: 946181877185754241
+    second: murcielago_ataca_207
+  - first:
+      213: -6667765768595403802
+    second: murcielago_ataca_208
+  - first:
+      213: -8506313441126862337
+    second: murcielago_ataca_209
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: murcielago_ataca_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8977f9ce10eaca9f0800000000000000
+      internalID: -455798138983188584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_1
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8025c3e93a5790e60800000000000000
+      internalID: 7928997964557341192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_2
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 655a7d82de79a5c50800000000000000
+      internalID: 6654798444241593686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_3
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27f2405cc1d404cd0800000000000000
+      internalID: -2575974200896114830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_4
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 2744
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d9db7ee855101600800000000000000
+      internalID: 436872635557337559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7416d619a2eedda50800000000000000
+      internalID: 6547651299862470983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_6
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7caf50398ad6c1a0800000000000000
+      internalID: -6789499105457492865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_7
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83eabe266af58e0d0800000000000000
+      internalID: -3393357150994846152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_8
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 746c6e027f594b640800000000000000
+      internalID: 5094861967104329287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_9
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 2352
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bec4943ae95d0ee20800000000000000
+      internalID: 3377934597848911083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6c9fddcaa67d5c20800000000000000
+      internalID: 3196841786473421934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_11
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb5efeb9aa8158650800000000000000
+      internalID: 6234416380204017084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_12
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0af939b463627ad50800000000000000
+      internalID: 6748404581276032928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_13
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65a8e8383defb8f70800000000000000
+      internalID: 9190719648978340438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_14
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 1960
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 456911628b58c1330800000000000000
+      internalID: 3682965621241386580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e009e08cb5609df60800000000000000
+      internalID: 8059479999424401422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_16
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6de5941b7dc2e8e0800000000000000
+      internalID: -1665542983663620758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_17
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45517c69efbf2aba0800000000000000
+      internalID: -6079019476126853804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_18
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7acb583e428f55ec0800000000000000
+      internalID: -3578681491556287321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_19
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 1568
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39a1a2e56a1f58b00800000000000000
+      internalID: 830335403166407315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57b7fccbdcf8d7aa0800000000000000
+      internalID: -6161610601374188683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_21
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f74c1d7cdd00bdcd0800000000000000
+      internalID: -2532429412925586305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_22
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92284d98bdf682040800000000000000
+      internalID: 4623068006196740649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_23
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49307356d7b00ee40800000000000000
+      internalID: 5683555362938487700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_24
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 1176
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ad7ddae8bc88efc0800000000000000
+      internalID: -3465365187419341407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 000023d20f3d38660800000000000000
+      internalID: 7386980842321608704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_26
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3056fad529be804f0800000000000000
+      internalID: -862180314771921661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_27
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6013516018dedc5e0800000000000000
+      internalID: -1887591530389753594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_28
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2580861b9cc9ba8e0800000000000000
+      internalID: -1681077645814003630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_29
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 784
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b44b91966fc70400800000000000000
+      internalID: 290428740425172144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d0a7e9572d60ac50800000000000000
+      internalID: 6674454663542579412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_31
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32171f7ff5294e660800000000000000
+      internalID: 7414211827438022947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_32
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a17f51d95526ca410800000000000000
+      internalID: 1489673696599996186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_33
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911d59879f5b70650800000000000000
+      internalID: 6199123495173345561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_34
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 392
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34157c8a4e9ee7280800000000000000
+      internalID: -9043533833419927229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c49d7f03bc5983730800000000000000
+      internalID: 3979094970714282316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_36
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b110e644562a0450800000000000000
+      internalID: 6055694792361251251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_37
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d92e1c9e7d3e97830800000000000000
+      internalID: 4069534254785225373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_38
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75cf4a3bd5204aff0800000000000000
+      internalID: -25893096388232105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murcielago_ataca_39
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 0
+        width: 392
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0ad7663637a6d920800000000000000
+      internalID: 3014780851853974028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

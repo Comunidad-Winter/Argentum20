@@ -1,0 +1,21 @@
+Codigo/*.log
+logs/errores.log
+Render
+Mapas Convertidos
+Screenshots
+*.csi
+*.OBJ
+*.ldb
+*.exp
+*.lib
+*.dca
+*.scc
+*.tmp
+*.dll
+*.ocx
+*.lvw
+*.aps
+Argentum.exe
+AdminLibSetup.exe
+
+ 

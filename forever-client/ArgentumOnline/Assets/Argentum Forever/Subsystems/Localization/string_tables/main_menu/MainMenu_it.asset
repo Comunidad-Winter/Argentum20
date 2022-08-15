@@ -1,0 +1,399 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MainMenu_it
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: it
+  m_SharedData: {fileID: 11400000, guid: ce04b8004cef60dc193130c9173065bb, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 1
+    m_Localized: Giocare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2
+    m_Localized: Opzioni
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3
+    m_Localized: Partire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4
+    m_Localized: Nome utente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5
+    m_Localized: Parola d'ordine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6
+    m_Localized: Errore di autenticazione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7
+    m_Localized: L'account non esiste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8
+    m_Localized: "L'account \xE8 attualmente in uso e non \xE8 consentita pi\xF9
+      di una connessione per account."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9
+    m_Localized: Inserisci una password alfanumerica con un minimo di sei caratteri.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10
+    m_Localized: Inserisci un utente valido.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11
+    m_Localized: Errore di input
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12
+    m_Localized: Nome
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13
+    m_Localized: Cognome
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14
+    m_Localized: email
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15
+    m_Localized: Data di nascita
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16
+    m_Localized: Luogo di nascita
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17
+    m_Localized: Domanda Segreta 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18
+    m_Localized: Domanda Segreta 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19
+    m_Localized: Risposta 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20
+    m_Localized: Risposta 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21
+    m_Localized: Creare un profilo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 67
+    m_Localized: Password errata.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71
+    m_Localized: Le email non combaciano.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72
+    m_Localized: Codice di attivazione errato.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22
+    m_Localized: Non poteva collegarsi al server.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23
+    m_Localized: Errore di connessione.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24
+    m_Localized: Mobile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25
+    m_Localized: Errore di creazione dell'account.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26
+    m_Localized: "L'account esiste gi\xE0, prova un nome utente diverso."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27
+    m_Localized: "La password \xE8 troppo corta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28
+    m_Localized: "La password \xE8 troppo lunga"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29
+    m_Localized: "La password non \xE8 alfanumerica."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30
+    m_Localized: Nome utente troppo corto.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31
+    m_Localized: Nome utente troppo lungo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33
+    m_Localized: La password deve essere diversa dal nome utente.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34
+    m_Localized: "Il nome utente non pu\xF2 iniziare con un numero."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32
+    m_Localized: "Il nome utente non \xE8 alfanumerico."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35
+    m_Localized: La password deve contenere almeno una lettera maiuscola.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36
+    m_Localized: La password deve contenere almeno una minuscola.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37
+    m_Localized: La password deve contenere almeno due numeri.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38
+    m_Localized: Email non valido.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40
+    m_Localized: "L'account \xE8 stato creato con successo! Deve essere attivato
+      prima di poter essere utilizzato.\r\nTi abbiamo inviato un'email con un codice
+      che devi inserire qui per attivare l'account."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41
+    m_Localized: Attivare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42
+    m_Localized: Annulla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43
+    m_Localized: linguaggio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44
+    m_Localized: Dietro a
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45
+    m_Localized: "L'account non \xE8 stato ancora attivato, si prega di attivare
+      l'account."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46
+    m_Localized: Inserisci un codice di attivazione valido.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47
+    m_Localized: "L'account \xE8 stato attivato con successo!. Pu\xF2 gi\xE0 essere
+      usato"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48
+    m_Localized: "Il codice di attivazione non \xE8 valido. Verifica di non aver
+      commesso un errore durante l'inserimento."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49
+    m_Localized: Attivazione dell'account
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52
+    m_Localized: Conferma password non valida.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53
+    m_Localized: Inserisci nome e cognome.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54
+    m_Localized: Devi accettare i termini e le condizioni.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55
+    m_Localized: Termini e condizioni
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68
+    m_Localized: Nome utente non valido.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64
+    m_Localized: 'Si prega di aggiornare il client all''ultima versione.
+
+      Se
+      il problema persiste, contattare l''assistenza tecnica.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73
+    m_Localized: Registrare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 76
+    m_Localized: Conferma password.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75
+    m_Localized: Nome utente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 74
+    m_Localized: Conferma email
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78
+    m_Localized: Termini e condizioni
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79
+    m_Localized: Ho letto e accetto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80
+    m_Localized: Creare un profilo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81
+    m_Localized: CREA UN ACCOUNT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82
+    m_Localized: SELEZIONA IL TUO PERSONAGGIO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83
+    m_Localized: Continua
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84
+    m_Localized: Crea un nuovo Personaggio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85
+    m_Localized: Diventa Premium per sbloccare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86
+    m_Localized: CREA UN NUOVO PERSONAGGIO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 87
+    m_Localized: NOME DEL PERSONAGGIO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88
+    m_Localized: Forza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89
+    m_Localized: "\rResistenza"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90
+    m_Localized: Destrezza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91
+    m_Localized: Intelligenza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92
+    m_Localized: Carisma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93
+    m_Localized: Costituzione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96
+    m_Localized: Totale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95
+    m_Localized: Mod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94
+    m_Localized: Base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 97
+    m_Localized: STATISTICHE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 98
+    m_Localized: GENERE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99
+    m_Localized: RAZZA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 100
+    m_Localized: CLASSE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101
+    m_Localized: "CITT\xC0 DI PARTENZA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103
+    m_Localized: DONNA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102
+    m_Localized: UOMO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104
+    m_Localized: UMANO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 106
+    m_Localized: NANO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 105
+    m_Localized: DUENDE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 107
+    m_Localized: GNOMO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 111
+    m_Localized: Fortuna
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

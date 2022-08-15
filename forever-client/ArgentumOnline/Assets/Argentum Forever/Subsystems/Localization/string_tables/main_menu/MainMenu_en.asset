@@ -1,0 +1,433 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MainMenu_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: ce04b8004cef60dc193130c9173065bb, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 1
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2
+    m_Localized: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4
+    m_Localized: Username
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5
+    m_Localized: Password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6
+    m_Localized: Login error
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7
+    m_Localized: Invalid account
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8
+    m_Localized: The user is already online and multiple concurrent sessions on a
+      single account is not allowed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9
+    m_Localized: Please enter a password with a minimum of 6 characters
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10
+    m_Localized: Please enter a valid username
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11
+    m_Localized: Input error
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12
+    m_Localized: First name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13
+    m_Localized: Last name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14
+    m_Localized: email
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15
+    m_Localized: Date of birth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16
+    m_Localized: Place of birth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17
+    m_Localized: Secret question 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18
+    m_Localized: Secret question 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19
+    m_Localized: Answer 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20
+    m_Localized: Answer 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21
+    m_Localized: Create account
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22
+    m_Localized: Cannot reach the remote server.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23
+    m_Localized: Connection error.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24
+    m_Localized: Mobile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25
+    m_Localized: Account creation .
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26
+    m_Localized: The account already exists, please try with a different username.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27
+    m_Localized: The password is too short.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28
+    m_Localized: The password is too long.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29
+    m_Localized: The password is not alphanumeric.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30
+    m_Localized: Username too short.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31
+    m_Localized: Username too long.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32
+    m_Localized: The username is not alphanumeric.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33
+    m_Localized: The password must be different from the username.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34
+    m_Localized: The username cannot start with a number.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35
+    m_Localized: The password must contain at least one capital letter.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36
+    m_Localized: The password must contain at least one Lowercase.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37
+    m_Localized: The password must have at least two numbers.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38
+    m_Localized: Invalid Email.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40
+    m_Localized: 'The account has been successfully created! It must be activated
+      before it can be used.
+
+      We have sent you an email with a code that you
+      must enter here to activate the account.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41
+    m_Localized: Activate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45
+    m_Localized: Must active the account before login.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46
+    m_Localized: Please type in a valid activation code
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47
+    m_Localized: The account has been activated successfully and is ready to play.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48
+    m_Localized: The activation code is wrong. Please double check you typed the
+      right code.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49
+    m_Localized: Account activation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52
+    m_Localized: Password confirmation doesnt match
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53
+    m_Localized: Fill name or last name field
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54
+    m_Localized: You must accept the terms and conditions.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56
+    m_Localized: 'This software is strictly private, confidential and personal to
+      its recipients and should not be copied, distributed or reproduced in whole
+      or in part, nor passed to any third party. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55
+    m_Localized: Terms and Conditions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57
+    m_Localized: The password is not correct.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58
+    m_Localized: Activation code sent. Check your inbox email.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59
+    m_Localized: PLAY_CHARACTER_OKAY_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60
+    m_Localized: PLAY_CHARACTER_OKAY_TEXT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61
+    m_Localized: PLAY_CHARACTER_ERROR_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62
+    m_Localized: PLAY_CHARACTER_ERROR_TEXT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63
+    m_Localized: The server closed connection due to inactivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64
+    m_Localized: 'Please update the client to the latest version.
+
+      If the problem
+      persists contact technical support.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 67
+    m_Localized: Incorrect password.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71
+    m_Localized: Emails do not match.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72
+    m_Localized: Incorrect activation code.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68
+    m_Localized: Invalid username.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73
+    m_Localized: Registrer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 76
+    m_Localized: Confirm Password.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75
+    m_Localized: Username
+    m_Metadata:
+      m_Items: []
+  - m_Id: 74
+    m_Localized: Confirm email
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78
+    m_Localized: Terms and condition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79
+    m_Localized: I have read and accepted
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80
+    m_Localized: Create account
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81
+    m_Localized: CREATE AN ACCOUNT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82
+    m_Localized: SELECT YOUR CHARACTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84
+    m_Localized: Create a new Character
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85
+    m_Localized: Become Premium to unlock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86
+    m_Localized: CREATE A NEW CHARACTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 87
+    m_Localized: CHARACTER NAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88
+    m_Localized: Strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89
+    m_Localized: Endurance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90
+    m_Localized: Dexterity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91
+    m_Localized: Intelligence
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92
+    m_Localized: Charisma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93
+    m_Localized: Constitution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94
+    m_Localized: Base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95
+    m_Localized: Mod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96
+    m_Localized: Total
+    m_Metadata:
+      m_Items: []
+  - m_Id: 97
+    m_Localized: STATS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 100
+    m_Localized: CLASS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101
+    m_Localized: STARTING TOWN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99
+    m_Localized: RACE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 98
+    m_Localized: GENDER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102
+    m_Localized: MALE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103
+    m_Localized: FEMALE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104
+    m_Localized: HUMAN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 106
+    m_Localized: DWARF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 105
+    m_Localized: ELF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 107
+    m_Localized: GNOME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 111
+    m_Localized: Luck
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

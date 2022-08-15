@@ -1,0 +1,2450 @@
+fileFormatVersion: 2
+guid: 6c89e90c7f4ea104e88ab20b217d2246
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4031535981207014592
+    second: humano_standing_0
+  - first:
+      213: 90927651221349188
+    second: humano_standing_1
+  - first:
+      213: -9025202136125309233
+    second: humano_standing_2
+  - first:
+      213: 8573601953727752510
+    second: humano_standing_3
+  - first:
+      213: 2718215280668958964
+    second: humano_standing_4
+  - first:
+      213: -5308036116767904154
+    second: humano_standing_5
+  - first:
+      213: 1186886724819703195
+    second: humano_standing_6
+  - first:
+      213: -58552165226676344
+    second: humano_standing_7
+  - first:
+      213: -4705643649296094983
+    second: humano_standing_8
+  - first:
+      213: -1118858723433494176
+    second: humano_standing_9
+  - first:
+      213: -6114911983766844746
+    second: humano_standing_10
+  - first:
+      213: 800099125337398204
+    second: humano_standing_11
+  - first:
+      213: 8006811663394990725
+    second: humano_standing_12
+  - first:
+      213: 36082353316189619
+    second: humano_standing_13
+  - first:
+      213: 5804619802095190864
+    second: humano_standing_14
+  - first:
+      213: 6719941205439364484
+    second: humano_standing_15
+  - first:
+      213: -7545291629474997231
+    second: humano_standing_16
+  - first:
+      213: 9042792380707348727
+    second: humano_standing_17
+  - first:
+      213: -4131883683728857612
+    second: humano_standing_18
+  - first:
+      213: -1847211737234143608
+    second: humano_standing_19
+  - first:
+      213: -6447510002190455688
+    second: humano_standing_20
+  - first:
+      213: 6803399641374446993
+    second: humano_standing_21
+  - first:
+      213: -4248009435051516517
+    second: humano_standing_22
+  - first:
+      213: -6658988260384780644
+    second: humano_standing_23
+  - first:
+      213: -3088300427714105154
+    second: humano_standing_24
+  - first:
+      213: 2649735078385367517
+    second: humano_standing_25
+  - first:
+      213: 2820452291526626016
+    second: humano_standing_26
+  - first:
+      213: -6396763544933819204
+    second: humano_standing_27
+  - first:
+      213: -4681229808884617207
+    second: humano_standing_28
+  - first:
+      213: -3378403788398431202
+    second: humano_standing_29
+  - first:
+      213: -2652363905148199436
+    second: humano_standing_30
+  - first:
+      213: 7548299074684378304
+    second: humano_standing_31
+  - first:
+      213: -1942668826789560649
+    second: humano_standing_32
+  - first:
+      213: 6579547749560411989
+    second: humano_standing_33
+  - first:
+      213: 6512248019660277343
+    second: humano_standing_34
+  - first:
+      213: -6609608133466523173
+    second: humano_standing_35
+  - first:
+      213: 8210476394677610981
+    second: humano_standing_36
+  - first:
+      213: 4550087630075965156
+    second: humano_standing_37
+  - first:
+      213: -2899326748305017202
+    second: humano_standing_38
+  - first:
+      213: -1988748826662439445
+    second: humano_standing_39
+  - first:
+      213: 4846702449503835841
+    second: humano_standing_40
+  - first:
+      213: -2573107240158496993
+    second: humano_standing_41
+  - first:
+      213: -958429095136466714
+    second: humano_standing_42
+  - first:
+      213: 2244734070090473306
+    second: humano_standing_43
+  - first:
+      213: -9172687612877308403
+    second: humano_standing_44
+  - first:
+      213: 2768461777264756547
+    second: humano_standing_45
+  - first:
+      213: -6085853590159550333
+    second: humano_standing_46
+  - first:
+      213: 435383102501822560
+    second: humano_standing_47
+  - first:
+      213: -4320774585444666063
+    second: humano_standing_48
+  - first:
+      213: 533136442340843912
+    second: humano_standing_49
+  - first:
+      213: 8299401102982457647
+    second: humano_standing_50
+  - first:
+      213: 655035646732206876
+    second: humano_standing_51
+  - first:
+      213: -8027754158872231952
+    second: humano_standing_52
+  - first:
+      213: -2108678335790409978
+    second: humano_standing_53
+  - first:
+      213: 6555863376712047266
+    second: humano_standing_54
+  - first:
+      213: 3112537017657196785
+    second: humano_standing_55
+  - first:
+      213: -3309926296247421552
+    second: humano_standing_56
+  - first:
+      213: -8789501614233518600
+    second: humano_standing_57
+  - first:
+      213: -58059217295937703
+    second: humano_standing_58
+  - first:
+      213: 6458463529366666790
+    second: humano_standing_59
+  - first:
+      213: 3727570739638850710
+    second: humano_standing_60
+  - first:
+      213: 839284126335765814
+    second: humano_standing_61
+  - first:
+      213: 4340324880755997208
+    second: humano_standing_62
+  - first:
+      213: -4794526544910268165
+    second: humano_standing_63
+  - first:
+      213: 7291695723775459481
+    second: humano_standing_64
+  - first:
+      213: 6907873188015037829
+    second: humano_standing_65
+  - first:
+      213: -6527345518033595767
+    second: humano_standing_66
+  - first:
+      213: 7533905423162495351
+    second: humano_standing_67
+  - first:
+      213: 6621827979229557258
+    second: humano_standing_68
+  - first:
+      213: 8853549582113350595
+    second: humano_standing_69
+  - first:
+      213: -4729824169670398750
+    second: humano_standing_70
+  - first:
+      213: 6419939773442077158
+    second: humano_standing_71
+  - first:
+      213: 2998900346166462012
+    second: humano_standing_72
+  - first:
+      213: -1569929580361567308
+    second: humano_standing_73
+  - first:
+      213: 5821318078652648569
+    second: humano_standing_74
+  - first:
+      213: 8785956335773879274
+    second: humano_standing_75
+  - first:
+      213: -4358597303791059580
+    second: humano_standing_76
+  - first:
+      213: -1492916970635548829
+    second: humano_standing_77
+  - first:
+      213: -2956553409400581677
+    second: humano_standing_78
+  - first:
+      213: 7018128886161329749
+    second: humano_standing_79
+  - first:
+      213: -8840087018113183238
+    second: humano_standing_0
+  - first:
+      213: -6794216724106181458
+    second: humano_standing_1
+  - first:
+      213: -2385311014235449335
+    second: humano_standing_2
+  - first:
+      213: -382399354340035703
+    second: humano_standing_3
+  - first:
+      213: -40029910926581351
+    second: humano_standing_4
+  - first:
+      213: 245158611458369321
+    second: humano_standing_5
+  - first:
+      213: -1420699466503850140
+    second: humano_standing_6
+  - first:
+      213: 5354763182106570072
+    second: humano_standing_7
+  - first:
+      213: -6282970202479050396
+    second: humano_standing_8
+  - first:
+      213: 4217019481459873793
+    second: humano_standing_9
+  - first:
+      213: -2216064625925120439
+    second: humano_standing_10
+  - first:
+      213: -9074569378902646792
+    second: humano_standing_11
+  - first:
+      213: -1075218216499083488
+    second: humano_standing_12
+  - first:
+      213: -2012641611064741971
+    second: humano_standing_13
+  - first:
+      213: -2229617693912162315
+    second: humano_standing_14
+  - first:
+      213: -4067120022244674779
+    second: humano_standing_15
+  - first:
+      213: -6524821088426345522
+    second: humano_standing_16
+  - first:
+      213: 2735375599958260946
+    second: humano_standing_17
+  - first:
+      213: -8028382012490957195
+    second: humano_standing_18
+  - first:
+      213: -9027830224145713695
+    second: humano_standing_19
+  - first:
+      213: -1234749636431306388
+    second: humano_standing_20
+  - first:
+      213: -6043911422652174594
+    second: humano_standing_21
+  - first:
+      213: 5164602361738955992
+    second: humano_standing_22
+  - first:
+      213: -354304495557466428
+    second: humano_standing_23
+  - first:
+      213: 6964961941295624046
+    second: humano_standing_24
+  - first:
+      213: 7303409167038172306
+    second: humano_standing_25
+  - first:
+      213: -6094570715021453489
+    second: humano_standing_26
+  - first:
+      213: 6635551382018889442
+    second: humano_standing_27
+  - first:
+      213: -6190986598920997096
+    second: humano_standing_28
+  - first:
+      213: 8527523575212050509
+    second: humano_standing_29
+  - first:
+      213: -5127985804589607150
+    second: humano_standing_30
+  - first:
+      213: 2361514015161967348
+    second: humano_standing_31
+  - first:
+      213: 8862017481260439925
+    second: humano_standing_32
+  - first:
+      213: -2783088243894580061
+    second: humano_standing_33
+  - first:
+      213: 8341044228903451357
+    second: humano_standing_34
+  - first:
+      213: 2566860982943176797
+    second: humano_standing_35
+  - first:
+      213: -8661560612523409737
+    second: humano_standing_36
+  - first:
+      213: 4038923326989878355
+    second: humano_standing_37
+  - first:
+      213: -8341693079535166940
+    second: humano_standing_38
+  - first:
+      213: -8885793296289278650
+    second: humano_standing_39
+  - first:
+      213: -2769550552386348323
+    second: humano_standing_40
+  - first:
+      213: 4258526341014329726
+    second: humano_standing_41
+  - first:
+      213: 1991832798647003787
+    second: humano_standing_42
+  - first:
+      213: -2241447788494951999
+    second: humano_standing_43
+  - first:
+      213: 5843487999824180429
+    second: humano_standing_44
+  - first:
+      213: 658920552266451508
+    second: humano_standing_45
+  - first:
+      213: -3669827821135335476
+    second: humano_standing_46
+  - first:
+      213: 68585456020908728
+    second: humano_standing_47
+  - first:
+      213: 7366196803211534861
+    second: humano_standing_48
+  - first:
+      213: 976340768959688146
+    second: humano_standing_49
+  - first:
+      213: 4096395319795471331
+    second: humano_standing_50
+  - first:
+      213: 1491554341129799664
+    second: humano_standing_51
+  - first:
+      213: -8226425637803610019
+    second: humano_standing_52
+  - first:
+      213: -6575692339054865055
+    second: humano_standing_53
+  - first:
+      213: -7324481017292547849
+    second: humano_standing_54
+  - first:
+      213: -479335086878255144
+    second: humano_standing_55
+  - first:
+      213: 3190668721236865145
+    second: humano_standing_56
+  - first:
+      213: -660442343181046156
+    second: humano_standing_57
+  - first:
+      213: -7483119246605338320
+    second: humano_standing_58
+  - first:
+      213: 5371537655668309231
+    second: humano_standing_59
+  - first:
+      213: 3036136025956286765
+    second: humano_standing_60
+  - first:
+      213: 1092671550099361945
+    second: humano_standing_61
+  - first:
+      213: -7895891020830737344
+    second: humano_standing_62
+  - first:
+      213: -8302698633089797939
+    second: humano_standing_63
+  - first:
+      213: 2298636941218413727
+    second: humano_standing_64
+  - first:
+      213: -5328669923675214258
+    second: humano_standing_65
+  - first:
+      213: 9162517360831419044
+    second: humano_standing_66
+  - first:
+      213: 5645410990861042008
+    second: humano_standing_67
+  - first:
+      213: 528478570428002980
+    second: humano_standing_68
+  - first:
+      213: 2883963658032133097
+    second: humano_standing_69
+  - first:
+      213: 7437181561209071342
+    second: humano_standing_70
+  - first:
+      213: -3657773440574510812
+    second: humano_standing_71
+  - first:
+      213: 8247408683668737906
+    second: humano_standing_72
+  - first:
+      213: 7010403535563961193
+    second: humano_standing_73
+  - first:
+      213: 5799830309611745833
+    second: humano_standing_74
+  - first:
+      213: -6415417654312856826
+    second: humano_standing_75
+  - first:
+      213: 5979574662062340892
+    second: humano_standing_76
+  - first:
+      213: -3608474444307641407
+    second: humano_standing_77
+  - first:
+      213: -5629019394408558224
+    second: humano_standing_78
+  - first:
+      213: -9097041889074235595
+    second: humano_standing_79
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: humano_standing_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 0, y: -75}
+        - {x: -11, y: -72}
+        - {x: -15, y: -63}
+        - {x: -11, y: -53}
+        - {x: 0, y: -50}
+        - {x: 12, y: -53}
+        - {x: 15, y: -63}
+        - {x: 12, y: -72}
+      tessellationDetail: 0
+      bones: []
+      spriteID: af152dd91b3b15580800000000000000
+      internalID: -8840087018113183238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 1, y: -70}
+        - {x: -9, y: -67}
+        - {x: -12, y: -58}
+        - {x: -9, y: -50}
+        - {x: 1, y: -47}
+        - {x: 11, y: -50}
+        - {x: 16, y: -58}
+        - {x: 11, y: -67}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea402a003e716b1a0800000000000000
+      internalID: -6794216724106181458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 0, y: -68}
+        - {x: -9, y: -67}
+        - {x: -12, y: -57}
+        - {x: -9, y: -49}
+        - {x: 0, y: -46}
+        - {x: 10, y: -49}
+        - {x: 13, y: -57}
+        - {x: 10, y: -67}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9085bad354ca5eed0800000000000000
+      internalID: -2385311014235449335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 2, y: -68}
+        - {x: -9, y: -65}
+        - {x: -11, y: -55}
+        - {x: -9, y: -46}
+        - {x: 1, y: -44}
+        - {x: 12, y: -46}
+        - {x: 15, y: -55}
+        - {x: 12, y: -65}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 983393230d171baf0800000000000000
+      internalID: -382399354340035703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -1, y: -65}
+        - {x: -10, y: -63}
+        - {x: -13, y: -53}
+        - {x: -10, y: -44}
+        - {x: -1, y: -42}
+        - {x: 10, y: -44}
+        - {x: 12, y: -53}
+        - {x: 10, y: -63}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 991a4d21209c17ff0800000000000000
+      internalID: -40029910926581351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 2, y: -69}
+        - {x: -8, y: -66}
+        - {x: -12, y: -55}
+        - {x: -8, y: -45}
+        - {x: 2, y: -41}
+        - {x: 12, y: -45}
+        - {x: 16, y: -56}
+        - {x: 12, y: -66}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 927aa9d457af66300800000000000000
+      internalID: 245158611458369321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 1, y: -70}
+        - {x: -9, y: -66}
+        - {x: -12, y: -54}
+        - {x: -9, y: -46}
+        - {x: 2, y: -41}
+        - {x: 12, y: -46}
+        - {x: 15, y: -57}
+        - {x: 12, y: -66}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4677376cc59a84ce0800000000000000
+      internalID: -1420699466503850140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_7
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 0, y: -71}
+        - {x: -9, y: -68}
+        - {x: -13, y: -57}
+        - {x: -9, y: -48}
+        - {x: 0, y: -45}
+        - {x: 11, y: -48}
+        - {x: 14, y: -58}
+        - {x: 11, y: -68}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85d6dcd4eb0ff4a40800000000000000
+      internalID: 5354763182106570072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_8
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 1, y: -70}
+        - {x: -10, y: -66}
+        - {x: -13, y: -55}
+        - {x: -10, y: -46}
+        - {x: 0, y: -43}
+        - {x: 11, y: -46}
+        - {x: 14, y: -56}
+        - {x: 11, y: -66}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4614fd2b3e76ec8a0800000000000000
+      internalID: -6282970202479050396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_9
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 0, y: -70}
+        - {x: -10, y: -66}
+        - {x: -14, y: -55}
+        - {x: -10, y: -45}
+        - {x: 0, y: -41}
+        - {x: 11, y: -45}
+        - {x: 14, y: -56}
+        - {x: 11, y: -66}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 108515b20ecd58a30800000000000000
+      internalID: 4217019481459873793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94e9c64c6f4fe31e0800000000000000
+      internalID: -2216064625925120439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_11
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ffded0aa37a01280800000000000000
+      internalID: -9074569378902646792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0270b859abe0411f0800000000000000
+      internalID: -1075218216499083488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dafe0504e19a114e0800000000000000
+      internalID: -2012641611064741971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_14
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ff9079358ece01e0800000000000000
+      internalID: -2229617693912162315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_15
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5233a3763efae87c0800000000000000
+      internalID: -4067120022244674779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_16
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecbbe514acd2375a0800000000000000
+      internalID: -6524821088426345522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_17
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dc78c29d9106f520800000000000000
+      internalID: 2735375599958260946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_18
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57e37588815759090800000000000000
+      internalID: -8028382012490957195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_19
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e5724d1e34b6b280800000000000000
+      internalID: -9027830224145713695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6128f56fb94ddee0800000000000000
+      internalID: -1234749636431306388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_21
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efe24e64596bf1ca0800000000000000
+      internalID: -6043911422652174594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_22
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dc08991c7a5ca740800000000000000
+      internalID: 5164602361738955992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_23
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c629ff30f1451bf0800000000000000
+      internalID: -354304495557466428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_24
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6f6a01dbf388a060800000000000000
+      internalID: 6964961941295624046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_25
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29c44aa31fbea5560800000000000000
+      internalID: 7303409167038172306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_26
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f47d5a0a93cbb6ba0800000000000000
+      internalID: -6094570715021453489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_27
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e6961643d6361c50800000000000000
+      internalID: 6635551382018889442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_28
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8173c125d72351aa0800000000000000
+      internalID: -6190986598920997096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_29
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d48884ac289d75670800000000000000
+      internalID: 8527523575212050509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 217d038741cb5d8b0800000000000000
+      internalID: -5127985804589607150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_31
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f2e5d52c78c5c020800000000000000
+      internalID: 2361514015161967348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57994db32f53cfa70800000000000000
+      internalID: 8862017481260439925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_33
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ac0914dcfb7069d0800000000000000
+      internalID: -2783088243894580061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_34
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddabc9f888751c370800000000000000
+      internalID: 8341044228903451357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_35
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d585324d6725f9320800000000000000
+      internalID: 2566860982943176797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_36
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bef60a8384fbc780800000000000000
+      internalID: -8661560612523409737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_37
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3544544ed532d0830800000000000000
+      internalID: 4038923326989878355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_38
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ad8f0275a5c3c80800000000000000
+      internalID: -8341693079535166940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_39
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 645512373125fa480800000000000000
+      internalID: -8885793296289278650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: -83}
+        - {x: -13, y: -80}
+        - {x: -18, y: -69}
+        - {x: -13, y: -58}
+        - {x: -2, y: -55}
+        - {x: 7, y: -58}
+        - {x: 10, y: -69}
+        - {x: 7, y: -80}
+      tessellationDetail: 0
+      bones: []
+      spriteID: dda568142749099d0800000000000000
+      internalID: -2769550552386348323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_41
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -1, y: -83}
+        - {x: -12, y: -79}
+        - {x: -15, y: -69}
+        - {x: -12, y: -58}
+        - {x: -2, y: -56}
+        - {x: 8, y: -58}
+        - {x: 11, y: -70}
+        - {x: 8, y: -79}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e799dcef423591b30800000000000000
+      internalID: 4258526341014329726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_42
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -3, y: -83}
+        - {x: -12, y: -79}
+        - {x: -15, y: -68}
+        - {x: -12, y: -58}
+        - {x: -2, y: -54}
+        - {x: 7, y: -58}
+        - {x: 12, y: -68}
+        - {x: 7, y: -79}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8aa35f806964ab10800000000000000
+      internalID: 1991832798647003787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_43
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -2, y: -83}
+        - {x: -12, y: -79}
+        - {x: -15, y: -68}
+        - {x: -12, y: -59}
+        - {x: -3, y: -55}
+        - {x: 8, y: -59}
+        - {x: 11, y: -70}
+        - {x: 8, y: -79}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c96c20bc17c4e0e0800000000000000
+      internalID: -2241447788494951999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_44
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -3, y: -82}
+        - {x: -12, y: -80}
+        - {x: -16, y: -70}
+        - {x: -12, y: -60}
+        - {x: -3, y: -57}
+        - {x: 6, y: -60}
+        - {x: 9, y: -69}
+        - {x: 6, y: -80}
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc437ce206d381150800000000000000
+      internalID: 5843487999824180429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_45
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -2, y: -83}
+        - {x: -12, y: -80}
+        - {x: -15, y: -69}
+        - {x: -12, y: -58}
+        - {x: -2, y: -56}
+        - {x: 8, y: -58}
+        - {x: 11, y: -69}
+        - {x: 8, y: -80}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43acb0d40c4f42900800000000000000
+      internalID: 658920552266451508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_46
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -3, y: -81}
+        - {x: -13, y: -79}
+        - {x: -17, y: -69}
+        - {x: -13, y: -59}
+        - {x: -3, y: -57}
+        - {x: 7, y: -59}
+        - {x: 10, y: -70}
+        - {x: 7, y: -79}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccfe16e4a07221dc0800000000000000
+      internalID: -3669827821135335476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_47
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: -80}
+        - {x: -13, y: -77}
+        - {x: -16, y: -67}
+        - {x: -13, y: -58}
+        - {x: -3, y: -56}
+        - {x: 6, y: -58}
+        - {x: 8, y: -68}
+        - {x: 6, y: -77}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ba62eedb1aa3f000800000000000000
+      internalID: 68585456020908728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_48
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -2, y: -84}
+        - {x: -13, y: -81}
+        - {x: -16, y: -70}
+        - {x: -13, y: -59}
+        - {x: -3, y: -57}
+        - {x: 7, y: -59}
+        - {x: 10, y: -70}
+        - {x: 7, y: -81}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d02aa09f6fcf93660800000000000000
+      internalID: 7366196803211534861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_49
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -2, y: -78}
+        - {x: -12, y: -75}
+        - {x: -15, y: -66}
+        - {x: -12, y: -57}
+        - {x: -2, y: -53}
+        - {x: 7, y: -57}
+        - {x: 9, y: -66}
+        - {x: 7, y: -75}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dde299a1c8ac8d00800000000000000
+      internalID: 976340768959688146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e35bf7f6d159d830800000000000000
+      internalID: 4096395319795471331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_51
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f7cb3a45c013b410800000000000000
+      internalID: 1491554341129799664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_52
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d50bc87c77dd5dd80800000000000000
+      internalID: -8226425637803610019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_53
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 165906a38a27eb4a0800000000000000
+      internalID: -6575692339054865055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_54
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f89f2052573a5a90800000000000000
+      internalID: -7324481017292547849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_55
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d79d32374f0959f0800000000000000
+      internalID: -479335086878255144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_56
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 970f54d0c48874c20800000000000000
+      internalID: 3190668721236865145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_57
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47e21142033a5d6f0800000000000000
+      internalID: -660442343181046156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_58
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 039333641be962890800000000000000
+      internalID: -7483119246605338320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_59
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fec7eb7c9098b8a40800000000000000
+      internalID: 5371537655668309231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2104e421a5822a20800000000000000
+      internalID: 3036136025956286765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_61
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99019df4cf2f92f00800000000000000
+      internalID: 1092671550099361945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_62
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04cff2663f82c6290800000000000000
+      internalID: -7895891020830737344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_63
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc0bf813593e6cc80800000000000000
+      internalID: -8302698633089797939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_64
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9cf9ec8e1666ef10800000000000000
+      internalID: 2298636941218413727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_65
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4ee70adfe2cc06b0800000000000000
+      internalID: -5328669923675214258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_66
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a2d4bc9efcc72f70800000000000000
+      internalID: 9162517360831419044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_67
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 851cb51b267885e40800000000000000
+      internalID: 5645410990861042008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_68
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a274c5b578855700800000000000000
+      internalID: 528478570428002980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_69
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e33426caa5e50820800000000000000
+      internalID: 2883963658032133097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee6a3fdd93d263760800000000000000
+      internalID: 7437181561209071342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_71
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 429a2bd7f6afc3dc0800000000000000
+      internalID: -3657773440574510812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_72
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27f0c8b408ea47270800000000000000
+      internalID: 8247408683668737906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_73
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 963be657fd4f94160800000000000000
+      internalID: 7010403535563961193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_74
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 922b3f110f22d7050800000000000000
+      internalID: 5799830309611745833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_75
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60399ec32abd7f6a0800000000000000
+      internalID: -6415417654312856826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_76
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1bf6285977bbf250800000000000000
+      internalID: 5979574662062340892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_77
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cbc7f58c9f1cedc0800000000000000
+      internalID: -3608474444307641407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_78
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0715e724fa4b1e1b0800000000000000
+      internalID: -5629019394408558224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_standing_79
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 537b1ee9990d0c180800000000000000
+      internalID: -9097041889074235595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

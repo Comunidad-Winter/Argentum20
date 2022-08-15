@@ -1,0 +1,1210 @@
+fileFormatVersion: 2
+guid: fb8c72d2e46b22340913ccb1d71ab6c3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1114227244338989097
+    second: humano_attack_ropa_basic_0
+  - first:
+      213: -4103237690653597855
+    second: humano_attack_ropa_basic_1
+  - first:
+      213: -2156556109794510097
+    second: humano_attack_ropa_basic_2
+  - first:
+      213: 8764203770374030133
+    second: humano_attack_ropa_basic_3
+  - first:
+      213: -5345992544996033971
+    second: humano_attack_ropa_basic_4
+  - first:
+      213: 8279941726675013049
+    second: humano_attack_ropa_basic_5
+  - first:
+      213: 7275937732740740887
+    second: humano_attack_ropa_basic_6
+  - first:
+      213: -3432455786626947062
+    second: humano_attack_ropa_basic_7
+  - first:
+      213: 2414119819943678392
+    second: humano_attack_ropa_basic_8
+  - first:
+      213: -4109453683695093306
+    second: humano_attack_ropa_basic_9
+  - first:
+      213: 8865715247323271224
+    second: humano_attack_ropa_basic_10
+  - first:
+      213: 499360062209325421
+    second: humano_attack_ropa_basic_11
+  - first:
+      213: 7643208446710503247
+    second: humano_attack_ropa_basic_12
+  - first:
+      213: 4478305632206241417
+    second: humano_attack_ropa_basic_13
+  - first:
+      213: 212751036418019514
+    second: humano_attack_ropa_basic_14
+  - first:
+      213: 6518262337081095450
+    second: humano_attack_ropa_basic_15
+  - first:
+      213: -5330324842634917142
+    second: humano_attack_ropa_basic_16
+  - first:
+      213: -6012077762209140167
+    second: humano_attack_ropa_basic_17
+  - first:
+      213: -1448671692550853966
+    second: humano_attack_ropa_basic_18
+  - first:
+      213: -5955342405925285365
+    second: humano_attack_ropa_basic_19
+  - first:
+      213: -8142402327646327211
+    second: humano_attack_ropa_basic_20
+  - first:
+      213: -5324909164346009117
+    second: humano_attack_ropa_basic_21
+  - first:
+      213: -8112395001868328839
+    second: humano_attack_ropa_basic_22
+  - first:
+      213: 203396717581293558
+    second: humano_attack_ropa_basic_23
+  - first:
+      213: -3707753220614371614
+    second: humano_attack_ropa_basic_24
+  - first:
+      213: 5413244670664119480
+    second: humano_attack_ropa_basic_25
+  - first:
+      213: 6833279548212171990
+    second: humano_attack_ropa_basic_26
+  - first:
+      213: -4766822233624934971
+    second: humano_attack_ropa_basic_27
+  - first:
+      213: 4696445585005109561
+    second: humano_attack_ropa_basic_28
+  - first:
+      213: -4776294506211757703
+    second: humano_attack_ropa_basic_29
+  - first:
+      213: 3643974897517476173
+    second: humano_attack_ropa_basic_30
+  - first:
+      213: -5894783862222301731
+    second: humano_attack_ropa_basic_31
+  - first:
+      213: -4538849224114309929
+    second: humano_attack_ropa_basic_32
+  - first:
+      213: 6605693948764189534
+    second: humano_attack_ropa_basic_33
+  - first:
+      213: -5058378793693460678
+    second: humano_attack_ropa_basic_34
+  - first:
+      213: 1097411414476594475
+    second: humano_attack_ropa_basic_35
+  - first:
+      213: 2289292677659091309
+    second: humano_attack_ropa_basic_36
+  - first:
+      213: -2584954847628344989
+    second: humano_attack_ropa_basic_37
+  - first:
+      213: 677309447527445538
+    second: humano_attack_ropa_basic_38
+  - first:
+      213: -389651988907170075
+    second: humano_attack_ropa_basic_39
+  - first:
+      213: 3020108866861652441
+    second: humano_attack_ropa_basic_0
+  - first:
+      213: -7449810348786736285
+    second: humano_attack_ropa_basic_1
+  - first:
+      213: -6066799182798276084
+    second: humano_attack_ropa_basic_2
+  - first:
+      213: 6130251572108993358
+    second: humano_attack_ropa_basic_3
+  - first:
+      213: -8342495902574405688
+    second: humano_attack_ropa_basic_4
+  - first:
+      213: 2129927313706988167
+    second: humano_attack_ropa_basic_5
+  - first:
+      213: 6083122726096517747
+    second: humano_attack_ropa_basic_6
+  - first:
+      213: 3537298050034019891
+    second: humano_attack_ropa_basic_7
+  - first:
+      213: -1120327312567298424
+    second: humano_attack_ropa_basic_8
+  - first:
+      213: -7753329690616816223
+    second: humano_attack_ropa_basic_9
+  - first:
+      213: 27238588353124503
+    second: humano_attack_ropa_basic_10
+  - first:
+      213: -5620014462725333771
+    second: humano_attack_ropa_basic_11
+  - first:
+      213: 6333242996731725957
+    second: humano_attack_ropa_basic_12
+  - first:
+      213: -2910710077004548885
+    second: humano_attack_ropa_basic_13
+  - first:
+      213: 7645495557058244237
+    second: humano_attack_ropa_basic_14
+  - first:
+      213: 3544715325502208076
+    second: humano_attack_ropa_basic_15
+  - first:
+      213: 6093374897701986099
+    second: humano_attack_ropa_basic_16
+  - first:
+      213: 5802622411525266838
+    second: humano_attack_ropa_basic_17
+  - first:
+      213: 2030170349639636283
+    second: humano_attack_ropa_basic_18
+  - first:
+      213: -3235312472272387537
+    second: humano_attack_ropa_basic_19
+  - first:
+      213: -2921737736072640444
+    second: humano_attack_ropa_basic_20
+  - first:
+      213: 3949422582471974668
+    second: humano_attack_ropa_basic_21
+  - first:
+      213: 3112963374014042127
+    second: humano_attack_ropa_basic_22
+  - first:
+      213: 4371725581976123191
+    second: humano_attack_ropa_basic_23
+  - first:
+      213: -7321523676224219263
+    second: humano_attack_ropa_basic_24
+  - first:
+      213: -334073212940470292
+    second: humano_attack_ropa_basic_25
+  - first:
+      213: 6058481843421693365
+    second: humano_attack_ropa_basic_26
+  - first:
+      213: -7538600108156343044
+    second: humano_attack_ropa_basic_27
+  - first:
+      213: -556753580013796854
+    second: humano_attack_ropa_basic_28
+  - first:
+      213: 7466169615052408962
+    second: humano_attack_ropa_basic_29
+  - first:
+      213: 466770148795154493
+    second: humano_attack_ropa_basic_30
+  - first:
+      213: 6090841179618424229
+    second: humano_attack_ropa_basic_31
+  - first:
+      213: -5179003177993718278
+    second: humano_attack_ropa_basic_32
+  - first:
+      213: 3587790750025960051
+    second: humano_attack_ropa_basic_33
+  - first:
+      213: -3786513336050868873
+    second: humano_attack_ropa_basic_34
+  - first:
+      213: -6392756499181505372
+    second: humano_attack_ropa_basic_35
+  - first:
+      213: -4535347773409571823
+    second: humano_attack_ropa_basic_36
+  - first:
+      213: -6988497866138838008
+    second: humano_attack_ropa_basic_37
+  - first:
+      213: -4699276679660103576
+    second: humano_attack_ropa_basic_38
+  - first:
+      213: -5557794120225583811
+    second: humano_attack_ropa_basic_39
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d9db40630599e920800000000000000
+      internalID: 3020108866861652441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 363a98465f4fc9890800000000000000
+      internalID: -7449810348786736285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0abda959466ecba0800000000000000
+      internalID: -6066799182798276084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e43265b4357031550800000000000000
+      internalID: 6130251572108993358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c796e25d20893c80800000000000000
+      internalID: -8342495902574405688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78238e26b950f8d10800000000000000
+      internalID: 2129927313706988167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_6
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37ab61eb3e79b6450800000000000000
+      internalID: 6083122726096517747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_7
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33ea5f8c5d1071130800000000000000
+      internalID: 3537298050034019891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_8
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8861246be3cc370f0800000000000000
+      internalID: -1120327312567298424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ad9b4ca9b3a66490800000000000000
+      internalID: -7753329690616816223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79898fe0a55c06000800000000000000
+      internalID: 27238588353124503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_11
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fcd2bc4f92b102b0800000000000000
+      internalID: -5620014462725333771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 588cc6853f234e750800000000000000
+      internalID: 6333242996731725957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be47ef74b941b97d0800000000000000
+      internalID: -2910710077004548885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_14
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8ea84a93b14a1a60800000000000000
+      internalID: 7645495557058244237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c48317ececb513130800000000000000
+      internalID: 3544715325502208076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33f1fc47f24009450800000000000000
+      internalID: 6093374897701986099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_17
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69d1fa4f65e078050800000000000000
+      internalID: 5802622411525266838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_18
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b351dcb3d2d9c2c10800000000000000
+      internalID: 2030170349639636283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_19
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2240d8a27cd913d0800000000000000
+      internalID: -3235312472272387537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44849825207e377d0800000000000000
+      internalID: -2921737736072640444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_21
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0fd520f9ea2fc630800000000000000
+      internalID: 3949422582471974668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_22
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0098ea02b7733b20800000000000000
+      internalID: 3112963374014042127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_23
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 737bc21214d7bac30800000000000000
+      internalID: 4371725581976123191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_24
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1871b00f109b46a90800000000000000
+      internalID: -7321523676224219263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce7b5bdce222d5bf0800000000000000
+      internalID: -334073212940470292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_26
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b5cd4b232d041450800000000000000
+      internalID: 6058481843421693365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_27
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfcae919423816790800000000000000
+      internalID: -7538600108156343044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_28
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a02c9db91930648f0800000000000000
+      internalID: -556753580013796854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_29
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 288830a15b92d9760800000000000000
+      internalID: 7466169615052408962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3001be2afc4a7600800000000000000
+      internalID: 466770148795154493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_31
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a53a7e38c3078450800000000000000
+      internalID: 6090841179618424229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af5b0159c0c7028b0800000000000000
+      internalID: -5179003177993718278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_33
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37acabf9da46ac130800000000000000
+      internalID: 3587790750025960051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_34
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77d9863ce2a937bc0800000000000000
+      internalID: -3786513336050868873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a477b295dd5847a0800000000000000
+      internalID: -6392756499181505372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_36
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11c4019ba353f01c0800000000000000
+      internalID: -4535347773409571823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_37
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80c1837a73ed30f90800000000000000
+      internalID: -6988497866138838008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_38
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8681597f1c0d8ceb0800000000000000
+      internalID: -4699276679660103576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humano_attack_ropa_basic_39
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3d0331b1bfbed2b0800000000000000
+      internalID: -5557794120225583811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

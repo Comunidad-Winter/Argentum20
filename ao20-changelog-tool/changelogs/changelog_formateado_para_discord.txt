@@ -1,0 +1,18 @@
+﻿NOTAS DE LA VERSION (VERSION DEL PARCHE)
+
+**:white_check_mark: IMPLEMENTACIONES**
+```
+# METER IMLPEMENTACIONES ACA
+```
+
+**:repeat: CAMBIOS**
+```
+# METER CAMBIOS ACA
+```
+
+**:lady_beetle: BUGFIXES**
+```
+# METER BUGFIXES ACA
+```
+
+Estamos al tanto de los bugs y problemas técnicos que surgieron con este parche, y para el próximo serán solucionados. ¡Gracias por la paciencia!

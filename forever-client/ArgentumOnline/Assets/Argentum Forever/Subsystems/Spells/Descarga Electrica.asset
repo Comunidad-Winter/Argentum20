@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f79b9a97ac863b1418c26e72aa4a10b0, type: 3}
+  m_Name: Descarga Electrica
+  m_EditorClassIdentifier: 
+  _name: Descarga Electrica
+  _magicWords: T'HY KOOOL
+  _description: Desca
+  _requiredMana: 460
+  _requiredStamina: 50
+  _visualEffectPrefab: {fileID: 7966839016517902717, guid: abd0dff8b60746d428f6f13ce09e45e0,
+    type: 3}
+  _validTargets: 02000000
+  _effects:
+    _modifyAttributes:
+    - mModifiedAttribute: 0
+      mType: 0
+      mValue: -150

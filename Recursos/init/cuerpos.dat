@@ -1,5 +1,5 @@
 [INIT]
-NumBodies=1363
+NumBodies=1360
 
 [BODY1]
 Std=1
@@ -9177,27 +9177,6 @@ Speed=0.4
 [BODY1360]
 Std=95
 FileNum=4749
-HeadOffsetX=0
-HeadOffsetY=-64
-Speed=0.4
-
-[BODY1361]
-Std=93
-FileNum=4750
-HeadOffsetX=0
-HeadOffsetY=-64
-Speed=0.4
-
-[BODY1362]
-Std=94
-FileNum=4750
-HeadOffsetX=0
-HeadOffsetY=-64
-Speed=0.4
-
-[BODY1363]
-Std=95
-FileNum=4750
 HeadOffsetX=0
 HeadOffsetY=-64
 Speed=0.4

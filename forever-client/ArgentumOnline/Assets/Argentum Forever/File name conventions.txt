@@ -1,0 +1,45 @@
+Conventions for naming files and assets inside the project:
+
+Tiles/Tilesets sprites
+----------------------------
+
+	TL_BIOME_NAME_TYPE
+	
+	* "TL" fixed prefix for all tiles sprites.
+	* "BIOME" describes the landscape (BOSQUE, DESIERTO, CATAS, ULLA, etc,).
+	* "NAME" the name of the tile itself (PASTO, CAMINO, ARENA, SUELOMADERA, etc.).
+	* "TYPE" could be:
+		"BASE" for base/regular sprites.
+		"NORMAL" for normal maps.
+		"MASK" for masks.
+	* Examples:
+		TL_BOSQUE_PASTOLARGO
+		TL_DESIERTO_ARENABLANCA
+		TL_CIUDAD_CAMINOPIEDRA
+
+Misc sprites (decoration, signs, trees, etc.)
+---------------------------------------------
+
+	PREFIX_NAME_TYPE
+	
+	* "PREFIX" is a word that should help identify the sprite (IGLESIA, CABAÑA, FUERTE, etc.).
+	* "NAME" is the name of the tile itself (CAMA, LÁMPARA, ARACADA, VENTANA, etc.).
+	* "TYPE" could be:
+		"BASE" for base/regular sprites.
+		"NORMAL" for normal maps.
+		"MASK" for masks.
+	* Examples:
+		IGLESIA_ATRIL_BASE
+		CABAÑA_CHIMENEA_BASE
+		BOSQUE_PINO_MASK
+
+Map scene
+---------
+
+	ID_NAME
+	
+	* "ID" number that should identify the map.
+	* "NAME" map friendly name (NIX, ULLA, BANDER, DUNGEON VERIL, etc.).
+	* Examples:
+		1_NIX
+		25_BANDERBILL

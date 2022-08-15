@@ -1,0 +1,9 @@
+<?php
+
+$databaseHost = '';
+$databaseUserRead = '';
+$databasePasswordRead = '';
+$databaseName = '';
+$databasePort = 3306;
+
+?>

@@ -1,0 +1,23 @@
+{
+    "language": "english",
+    "password": "Martin123",
+    "passwordrecovery": [
+        {
+            "secretanswer1": "Satanas",
+            "secretanswer2": "Rojo",
+            "secretquestion1": "Cual es el nombre de mi primer mascota?",
+            "secretquestion2": "Cual es mi color favorito?"
+        }
+    ],
+    "personal": [
+        {
+            "dob": "01/01/1900",
+            "email": "martintrionfetti@gmail.com",
+            "firstname": "Martin",
+            "lastname": "Trionfetti",
+            "mobile": "777777777",
+            "pob": "Guadalajara"
+        }
+    ],
+    "username": "tincho123123"
+}

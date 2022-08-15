@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24dd25c2676d6ff4c970820f78280dfd, type: 3}
+  m_Name: Helmet
+  m_EditorClassIdentifier: 
+  mID: 0
+  mName: Helmet
+  mDescription: Helmet
+  nBasePrice: 0
+  mWeight: 0
+  mType: 1
+  mAllowedSlots: 01000000
+  mAnimationClips:
+    m_keys:
+    - attack_east
+    - attack_north
+    - attack_northeast
+    - attack_northwest
+    - attack_south
+    - attack_southeast
+    - attack_southwest
+    - attack_west
+    - run_east
+    - run_north
+    - run_northeast
+    - run_northwest
+    - run_south
+    - run_southeast
+    - run_southwest
+    - run_west
+    - stand_east
+    - stand_north
+    - stand_northeast
+    - stand_northwest
+    - stand_south
+    - stand_southeast
+    - stand_southwest
+    - stand_west
+    - walk_east
+    - walk_north
+    - walk_northeast
+    - walk_northwest
+    - walk_south
+    - walk_southeast
+    - walk_southwest
+    - walk_west
+    m_values:
+    - {fileID: 7400000, guid: 13b077917a6309e448d95de910479a8b, type: 2}
+    - {fileID: 7400000, guid: 0144f868815e7d241a9f66dade66021f, type: 2}
+    - {fileID: 7400000, guid: 56ab344a9d21a1f4285bc1a3756f566f, type: 2}
+    - {fileID: 7400000, guid: 972ce3eb78af01049b9e15d74f0d96a4, type: 2}
+    - {fileID: 7400000, guid: e81f7abe56401fe4aa81b9bab8088baa, type: 2}
+    - {fileID: 7400000, guid: 315de0785674c1b499178106b63e0445, type: 2}
+    - {fileID: 7400000, guid: 0defe919dc458e541826752bca1c7154, type: 2}
+    - {fileID: 7400000, guid: e7b2aaf524dce414588074c52f66108b, type: 2}
+    - {fileID: 7400000, guid: 518bc7f581b51144f9839d009553badb, type: 2}
+    - {fileID: 7400000, guid: fbef6f7997e904e4387a65a090f70b02, type: 2}
+    - {fileID: 7400000, guid: 8879819a86e6ed34e8fb68bb10126052, type: 2}
+    - {fileID: 7400000, guid: 7aa1c25782533d34cb5c6a84fb170208, type: 2}
+    - {fileID: 7400000, guid: a1b6fc658b7f6a64ca004b94ca825345, type: 2}
+    - {fileID: 7400000, guid: b6425bdf17bfe1a40a8844fd7fe7eeaf, type: 2}
+    - {fileID: 7400000, guid: 7fa2540d633be8541b91ea7fdd9e0f05, type: 2}
+    - {fileID: 7400000, guid: 25ed824604f3ffa4bb68e878fc3a4f48, type: 2}
+    - {fileID: 7400000, guid: ad2e1ab38e1496d4d8001a158237c232, type: 2}
+    - {fileID: 7400000, guid: bfa2c8f96efa23f4abd01247ae6168dd, type: 2}
+    - {fileID: 7400000, guid: 032524d947acea846a10c5490dcab0d1, type: 2}
+    - {fileID: 7400000, guid: ba81d4f05e7404843b58eb548417eee4, type: 2}
+    - {fileID: 7400000, guid: 88c6ca7cf2ccee54985f1d32b1649168, type: 2}
+    - {fileID: 7400000, guid: dd997f5c24c8afe448f123925865ab50, type: 2}
+    - {fileID: 7400000, guid: 33f26b301a31d4d49b6b0140edfd7013, type: 2}
+    - {fileID: 7400000, guid: 30c9c1620de960f4597e730c22f84e11, type: 2}
+    - {fileID: 7400000, guid: 6173fc150252f4244a704603930362b4, type: 2}
+    - {fileID: 7400000, guid: 11626420351227242a3929635eda1dc7, type: 2}
+    - {fileID: 7400000, guid: 12c0a911703079d47b8f28d84a850518, type: 2}
+    - {fileID: 7400000, guid: 9cbe3ccf8e56aa54d874fe2b28eaca0a, type: 2}
+    - {fileID: 7400000, guid: 846d1bc573494cb4eafff7c8d0c8c4d0, type: 2}
+    - {fileID: 7400000, guid: f6c1982fca9e1464f9e9309bb173d79c, type: 2}
+    - {fileID: 7400000, guid: a88fdeff8894d304790e75521f273be3, type: 2}
+    - {fileID: 7400000, guid: d6b1b13062ed8cd459b7aa9721bacf09, type: 2}
+  mInventoryIcon: {fileID: 21300000, guid: a4dcf53accda1bb4b9c455d3258a478d, type: 3}

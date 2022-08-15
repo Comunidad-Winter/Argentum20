@@ -1,0 +1,40 @@
+- Fix color en consola al cliquear a users (no gms)
+- 3/28/2021 6:48:41 PM Error en DoPescar. Error 6 - Overflow
+- Cambiar ancho de label en quests
+- Error de sonidos ambiente.
+- Dungeon Pitonisa tiene un ruido de guitarra en bucle
+- NPCs que caminan no se detienen para que aceptes la quest
+- NPC respawn en til inalcanzable
+- Arreglar CABEZAS
+- Terminar funciones del menú contextual de GMs y agregar "Silenciar" y "Consulta"
+- REY DE BANDERBILL FLASHA DEMONIO
+- No anda el borrar cartel
+- Nuevo launcher hecho con .NET
+- Mascotas domadas del Druida bugeadas
+- Migrar template de Ale a la codebase actual
+- Que los NPCS puedan tirarse remo y detectar invisibilidad
+- Con el seguro activado te deja pegarle a tu mascota y te hace pk
+- El porcentaje de descarga del launcher tira mucho más de lo que debería
+- Reescribir la IA de los NPCs
+- Desaparecen los items del inventario cuando la ventana de juego pierde el foco o cuando tecleabas Ctrl + Alt + Supr
+- Opciones de pantalla completa y cursor grafico no se guardan al salir del juego
+- Al pasar de mapa ves a tus compañeros de grupo bug en el minimapa
+- Matar a faccionarios no cuenta la kill!
+- Con el seguro activado podés atacar guardias (NPC)
+- Siempre que seas Crimi o Caos, el seguro permanece desactivado.
+- Enanos usan ropajes de altos
+- Gran Dragón deja de atacar en presencia de un GM
+- Mapa 391 (Caverna del Dragón) tiene un sonido de pajaro en bucle.
+- Sacar los NPCs "Comprador de Pescadores" de todas las ciudades.
+- bugs mapas
+- El chamán paraliza y no se puede remover. Revisar que no sea algo general de todos los NPCs
+- Botón de Retos se ve al pasar el mouse y se puede apretar incluso en la pestaña STATS
+- Hacer más rápido el lingoteo y reemplazar el sonido que tiene por el wav41
+- Subir el daño del frío en polo a 10% cada 3 segundos.
+- Reescribir desequipar de un golpe
+- Varias mejoras en la web
+- Minimapa con mayor detalle
+- Borrar DoHurtar del codigo, no se usa!
+- PARTYS BUGUEADAS: Cuando querés invitar a alguien, él acepta pero le sale ''No tienes cuentas pendientes'' y la party no se arma.
+- SACAR A BARRIN DEL LOG IN.
+- IntervaloRespawn SE BUGUEÓ Y NO FUNCIONA MÁS
